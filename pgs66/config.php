@@ -1,7 +1,7 @@
 <?php
 	$dbServer = 'localhost';
-	$dbUsername = 'priggm80_syamsul';
-	$dbPassword = 'JBam330716';
+	$dbUsername = 'puffergr_admin';
+	$dbPassword = 'puffergr_admin$';
 	$dbDatabase = 'priggm80_pgs66';
 
 	$adminConfig = array(
