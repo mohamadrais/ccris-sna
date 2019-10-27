@@ -1,0 +1,17 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the AccountPayables_init() hook (in hooks/AccountPayables.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="AccountPayables-APID-<%%VALUE(id)%%>" class="AccountPayables-APID"><%%SELECT%%><%%VALUE(APID)%%><%%ENDSELECT%%></td>
+		<td id="AccountPayables-OrderID-<%%VALUE(id)%%>" class="AccountPayables-OrderID text-right"><%%SELECT%%><%%VALUE(OrderID)%%><%%ENDSELECT%%></td>
+		<td id="AccountPayables-fo_Vendor-<%%VALUE(id)%%>" class="AccountPayables-fo_Vendor text-right"><%%SELECT%%><%%VALUE(fo_Vendor)%%><%%ENDSELECT%%></td>
+		<td id="AccountPayables-fo_ShipVia-<%%VALUE(id)%%>" class="AccountPayables-fo_ShipVia"><%%SELECT%%><%%VALUE(fo_ShipVia)%%><%%ENDSELECT%%></td>
+		<td id="AccountPayables-fo_UnitPrice-<%%VALUE(id)%%>" class="AccountPayables-fo_UnitPrice text-right"><%%SELECT%%><%%VALUE(fo_UnitPrice)%%><%%ENDSELECT%%></td>
+		<td id="AccountPayables-ot_ap_Review-<%%VALUE(id)%%>" class="AccountPayables-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="AccountPayables-ot_ap_Approval-<%%VALUE(id)%%>" class="AccountPayables-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="AccountPayables-ot_ap_QC-<%%VALUE(id)%%>" class="AccountPayables-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="AccountPayables-ot_ap_filed-<%%VALUE(id)%%>" class="AccountPayables-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="AccountPayables-ot_ap_lastmodified-<%%VALUE(id)%%>" class="AccountPayables-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

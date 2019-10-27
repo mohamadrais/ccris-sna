@@ -1,0 +1,18 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the DocControl_init() hook (in hooks/DocControl.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="DocControl-DocconNumber-<%%VALUE(id)%%>" class="DocControl-DocconNumber"><%%SELECT%%><%%VALUE(DocconNumber)%%><%%ENDSELECT%%></td>
+		<td id="DocControl-DocItem-<%%VALUE(id)%%>" class="DocControl-DocItem"><%%SELECT%%><%%VALUE(DocItem)%%><%%ENDSELECT%%></td>
+		<td id="DocControl-fo_Class-<%%VALUE(id)%%>" class="DocControl-fo_Class"><%%SELECT%%><%%VALUE(fo_Class)%%><%%ENDSELECT%%></td>
+		<td id="DocControl-fo_DocumentType-<%%VALUE(id)%%>" class="DocControl-fo_DocumentType"><%%SELECT%%><%%VALUE(fo_DocumentType)%%><%%ENDSELECT%%></td>
+		<td id="DocControl-fo_Rev-<%%VALUE(id)%%>" class="DocControl-fo_Rev"><%%SELECT%%><%%VALUE(fo_Rev)%%><%%ENDSELECT%%></td>
+		<td id="DocControl-fo_date-<%%VALUE(id)%%>" class="DocControl-fo_date"><%%SELECT%%><%%VALUE(fo_date)%%><%%ENDSELECT%%></td>
+		<td id="DocControl-ot_ap_Review-<%%VALUE(id)%%>" class="DocControl-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="DocControl-ot_ap_Approval-<%%VALUE(id)%%>" class="DocControl-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="DocControl-ot_ap_QC-<%%VALUE(id)%%>" class="DocControl-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="DocControl-ot_ap_filed-<%%VALUE(id)%%>" class="DocControl-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="DocControl-ot_ap_lastmodified-<%%VALUE(id)%%>" class="DocControl-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

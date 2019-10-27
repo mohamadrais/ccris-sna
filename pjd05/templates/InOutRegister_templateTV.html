@@ -1,0 +1,15 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the InOutRegister_init() hook (in hooks/InOutRegister.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="InOutRegister-RecordNumber-<%%VALUE(id)%%>" class="InOutRegister-RecordNumber"><%%SELECT%%><%%VALUE(RecordNumber)%%><%%ENDSELECT%%></td>
+		<td id="InOutRegister-DocItem-<%%VALUE(id)%%>" class="InOutRegister-DocItem"><%%SELECT%%><%%VALUE(DocItem)%%><%%ENDSELECT%%></td>
+		<td id="InOutRegister-fo_Classification-<%%VALUE(id)%%>" class="InOutRegister-fo_Classification"><%%SELECT%%><%%VALUE(fo_Classification)%%><%%ENDSELECT%%></td>
+		<td id="InOutRegister-ot_ap_Review-<%%VALUE(id)%%>" class="InOutRegister-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="InOutRegister-ot_ap_Approval-<%%VALUE(id)%%>" class="InOutRegister-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="InOutRegister-ot_ap_QC-<%%VALUE(id)%%>" class="InOutRegister-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="InOutRegister-ot_ap_filed-<%%VALUE(id)%%>" class="InOutRegister-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="InOutRegister-ot_ap_lastmodified-<%%VALUE(id)%%>" class="InOutRegister-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

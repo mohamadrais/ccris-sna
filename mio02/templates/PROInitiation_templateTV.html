@@ -1,0 +1,17 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the PROInitiation_init() hook (in hooks/PROInitiation.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="PROInitiation-InitiationNo-<%%VALUE(id)%%>" class="PROInitiation-InitiationNo"><%%SELECT%%><%%VALUE(InitiationNo)%%><%%ENDSELECT%%></td>
+		<td id="PROInitiation-ProjectsID-<%%VALUE(id)%%>" class="PROInitiation-ProjectsID"><%%SELECT%%><%%VALUE(ProjectsID)%%><%%ENDSELECT%%></td>
+		<td id="PROInitiation-fo_InitiationForm-<%%VALUE(id)%%>" class="PROInitiation-fo_InitiationForm"><%%SELECT%%><%%VALUE(fo_InitiationForm)%%><%%ENDSELECT%%></td>
+		<td id="PROInitiation-fo_DocItem-<%%VALUE(id)%%>" class="PROInitiation-fo_DocItem"><%%SELECT%%><%%VALUE(fo_DocItem)%%><%%ENDSELECT%%></td>
+		<td id="PROInitiation-fo_Regdate-<%%VALUE(id)%%>" class="PROInitiation-fo_Regdate"><%%SELECT%%><%%VALUE(fo_Regdate)%%><%%ENDSELECT%%></td>
+		<td id="PROInitiation-ot_ap_Review-<%%VALUE(id)%%>" class="PROInitiation-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="PROInitiation-ot_ap_Approval-<%%VALUE(id)%%>" class="PROInitiation-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="PROInitiation-ot_ap_QC-<%%VALUE(id)%%>" class="PROInitiation-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="PROInitiation-ot_ap_filed-<%%VALUE(id)%%>" class="PROInitiation-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="PROInitiation-ot_ap_lastmodified-<%%VALUE(id)%%>" class="PROInitiation-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

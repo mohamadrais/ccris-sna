@@ -1,0 +1,17 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the PROPlanning_init() hook (in hooks/PROPlanning.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="PROPlanning-PlanningNo-<%%VALUE(id)%%>" class="PROPlanning-PlanningNo"><%%SELECT%%><%%VALUE(PlanningNo)%%><%%ENDSELECT%%></td>
+		<td id="PROPlanning-ProjectsID-<%%VALUE(id)%%>" class="PROPlanning-ProjectsID"><%%SELECT%%><%%VALUE(ProjectsID)%%><%%ENDSELECT%%></td>
+		<td id="PROPlanning-fo_RelatedDocument-<%%VALUE(id)%%>" class="PROPlanning-fo_RelatedDocument"><%%SELECT%%><%%VALUE(fo_RelatedDocument)%%><%%ENDSELECT%%></td>
+		<td id="PROPlanning-fo_DocItem-<%%VALUE(id)%%>" class="PROPlanning-fo_DocItem"><%%SELECT%%><%%VALUE(fo_DocItem)%%><%%ENDSELECT%%></td>
+		<td id="PROPlanning-fo_Regdate-<%%VALUE(id)%%>" class="PROPlanning-fo_Regdate"><%%SELECT%%><%%VALUE(fo_Regdate)%%><%%ENDSELECT%%></td>
+		<td id="PROPlanning-ot_ap_Review-<%%VALUE(id)%%>" class="PROPlanning-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="PROPlanning-ot_ap_Approval-<%%VALUE(id)%%>" class="PROPlanning-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="PROPlanning-ot_ap_QC-<%%VALUE(id)%%>" class="PROPlanning-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="PROPlanning-ot_ap_filed-<%%VALUE(id)%%>" class="PROPlanning-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="PROPlanning-ot_ap_lastmodified-<%%VALUE(id)%%>" class="PROPlanning-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

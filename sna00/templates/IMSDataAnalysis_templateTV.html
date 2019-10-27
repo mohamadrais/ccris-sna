@@ -1,0 +1,17 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the IMSDataAnalysis_init() hook (in hooks/IMSDataAnalysis.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="IMSDataAnalysis-DocconNumber-<%%VALUE(id)%%>" class="IMSDataAnalysis-DocconNumber"><%%SELECT%%><%%VALUE(DocconNumber)%%><%%ENDSELECT%%></td>
+		<td id="IMSDataAnalysis-worklocID-<%%VALUE(id)%%>" class="IMSDataAnalysis-worklocID"><%%SELECT%%><%%VALUE(worklocID)%%><%%ENDSELECT%%></td>
+		<td id="IMSDataAnalysis-fo_DocItem-<%%VALUE(id)%%>" class="IMSDataAnalysis-fo_DocItem"><%%SELECT%%><%%VALUE(fo_DocItem)%%><%%ENDSELECT%%></td>
+		<td id="IMSDataAnalysis-fo_Classification-<%%VALUE(id)%%>" class="IMSDataAnalysis-fo_Classification"><%%SELECT%%><%%VALUE(fo_Classification)%%><%%ENDSELECT%%></td>
+		<td id="IMSDataAnalysis-fo_Impact-<%%VALUE(id)%%>" class="IMSDataAnalysis-fo_Impact"><%%SELECT%%><%%VALUE(fo_Impact)%%><%%ENDSELECT%%></td>
+		<td id="IMSDataAnalysis-ot_ap_Review-<%%VALUE(id)%%>" class="IMSDataAnalysis-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="IMSDataAnalysis-ot_ap_Approval-<%%VALUE(id)%%>" class="IMSDataAnalysis-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="IMSDataAnalysis-ot_ap_QC-<%%VALUE(id)%%>" class="IMSDataAnalysis-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="IMSDataAnalysis-ot_ap_filed-<%%VALUE(id)%%>" class="IMSDataAnalysis-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="IMSDataAnalysis-ot_ap_lastmodified-<%%VALUE(id)%%>" class="IMSDataAnalysis-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

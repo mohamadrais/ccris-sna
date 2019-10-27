@@ -1,0 +1,15 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the WorkPermit_init() hook (in hooks/WorkPermit.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="WorkPermit-RecNum-<%%VALUE(id)%%>" class="WorkPermit-RecNum"><%%SELECT%%><%%VALUE(RecNum)%%><%%ENDSELECT%%></td>
+		<td id="WorkPermit-WrLocID-<%%VALUE(id)%%>" class="WorkPermit-WrLocID text-right"><%%SELECT%%><%%VALUE(WrLocID)%%><%%ENDSELECT%%></td>
+		<td id="WorkPermit-fo_Type-<%%VALUE(id)%%>" class="WorkPermit-fo_Type"><%%SELECT%%><%%VALUE(fo_Type)%%><%%ENDSELECT%%></td>
+		<td id="WorkPermit-ot_ap_Review-<%%VALUE(id)%%>" class="WorkPermit-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="WorkPermit-ot_ap_Approval-<%%VALUE(id)%%>" class="WorkPermit-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="WorkPermit-ot_ap_QC-<%%VALUE(id)%%>" class="WorkPermit-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="WorkPermit-ot_ap_filed-<%%VALUE(id)%%>" class="WorkPermit-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="WorkPermit-ot_ap_lastmodified-<%%VALUE(id)%%>" class="WorkPermit-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

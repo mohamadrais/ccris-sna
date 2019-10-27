@@ -1,0 +1,122 @@
+<!-- Edit this file to change the layout of the detail view print preview page -->
+
+
+<div class="panel-heading"><h3 class="panel-title">
+	<strong><%%DETAIL_VIEW_TITLE%%></strong>
+	<div class="hidden-print pull-right">
+		<div class="btn-group">
+			<button type="button" id="print" onclick="window.print();" title="<%%TRANSLATION(Print)%%>" class="btn btn-primary"><i class="glyphicon glyphicon-print"></i> <%%TRANSLATION(Print)%%></button>
+			<button type="submit" id="back" title="<%%TRANSLATION(Cancel Printing)%%>" class="btn btn-default"><i class="glyphicon glyphicon-remove-circle"></i> <%%TRANSLATION(Cancel Printing)%%></button>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</h3></div>
+
+<div class="panel-body">
+	<fieldset class="form-horizontal">
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Recruitment ID</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(RecruitID)%%></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Recruitment Record Number</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(CompID)%%></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Employee ID</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><span id="EmployeeID<%%RND1%%>"><%%COMBOTEXT(EmployeeID)%%></span></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Project Team ID</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><span id="ProjectTeamID<%%RND1%%>"><%%COMBOTEXT(ProjectTeamID)%%></span></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Recruitment Session</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%COMBOTEXT(fo_RecruitmentSession)%%></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Interview Record description</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(fo_Description)%%></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Assessment Date</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%COMBOTEXT(fo_Date)%%></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">File Location & Number</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(ot_FileLoc)%%></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Other details</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(ot_otherdetails)%%></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Comments</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(ot_comments)%%></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Shared Link 1</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><a id="ot_SharedLink1-link" href="link.php?t=Recruitment&f=ot_SharedLink1&i=<%%VALUE(RecruitID)%%>" target="_blank"><i class="glyphicon glyphicon-globe" title="<%%VALUE(ot_SharedLink1)%%>" style="font-size: x-large;"></i></a><script>jQuery(function(){ var e_ot_SharedLink1 = '<%%VALUE(ot_SharedLink1)%%>'; if(e_ot_SharedLink1 == '' || e_ot_SharedLink1 == '&nbsp;' || e_ot_SharedLink1 == 'blank.gif') jQuery('#ot_SharedLink1-link').hide(); });</script></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Shared Link 2</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><a id="ot_SharedLink2-link" href="link.php?t=Recruitment&f=ot_SharedLink2&i=<%%VALUE(RecruitID)%%>" target="_blank"><i class="glyphicon glyphicon-globe" title="<%%VALUE(ot_SharedLink2)%%>" style="font-size: x-large;"></i></a><script>jQuery(function(){ var e_ot_SharedLink2 = '<%%VALUE(ot_SharedLink2)%%>'; if(e_ot_SharedLink2 == '' || e_ot_SharedLink2 == '&nbsp;' || e_ot_SharedLink2 == 'blank.gif') jQuery('#ot_SharedLink2-link').hide(); });</script></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Reference_1</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><a id="ot_Ref01-link" href="link.php?t=Recruitment&f=ot_Ref01&i=<%%VALUE(RecruitID)%%>" target="_blank"><%%VALUE(ot_Ref01)%%></a><script>jQuery(function(){ var e_ot_Ref01 = '<%%VALUE(ot_Ref01)%%>'; if(e_ot_Ref01 == '' || e_ot_Ref01 == '&nbsp;' || e_ot_Ref01 == 'blank.gif') jQuery('#ot_Ref01-link').hide(); });</script></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Reference_2</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><a id="ot_Ref02-link" href="link.php?t=Recruitment&f=ot_Ref02&i=<%%VALUE(RecruitID)%%>" target="_blank"><%%VALUE(ot_Ref02)%%></a><script>jQuery(function(){ var e_ot_Ref02 = '<%%VALUE(ot_Ref02)%%>'; if(e_ot_Ref02 == '' || e_ot_Ref02 == '&nbsp;' || e_ot_Ref02 == 'blank.gif') jQuery('#ot_Ref02-link').hide(); });</script></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Photo</label>
+			<div class="col-xs-9">
+				<div class="form-control-static">
+<img src="<%%TRANSLATION(ImageFolder)%%><%%VALUE(ot_Photo)%%>" class="img-responsive img-thumbnail">
+</div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Register</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(ot_ap_filed)%%></div>
+			</div>
+		</div>
+		<div class="form-group" style="border-bottom: dotted 1px #DDD;">
+			<label class="col-xs-3 control-label">Last modified</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(ot_ap_lastmodified)%%></div>
+			</div>
+		</div>
+	</fieldset>
+</div>

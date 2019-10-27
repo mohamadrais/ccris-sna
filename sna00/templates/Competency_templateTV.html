@@ -1,0 +1,14 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the Competency_init() hook (in hooks/Competency.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="Competency-CompID-<%%VALUE(CompetencyID)%%>" class="Competency-CompID"><%%SELECT%%><%%VALUE(CompID)%%><%%ENDSELECT%%></td>
+		<td id="Competency-EmployeeID-<%%VALUE(CompetencyID)%%>" class="Competency-EmployeeID"><%%SELECT%%><%%VALUE(EmployeeID)%%><%%ENDSELECT%%></td>
+		<td id="Competency-ProjectTeamID-<%%VALUE(CompetencyID)%%>" class="Competency-ProjectTeamID"><%%SELECT%%><%%VALUE(ProjectTeamID)%%><%%ENDSELECT%%></td>
+		<td id="Competency-fo_CompetencySession-<%%VALUE(CompetencyID)%%>" class="Competency-fo_CompetencySession"><%%SELECT%%><%%VALUE(fo_CompetencySession)%%><%%ENDSELECT%%></td>
+		<td id="Competency-fo_Date-<%%VALUE(CompetencyID)%%>" class="Competency-fo_Date"><%%SELECT%%><%%VALUE(fo_Date)%%><%%ENDSELECT%%></td>
+		<td id="Competency-ot_ap_filed-<%%VALUE(CompetencyID)%%>" class="Competency-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="Competency-ot_ap_lastmodified-<%%VALUE(CompetencyID)%%>" class="Competency-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>
