@@ -2,3 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/puffergroup/public_html/dev
+    - /bin/cp -r * $DEPLOYPATH
