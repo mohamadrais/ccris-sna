@@ -2,7 +2,7 @@
 	$dbServer = 'localhost';
 	$dbUsername = 'puffergr_admin';
 	$dbPassword = 'puffergr_admin$';
-	$dbDatabase = 'priggm80_bsm01';
+	$dbDatabase = 'puffergr_bsm01';
 
 	$adminConfig = array(
 		'adminUsername' => "administrator",
