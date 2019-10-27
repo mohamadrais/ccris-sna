@@ -1,0 +1,11 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the TeamSoftBoard_init() hook (in hooks/TeamSoftBoard.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="TeamSoftBoard-Title-<%%VALUE(Postid)%%>" class="TeamSoftBoard-Title"><%%SELECT%%><%%VALUE(Title)%%><%%ENDSELECT%%></td>
+		<td id="TeamSoftBoard-image-<%%VALUE(Postid)%%>" class="TeamSoftBoard-image"><%%SELECT%%><img src="<%%TRANSLATION(ImageFolder)%%><%%VALUE(image)%%>" class="img-responsive img-thumbnail"><%%ENDSELECT%%></td>
+		<td id="TeamSoftBoard-filed-<%%VALUE(Postid)%%>" class="TeamSoftBoard-filed"><%%SELECT%%><%%VALUE(filed)%%><%%ENDSELECT%%></td>
+		<td id="TeamSoftBoard-last_modified-<%%VALUE(Postid)%%>" class="TeamSoftBoard-last_modified"><%%SELECT%%><%%VALUE(last_modified)%%><%%ENDSELECT%%></td>

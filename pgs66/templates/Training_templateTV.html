@@ -1,0 +1,15 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the Training_init() hook (in hooks/Training.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="Training-TraningNo-<%%VALUE(TrainingID)%%>" class="Training-TraningNo"><%%SELECT%%><%%VALUE(TraningNo)%%><%%ENDSELECT%%></td>
+		<td id="Training-EmployeeID-<%%VALUE(TrainingID)%%>" class="Training-EmployeeID"><%%SELECT%%><%%VALUE(EmployeeID)%%><%%ENDSELECT%%></td>
+		<td id="Training-ProjectTeamID-<%%VALUE(TrainingID)%%>" class="Training-ProjectTeamID"><%%SELECT%%><%%VALUE(ProjectTeamID)%%><%%ENDSELECT%%></td>
+		<td id="Training-fo_TrainingSession-<%%VALUE(TrainingID)%%>" class="Training-fo_TrainingSession"><%%SELECT%%><%%VALUE(fo_TrainingSession)%%><%%ENDSELECT%%></td>
+		<td id="Training-fo_Classification-<%%VALUE(TrainingID)%%>" class="Training-fo_Classification"><%%SELECT%%><%%VALUE(fo_Classification)%%><%%ENDSELECT%%></td>
+		<td id="Training-fo_Date-<%%VALUE(TrainingID)%%>" class="Training-fo_Date"><%%SELECT%%><%%VALUE(fo_Date)%%><%%ENDSELECT%%></td>
+		<td id="Training-ot_ap_filed-<%%VALUE(TrainingID)%%>" class="Training-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="Training-ot_ap_lastmodified-<%%VALUE(TrainingID)%%>" class="Training-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

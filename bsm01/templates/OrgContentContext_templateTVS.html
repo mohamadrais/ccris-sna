@@ -1,0 +1,17 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the OrgContentContext_init() hook (in hooks/OrgContentContext.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="OrgContentContext-RecordNumber-<%%VALUE(id)%%>" class="OrgContentContext-RecordNumber"><%%VALUE(RecordNumber)%%></td>
+		<td id="OrgContentContext-DocItem-<%%VALUE(id)%%>" class="OrgContentContext-DocItem"><%%VALUE(DocItem)%%></td>
+		<td id="OrgContentContext-fo_Type-<%%VALUE(id)%%>" class="OrgContentContext-fo_Type"><%%VALUE(fo_Type)%%></td>
+		<td id="OrgContentContext-fo_genrec-<%%VALUE(id)%%>" class="OrgContentContext-fo_genrec"><%%VALUE(fo_genrec)%%></td>
+		<td id="OrgContentContext-fo_Update-<%%VALUE(id)%%>" class="OrgContentContext-fo_Update"><%%VALUE(fo_Update)%%></td>
+		<td id="OrgContentContext-ot_ap_Review-<%%VALUE(id)%%>" class="OrgContentContext-ot_ap_Review"><%%VALUE(ot_ap_Review)%%></td>
+		<td id="OrgContentContext-ot_ap_Approval-<%%VALUE(id)%%>" class="OrgContentContext-ot_ap_Approval"><%%VALUE(ot_ap_Approval)%%></td>
+		<td id="OrgContentContext-ot_ap_QC-<%%VALUE(id)%%>" class="OrgContentContext-ot_ap_QC"><%%VALUE(ot_ap_QC)%%></td>
+		<td id="OrgContentContext-ot_ap_filed-<%%VALUE(id)%%>" class="OrgContentContext-ot_ap_filed"><%%VALUE(ot_ap_filed)%%></td>
+		<td id="OrgContentContext-ot_ap_lastmodified-<%%VALUE(id)%%>" class="OrgContentContext-ot_ap_lastmodified"><%%VALUE(ot_ap_lastmodified)%%></td>

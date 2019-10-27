@@ -1,0 +1,321 @@
+<!-- Edit this file to change the layout of the detail view form -->
+
+<a name="detail-view"></a>
+<div class="panel-heading"><h3 class="panel-title"><strong><%%DETAIL_VIEW_TITLE%%></strong></h3></div>
+
+<div class="panel-body" id="IMSControl_dv_container">
+	<!-- child links -->
+	<div class="row vspacer-md">
+		<div class="col-xs-12">
+			<input type="hidden" id="OrgContentContext_hclink" value="OrgContentContext_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="Marketing_hclink" value="Marketing_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="Client_hclink" value="Client_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="Inquiry_hclink" value="Inquiry_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="DesignProposal_hclink" value="DesignProposal_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="ContractDeployment_hclink" value="ContractDeployment_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="employees_hclink" value="employees_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="JD_JS_hclink" value="JD_JS_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="InOutRegister_hclink" value="InOutRegister_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="vendor_hclink" value="vendor_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="ManagingVendor_hclink" value="ManagingVendor_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="VenPerformance_hclink" value="VenPerformance_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="Logistics_hclink" value="Logistics_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="Inventory_hclink" value="Inventory_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="CalibrationCtrl_hclink" value="CalibrationCtrl_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="WorkOrder_hclink" value="WorkOrder_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="MWO_hclink" value="MWO_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="MWOPlanned_hclink" value="MWOPlanned_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="MWOpreventive_hclink" value="MWOpreventive_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="MWOproactive_hclink" value="MWOproactive_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="MWConditionBased_hclink" value="MWConditionBased_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="MWOReactive_hclink" value="MWOReactive_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="MWOCorrective_hclink" value="MWOCorrective_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="LogisticRequest_hclink" value="LogisticRequest_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="orders_hclink" value="orders_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="Quotation_hclink" value="Quotation_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="PurchaseOrder_hclink" value="PurchaseOrder_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="DeliveryOrder_hclink" value="DeliveryOrder_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="AccountPayables_hclink" value="AccountPayables_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="CommConsParticipate_hclink" value="CommConsParticipate_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="ToolBoxMeeting_hclink" value="ToolBoxMeeting_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="Bi_WeeklyMeeting_hclink" value="Bi_WeeklyMeeting_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="QuarterlyMeeting_hclink" value="QuarterlyMeeting_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="Campaign_hclink" value="Campaign_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="DrillNInspection_hclink" value="DrillNInspection_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="ManagementVisit_hclink" value="ManagementVisit_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="KM_hclink" value="KM_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="LegalRegister_hclink" value="LegalRegister_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="RiskandOpportunity_hclink" value="RiskandOpportunity_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="DocControl_hclink" value="DocControl_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="DCN_hclink" value="DCN_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="ObsoleteRec_hclink" value="ObsoleteRec_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="QA_hclink" value="QA_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="ERP_hclink" value="ERP_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="WorkEnvMonitoring_hclink" value="WorkEnvMonitoring_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="ScheduleWaste_hclink" value="ScheduleWaste_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="IncidentReporting_hclink" value="IncidentReporting_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="MgtofChange_hclink" value="MgtofChange_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="IMStrackingNmonitoring_hclink" value="IMStrackingNmonitoring_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="IMSDataAnalysis_hclink" value="IMSDataAnalysis_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="Audit_hclink" value="Audit_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="NonConformance_hclink" value="NonConformance_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="ContinualImprovement_hclink" value="ContinualImprovement_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="StakeholderSatisfaction_hclink" value="StakeholderSatisfaction_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="MRM_hclink" value="MRM_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="projects_hclink" value="projects_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="WorkLocation_hclink" value="WorkLocation_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="WorkPermit_hclink" value="WorkPermit_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="ProjectTeam_hclink" value="ProjectTeam_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="PROInitiation_hclink" value="PROInitiation_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="PROPlanning_hclink" value="PROPlanning_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="PROExecution_hclink" value="PROExecution_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="DailyProgressReport_hclink" value="DailyProgressReport_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="MonthlyTimesheet_hclink" value="MonthlyTimesheet_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="Breakdown_hclink" value="Breakdown_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="PROControlMonitoring_hclink" value="PROControlMonitoring_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="PROVariation_hclink" value="PROVariation_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="PROCompletion_hclink" value="PROCompletion_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="Receivables_hclink" value="Receivables_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="ClaimRecord_hclink" value="ClaimRecord_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<hr class="hidden-xs hidden-sm">
+
+	<div class="row">
+		<!-- form inputs -->
+		<div class="col-md-8 col-lg-10" id="IMSControl_dv_form">
+			<fieldset class="form-horizontal">
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label for="id" class="control-label col-lg-3">ID</label>
+					<div class="col-lg-9">
+						<div class="form-control-static" id="id"><%%VALUE(id)%%></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label for="Status" class="control-label col-lg-3">Inspection Status<span class="text-danger"><%%TRANSLATION(*)%%></span> <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#Status-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="Status-description"><div class="alert alert-info">QC inspection of the data</div></span>
+
+						<%%COMBO(Status)%%>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label for="Description" class="control-label col-lg-3">Description</label>
+					<div class="col-lg-9">
+						<textarea class="form-control" name="Description" id="Description" rows="5"><%%VALUE(Description)%%></textarea>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label for="other_details" class="control-label col-lg-3">Other details</label>
+					<div class="col-lg-9">
+						<textarea class="form-control" name="other_details" id="other_details" rows="5"><%%VALUE(other_details)%%></textarea>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label for="filed" class="control-label col-lg-3">Filed <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#filed-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="filed-description"><div class="alert alert-info">This field is automatically populated with the date and time when this record was created.</div></span>
+
+						<div class="form-control-static" id="filed"><%%VALUE(filed)%%></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label for="last_modified" class="control-label col-lg-3">Last modified <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#last_modified-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="last_modified-description"><div class="alert alert-info">This field is automatically populated with the date and time when this record was last modified.</div></span>
+
+						<div class="form-control-static" id="last_modified"><%%VALUE(last_modified)%%></div>
+					</div>
+				</div>
+
+			</fieldset>
+		</div>
+
+		<!-- DV action buttons -->
+		<hr class="hidden-md hidden-lg">
+		<div class="col-md-4 col-lg-2" id="IMSControl_dv_action_buttons">
+			<div class="btn-toolbar">
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%UPDATE_BUTTON%%>
+				</div><p></p>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%DESELECT_BUTTON%%>
+					<%%DVPRINT_BUTTON%%>
+					<%%DELETE_BUTTON%%>
+				</div><p></p>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%INSERT_BUTTON%%>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- child records -->
+	<hr>
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1">
+			<div id="IMSControl-children" class="children-tabs"></div>
+		</div>
+	</div>
+
+</div><!-- /div class="panel-body" -->
+	<script>
+		$j(function() {
+			var add_new_mode = (!$j('input[name=SelectedID]').val());
+			var embedded_mode = ($j('input[name=Embedded]').val() == 1);
+
+			/* auto-close embedded page? */
+			var autoclose_mode = ($j('input[name=AutoClose]').val() == 1);
+			var record_added_ok = (location.search.split('record-added-ok=').length == 2);
+			var record_updated_ok = (location.search.split('record-updated-ok=').length == 2);
+			if((record_added_ok || record_updated_ok) && embedded_mode && autoclose_mode){
+				setTimeout(AppGini.closeParentModal, 2000);
+			}
+
+			/* enable DV action buttons to float on scrolling down the form */
+			enable_dvab_floating();
+
+			if(!(embedded_mode && AppGini.mobileDevice())){
+				$j('select, input[type=text], textarea').not(':disabled').eq(0).focus();
+			}
+
+			$j('form').eq(0).change(function(){
+				if($j(this).data('already_changed')) return;
+				if($j('#deselect').length) $j('#deselect').removeClass('btn-default').addClass('btn-warning').get(0).lastChild.data = " <%%TRANSLATION(Cancel)%%>";
+				$j(this).data('already_changed', true);
+			});
+
+			$j('a[href="<%%TRANSLATION(ImageFolder)%%>"]').click(function(){ return false; });
+
+			if(embedded_mode){
+				/* hide links to children tables in embedded mode */
+				$j('.detail_view a[id$=_link]').remove();
+
+				/* append embedded mode to all links */
+				var append_embedded = function(){
+					$j('a[href]:not([href^="#"]):not([href^="javascript"]):not([href$="Embedded=1"]):not([href*="link.php?t="]):not([href^="mailto:"])').each(
+						function(){
+							$j(this).attr('href', $j(this).attr('href') + '&Embedded=1');
+						}
+					);
+				}
+				setTimeout(append_embedded, 500);
+				setTimeout(append_embedded, 1500);
+				setTimeout(append_embedded, 2500);
+				setTimeout(append_embedded, 3500);
+			}
+
+			/* when no record is selected ('add new' mode) */
+			if(add_new_mode){
+				/* hide links to children tables */
+				$j('.detail_view a[id$=_link]').remove();
+			}else{
+				post(
+					'parent-children.php', {
+						ParentTable: 'IMSControl',
+						SelectedID: '<%%VALUE(id)%%>',
+						Operation: 'show-children'
+					},
+					'IMSControl-children'
+				);
+			}
+
+			if(!embedded_mode){
+				/* add a horizontal spacer to [add new parent] buttons that don't have a spacered element before them */
+				$j('.add_new_parent').prev(':not(.hspacer-md)').next().addClass('hspacer-md');
+
+				$j('.add_new_parent').click(function(){
+					var pt = $j(this).attr('id').replace(/_add_new$/, '');
+					modal_window({
+						url: pt + '_view.php?addNew_x=1&Embedded=1',
+						close: function(){
+							var field_id = $j('#' + pt + '_add_new').prevAll('input:hidden').eq(0).attr('id');
+							$j('#' + field_id + '-container').select2('focus').select2('focus');
+						},
+						size: 'full',
+						title: $j(this).attr('title')
+					});
+				});
+			}
+
+			/* find and hide parent links if field label has data 'parent_link' set to 'view_parent_hidden' */
+			$j('label[data-parent_link=view_parent_hidden]').each(function(){
+				$j(this).parents('.form-group').find('.view_parent').hide();
+			});
+
+			$j('form').on('click', '.view_parent', function(){
+				var pt = $j(this).attr('id').replace(/_view_parent$/, '');
+				if($j(this).prevAll('input:hidden').length){
+					var parent_id = $j(this).prevAll('input:hidden').eq(0).val();
+				}else{
+					var parent_id = $j(this).prevAll().children('input:hidden').eq(0).val();
+				}
+
+				/* handle radio lookups */
+				if($j(this).prevAll('[type=radio]').length){
+					parent_id = $j(this).prevAll('[type=radio]').eq(0).val();
+				}
+
+				if(parent_id != '{empty_value}' && parent_id != undefined && parent_id != ''){
+					var parent_link = $j(this).parents('.form-group').children('label').data('parent_link');
+					switch(parent_link){
+						case 'view_parent_hidden':
+							break;
+						case 'view_parent_modal':
+							modal_window({
+								url: pt + '_view.php?Embedded=1&SelectedID=' + encodeURIComponent(parent_id),
+								close: function(){
+									var field_id = $j('#' + pt + '_view_parent').prevAll('input:hidden').eq(0).attr('id');
+									$j('#' + field_id + '-container').select2('focus').select2('focus');
+								},
+								size: 'full',
+								title: $j(this).attr('title')
+							});
+							break;
+						case 'view_parent_same_window':
+							window.location = pt + '_view.php?Embedded=' + (embedded_mode ? '1' : '') + '&SelectedID=' + encodeURIComponent(parent_id);
+							break;
+						case 'view_parent_new_window':
+							window.open(pt + '_view.php?SelectedID=' + encodeURIComponent(parent_id));
+							break;
+					}
+
+				}
+			});
+
+
+			/* load admin tools for admin user */
+			if(!add_new_mode){
+				$j('body').append('<div id="admin-tools-appendix"></div>');
+				$j('#admin-tools-appendix').load(
+					'ajax_admin_tools.php?table=IMSControl&id=<%%URLVALUE(id)%%>',
+					function(resp){
+						if(!resp.length) return;
+						$j.ajax('ajax_admin_tools.php?action=get_admin_tools_js&table=IMSControl&id=<%%URLVALUE(id)%%>');
+					}
+				);
+			}
+
+			/* warn user if 'add new' clicked while unsaved changes exist */
+			$j('#addNew').click(function(){
+				if($j('#deselect.btn-warning').length){
+					return confirm('<%%TRANSLATION(discard changes confirm)%%>');
+				}
+			});
+
+		});
+	</script>

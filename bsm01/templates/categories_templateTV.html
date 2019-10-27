@@ -1,0 +1,13 @@
+		<td colspan="4" class="row">
+			<div id="categories-CategoryName-<%%VALUE(CategoryID)%%>" class="categories-CategoryName col-sm-12 h5 text-bold"><%%SELECT%%><%%VALUE(CategoryName)%%><%%ENDSELECT%%></div>
+			<div class="col-md-6"><div id="categories-ot_Picture-<%%VALUE(CategoryID)%%>" class="categories-ot_Picture"><a href="<%%TRANSLATION(ImageFolder)%%><%%VALUE(ot_Picture)%%>" data-lightbox="categories-ot_Picture"><img src="thumbnail.php?i=<%%VALUE(ot_Picture)%%>&t=categories&f=ot_Picture&v=tv" class="img-thumbnail"></a></div></div>
+			<div class="col-md-6">				<dl class="dl-horizontal">
+					<dt class="categories-ot_ap_filed-caption field-caption-tv">Filed</dt>
+					<dd id="categories-ot_ap_filed-<%%VALUE(CategoryID)%%>" class="categories-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></dd>
+
+					<dt class="categories-ot_ap_lastmodified-caption field-caption-tv">Last modified</dt>
+					<dd id="categories-ot_ap_lastmodified-<%%VALUE(CategoryID)%%>" class="categories-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></dd>
+
+				</dl>
+			</div>
+		</td>

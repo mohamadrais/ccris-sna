@@ -1,0 +1,15 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the Bi_WeeklyMeeting_init() hook (in hooks/Bi_WeeklyMeeting.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="Bi_WeeklyMeeting-BwmID-<%%VALUE(id)%%>" class="Bi_WeeklyMeeting-BwmID"><%%SELECT%%><%%VALUE(BwmID)%%><%%ENDSELECT%%></td>
+		<td id="Bi_WeeklyMeeting-ccpID-<%%VALUE(id)%%>" class="Bi_WeeklyMeeting-ccpID text-right"><%%SELECT%%><%%VALUE(ccpID)%%><%%ENDSELECT%%></td>
+		<td id="Bi_WeeklyMeeting-fo_RequiredDate-<%%VALUE(id)%%>" class="Bi_WeeklyMeeting-fo_RequiredDate"><%%SELECT%%><%%VALUE(fo_RequiredDate)%%><%%ENDSELECT%%></td>
+		<td id="Bi_WeeklyMeeting-ot_ap_Review-<%%VALUE(id)%%>" class="Bi_WeeklyMeeting-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="Bi_WeeklyMeeting-ot_ap_Approval-<%%VALUE(id)%%>" class="Bi_WeeklyMeeting-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="Bi_WeeklyMeeting-ot_ap_QC-<%%VALUE(id)%%>" class="Bi_WeeklyMeeting-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="Bi_WeeklyMeeting-ot_ap_filed-<%%VALUE(id)%%>" class="Bi_WeeklyMeeting-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="Bi_WeeklyMeeting-ot_ap_lastmodified-<%%VALUE(id)%%>" class="Bi_WeeklyMeeting-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

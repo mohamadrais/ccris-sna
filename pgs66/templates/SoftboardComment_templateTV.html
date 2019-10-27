@@ -1,0 +1,11 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the SoftboardComment_init() hook (in hooks/SoftboardComment.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="SoftboardComment-PostID-<%%VALUE(RunningID)%%>" class="SoftboardComment-PostID text-right"><%%SELECT%%><%%VALUE(PostID)%%><%%ENDSELECT%%></td>
+		<td id="SoftboardComment-TextPost-<%%VALUE(RunningID)%%>" class="SoftboardComment-TextPost"><%%SELECT%%><%%VALUE(TextPost)%%><%%ENDSELECT%%></td>
+		<td id="SoftboardComment-filed-<%%VALUE(RunningID)%%>" class="SoftboardComment-filed"><%%SELECT%%><%%VALUE(filed)%%><%%ENDSELECT%%></td>
+		<td id="SoftboardComment-last_modified-<%%VALUE(RunningID)%%>" class="SoftboardComment-last_modified"><%%SELECT%%><%%VALUE(last_modified)%%><%%ENDSELECT%%></td>

@@ -1,0 +1,16 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the Breakdown_init() hook (in hooks/Breakdown.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="Breakdown-recID-<%%VALUE(Id)%%>" class="Breakdown-recID"><%%VALUE(recID)%%></td>
+		<td id="Breakdown-MTSID-<%%VALUE(Id)%%>" class="Breakdown-MTSID text-right"><%%VALUE(MTSID)%%></td>
+		<td id="Breakdown-ResourceId-<%%VALUE(Id)%%>" class="Breakdown-ResourceId"><%%VALUE(ResourceId)%%></td>
+		<td id="Breakdown-Title-<%%VALUE(Id)%%>" class="Breakdown-Title"><%%VALUE(Title)%%></td>
+		<td id="Breakdown-ot_ap_Review-<%%VALUE(Id)%%>" class="Breakdown-ot_ap_Review"><%%VALUE(ot_ap_Review)%%></td>
+		<td id="Breakdown-ot_ap_Approval-<%%VALUE(Id)%%>" class="Breakdown-ot_ap_Approval"><%%VALUE(ot_ap_Approval)%%></td>
+		<td id="Breakdown-ot_ap_QC-<%%VALUE(Id)%%>" class="Breakdown-ot_ap_QC"><%%VALUE(ot_ap_QC)%%></td>
+		<td id="Breakdown-ot_ap_filed-<%%VALUE(Id)%%>" class="Breakdown-ot_ap_filed"><%%VALUE(ot_ap_filed)%%></td>
+		<td id="Breakdown-ot_ap_lastmodified-<%%VALUE(Id)%%>" class="Breakdown-ot_ap_lastmodified"><%%VALUE(ot_ap_lastmodified)%%></td>

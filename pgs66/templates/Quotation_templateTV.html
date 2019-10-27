@@ -1,0 +1,17 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the Quotation_init() hook (in hooks/Quotation.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="Quotation-QuoID-<%%VALUE(id)%%>" class="Quotation-QuoID"><%%SELECT%%><%%VALUE(QuoID)%%><%%ENDSELECT%%></td>
+		<td id="Quotation-OrderID-<%%VALUE(id)%%>" class="Quotation-OrderID text-right"><%%SELECT%%><%%VALUE(OrderID)%%><%%ENDSELECT%%></td>
+		<td id="Quotation-fo_Vendor-<%%VALUE(id)%%>" class="Quotation-fo_Vendor text-right"><%%SELECT%%><%%VALUE(fo_Vendor)%%><%%ENDSELECT%%></td>
+		<td id="Quotation-fo_ShipVia-<%%VALUE(id)%%>" class="Quotation-fo_ShipVia"><%%SELECT%%><%%VALUE(fo_ShipVia)%%><%%ENDSELECT%%></td>
+		<td id="Quotation-fo_Price-<%%VALUE(id)%%>" class="Quotation-fo_Price text-right"><%%SELECT%%><%%VALUE(fo_Price)%%><%%ENDSELECT%%></td>
+		<td id="Quotation-ot_ap_Review-<%%VALUE(id)%%>" class="Quotation-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="Quotation-ot_ap_Approval-<%%VALUE(id)%%>" class="Quotation-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="Quotation-ot_ap_QC-<%%VALUE(id)%%>" class="Quotation-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="Quotation-ot_ap_filed-<%%VALUE(id)%%>" class="Quotation-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="Quotation-ot_ap_last_modified-<%%VALUE(id)%%>" class="Quotation-ot_ap_last_modified"><%%SELECT%%><%%VALUE(ot_ap_last_modified)%%><%%ENDSELECT%%></td>

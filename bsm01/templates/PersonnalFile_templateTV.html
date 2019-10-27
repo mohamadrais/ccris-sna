@@ -1,0 +1,14 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the PersonnalFile_init() hook (in hooks/PersonnalFile.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="PersonnalFile-FileID-<%%VALUE(PersonalFileID)%%>" class="PersonnalFile-FileID"><%%SELECT%%><%%VALUE(FileID)%%><%%ENDSELECT%%></td>
+		<td id="PersonnalFile-EmployeeID-<%%VALUE(PersonalFileID)%%>" class="PersonnalFile-EmployeeID"><%%SELECT%%><%%VALUE(EmployeeID)%%><%%ENDSELECT%%></td>
+		<td id="PersonnalFile-ProjectTeamID-<%%VALUE(PersonalFileID)%%>" class="PersonnalFile-ProjectTeamID"><%%SELECT%%><%%VALUE(ProjectTeamID)%%><%%ENDSELECT%%></td>
+		<td id="PersonnalFile-fo_PersonalFileDesc-<%%VALUE(PersonalFileID)%%>" class="PersonnalFile-fo_PersonalFileDesc"><%%SELECT%%><%%VALUE(fo_PersonalFileDesc)%%><%%ENDSELECT%%></td>
+		<td id="PersonnalFile-fo_Date-<%%VALUE(PersonalFileID)%%>" class="PersonnalFile-fo_Date"><%%SELECT%%><%%VALUE(fo_Date)%%><%%ENDSELECT%%></td>
+		<td id="PersonnalFile-ot_ap_filed-<%%VALUE(PersonalFileID)%%>" class="PersonnalFile-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="PersonnalFile-ot_ap_lastmodified-<%%VALUE(PersonalFileID)%%>" class="PersonnalFile-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

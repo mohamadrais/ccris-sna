@@ -1,0 +1,17 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the orders_init() hook (in hooks/orders.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="orders-OrderID-<%%VALUE(id)%%>" class="orders-OrderID"><%%SELECT%%><%%VALUE(OrderID)%%><%%ENDSELECT%%></td>
+		<td id="orders-fo_Critical-<%%VALUE(id)%%>" class="orders-fo_Critical"><%%SELECT%%><%%VALUE(fo_Critical)%%><%%ENDSELECT%%></td>
+		<td id="orders-fo_ProjectID-<%%VALUE(id)%%>" class="orders-fo_ProjectID"><%%SELECT%%><%%VALUE(fo_ProjectID)%%><%%ENDSELECT%%></td>
+		<td id="orders-fo_InventoryID-<%%VALUE(id)%%>" class="orders-fo_InventoryID"><%%SELECT%%><%%VALUE(fo_InventoryID)%%><%%ENDSELECT%%></td>
+		<td id="orders-fo_ItemID-<%%VALUE(id)%%>" class="orders-fo_ItemID"><%%SELECT%%><%%VALUE(fo_ItemID)%%><%%ENDSELECT%%></td>
+		<td id="orders-ot_ap_Review-<%%VALUE(id)%%>" class="orders-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="orders-ot_ap_Approval-<%%VALUE(id)%%>" class="orders-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="orders-ot_ap_QC-<%%VALUE(id)%%>" class="orders-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="orders-ot_ap_filed-<%%VALUE(id)%%>" class="orders-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="orders-ot_ap_lastmodified-<%%VALUE(id)%%>" class="orders-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

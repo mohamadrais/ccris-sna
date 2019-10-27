@@ -1,0 +1,16 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the ClaimRecord_init() hook (in hooks/ClaimRecord.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="ClaimRecord-CRID-<%%VALUE(id)%%>" class="ClaimRecord-CRID"><%%SELECT%%><%%VALUE(CRID)%%><%%ENDSELECT%%></td>
+		<td id="ClaimRecord-ReceivablesID-<%%VALUE(id)%%>" class="ClaimRecord-ReceivablesID text-right"><%%SELECT%%><%%VALUE(ReceivablesID)%%><%%ENDSELECT%%></td>
+		<td id="ClaimRecord-fo_DocItem-<%%VALUE(id)%%>" class="ClaimRecord-fo_DocItem"><%%SELECT%%><%%VALUE(fo_DocItem)%%><%%ENDSELECT%%></td>
+		<td id="ClaimRecord-fo_UnitPrice-<%%VALUE(id)%%>" class="ClaimRecord-fo_UnitPrice text-right"><%%SELECT%%><%%VALUE(fo_UnitPrice)%%><%%ENDSELECT%%></td>
+		<td id="ClaimRecord-ot_ap_Review-<%%VALUE(id)%%>" class="ClaimRecord-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="ClaimRecord-ot_ap_Approval-<%%VALUE(id)%%>" class="ClaimRecord-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="ClaimRecord-ot_ap_QC-<%%VALUE(id)%%>" class="ClaimRecord-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="ClaimRecord-ot_ap_filed-<%%VALUE(id)%%>" class="ClaimRecord-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="ClaimRecord-ot_ap_lastmodified-<%%VALUE(id)%%>" class="ClaimRecord-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>
