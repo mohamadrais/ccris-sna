@@ -6697,3 +6697,13 @@ button.login{
   font-size: 2rem;
   font-weight: 500;
 }
+.help-block{
+  font-size: 1.2rem;
+}
+.checkbox label{
+  line-height: 2.2rem;
+  font-size: 1.2rem;
+}
+.panel{
+  box-shadow: none;
+}
