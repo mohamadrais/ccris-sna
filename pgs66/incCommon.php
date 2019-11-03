@@ -2717,7 +2717,7 @@
 
 		?>
 		<nav class="navbar navbar-default navbar-fixed-top hidden-print" role="navigation">
-			<div class="navbar-header mainBg">
+			<div class="navbar-header">
 				<?php if(!$_GET['signIn']) { ?>
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 					<span class="sr-only">Toggle navigation</span>
@@ -2727,7 +2727,7 @@
 				</button>
 				<?php } ?>
 				<!-- application title is obtained from the name besides the yellow database icon in AppGini, use underscores for spaces -->
-				<a class="navbar-brand whiteColor" href="<?php echo PREPEND_PATH; ?>index.php"><i class="glyphicon glyphicon-home"></i> IMS</a>
+				<a class="navbar-brand whiteColor" href="<?php echo PREPEND_PATH; ?>index.php"><img src="../assets/images/puffer-logo.png" /></a>
 			</div>
 			<div class="collapse navbar-collapse mainBg">
 				<ul class="nav navbar-nav" id="upperNav">
@@ -3433,6 +3433,8 @@ EOT;
 		$css_links = <<<EOT
 
 			<link rel="stylesheet" href="{$prepend_path}resources/initializr/css/bootstrap.css">
+			<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/plugins/bootstrap/css/bootstrap.min.css">
+			<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/css/style.css">
 			<!--[if gt IE 8]><!-->
 				<link rel="stylesheet" href="{$prepend_path}resources/initializr/css/bootstrap-theme.css">
 			<!--<![endif]-->';

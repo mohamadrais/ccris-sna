@@ -52,6 +52,8 @@ $self_baseurl = _baseurl();
 
 
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>resources/initializr/css/bootstrap.css">
+		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/css/style.css">
 		<!--[if gt IE 8]><!-->
 			<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>resources/initializr/css/bootstrap-theme.css">
 		<!--<![endif]-->
