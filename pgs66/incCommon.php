@@ -2658,15 +2658,16 @@
 	function logInMember(){
 		$redir = 'index.php';
 		if($_POST['signIn'] != ''){
-			if($_POST['username'] != '' && $_POST['password'] != ''){
+			if($_POST['username'] != '' && $_POST['token'] != ''){
 				$username = makeSafe(strtolower($_POST['username']));
-				$password = md5($_POST['password']);
+				// $password = md5($_POST['password']);
+				$token = $_POST['token'];
 
-				if(sqlValue("select count(1) from membership_users where lcase(memberID)='$username' and passMD5='$password' and isApproved=1 and isBanned=0")==1){
+				if(sqlValue("select count(1) from membership_users where lcase(memberID)='$username' and passMD5='$token' and isApproved=1 and isBanned=0")==1){
 					$_SESSION['memberID']=$username;
 					$_SESSION['memberGroupID']=sqlValue("select groupID from membership_users where lcase(memberID)='$username'");
 					if($_POST['rememberMe']==1){
-						@setcookie('IMS_rememberMe', md5($username.$password), time()+86400*30);
+						@setcookie('IMS_rememberMe', $username.$token, time()+86400*30);
 					}else{
 						@setcookie('IMS_rememberMe', '', time()-86400*30);
 					}
@@ -2695,7 +2696,7 @@
 			}
 
 			if(!headers_sent()) header('HTTP/1.0 403 Forbidden');
-			redirect("index.php?loginFailed=1");
+			redirect("../index.php?loginFailed=1");
 			exit;
 		}elseif((!$_SESSION['memberID'] || $_SESSION['memberID']==$adminConfig['anonymousMember']) && $_COOKIE['IMS_rememberMe']!=''){
 			$chk=makeSafe($_COOKIE['IMS_rememberMe']);
@@ -2728,6 +2729,7 @@
 				<?php } ?>
 				<!-- application title is obtained from the name besides the yellow database icon in AppGini, use underscores for spaces -->
 				<a class="navbar-brand whiteColor" href="<?php echo PREPEND_PATH; ?>index.php"><img src="../assets/images/puffer-logo.png" /></a>
+				<a class="btn navbar-btn btn-default" style="position:absolute;right:0px" href="<?php echo PREPEND_PATH; ?>../index.php"><i class="glyphicon glyphicon-retweet"></i>&nbsp;&nbsp;&nbsp;<?php echo 'Switch Account' ?></a>
 			</div>
 			<div class="collapse navbar-collapse mainBg">
 				<ul class="nav navbar-nav" id="upperNav">
@@ -2752,10 +2754,11 @@
 						</p>
 					<?php }else{ ?>
 						<ul class="nav navbar-nav navbar-right hidden-xs" style="min-width: 330px;">
-							<a class="btn navbar-btn btn-default" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
+							<a class="btn navbar-btn btn-default" href="<?php echo PREPEND_PATH; ?>../index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
 							<p class="navbar-text whiteColor">
 								<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link whiteColor"><?php echo getLoggedMemberID(); ?></a></strong>
 							</p>
+							
 						</ul>
 						<ul class="nav navbar-nav visible-xs">
 							<a class="btn navbar-btn btn-default btn-lg visible-xs" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>

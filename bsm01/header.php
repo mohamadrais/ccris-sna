@@ -64,6 +64,8 @@ $self_baseurl = _baseurl();
 		
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>dist/metisMenu/metisMenu.css">
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>dist/css/sb-admin-2.css">
+		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/css/style.css">
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>dist/font-awesome/css/font-awesome.css">
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/demo/demo.css" />
 		<!-- Morris Charts CSS -->
@@ -143,21 +145,18 @@ _service_worker();
 <!-- /start webapp -->
 	</head>
 	<body>
-		<div class="container theme-bootstrap theme-3d theme-compact">
+		
 			<?php if(function_exists('handle_maintenance')) echo handle_maintenance(true); ?>
 
 			<?php if(!$_REQUEST['Embedded']){ ?>
 				<?php if(function_exists('htmlUserBar')) echo htmlUserBar(); ?>
-				<div style="height: 70px;" class="hidden-print"></div>
 			<?php } ?>
 
 			<?php if(class_exists('Notification')) echo Notification::placeholder(); ?>
 
 			<!-- process notifications -->
 			<?php $notification_margin = ($_REQUEST['Embedded'] ? '15px 0px' : '-15px 0 -45px'); ?>
-			<div style="height: 60px; margin: <?php echo $notification_margin; ?>;">
-				<?php if(function_exists('showNotifications')) echo showNotifications(); ?>
-			</div>
+			<?php if(function_exists('showNotifications')) echo showNotifications(); ?>
 
 			<?php if(!defined('APPGINI_SETUP') && is_file(dirname(__FILE__) . '/hooks/header-extras.php')){ include(dirname(__FILE__).'/hooks/header-extras.php'); } ?>
 			<!-- Add header template below here .. -->
