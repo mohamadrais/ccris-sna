@@ -1,12 +1,12 @@
 <?php
 	$dbServer = 'localhost';
-	$dbUsername = 'root';
-	$dbPassword = '';
-	$dbDatabase = 'priggm80_pgs66';
+	$dbUsername = 'puffergr_admin';
+	$dbPassword = 'puffergr_admin$';
+	$dbDatabase = 'puffergr_pgs66';
 
 	$adminConfig = array(
-		'adminUsername' => "admin",
-		'adminPassword' => "21232f297a57a5a743894a0e4a801fc3",
+		'adminUsername' => "adminpetrogas",
+		'adminPassword' => "5042ca83c928dfc80b9aaddb72daafa8",
 		'notifyAdminNewMembers' => "",
 		'defaultSignUp' => "1",
 		'anonymousGroup' => "anonymous",
