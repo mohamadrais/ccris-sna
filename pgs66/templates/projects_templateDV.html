@@ -213,6 +213,50 @@
 
 				<div class="form-group">
 					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3">Photo_2 <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#ot_Photo02-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="ot_Photo02-description"><div class="alert alert-info">Maximum file size allowed: 5000 KB.<br>Allowed file types: jpg, jpeg, gif, png</div></span>
+
+						<div class="form-control-static"><div class="pull-left">
+
+						<img src="<%%TRANSLATION(ImageFolder)%%><%%VALUE(ot_Photo02)%%>" class="img-responsive img-thumbnail" id="ot_Photo02-image">
+</div>
+
+												<div class="pull-right" style="overflow-x: hidden;">
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(ot_Photo02)%%>
+							<%%REMOVEFILE(ot_Photo02)%%>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3">Photo_3 <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#ot_Photo03-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="ot_Photo03-description"><div class="alert alert-info">Maximum file size allowed: 5000 KB.<br>Allowed file types: jpg, jpeg, gif, png</div></span>
+
+						<div class="form-control-static"><div class="pull-left">
+
+						<img src="<%%TRANSLATION(ImageFolder)%%><%%VALUE(ot_Photo03)%%>" class="img-responsive img-thumbnail" id="ot_Photo03-image">
+</div>
+
+												<div class="pull-right" style="overflow-x: hidden;">
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(ot_Photo03)%%>
+							<%%REMOVEFILE(ot_Photo03)%%>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
 					<label for="ot_ap_Review" class="control-label col-lg-3" data-parent_link="view_parent_modal">Review</label>
 					<div class="col-lg-9">
 						<div class="form-control-static" style="white-space: nowrap; overflow-x: hidden;"><%%COMBO(ot_ap_Review)%%></div>

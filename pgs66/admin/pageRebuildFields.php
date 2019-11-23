@@ -1667,6 +1667,8 @@
 			'ot_Ref01' => array('appgini' => 'VARCHAR(40) '),
 			'ot_Ref02' => array('appgini' => 'VARCHAR(40) '),
 			'ot_Photo' => array('appgini' => 'VARCHAR(40) '),
+			'ot_Photo02' => array('appgini' => 'VARCHAR(40) '),
+			'ot_Photo03' => array('appgini' => 'VARCHAR(40) '),
 			'ot_ap_Review' => array('appgini' => 'INT unsigned '),
 			'ot_ap_RevComment' => array('appgini' => 'TEXT '),
 			'ot_ap_Approval' => array('appgini' => 'INT unsigned '),

@@ -947,6 +947,10 @@
 			return array('width'=>50, 'height'=>50, 'identifier'=>'_tv');
 		elseif($tableName=='projects' && $fieldName=='ot_Photo' && $view=='tv')
 			return array('width'=>50, 'height'=>50, 'identifier'=>'_tv');
+		elseif($tableName=='projects' && $fieldName=='ot_Photo02' && $view=='tv')
+			return array('width'=>50, 'height'=>50, 'identifier'=>'_tv');
+		elseif($tableName=='projects' && $fieldName=='ot_Photo03' && $view=='tv')
+			return array('width'=>50, 'height'=>50, 'identifier'=>'_tv');
 		elseif($tableName=='WorkLocation' && $fieldName=='ot_Photo' && $view=='tv')
 			return array('width'=>50, 'height'=>50, 'identifier'=>'_tv');
 		elseif($tableName=='WorkPermit' && $fieldName=='ot_Photo' && $view=='tv')
@@ -1391,7 +1395,7 @@
 	}
 	########################################################################
 	function isEmail($email){
-		if(preg_match('/^([*+!.&#$¦\'\\%\/0-9a-z^_`{}=?~:-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,45})$/i', $email)){
+		if(preg_match('/^([*+!.&#$Â¦\'\\%\/0-9a-z^_`{}=?~:-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,45})$/i', $email)){
 			return $email;
 		}else{
 			return FALSE;

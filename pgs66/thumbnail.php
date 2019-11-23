@@ -207,7 +207,9 @@
 			'ot_Photo' => $Translation['ImageFolder']
 		),
 		'projects' => array(
-			'ot_Photo' => $Translation['ImageFolder']
+			'ot_Photo' => $Translation['ImageFolder'],
+			'ot_Photo02' => $Translation['ImageFolder'],
+			'ot_Photo03' => $Translation['ImageFolder']
 		),
 		'WorkLocation' => array(
 			'ot_Photo' => $Translation['ImageFolder']

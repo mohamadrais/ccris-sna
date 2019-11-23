@@ -205,7 +205,9 @@
 			'ot_Photo' => '../images/'
 		),
 		'projects' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'WorkLocation' => array(
 			'ot_Photo' => '../images/'

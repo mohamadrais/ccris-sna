@@ -48,6 +48,10 @@ function projects_insert(){
 	$data['ot_Ref02'] = PrepareUploadedFile('ot_Ref02', 65536000,'zip|rar|gz|tar|iso', true, '');
 	$data['ot_Photo'] = PrepareUploadedFile('ot_Photo', 5120000,'jpg|jpeg|gif|png', false, '');
 	if($data['ot_Photo']) createThumbnail($data['ot_Photo'], getThumbnailSpecs('projects', 'ot_Photo', 'tv'));
+	$data['ot_Photo02'] = PrepareUploadedFile('ot_Photo02', 5120000,'jpg|jpeg|gif|png', false, '');
+	if($data['ot_Photo02']) createThumbnail($data['ot_Photo02'], getThumbnailSpecs('projects', 'ot_Photo02', 'tv'));
+	$data['ot_Photo03'] = PrepareUploadedFile('ot_Photo03', 5120000,'jpg|jpeg|gif|png', false, '');
+	if($data['ot_Photo03']) createThumbnail($data['ot_Photo03'], getThumbnailSpecs('projects', 'ot_Photo03', 'tv'));
 	if($data['projectID']== ''){
 		echo StyleSheet() . "\n\n<div class=\"alert alert-danger\">" . $Translation['error:'] . " 'Project ID': " . $Translation['field not null'] . '<br><br>';
 		echo '<a href="" onclick="history.go(-1); return false;">'.$Translation['< back'].'</a></div>';
@@ -72,6 +76,8 @@ function projects_insert(){
 			if(!$data['ot_Ref01']) $data['ot_Ref01'] = makeSafe($row['ot_Ref01']);
 			if(!$data['ot_Ref02']) $data['ot_Ref02'] = makeSafe($row['ot_Ref02']);
 			if(!$data['ot_Photo']) $data['ot_Photo'] = makeSafe($row['ot_Photo']);
+			if(!$data['ot_Photo02']) $data['ot_Photo02'] = makeSafe($row['ot_Photo02']);
+			if(!$data['ot_Photo03']) $data['ot_Photo03'] = makeSafe($row['ot_Photo03']);
 		}
 	}
 
@@ -82,7 +88,7 @@ function projects_insert(){
 	}
 
 	$o = array('silentErrors' => true);
-	sql('insert into `projects` set       `projectID`=' . (($data['projectID'] !== '' && $data['projectID'] !== NULL) ? "'{$data['projectID']}'" : 'NULL') . ', `Name`=' . (($data['Name'] !== '' && $data['Name'] !== NULL) ? "'{$data['Name']}'" : 'NULL') . ', `fo_ProjectIndication`=' . (($data['fo_ProjectIndication'] !== '' && $data['fo_ProjectIndication'] !== NULL) ? "'{$data['fo_ProjectIndication']}'" : 'NULL') . ', `fo_DocumentDescription`=' . (($data['fo_DocumentDescription'] !== '' && $data['fo_DocumentDescription'] !== NULL) ? "'{$data['fo_DocumentDescription']}'" : 'NULL') . ', `fo_StartDate`=' . (($data['fo_StartDate'] !== '' && $data['fo_StartDate'] !== NULL) ? "'{$data['fo_StartDate']}'" : 'NULL') . ', `fo_EndDate`=' . (($data['fo_EndDate'] !== '' && $data['fo_EndDate'] !== NULL) ? "'{$data['fo_EndDate']}'" : 'NULL') . ', `ot_FileLoc`=' . (($data['ot_FileLoc'] !== '' && $data['ot_FileLoc'] !== NULL) ? "'{$data['ot_FileLoc']}'" : 'NULL') . ', `ot_otherdetails`=' . (($data['ot_otherdetails'] !== '' && $data['ot_otherdetails'] !== NULL) ? "'{$data['ot_otherdetails']}'" : 'NULL') . ', `ot_comments`=' . (($data['ot_comments'] !== '' && $data['ot_comments'] !== NULL) ? "'{$data['ot_comments']}'" : 'NULL') . ', `ot_SharedLink1`=' . (($data['ot_SharedLink1'] !== '' && $data['ot_SharedLink1'] !== NULL) ? "'{$data['ot_SharedLink1']}'" : 'NULL') . ', `ot_SharedLink2`=' . (($data['ot_SharedLink2'] !== '' && $data['ot_SharedLink2'] !== NULL) ? "'{$data['ot_SharedLink2']}'" : 'NULL') . ', ' . ($data['ot_Ref01'] != '' ? "`ot_Ref01`='{$data['ot_Ref01']}'" : '`ot_Ref01`=NULL') . ', ' . ($data['ot_Ref02'] != '' ? "`ot_Ref02`='{$data['ot_Ref02']}'" : '`ot_Ref02`=NULL') . ', ' . ($data['ot_Photo'] != '' ? "`ot_Photo`='{$data['ot_Photo']}'" : '`ot_Photo`=NULL') . ', `ot_ap_Review`=' . (($data['ot_ap_Review'] !== '' && $data['ot_ap_Review'] !== NULL) ? "'{$data['ot_ap_Review']}'" : 'NULL') . ', `ot_ap_RevComment`=' . (($data['ot_ap_RevComment'] !== '' && $data['ot_ap_RevComment'] !== NULL) ? "'{$data['ot_ap_RevComment']}'" : 'NULL') . ', `ot_ap_Approval`=' . (($data['ot_ap_Approval'] !== '' && $data['ot_ap_Approval'] !== NULL) ? "'{$data['ot_ap_Approval']}'" : 'NULL') . ', `ot_ap_ApprComment`=' . (($data['ot_ap_ApprComment'] !== '' && $data['ot_ap_ApprComment'] !== NULL) ? "'{$data['ot_ap_ApprComment']}'" : 'NULL') . ', `ot_ap_QC`=' . (($data['ot_ap_QC'] !== '' && $data['ot_ap_QC'] !== NULL) ? "'{$data['ot_ap_QC']}'" : 'NULL') . ', `ot_ap_QCComment`=' . (($data['ot_ap_QCComment'] !== '' && $data['ot_ap_QCComment'] !== NULL) ? "'{$data['ot_ap_QCComment']}'" : 'NULL') . ', `ot_ap_filed`=' . "'{$data['ot_ap_filed']}'", $o);
+	sql('insert into `projects` set       `projectID`=' . (($data['projectID'] !== '' && $data['projectID'] !== NULL) ? "'{$data['projectID']}'" : 'NULL') . ', `Name`=' . (($data['Name'] !== '' && $data['Name'] !== NULL) ? "'{$data['Name']}'" : 'NULL') . ', `fo_ProjectIndication`=' . (($data['fo_ProjectIndication'] !== '' && $data['fo_ProjectIndication'] !== NULL) ? "'{$data['fo_ProjectIndication']}'" : 'NULL') . ', `fo_DocumentDescription`=' . (($data['fo_DocumentDescription'] !== '' && $data['fo_DocumentDescription'] !== NULL) ? "'{$data['fo_DocumentDescription']}'" : 'NULL') . ', `fo_StartDate`=' . (($data['fo_StartDate'] !== '' && $data['fo_StartDate'] !== NULL) ? "'{$data['fo_StartDate']}'" : 'NULL') . ', `fo_EndDate`=' . (($data['fo_EndDate'] !== '' && $data['fo_EndDate'] !== NULL) ? "'{$data['fo_EndDate']}'" : 'NULL') . ', `ot_FileLoc`=' . (($data['ot_FileLoc'] !== '' && $data['ot_FileLoc'] !== NULL) ? "'{$data['ot_FileLoc']}'" : 'NULL') . ', `ot_otherdetails`=' . (($data['ot_otherdetails'] !== '' && $data['ot_otherdetails'] !== NULL) ? "'{$data['ot_otherdetails']}'" : 'NULL') . ', `ot_comments`=' . (($data['ot_comments'] !== '' && $data['ot_comments'] !== NULL) ? "'{$data['ot_comments']}'" : 'NULL') . ', `ot_SharedLink1`=' . (($data['ot_SharedLink1'] !== '' && $data['ot_SharedLink1'] !== NULL) ? "'{$data['ot_SharedLink1']}'" : 'NULL') . ', `ot_SharedLink2`=' . (($data['ot_SharedLink2'] !== '' && $data['ot_SharedLink2'] !== NULL) ? "'{$data['ot_SharedLink2']}'" : 'NULL') . ', ' . ($data['ot_Ref01'] != '' ? "`ot_Ref01`='{$data['ot_Ref01']}'" : '`ot_Ref01`=NULL') . ', ' . ($data['ot_Ref02'] != '' ? "`ot_Ref02`='{$data['ot_Ref02']}'" : '`ot_Ref02`=NULL') . ', ' . ($data['ot_Photo'] != '' ? "`ot_Photo`='{$data['ot_Photo']}'" : '`ot_Photo`=NULL') . ', ' . ($data['ot_Photo02'] != '' ? "`ot_Photo02`='{$data['ot_Photo02']}'" : '`ot_Photo02`=NULL') . ', ' . ($data['ot_Photo03'] != '' ? "`ot_Photo03`='{$data['ot_Photo03']}'" : '`ot_Photo03`=NULL') . ', `ot_ap_Review`=' . (($data['ot_ap_Review'] !== '' && $data['ot_ap_Review'] !== NULL) ? "'{$data['ot_ap_Review']}'" : 'NULL') . ', `ot_ap_RevComment`=' . (($data['ot_ap_RevComment'] !== '' && $data['ot_ap_RevComment'] !== NULL) ? "'{$data['ot_ap_RevComment']}'" : 'NULL') . ', `ot_ap_Approval`=' . (($data['ot_ap_Approval'] !== '' && $data['ot_ap_Approval'] !== NULL) ? "'{$data['ot_ap_Approval']}'" : 'NULL') . ', `ot_ap_ApprComment`=' . (($data['ot_ap_ApprComment'] !== '' && $data['ot_ap_ApprComment'] !== NULL) ? "'{$data['ot_ap_ApprComment']}'" : 'NULL') . ', `ot_ap_QC`=' . (($data['ot_ap_QC'] !== '' && $data['ot_ap_QC'] !== NULL) ? "'{$data['ot_ap_QC']}'" : 'NULL') . ', `ot_ap_QCComment`=' . (($data['ot_ap_QCComment'] !== '' && $data['ot_ap_QCComment'] !== NULL) ? "'{$data['ot_ap_QCComment']}'" : 'NULL') . ', `ot_ap_filed`=' . "'{$data['ot_ap_filed']}'", $o);
 	if($o['error']!=''){
 		echo $o['error'];
 		echo "<a href=\"projects_view.php?addNew_x=1\">{$Translation['< back']}</a>";
@@ -349,6 +355,32 @@ function projects_delete($selected_id, $AllowDeleteOfParents=false, $skipChecks=
 		}
 	}
 
+	// delete file stored in the 'ot_Photo02' field
+	$res = sql("select `ot_Photo02` from `projects` where `Id`='$selected_id'", $eo);
+	if($row=@db_fetch_row($res)){
+		if($row[0]!=''){
+			@unlink(getUploadDir('').$row[0]);
+			preg_match('/^[a-z0-9_]+\.(gif|png|jpg|jpeg|jpe)$/i', $row[0], $m);
+			$thumbDV=str_replace(".$m[1]ffffgggg", "_dv.$m[1]", $row[0].'ffffgggg');
+			$thumbTV=str_replace(".$m[1]ffffgggg", "_tv.$m[1]", $row[0].'ffffgggg');
+			@unlink(getUploadDir('').$thumbTV);
+			@unlink(getUploadDir('').$thumbDV);
+		}
+	}
+
+	// delete file stored in the 'ot_Photo03' field
+	$res = sql("select `ot_Photo03` from `projects` where `Id`='$selected_id'", $eo);
+	if($row=@db_fetch_row($res)){
+		if($row[0]!=''){
+			@unlink(getUploadDir('').$row[0]);
+			preg_match('/^[a-z0-9_]+\.(gif|png|jpg|jpeg|jpe)$/i', $row[0], $m);
+			$thumbDV=str_replace(".$m[1]ffffgggg", "_dv.$m[1]", $row[0].'ffffgggg');
+			$thumbTV=str_replace(".$m[1]ffffgggg", "_tv.$m[1]", $row[0].'ffffgggg');
+			@unlink(getUploadDir('').$thumbTV);
+			@unlink(getUploadDir('').$thumbDV);
+		}
+	}
+
 	sql("delete from `projects` where `Id`='$selected_id'", $eo);
 
 	// hook: projects_after_delete
@@ -495,6 +527,72 @@ function projects_update($selected_id){
 		}
 	}
 
+	if($_REQUEST['ot_Photo02_remove'] == 1){
+		$data['ot_Photo02'] = '';
+		// delete file from server
+		$res = sql("select `ot_Photo02` from `projects` where `Id`='".makeSafe($selected_id)."'", $eo);
+		if($row=@db_fetch_row($res)){
+			if($row[0]!=''){
+				@unlink(getUploadDir('').$row[0]);
+				preg_match('/^[a-z0-9_]+\.(gif|png|jpg|jpeg|jpe)$/i', $row[0], $m);
+				$thumbDV=str_replace(".$m[1]ffffgggg", "_dv.$m[1]", $row[0].'ffffgggg');
+				$thumbTV=str_replace(".$m[1]ffffgggg", "_tv.$m[1]", $row[0].'ffffgggg');
+				@unlink(getUploadDir('').$thumbTV);
+				@unlink(getUploadDir('').$thumbDV);
+			}
+		}
+	}else{
+		$data['ot_Photo02'] = PrepareUploadedFile('ot_Photo02', 5120000, 'jpg|jpeg|gif|png', false, "");
+		if($data['ot_Photo02']) createThumbnail($data['ot_Photo02'], getThumbnailSpecs('projects', 'ot_Photo02', 'tv'));
+		// delete file from server
+		if($data['ot_Photo02'] != ''){
+			$res = sql("select `ot_Photo02` from `projects` where `Id`='".makeSafe($selected_id)."'", $eo);
+			if($row=@db_fetch_row($res)){
+				if($row[0]!=''){
+					@unlink(getUploadDir('').$row[0]);
+					preg_match('/^[a-z0-9_]+\.(gif|png|jpg|jpeg|jpe)$/i', $row[0], $m);
+					$thumbDV=str_replace(".$m[1]ffffgggg", "_dv.$m[1]", $row[0].'ffffgggg');
+					$thumbTV=str_replace(".$m[1]ffffgggg", "_tv.$m[1]", $row[0].'ffffgggg');
+					@unlink(getUploadDir('').$thumbTV);
+					@unlink(getUploadDir('').$thumbDV);
+				}
+			}
+		}
+	}
+
+	if($_REQUEST['ot_Photo03_remove'] == 1){
+		$data['ot_Photo03'] = '';
+		// delete file from server
+		$res = sql("select `ot_Photo03` from `projects` where `Id`='".makeSafe($selected_id)."'", $eo);
+		if($row=@db_fetch_row($res)){
+			if($row[0]!=''){
+				@unlink(getUploadDir('').$row[0]);
+				preg_match('/^[a-z0-9_]+\.(gif|png|jpg|jpeg|jpe)$/i', $row[0], $m);
+				$thumbDV=str_replace(".$m[1]ffffgggg", "_dv.$m[1]", $row[0].'ffffgggg');
+				$thumbTV=str_replace(".$m[1]ffffgggg", "_tv.$m[1]", $row[0].'ffffgggg');
+				@unlink(getUploadDir('').$thumbTV);
+				@unlink(getUploadDir('').$thumbDV);
+			}
+		}
+	}else{
+		$data['ot_Photo03'] = PrepareUploadedFile('ot_Photo03', 5120000, 'jpg|jpeg|gif|png', false, "");
+		if($data['ot_Photo03']) createThumbnail($data['ot_Photo03'], getThumbnailSpecs('projects', 'ot_Photo03', 'tv'));
+		// delete file from server
+		if($data['ot_Photo03'] != ''){
+			$res = sql("select `ot_Photo03` from `projects` where `Id`='".makeSafe($selected_id)."'", $eo);
+			if($row=@db_fetch_row($res)){
+				if($row[0]!=''){
+					@unlink(getUploadDir('').$row[0]);
+					preg_match('/^[a-z0-9_]+\.(gif|png|jpg|jpeg|jpe)$/i', $row[0], $m);
+					$thumbDV=str_replace(".$m[1]ffffgggg", "_dv.$m[1]", $row[0].'ffffgggg');
+					$thumbTV=str_replace(".$m[1]ffffgggg", "_tv.$m[1]", $row[0].'ffffgggg');
+					@unlink(getUploadDir('').$thumbTV);
+					@unlink(getUploadDir('').$thumbDV);
+				}
+			}
+		}
+	}
+
 	// hook: projects_before_update
 	if(function_exists('projects_before_update')){
 		$args=array();
@@ -502,7 +600,7 @@ function projects_update($selected_id){
 	}
 
 	$o=array('silentErrors' => true);
-	sql('update `projects` set       `projectID`=' . (($data['projectID'] !== '' && $data['projectID'] !== NULL) ? "'{$data['projectID']}'" : 'NULL') . ', `Name`=' . (($data['Name'] !== '' && $data['Name'] !== NULL) ? "'{$data['Name']}'" : 'NULL') . ', `fo_ProjectIndication`=' . (($data['fo_ProjectIndication'] !== '' && $data['fo_ProjectIndication'] !== NULL) ? "'{$data['fo_ProjectIndication']}'" : 'NULL') . ', `fo_DocumentDescription`=' . (($data['fo_DocumentDescription'] !== '' && $data['fo_DocumentDescription'] !== NULL) ? "'{$data['fo_DocumentDescription']}'" : 'NULL') . ', `fo_StartDate`=' . (($data['fo_StartDate'] !== '' && $data['fo_StartDate'] !== NULL) ? "'{$data['fo_StartDate']}'" : 'NULL') . ', `fo_EndDate`=' . (($data['fo_EndDate'] !== '' && $data['fo_EndDate'] !== NULL) ? "'{$data['fo_EndDate']}'" : 'NULL') . ', `ot_FileLoc`=' . (($data['ot_FileLoc'] !== '' && $data['ot_FileLoc'] !== NULL) ? "'{$data['ot_FileLoc']}'" : 'NULL') . ', `ot_otherdetails`=' . (($data['ot_otherdetails'] !== '' && $data['ot_otherdetails'] !== NULL) ? "'{$data['ot_otherdetails']}'" : 'NULL') . ', `ot_comments`=' . (($data['ot_comments'] !== '' && $data['ot_comments'] !== NULL) ? "'{$data['ot_comments']}'" : 'NULL') . ', `ot_SharedLink1`=' . (($data['ot_SharedLink1'] !== '' && $data['ot_SharedLink1'] !== NULL) ? "'{$data['ot_SharedLink1']}'" : 'NULL') . ', `ot_SharedLink2`=' . (($data['ot_SharedLink2'] !== '' && $data['ot_SharedLink2'] !== NULL) ? "'{$data['ot_SharedLink2']}'" : 'NULL') . ', ' . ($data['ot_Ref01']!='' ? "`ot_Ref01`='{$data['ot_Ref01']}'" : ($_REQUEST['ot_Ref01_remove'] != 1 ? '`ot_Ref01`=`ot_Ref01`' : '`ot_Ref01`=NULL')) . ', ' . ($data['ot_Ref02']!='' ? "`ot_Ref02`='{$data['ot_Ref02']}'" : ($_REQUEST['ot_Ref02_remove'] != 1 ? '`ot_Ref02`=`ot_Ref02`' : '`ot_Ref02`=NULL')) . ', ' . ($data['ot_Photo']!='' ? "`ot_Photo`='{$data['ot_Photo']}'" : ($_REQUEST['ot_Photo_remove'] != 1 ? '`ot_Photo`=`ot_Photo`' : '`ot_Photo`=NULL')) . ', `ot_ap_Review`=' . (($data['ot_ap_Review'] !== '' && $data['ot_ap_Review'] !== NULL) ? "'{$data['ot_ap_Review']}'" : 'NULL') . ', `ot_ap_RevComment`=' . (($data['ot_ap_RevComment'] !== '' && $data['ot_ap_RevComment'] !== NULL) ? "'{$data['ot_ap_RevComment']}'" : 'NULL') . ', `ot_ap_Approval`=' . (($data['ot_ap_Approval'] !== '' && $data['ot_ap_Approval'] !== NULL) ? "'{$data['ot_ap_Approval']}'" : 'NULL') . ', `ot_ap_ApprComment`=' . (($data['ot_ap_ApprComment'] !== '' && $data['ot_ap_ApprComment'] !== NULL) ? "'{$data['ot_ap_ApprComment']}'" : 'NULL') . ', `ot_ap_QC`=' . (($data['ot_ap_QC'] !== '' && $data['ot_ap_QC'] !== NULL) ? "'{$data['ot_ap_QC']}'" : 'NULL') . ', `ot_ap_QCComment`=' . (($data['ot_ap_QCComment'] !== '' && $data['ot_ap_QCComment'] !== NULL) ? "'{$data['ot_ap_QCComment']}'" : 'NULL') . ', `ot_ap_filed`=`ot_ap_filed`' . ', `ot_ap_lastmodified`=' . "'{$data['ot_ap_lastmodified']}'" . " where `Id`='".makeSafe($selected_id)."'", $o);
+	sql('update `projects` set       `projectID`=' . (($data['projectID'] !== '' && $data['projectID'] !== NULL) ? "'{$data['projectID']}'" : 'NULL') . ', `Name`=' . (($data['Name'] !== '' && $data['Name'] !== NULL) ? "'{$data['Name']}'" : 'NULL') . ', `fo_ProjectIndication`=' . (($data['fo_ProjectIndication'] !== '' && $data['fo_ProjectIndication'] !== NULL) ? "'{$data['fo_ProjectIndication']}'" : 'NULL') . ', `fo_DocumentDescription`=' . (($data['fo_DocumentDescription'] !== '' && $data['fo_DocumentDescription'] !== NULL) ? "'{$data['fo_DocumentDescription']}'" : 'NULL') . ', `fo_StartDate`=' . (($data['fo_StartDate'] !== '' && $data['fo_StartDate'] !== NULL) ? "'{$data['fo_StartDate']}'" : 'NULL') . ', `fo_EndDate`=' . (($data['fo_EndDate'] !== '' && $data['fo_EndDate'] !== NULL) ? "'{$data['fo_EndDate']}'" : 'NULL') . ', `ot_FileLoc`=' . (($data['ot_FileLoc'] !== '' && $data['ot_FileLoc'] !== NULL) ? "'{$data['ot_FileLoc']}'" : 'NULL') . ', `ot_otherdetails`=' . (($data['ot_otherdetails'] !== '' && $data['ot_otherdetails'] !== NULL) ? "'{$data['ot_otherdetails']}'" : 'NULL') . ', `ot_comments`=' . (($data['ot_comments'] !== '' && $data['ot_comments'] !== NULL) ? "'{$data['ot_comments']}'" : 'NULL') . ', `ot_SharedLink1`=' . (($data['ot_SharedLink1'] !== '' && $data['ot_SharedLink1'] !== NULL) ? "'{$data['ot_SharedLink1']}'" : 'NULL') . ', `ot_SharedLink2`=' . (($data['ot_SharedLink2'] !== '' && $data['ot_SharedLink2'] !== NULL) ? "'{$data['ot_SharedLink2']}'" : 'NULL') . ', ' . ($data['ot_Ref01']!='' ? "`ot_Ref01`='{$data['ot_Ref01']}'" : ($_REQUEST['ot_Ref01_remove'] != 1 ? '`ot_Ref01`=`ot_Ref01`' : '`ot_Ref01`=NULL')) . ', ' . ($data['ot_Ref02']!='' ? "`ot_Ref02`='{$data['ot_Ref02']}'" : ($_REQUEST['ot_Ref02_remove'] != 1 ? '`ot_Ref02`=`ot_Ref02`' : '`ot_Ref02`=NULL')) . ', ' . ($data['ot_Photo']!='' ? "`ot_Photo`='{$data['ot_Photo']}'" : ($_REQUEST['ot_Photo_remove'] != 1 ? '`ot_Photo`=`ot_Photo`' : '`ot_Photo`=NULL')) . ', ' . ($data['ot_Photo02']!='' ? "`ot_Photo02`='{$data['ot_Photo02']}'" : ($_REQUEST['ot_Photo02_remove'] != 1 ? '`ot_Photo02`=`ot_Photo02`' : '`ot_Photo02`=NULL')) . ', ' . ($data['ot_Photo03']!='' ? "`ot_Photo03`='{$data['ot_Photo03']}'" : ($_REQUEST['ot_Photo03_remove'] != 1 ? '`ot_Photo03`=`ot_Photo03`' : '`ot_Photo03`=NULL')) . ', `ot_ap_Review`=' . (($data['ot_ap_Review'] !== '' && $data['ot_ap_Review'] !== NULL) ? "'{$data['ot_ap_Review']}'" : 'NULL') . ', `ot_ap_RevComment`=' . (($data['ot_ap_RevComment'] !== '' && $data['ot_ap_RevComment'] !== NULL) ? "'{$data['ot_ap_RevComment']}'" : 'NULL') . ', `ot_ap_Approval`=' . (($data['ot_ap_Approval'] !== '' && $data['ot_ap_Approval'] !== NULL) ? "'{$data['ot_ap_Approval']}'" : 'NULL') . ', `ot_ap_ApprComment`=' . (($data['ot_ap_ApprComment'] !== '' && $data['ot_ap_ApprComment'] !== NULL) ? "'{$data['ot_ap_ApprComment']}'" : 'NULL') . ', `ot_ap_QC`=' . (($data['ot_ap_QC'] !== '' && $data['ot_ap_QC'] !== NULL) ? "'{$data['ot_ap_QC']}'" : 'NULL') . ', `ot_ap_QCComment`=' . (($data['ot_ap_QCComment'] !== '' && $data['ot_ap_QCComment'] !== NULL) ? "'{$data['ot_ap_QCComment']}'" : 'NULL') . ', `ot_ap_filed`=`ot_ap_filed`' . ', `ot_ap_lastmodified`=' . "'{$data['ot_ap_lastmodified']}'" . " where `Id`='".makeSafe($selected_id)."'", $o);
 	if($o['error']!=''){
 		echo $o['error'];
 		echo '<a href="projects_view.php?SelectedID='.urlencode($selected_id)."\">{$Translation['< back']}</a>";
@@ -798,6 +896,8 @@ function projects_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 		$jsReadOnly .= "\tjQuery('#ot_Ref02').replaceWith('<div class=\"form-control-static\" id=\"ot_Ref02\">' + (jQuery('#ot_Ref02').val() || '') + '</div>');\n";
 		$jsReadOnly .= "\tjQuery('#ot_Ref02, #ot_Ref02-edit-link').hide();\n";
 		$jsReadOnly .= "\tjQuery('#ot_Photo').replaceWith('<div class=\"form-control-static\" id=\"ot_Photo\">' + (jQuery('#ot_Photo').val() || '') + '</div>');\n";
+		$jsReadOnly .= "\tjQuery('#ot_Photo02').replaceWith('<div class=\"form-control-static\" id=\"ot_Photo02\">' + (jQuery('#ot_Photo02').val() || '') + '</div>');\n";
+		$jsReadOnly .= "\tjQuery('#ot_Photo03').replaceWith('<div class=\"form-control-static\" id=\"ot_Photo03\">' + (jQuery('#ot_Photo03').val() || '') + '</div>');\n";
 		$jsReadOnly .= "\tjQuery('#ot_ap_Review').prop('disabled', true).css({ color: '#555', backgroundColor: '#fff' });\n";
 		$jsReadOnly .= "\tjQuery('#ot_ap_Review_caption').prop('disabled', true).css({ color: '#555', backgroundColor: 'white' });\n";
 		$jsReadOnly .= "\tjQuery('#ot_ap_RevComment').replaceWith('<div class=\"form-control-static\" id=\"ot_ap_RevComment\">' + (jQuery('#ot_ap_RevComment').val() || '') + '</div>');\n";
@@ -874,10 +974,22 @@ function projects_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref02)%%>', '', $templateCode);
 	}
 	$templateCode = str_replace('<%%UPLOADFILE(ot_Photo)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=5120000>'.$Translation['upload image'].' <input type="file" name="ot_Photo" id="ot_Photo">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Photo02)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=5120000>'.$Translation['upload image'].' <input type="file" name="ot_Photo02" id="ot_Photo02">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Photo03)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=5120000>'.$Translation['upload image'].' <input type="file" name="ot_Photo03" id="ot_Photo03">'), $templateCode);
 	if($AllowUpdate && $row['ot_Photo'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Photo)%%>', '<br><input type="checkbox" name="ot_Photo_remove" id="ot_Photo_remove" value="1"> <label for="ot_Photo_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Photo)%%>', '', $templateCode);
+	}
+	if($AllowUpdate && $row['ot_Photo02'] != ''){
+		$templateCode = str_replace('<%%REMOVEFILE(ot_Photo02)%%>', '<br><input type="checkbox" name="ot_Photo02_remove" id="ot_Photo02_remove" value="1"> <label for="ot_Photo02_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
+	}else{
+		$templateCode = str_replace('<%%REMOVEFILE(ot_Photo02)%%>', '', $templateCode);
+	}
+	if($AllowUpdate && $row['ot_Photo03'] != ''){
+		$templateCode = str_replace('<%%REMOVEFILE(ot_Photo03)%%>', '<br><input type="checkbox" name="ot_Photo03_remove" id="ot_Photo03_remove" value="1"> <label for="ot_Photo03_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
+	}else{
+		$templateCode = str_replace('<%%REMOVEFILE(ot_Photo03)%%>', '', $templateCode);
 	}
 	$templateCode = str_replace('<%%UPLOADFILE(ot_ap_Review)%%>', '', $templateCode);
 	$templateCode = str_replace('<%%UPLOADFILE(ot_ap_RevComment)%%>', '', $templateCode);
@@ -944,6 +1056,14 @@ function projects_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 		if( $dvprint) $templateCode = str_replace('<%%VALUE(ot_Photo)%%>', safe_html($urow['ot_Photo']), $templateCode);
 		if(!$dvprint) $templateCode = str_replace('<%%VALUE(ot_Photo)%%>', html_attr($row['ot_Photo']), $templateCode);
 		$templateCode = str_replace('<%%URLVALUE(ot_Photo)%%>', urlencode($urow['ot_Photo']), $templateCode);
+		$row['ot_Photo02'] = ($row['ot_Photo02'] != '' ? $row['ot_Photo02'] : 'blank.gif');
+		if( $dvprint) $templateCode = str_replace('<%%VALUE(ot_Photo02)%%>', safe_html($urow['ot_Photo02']), $templateCode);
+		if(!$dvprint) $templateCode = str_replace('<%%VALUE(ot_Photo02)%%>', html_attr($row['ot_Photo02']), $templateCode);
+		$templateCode = str_replace('<%%URLVALUE(ot_Photo02)%%>', urlencode($urow['ot_Photo02']), $templateCode);
+		$row['ot_Photo03'] = ($row['ot_Photo03'] != '' ? $row['ot_Photo03'] : 'blank.gif');
+		if( $dvprint) $templateCode = str_replace('<%%VALUE(ot_Photo03)%%>', safe_html($urow['ot_Photo03']), $templateCode);
+		if(!$dvprint) $templateCode = str_replace('<%%VALUE(ot_Photo03)%%>', html_attr($row['ot_Photo03']), $templateCode);
+		$templateCode = str_replace('<%%URLVALUE(ot_Photo03)%%>', urlencode($urow['ot_Photo03']), $templateCode);
 		if( $dvprint) $templateCode = str_replace('<%%VALUE(ot_ap_Review)%%>', safe_html($urow['ot_ap_Review']), $templateCode);
 		if(!$dvprint) $templateCode = str_replace('<%%VALUE(ot_ap_Review)%%>', html_attr($row['ot_ap_Review']), $templateCode);
 		$templateCode = str_replace('<%%URLVALUE(ot_ap_Review)%%>', urlencode($urow['ot_ap_Review']), $templateCode);
@@ -1004,6 +1124,8 @@ function projects_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $A
 		$templateCode = str_replace('<%%VALUE(ot_Ref02)%%>', '', $templateCode);
 		$templateCode = str_replace('<%%URLVALUE(ot_Ref02)%%>', urlencode(''), $templateCode);
 		$templateCode = str_replace('<%%VALUE(ot_Photo)%%>', 'blank.gif', $templateCode);
+		$templateCode = str_replace('<%%VALUE(ot_Photo02)%%>', 'blank.gif', $templateCode);
+		$templateCode = str_replace('<%%VALUE(ot_Photo03)%%>', 'blank.gif', $templateCode);
 		$templateCode = str_replace('<%%VALUE(ot_ap_Review)%%>', '', $templateCode);
 		$templateCode = str_replace('<%%URLVALUE(ot_ap_Review)%%>', urlencode(''), $templateCode);
 		$templateCode = str_replace('<%%VALUE(ot_ap_RevComment)%%>', '', $templateCode);

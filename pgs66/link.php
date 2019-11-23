@@ -537,6 +537,8 @@
 			'ot_Ref01' => $Translation['ImageFolder'],
 			'ot_Ref02' => $Translation['ImageFolder'],
 			'ot_Photo' => $Translation['ImageFolder'],
+			'ot_Photo02' => $Translation['ImageFolder'],
+			'ot_Photo03' => $Translation['ImageFolder'],
 			'primary key' => 'Id'
 		),
 		'WorkLocation' => array(
