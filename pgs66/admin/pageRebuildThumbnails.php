@@ -7,255 +7,417 @@
 	// image paths
 	$p=array(   
 		'OrgContentContext' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'Marketing' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'Client' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'Inquiry' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'DesignProposal' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'ContractDeployment' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'employees' => array(
-			'fo_Photo' => '../images/'
+			'fo_Photo01' => '../images/',
+			'fo_Photo02' => '../images/',
+			'fo_Photo03' => '../images/'
 		),
 		'Recruitment' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'PersonnalFile' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'Competency' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'Training' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'JD_JS' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'InOutRegister' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'vendor' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'ManagingVendor' => array(
 			'fo_image' => '../images/',
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'VenPerformance' => array(
 			'fo_image' => '../images/',
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'Logistics' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'Inventory' => array(
 			'fo_image' => '../images/',
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'CalibrationCtrl' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'WorkOrder' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'MWO' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'MWOPlanned' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'MWOpreventive' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'MWOproactive' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'MWConditionBased' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'MWOReactive' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'MWOCorrective' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'LogisticRequest' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'orders' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'Quotation' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'PurchaseOrder' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'DeliveryOrder' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'AccountPayables' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'Item' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'categories' => array(
-			'ot_Picture' => '../images/'
+			'ot_Picture01' => '../images/',
+			'ot_Picture02' => '../images/',
+			'ot_Picture03' => '../images/'
 		),
 		'batches' => array(
-			'fo_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'transactions' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'CommConsParticipate' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'ToolBoxMeeting' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'Bi_WeeklyMeeting' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'QuarterlyMeeting' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'Campaign' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'DrillNInspection' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'ManagementVisit' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'EventNotification' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'ActCard' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'KM' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'LegalRegister' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'RiskandOpportunity' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'DocControl' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'DCN' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'ObsoleteRec' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'QA' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'ERP' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'WorkEnvMonitoring' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'ScheduleWaste' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'IncidentReporting' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'MgtofChange' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'IMStrackingNmonitoring' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'IMSDataAnalysis' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'Audit' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'NonConformance' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'ContinualImprovement' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'StakeholderSatisfaction' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'MRM' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'projects' => array(
-			'ot_Photo' => '../images/',
+			'ot_Photo01' => '../images/',
 			'ot_Photo02' => '../images/',
 			'ot_Photo03' => '../images/'
 		),
 		'WorkLocation' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'WorkPermit' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'ProjectTeam' => array(
-			'fo_Photo' => '../images/'
+			'fo_Photo01' => '../images/',
+			'fo_Photo02' => '../images/',
+			'fo_Photo03' => '../images/'
 		),
 		'resources' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'PROInitiation' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'PROPlanning' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'PROExecution' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'DailyProgressReport' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'MonthlyTimesheet' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'Breakdown' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'PROControlMonitoring' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'PROVariation' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'PROCompletion' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'Receivables' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'ClaimRecord' => array(
-			'ot_Photo' => '../images/'
+			'ot_Photo01' => '../images/',
+			'ot_Photo02' => '../images/',
+			'ot_Photo03' => '../images/'
 		),
 		'TeamSoftBoard' => array(
-			'image' => '../images/'
+			'image01' => '../images/',
+			'image02' => '../images/',
+			'image03' => '../images/'
 		),
 		'IMSReport' => array(
 			'image' => '../images/'
