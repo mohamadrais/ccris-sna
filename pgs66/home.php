@@ -41,7 +41,7 @@
 
 <div class="navbar-default sidebar" role="navigation">
     <div class="sidebar-nav navbar-collapse1" id="dash-sidebar-nav" > 
-        <ul class="nav" id="side-menu" style="padding: 12px;">
+        <ul class="nav" id="side-menu">
 <?php
 	/* accessible tables */
 	$arrTables = get_tables_info();
@@ -101,23 +101,24 @@
 					<?php } ?>
 					<?php $current_group = $tgroup; ?>
                     <li class="submenu">
-						<a data-toggle="collapse" href="#group-<?php echo md5($tgroup); ?>" style="height: 50px;font-size: 14px;line-height: 30px;border-radius: 30px;" > <i id="<?php echo  $tn; ?>-mainIco" class="fa fa-briefcase" aria-hidden="true" style="margin-right: 10px;"></i> <?php echo $tgroup; ?> <span class="pull-right"><b class="caret"></b></span></a>
+						<a data-toggle="collapse" href="#group-<?php echo md5($tgroup); ?>" style="height: 50px;font-size: 14px;line-height: 30px;" > <i id="<?php echo  $tn; ?>-mainIco" class="fa fa-briefcase" aria-hidden="true" style="margin-right: 10px;"></i> <?php echo $tgroup; ?> <span class="pull-right"><b class="caret"></b></span></a>
 					</li>
                     <div class="collapse" id="group-<?php echo md5($tgroup); ?>">
 						<div class="row table_links">
 				<?php } ?>
 
 					<?php if($tChkHL === false || $tChkHL === null){ /* if table is not set as hidden in homepage */ ?>
-						<div id="<?php echo $tn; ?>-tile" class="<?php echo (!$i ? $block_classes['first']['grid_column'] : $block_classes['other']['grid_column']); ?>">
+						<div id="<?php echo $tn; ?>-tile" class="listChild <?php echo (!$i ? $block_classes['first']['grid_column'] : $block_classes['other']['grid_column']); ?>">
 							<div class="panel1 <?php /*echo (!$i ? $block_classes['first']['panel'] : $block_classes['other']['panel']); */?>" style="padding: 2px 6px;">
 								<li class="submenu">
 									<?php if($can_insert && $tChkAHAN !== false && $tChkAHAN !== null){ ?>
 
-										<div class="btn-group listChild" style="width: 100%;">
-										   <a style="width: 85%;text-align: left; white-space: pre-wrap;" class="btn btn-lg1 <?php /*echo (!$i ? $block_classes['first']['link'] : $block_classes['other']['link']); */?>" title="<?php echo preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", html_attr(strip_tags($tc['Description']))); ?>" href="<?php echo $tn; ?>_view.php<?php echo $searchFirst; ?>"><?php /*echo ($tc['tableIcon'] ? '<img src="' . $tc['tableIcon'] . '">' : '');*/?><?php echo $tc['Caption']; ?><?php /*echo $count_badge; */?></a>
+										<div class="btn-group" style="width: 100%;">
+										   <a style="width: 85%;text-align: left; white-space: pre-wrap;" class="btn btn-lg1 <?php /*echo (!$i ? $block_classes['first']['link'] : $block_classes['other']['link']); */?>" title="<?php echo preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", html_attr(strip_tags($tc['Description']))); ?>" href="<?php echo $tn; ?>_view.php<?php echo $searchFirst; ?>"><?php /*echo ($tc['tableIcon'] ? '<img src="' . $tc['tableIcon'] . '">' : '');*/?><?php echo $tc['Caption']; ?><?php /*echo $count_badge; */?>
 										   <!-- <a id="<?php /*echo $tn; */?>_add_new" style="width: 15%;" class="btn btn-add-new btn-xs btn-info<?php /*echo (!$i ? $block_classes['first']['link'] : $block_classes['other']['link']); */?>" title="<?php /* echo html_attr($Translation['Add New']); */?>" href="<?php /* echo $tn; */?>_view.php?addNew_x=1"><i class="glyphicon glyphicon-plus"></i></a> -->
-                                           <a style="width: 15%; padding: 3px;" class="btn btn-add-new btn-lg pull-right" href="<?php echo $tn; ?>_view.php<?php echo $searchFirst; ?>"><?php echo $count_badge; ?></a>
-                                        </div>
+                                           <a class="badge badge-success pull-right sidebar-badge" href="<?php echo $tn; ?>_view.php<?php echo $searchFirst; ?>"><?php echo $count_badge; ?></a>
+										   </a>
+										</div>
 									<?php }else{ ?>
 
 										<a class="btn btn-block btn-lg  <?php echo (!$i ? $block_classes['first']['link'] : $block_classes['other']['link']); ?>" title="<?php echo preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", html_attr(strip_tags($tc['Description']))); ?>" href="<?php echo $tn; ?>_view.php<?php echo $searchFirst; ?>"><?php /*echo ($tc['tableIcon'] ? '<img src="' . $tc['tableIcon'] . '">' : '');*/?><strong class="table-caption"><?php echo $tc['Caption']; ?></strong><?php echo $count_badge; ?></a>
@@ -166,7 +167,7 @@
     <!-- /.sidebar-collapse -->
 </div>
 <!-- /.navbar-static-side -->
-<div id="page-wrapper">
+<div id="page-wrapper" class="page-wrapper">
 
 	<!-- <div class="row"><div id="upPageHeader" class="panel-header panel-header-sm"></div></div> -->
     <!-- <div class="row">
@@ -224,31 +225,33 @@
 										
 										if($tc['Caption'] == "Request Order" || $tc['Caption'] == "Client & Main Contractor" || $tc['Caption'] =="Organization Softboard"|| $tc['Caption'] == "IMS Complaint Report"){
 											?>
-												<div class="col-lg-3 col-md-6" style="margin: 10px 0;">
-													<div class="panel panel-primary" id="panel-<?php echo $tn; ?>">
-														<div class="panel-heading">
-															<div class="row">
-																<div class="col-xs-3">
-																	<span class="ims-info-icon"><i class="fa fa-folder-open-o fa-5x" id="fa-<?php echo $tn; ?>"></i></span>
+												
+
+												<div class="col-lg-3 col-md-6">
+												<div class="card dashboard-stat">
+													<div class="card-body">
+														<!-- Row -->
+														<div class="row">
+															<div class="col-8" id="counter-<?php echo $tn; ?>"><span class="display-6"><?php echo $count_badge;?></span>
+																<h6 class="text-muted" id="caption-<?php echo $tn; ?>"><?php echo $tc['Caption'];?></h6></div>
+																<div class="ims-info-icon dashboard-visual">
+																	<i class="fa fa-folder-open-o fa-5x" id="fa-<?php echo $tn; ?>"></i>
 																</div>
-																<div class="col-xs-9 text-right">
-																	<span class="ims-info-content">
-																		<div class="huge"  id="counter-<?php echo $tn; ?>"><?php echo $count_badge;?></div>
-																		<div id="caption-<?php echo $tn; ?>"><?php echo $tc['Caption'];?></div>
-																	</span>
-																</div>
+															<div class="col-4 align-self-center text-right  p-l-0">
+																<div id="sparklinedash3"></div>
+																<!-- <span class="ims-info-icon"><i class="fa fa-folder-open-o fa-5x" id="fa-<?php echo $tn; ?>"></i></span> -->
 															</div>
-															<a href="<?php echo $tn; ?>_view.php<?php echo $searchFirst; ?>" id="href-<?php echo $tn; ?>" class="view-all-link">
+															<!-- <a href="<?php echo $tn; ?>_view.php<?php echo $searchFirst; ?>" id="href-<?php echo $tn; ?>" class="view-all-link">
 																<div class="panel-footer" style="background-color: #fff;">
 																	<span class="pull-left">View Details</span>
 																	<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 																	<div class="clearfix"></div>
 																</div>
-															</a>
+															</a> -->
 														</div>
-														
 													</div>
 												</div>
+											</div>
 											<?php
 										}
 									?>
@@ -265,7 +268,7 @@
 
 	<div class="row">
 		<div class="col-lg-6 col-md-6 ">
-			<div class="card card-chart" style="padding: 15px 15px 0;border: 0;margin: 10px 0;overflow: hidden;">
+			<div class="card card-chart">
 				<div class="card-header">
 					<h4 class="card-title"><a href="TeamSoftBoard_view.php">Organization Softboard</a></h4>
 				</div>
@@ -277,7 +280,7 @@
 			</div>
 		</div>
 		<div class="col-lg-6 col-md-6 ">
-			<div class="card card-chart" style="padding: 15px 15px 0;border: 0;margin: 10px 0;overflow: hidden;">
+			<div class="card card-chart">
 				<div class="card-header" > 
 					<h4 class="card-title"><a href="IMSReport_view.php">Complaint Report</a></h4>
 				</div>
@@ -314,7 +317,7 @@
 		});
 		//$j('.navbar-default.sidebar').css("background","#f96332")
 		$j('#fa-WorkLocation').removeClass().addClass('fa fa-map-marker fa-5x');
-		$j('#fa-Client').removeClass().addClass('fa fa-user fa-5x');
+		$j('#fa-Client').removeClass().addClass('fa fa-users fa-5x');
 		$j('#fa-Inquiry').removeClass().addClass('fa fa-paperclip fa-5x');
 		// $j('#WorkLocation-cd').css("margin" ,"55px 0px");
 
@@ -357,7 +360,7 @@
 				$j('#dash-sidebar-nav').css('margin-top',50);
 				$j('.ps__scrollbar-x').css('display','none');
 				$j('#side-menu').css('display','none');
-				$j('#upperNav').css('display','block');
+				$j('#upperNav').css('display','inline-block');
 				$j('#if1').css({"overflow":"scroll","-webkit-overflow-scrolling":"touch"})
 				$j('#if2').css({"overflow":"scroll","-webkit-overflow-scrolling":"touch"})
 				//style="overflow: scroll; -webkit-overflow-scrolling: touch;"

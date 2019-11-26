@@ -52,12 +52,12 @@ $self_baseurl = _baseurl();
 
 
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>resources/initializr/css/bootstrap.css">
-		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/plugins/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/css/style.css">
 		<!--[if gt IE 8]><!-->
 			<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>resources/initializr/css/bootstrap-theme.css">
 		<!--<![endif]-->
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>dynamic.css.php">
+		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/css/style.css">
 
 		<!--[if lt IE 9]>
 			<script src="<?php echo PREPEND_PATH; ?>resources/initializr/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>

@@ -223,7 +223,11 @@ class DataList{
 			elseif($Filter_x != '') $current_view = 'Filters';
 		}
 
-		$this->HTML .= '<div class="row"><div class="col-xs-12" style="background: white;box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;border-radius: 6px;margin-top: 5px;">';
+		$this->HTML .= '<div class="page-wrapper ps ps--theme_default"><div class="container-fluid"><div class="row"><div class="col-xs-12">';
+		$this->HTML .= '<h3>';
+		$this->HTML .= '<a style="text-decoration: none; color: inherit;" href="' . $this->TableName . '_view.php"><img src="' . $this->TableIcon . '"> ' . $this->TableTitle . '</a>';
+		$this->HTML .= '</h3>';
+		$this->HTML .= '<div class="card"><div class="card-body">';
 		$this->HTML .= '<form ' . (datalist_image_uploads_exist ? 'enctype="multipart/form-data" ' : '') . 'method="post" name="myform" action="' . $this->ScriptFileName . '">';
 		if($Embedded) $this->HTML .= '<input name="Embedded" value="1" type="hidden">';
 		if($AutoClose) $this->HTML .= '<input name="AutoClose" value="1" type="hidden">';
@@ -661,13 +665,7 @@ class DataList{
 
 		if($current_view == 'DV' && !$Embedded){
 			$this->HTML .= '<div class="page-header">';
-				$this->HTML .= '<h1>';
-					$this->HTML .= '<a style="text-decoration: none; color: inherit;" href="' . $this->TableName . '_view.php"><img src="' . $this->TableIcon . '"> ' . $this->TableTitle . '</a>';
-					/* show add new button if user can insert and there is a selected record */
-					if($SelectedID && $this->Permissions[1] && $this->SeparateDV && $this->AllowInsert){
-						$this->HTML .= ' <button type="submit" id="addNew" name="addNew_x" value="1" class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Add New'] . '</button>';
-					}
-				$this->HTML .= '</h1>';
+			
 			$this->HTML .= '</div>';
 		}
 
@@ -685,32 +683,32 @@ class DataList{
 
 				// display Print icon
 				if($this->AllowPrinting){
-					$buttons_all .= '<button onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="Print_x" id="Print" value="1" class="btn btn-default"><i class="glyphicon glyphicon-print"></i> ' . $Translation['Print Preview'] . '</button>';
+					$buttons_all .= '<button onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="Print_x" id="Print" value="1" class="btn btn-outline-secondary"><i class="glyphicon glyphicon-print"></i> ' . $Translation['Print Preview'] . '</button>';
 					$buttonsCount++;
 				}
 
 				// display CSV icon
 				if($this->AllowCSV){
-					$buttons_all .= '<button onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="CSV_x" id="CSV" value="1" class="btn btn-default"><i class="glyphicon glyphicon-download-alt"></i> ' . $Translation['CSV'] . '</button>';
+					$buttons_all .= '<button onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="CSV_x" id="CSV" value="1" class="btn btn-outline-secondary"><i class="glyphicon glyphicon-download-alt"></i> ' . $Translation['CSV'] . '</button>';
 					$buttonsCount++;
 				}
 
 				// display Filter icon
 				if($this->AllowFilters){
-					$buttons_all .= '<button onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="Filter_x" id="Filter" value="1" class="btn btn-default"><i class="glyphicon glyphicon-filter"></i> ' . $Translation['filter'] . '</button>';
+					$buttons_all .= '<button onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="Filter_x" id="Filter" value="1" class="btn btn-outline-secondary"><i class="glyphicon glyphicon-filter"></i> ' . $Translation['filter'] . '</button>';
 					$buttonsCount++;
 				}
 
 				// display Show All icon
 				if(($this->AllowFilters)){
-					$buttons_all .= '<button onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="NoFilter_x" id="NoFilter" value="1" class="btn btn-default"><i class="glyphicon glyphicon-remove-circle"></i> ' . $Translation['Reset Filters'] . '</button>';
+					$buttons_all .= '<button onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="NoFilter_x" id="NoFilter" value="1" class="btn btn-outline-secondary"><i class="glyphicon glyphicon-remove-circle"></i> ' . $Translation['Reset Filters'] . '</button>';
 					$buttonsCount++;
 				}
 
 				$quick_search_html .= quick_search_html($SearchString, $this->QuickSearchText, $this->SeparateDV);
 			}else{
-				$buttons_all .= '<button class="btn btn-primary" type="button" id="sendToPrinter" onClick="window.print();"><i class="glyphicon glyphicon-print"></i> ' . $Translation['Print'] . '</button>';
-				$buttons_all .= '<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-remove-circle"></i> ' . $Translation['Cancel Printing'] . '</button>';
+				$buttons_all .= '<button class="btn btn-secondary" type="button" id="sendToPrinter" onClick="window.print();"><i class="glyphicon glyphicon-print"></i> ' . $Translation['Print'] . '</button>';
+				$buttons_all .= '<button class="btn btn-secondary" type="submit"><i class="glyphicon glyphicon-remove-circle"></i> ' . $Translation['Cancel Printing'] . '</button>';
 			}
 
 			/* if user can print DV, add action to 'More' menu */
@@ -763,7 +761,7 @@ class DataList{
 			$actual_more_count = 0;
 			$more_menu = $more_menu_js = '';
 			if(count($selected_records_more)){
-				$more_menu .= '<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="selected_records_more"><i class="glyphicon glyphicon-check"></i> ' . $Translation['More'] . ' <span class="caret"></span></button>';
+				$more_menu .= '<button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" id="selected_records_more"><i class="glyphicon glyphicon-check"></i> ' . $Translation['More'] . ' </button>';
 				$more_menu .= '<ul class="dropdown-menu" role="menu">';
 				foreach($selected_records_more as $action){
 					if(!$action['function'] || !$action['title']) continue;
@@ -789,34 +787,44 @@ class DataList{
 				$this->HTML .= '<script>$j(function(){ $j(\'[id^=notification-]\').parent().css({\'margin-top\': \'15px\', \'margin-bottom\': \'0\'}); })</script>';
 			}else{
 				$this->HTML .= '<div class="page-header">';
-					$this->HTML .= '<h1>';
 						$this->HTML .= '<div class="row">';
-							$this->HTML .= '<div class="col-sm-8">';
-								$this->HTML .= '<a style="text-decoration: none; color: inherit;" href="' . $this->TableName . '_view.php"><img src="' . $this->TableIcon . '"> ' . $this->TableTitle . '</a>';
-								/* show add new button if user can insert and there is a selected record */
-								if($SelectedID && $this->Permissions[1] && !$this->SeparateDV && $this->AllowInsert){
-									$this->HTML .= ' <button type="submit" id="addNew" name="addNew_x" value="1" class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Add New'] . '</button>';
-								}
-							$this->HTML .= '</div>';
+							$this->HTML .= '<div class="col-sm-12 action-panel">';
+								$this->HTML .= '<div id="top_buttons" class="hidden-print">';
+									/* .all_records: container for buttons that don't need a selection */
+									/* .selected_records: container for buttons that need a selection */
+									$this->HTML .= '<div class="btn-group btn-group-md visible-md visible-lg all_records pull-left">' . $buttons_all . '</div>';
+									// $this->HTML .= '<p></p>';
+								$this->HTML .= '</div>';
+							// $this->HTML .= '<a style="text-decoration: none; color: inherit;" href="' . $this->TableName . '_view.php"><img src="' . $this->TableIcon . '"> ' . $this->TableTitle . '</a>';
+							/* show add new button if user can insert and there is a selected record */
+							if($SelectedID && $this->Permissions[1] && !$this->SeparateDV && $this->AllowInsert){
+								$this->HTML .= ' <button type="submit" id="addNew" name="addNew_x" value="1" class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Add New'] . '</button>';
+							}
 							if($this->QuickSearch){
-								$this->HTML .= '<div class="col-sm-4">';
+								$this->HTML .= '<div class="quick-search-container">';
 									$this->HTML .= $quick_search_html;
 								$this->HTML .= '</div>';
 							}
+							$this->HTML .= '</div>';
+							$this->HTML .= '<div class="col-sm-12 button-group">';
+								$this->HTML .= $this->tv_tools();
+								$this->HTML .= '<div class="btn-group btn-group-lg visible-md visible-lg selected_records hidden pull-left">' . ($actual_more_count ? $more_menu : '') . '</div>';
+								$this->HTML .= '<div class="btn-group-vertical btn-group-lg visible-xs visible-sm all_records">' . $buttons_all . '</div>';
+								$this->HTML .= '<div class="btn-group-vertical btn-group-lg visible-xs visible-sm selected_records hidden">' . ($actual_more_count ? $more_menu : '') . '</div>';
+							$this->HTML .= '</div>';
 						$this->HTML .= '</div>';
-					$this->HTML .= '</h1>';
 				$this->HTML .= '</div>';
 
-				$this->HTML .= '<div id="top_buttons" class="hidden-print">';
-					/* .all_records: container for buttons that don't need a selection */
-					/* .selected_records: container for buttons that need a selection */
-					$this->HTML .= '<div class="btn-group btn-group-lg visible-md visible-lg all_records pull-left">' . $buttons_all . '</div>';
-					$this->HTML .= '<div class="btn-group btn-group-lg visible-md visible-lg selected_records hidden pull-left hspacer-lg">' . ($actual_more_count ? $more_menu : '') . '</div>';
-					$this->HTML .= '<div class="btn-group-vertical btn-group-lg visible-xs visible-sm all_records">' . $buttons_all . '</div>';
-					$this->HTML .= '<div class="btn-group-vertical btn-group-lg visible-xs visible-sm selected_records hidden vspacer-lg">' . ($actual_more_count ? $more_menu : '') . '</div>';
-					$this->HTML .= $this->tv_tools();
-					$this->HTML .= '<p></p>';
-				$this->HTML .= '</div>';
+				// $this->HTML .= '<div id="top_buttons" class="hidden-print">';
+				// 	/* .all_records: container for buttons that don't need a selection */
+				// 	/* .selected_records: container for buttons that need a selection */
+				// 	$this->HTML .= '<div class="btn-group btn-group-lg visible-md visible-lg all_records pull-left">' . $buttons_all . '</div>';
+				// 	$this->HTML .= '<div class="btn-group btn-group-lg visible-md visible-lg selected_records hidden pull-left hspacer-lg">' . ($actual_more_count ? $more_menu : '') . '</div>';
+				// 	$this->HTML .= '<div class="btn-group-vertical btn-group-lg visible-xs visible-sm all_records">' . $buttons_all . '</div>';
+				// 	$this->HTML .= '<div class="btn-group-vertical btn-group-lg visible-xs visible-sm selected_records hidden vspacer-lg">' . ($actual_more_count ? $more_menu : '') . '</div>';
+				// 	$this->HTML .= $this->tv_tools();
+				// 	$this->HTML .= '<p></p>';
+				// $this->HTML .= '</div>';
 
 				$this->HTML .= '<div class="row"><div class="table_view col-xs-12 ' . $this->TVClasses . '">';
 			}
@@ -837,7 +845,7 @@ class DataList{
 
 	// begin table and display table title
 		if(!$this->HideTableView && !($dvprint_x && $this->AllowSelection && $SelectedID) && !$PrintDV && !$Embedded){
-			$this->HTML .= '<div class="table-responsive"><table class="table table-striped table-bordered table-hover">';
+			$this->HTML .= '<div class="table-responsive"><table class="display nowrap table table-hover table-striped table-bordered dataTable">';
 
 			$this->HTML .= '<thead><tr>';
 			if(!$Print_x) $this->HTML .= '<th style="width: 18px;" class="text-center"><input class="hidden-print" type="checkbox" title="' . html_attr($Translation['Select all records']) . '" id="select_all_records"></th>';
@@ -1154,7 +1162,7 @@ class DataList{
 			if($Print_x == '' && $i){ // TV
 				$this->HTML .= '<div class="row pagination-section">';
 					$this->HTML .= '<div class="col-xs-4 col-md-3 col-lg-2 vspacer-lg">';
-						$this->HTML .= '<button onClick="' . $resetSelection . ' document.myform.NoDV.value = 1; return true;" type="submit" name="Previous_x" id="Previous" value="1" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-left"></i> <span class="hidden-xs">' . $Translation['Previous'] . '</span></button>';
+						$this->HTML .= '<button onClick="' . $resetSelection . ' document.myform.NoDV.value = 1; return true;" type="submit" name="Previous_x" id="Previous" value="1" class="btn btn-outline-primary btn-block"><i class="glyphicon glyphicon-chevron-left"></i> <span class="hidden-xs">' . $Translation['Previous'] . '</span></button>';
 					$this->HTML .= '</div>';
 
 					$this->HTML .= '<div class="col-xs-4 col-md-4 col-lg-2 col-md-offset-1 col-lg-offset-3 text-center vspacer-lg">';
@@ -1162,7 +1170,7 @@ class DataList{
 					$this->HTML .= '</div>';
 
 					$this->HTML .= '<div class="col-xs-4 col-md-3 col-lg-2 col-md-offset-1 col-lg-offset-3 text-right vspacer-lg">';
-						$this->HTML .= '<button onClick="'.$resetSelection.' document.myform.NoDV.value=1; return true;" type="submit" name="Next_x" id="Next" value="1" class="btn btn-default btn-block"><span class="hidden-xs">' . $Translation['Next'] . '</span> <i class="glyphicon glyphicon-chevron-right"></i></button>';
+						$this->HTML .= '<button onClick="'.$resetSelection.' document.myform.NoDV.value=1; return true;" type="submit" name="Next_x" id="Next" value="1" class="btn btn-primary btn-block"><span class="hidden-xs">' . $Translation['Next'] . '</span> <i class="glyphicon glyphicon-chevron-right"></i></button>';
 					$this->HTML .= '</div>';
 				$this->HTML .= '</div>';
 			}
@@ -1255,8 +1263,8 @@ class DataList{
 			}
 		}
 
-		$this->HTML .= "</div></form>";
-		$this->HTML .= '</div><div class="col-xs-1 md-hidden lg-hidden"></div></div>';
+		$this->HTML .= "</div></div></div></form>";
+		$this->HTML .= '</div><div class="col-xs-1 md-hidden lg-hidden"></div></div></div>';
 
 		// $this->HTML .= '<font face="garamond">'.html_attr($tvQuery).'</font>';  // uncomment this line for debugging the table view query
 
@@ -1335,23 +1343,21 @@ class DataList{
 
 		ob_start();
 		?>
-		<div class="pull-right flip btn-group vspacer-md tv-tools">
-			<button title="<?php echo html_attr($Translation['hide/show columns']); ?>" type="button" class="btn btn-default tv-toggle" data-toggle="collapse" data-target="#toggle-columns-container"><i class="glyphicon glyphicon-align-justify rotate90"></i></button>
+		<div class="btn-group btn-group-lg visible-md visible-lg all_records pull-left">
+			<button title="<?php echo html_attr($Translation['hide/show columns']); ?>" type="button" class="btn btn-outline-secondary tv-toggle" data-toggle="collapse" data-target="#toggle-columns-container"><i class="fa fa-sliders"></i></button>
 		</div>
 		<div class="pull-right flip btn-group vspacer-md hspacer-md tv-tools">
-			<button title="<?php echo html_attr($Translation['previous column']); ?>" type="button" class="btn btn-default tv-scroll" onclick="AppGini.TVScroll().less()"><i class="glyphicon glyphicon-step-backward"></i></button>
-			<button title="<?php echo html_attr($Translation['next column']); ?>" type="button" class="btn btn-default tv-scroll" onclick="AppGini.TVScroll().more()"><i class="glyphicon glyphicon-step-forward"></i></button>
+			<button title="<?php echo html_attr($Translation['previous column']); ?>" type="button" class="btn btn-outline-secondary tv-scroll" onclick="AppGini.TVScroll().less()"><i class="glyphicon glyphicon-step-backward"></i></button>
+			<button title="<?php echo html_attr($Translation['next column']); ?>" type="button" class="btn btn-outline-secondary tv-scroll" onclick="AppGini.TVScroll().more()"><i class="glyphicon glyphicon-step-forward"></i></button>
 		</div>
-		<div class="clearfix"></div>
-		<div class="collapse" id="toggle-columns-container">
-			<div class="well pull-right flip" style="width: 100%; max-width: 600px;">
-				<div class="row" id="toggle-columns">
-					<div class="col-md-12"><button type="button" class="btn btn-default btn-block" id="show-all-columns"><i class="glyphicon glyphicon-check"></i> <?php echo $Translation['Reset Filters']; ?></button></div>
-					<div class="col-md-12"><button type="button" class="btn btn-default btn-block" id="toggle-columns-collapser" data-toggle="collapse" data-target="#toggle-columns-container"><i class="glyphicon glyphicon-ok"></i> <?php echo $Translation['ok']; ?></button></div>
-				</div>
+		<ul class="dropdown-menu sm container" role="menu" id="toggle-columns-container">
+			<div class="sort-header"><button type="button" class="btn btn-outline-secondary" id="show-all-columns"><i class="glyphicon glyphicon-check"></i> <?php echo $Translation['Reset Filters']; ?></button></div>
+			<div class="sort-body" id="toggle-columns" style="max-height: 300px; overflow: scroll;">
+				<div class="col-md-12" id="toggle-columns-collapser"></div>
 			</div>
+			<div class="sort-footer"><button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#toggle-columns-container"><i class="glyphicon glyphicon-ok"></i> <?php echo $Translation['ok']; ?></button></div>
 			<div class="clearfix"></div>
-		</div>
+		</ul>
 		<script>
 			$j(function(){
 				/**
@@ -1426,7 +1432,7 @@ class DataList{
 
 					/* Add a toggler for the column in the #toggle-columns section */
 					$j(
-						'<div class="col-md-6"><div class="checkbox"><label>' +
+						'<div class="col-md-12"><div class="checkbox"><label>' +
 							'<input type="checkbox" data-col="' + col_class + '" checked> ' + label +
 						'</label></div></div>'
 					).insertBefore('#toggle-columns-collapser');

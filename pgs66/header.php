@@ -64,12 +64,11 @@ $self_baseurl = _baseurl();
 		
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>dist/metisMenu/metisMenu.css">
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>dist/css/sb-admin-2.css">
-		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/plugins/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/css/style.css">
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>dist/font-awesome/css/font-awesome.css">
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/demo/demo.css" />
 		<!-- Morris Charts CSS -->
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>dist/morrisjs/morris.css" >
+		
 
 		<!--[if lt IE 9]>
 			<script src="<?php echo PREPEND_PATH; ?>resources/initializr/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
@@ -88,6 +87,9 @@ $self_baseurl = _baseurl();
 		
 		<script src="<?php echo PREPEND_PATH; ?>dist/metisMenu/metisMenu.js"></script>
 		<script src="<?php echo PREPEND_PATH; ?>dist/js/sb-admin-2.js"></script>
+		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/css/style.css">
+		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/css/style.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.8.1/js/perfect-scrollbar.jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.8.1/js/perfect-scrollbar.min.js"></script>
 		<!-- Morris Charts JavaScript -->
