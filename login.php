@@ -58,5 +58,5 @@
 	</div>
 </div>
 
-<script>document.getElementById('email').focus();</script>
+<script>document.getElementById('username').focus();</script>
 <?php include_once("$currDir/footer.php"); ?>
