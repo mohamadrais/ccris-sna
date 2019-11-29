@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png"> -->
+    <title>Puffer Group</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- chartist CSS -->
+    <link href="plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
+    <link href="plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <link href="plugins/css-chart/css-chart.css" rel="stylesheet">
+    <!-- Calendar CSS -->
+    <link href="plugins/calendar/dist/fullcalendar.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-85622565-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" style="background: white;">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header" style="width: auto;">
+                    <a class="navbar-brand" href="index.html">
+                        <!-- Logo icon -->
+                        <!-- <b> -->
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <!-- <img src="images/logo-icon.png" alt="homepage" class="dark-logo" /> -->
+                            <!-- Light Logo icon -->
+                            <!-- <img src="images/logo-light-icon.png" alt="homepage" class="light-logo" /> -->
+                        <!-- </b> -->
+                        <!--End Logo icon -->
+                        <!-- Logo text -->
+                        <span>
+                         <!-- dark Logo text -->
+                         <!-- <img src="images/logo-text.png" alt="homepage" class="dark-logo" /> -->
+                         <!-- Light Logo text -->    
+                         <img src="images/puffer-logo.png" class="light-logo" alt="homepage" style="max-height: 55px;" /></span> </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar" style="width:1200px;padding-left: 50px;">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">PERSONAL</li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="index.html">Company Dashboard</a></li>
+                                <li><a href="index2.html">Project Register</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav my-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:grey !important;"><i class="fa fa-user-circle" style="font-size: 2rem;vertical-align: middle;"></i></a>
+                            <div class="dropdown-menu dropdown-menu-right animated flipInY">
+                                <ul class="dropdown-user">
+                                    <li>
+                                        <div class="dw-user-box">
+                                            <div class="u-img"><i class="fa fa-user-circle" style="font-size: 5rem;"></i></div>
+                                            <div class="u-text">
+                                                <h4>John Doe</h4>
+                                                <p class="text-muted">johndoe@gmail.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                        </div>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#"><i class="fa fa-retweet"></i> Switch Account</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-12 align-self-center">
+                        <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
+                        <!-- <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol> -->
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-2 col-md-6">
+                        <div class="card">
+                            <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                                <h4 class="card-title m-b-0">My Hours</h4>
+                                <p class="text-muted">This Week</p>
+                                <div class="row">
+                                    <div class="col-12"><span><h2 class="font-light d-inline">33</h2><span class="text-muted">h</span> <h2 class="font-light d-inline">59</h2><span class="text-muted">m</span></span></div>
+                                    <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-2 col-md-6">
+                        <div class="card">
+                            <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                                <h4 class="card-title m-b-0">Project Claimed</h4>
+                                <p class="text-muted">Lump Sum Amount</p>
+                                <div class="row">
+                                    <div class="col-12"><span><span class="text-muted">RM</span> <h2 class="font-light d-inline">40</h2><span class="text-muted">k</span></span></div>
+                                    <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/claim.svg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-2 col-md-6">
+                        <div class="card">
+                            <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                                <h4 class="card-title m-b-0">Inquiries</h4>
+                                <p class="text-muted">This Month</p>
+                                <div class="row">
+                                    <div class="col-12"><span><h2 class="font-light d-inline">2</h2><span class="text-muted">quotes</span></span></div>
+                                    <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/inquiries.svg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-2 col-md-6">
+                        <div class="card">
+                            <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                                <h4 class="card-title m-b-0">Invoices</h4>
+                                <p class="text-muted">Outstanding</p>
+                                <div class="row">
+                                    <div class="col-12"><span><span class="text-muted">RM</span> <h2 class="font-light d-inline">2950</h2></span></div>
+                                    <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/invoice.svg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-2 col-md-6">
+                        <div class="card">
+                            <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                                <h4 class="card-title m-b-0">Revenue</h4>
+                                <p class="text-muted">This Month</p>
+                                <div class="row">
+                                    <div class="col-12"><span><span class="text-muted">RM</span> <h2 class="font-light d-inline">5550</h2></span></div>
+                                    <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/revenue.svg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-2 col-md-6">
+                        <div class="card">
+                            <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                                <h4 class="card-title m-b-0">Payable</h4>
+                                <p class="text-muted">This Month</p>
+                                <div class="row">
+                                    <div class="col-12"><span><span class="text-muted">RM</span> <h2 class="font-light d-inline">141.3</h2><span class="text-muted">k</span></span></div>
+                                    <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/payable.svg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- Row -->
+                <!-- Row -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div id="calendar"></div>
+                                <!-- BEGIN MODAL -->
+                                <div class="modal fade none-border" id="my-event">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title"><strong>Add Event</strong></h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            </div>
+                                            <div class="modal-body"></div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-white waves-effect" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-success save-event waves-effect waves-light">Create event</button>
+                                                <button type="button" class="btn btn-danger delete-event waves-effect waves-light" data-dismiss="modal">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal Add Category -->
+                                <div class="modal fade none-border" id="add-new-event">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title"><strong>Add</strong> a category</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label class="control-label">Category Name</label>
+                                                            <input class="form-control form-white" placeholder="Enter name" type="text" name="category-name" />
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="control-label">Choose Category Color</label>
+                                                            <select class="form-control form-white" data-placeholder="Choose a color..." name="category-color">
+                                                                <option value="success">Success</option>
+                                                                <option value="danger">Danger</option>
+                                                                <option value="info">Info</option>
+                                                                <option value="primary">Primary</option>
+                                                                <option value="warning">Warning</option>
+                                                                <option value="inverse">Inverse</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger waves-effect waves-light save-category" data-dismiss="modal">Save</button>
+                                                <button type="button" class="btn btn-white waves-effect" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END MODAL -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <button class="pull-right btn btn-sm btn-rounded btn-success" data-toggle="modal" data-target="#myModal">Done</button>
+                                <h4 class="card-title">Active Task</h4>
+                                <!-- ============================================================== -->
+                                <!-- To do list widgets -->
+                                <!-- ============================================================== -->
+                                <div class="to-do-widget m-t-20" style="max-height: 350px;overflow: scroll;">
+                                    <!-- /.modal -->
+                                    <ul class="list-task todo-list list-group m-b-0" data-role="tasklist">
+                                        <li class="list-group-item" data-role="task">
+                                            <div class="checkbox checkbox-info">
+                                                <input type="checkbox" id="inputSchedule" name="inputCheckboxesSchedule">
+                                                <label for="inputSchedule" class=""> <span>Schedule meeting with</span> </label>
+                                            </div>
+                                            <div class="item-date"> 26 jun 2017</div>
+                                        </li>
+                                        <li class="list-group-item" data-role="task">
+                                            <div class="checkbox checkbox-info">
+                                                <input type="checkbox" id="inputCall" name="inputCheckboxesCall">
+                                                <label for="inputCall" class=""> <span>Give Purchase report to</span> <span class="label label-light-danger">Today</span> </label>
+                                            </div>
+                                            <div class="item-date"> 26 jun 2017</div>
+                                        </li>
+                                        <li class="list-group-item" data-role="task">
+                                            <div class="checkbox checkbox-info">
+                                                <input type="checkbox" id="inputBook" name="inputCheckboxesBook">
+                                                <label for="inputBook" class=""> <span>Book flight for holiday</span> </label>
+                                            </div>
+                                            <div class="item-date"> 26 jun 2017</div>
+                                        </li>
+                                        <li class="list-group-item" data-role="task">
+                                            <div class="checkbox checkbox-info">
+                                                <input type="checkbox" id="inputForward" name="inputCheckboxesForward">
+                                                <label for="inputForward" class=""> <span>Forward all tasks</span> <span class="label label-light-warning">2 weeks</span> </label>
+                                            </div>
+                                            <div class="item-date"> 26 jun 2017</div>
+                                        </li>
+                                        <li class="list-group-item" data-role="task">
+                                            <div class="checkbox checkbox-info">
+                                                <input type="checkbox" id="inputRecieve" name="inputCheckboxesRecieve">
+                                                <label for="inputRecieve" class=""> <span>Recieve shipment</span> </label>
+                                            </div>
+                                            <div class="item-date"> 26 jun 2017</div>
+                                        </li>
+                                        <li class="list-group-item" data-role="task">
+                                            <div class="checkbox checkbox-info">
+                                                <input type="checkbox" id="inputpayment" name="inputCheckboxespayment">
+                                                <label for="inputpayment" class=""> <span>Send payment today</span> </label>
+                                            </div>
+                                            <div class="item-date"> 26 jun 2017</div>
+                                        </li>
+                                        <li class="list-group-item" data-role="task">
+                                            <div class="checkbox checkbox-info">
+                                                <input type="checkbox" id="inputForward2" name="inputCheckboxesd">
+                                                <label for="inputForward2" class=""> <span>Important tasks</span> <span class="label label-light-success">2 weeks</span> </label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">This Week Leaderboard</h4>
+                                <div class="message-box" style="height: 358px;overflow: scroll;">
+                                    <div class="message-widget">
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="mail-contnet">
+                                                <h5>John Doe</h5> <span class="time">11h 23m</span> </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 70%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="mail-contnet">
+                                                <h5>Harry Potter</h5> <span class="time">9h 41m</span> </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 60%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="mail-contnet">
+                                                <h5>Keanu Reeves</h5> <span class="time">7h 32m</span> </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="mail-contnet">
+                                                <h5>Frodo</h5> <span class="time">7h 15m</span> </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 49%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                        </a>
+                                        <!-- Message -->
+                                        <a href="#">
+                                            <div class="mail-contnet">
+                                                <h5>Luke Skywalker</h5> <span class="time">6h 59m</span> </div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 30%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row -->
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-lg-8 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                    <h4 class="card-title">Buletin</h4>
+                                <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel" style="height: 535px;overflow: hidden;">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carouselExampleIndicators3" data-slide-to="0" class=""></li>
+                                        <li data-target="#carouselExampleIndicators3" data-slide-to="1" class=""></li>
+                                        <li data-target="#carouselExampleIndicators3" data-slide-to="2" class="active"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="carousel-item">
+                                            <img class="img-responsive" src="images/gallery/slider2.jpeg" alt="First slide" style="height: 535px;width:auto;">
+                                            <div class="carousel-caption d-none d-md-block" style="background: #333; padding: 20px; opacity: 0.7;">
+                                                <h3 class="text-white">Thanks ..😎</h3>
+                                                <p style="max-height: 50px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Together we make this transformation happen.</p>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img class="img-responsive" src="images/gallery/slider3.gif" alt="Second slide" style="height: 535px;width:auto;">
+                                            <div class="carousel-caption d-none d-md-block" style="background: #333; padding: 20px; opacity: 0.7;">
+                                                <h3 class="text-white">EMS TRAINING</h3>
+                                                <p style="max-height: 50px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">13/8/2018</p>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item active" style="max-height: 553px;">
+                                            <img class="img-responsive" src="images/gallery/slider1.jpg" alt="Third slide" style="height: 535px;width:auto;">
+                                            <div class="carousel-caption d-none d-md-block" style="background: #333; padding: 20px; opacity: 0.7;">
+                                                <h3 class="text-white">ORGANIZATIONAL TRANSFORMATION</h3>
+                                                <p style="max-height: 50px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Businesses are struggling to keep the pace with rapid rate of change and disruption around. To keep up with the change, businesses try to diversify into newer areas, build products and services to cater to new market needs and innovate. Organizations on their transformation journeys cannot afford to rely only on the technology innovations because innovation is a result of something more deeper – innovation is a result of mindset, behavioral constructs, leadership and culture.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+                                        <i class="fa fa-angle-left" aria-hidden="true" style="font-size: 4rem; color: #333;"></i>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
+                                        <i class="fa fa-angle-right" aria-hidden="true" style="font-size: 4rem; color: #333;"></i>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Complaints</h4>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- Comment widgets -->
+                            <!-- ============================================================== -->
+                            <div class="comment-widgets">
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="comment-text w-100">
+                                        <h5>Unable to log in</h5>
+                                        <p class="m-b-5" style="max-height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.</p>
+                                        <div class="comment-footer">
+                                            <span class="text-muted pull-right">April 14, 2016</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="comment-text w-100">
+                                        <h5>Late Delivery</h5>
+                                        <p class="m-b-5" style="max-height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry..</p>
+                                        <div class="comment-footer ">
+                                            <span class="text-muted pull-right">April 14, 2016</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="comment-text w-100">
+                                        <h5>Missing Items</h5>
+                                        <p class="m-b-5" style="max-height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.</p>
+                                        <div class="comment-footer">
+                                            <span class="text-muted pull-right">April 14, 2016</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="comment-text w-100">
+                                        <h5>Broken Packaging</h5>
+                                        <p class="m-b-5" style="max-height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry..</p>
+                                        <div class="comment-footer">
+                                            <span class="text-muted pull-right">April 14, 2016</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Pie Chart</h4>
+                                <div id="piechart" style="width: 100%; height: 500px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Column Chart</h4>
+                                <div id="columnchart_material" style="width: 100%; height: 500px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Newest Update</h4>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th width="150px">Date</th>
+                                                <th>Data</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 16, 2017</span> </td>
+                                                <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> 6, 6100-2017-006, 1, OIL SPILT, PRESENCE OF HYDRAULIC OIL IN THE YARD'S FLOOR THAT CAN BE CAUSE SLIPS, TRIPS AND FALL TO THE STAFF., Incident R, Safety, 2017-09-21, BB03 : 410.13, IMMEDIATE ACTION:
+
+                                                        CLEAN UP HYDRAULIC OIL BY ABSORBER PAD., ONLY A NEAR MISS ACCIDENT.WITNESS OF ACCIDENT:1   RAIHAN2   JOHAN3   SYAMSUL NIZAM, https://mega.nz/#F!LKpmAYhQ!RWKM_5pookUQOSvzbfWcXQ, 41065200_1535343141.jpg, 2018-08-25 14:41:19, 2019-09-16 00:51:52</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 16, 2017</span> </td>
+                                                <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">  39, 2030_OM_0001, A.K.T CENTURY SDN BHD, General, General, No. 24-1, Jalan Kasuarina 6/KS7 Bandar Botanic, Klang, Central, 41200, Malaysia, 0333191320/ 0126296002, 0333239983, KDN NO: PQ/PP/PP1505 (9410), CIDB Grade: G4
+                                                        CIDB Category: B & CE
+                                                        Specialization: Civil Engineering Work
+                                                        
+                                                        (Co.No.780960-X),  skip to main  |       skip to sidebar   ORDINARY MEMBERA.K.T CENTURY SDN BHD                (Co.No.780960-X)  About Me 03-33191320 , EMAIL : aktcentury2008@yahoo.com  KLANG/BANTING, selangor, MalaysiaView my complete profile     Tuesday, January 19, 2010    Membina lebuhraya persisir pantai dari Johor bahru ke Nusajaya,River Bridge 2, Skudai & Danga bay Bridge( Iskandar) https://www.facebook.com/AKT-Century-SB-296180914365656/, 70219900_1568031040.jpg, 2019-09-09 20:00:59, 2019-09-09 20:21:31</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 16, 2017</span> </td>
+                                                <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">  13, 5050_001 Tiger 845, Technical Task, 1-High Urgency & High Impact, 23, 23, 1, Project, Comp and gearbox service, 2018-12-11, , 44299000_1544409034.jpg, 2, 2018-12-10 10:30:34</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 16, 2017</span> </td>
+                                                <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">  155, 1110_019_A001_007, 81, Tax Invoice for ROV, Tax invoice for demobilization of Tiger 845, 43057.20, , 06654400_1541658270.JPG, 2, 2018-11-08 14:24:30</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 16, 2017</span> </td>
+                                                <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">  154, 1110_019_A002_012, 82, Tax Invoice for ROV Crew, Tax invoice for demobilization of ROV personnel, 20667.46, , 25126800_1541658169.JPG, 2, 2018-11-08 14:22:49</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 16, 2017</span> </td>
+                                                <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> 6, 6100-2017-006, 1, OIL SPILT, PRESENCE OF HYDRAULIC OIL IN THE YARD'S FLOOR THAT CAN BE CAUSE SLIPS, TRIPS AND FALL TO THE STAFF., Incident R, Safety, 2017-09-21, BB03 : 410.13, IMMEDIATE ACTION:
+
+                                                        CLEAN UP HYDRAULIC OIL BY ABSORBER PAD., ONLY A NEAR MISS ACCIDENT.WITNESS OF ACCIDENT:1   RAIHAN2   JOHAN3   SYAMSUL NIZAM, https://mega.nz/#F!LKpmAYhQ!RWKM_5pookUQOSvzbfWcXQ, 41065200_1535343141.jpg, 2018-08-25 14:41:19, 2019-09-16 00:51:52</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Newest Entries</h4>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th width="150px">Date</th>
+                                                <th>Data</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 16, 2017</span> </td>
+                                                <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">  39, 2030_OM_0001, A.K.T CENTURY SDN BHD, General, General, No. 24-1, Jalan Kasuarina 6/KS7 Bandar Botanic, Klang, Central, 41200, Malaysia, 0333191320/ 0126296002, 0333239983, KDN NO: PQ/PP/PP1505 (9410), CIDB Grade: G4
+CIDB Category: B & CE
+Specialization: Civil Engineering Work
+
+(Co.No.780960-X),  skip to main  |       skip to sidebar   ORDINARY MEMBERA.K.T CENTURY SDN BHD                (Co.No.780960-X)  About Me 03-33191320 , EMAIL : aktcentury2008@yahoo.com  KLANG/BANTING, selangor, MalaysiaView my complete profile     Tuesday, January 19, 2010    Membina lebuhraya persisir pantai dari Johor bahru ke Nusajaya,River Bridge 2, Skudai & Danga bay Bridge( Iskandar) https://www.facebook.com/AKT-Century-SB-296180914365656/, 70219900_1568031040.jpg, 2019-09-09 20:00:59, 2019-09-09 20:21:31</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 16, 2017</span> </td>
+                                                <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">   13, 5050_001 Tiger 845, Technical Task, 1-High Urgency & High Impact, 23, 23, 1, Project, Comp and gearbox service, 2018-12-11, , 44299000_1544409034.jpg, 2, 2018-12-10 10:30:34</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 16, 2017</span> </td>
+                                                <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">   155, 1110_019_A001_007, 81, Tax Invoice for ROV, Tax invoice for demobilization of Tiger 845, 43057.20, , 06654400_1541658270.JPG, 2, 2018-11-08 14:24:30</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 16, 2017</span> </td>
+                                                <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">   154, 1110_019_A002_012, 82, Tax Invoice for ROV Crew, Tax invoice for demobilization of ROV personnel, 20667.46, , 25126800_1541658169.JPG, 2, 2018-11-08 14:22:49</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 16, 2017</span> </td>
+                                                <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">   153, 1110_019_A002_011, 82, Tax Invoice for ROV Crew, Tax invoice for ROV crew for 1 Dec to 20 Dec 2017, 130708.74, , 69577900_1541658071.JPG, 2, 2018-11-08 14:21:11</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 16, 2017</span> </td>
+                                                <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> 6, 6100-2017-006, 1, OIL SPILT, PRESENCE OF HYDRAULIC OIL IN THE YARD'S FLOOR THAT CAN BE CAUSE SLIPS, TRIPS AND FALL TO THE STAFF., Incident R, Safety, 2017-09-21, BB03 : 410.13, IMMEDIATE ACTION:
+
+                                                        CLEAN UP HYDRAULIC OIL BY ABSORBER PAD., ONLY A NEAR MISS ACCIDENT.WITNESS OF ACCIDENT:1   RAIHAN2   JOHAN3   SYAMSUL NIZAM, https://mega.nz/#F!LKpmAYhQ!RWKM_5pookUQOSvzbfWcXQ, 41065200_1535343141.jpg, 2018-08-25 14:41:19, 2019-09-16 00:51:52</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row -->
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <div class="right-sidebar">
+                    <div class="slimscrollright">
+                        <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                        <div class="r-panel-body">
+                            <ul id="themecolors" class="m-t-20">
+                                <li><b>With Light sidebar</b></li>
+                                <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
+                                <li><a href="javascript:void(0)" data-theme="green" class="green-theme working">2</a></li>
+                                <li><a href="javascript:void(0)" data-theme="red" class="red-theme">3</a></li>
+                                <li><a href="javascript:void(0)" data-theme="blue" class="blue-theme">4</a></li>
+                                <li><a href="javascript:void(0)" data-theme="purple" class="purple-theme">5</a></li>
+                                <li><a href="javascript:void(0)" data-theme="megna" class="megna-theme">6</a></li>
+                                <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                                <li><a href="javascript:void(0)" data-theme="default-dark" class="default-dark-theme">7</a></li>
+                                <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a></li>
+                                <li><a href="javascript:void(0)" data-theme="red-dark" class="red-dark-theme">9</a></li>
+                                <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme">10</a></li>
+                                <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
+                                <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme ">12</a></li>
+                            </ul>
+                            <ul class="m-t-20 chatonline">
+                                <li><b>Chat option</b></li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)"><img src="images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer">
+                © 2017 Puffer Group
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="plugins/bootstrap/js/popper.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!-- chartist chart -->
+    <script src="plugins/chartist-js/dist/chartist.min.js"></script>
+    <script src="plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+    <!-- Chart JS -->
+    <script src="plugins/echarts/echarts-all.js"></script>
+    <!-- Chart JS -->
+    <script src="js/dashboard1.js"></script>
+    <!-- Calendar JavaScript -->
+    <script src="plugins/moment/moment.js"></script>
+    <script src='plugins/calendar/dist/fullcalendar.min.js'></script>
+    <script src="plugins/calendar/dist/jquery.fullcalendar.js"></script>
+    <script src="plugins/calendar/dist/cal-init.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses', 'Profit'],
+          ['2014', 1000, 400, 200],
+          ['2015', 1170, 460, 250],
+          ['2016', 660, 1120, 300],
+          ['2017', 1030, 540, 350]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Company Performance',
+            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+
+    </script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="plugins/styleswitcher/jQuery.style.switcher.js"></script>
+</body>
+
+</html>
