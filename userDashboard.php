@@ -30,6 +30,7 @@ $block_classes = array(
 );
 ?>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="assets/scss/style.scss">
 <style>
 	.panel-body-description {
 		margin-top: 10px;
@@ -87,6 +88,24 @@ $block_classes = array(
 								//company name
 								?>
 								<div class="w3-container">
+								<div class="card">
+    
+    <div class="front side">
+      <h1 class="logo">Zach Saucier</h1>
+    </div>
+    
+    <div class="back side">
+      <h3 class="name">Zach Saucier</h3>
+      <div>Front-end developer</div>      
+      <div class="info">
+        <p><span class="property">Email: </span>hello@zachsaucier.com</p>
+        <p><span class="property">Twitter: </span>@ZachSaucier</p>
+        <p><span class="property">Phone: </span>(123) 456-7890</p>
+        <p><span class="property">Website: </span>zachsaucier.com</p>
+      </div>
+    </div>
+    
+  </div>
 								<h3>
 									<b><u><?php echo $a ?></b></u>
 								</h3>

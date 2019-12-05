@@ -3262,6 +3262,30 @@
 								<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link"><?php echo getLoggedMemberID(); ?></a></strong>
 							</p>
 						</ul>
+
+						<div class="navbar-collapse">
+							<ul class="navbar-nav my-lg-0">
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:grey !important;"><i class="fa fa-user-circle" style="font-size: 2rem;vertical-align: middle;"></i></a>
+									<div class="dropdown-menu dropdown-menu-right animated flipInY">
+										<ul class="dropdown-user">
+											<li>
+												<div class="dw-user-box">
+													<div class="u-img"><i class="fa fa-user-circle" style="font-size: 5rem;"></i></div>
+													<div class="u-text">
+														<h4><?php echo getLoggedMemberID(); ?></h4>
+														<a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+												</div>
+											</li>
+											<li role="separator" class="divider"></li>
+											<li><a href="<?php echo PREPEND_PATH; ?>../index.php"><i class="fa fa-retweet"></i><?php echo 'Switch Account' ?></a></li>
+											<li role="separator" class="divider"></li>
+											<li><a href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="fa fa-power-off"></i> <?php echo $Translation['sign out']; ?></a></li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</div>
 						<script>
 							/* periodically check if user is still signed in */
 							setInterval(function(){

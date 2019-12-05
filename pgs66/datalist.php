@@ -241,6 +241,18 @@ class DataList{
 
 		$this->ContentType='tableview'; // default content type
 
+		//Floating Action Button
+		$this->HTML .= '<div class="adminActions">
+							<input type="checkbox" name="adminToggle" class="adminToggle" />
+							<a class="adminButton" href="#!"><i class="fa fa-ellipsis-v"></i></a>
+							<div class="adminButtons">
+								<a href="#" title="Show All"><i class="fa fa-th-list"></i></a>
+								<a href="#" title="Filter"><i class="fa fa-filter"></i></a>
+								<a href="#" title="Save CSV"><i class="fa fa-download"></i></a>
+								<a href="#" title="Print"><i class="fa fa-print"></i></a>
+							</div>
+						</div>';
+
 		if($PrintTV != ''){
 			$Print_x = 1;
 			$_REQUEST['Print_x'] = 1;
@@ -845,7 +857,7 @@ class DataList{
 
 	// begin table and display table title
 		if(!$this->HideTableView && !($dvprint_x && $this->AllowSelection && $SelectedID) && !$PrintDV && !$Embedded){
-			$this->HTML .= '<div class="table-responsive"><table class="display nowrap table table-hover table-striped table-bordered dataTable">';
+			$this->HTML .= '<div class="table-responsive"><table class="table">';
 
 			$this->HTML .= '<thead><tr>';
 			if(!$Print_x) $this->HTML .= '<th style="width: 18px;" class="text-center"><input class="hidden-print" type="checkbox" title="' . html_attr($Translation['Select all records']) . '" id="select_all_records"></th>';
