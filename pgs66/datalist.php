@@ -241,17 +241,8 @@ class DataList{
 
 		$this->ContentType='tableview'; // default content type
 
-		//Floating Action Button
-		$this->HTML .= '<div class="adminActions">
-							<input type="checkbox" name="adminToggle" class="adminToggle" />
-							<a class="adminButton" href="#!"><i class="fa fa-ellipsis-v"></i></a>
-							<div class="adminButtons">
-								<a href="#" title="Show All"><i class="fa fa-th-list"></i></a>
-								<a href="#" title="Filter"><i class="fa fa-filter"></i></a>
-								<a href="#" title="Save CSV"><i class="fa fa-download"></i></a>
-								<a href="#" title="Print"><i class="fa fa-print"></i></a>
-							</div>
-						</div>';
+		// //Floating Action Button
+		// $this->HTML .= $fab_buttons;
 
 		if($PrintTV != ''){
 			$Print_x = 1;
@@ -684,6 +675,7 @@ class DataList{
 	// quick search and TV action buttons  
 		if(!$this->HideTableView && !($dvprint_x && $this->AllowSelection && $SelectedID) && !$PrintDV){
 			$buttons_all = $quick_search_html = '';
+			$fab_buttons = '';//$quick_search_html = '';
 
 			if($Print_x == ''){
 
@@ -718,10 +710,38 @@ class DataList{
 				}
 
 				$quick_search_html .= quick_search_html($SearchString, $this->QuickSearchText, $this->SeparateDV);
+
+				/////////////////////////////////////////////////////////////////////////////////
+				//@rais: fyi add button is missing from the floating action button list
+				$fab_buttons = '<div class="adminActions">
+								<input type="checkbox" name="adminToggle" class="adminToggle" />
+								<a class="adminButton" href="#!"><i class="fa fa-ellipsis-v"></i></a>
+								<div class="adminButtons">
+									<button style="width:unset;height:unset;color:unset;border:none;background:none"  onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="NoFilter_x" id="NoFilter" value="1" ><a href="#" title="Show All"><i class="fa fa-th-list"></i></a></button>
+
+									<button style="width:unset;height:unset;color:unset;border:none;background:none" onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="Filter_x" id="Filter" value="1" ><a href="#" title="Filter"><i class="fa fa-filter"></i></a></button>
+
+									<button style="width:unset;height:unset;color:unset;border:none;background:none" onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="CSV_x" id="CSV" value="1" ><a href="#" title="Save CSV"><i class="fa fa-download"></i></a></button>
+
+									<button style="width:unset;height:unset;color:unset;border:none;background:none" onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="Print_x" id="Print" value="1"><a href="#" title="Print"><i class="fa fa-print"></i></a></button>
+								</div>
+							</div>';
 			}else{
 				$buttons_all .= '<button class="btn btn-secondary" type="button" id="sendToPrinter" onClick="window.print();"><i class="glyphicon glyphicon-print"></i> ' . $Translation['Print'] . '</button>';
 				$buttons_all .= '<button class="btn btn-secondary" type="submit"><i class="glyphicon glyphicon-remove-circle"></i> ' . $Translation['Cancel Printing'] . '</button>';
+
+				$fab_buttons = '<div class="adminActions">
+								<input type="checkbox" name="adminToggle" class="adminToggle" />
+								<a class="adminButton" href="#!"><i class="fa fa-ellipsis-v"></i></a>
+								<div class="adminButtons">
+									<button style="width:unset;height:unset;color:unset;border:none;background:none"  type="button" id="sendToPrinter" onClick="window.print();"><a href="#" title="Print"><i class="fa fa-print"></i></a></button>
+									<button style="width:unset;height:unset;color:unset;border:none;background:none"  type="submit"><a href="#" title="Print"><i class="glyphicon glyphicon-remove-circle"></i></a></button>
+								</div>
+							</div>';
 			}
+
+			//Floating Action Button
+			$this->HTML .= $fab_buttons;
 
 			/* if user can print DV, add action to 'More' menu */
 			$selected_records_more = array();
@@ -853,6 +873,7 @@ class DataList{
 			// and for declaring record action handlers
 			$this->HTML .= '<script>jQuery(function(){ jQuery("input[name=SearchString]").focus();  ' . $more_menu_js . ' });</script>';
 
+			
 		}
 
 	// begin table and display table title
