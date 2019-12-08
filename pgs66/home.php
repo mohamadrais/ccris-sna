@@ -296,7 +296,366 @@
 	<iframe id="AccountPayables_view" frameborder="0" style="display:none" src="AccountPayables_view.php"></iframe>
 	<iframe id="ClaimRecord_view" frameborder="0" style="display:none" src="ClaimRecord_view.php"></iframe>
 
-	
+	<!-- ============================================================== -->
+	<!-- Container fluid  -->
+	<!-- ============================================================== -->
+	<div class="container-fluid">
+		<!-- ============================================================== -->
+		<!-- Bread crumb and right sidebar toggle -->
+		<!-- ============================================================== -->
+		<div class="row page-titles">
+			<div class="col-md-12 align-self-center">
+				<h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
+				<!-- <ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+					<li class="breadcrumb-item active">Dashboard</li>
+				</ol> -->
+			</div>
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Bread crumb and right sidebar toggle -->
+		<!-- ============================================================== -->
+		<!-- ============================================================== -->
+		<!-- Start Page Content -->
+		<!-- ============================================================== -->
+		<!-- Row -->
+		<div class="row">
+			<!-- Column -->
+			<div class="col-lg-2 col-md-6 pr-2">
+				<div class="card my-3">
+					<div class="card-body" style="max-height: 140px; overflow: hidden;">
+						<h4 class="card-title m-b-0">My Hours</h4>
+						<p class="text-muted">This Week</p>
+						<div class="row">
+							<div class="col-12"><span><h2 class="font-light d-inline">33</h2><span class="text-muted">h</span> <h2 class="font-light d-inline">59</h2><span class="text-muted">m</span></span></div>
+							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Column -->
+			<!-- Column -->
+			<div class="col-lg-2 col-md-6 px-2">
+				<div class="card my-3">
+					<div class="card-body" style="max-height: 140px; overflow: hidden;">
+						<h4 class="card-title m-b-0">Project Claimed</h4>
+						<p class="text-muted">Lump Sum Amount</p>
+						<div class="row">
+							<div class="col-12"><span><span class="text-muted">RM</span> <h2 class="font-light d-inline">40</h2><span class="text-muted">k</span></span></div>
+							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/claim.svg">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Column -->
+			<!-- Column -->
+			<div class="col-lg-2 col-md-6 px-2">
+				<div class="card my-3">
+					<div class="card-body" style="max-height: 140px; overflow: hidden;">
+						<h4 class="card-title m-b-0">Inquiries</h4>
+						<p class="text-muted">This Month</p>
+						<div class="row">
+							<div class="col-12"><span><h2 class="font-light d-inline">2</h2><span class="text-muted">quotes</span></span></div>
+							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/inquiries.svg">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Column -->
+			<!-- Column -->
+			<div class="col-lg-2 col-md-6 px-2">
+				<div class="card my-3">
+					<div class="card-body" style="max-height: 140px; overflow: hidden;">
+						<h4 class="card-title m-b-0">Invoices</h4>
+						<p class="text-muted">Outstanding</p>
+						<div class="row">
+							<div class="col-12"><span><span class="text-muted">RM</span> <h2 class="font-light d-inline">2950</h2></span></div>
+							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/invoice.svg">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Column -->
+			<!-- Column -->
+			<div class="col-lg-2 col-md-6 px-2">
+				<div class="card my-3">
+					<div class="card-body" style="max-height: 140px; overflow: hidden;">
+						<h4 class="card-title m-b-0">Revenue</h4>
+						<p class="text-muted">This Month</p>
+						<div class="row">
+							<div class="col-12"><span><span class="text-muted">RM</span> <h2 class="font-light d-inline">5550</h2></span></div>
+							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/revenue.svg">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Column -->
+			<!-- Column -->
+			<div class="col-lg-2 col-md-6 pl-2">
+				<div class="card my-3">
+					<div class="card-body" style="max-height: 140px; overflow: hidden;">
+						<h4 class="card-title m-b-0">Payable</h4>
+						<p class="text-muted">This Month</p>
+						<div class="row">
+							<div class="col-12"><span><span class="text-muted">RM</span> <h2 class="font-light d-inline">141.3</h2><span class="text-muted">k</span></span></div>
+							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/payable.svg">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Column -->
+		</div>
+		<!-- Row -->
+		<!-- Row -->
+		<div class="row">
+			<!-- Column -->
+			<div class="col-lg-4 pr-2">
+				<div class="card my-3">
+					<div class="card-body">
+					<h4 class="card-title">Calender - Weekly</h4>
+						<!-- ============================================================== -->
+						<!-- To do list widgets -->
+						<!-- ============================================================== -->
+						<div class="to-do-widget m-t-20" style="max-height: 350px;overflow: scroll;">
+							<!-- /.modal -->
+							<ul class="list-task todo-list list-group m-b-0">
+								<li class="list-group-item">
+									<h5>Schedule meeting with<span class="label label-light-warning">On Going</span> </h5>
+									<div class="item-date"> 26 jun 2017</div>
+								</li>
+								<li class="list-group-item">
+									<h5>Give Purchase report to<span class="label label-light-danger">On Hold</span> </h5>
+									<div class="item-date"> 26 jun 2017</div>
+								</li>
+								<li class="list-group-item">
+									<h5>Book flight for holiday<span class="label label-light-warning">On Going</span> </h5>
+									<div class="item-date"> 26 jun 2017</div>
+								</li>
+								<li class="list-group-item">
+									<h5>Forward all tasks<span class="label label-light-danger">On Hold</span> </h5>
+									<div class="item-date"> 26 jun 2017</div>
+								</li>
+								<li class="list-group-item">
+									<h5>Recieve shipment<span class="label label-light-danger">On Hold</span> </h5>
+									<div class="item-date"> 26 jun 2017</div>
+								</li>
+								<li class="list-group-item">
+									<h5>Send payment today<span class="label label-light-warning">On Going</span> </h5>
+									<div class="item-date"> 26 jun 2017</div>
+								</li>
+								<li class="list-group-item">
+									<h5>Important tasks<span class="label label-light-warning">On Going</span> </h5>
+									<div class="item-date"> 26 jun 2017</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 px-2">
+				<div class="card my-3">
+					<div class="card-body">
+						<h4 class="card-title">Active Task</h4>
+						<!-- ============================================================== -->
+						<!-- To do list widgets -->
+						<!-- ============================================================== -->
+						<div class="to-do-widget m-t-20" style="max-height: 350px;overflow: scroll;">
+							<!-- /.modal -->
+							<ul class="list-task todo-list list-group m-b-0">
+								<li class="list-group-item">
+									<h5>Schedule meeting with<span class="label label-light-warning">On Going</span> </h5>
+									<div class="item-date"> 26 jun 2017</div>
+								</li>
+								<li class="list-group-item">
+									<h5>Give Purchase report to<span class="label label-light-danger">On Hold</span> </h5>
+									<div class="item-date"> 26 jun 2017</div>
+								</li>
+								<li class="list-group-item">
+									<h5>Book flight for holiday<span class="label label-light-warning">On Going</span> </h5>
+									<div class="item-date"> 26 jun 2017</div>
+								</li>
+								<li class="list-group-item">
+									<h5>Forward all tasks<span class="label label-light-danger">On Hold</span> </h5>
+									<div class="item-date"> 26 jun 2017</div>
+								</li>
+								<li class="list-group-item">
+									<h5>Recieve shipment<span class="label label-light-danger">On Hold</span> </h5>
+									<div class="item-date"> 26 jun 2017</div>
+								</li>
+								<li class="list-group-item">
+									<h5>Send payment today<span class="label label-light-warning">On Going</span> </h5>
+									<div class="item-date"> 26 jun 2017</div>
+								</li>
+								<li class="list-group-item">
+									<h5>Important tasks<span class="label label-light-warning">On Going</span> </h5>
+									<div class="item-date"> 26 jun 2017</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 pl-2">
+				<div class="card my-3">
+					<div class="card-body">
+						<h4 class="card-title">This Week Leaderboard</h4>
+						<div class="message-box" style="height: 358px;overflow: scroll;">
+							<div class="message-widget">
+								<!-- Message -->
+								<a href="#">
+									<div class="mail-contnet">
+										<h5>John Doe</h5> <span class="time">11h 23m</span> </div>
+										<div class="progress">
+											<div class="progress-bar bg-info" role="progressbar" style="width: 70%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+										</div>
+								</a>
+								<!-- Message -->
+								<a href="#">
+									<div class="mail-contnet">
+										<h5>Harry Potter</h5> <span class="time">9h 41m</span> </div>
+										<div class="progress">
+											<div class="progress-bar bg-info" role="progressbar" style="width: 60%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+										</div>
+								</a>
+								<!-- Message -->
+								<a href="#">
+									<div class="mail-contnet">
+										<h5>Keanu Reeves</h5> <span class="time">7h 32m</span> </div>
+										<div class="progress">
+											<div class="progress-bar bg-info" role="progressbar" style="width: 50%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+										</div>
+								</a>
+								<!-- Message -->
+								<a href="#">
+									<div class="mail-contnet">
+										<h5>Frodo</h5> <span class="time">7h 15m</span> </div>
+										<div class="progress">
+											<div class="progress-bar bg-info" role="progressbar" style="width: 49%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+										</div>
+								</a>
+								<!-- Message -->
+								<a href="#">
+									<div class="mail-contnet">
+										<h5>Luke Skywalker</h5> <span class="time">6h 59m</span> </div>
+										<div class="progress">
+											<div class="progress-bar bg-info" role="progressbar" style="width: 30%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+										</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Row -->
+		<!-- Row -->
+		<div class="row">
+			<div class="col-lg-8 col-md-12 pr-2">
+				<div class="card my-3">
+					<div class="card-body">
+							<h4 class="card-title">Buletin</h4>
+						<div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel" style="height: 535px;overflow: hidden;">
+							<ol class="carousel-indicators">
+								<li data-target="#carouselExampleIndicators3" data-slide-to="0" class=""></li>
+								<li data-target="#carouselExampleIndicators3" data-slide-to="1" class=""></li>
+								<li data-target="#carouselExampleIndicators3" data-slide-to="2" class="active"></li>
+							</ol>
+							<div class="carousel-inner" role="listbox">
+								<div class="carousel-item">
+									<img class="img-responsive" src="images/gallery/slider2.jpeg" alt="First slide" style="height: 535px;width:auto;">
+									<div class="carousel-caption d-none d-md-block" style="background: #333; padding: 20px; opacity: 0.7;">
+										<h3 class="text-white">Thanks ..😎</h3>
+										<p style="max-height: 50px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Together we make this transformation happen.</p>
+									</div>
+								</div>
+								<div class="carousel-item">
+									<img class="img-responsive" src="images/gallery/slider3.gif" alt="Second slide" style="height: 535px;width:auto;">
+									<div class="carousel-caption d-none d-md-block" style="background: #333; padding: 20px; opacity: 0.7;">
+										<h3 class="text-white">EMS TRAINING</h3>
+										<p style="max-height: 50px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">13/8/2018</p>
+									</div>
+								</div>
+								<div class="carousel-item active" style="max-height: 553px;">
+									<img class="img-responsive" src="images/gallery/slider1.jpg" alt="Third slide" style="height: 535px;width:auto;">
+									<div class="carousel-caption d-none d-md-block" style="background: #333; padding: 20px; opacity: 0.7;">
+										<h3 class="text-white">ORGANIZATIONAL TRANSFORMATION</h3>
+										<p style="max-height: 50px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Businesses are struggling to keep the pace with rapid rate of change and disruption around. To keep up with the change, businesses try to diversify into newer areas, build products and services to cater to new market needs and innovate. Organizations on their transformation journeys cannot afford to rely only on the technology innovations because innovation is a result of something more deeper – innovation is a result of mindset, behavioral constructs, leadership and culture.
+										</p>
+									</div>
+								</div>
+							</div>
+							<a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+								<i class="fa fa-angle-left" aria-hidden="true" style="font-size: 4rem; color: #333;"></i>
+								<span class="sr-only">Previous</span>
+							</a>
+							<a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
+								<i class="fa fa-angle-right" aria-hidden="true" style="font-size: 4rem; color: #333;"></i>
+								<span class="sr-only">Next</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-12 pl-2">
+				<div class="card my-3">
+					<div class="card-body">
+						<h4 class="card-title">Complaints</h4>
+					</div>
+					<!-- ============================================================== -->
+					<!-- Comment widgets -->
+					<!-- ============================================================== -->
+					<div class="comment-widgets">
+						<!-- Comment Row -->
+						<div class="d-flex flex-row comment-row">
+							<div class="w-100">
+								<h5>Unable to log in</h5>
+								<p class="m-b-5" style="max-height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.</p>
+								<div class="comment-footer">
+									<span class="text-muted pull-right">April 14, 2016</span>
+								</div>
+							</div>
+						</div>
+						<!-- Comment Row -->
+						<div class="d-flex flex-row comment-row">
+							<div class="w-100">
+								<h5>Late Delivery</h5>
+								<p class="m-b-5" style="max-height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry..</p>
+								<div class="comment-footer ">
+									<span class="text-muted pull-right">April 14, 2016</span>
+								</div>
+							</div>
+						</div>
+						<!-- Comment Row -->
+						<div class="d-flex flex-row comment-row">
+							<div class="w-100">
+								<h5>Missing Items</h5>
+								<p class="m-b-5" style="max-height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.</p>
+								<div class="comment-footer">
+									<span class="text-muted pull-right">April 14, 2016</span>
+								</div>
+							</div>
+						</div>
+						<!-- Comment Row -->
+						<div class="d-flex flex-row comment-row">
+							<div class="w-100">
+								<h5>Broken Packaging</h5>
+								<p class="m-b-5" style="max-height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry..</p>
+								<div class="comment-footer">
+									<span class="text-muted pull-right">April 14, 2016</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ============================================================== -->
+		<!-- End PAge Content -->
+		<!-- ============================================================== -->
+	</div>
+	<!-- ============================================================== -->
+	<!-- End Container fluid  -->
+	<!-- ============================================================== -->
 
 </div>
 <footer class="footerd">

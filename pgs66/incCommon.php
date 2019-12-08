@@ -3215,7 +3215,62 @@
 		$home_page = (basename($_SERVER['PHP_SELF'])=='index.php' ? true : false);
 
 		?>
-		<nav class="navbar navbar-default navbar-fixed-top hidden-print" role="navigation">
+<header class="topbar" style="position: fixed; top: 0px; width: 1440px;">
+	<nav class="navbar top-navbar navbar-expand-md navbar-light">
+		<!-- ============================================================== -->
+		<!-- Logo -->
+		<!-- ============================================================== -->
+		<div class="navbar-header">
+			<a class="navbar-brand" href="<?php echo PREPEND_PATH; ?>index.php">
+				<!-- Logo icon --><b>
+					<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+					<!-- Dark Logo icon -->
+					<img src="images/logo/icon.png" alt="homepage" class="icon dark-logo">
+					<!-- Light Logo icon -->
+					<img src="images/logo/light-icon.png" alt="homepage" class="light-logo">
+				</b>
+				<!--End Logo icon -->
+				<!-- Logo text --><span>
+					<!-- dark Logo text -->
+					<img src="images/logo/text.png" alt="homepage" class="text dark-logo">
+					<!-- Light Logo text -->    
+					<img src="images/logo/light-text.png" class="light-logo" alt="homepage"></span> </a>
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Logo -->
+		<!-- ============================================================== -->
+		
+		<div class="navbar-collapse">
+			<ul class="navbar-nav mr-auto mt-md-0 "></ul>
+			<ul class="navbar-nav my-lg-0">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:grey !important;"><i class="fa fa-user-circle" style="font-size: 2rem;vertical-align: middle;"></i></a>
+					<div class="dropdown-menu dropdown-menu-right animated flipInY">
+						<ul class="dropdown-user">
+							<li>
+								<div class="dw-user-box">
+									<div class="u-img"><i class="fa fa-user-circle" style="font-size: 5rem;"></i></div>
+									<div class="u-text">
+										<h4><?php echo getLoggedMemberID(); ?></h4>
+										<a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+								</div>
+							</li>
+							<li role="separator" class="divider"></li>
+							<li><a href="<?php echo PREPEND_PATH; ?>../index.php"><i class="fa fa-retweet"></i><?php echo 'Switch Account' ?></a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="fa fa-power-off"></i> <?php echo $Translation['sign out']; ?></a></li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</header>
+<aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+		<nav class="sidebar-nav active" role="navigation">
 			<div class="navbar-header">
 				<?php if(!$_GET['signIn']) { ?>
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -3226,10 +3281,9 @@
 				</button>
 				<?php } ?>
 				<!-- application title is obtained from the name besides the yellow database icon in AppGini, use underscores for spaces -->
-				<a class="navbar-brand" href="<?php echo PREPEND_PATH; ?>index.php"><img src="../assets/images/puffer-logo.png" /></a>
-				<a class="btn navbar-btn btn-default" style="position:absolute;right:0px" href="<?php echo PREPEND_PATH; ?>../index.php"><i class="glyphicon glyphicon-retweet"></i>&nbsp;&nbsp;&nbsp;<?php echo 'Switch Account' ?></a>
+				<!-- <a class="btn navbar-btn btn-default" style="position:absolute;right:0px" href="<?php echo PREPEND_PATH; ?>../index.php"><i class="glyphicon glyphicon-retweet"></i>&nbsp;&nbsp;&nbsp;<?php echo 'Switch Account' ?></a> -->
 			</div>
-			<ul class="nav navbar-nav" id="upperNav" class="top-menu" style="display: inline-block;">
+			<ul class="in" id="sidebarnav" class="top-menu" style="display: inline-block;">
 					<?php /*if(!$home_page){ */?>
 						<?php echo NavMenus(); ?>
 					<?php /*} */?>
@@ -3250,10 +3304,10 @@
 							<?php echo $Translation['not signed in']; ?>
 						</p>
 					<?php }else{ ?>
-						<ul class="nav navbar-nav navbar-right hidden-xs" style="min-width: 330px;">
+						<!-- <ul class="nav navbar-nav navbar-right hidden-xs" style="min-width: 330px;">
 							<a class="btn navbar-btn btn-default" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
-							<p class="navbar-text whiteColor">
-								<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link whiteColor"><?php echo getLoggedMemberID(); ?></a></strong>
+							<p class="navbar-text">
+								<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link"><?php echo getLoggedMemberID(); ?></a></strong>
 							</p>
 						</ul>
 						<ul class="nav navbar-nav visible-xs">
@@ -3261,31 +3315,8 @@
 							<p class="navbar-text text-center">
 								<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link"><?php echo getLoggedMemberID(); ?></a></strong>
 							</p>
-						</ul>
+						</ul> -->
 
-						<div class="navbar-collapse">
-							<ul class="navbar-nav my-lg-0">
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:grey !important;"><i class="fa fa-user-circle" style="font-size: 2rem;vertical-align: middle;"></i></a>
-									<div class="dropdown-menu dropdown-menu-right animated flipInY">
-										<ul class="dropdown-user">
-											<li>
-												<div class="dw-user-box">
-													<div class="u-img"><i class="fa fa-user-circle" style="font-size: 5rem;"></i></div>
-													<div class="u-text">
-														<h4><?php echo getLoggedMemberID(); ?></h4>
-														<a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
-												</div>
-											</li>
-											<li role="separator" class="divider"></li>
-											<li><a href="<?php echo PREPEND_PATH; ?>../index.php"><i class="fa fa-retweet"></i><?php echo 'Switch Account' ?></a></li>
-											<li role="separator" class="divider"></li>
-											<li><a href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="fa fa-power-off"></i> <?php echo $Translation['sign out']; ?></a></li>
-										</ul>
-									</div>
-								</li>
-							</ul>
-						</div>
 						<script>
 							/* periodically check if user is still signed in */
 							setInterval(function(){
@@ -3308,6 +3339,10 @@
 				</ul>
 			</div>
 		</nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
 		<?php
 
 		$html = ob_get_contents();

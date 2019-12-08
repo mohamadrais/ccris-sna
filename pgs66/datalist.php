@@ -719,11 +719,11 @@ class DataList{
 								<div class="adminButtons">
 									<button style="width:unset;height:unset;color:unset;border:none;background:none"  onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="NoFilter_x" id="NoFilter" value="1" ><a href="#" title="Show All"><i class="fa fa-th-list"></i></a></button>
 
-									<button style="width:unset;height:unset;color:unset;border:none;background:none" onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="Filter_x" id="Filter" value="1" ><a href="#" title="Filter"><i class="fa fa-filter"></i></a></button>
+									<button style="width:unset;height:unset;color:unset;border:none;background:none" onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="Filter_x" id="Filter" value="2" ><a href="#" title="Filter"><i class="fa fa-filter"></i></a></button>
 
-									<button style="width:unset;height:unset;color:unset;border:none;background:none" onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="CSV_x" id="CSV" value="1" ><a href="#" title="Save CSV"><i class="fa fa-download"></i></a></button>
+									<button style="width:unset;height:unset;color:unset;border:none;background:none" onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="CSV_x" id="CSV" value="3" ><a href="#" title="Save CSV"><i class="fa fa-download"></i></a></button>
 
-									<button style="width:unset;height:unset;color:unset;border:none;background:none" onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="Print_x" id="Print" value="1"><a href="#" title="Print"><i class="fa fa-print"></i></a></button>
+									<button style="width:unset;height:unset;color:unset;border:none;background:none" onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="Print_x" id="Print" value="4"><a href="#" title="Print"><i class="fa fa-print"></i></a></button>
 								</div>
 							</div>';
 			}else{

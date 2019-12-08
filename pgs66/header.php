@@ -73,6 +73,20 @@ $self_baseurl = _baseurl();
 		<!--[if lt IE 9]>
 			<script src="<?php echo PREPEND_PATH; ?>resources/initializr/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 		<![endif]-->
+		<script src="<?php echo PREPEND_PATH; ?>assets/plugins/jquery.min.js"></script>
+   		<!-- Bootstrap tether Core JavaScript -->
+		<script src="<?php echo PREPEND_PATH; ?>assets/plugins/bootstrap/js/popper.min.js"></script>
+		<script src="<?php echo PREPEND_PATH; ?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+		<!-- slimscrollbar scrollbar JavaScript -->
+		<script src="<?php echo PREPEND_PATH; ?>assets/js/jquery.slimscroll.js"></script>
+		<!--Wave Effects -->
+		<script src="<?php echo PREPEND_PATH; ?>assets/js/waves.js"></script>
+		<!--Menu sidebar -->
+		<script src="<?php echo PREPEND_PATH; ?>assets/js/sidebarmenu.js"></script>
+		<!--stickey kit -->
+		<script src="<?php echo PREPEND_PATH; ?>assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+		<!--Custom JavaScript -->
+		<script src="<?php echo PREPEND_PATH; ?>assets/js/custom.min.js"></script>
 		<script src="<?php echo PREPEND_PATH; ?>resources/jquery/js/jquery-1.12.4.min.js"></script>
 		<script>var $j = jQuery.noConflict();</script>
 		<script src="<?php echo PREPEND_PATH; ?>resources/jquery/js/jquery.mark.min.js"></script>
@@ -87,9 +101,9 @@ $self_baseurl = _baseurl();
 		
 		<script src="<?php echo PREPEND_PATH; ?>dist/metisMenu/metisMenu.js"></script>
 		<script src="<?php echo PREPEND_PATH; ?>dist/js/sb-admin-2.js"></script>
-		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/plugins/bootstrap/css/bootstrap.min.css">
-		<!-- <link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/css/style.css"> -->
-		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/css/style.css">
+		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/css/style.css">
+		<!-- <link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/css/style.css"> -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.8.1/js/perfect-scrollbar.jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.8.1/js/perfect-scrollbar.min.js"></script>
 		<!-- Morris Charts JavaScript -->
