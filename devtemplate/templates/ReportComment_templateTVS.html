@@ -1,0 +1,11 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the ReportComment_init() hook (in hooks/ReportComment.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="ReportComment-PostID-<%%VALUE(RunningID)%%>" class="ReportComment-PostID text-right"><%%VALUE(PostID)%%></td>
+		<td id="ReportComment-TextPost-<%%VALUE(RunningID)%%>" class="ReportComment-TextPost"><%%VALUE(TextPost)%%></td>
+		<td id="ReportComment-filed-<%%VALUE(RunningID)%%>" class="ReportComment-filed"><%%VALUE(filed)%%></td>
+		<td id="ReportComment-last_modified-<%%VALUE(RunningID)%%>" class="ReportComment-last_modified"><%%VALUE(last_modified)%%></td>

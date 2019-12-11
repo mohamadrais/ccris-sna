@@ -1,0 +1,16 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the DailyProgressReport_init() hook (in hooks/DailyProgressReport.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="DailyProgressReport-ProgressReportId-<%%VALUE(id)%%>" class="DailyProgressReport-ProgressReportId"><%%VALUE(ProgressReportId)%%></td>
+		<td id="DailyProgressReport-DPRID-<%%VALUE(id)%%>" class="DailyProgressReport-DPRID text-right"><%%VALUE(DPRID)%%></td>
+		<td id="DailyProgressReport-fo_Class-<%%VALUE(id)%%>" class="DailyProgressReport-fo_Class"><%%VALUE(fo_Class)%%></td>
+		<td id="DailyProgressReport-fo_DocItem-<%%VALUE(id)%%>" class="DailyProgressReport-fo_DocItem"><%%VALUE(fo_DocItem)%%></td>
+		<td id="DailyProgressReport-ot_ap_Review-<%%VALUE(id)%%>" class="DailyProgressReport-ot_ap_Review"><%%VALUE(ot_ap_Review)%%></td>
+		<td id="DailyProgressReport-ot_ap_Approval-<%%VALUE(id)%%>" class="DailyProgressReport-ot_ap_Approval"><%%VALUE(ot_ap_Approval)%%></td>
+		<td id="DailyProgressReport-ot_ap_QC-<%%VALUE(id)%%>" class="DailyProgressReport-ot_ap_QC"><%%VALUE(ot_ap_QC)%%></td>
+		<td id="DailyProgressReport-ot_ap_filed-<%%VALUE(id)%%>" class="DailyProgressReport-ot_ap_filed"><%%VALUE(ot_ap_filed)%%></td>
+		<td id="DailyProgressReport-ot_ap_lastmodified-<%%VALUE(id)%%>" class="DailyProgressReport-ot_ap_lastmodified"><%%VALUE(ot_ap_lastmodified)%%></td>

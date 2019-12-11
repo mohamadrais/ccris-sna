@@ -1,0 +1,17 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the VenPerformance_init() hook (in hooks/VenPerformance.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="VenPerformance-VendPerfNumber-<%%VALUE(id)%%>" class="VenPerformance-VendPerfNumber"><%%SELECT%%><%%VALUE(VendPerfNumber)%%><%%ENDSELECT%%></td>
+		<td id="VenPerformance-DocItem-<%%VALUE(id)%%>" class="VenPerformance-DocItem"><%%SELECT%%><%%VALUE(DocItem)%%><%%ENDSELECT%%></td>
+		<td id="VenPerformance-fo_SupplierID-<%%VALUE(id)%%>" class="VenPerformance-fo_SupplierID"><%%SELECT%%><%%VALUE(fo_SupplierID)%%><%%ENDSELECT%%></td>
+		<td id="VenPerformance-fo_NewList-<%%VALUE(id)%%>" class="VenPerformance-fo_NewList text-right"><%%SELECT%%><%%VALUE(fo_NewList)%%><%%ENDSELECT%%></td>
+		<td id="VenPerformance-fo_Classification-<%%VALUE(id)%%>" class="VenPerformance-fo_Classification"><%%SELECT%%><%%VALUE(fo_Classification)%%><%%ENDSELECT%%></td>
+		<td id="VenPerformance-ot_ap_Review-<%%VALUE(id)%%>" class="VenPerformance-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="VenPerformance-ot_ap_Approval-<%%VALUE(id)%%>" class="VenPerformance-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="VenPerformance-ot_ap_QC-<%%VALUE(id)%%>" class="VenPerformance-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="VenPerformance-ot_ap_filed-<%%VALUE(id)%%>" class="VenPerformance-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="VenPerformance-ot_ap_lastmodified-<%%VALUE(id)%%>" class="VenPerformance-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

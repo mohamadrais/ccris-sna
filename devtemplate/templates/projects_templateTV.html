@@ -1,0 +1,17 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the projects_init() hook (in hooks/projects.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="projects-projectID-<%%VALUE(Id)%%>" class="projects-projectID"><%%SELECT%%><%%VALUE(projectID)%%><%%ENDSELECT%%></td>
+		<td id="projects-Name-<%%VALUE(Id)%%>" class="projects-Name"><%%SELECT%%><%%VALUE(Name)%%><%%ENDSELECT%%></td>
+		<td id="projects-fo_ProjectIndication-<%%VALUE(Id)%%>" class="projects-fo_ProjectIndication"><%%SELECT%%><%%VALUE(fo_ProjectIndication)%%><%%ENDSELECT%%></td>
+		<td id="projects-fo_StartDate-<%%VALUE(Id)%%>" class="projects-fo_StartDate"><%%SELECT%%><%%VALUE(fo_StartDate)%%><%%ENDSELECT%%></td>
+		<td id="projects-fo_EndDate-<%%VALUE(Id)%%>" class="projects-fo_EndDate"><%%SELECT%%><%%VALUE(fo_EndDate)%%><%%ENDSELECT%%></td>
+		<td id="projects-ot_ap_Review-<%%VALUE(Id)%%>" class="projects-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="projects-ot_ap_Approval-<%%VALUE(Id)%%>" class="projects-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="projects-ot_ap_QC-<%%VALUE(Id)%%>" class="projects-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="projects-ot_ap_filed-<%%VALUE(Id)%%>" class="projects-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="projects-ot_ap_lastmodified-<%%VALUE(Id)%%>" class="projects-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

@@ -1,0 +1,455 @@
+<!-- Edit this file to change the layout of the detail view form -->
+
+<a name="detail-view"></a>
+<div class="panel-heading"><h3 class="panel-title"><strong><%%DETAIL_VIEW_TITLE%%></strong></h3></div>
+
+<div class="panel-body" id="TeamSoftBoard_dv_container">
+	<!-- child links -->
+	<div class="row vspacer-md">
+		<div class="col-xs-12">
+			<input type="hidden" id="SoftboardComment_hclink" value="SoftboardComment_view.php?filterer_PostID=<%%URLVALUE(Postid)%%>&<%%EMBEDDED%%>">
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<hr class="hidden-xs hidden-sm">
+
+	<div class="row">
+		<!-- form inputs -->
+		<div class="col-md-8 col-lg-10" id="TeamSoftBoard_dv_form">
+			<fieldset class="form-horizontal">
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label for="Postid" class="control-label col-lg-3">ID</label>
+					<div class="col-lg-9">
+						<div class="form-control-static" id="Postid"><%%VALUE(Postid)%%></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label for="Title" class="control-label col-lg-3">Post Title<span class="text-danger"><%%TRANSLATION(*)%%></span> <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#Title-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="Title-description"><div class="alert alert-info">Posting on the softboard for public view</div></span>
+
+						<input maxlength="250" type="text" class="form-control" name="Title" id="Title" value="<%%VALUE(Title)%%>" required><div class="text-danger vspacer-md" id="Title-uniqueness-note" style="display: none;"><%%TRANSLATION(unique field error)%%></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3">Image_1 <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#image01-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="image01-description"><div class="alert alert-info">Maximum file size allowed: 10000 KB.<br>Allowed file types: jpg, jpeg, gif, png</div></span>
+
+						<div class="form-control-static"><div class="pull-left">
+
+						<img src="<%%TRANSLATION(ImageFolder)%%><%%VALUE(image01)%%>" class="img-responsive img-thumbnail" id="image01-image">
+</div>
+
+												<div class="pull-right" style="overflow-x: hidden;">
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(image01)%%>
+							<%%REMOVEFILE(image01)%%>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3">Image_2 <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#image02-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="image02-description"><div class="alert alert-info">Maximum file size allowed: 10000 KB.<br>Allowed file types: jpg, jpeg, gif, png</div></span>
+
+						<div class="form-control-static"><div class="pull-left">
+
+						<img src="<%%TRANSLATION(ImageFolder)%%><%%VALUE(image02)%%>" class="img-responsive img-thumbnail" id="image02-image">
+</div>
+
+												<div class="pull-right" style="overflow-x: hidden;">
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(image02)%%>
+							<%%REMOVEFILE(image02)%%>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3">Image_3 <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#image03-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="image03-description"><div class="alert alert-info">Maximum file size allowed: 10000 KB.<br>Allowed file types: jpg, jpeg, gif, png</div></span>
+
+						<div class="form-control-static"><div class="pull-left">
+
+						<img src="<%%TRANSLATION(ImageFolder)%%><%%VALUE(image03)%%>" class="img-responsive img-thumbnail" id="image03-image">
+</div>
+
+												<div class="pull-right" style="overflow-x: hidden;">
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(image03)%%>
+							<%%REMOVEFILE(image03)%%>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label for="TextPost" class="control-label col-lg-3">Detail Posting</label>
+					<div class="col-lg-9">
+						<textarea class="form-control" name="TextPost" id="TextPost" rows="5"><%%VALUE(TextPost)%%></textarea>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label for="website" class="control-label col-lg-3">Shared Link</label>
+					<div class="col-lg-9">
+						
+						<div class="row">
+							<div class="col-md-1">
+								<a id="website-link" href="link.php?t=TeamSoftBoard&f=website&i=<%%VALUE(Postid)%%>" target="_blank"><i class="glyphicon glyphicon-globe" title="<%%VALUE(website)%%>" style="font-size: x-large; top: .35em;"></i></a>
+								<label for="website"><button type="button" id="website-edit-link" class="btn btn-default hspacer-lg vspacer-sm" data-toggle="collapse" data-target="#website" title="<%%TRANSLATION(Edit)%%>"><i class="glyphicon glyphicon-pencil"></i></button></label>
+							</div>
+							<script>jQuery(function(){ /* */ var e_website = '<%%VALUE(website)%%>'; if(e_website == '' || e_website == '&nbsp;' || e_website == 'blank.gif') jQuery('#website-link').hide(); });</script><input maxlength="200" type="text" class="form-control collapse" name="website" id="website" value="<%%VALUE(website)%%>">					</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3">Reference Item 1 <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#Ref01-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="Ref01-description"><div class="alert alert-info">Maximum file size allowed: 64000 KB.<br>Allowed file types: txt, doc, docx, docm, odt, pdf, rtf</div></span>
+
+						
+						<div class="row">
+							<div class="col-md-8">
+								<a id="Ref01-link" href="link.php?t=TeamSoftBoard&f=Ref01&i=<%%VALUE(Postid)%%>" target="_blank"><%%VALUE(Ref01)%%></a>
+							</div>
+							<script>jQuery(function(){ /* */ var e_Ref01 = '<%%VALUE(Ref01)%%>'; if(e_Ref01 == '' || e_Ref01 == '&nbsp;' || e_Ref01 == 'blank.gif') jQuery('#Ref01-link').hide(); });</script>						<div class="pull-right" style="overflow-x: hidden;">
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(Ref01)%%>
+							<%%REMOVEFILE(Ref01)%%>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3">Reference Item 2 <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#Ref02-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="Ref02-description"><div class="alert alert-info">Maximum file size allowed: 64000 KB.<br>Allowed file types: txt, doc, docx, docm, odt, pdf, rtf</div></span>
+
+						
+						<div class="row">
+							<div class="col-md-8">
+								<a id="Ref02-link" href="link.php?t=TeamSoftBoard&f=Ref02&i=<%%VALUE(Postid)%%>" target="_blank"><%%VALUE(Ref02)%%></a>
+							</div>
+							<script>jQuery(function(){ /* */ var e_Ref02 = '<%%VALUE(Ref02)%%>'; if(e_Ref02 == '' || e_Ref02 == '&nbsp;' || e_Ref02 == 'blank.gif') jQuery('#Ref02-link').hide(); });</script>						<div class="pull-right" style="overflow-x: hidden;">
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(Ref02)%%>
+							<%%REMOVEFILE(Ref02)%%>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3">Reference Item 3 <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#Ref03-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="Ref03-description"><div class="alert alert-info">Maximum file size allowed: 64000 KB.<br>Allowed file types: txt, doc, docx, docm, odt, pdf, rtf</div></span>
+
+						
+						<div class="row">
+							<div class="col-md-8">
+								<a id="Ref03-link" href="link.php?t=TeamSoftBoard&f=Ref03&i=<%%VALUE(Postid)%%>" target="_blank"><%%VALUE(Ref03)%%></a>
+							</div>
+							<script>jQuery(function(){ /* */ var e_Ref03 = '<%%VALUE(Ref03)%%>'; if(e_Ref03 == '' || e_Ref03 == '&nbsp;' || e_Ref03 == 'blank.gif') jQuery('#Ref03-link').hide(); });</script>						<div class="pull-right" style="overflow-x: hidden;">
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(Ref03)%%>
+							<%%REMOVEFILE(Ref03)%%>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3">Reference Item 4 <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#Ref04-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="Ref04-description"><div class="alert alert-info">Maximum file size allowed: 64000 KB.<br>Allowed file types: zip, rar, gz, tar, iso</div></span>
+
+						
+						<div class="row">
+							<div class="col-md-8">
+								<a id="Ref04-link" href="link.php?t=TeamSoftBoard&f=Ref04&i=<%%VALUE(Postid)%%>" target="_blank"><%%VALUE(Ref04)%%></a>
+							</div>
+							<script>jQuery(function(){ /* */ var e_Ref04 = '<%%VALUE(Ref04)%%>'; if(e_Ref04 == '' || e_Ref04 == '&nbsp;' || e_Ref04 == 'blank.gif') jQuery('#Ref04-link').hide(); });</script>						<div class="pull-right" style="overflow-x: hidden;">
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(Ref04)%%>
+							<%%REMOVEFILE(Ref04)%%>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3">Reference Item 5 <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#Ref05-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="Ref05-description"><div class="alert alert-info">Maximum file size allowed: 64000 KB.<br>Allowed file types: zip, rar, gz, tar, iso</div></span>
+
+						
+						<div class="row">
+							<div class="col-md-8">
+								<a id="Ref05-link" href="link.php?t=TeamSoftBoard&f=Ref05&i=<%%VALUE(Postid)%%>" target="_blank"><%%VALUE(Ref05)%%></a>
+							</div>
+							<script>jQuery(function(){ /* */ var e_Ref05 = '<%%VALUE(Ref05)%%>'; if(e_Ref05 == '' || e_Ref05 == '&nbsp;' || e_Ref05 == 'blank.gif') jQuery('#Ref05-link').hide(); });</script>						<div class="pull-right" style="overflow-x: hidden;">
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(Ref05)%%>
+							<%%REMOVEFILE(Ref05)%%>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label class="control-label col-lg-3">Reference Item 6 <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#Ref06-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="Ref06-description"><div class="alert alert-info">Maximum file size allowed: 64000 KB.<br>Allowed file types: zip, rar, gz, tar, iso</div></span>
+
+						
+						<div class="row">
+							<div class="col-md-8">
+								<a id="Ref06-link" href="link.php?t=TeamSoftBoard&f=Ref06&i=<%%VALUE(Postid)%%>" target="_blank"><%%VALUE(Ref06)%%></a>
+							</div>
+							<script>jQuery(function(){ /* */ var e_Ref06 = '<%%VALUE(Ref06)%%>'; if(e_Ref06 == '' || e_Ref06 == '&nbsp;' || e_Ref06 == 'blank.gif') jQuery('#Ref06-link').hide(); });</script>						<div class="pull-right" style="overflow-x: hidden;">
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(Ref06)%%>
+							<%%REMOVEFILE(Ref06)%%>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label for="filed" class="control-label col-lg-3">Posting Date <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#filed-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="filed-description"><div class="alert alert-info">This field is automatically populated with the date and time when this record was created.</div></span>
+
+						<div class="form-control-static" id="filed"><%%VALUE(filed)%%></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<hr class="hidden-md hidden-lg">
+					<label for="last_modified" class="control-label col-lg-3">Last modified <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#last_modified-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="last_modified-description"><div class="alert alert-info">This field is automatically populated with the date and time when this record was last modified.</div></span>
+
+						<div class="form-control-static" id="last_modified"><%%VALUE(last_modified)%%></div>
+					</div>
+				</div>
+
+			</fieldset>
+		</div>
+
+		<!-- DV action buttons -->
+		<hr class="hidden-md hidden-lg">
+		<div class="col-md-4 col-lg-2" id="TeamSoftBoard_dv_action_buttons">
+			<div class="btn-toolbar">
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%UPDATE_BUTTON%%>
+				</div><p></p>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%DESELECT_BUTTON%%>
+					<%%DVPRINT_BUTTON%%>
+					<%%DELETE_BUTTON%%>
+				</div><p></p>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%INSERT_BUTTON%%>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- child records -->
+	<hr>
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1">
+			<div id="TeamSoftBoard-children" class="children-tabs"></div>
+		</div>
+	</div>
+
+</div><!-- /div class="panel-body" -->
+	<script>
+		$j(function() {
+			var add_new_mode = (!$j('input[name=SelectedID]').val());
+			var embedded_mode = ($j('input[name=Embedded]').val() == 1);
+
+			/* auto-close embedded page? */
+			var autoclose_mode = ($j('input[name=AutoClose]').val() == 1);
+			var record_added_ok = (location.search.split('record-added-ok=').length == 2);
+			var record_updated_ok = (location.search.split('record-updated-ok=').length == 2);
+			if((record_added_ok || record_updated_ok) && embedded_mode && autoclose_mode){
+				setTimeout(AppGini.closeParentModal, 2000);
+			}
+
+			/* enable DV action buttons to float on scrolling down the form */
+			enable_dvab_floating();
+
+			if(!(embedded_mode && AppGini.mobileDevice())){
+				$j('select, input[type=text], textarea').not(':disabled').eq(0).focus();
+			}
+
+			$j('form').eq(0).change(function(){
+				if($j(this).data('already_changed')) return;
+				if($j('#deselect').length) $j('#deselect').removeClass('btn-default').addClass('btn-warning').get(0).lastChild.data = " <%%TRANSLATION(Cancel)%%>";
+				$j(this).data('already_changed', true);
+			});
+
+			$j('a[href="<%%TRANSLATION(ImageFolder)%%>"]').click(function(){ /* */ return false; });
+
+			if(embedded_mode){
+				/* hide links to children tables in embedded mode */
+				$j('.detail_view a[id$=_link]').remove();
+
+				/* append embedded mode to all links */
+				var append_embedded = function(){
+					$j('a[href]:not([href^="#"]):not([href^="javascript"]):not([href$="Embedded=1"]):not([href*="link.php?t="]):not([href^="mailto:"])').each(
+						function(){
+							$j(this).attr('href', $j(this).attr('href') + '&Embedded=1');
+						}
+					);
+				}
+				setTimeout(append_embedded, 500);
+				setTimeout(append_embedded, 1500);
+				setTimeout(append_embedded, 2500);
+				setTimeout(append_embedded, 3500);
+			}
+
+			/* when no record is selected ('add new' mode) */
+			if(add_new_mode){
+				/* hide links to children tables */
+				$j('.detail_view a[id$=_link]').remove();
+			}else{
+				post(
+					'parent-children.php', {
+						ParentTable: 'TeamSoftBoard',
+						SelectedID: '<%%VALUE(Postid)%%>',
+						Operation: 'show-children'
+					},
+					'TeamSoftBoard-children'
+				);
+			}
+
+			if(!embedded_mode){
+				/* add a horizontal spacer to [add new parent] buttons that don't have a spacered element before them */
+				$j('.add_new_parent').prev(':not(.hspacer-md)').next().addClass('hspacer-md');
+
+				$j('.add_new_parent').click(function(){
+					var pt = $j(this).attr('id').replace(/_add_new$/, '');
+					modal_window({
+						url: pt + '_view.php?addNew_x=1&Embedded=1',
+						close: function(){
+							var field_id = $j('#' + pt + '_add_new').prevAll('input:hidden').eq(0).attr('id');
+							$j('#' + field_id + '-container').select2('focus').select2('focus');
+						},
+						size: 'full',
+						title: $j(this).attr('title')
+					});
+				});
+			}
+
+			AppGini.hideViewParentLinks();
+
+			$j('form').on('click', '.view_parent', function(){
+				var pt = $j(this).attr('id').replace(/_view_parent$/, '');
+				if($j(this).prevAll('input:hidden').length){
+					var parent_id = $j(this).prevAll('input:hidden').eq(0).val();
+				}else{
+					var parent_id = $j(this).prevAll().children('input:hidden').eq(0).val();
+				}
+
+				/* handle radio lookups */
+				if($j(this).prevAll('[type=radio]').length){
+					parent_id = $j(this).prevAll('[type=radio]').eq(0).val();
+				}
+
+				if(parent_id != '{empty_value}' && parent_id != undefined && parent_id != ''){
+					var parent_link = $j(this).parents('.form-group').children('label').data('parent_link');
+					switch(parent_link){
+						case 'view_parent_hidden':
+							break;
+						case 'view_parent_modal':
+							modal_window({
+								url: pt + '_view.php?Embedded=1&SelectedID=' + encodeURIComponent(parent_id),
+								close: function(){
+									var field_id = $j('#' + pt + '_view_parent').prevAll('input:hidden').eq(0).attr('id');
+									$j('#' + field_id + '-container').select2('focus').select2('focus');
+								},
+								size: 'full',
+								title: $j(this).attr('title')
+							});
+							break;
+						case 'view_parent_same_window':
+							window.location = pt + '_view.php?Embedded=' + (embedded_mode ? '1' : '') + '&SelectedID=' + encodeURIComponent(parent_id);
+							break;
+						case 'view_parent_new_window':
+							window.open(pt + '_view.php?SelectedID=' + encodeURIComponent(parent_id));
+							break;
+					}
+
+				}
+			});
+
+			enforce_uniqueness('TeamSoftBoard', 'Title');
+
+			/* load admin tools for admin user */
+			if(!add_new_mode){
+				$j('body').append('<div id="admin-tools-appendix"></div>');
+				$j('#admin-tools-appendix').load(
+					'ajax_admin_tools.php?table=TeamSoftBoard&id=<%%URLVALUE(Postid)%%>',
+					function(resp){
+						if(!resp.length) return;
+						$j.ajax('ajax_admin_tools.php?action=get_admin_tools_js&table=TeamSoftBoard&id=<%%URLVALUE(Postid)%%>');
+					}
+				);
+			}
+
+			/* warn user if 'add new' clicked while unsaved changes exist */
+			$j('#addNew').click(function(){
+				if($j('#deselect.btn-warning').length){
+					return confirm('<%%TRANSLATION(discard changes confirm)%%>');
+				}
+			});
+
+		});
+	</script>

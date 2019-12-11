@@ -1,0 +1,16 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the membership_company_init() hook (in hooks/membership_company.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="membership_company-fo_Name-<%%VALUE(compID)%%>" class="membership_company-fo_Name"><%%SELECT%%><%%VALUE(fo_Name)%%><%%ENDSELECT%%></td>
+		<td id="membership_company-fo_RegistrationID-<%%VALUE(compID)%%>" class="membership_company-fo_RegistrationID"><%%SELECT%%><%%VALUE(fo_RegistrationID)%%><%%ENDSELECT%%></td>
+		<td id="membership_company-fo_Logo-<%%VALUE(compID)%%>" class="membership_company-fo_Logo"><a href="<%%TRANSLATION(ImageFolder)%%><%%VALUE(fo_Logo)%%>" data-lightbox="membership_company-fo_Logo"><img src="thumbnail.php?i=<%%VALUE(fo_Logo)%%>&t=membership_company&f=fo_Logo&v=tv" class="img-thumbnail"></a></td>
+		<td id="membership_company-fo_Address-<%%VALUE(compID)%%>" class="membership_company-fo_Address"><%%SELECT%%><%%VALUE(fo_Address)%%><%%ENDSELECT%%></td>
+		<td id="membership_company-fo_City-<%%VALUE(compID)%%>" class="membership_company-fo_City"><%%SELECT%%><%%VALUE(fo_City)%%><%%ENDSELECT%%></td>
+		<td id="membership_company-fo_Phone_1-<%%VALUE(compID)%%>" class="membership_company-fo_Phone_1"><%%SELECT%%><%%VALUE(fo_Phone_1)%%><%%ENDSELECT%%></td>
+		<td id="membership_company-fo_Email-<%%VALUE(compID)%%>" class="membership_company-fo_Email"><a href="mailto:<%%VALUE(fo_Email)%%>" title="<%%VALUE(fo_Email)%%>" class="btn btn-default"><i class="glyphicon glyphicon-envelope text-info"></i></a></td>
+		<td id="membership_company-ot_ap_filed-<%%VALUE(compID)%%>" class="membership_company-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="membership_company-ot_ap_lastmodified-<%%VALUE(compID)%%>" class="membership_company-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

@@ -1,0 +1,17 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the LegalRegister_init() hook (in hooks/LegalRegister.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="LegalRegister-LRNumber-<%%VALUE(id)%%>" class="LegalRegister-LRNumber"><%%SELECT%%><%%VALUE(LRNumber)%%><%%ENDSELECT%%></td>
+		<td id="LegalRegister-LegalItem-<%%VALUE(id)%%>" class="LegalRegister-LegalItem"><%%SELECT%%><%%VALUE(LegalItem)%%><%%ENDSELECT%%></td>
+		<td id="LegalRegister-fo_Classification-<%%VALUE(id)%%>" class="LegalRegister-fo_Classification"><%%SELECT%%><%%VALUE(fo_Classification)%%><%%ENDSELECT%%></td>
+		<td id="LegalRegister-fo_Class-<%%VALUE(id)%%>" class="LegalRegister-fo_Class"><%%SELECT%%><%%VALUE(fo_Class)%%><%%ENDSELECT%%></td>
+		<td id="LegalRegister-fo_date-<%%VALUE(id)%%>" class="LegalRegister-fo_date"><%%SELECT%%><%%VALUE(fo_date)%%><%%ENDSELECT%%></td>
+		<td id="LegalRegister-ot_ap_Review-<%%VALUE(id)%%>" class="LegalRegister-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="LegalRegister-ot_ap_Approval-<%%VALUE(id)%%>" class="LegalRegister-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="LegalRegister-ot_ap_QC-<%%VALUE(id)%%>" class="LegalRegister-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="LegalRegister-ot_ap_filed-<%%VALUE(id)%%>" class="LegalRegister-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="LegalRegister-ot_ap_lastmodified-<%%VALUE(id)%%>" class="LegalRegister-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

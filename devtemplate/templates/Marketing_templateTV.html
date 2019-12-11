@@ -1,0 +1,17 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the Marketing_init() hook (in hooks/Marketing.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="Marketing-RecordNumber-<%%VALUE(id)%%>" class="Marketing-RecordNumber"><%%SELECT%%><%%VALUE(RecordNumber)%%><%%ENDSELECT%%></td>
+		<td id="Marketing-DocItem-<%%VALUE(id)%%>" class="Marketing-DocItem"><%%SELECT%%><%%VALUE(DocItem)%%><%%ENDSELECT%%></td>
+		<td id="Marketing-fo_Type-<%%VALUE(id)%%>" class="Marketing-fo_Type"><%%SELECT%%><%%VALUE(fo_Type)%%><%%ENDSELECT%%></td>
+		<td id="Marketing-fo_Source-<%%VALUE(id)%%>" class="Marketing-fo_Source"><%%SELECT%%><%%VALUE(fo_Source)%%><%%ENDSELECT%%></td>
+		<td id="Marketing-fo_Qualification-<%%VALUE(id)%%>" class="Marketing-fo_Qualification"><%%SELECT%%><%%VALUE(fo_Qualification)%%><%%ENDSELECT%%></td>
+		<td id="Marketing-ot_ap_Review-<%%VALUE(id)%%>" class="Marketing-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="Marketing-ot_ap_Approval-<%%VALUE(id)%%>" class="Marketing-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="Marketing-ot_ap_QC-<%%VALUE(id)%%>" class="Marketing-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="Marketing-ot_ap_filed-<%%VALUE(id)%%>" class="Marketing-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="Marketing-ot_ap_lastmodified-<%%VALUE(id)%%>" class="Marketing-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

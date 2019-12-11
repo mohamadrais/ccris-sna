@@ -1,0 +1,18 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the StakeholderSatisfaction_init() hook (in hooks/StakeholderSatisfaction.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="StakeholderSatisfaction-RecordID-<%%VALUE(id)%%>" class="StakeholderSatisfaction-RecordID"><%%SELECT%%><%%VALUE(RecordID)%%><%%ENDSELECT%%></td>
+		<td id="StakeholderSatisfaction-fo_ProjectId-<%%VALUE(id)%%>" class="StakeholderSatisfaction-fo_ProjectId"><%%SELECT%%><%%VALUE(fo_ProjectId)%%><%%ENDSELECT%%></td>
+		<td id="StakeholderSatisfaction-fo_Recources-<%%VALUE(id)%%>" class="StakeholderSatisfaction-fo_Recources"><%%SELECT%%><%%VALUE(fo_Recources)%%><%%ENDSELECT%%></td>
+		<td id="StakeholderSatisfaction-fo_ClientID-<%%VALUE(id)%%>" class="StakeholderSatisfaction-fo_ClientID"><%%SELECT%%><%%VALUE(fo_ClientID)%%><%%ENDSELECT%%></td>
+		<td id="StakeholderSatisfaction-fo_SurveyType-<%%VALUE(id)%%>" class="StakeholderSatisfaction-fo_SurveyType"><%%SELECT%%><%%VALUE(fo_SurveyType)%%><%%ENDSELECT%%></td>
+		<td id="StakeholderSatisfaction-fo_Stakeholder-<%%VALUE(id)%%>" class="StakeholderSatisfaction-fo_Stakeholder"><%%SELECT%%><%%VALUE(fo_Stakeholder)%%><%%ENDSELECT%%></td>
+		<td id="StakeholderSatisfaction-ot_ap_Review-<%%VALUE(id)%%>" class="StakeholderSatisfaction-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="StakeholderSatisfaction-ot_ap_Approval-<%%VALUE(id)%%>" class="StakeholderSatisfaction-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="StakeholderSatisfaction-ot_ap_QC-<%%VALUE(id)%%>" class="StakeholderSatisfaction-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="StakeholderSatisfaction-ot_ap_filed-<%%VALUE(id)%%>" class="StakeholderSatisfaction-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="StakeholderSatisfaction-ot_ap_lastmodified-<%%VALUE(id)%%>" class="StakeholderSatisfaction-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

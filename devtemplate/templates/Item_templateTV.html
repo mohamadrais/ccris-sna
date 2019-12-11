@@ -1,0 +1,15 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the Item_init() hook (in hooks/Item.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="Item-ItemID-<%%VALUE(ProductID)%%>" class="Item-ItemID"><%%SELECT%%><%%VALUE(ItemID)%%><%%ENDSELECT%%></td>
+		<td id="Item-ProductName-<%%VALUE(ProductID)%%>" class="Item-ProductName"><%%SELECT%%><%%VALUE(ProductName)%%><%%ENDSELECT%%></td>
+		<td id="Item-fo_SupplierID-<%%VALUE(ProductID)%%>" class="Item-fo_SupplierID"><%%SELECT%%><%%VALUE(fo_SupplierID)%%><%%ENDSELECT%%></td>
+		<td id="Item-fo_CategoryID-<%%VALUE(ProductID)%%>" class="Item-fo_CategoryID"><%%SELECT%%><%%VALUE(fo_CategoryID)%%><%%ENDSELECT%%></td>
+		<td id="Item-fo_UnitPrice-<%%VALUE(ProductID)%%>" class="Item-fo_UnitPrice text-right"><%%SELECT%%><%%VALUE(fo_UnitPrice)%%><%%ENDSELECT%%></td>
+		<td id="Item-fo_Discontinued-<%%VALUE(ProductID)%%>" class="Item-fo_Discontinued text-right"><%%SELECT%%><%%VALUE(fo_Discontinued)%%><%%ENDSELECT%%></td>
+		<td id="Item-ot_ap_filed-<%%VALUE(ProductID)%%>" class="Item-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="Item-ot_ap_lastmodified-<%%VALUE(ProductID)%%>" class="Item-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

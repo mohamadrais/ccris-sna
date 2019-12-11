@@ -1,0 +1,10 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the IMSControl_init() hook (in hooks/IMSControl.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="IMSControl-Status-<%%VALUE(id)%%>" class="IMSControl-Status"><%%VALUE(Status)%%></td>
+		<td id="IMSControl-filed-<%%VALUE(id)%%>" class="IMSControl-filed"><%%VALUE(filed)%%></td>
+		<td id="IMSControl-last_modified-<%%VALUE(id)%%>" class="IMSControl-last_modified"><%%VALUE(last_modified)%%></td>
