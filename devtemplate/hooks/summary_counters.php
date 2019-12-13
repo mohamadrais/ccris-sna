@@ -60,154 +60,90 @@ function summary_counters($contentType, $memberInfo, $tableName)
 			max-height: 32px;
 		}
 	</style>
-
-	<div id="page-wrapper">
-		<div class="ims-infobox-wrapper">
-			<div class="row ">
-				<!-- total count -->
-				<div class="col-lg-2 col-md-6" style="margin: 10px 0;">
-					<div class="panel panel-primary" >
-						<div class="panel-heading">
+	<div class="container-fluid">
+		<div class="summary-counter-wrapper">
+			<!-- Row -->
+			<div class="row">
+				<!-- Column Total Count-->
+				<div class="col-lg-2 col-md-6">
+					<div class="card">
+						<div class="card-body" style="max-height: 140px; overflow: hidden;">
+							<h4 class="card-title m-b-0">Total</h4>
+							<p class="text-muted">$totalDisplayField</p>
 							<div class="row">
-								<div class="col-xs-3">
-									<span class="ims-info-icon"><i class="fa fa-folder-open-o fa-5x" ></i></span>
-								</div>
-								<div class="col-xs-9 text-right">
-									<span class="ims-info-content">
-										<div class="huge" >$totalCount</div>
-									</span>
-								</div>
-							</div>
-								<div class="panel-footer" style="background-color: #fff;">
-									<span class="pull-left" style="color: black;">$totalDisplayField</span>
-									<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-									<div class="clearfix"></div>
+								<div class="col-12"><span><h2 class="font-light d-inline">$totalCount</h2></span></div>
+								<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
 							</div>
 						</div>
-						
 					</div>
 				</div>
-
-				<!-- review count -->
-				<div class="col-lg-2 col-md-6" style="margin: 10px 0;">
-					<div class="panel panel-primary" >
-						<div class="panel-heading">
+				<!-- Column Review Count-->
+				<div class="col-lg-2 col-md-6">
+					<div class="card">
+						<div class="card-body" style="max-height: 140px; overflow: hidden;">
+							<h4 class="card-title m-b-0">$reviewDisplayField</h4>
+							<p class="text-muted">Overall</p>
 							<div class="row">
-								<div class="col-xs-3">
-									<span class="ims-info-icon"><i class="fa fa-folder-open-o fa-5x" ></i></span>
-								</div>
-								<div class="col-xs-9 text-right">
-									<span class="ims-info-content">
-										<div class="huge" >$reviewCount</div>
-									</span>
-								</div>
-							</div>
-								<div class="panel-footer" style="background-color: #fff;">
-									<span class="pull-left" style="color: black;">$reviewDisplayField</span>
-									<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-									<div class="clearfix"></div>
+								<div class="col-12"><span><h2 class="font-light d-inline">$reviewCount</h2></span></div>
+								<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
 							</div>
 						</div>
-						
 					</div>
 				</div>
-
-				<!-- approval count -->
-				<div class="col-lg-2 col-md-6" style="margin: 10px 0;">
-					<div class="panel panel-primary" >
-						<div class="panel-heading">
+				<!-- Column Approval Count-->
+				<div class="col-lg-2 col-md-6">
+					<div class="card">
+						<div class="card-body" style="max-height: 140px; overflow: hidden;">
+							<h4 class="card-title m-b-0">$approvalDisplayField</h4>
+							<p class="text-muted">Overall</p>
 							<div class="row">
-								<div class="col-xs-3">
-									<span class="ims-info-icon"><i class="fa fa-folder-open-o fa-5x" ></i></span>
-								</div>
-								<div class="col-xs-9 text-right">
-									<span class="ims-info-content">
-										<div class="huge" >$approvalCount</div>
-									</span>
-								</div>
-							</div>
-								<div class="panel-footer" style="background-color: #fff;">
-									<span class="pull-left" style="color: black;">$approvalDisplayField</span>
-									<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-									<div class="clearfix"></div>
+								<div class="col-12"><span><h2 class="font-light d-inline">$approvalCount</h2></span></div>
+								<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
 							</div>
 						</div>
-						
 					</div>
 				</div>
-
-				<!-- IMS control count -->
-				<div class="col-lg-2 col-md-6" style="margin: 10px 0;">
-					<div class="panel panel-primary" >
-						<div class="panel-heading">
+				<!-- IMS Control Count-->
+				<div class="col-lg-2 col-md-6">
+					<div class="card">
+						<div class="card-body" style="max-height: 140px; overflow: hidden;">
+							<h4 class="card-title m-b-0">$imsControlDisplayField</h4>
+							<p class="text-muted">Overall</p>
 							<div class="row">
-								<div class="col-xs-3">
-									<span class="ims-info-icon"><i class="fa fa-folder-open-o fa-5x" ></i></span>
-								</div>
-								<div class="col-xs-9 text-right">
-									<span class="ims-info-content">
-										<div class="huge" >$imsControlCount</div>
-									</span>
-								</div>
-							</div>
-								<div class="panel-footer" style="background-color: #fff;">
-									<span class="pull-left" style="color: black;">$imsControlDisplayField</span>
-									<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-									<div class="clearfix"></div>
+								<div class="col-12"><span><h2 class="font-light d-inline">$imsControlCount</h2></span></div>
+								<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
 							</div>
 						</div>
-						
 					</div>
 				</div>
-
-				<!-- Custom Field 1 -->
-				<div class="col-lg-2 col-md-6" style="margin: 10px 0;">
-					<div class="panel panel-primary" >
-						<div class="panel-heading">
+				<!-- Custom Metric 1 -->
+				<div class="col-lg-2 col-md-6">
+					<div class="card">
+						<div class="card-body" style="max-height: 140px; overflow: hidden;">
+							<h4 class="card-title m-b-0">$customDisplayField1</h4>
+							<p class="text-muted"></p>
 							<div class="row">
-								<div class="col-xs-3">
-									<span class="ims-info-icon"><i class="fa fa-folder-open-o fa-5x" ></i></span>
-								</div>
-								<div class="col-xs-9 text-right">
-									<span class="ims-info-content">
-										<div class="huge" >$customDisplayValue1</div>
-									</span>
-								</div>
-							</div>
-								<div class="panel-footer" style="background-color: #fff;">
-									<span class="pull-left" style="color: black;">$customDisplayField1</span>
-									<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-									<div class="clearfix"></div>
+								<div class="col-12"><span><h2 class="font-light d-inline">$customDisplayValue1</h2></span></div>
+								<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
 							</div>
 						</div>
-						
 					</div>
 				</div>
-
-				<!-- Custom Field 2 -->
-				<div class="col-lg-2 col-md-6" style="margin: 10px 0;">
-					<div class="panel panel-primary" >
-						<div class="panel-heading">
+				<!-- Custom Metric 2 -->
+				<div class="col-lg-2 col-md-6">
+					<div class="card">
+						<div class="card-body" style="max-height: 140px; overflow: hidden;">
+							<h4 class="card-title m-b-0">$customDisplayField2</h4>
+							<p class="text-muted"></p>
 							<div class="row">
-								<div class="col-xs-3">
-									<span class="ims-info-icon"><i class="fa fa-folder-open-o fa-5x" ></i></span>
+								<div class="col-12">
+									<span><h2 class="font-light d-inline">$customDisplayValue2</h2></span>
 								</div>
-								<div class="col-xs-9 text-right">
-									<span class="ims-info-content">
-										<div class="huge" >$customDisplayValue2</div>
-									</span>
-								</div>
-							</div>
-								<div class="panel-footer" style="background-color: #fff;">
-									<span class="pull-left" style="color: black;">$customDisplayField2</span>
-									<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-									<div class="clearfix"></div>
+								<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
 							</div>
 						</div>
-						
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>

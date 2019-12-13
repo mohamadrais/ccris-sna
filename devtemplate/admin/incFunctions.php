@@ -86,455 +86,455 @@
 					'Description' => 'Record and document related to organization content and context. This may include but not limited to the SWOT analysis, PESTEL analysis, Market Prospect, Business Plan, Business Broshure and other related document. Detail record of the organization content and context can be inserted onto shared drive for reference.',
 					'tableIcon' => 'resources/table_icons/application_from_storage.png',
 					'group' => $tg[1],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'Marketing' => array(
 					'Caption' => 'Marketing & Lead Generation',
 					'Description' => 'Record and document related to organization marketing actvities and Effort. This may include but not limited to the marketing campaigns event, Leads Generation, leads qualification and other related document. Detail record of the marketing event can be inserted onto shared drive for reference.',
 					'tableIcon' => 'resources/table_icons/bricks.png',
 					'group' => $tg[1],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'Client' => array(
 					'Caption' => 'Client & Main Contractor',
 					'Description' => 'List of related Client and Main Contractor that require organization expertise. The List may also contain client that potentially be the future prospect. Client Techncial manual and client company specific procedure can be shared onto the shared drive for future reference. ',
 					'tableIcon' => 'resources/table_icons/chart_pie.png',
 					'group' => $tg[1],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'Inquiry' => array(
 					'Caption' => 'Inquiry & Tender',
 					'Description' => 'Any related inquiry, tender document, market survey and request for proposal shall be recorded accordingly onto the register. This is to ensure that the requirement and inquiry from the client is captured. Thus follow up can be done accordingly.',
 					'tableIcon' => 'resources/table_icons/cash_register.png',
 					'group' => $tg[1],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'DesignProposal' => array(
 					'Caption' => 'Service Design & Proposal',
 					'Description' => 'Consideration and design record for the related proposal/tender document. This register enable proposal to be enclosed with the inquiry from the client.',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'ContractDeployment' => array(
 					'Caption' => 'Project & Contract Deployment',
 					'Description' => 'Project related detail should be communicated promptly to operation team. The contract deployment process assist in getting all the contractual detail explained to the operation team. ',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'employees' => array(
 					'Caption' => 'Human Resources Matrix',
 					'Description' => 'Employee matrix should be established properly. The matrix contain personnel involve in the organization operation. ',
 					'tableIcon' => 'resources/table_icons/client_account_template.png',
 					'group' => $tg[2],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'Recruitment' => array(
 					'Caption' => 'Recruitment',
 					'Description' => 'Recruitment record review. This is register to enable personnel to record the recruitment evidence session along the interview session.',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'PersonnalFile' => array(
 					'Caption' => 'Personal File',
 					'Description' => 'This section register and contain all record from personnel. ',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'Competency' => array(
 					'Caption' => 'Competency',
 					'Description' => 'Competency record review. This is register to enable personnel to record the Competency review session along the employment session. ',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'Training' => array(
 					'Caption' => 'Training',
 					'Description' => 'Training record review. This is register to enable personnel to record the Training session along the employment session. ',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'JD_JS' => array(
 					'Caption' => 'Job Description & Specification Register',
 					'Description' => 'Job Description and Job Specification available in the organization. This is the register for the job available on the organization.',
 					'tableIcon' => 'resources/table_icons/data_table.png',
 					'group' => $tg[2],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'InOutRegister' => array(
 					'Caption' => 'Incoming & Outgoing Record Register',
 					'Description' => 'Record and document register for incoming and outgoing document. ',
 					'tableIcon' => 'resources/table_icons/arrow_refresh.png',
 					'group' => $tg[2],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'vendor' => array(
 					'Caption' => 'Vendor & Subcontractor Register',
 					'Description' => 'Vendor list for organization operation. Detail of vendor and the associated vendor performance evaluation also available for reference. ',
 					'tableIcon' => 'resources/table_icons/group.png',
 					'group' => $tg[3],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'ManagingVendor' => array(
 					'Caption' => 'Managing Vendor & Subcontractor',
 					'Description' => 'activity register for audit done to operation vendor',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'VenPerformance' => array(
 					'Caption' => 'Vendor Performance and Evaluation',
 					'Description' => 'activities by organization to evaluate the performance of vendor and subcontractor',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'Logistics' => array(
 					'Caption' => 'Logistics & Freight Agent',
 					'Description' => 'Logistic agent and freight forwarder agent list',
 					'tableIcon' => 'resources/table_icons/lorry_add.png',
 					'group' => $tg[4],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'Inventory' => array(
 					'Caption' => 'Asset Register',
 					'Description' => 'Inventory and asset register shall consist of organization asset. this list of equipment must have dedicated maintenacne and inspection procedure. Parts and consumables shall not be registered under this item. ',
 					'tableIcon' => 'resources/table_icons/change_password.png',
 					'group' => $tg[4],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'CalibrationCtrl' => array(
 					'Caption' => 'Calibration Control',
 					'Description' => 'Calibration of measuring equipment shall be available for reference. every calibrated equipment shall have dedicated calibration number for identification and reference ID. Under this list, the calibrated equipment record can be retrieved.',
 					'tableIcon' => 'resources/table_icons/cog_add.png',
 					'group' => $tg[4],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'WorkOrder' => array(
 					'Caption' => 'General Work Order',
 					'Description' => 'General work order register. List of work order related to the organization to be properly handled from the list. Assignment of task to respective personnel.',
 					'tableIcon' => 'resources/table_icons/interface_preferences.png',
 					'group' => $tg[4],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'MWO' => array(
 					'Caption' => 'Maintenance Work Order',
 					'Description' => 'This section is dedicated to keep track of breakdown maintenance and planned maintenance. The task is generated on monthly basis in order to ensure, asset and facilities properly maintained. ',
 					'tableIcon' => 'resources/table_icons/calendar_view_day.png',
 					'group' => $tg[4],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'MWOPlanned' => array(
 					'Caption' => 'Planned Schedule',
 					'Description' => 'Planned schedule maintenance for asset. The expected record shall be the generated checklist of equipment inspection and testing. ',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'MWOpreventive' => array(
 					'Caption' => 'Preventive',
 					'Description' => 'Preventive maintenance call for preventive action to deal with potential broken system or parts. ',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'MWOproactive' => array(
 					'Caption' => 'Proactive',
 					'Description' => 'Proactive maintenance call for proactive initiative to eliminate potential non conformance on system functionality and system compliance.',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'MWConditionBased' => array(
 					'Caption' => 'Condition Based',
 					'Description' => 'Condition based maintenance call for maintenance action that to be done based on asset dissatisfactory visual inspection. if the viaual inspection showing sign of abnormality, supr shall assigned the task accordingly.',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'MWOReactive' => array(
 					'Caption' => 'Reactive',
 					'Description' => 'Reactive maintenance call for reactive maintenace action due to immedeate system breakdown.',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'MWOCorrective' => array(
 					'Caption' => 'Corrective',
 					'Description' => 'Corrective maintenance call for maintenance action raised by Fault report generated. The action is critical but not important. system may still retain its function, but repair is required in times to come.',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'LogisticRequest' => array(
 					'Caption' => 'Logistic Request Order',
 					'Description' => 'Logistic movement inquiry shall be initiated by issuing the request for logistic. this enable manager to keep track of the logistic list of organization.',
 					'tableIcon' => 'resources/table_icons/aol_mail.png',
 					'group' => $tg[4],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'orders' => array(
 					'Caption' => 'Request & Service Order',
 					'Description' => 'Product and services request order for organization to aquire resources. Request order can be linked to the price quotation, Purchase order, Delivery Order and payment request. Sometime, the RO can also act as the market survey for the team to check the price quotation for the services.',
 					'tableIcon' => 'resources/table_icons/cash_register.png',
 					'group' => $tg[3],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'Quotation' => array(
 					'Caption' => 'Quotations',
 					'Description' => 'Price quotation from vendor. All quotation shall be kept on the register to ensure good record keeping practice.',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'PurchaseOrder' => array(
 					'Caption' => 'Purchase Order',
 					'Description' => 'Purchase order to be issued by department based on the quotation evaliation. ',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'DeliveryOrder' => array(
 					'Caption' => 'Delivery Order',
 					'Description' => 'Delivery order serve as evidence of acceptance. Goods or services shall be accompanied by the DO and also Commercial Invoice/Packing List.',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'AccountPayables' => array(
 					'Caption' => 'Account Payables',
 					'Description' => 'Account payables process enable the payment request to be made prior any actual payment. this eliminates the potential double payment or insufficient payment',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'Item' => array(
 					'Caption' => 'Resources Inventory',
 					'Description' => 'Item and equipment shall consist of all parts and items that are consumables. This indicates the inventory of the fast moving item in the organization.',
 					'tableIcon' => 'resources/table_icons/barcode.png',
 					'group' => $tg[3],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'categories' => array(
 					'Caption' => 'Item Categories',
 					'Description' => 'This table represent the list of categories for the inventories',
 					'tableIcon' => 'resources/table_icons/award_star_bronze_1.png',
 					'group' => $tg[3],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'batches' => array(
 					'Caption' => 'Batches',
 					'Description' => 'Batches represent the table of item that arrive in the organization. Each delivery or every packing list is checked and recorder properly.',
 					'tableIcon' => 'resources/table_icons/box_closed.png',
 					'group' => $tg[3],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'transactions' => array(
 					'Caption' => 'Transfer Item',
 					'Description' => 'This table indicates movement of the asset and inventory in the organization.',
 					'tableIcon' => 'resources/table_icons/book_keeping.png',
 					'group' => $tg[3],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'CommConsParticipate' => array(
 					'Caption' => 'Communication, Consultation & Participation',
 					'Description' => 'This is area in which the monthly commitment of organization towards the excellence of IMS is recorded. All the activities of communication, consultation and participation to be properly recorded and organized in the monthly activities.',
 					'tableIcon' => 'resources/table_icons/participation_rate.png',
 					'group' => $tg[5],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'ToolBoxMeeting' => array(
 					'Caption' => 'ToolBox Meeting',
 					'Description' => 'Toolbox meeting to be done prior daily activities promote the team alignment and coordination',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'Bi_WeeklyMeeting' => array(
 					'Caption' => 'Bi-Weekly Meeting',
 					'Description' => 'Performance measurement meeting and progress meeting table',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'QuarterlyMeeting' => array(
 					'Caption' => 'Quarterly Meeting',
 					'Description' => 'Quarterly Meeting to evaluate performance of leading and lagging indicators',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'Campaign' => array(
 					'Caption' => 'Campaign',
 					'Description' => 'IMS campaign in the organization to maximize awareness and promote organizational effectiveness',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'DrillNInspection' => array(
 					'Caption' => 'Drill & Inspection',
 					'Description' => 'Drill and inspecction activities record of desktop drill, safety drill and monthly safety and environment inspection.',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'ManagementVisit' => array(
 					'Caption' => 'Management Visit',
 					'Description' => 'Management visit record and evidence of top management communication and participation ',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'EventNotification' => array(
 					'Caption' => 'Event Notification',
 					'Description' => 'Event notification tables include the activity highlight of the month. this can either be the incident event, operation event or accident event.',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'ActCard' => array(
 					'Caption' => 'Act Card',
 					'Description' => 'Act card register table promote all to highlight and take immediate action towards non conformance action.',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'KM' => array(
 					'Caption' => 'Organizational Knowledge',
 					'Description' => 'Organizational knowledge table contain list of guideline and reference in order for the organization to have sustainable competency programm.',
 					'tableIcon' => 'resources/table_icons/application_view_tile.png',
 					'group' => $tg[5],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'LegalRegister' => array(
 					'Caption' => 'Legal Register',
 					'Description' => 'Legal register table consist of legal clause that involve in business activities',
 					'tableIcon' => 'resources/table_icons/active_sessions.png',
 					'group' => $tg[5],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'RiskandOpportunity' => array(
 					'Caption' => 'Risks Management',
 					'Description' => 'Risk Management table indicates the risk management evaluation consideration in the organization.',
 					'tableIcon' => 'resources/table_icons/document_inspector.png',
 					'group' => $tg[5],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'DocControl' => array(
 					'Caption' => 'Document & Record Control',
 					'Description' => 'Document control table enable the document to be displayed onto singular table for ease of reference. DCN also available to assist on changes reference.',
 					'tableIcon' => 'resources/table_icons/application_error.png',
 					'group' => $tg[5],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'DCN' => array(
 					'Caption' => 'Document Change Notice',
 					'Description' => 'Any document change require DCN. Register of changes in the document',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'ObsoleteRec' => array(
 					'Caption' => 'Obsolete Record Register',
 					'Description' => 'Any document that is obsolete require official record. Register of obsolete record in the table',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'QA' => array(
 					'Caption' => 'IMS Planning & Assurance',
 					'Description' => 'All IMS planning and assurance to be included in this table. Training matrix, competency matrix, Training and competency plan, Project QHSE plan, annual IMS plan and other asssurance plan',
 					'tableIcon' => 'resources/table_icons/administrator.png',
 					'group' => $tg[5],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'ERP' => array(
 					'Caption' => 'Emergency Preparedness & Response',
 					'Description' => 'List of ERP plan for organization',
 					'tableIcon' => 'resources/table_icons/delete.png',
 					'group' => $tg[5],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'WorkEnvMonitoring' => array(
 					'Caption' => 'Work Environment Monitoring and Control',
 					'Description' => 'Work environment monitoring record to be kept on this table',
 					'tableIcon' => 'resources/table_icons/brick_edit.png',
 					'group' => $tg[5],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'ScheduleWaste' => array(
 					'Caption' => 'Schedule Waste Disposal Register',
 					'Description' => 'Register of Schedule waste to be kept on this table for reference. this is to prepare for Environment management meeting content. ',
 					'tableIcon' => 'resources/table_icons/direction.png',
 					'group' => $tg[5],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'IncidentReporting' => array(
 					'Caption' => 'Incident & Accident Reporting',
 					'Description' => 'Detail incident and accident report shall be registered on this table',
 					'tableIcon' => 'resources/table_icons/application_put.png',
 					'group' => $tg[5],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'MgtofChange' => array(
 					'Caption' => 'Management Of Change',
 					'Description' => 'MOC form can be retrieved on this table.',
 					'tableIcon' => 'resources/table_icons/alarm_bell.png',
 					'group' => $tg[5],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'IMStrackingNmonitoring' => array(
 					'Caption' => 'IMS Data Tracking & Monitoring',
 					'Description' => 'IMS leading and lagging can be stored in this table for monthly data tracking and monitoring. other data tracking can be kept on this table.',
 					'tableIcon' => 'resources/table_icons/chart_line_add.png',
 					'group' => $tg[5],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'IMSDataAnalysis' => array(
 					'Caption' => 'Continual Improvement Plan',
 					'Description' => 'Collection of analysis of data to be kept on this table for reference. this is to prepare for quaterly meeting content. ',
 					'tableIcon' => 'resources/table_icons/chart_stock.png',
 					'group' => $tg[5],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'Audit' => array(
 					'Caption' => 'Management System Audit',
 					'Description' => 'Audit record shall be kept in the table',
 					'tableIcon' => 'resources/table_icons/balance.png',
 					'group' => $tg[5],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'NonConformance' => array(
 					'Caption' => 'IMS Non Conformance',
 					'Description' => 'Register of Non Conformance to be kept on this table for reference. Non conformance towards standards to be highlighted and acted upon.',
 					'tableIcon' => 'resources/table_icons/cog_delete.png',
 					'group' => $tg[5],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'ContinualImprovement' => array(
 					'Caption' => 'CAPAR',
 					'Description' => 'CIPL table consist of CAPAR register. ',
 					'tableIcon' => 'resources/table_icons/finance.png',
 					'group' => $tg[5],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'StakeholderSatisfaction' => array(
 					'Caption' => 'Stakeholder Satisfaction Survey',
 					'Description' => 'satisfaction survey can be stored in this table',
 					'tableIcon' => 'resources/table_icons/document_signature.png',
 					'group' => $tg[5],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'MRM' => array(
 					'Caption' => 'Management Review Meeting',
 					'Description' => 'Management review meeting organized at least once a year to evaluate the performance of the management system',
 					'tableIcon' => 'resources/table_icons/attach.png',
 					'group' => $tg[5],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'projects' => array(
 					'Caption' => 'Project Register',
@@ -548,175 +548,175 @@
 					'Description' => 'This table contain information on the work site location',
 					'tableIcon' => 'resources/table_icons/color_swatch.png',
 					'group' => $tg[0],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'WorkPermit' => array(
 					'Caption' => 'Work Permit',
 					'Description' => 'Related work permit in the respective worksite',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'ProjectTeam' => array(
 					'Caption' => 'Project Team Matrix',
 					'Description' => 'Project Team matrix should be established properly. The matrix contain personnel involve in the Project and operation. ',
 					'tableIcon' => 'resources/table_icons/images.png',
 					'group' => $tg[0],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'resources' => array(
 					'Caption' => 'Resources & Equipment',
 					'Description' => 'This table shall contain the list of all resources and equipment required to ensure success operation. One of the resources characteristic is that, it must be the cost for the operation.',
 					'tableIcon' => 'resources/table_icons/setting_tools.png',
 					'group' => $tg[0],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'PROInitiation' => array(
 					'Caption' => 'Project Initiation',
 					'Description' => 'initiation process deliverables by project team',
 					'tableIcon' => 'resources/table_icons/arrow_in.png',
 					'group' => $tg[0],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'PROPlanning' => array(
 					'Caption' => 'Project Planning',
 					'Description' => 'project planning process deliverables table',
 					'tableIcon' => 'resources/table_icons/arrow_inout.png',
 					'group' => $tg[0],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'PROExecution' => array(
 					'Caption' => 'Project Execution',
 					'Description' => 'Project Execution deliverables table contain information on project execution',
 					'tableIcon' => 'resources/table_icons/arrow_out.png',
 					'group' => $tg[0],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'DailyProgressReport' => array(
 					'Caption' => 'Daily Progress Report',
 					'Description' => 'Collecction of the daily progress report',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'MonthlyTimesheet' => array(
 					'Caption' => 'Monthly Timesheet',
 					'Description' => 'Monthly timesheet for operation. critical deliverables for operation',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'Breakdown' => array(
 					'Caption' => 'Breakdown & Fault Report',
 					'Description' => 'Breakdown and fault report',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'PROControlMonitoring' => array(
 					'Caption' => 'Project Control And Monitoring',
 					'Description' => 'Control and monitoring activities for project.',
 					'tableIcon' => 'resources/table_icons/arrow_refresh.png',
 					'group' => $tg[0],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'PROVariation' => array(
 					'Caption' => 'Project Variation Order',
 					'Description' => 'project variation order table. any instruction from site shall be validated via the variation order request',
 					'tableIcon' => 'resources/table_icons/arrow_divide.png',
 					'group' => $tg[0],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'PROCompletion' => array(
 					'Caption' => 'Project Completion',
 					'Description' => 'Project completion deliverables table',
 					'tableIcon' => 'resources/table_icons/arrow_join.png',
 					'group' => $tg[0],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'Receivables' => array(
 					'Caption' => 'Project Receivables',
 					'Description' => 'Project Receivables information table. ',
 					'tableIcon' => 'resources/table_icons/ehow.png',
 					'group' => $tg[0],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'ClaimRecord' => array(
 					'Caption' => 'Claim Submission',
 					'Description' => 'Claim submission information table',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'TeamSoftBoard' => array(
 					'Caption' => 'Organization Softboard',
 					'Description' => 'General posting from the group member to promote collaboration and group awareness.',
 					'tableIcon' => 'resources/table_icons/group_link.png',
 					'group' => $tg[6],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'SoftboardComment' => array(
 					'Caption' => 'Softboard Comment',
 					'Description' => '',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'IMSReport' => array(
 					'Caption' => 'IMS Complaint Report',
 					'Description' => 'Report on the IMS system and also the channel to log in the complaint report for any conformance.',
 					'tableIcon' => 'resources/table_icons/premium_support.png',
 					'group' => $tg[6],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'ReportComment' => array(
 					'Caption' => 'Report Comment',
 					'Description' => '',
 					'tableIcon' => 'resources/table_icons/application_form_magnify.png',
 					'group' => $tg[7],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'Leadership' => array(
 					'Caption' => 'Review & Verification',
 					'Description' => 'Review and verification summary for the IMS',
 					'tableIcon' => 'resources/table_icons/chart_organisation.png',
 					'group' => $tg[6],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'Approval' => array(
 					'Caption' => 'Approval',
 					'Description' => 'Approval summary for the IMS ',
 					'tableIcon' => 'resources/table_icons/chart_organisation.png',
 					'group' => $tg[6],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'IMSControl' => array(
 					'Caption' => 'IMS Control',
 					'Description' => 'IMS DCC post check summary',
 					'tableIcon' => 'resources/table_icons/chart_organisation.png',
 					'group' => $tg[6],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'membership_company' => array(
 					'Caption' => 'Company',
 					'Description' => 'Setup company details',
 					'tableIcon' => 'table.gif',
 					'group' => $tg[6],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'kpi' => array(
 					'Caption' => 'KPI',
 					'Description' => 'Key performance indexes',
 					'tableIcon' => 'table.gif',
 					'group' => $tg[6],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				),
 				'summary_dashboard' => array(
 					'Caption' => 'Summary Dashboard',
 					'Description' => 'Summary of all statistics from other tables',
 					'tableIcon' => 'table.gif',
 					'group' => $tg[6],
-					'homepageShowCount' => 0
+					'homepageShowCount' => 1
 				)
 		);
 
@@ -1783,7 +1783,7 @@
 	}
 	########################################################################
 	function isEmail($email){
-		if(preg_match('/^([*+!.&#$¦\'\\%\/0-9a-z^_`{}=?~:-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,45})$/i', $email)){
+		if(preg_match('/^([*+!.&#$ï¿½\'\\%\/0-9a-z^_`{}=?~:-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,45})$/i', $email)){
 			return $email;
 		}else{
 			return FALSE;

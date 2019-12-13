@@ -3260,15 +3260,16 @@
 	function logInMember(){
 		$redir = 'index.php';
 		if($_POST['signIn'] != ''){
-			if($_POST['username'] != '' && $_POST['password'] != ''){
+			if($_POST['username'] != '' && $_POST['token'] != ''){
 				$username = makeSafe(strtolower($_POST['username']));
-				$password = md5($_POST['password']);
+				// $password = md5($_POST['password']);
+				$token = $_POST['token'];
 
-				if(sqlValue("select count(1) from membership_users where lcase(memberID)='$username' and passMD5='$password' and isApproved=1 and isBanned=0")==1){
+				if(sqlValue("select count(1) from membership_users where lcase(memberID)='$username' and passMD5='$token' and isApproved=1 and isBanned=0")==1){
 					$_SESSION['memberID']=$username;
 					$_SESSION['memberGroupID']=sqlValue("select groupID from membership_users where lcase(memberID)='$username'");
 					if($_POST['rememberMe']==1){
-						@setcookie('IMS_rememberMe', md5($username.$password), time()+86400*30);
+						@setcookie('IMS_rememberMe', $username.$token, time()+86400*30);
 					}else{
 						@setcookie('IMS_rememberMe', '', time()-86400*30);
 					}
@@ -3291,13 +3292,13 @@
 				$args=array();
 				login_failed(array(
 					'username' => $_POST['username'],
-					'password' => $_POST['password'],
+					'password' => $_POST['token'],
 					'IP' => $_SERVER['REMOTE_ADDR']
 					), $args);
 			}
 
 			if(!headers_sent()) header('HTTP/1.0 403 Forbidden');
-			redirect("index.php?loginFailed=1");
+			redirect("../index.php?loginFailed=1");
 			exit;
 		}elseif((!$_SESSION['memberID'] || $_SESSION['memberID']==$adminConfig['anonymousMember']) && $_COOKIE['IMS_rememberMe']!=''){
 			$chk=makeSafe($_COOKIE['IMS_rememberMe']);
@@ -3318,22 +3319,78 @@
 		$home_page = (basename($_SERVER['PHP_SELF'])=='index.php' ? true : false);
 
 		?>
-		<nav class="navbar navbar-default navbar-fixed-top hidden-print" role="navigation">
+<header class="topbar" style="position: fixed; top: 0px; width: 1440px;">
+	<nav class="navbar top-navbar navbar-expand-md navbar-light">
+		<!-- ============================================================== -->
+		<!-- Logo -->
+		<!-- ============================================================== -->
+		<div class="navbar-header">
+			<a class="navbar-brand" href="<?php echo PREPEND_PATH; ?>index.php">
+				<!-- Logo icon --><b>
+					<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+					<!-- Dark Logo icon -->
+					<img src="images/logo/icon.png" alt="homepage" class="icon dark-logo">
+					<!-- Light Logo icon -->
+					<img src="images/logo/light-icon.png" alt="homepage" class="light-logo">
+				</b>
+				<!--End Logo icon -->
+				<!-- Logo text --><span>
+					<!-- dark Logo text -->
+					<img src="images/logo/text.png" alt="homepage" class="text dark-logo">
+					<!-- Light Logo text -->    
+					<img src="images/logo/light-text.png" class="light-logo" alt="homepage"></span> </a>
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Logo -->
+		<!-- ============================================================== -->
+		
+		<div class="navbar-collapse">
+			<ul class="navbar-nav mr-auto mt-md-0 "></ul>
+			<ul class="navbar-nav my-lg-0">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:grey !important;"><i class="fa fa-user-circle" style="font-size: 2rem;vertical-align: middle;"></i></a>
+					<div class="dropdown-menu dropdown-menu-right animated flipInY">
+						<ul class="dropdown-user">
+							<li>
+								<div class="dw-user-box">
+									<div class="u-img"><i class="fa fa-user-circle" style="font-size: 5rem;"></i></div>
+									<div class="u-text">
+										<h4><?php echo getLoggedMemberID(); ?></h4>
+										<a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+								</div>
+							</li>
+							<li role="separator" class="divider"></li>
+							<li><a href="<?php echo PREPEND_PATH; ?>../index.php"><i class="fa fa-retweet"></i><?php echo 'Switch Account' ?></a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="fa fa-power-off"></i> <?php echo $Translation['sign out']; ?></a></li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</header>
+<aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+		<nav class="sidebar-nav active" role="navigation">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<?php if(!$_GET['signIn']) { ?>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-header">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
+				<?php } ?>
 				<!-- application title is obtained from the name besides the yellow database icon in AppGini, use underscores for spaces -->
-				<a class="navbar-brand" href="<?php echo PREPEND_PATH; ?>index.php"><i class="glyphicon glyphicon-home"></i> IMS</a>
+				<!-- <a class="btn navbar-btn btn-default" style="position:absolute;right:0px" href="<?php echo PREPEND_PATH; ?>../index.php"><i class="glyphicon glyphicon-retweet"></i>&nbsp;&nbsp;&nbsp;<?php echo 'Switch Account' ?></a> -->
 			</div>
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<?php if(!$home_page){ ?>
+			<ul class="in" id="sidebarnav" class="top-menu" style="display: inline-block;">
+					<?php /*if(!$home_page){ */?>
 						<?php echo NavMenus(); ?>
-					<?php } ?>
+					<?php /*} */?>
 				</ul>
 
 				<?php if(getLoggedAdmin()){ ?>
@@ -3351,7 +3408,7 @@
 							<?php echo $Translation['not signed in']; ?>
 						</p>
 					<?php }else{ ?>
-						<ul class="nav navbar-nav navbar-right hidden-xs" style="min-width: 330px;">
+						<!-- <ul class="nav navbar-nav navbar-right hidden-xs" style="min-width: 330px;">
 							<a class="btn navbar-btn btn-default" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
 							<p class="navbar-text">
 								<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link"><?php echo getLoggedMemberID(); ?></a></strong>
@@ -3362,22 +3419,36 @@
 							<p class="navbar-text text-center">
 								<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link"><?php echo getLoggedMemberID(); ?></a></strong>
 							</p>
-						</ul>
+						</ul> -->
+
 						<script>
 							/* periodically check if user is still signed in */
 							setInterval(function(){
 								$j.ajax({
 									url: '<?php echo PREPEND_PATH; ?>ajax_check_login.php',
 									success: function(username){
-										if(!username.length) window.location = '<?php echo PREPEND_PATH; ?>index.php?signIn=1';
+										if(!username.length) window.location = '<?php echo PREPEND_PATH; ?>../index.php?signIn=1';
 									}
 								});
 							}, 60000);
 						</script>
 					<?php } ?>
 				<?php } ?>
+			<div class="collapse navbar-collapse mainBg sidebar-nav">
+				<ul class="nav navbar-nav navbar-right hidden-xs sign-out">
+					<a class="btn btn-sm btn-danger" href="<?php echo PREPEND_PATH; ?>../index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
+					<p class="navbar-text">
+						<?php if(getLoggedMemberID() != $adminConfig['anonymousMember']){ ?>
+							<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link"><?php echo getLoggedMemberID(); ?></a></strong>
+						<?php } ?>
+					</p>
+				</ul>
 			</div>
 		</nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
 		<?php
 
 		$html = ob_get_contents();
@@ -3963,7 +4034,7 @@
 
 		$table_group_name = array_keys(get_table_groups()); /* 0 => group1, 1 => group2 .. */
 		/* if only one group named 'None', set to translation of 'select a table' */
-		if((count($table_group_name) == 1 && $table_group_name[0] == 'None') || count($table_group_name) < 1) $table_group_name[0] = $Translation['select a table'];
+		if((count($table_group_name) == 1 && $table_group_name[0] == 'None') || count($table_group_name) < 1) $table_group_name[0] = ''; // $Translation['select a table'];
 		$table_group_index = array_flip($table_group_name); /* group1 => 0, group2 => 1 .. */
 		$menu = array_fill(0, count($table_group_name), '');
 
@@ -3984,7 +4055,7 @@
 
 				/* when no groups defined, $table_group_index['None'] is NULL, so $menu_index is still set to 0 */
 				$menu_index = intval($table_group_index[$tc[3]]);
-				if(!$tChkHL && $tChkHL !== 0) $menu[$menu_index] .= "<li><a href=\"{$prepend_path}{$tn}_view.php?t={$t}{$searchFirst}\"><img src=\"{$prepend_path}" . ($tc[2] ? $tc[2] : 'blank.gif') . "\" height=\"32\"> {$tc[0]}</a></li>";
+				if(!$tChkHL && $tChkHL !== 0) $menu[$menu_index] .= "<li><a href=\"{$prepend_path}{$tn}_view.php?t={$t}{$searchFirst}\">{$tc[0]}</a></li>";
 			}
 		}
 
@@ -4003,7 +4074,8 @@
 					if(!preg_match('/^(http|\/\/)/i', $link['url'])) $link['url'] = $prepend_path . $link['url'];
 					if(!preg_match('/^(http|\/\/)/i', $link['icon']) && $link['icon']) $link['icon'] = $prepend_path . $link['icon'];
 
-					$menu[$menu_index] .= "<li><a href=\"{$link['url']}\"><img src=\"" . ($link['icon'] ? $link['icon'] : "{$prepend_path}blank.gif") . "\" height=\"32\"> {$link['title']}</a></li>";
+					
+					$menu[$menu_index] .= "<li><a href=\"{$link['url']}\"> {$link['title']}</a></li>";
 					$links_added[$menu_index]++;
 				}
 			}
@@ -4012,8 +4084,8 @@
 		$menu_wrapper = '';
 		for($i = 0; $i < count($menu); $i++){
 			$menu_wrapper .= <<<EOT
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">{$table_group_name[$i]} <b class="caret"></b></a>
+				<li>
+					<a href="#" class="topbar dropdown-toggle" data-toggle="topbar dropdown">{$table_group_name[$i]} </a>
 					<ul class="dropdown-menu" role="menu">{$menu[$i]}</ul>
 				</li>
 EOT;
@@ -4031,6 +4103,8 @@ EOT;
 		$css_links = <<<EOT
 
 			<link rel="stylesheet" href="{$prepend_path}resources/initializr/css/bootstrap.css">
+			<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/plugins/bootstrap/css/bootstrap.min.css">
+			<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/css/style.css">
 			<!--[if gt IE 8]><!-->
 				<link rel="stylesheet" href="{$prepend_path}resources/initializr/css/bootstrap-theme.css">
 			<!--<![endif]-->';
@@ -4038,6 +4112,8 @@ EOT;
 			<link rel="stylesheet" href="{$prepend_path}resources/select2/select2.css" media="screen">
 			<link rel="stylesheet" href="{$prepend_path}resources/timepicker/bootstrap-timepicker.min.css" media="screen">
 			<link rel="stylesheet" href="{$prepend_path}dynamic.css.php">
+			<link rel="stylesheet" href="{$prepend_path}assets/plugins/bootstrap/css/bootstrap.min.css">
+			<link rel="stylesheet" href="{$prepend_path}assets/css/style.css">
 EOT;
 
 		return $css_links;
@@ -4176,11 +4252,11 @@ EOT;
 		$returnQuery = 'select null';
 		$arrSummaryQueryList = array(
 			/* 'table_name' => [0: 'selectTotalCount', 1: 'selectReviewCount', 2: 'selectApprovalCount', 3: 'selectIMSControlCount', 4: 'selectCustomDisplayValue1', 5: 'selectCustomDisplayValue2'] */   
-			"employees" => array("select count(1) from `employees`", "select count(1) from `employees` where `ot_ap_Review` = 4", "select count(1) from `employees` where `ot_ap_Approval` = 4", "select count(1) from `employees` where `ot_ap_QC` = 4", "select (select count(1) from `employees`) - (select count(1) from `employees` where `fo_OffHireDate` <> '0000-00-00' and `fo_OffHireDate` is not null and `fo_OffHireDate` <= CURRENT_DATE) as current_staff_count", "select count(1) from `employees` where `fo_Acknowledgement` = 1 and `fo_Induction` = 1"),
+			"employees" => array("select count(1) from `employees`", "select count(1) from `employees` where `ot_ap_Review` = 4", "select count(1) from `employees` where `ot_ap_Approval` = 4", "select count(1) from `employees` where `ot_ap_QC` = 4", "select (select count(1) from `employees`) - (select count(1) from `employees` where `fo_OffHireDate` is not null and `fo_OffHireDate` <= CURRENT_DATE) as current_staff_count", "select count(1) from `employees` where `fo_Acknowledgement` = 1 and `fo_Induction` = 1"),
 			"InOutRegister" => array("select count(1) from `InOutRegister`", "select count(1) from `InOutRegister` where `ot_ap_Review` = 4", "select count(1) from `InOutRegister` where `ot_ap_Approval` = 4", "select count(1) from `InOutRegister` where `ot_ap_QC` = 4", "select count(1) from `InOutRegister` where `fo_Classification` = 'Incoming'", "select count(1) from `InOutRegister` where `fo_Classification` = 'Outgoing'"),
 			"JD_JS" => array("select count(1) from `JD_JS`", "select count(1) from `JD_JS` where `ot_ap_Review` = 4", "select count(1) from `JD_JS` where `ot_ap_Approval` = 4", "select count(1) from `JD_JS` where `ot_ap_QC` = 4", "select null", "select null"),
 			"CalibrationCtrl" => array("select count(1) from `CalibrationCtrl`", "select count(1) from `CalibrationCtrl` where `ot_ap_Review` = 4", "select count(1) from `CalibrationCtrl` where `ot_ap_Approval` = 4", "select count(1) from `CalibrationCtrl` where `ot_ap_QC` = 4", "select count(1) from `CalibrationCtrl` where MONTH(`fo_Delivdate`) = MONTH(CURRENT_DATE()) and YEAR(`fo_Delivdate`) = YEAR(CURRENT_DATE())", "select null"),
-			"Inventory" => array("select count(1) from `Inventory`", "select count(1) from `Inventory` where `ot_ap_Review` = 4", "select count(1) from `Inventory` where `ot_ap_Approval` = 4", "select count(1) from `Inventory` where `ot_ap_QC` = 4", "select count(1) from `Inventory` WHERE `fo_Condition` = 'Operational Ready'", "select nvl(sum(`fo_UnitPrice`), 0.00) from `Inventory`"),
+			"Inventory" => array("select count(1) from `Inventory`", "select count(1) from `Inventory` where `ot_ap_Review` = 4", "select count(1) from `Inventory` where `ot_ap_Approval` = 4", "select count(1) from `Inventory` where `ot_ap_QC` = 4", "select count(1) from `Inventory` WHERE `fo_Condition` = 'Operational Ready'", "select coalesce(sum(`fo_UnitPrice`), 0.00) from `Inventory`"),
 			"LogisticRequest" => array("select count(1) from `LogisticRequest`", "select count(1) from `LogisticRequest` where `ot_ap_Review` = 4", "select count(1) from `LogisticRequest` where `ot_ap_Approval` = 4", "select count(1) from `LogisticRequest` where `ot_ap_QC` = 4", "select count(1) from `LogisticRequest` where `Market_Survey` = 'Market Survey'", "select count(1) from `LogisticRequest` where `Market_Survey` = 'Logistic Request'"),
 			"Logistics" => array("select count(1) from `Logistics`", "select count(1) from `Logistics` where `ot_ap_Review` = 4", "select count(1) from `Logistics` where `ot_ap_Approval` = 4", "select count(1) from `Logistics` where `ot_ap_QC` = 4", "select count(1) from `Logistics` where `fo_AVList` = 1", "select null"),
 			"MWO" => array("select count(1) from `MWO`", "select count(1) from `MWO` where `ot_ap_Review` = 4", "select count(1) from `MWO` where `ot_ap_Approval` = 4", "select count(1) from `MWO` where `ot_ap_QC` = 4", "select count(1) from `MWO` where `fo_Category` = 'Asset'", "select count(1) from `MWO` where `fo_Category` = 'Facilities'"),
@@ -4190,12 +4266,12 @@ EOT;
 			"Inquiry" => array("select count(1) from `Inquiry`", "select count(1) from `Inquiry` where `ot_ap_Review` = 4", "select count(1) from `Inquiry` where `ot_ap_Approval` = 4", "select count(1) from `Inquiry` where `ot_ap_QC` = 4", "select count(1) from `Inquiry` where `fo_Classification` in ('Email', 'Discussion')", "select count(1) from `Inquiry` where `fo_Classification` in ('Market Survey', 'Tender Bidding')"),
 			"Marketing" => array("select count(1) from `Marketing`", "select count(1) from `Marketing` where `ot_ap_Review` = 4", "select count(1) from `Marketing` where `ot_ap_Approval` = 4", "select count(1) from `Marketing` where `ot_ap_QC` = 4", "select count(1) from `Marketing` where `fo_Qualification` in ('Working', 'Check Back Quarterly', 'Active Opportunity')", "select count(1) from `Marketing` where `fo_Qualification` in ('Cold', 'Dead Opportunity', 'Bad Fit')"),
 			"OrgContentContext" => array("select count(1) from `OrgContentContext`", "select count(1) from `OrgContentContext` where `ot_ap_Review` = 4", "select count(1) from `OrgContentContext` where `ot_ap_Approval` = 4", "select count(1) from `OrgContentContext` where `ot_ap_QC` = 4", "select count(1) from `OrgContentContext` where `fo_Type` in ('Market Survey', 'Prospect Outlook', 'Industry Analysis')", "select count(1) from `OrgContentContext` where `fo_genrec` in ('Internal Record')"),
-			"AccountPayables" => array("select count(1) from `AccountPayables`", "select count(1) from `AccountPayables` where `ot_ap_Review` = 4", "select count(1) from `AccountPayables` where `ot_ap_Approval` = 4", "select count(1) from `AccountPayables` where `ot_ap_QC` = 4", "select nvl(sum(`fo_UnitPrice`), 0.00) from `AccountPayables` where (YEARWEEK(`ot_ap_filed`, 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(`ot_ap_lastmodified`, 1) = YEARWEEK(CURDATE(), 1))", "select nvl(sum(`fo_UnitPrice`), 0.00) from `AccountPayables` where MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE())"),
+			"AccountPayables" => array("select count(1) from `AccountPayables`", "select count(1) from `AccountPayables` where `ot_ap_Review` = 4", "select count(1) from `AccountPayables` where `ot_ap_Approval` = 4", "select count(1) from `AccountPayables` where `ot_ap_QC` = 4", "select coalesce(sum(`fo_UnitPrice`), 0.00) from `AccountPayables` where (YEARWEEK(`ot_ap_filed`, 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(`ot_ap_lastmodified`, 1) = YEARWEEK(CURDATE(), 1))", "select coalesce(sum(`fo_UnitPrice`), 0.00) from `AccountPayables` where MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE())"),
 			"ActCard" => array("select count(1) from `ActCard`", "select null", "select null", "select null", "select count(1) from `ActCard` where (MONTH(`fo_RequiredDate`) = MONTH(CURRENT_DATE()) and YEAR(`fo_RequiredDate`) = YEAR(CURRENT_DATE()) and `fo_Classification` in ('Positive Observation'))", "select count(1) from `ActCard` where (MONTH(`fo_RequiredDate`) = MONTH(CURRENT_DATE()) and YEAR(`fo_RequiredDate`) = YEAR(CURRENT_DATE()) and `fo_Classification` in ('Unsafe Act', 'Unsafe Behavior'))"),
 			"Bi_WeeklyMeeting" => array("select count(1) from `Bi_WeeklyMeeting`", "select count(1) from `Bi_WeeklyMeeting` where `ot_ap_Review` = 4", "select count(1) from `Bi_WeeklyMeeting` where `ot_ap_Approval` = 4", "select count(1) from `Bi_WeeklyMeeting` where `ot_ap_QC` = 4", "select count(1) from `Bi_WeeklyMeeting` where MONTH(`fo_RequiredDate`) = MONTH(CURRENT_DATE()) and YEAR(`fo_RequiredDate`) = YEAR(CURRENT_DATE())", "select null"),
 			"Breakdown" => array("select count(1) from `Breakdown`", "select count(1) from `Breakdown` where `ot_ap_Review` = 4", "select count(1) from `Breakdown` where `ot_ap_Approval` = 4", "select count(1) from `Breakdown` where `ot_ap_QC` = 4", "select count(1) from `Breakdown` where MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE())", "select count(1) from `Breakdown` where `ot_ap_Review` = 4 and `ot_ap_Approval` = 4 and `ot_ap_QC` = 4 and ((MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE())) or (MONTH(`ot_ap_lastmodified`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_lastmodified`) = YEAR(CURRENT_DATE())))"),
-			"Campaign" => array("select count(1) from `Campaign`", "select count(1) from `Campaign` where `ot_ap_Review` = 4", "select count(1) from `Campaign` where `ot_ap_Approval` = 4", "select count(1) from `Campaign` where `ot_ap_QC` = 4", "select (select count(1) from `Campaign`) - (select count(1) from `campaign` where `ot_ap_Review` = 4 and `ot_ap_Approval` = 4 and `ot_ap_QC` = 4)", "select count(1) from `Campaign` where `ot_ap_Review` = 4 and `ot_ap_Approval` = 4 and `ot_ap_QC` = 4"),
-			"ClaimRecord" => array("select count(1) from `ClaimRecord`", "select count(1) from `ClaimRecord` where `ot_ap_Review` = 4", "select count(1) from `ClaimRecord` where `ot_ap_Approval` = 4", "select count(1) from `ClaimRecord` where `ot_ap_QC` = 4", "select count(1) from `ClaimRecord` where MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE())", "select nvl(sum(`fo_UnitPrice`), 0.00) from `ClaimRecord` where MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE())"),
+			"Campaign" => array("select count(1) from `Campaign`", "select count(1) from `Campaign` where `ot_ap_Review` = 4", "select count(1) from `Campaign` where `ot_ap_Approval` = 4", "select count(1) from `Campaign` where `ot_ap_QC` = 4", "select (select count(1) from `Campaign`) - (select count(1) from `Campaign` where `ot_ap_Review` = 4 and `ot_ap_Approval` = 4 and `ot_ap_QC` = 4)", "select count(1) from `Campaign` where `ot_ap_Review` = 4 and `ot_ap_Approval` = 4 and `ot_ap_QC` = 4"),
+			"ClaimRecord" => array("select count(1) from `ClaimRecord`", "select count(1) from `ClaimRecord` where `ot_ap_Review` = 4", "select count(1) from `ClaimRecord` where `ot_ap_Approval` = 4", "select count(1) from `ClaimRecord` where `ot_ap_QC` = 4", "select count(1) from `ClaimRecord` where MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE())", "select coalesce(sum(`fo_UnitPrice`), 0.00) from `ClaimRecord` where MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE())"),
 			"Competency" => array("select count(1) from `Competency`", "select count(1) from `Competency` where `ot_ap_Review` = 4", "select count(1) from `Competency` where `ot_ap_Approval` = 4", "select count(1) from `Competency` where `ot_ap_QC` = 4", "select count(1) from `Competency` where (MONTH(`fo_Date`) = MONTH(CURRENT_DATE()) and YEAR(`fo_Date`) = YEAR(CURRENT_DATE()) and `fo_CompetencySession` in ('Internal Review'))", "select count(1) from `Competency` where (MONTH(`fo_Date`) = MONTH(CURRENT_DATE()) and YEAR(`fo_Date`) = YEAR(CURRENT_DATE()) and `fo_CompetencySession` in ('External Review'))"),
 			"ContractDeployment" => array("select count(1) from `ContractDeployment`", "select count(1) from `ContractDeployment` where `ot_ap_Review` = 4", "select count(1) from `ContractDeployment` where `ot_ap_Approval` = 4", "select count(1) from `ContractDeployment` where `ot_ap_QC` = 4", "select count(1) from `ContractDeployment` where `fo_Type` in ('Kick Off Meeting', 'Coordination Meeting')", "select count(1) from `ContractDeployment` where `fo_Type` in ('Subcontractor Meeting')"),
 			"DailyProgressReport" => array("select count(1) from `DailyProgressReport`", "select count(1) from `DailyProgressReport` where `ot_ap_Review` = 4", "select count(1) from `DailyProgressReport` where `ot_ap_Approval` = 4", "select count(1) from `DailyProgressReport` where `ot_ap_QC` = 4", "select count(1) from `DailyProgressReport` where (MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE()) and `fo_Class` in ('Daily Log'))", "select count(1) from `DailyProgressReport` where (MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE()) and `fo_Class` in ('Daily Checklist'))"),
@@ -4215,9 +4291,9 @@ EOT;
 			"MWOReactive" => array("select count(1) from `MWOReactive`", "select count(1) from `MWOReactive` where `ot_ap_Review` = 4", "select count(1) from `MWOReactive` where `ot_ap_Approval` = 4", "select count(1) from `MWOReactive` where `ot_ap_QC` = 4", "select count(1) from `MWOReactive` where `ot_ap_Review` = 4 and `ot_ap_Approval` = 4 and `ot_ap_QC` = 4 and ((MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE())) or (MONTH(`ot_ap_lastmodified`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_lastmodified`) = YEAR(CURRENT_DATE())))", "select null"),
 			"ObsoleteRec" => array("select count(1) from `ObsoleteRec`", "select count(1) from `ObsoleteRec` where `ot_ap_Review` = 4", "select count(1) from `ObsoleteRec` where `ot_ap_Approval` = 4", "select count(1) from `ObsoleteRec` where `ot_ap_QC` = 4", "select count(1) from `ObsoleteRec` where `ot_ap_Review` = 4 and `ot_ap_Approval` = 4 and `ot_ap_QC` = 4 and ((MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE())) or (MONTH(`ot_ap_lastmodified`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_lastmodified`) = YEAR(CURRENT_DATE())))", "select null"),
 			"PersonnalFile" => array("select count(1) from `PersonnalFile`", "select null", "select null", "select null", "select count(1) from `PersonnalFile` where `fo_PersonalFileDesc` in ('Certificate')", "select null"),
-			"PurchaseOrder" => array("select count(1) from `PurchaseOrder`", "select count(1) from `PurchaseOrder` where `ot_ap_Review` = 4", "select count(1) from `PurchaseOrder` where `ot_ap_Approval` = 4", "select count(1) from `PurchaseOrder` where `ot_ap_QC` = 4", "select nvl(sum(`fo_Price`), 0.00) - nvl(sum(`fo_Discount`), 0.00) from `PurchaseOrder`", "select count(1) from `PurchaseOrder` where MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE())"),
+			"PurchaseOrder" => array("select count(1) from `PurchaseOrder`", "select count(1) from `PurchaseOrder` where `ot_ap_Review` = 4", "select count(1) from `PurchaseOrder` where `ot_ap_Approval` = 4", "select count(1) from `PurchaseOrder` where `ot_ap_QC` = 4", "select coalesce(sum(`fo_Price`), 0.00) - coalesce(sum(`fo_Discount`), 0.00) from `PurchaseOrder`", "select count(1) from `PurchaseOrder` where MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE())"),
 			"QuarterlyMeeting" => array("select count(1) from `QuarterlyMeeting`", "select count(1) from `QuarterlyMeeting` where `ot_ap_Review` = 4", "select count(1) from `QuarterlyMeeting` where `ot_ap_Approval` = 4", "select count(1) from `QuarterlyMeeting` where `ot_ap_QC` = 4", "select count(1) from `QuarterlyMeeting` where MONTH(`fo_RequiredDate`) = MONTH(CURRENT_DATE()) and YEAR(`fo_RequiredDate`) = YEAR(CURRENT_DATE())", "select null"),
-			"Quotation" => array("select count(1) from `Quotation`", "select count(1) from `Quotation` where `ot_ap_Review` = 4", "select count(1) from `Quotation` where `ot_ap_Approval` = 4", "select count(1) from `Quotation` where `ot_ap_QC` = 4", "select nvl(sum(`fo_Price`), 0.00) - nvl(sum(`fo_Discount`), 0.00) from `Quotation`", "select count(1) from `Quotation` where MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE())"),
+			"Quotation" => array("select count(1) from `Quotation`", "select count(1) from `Quotation` where `ot_ap_Review` = 4", "select count(1) from `Quotation` where `ot_ap_Approval` = 4", "select count(1) from `Quotation` where `ot_ap_QC` = 4", "select coalesce(sum(`fo_Price`), 0.00) - coalesce(sum(`fo_Discount`), 0.00) from `Quotation`", "select count(1) from `Quotation` where MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE())"),
 			"Recruitment" => array("select count(1) from `Recruitment`", "select null", "select null", "select null", "select count(1) from `Recruitment` where `fo_RecruitmentSession` in ('Phone Interview', 'Physical Interview Session')", "select count(1) from `Recruitment` where `fo_RecruitmentSession` in ('Desktop Review Session')"),
 			"ReportComment" => array("select count(1) from `ReportComment`", "select null", "select null", "select null", "select count(1) from `ReportComment` where (YEARWEEK(`filed`, 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(`last_modified`, 1) = YEARWEEK(CURDATE(), 1))", "select count(1) from `ReportComment` where (MONTH(`filed`) = MONTH(CURRENT_DATE()) and YEAR(`filed`) = YEAR(CURRENT_DATE())) or (MONTH(`last_modified`) = MONTH(CURRENT_DATE()) and YEAR(`last_modified`) = YEAR(CURRENT_DATE()))"),
 			"SoftboardComment" => array("select count(1) from `SoftboardComment`", "select null", "select null", "select null", "select count(1) from `SoftboardComment` where (YEARWEEK(`filed`, 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(`last_modified`, 1) = YEARWEEK(CURDATE(), 1))", "select count(1) from `SoftboardComment` where (MONTH(`filed`) = MONTH(CURRENT_DATE()) and YEAR(`filed`) = YEAR(CURRENT_DATE())) or (MONTH(`last_modified`) = MONTH(CURRENT_DATE()) and YEAR(`last_modified`) = YEAR(CURRENT_DATE()))"),
@@ -4230,7 +4306,7 @@ EOT;
 			"PROExecution" => array("select count(1) from `PROExecution`", "select count(1) from `PROExecution` where `ot_ap_Review` = 4", "select count(1) from `PROExecution` where `ot_ap_Approval` = 4", "select count(1) from `PROExecution` where `ot_ap_QC` = 4", "select count(1) from `PROExecution` where `fo_Classification` in ('Subcontractor Report')", "select count(1) from `PROExecution` where `fo_Classification` in ('Client Instruction')"),
 			"PROInitiation" => array("select count(1) from `PROInitiation`", "select count(1) from `PROInitiation` where `ot_ap_Review` = 4", "select count(1) from `PROInitiation` where `ot_ap_Approval` = 4", "select count(1) from `PROInitiation` where `ot_ap_QC` = 4", "select count(1) from `PROInitiation` where `fo_InitiationForm` in ('Project Kick Off Meeting')", "select null"),
 			"projects" => array("select count(1) from `projects`", "select count(1) from `projects` where `ot_ap_Review` = 4", "select count(1) from `projects` where `ot_ap_Approval` = 4", "select count(1) from `projects` where `ot_ap_QC` = 4", "select count(1) from `projects` where `fo_ProjectIndication` = 'Main Contractor'", "select count(1) from `projects` where `fo_ProjectIndication` = 'Sub-Contractor'"),
-			"ProjectTeam" => array("select count(1) from `ProjectTeam`", "select count(1) from `ProjectTeam` where `ot_ap_Review` = 4", "select count(1) from `ProjectTeam` where `ot_ap_Approval` = 4", "select count(1) from `ProjectTeam` where `ot_ap_QC` = 4", "select count(1) from `ProjectTeam` where `fo_TermEmployment` = 'Permanent' and (`fo_OffHireDate` = '0000-00-00' or `fo_OffHireDate` is null or `fo_OffHireDate` > CURRENT_DATE)", "select count(1) from `ProjectTeam` where `fo_TermEmployment` = 'Contract' and (`fo_OffHireDate` = '0000-00-00' or `fo_OffHireDate` is null or `fo_OffHireDate` > CURRENT_DATE)"),
+			"ProjectTeam" => array("select count(1) from `ProjectTeam`", "select count(1) from `ProjectTeam` where `ot_ap_Review` = 4", "select count(1) from `ProjectTeam` where `ot_ap_Approval` = 4", "select count(1) from `ProjectTeam` where `ot_ap_QC` = 4", "select count(1) from `ProjectTeam` where `fo_TermEmployment` = 'Permanent' and (`fo_OffHireDate` is null or `fo_OffHireDate` > CURRENT_DATE)", "select count(1) from `ProjectTeam` where `fo_TermEmployment` = 'Contract' and (`fo_OffHireDate` is null or `fo_OffHireDate` > CURRENT_DATE)"),
 			"PROPlanning" => array("select count(1) from `PROPlanning`", "select count(1) from `PROPlanning` where `ot_ap_Review` = 4", "select count(1) from `PROPlanning` where `ot_ap_Approval` = 4", "select count(1) from `PROPlanning` where `ot_ap_QC` = 4", "select count(1) from `PROPlanning` where `fo_RelatedDocument` in ('Project Management Plan')", "select count(1) from `PROPlanning` where `fo_RelatedDocument` in ('Project Assurance Launch Matrix', 'Planned Profit & Loss')"),
 			"PROVariation" => array("select count(1) from `PROVariation`", "select count(1) from `PROVariation` where `ot_ap_Review` = 4", "select count(1) from `PROVariation` where `ot_ap_Approval` = 4", "select count(1) from `PROVariation` where `ot_ap_QC` = 4", "select count(1) from `PROVariation` where `fo_Classification` in ('Service Variation')", "select count(1) from `PROVariation` where `fo_Classification` in ('Equipment Variation', 'Manpower Variation')"),
 			"Receivables" => array("select count(1) from `Receivables`", "select count(1) from `Receivables` where `ot_ap_Review` = 4", "select count(1) from `Receivables` where `ot_ap_Approval` = 4", "select count(1) from `Receivables` where `ot_ap_QC` = 4", "select count(1) from `Receivables` where `fo_Classification` in ('Claim')", "select count(1) from `Receivables` where `fo_Classification` in ('Credit Note', 'Debit Note')"),
@@ -4256,7 +4332,7 @@ EOT;
 			"WorkEnvMonitoring" => array("select count(1) from `WorkEnvMonitoring`", "select count(1) from `WorkEnvMonitoring` where `ot_ap_Review` = 4", "select count(1) from `WorkEnvMonitoring` where `ot_ap_Approval` = 4", "select count(1) from `WorkEnvMonitoring` where `ot_ap_QC` = 4", "select count(1) from `WorkEnvMonitoring` where `fo_Classification` in ('Internal Monitoring')", "select count(1) from `WorkEnvMonitoring` where `fo_Classification` in ('External Monitoring')"),
 			"batches" => array("select count(1) from `batches`", "select null", "select null", "select null", "select null", "select null"),
 			"categories" => array("select count(1) from `categories`", "select null", "select null", "select null", "select null", "select null"),
-			"Item" => array("select count(1) from `Item`", "select null", "select null", "select null", "select nvl(sum(`fo_UnitPrice`), 0.00) from `Item` where MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE())", "select null"),
+			"Item" => array("select count(1) from `Item`", "select null", "select null", "select null", "select coalesce(sum(`fo_UnitPrice`), 0.00) from `Item` where MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE())", "select null"),
 			"orders" => array("select count(1) from `orders`", "select count(1) from `orders` where `ot_ap_Review` = 4", "select count(1) from `orders` where `ot_ap_Approval` = 4", "select count(1) from `orders` where `ot_ap_QC` = 4", "select count(1) from `orders` where `fo_Classification` in ('System', 'Equipment', 'Assembly', 'Component', 'Parts', 'Consumables')", "select count(1) from `orders` where `fo_Classification` in ('Services')"),
 			"transactions" => array("select count(1) from `transactions`", "select null", "select null", "select null", "select count(1) from `transactions` where `fo_transactiontype` in ('Incoming', 'Outgoing')", "select count(1) from `transactions` where `fo_transactiontype` in ('Expired', 'Damaged')"),
 			"IMSReport" => array("select count(1) from `IMSReport`", "select null", "select null", "select null", "select count(1) from `IMSReport` where MONTH(`filed`) = MONTH(CURRENT_DATE()) and YEAR(`filed`) = YEAR(CURRENT_DATE())", "select null"),

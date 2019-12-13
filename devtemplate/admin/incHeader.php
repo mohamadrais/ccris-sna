@@ -1,3 +1,7 @@
+<?php
+include_once("../webapp/functions.php");
+$self_baseurl = _baseurl();
+?>
 <!DOCTYPE html>
 <?php if(!defined('PREPEND_PATH')) define('PREPEND_PATH', '../'); ?>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -9,15 +13,55 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Ims | <?php echo $Translation['admin area']; ?><?php echo html_attr(isset($GLOBALS['page_title']) ? " | {$GLOBALS['page_title']}" : ''); ?></title>
+		<title>PufferGroup | <?php echo $Translation['admin area']; ?><?php echo html_attr(isset($GLOBALS['page_title']) ? " | {$GLOBALS['page_title']}" : ''); ?></title>
+<!-- start webapp -->
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport">
+<meta content="notranslate" name="google">
+<meta content="noarchive" name="googlebot">
+<link href="<?php echo $self_baseurl;?>/../webapp/favicon.ico" type="image/x-icon" rel="shortcut icon">
+<meta content="#000000" name="theme-color">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="yes" name="mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="IMS" name="application-name">
+<meta content="IMS" name="apple-mobile-web-app-title">
+<meta content="telephone=no" name="format-detection">
+<meta content="none" name="msapplication-config">
+<link href="<?php echo $self_baseurl;?>/../manifest-json.php" rel="manifest">
+<link href="<?php echo $self_baseurl;?>/../webapp/webapp-iphone.png" sizes="57x57" rel="apple-webapp">
+<link href="<?php echo $self_baseurl;?>/../webapp/webapp-ipad.png" sizes="76x76" rel="apple-webapp">
+<link href="<?php echo $self_baseurl;?>/../webapp/webapp-iphone-retina.png" sizes="120x120" rel="apple-webapp">
+<link href="<?php echo $self_baseurl;?>/../webapp/webapp-ipad-retina.png" sizes="152x152" rel="apple-webapp">
+<link href="<?php echo $self_baseurl;?>/../webapp/webapp-ipad-pro.png" sizes="167x167" rel="apple-webapp">
+<link href="<?php echo $self_baseurl;?>/../webapp/webapp-iphone-6-plus.png" sizes="180x180" rel="apple-webapp">
+<link href="<?php echo $self_baseurl;?>/../webapp/icon-192x192.png" sizes="192x192" rel="icon">
+<link href="<?php echo $self_baseurl;?>/../webapp/icon-128x128.png" sizes="128x128" rel="icon">
+<link href="<?php echo $self_baseurl;?>/../webapp/icon-96x96.png" sizes="96x96" rel="icon">
+<link href="<?php echo $self_baseurl;?>/../webapp/icon-64x64.png" sizes="64x64" rel="icon">
+<link href="<?php echo $self_baseurl;?>/../webapp/icon-48x48.png" sizes="48x48" rel="icon">
+<link href="<?php echo $self_baseurl;?>/../webapp/icon-48x48.png" sizes="48x48" rel="icon">
+<link href="<?php echo $self_baseurl;?>/../webapp/icon-32x32.png" sizes="32x32" rel="icon">
+<link href="<?php echo $self_baseurl;?>/../webapp/apple-touch-startup-image-320x460.png" media="(device-width: 320px)" rel="apple-touch-startup-image">
+<link href="<?php echo $self_baseurl;?>/../webapp/apple-touch-startup-image-640x920.png" media="(device-width: 320px) and (device-height: 460px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+<link href="<?php echo $self_baseurl;?>/../webapp/apple-touch-startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+<link href="<?php echo $self_baseurl;?>/../webapp/apple-touch-startup-image-768x1004.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" rel="apple-touch-startup-image">
+<link href="<?php echo $self_baseurl;?>/../webapp/apple-touch-startup-image-1024x748.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" rel="apple-touch-startup-image">
+<link href="<?php echo $self_baseurl;?>/../webapp/apple-touch-startup-image-1536x2008.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+<link href="<?php echo $self_baseurl;?>/../webapp/apple-touch-startup-image-2048x1496.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 
-		<link id="browser_favicon" rel="shortcut icon" href="<?php echo PREPEND_PATH; ?>resources/table_icons/administrator.png">
+<!-- /start webapp -->
+
+		<!-- <link id="browser_favicon" rel="shortcut icon" href="<?php echo PREPEND_PATH; ?>resources/table_icons/administrator.png"> -->
+		<link id="browser_favicon" rel="shortcut icon" href="<?php echo PREPEND_PATH; ?>../images/logo/browser-icon.png">
 
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>resources/initializr/css/bootstrap.css">
 		<!--[if gt IE 8]><!-->
 			<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>resources/initializr/css/bootstrap-theme.css">
 		<!--<![endif]-->
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>dynamic.css.php">
+		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/css/style.css">
 
 		<!--[if lt IE 9]>
 			<script src="<?php echo PREPEND_PATH; ?>resources/initializr/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
@@ -162,6 +206,29 @@
 				margin-left: .5em;
 			}
 		</style>
+
+
+<!-- start webapp -->
+<script>
+/* safari fix */
+(function(document,navigator,standalone) {                          
+    if (standalone in navigator && navigator[standalone]) {         
+        var curnode,location=document.location,stop=/^(a|html)$/i;  
+        document.addEventListener("click", function(e) {            
+            curnode=e.target;                                       
+            while (!stop.test(curnode.nodeName)) {                  
+                curnode=curnode.parentNode;                         
+            }                                                       
+            if ("href" in curnode && (curnode.href.indexOf("http") || ~curnode.href.indexOf(location.host)) && curnode.target == false) {
+                e.preventDefault();                                 
+                location.href=curnode.href;                         
+            }                                                       
+        },false);                                                   
+    }                                                               
+})(document,window.navigator,"standalone");
+</script>
+<!-- /start webapp -->
+
 	</head>
 	<body>
 	<div class="container theme-bootstrap theme-3d theme-compact">
@@ -169,12 +236,14 @@
 		<!-- top navbar -->
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			<div class="navbar-header">
+
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 					<span class="sr-only"><?php echo $Translation['toggle navigation'];?></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
+				
 				<a class="navbar-brand" href="pageHome.php"><span class="text-info"><i class="glyphicon glyphicon-cog"></i> <?php echo $Translation['admin area']; ?></span></a>
 			</div>
 
