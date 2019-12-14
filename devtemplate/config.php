@@ -1,7 +1,7 @@
 <?php
 	$dbServer = 'localhost';
-	$dbUsername = 'root';
-	$dbPassword = '';
+	$dbUsername = 'puffergr_admin';
+	$dbPassword = 'puffergr_admin$';
 	$dbDatabase = 'puffergr_devtemplate';
 
 	$adminConfig = array(
