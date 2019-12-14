@@ -657,9 +657,6 @@
 	<!-- ============================================================== -->
 
 </div>
-<footer class="footerd">
-	Powered by Supply Network Agency PLT
-</footer>
 <!-- /#page-wrapper -->
 <script>
 	$j(function(){

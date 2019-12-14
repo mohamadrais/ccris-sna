@@ -72,6 +72,7 @@ $self_baseurl = _baseurl();
 		
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/plugins/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/css/style.css">
+		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/css/daterangepicker.css">
 
 		<!--[if lt IE 9]>
 			<script src="<?php echo PREPEND_PATH; ?>resources/initializr/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
@@ -79,6 +80,7 @@ $self_baseurl = _baseurl();
 		<script src="<?php echo PREPEND_PATH; ?>assets/plugins/jquery/jquery.min.js"></script>
 		<script src="<?php echo PREPEND_PATH; ?>resources/jquery/js/jquery-1.12.4.min.js"></script>
 		<script>var $j = jQuery.noConflict();</script>
+		<script src="<?php echo PREPEND_PATH; ?>resources/moment/moment-with-locales.min.js"></script>
    		<!-- Bootstrap tether Core JavaScript -->
 		<script src="<?php echo PREPEND_PATH; ?>assets/plugins/bootstrap/js/popper.min.js"></script>
 		<script src="<?php echo PREPEND_PATH; ?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -112,6 +114,7 @@ $self_baseurl = _baseurl();
 		<script src="<?php echo PREPEND_PATH; ?>dist/morrisjs/morris.min.js"></script>
 		<!-- <script src="assets/js/plugins/chartjs.min.js"></script> -->
 		<!-- <script src="assets/demo/demo.js"></script> -->
+		<script src="<?php echo PREPEND_PATH; ?>assets/js/daterangepicker.min.js"></script>
 		
 		<?php if(isset($x->TableName) && is_file(dirname(__FILE__) . "/hooks/{$x->TableName}-tv.js")){ ?>
 			<script src="<?php echo PREPEND_PATH; ?>hooks/<?php echo $x->TableName; ?>-tv.js"></script>

@@ -13,6 +13,9 @@
 					</small></p>
 				</nav> -->
 			<?php // } ?>
+			<footer class="footerd">
+				Powered by Supply Network Agency PLT
+			</footer>
 
 		<!-- </div> --> <!-- from header.php /div class="container" -->
 		<?php if(!defined('APPGINI_SETUP') && is_file(dirname(__FILE__) . '/hooks/footer-extras.php')){ include(dirname(__FILE__).'/hooks/footer-extras.php'); } ?>

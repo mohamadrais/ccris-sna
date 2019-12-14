@@ -4068,7 +4068,7 @@
 				if(!isset($link['url']) || !isset($link['title'])) continue;
 				if($memberInfo['admin'] || @in_array($memberInfo['group'], $link['groups']) || @in_array('*', $link['groups'])){
 					$menu_index = intval($link['table_group']);
-					if(!$links_added[$menu_index]) $menu[$menu_index] .= '<li class="divider"></li>';
+					// if(!$links_added[$menu_index]) $menu[$menu_index] .= '<li class="divider"></li>';
 
 					/* add prepend_path to custom links if they aren't absolute links */
 					if(!preg_match('/^(http|\/\/)/i', $link['url'])) $link['url'] = $prepend_path . $link['url'];
@@ -4083,12 +4083,21 @@
 
 		$menu_wrapper = '';
 		for($i = 0; $i < count($menu); $i++){
-			$menu_wrapper .= <<<EOT
+			if($i <= 7){
+				$menu_wrapper .= <<<EOT
+					<li>
+						<a href="#" class="topbar dropdown-toggle" data-toggle="topbar dropdown">{$table_group_name[$i]} </a>
+						<ul class="dropdown-menu" role="menu">{$menu[$i]}</ul>
+					</li>
+EOT;
+			}
+			else{
+				$menu_wrapper .= <<<EOT
 				<li>
-					<a href="#" class="topbar dropdown-toggle" data-toggle="topbar dropdown">{$table_group_name[$i]} </a>
-					<ul class="dropdown-menu" role="menu">{$menu[$i]}</ul>
+					$menu[$i]
 				</li>
 EOT;
+			}
 		}
 
 		return $menu_wrapper;
