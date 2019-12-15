@@ -136,6 +136,9 @@
         if (jsonData == null || (jsonData.length && jsonData.length < 1)){
             $j("div[id='noResult']").removeClass("hideDiv");
             $j("div[id='noResult']").html("No results found!");
+            $j("div[id$='Chart']").each(function(i, el) {
+            $j(el).addClass("hideDiv");
+        });
             return;
         }
         $j("div[id='noResult']").addClass("hideDiv");
