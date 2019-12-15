@@ -12,12 +12,13 @@
 	function MWO_header($contentType, $memberInfo, &$args){
 		global $tableName;
 		$header='';
-		if(function_exists('summary_counters')){
-			$summaryCode=summary_counters($contentType, $memberInfo, $tableName);
-		}
+		// if(function_exists('summary_counters')){
+		// 	$summaryCode=summary_counters($contentType, $memberInfo, $tableName);
+		// }
 		switch($contentType){
 			case 'tableview':
-				$header='<%%HEADER%%>'.$summaryCode;
+				// $header='<%%HEADER%%>'.$summaryCode;
+				$header='';
 				break;
 
 			case 'detailview':

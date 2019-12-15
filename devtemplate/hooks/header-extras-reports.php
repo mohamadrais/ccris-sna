@@ -17,9 +17,58 @@
                 'endDate': endDate.format('YYYY-MM-DD')
             },
             dataType: "JSON",
+            beforeSend: function() {
+                $j("div[id^='summaryfor']").each(function(i, el) {
+                    $j(el).addClass("dis");
+                });
+                $j("div[id$='Chart']").each(function(i, el) {
+                    $j(el).removeClass("hideDiv");
+                });
+                $j("div[id='defaultReports']").addClass("hideDiv");
+                $j("#titleReport").html('');
+                if($j('#chartLoading').length) $j('#chartLoading').html('<div style="direction: ltr;"><img src="loading.gif"> <?php echo addslashes($Translation['Loading ...']); ?></div>');
+		    },
             success: function(data) {
                 draw_data(data, temp_title, report);
             },
+            complete: function() {
+                if($j('#chartLoading').length) $j('#chartLoading').html('');
+                $j("div[id^='summaryfor']").each(function(i, el) {
+                    $j(el).removeClass("dis");
+                });
+            },            
+            error: function(data) {
+                // console.log('error from ajax: '+ data.responseText);
+            }
+        });
+    }
+
+    function load_default_data() {
+        $j.ajax({
+            url: "hooks/reports-fetch.php",
+            method: "POST",
+            data: {
+                'type': 'load_default_data'
+            },
+            dataType: "JSON",
+            beforeSend: function() {
+                $j("div[id^='summaryfor']").each(function(i, el) {
+                    $j(el).addClass("dis");
+                });
+                $j("div[id$='Chart']").each(function(i, el) {
+                    $j(el).removeClass("hideDiv");
+                });
+                if($j('#chartLoading').length) $j('#chartLoading').html('<div style="direction: ltr;"><img src="loading.gif"> <?php echo addslashes($Translation['Loading ...']); ?></div>');
+		    },
+            success: function(data) {
+                draw_data(data, temp_title, report);
+            },
+            complete: function() {
+                if($j('#chartLoading').length) $j('#chartLoading').html('');
+                $j("div[id^='summaryfor']").each(function(i, el) {
+                    $j(el).removeClass("dis");
+                });
+            },            
             error: function(data) {
                 // console.log('error from ajax: '+ data.responseText);
             }
@@ -46,8 +95,11 @@
                 [date, total_count, total_reviews_closed, total_approvals_closed, total_ims_controls_closed]
             ]);
         });
+        
+        $j("#titleReport").html(chart_main_title);
+
         var barChartOptions = {
-            title: chart_main_title,
+            // title: chart_main_title,
             vAxis: {
                 title: "No. of " + report
             },
@@ -80,6 +132,8 @@
     }
 
     $j(document).ready(function() {
+        load_default_data();
+
         var start = moment().startOf('month');
         var end = moment();
 
@@ -108,6 +162,7 @@
 
         $j("div[id^='summaryfor']").each(function(i, el) {
             $j(el).click(function() {
+                console.log(`id clicked: ${el.id}`);
                 if ($j('#reportrange').html() != '') {
                     var startDate = moment($j('#reportrange').html().substr(0, $j('#reportrange').html().indexOf("-") - 1));
                     var endDate = moment($j('#reportrange').html().substr($j('#reportrange').html().indexOf("-") + 1, $j('#reportrange').html().length));

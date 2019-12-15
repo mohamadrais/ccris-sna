@@ -1110,6 +1110,11 @@ class DataList{
 				$this->RecordsPerPage = 2000; // a limit on max records in print preview to avoid performance drops
 			}
 		// end of table view navigation code
+			if(function_exists('summary_counters')){
+				$summaryCode=summary_counters($this->ContentType, $mi, $this->TableName);
+				$this->HTML .= $summaryCode;
+			}
+		// end of table view summary counters
 			$this->HTML .= "\n\t</tr>\n\n</thead>\n\n<tbody><!-- tv data below -->\n";
 
 			$i = 0;

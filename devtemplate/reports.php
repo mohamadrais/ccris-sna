@@ -8,16 +8,7 @@
 	include("$currDir/language.php");
     include("$currDir/lib.php");
     include_once("$currDir/header.php");
-    include_once("$hooks_dir/header-extras-reports.php");
-
-    // $query = "SELECT `ot_ap_Date` as 'date' FROM `summary_dashboard` GROUP BY `ot_ap_Date` DESC";
-    // $res = sql($query, $eo);
-    // while($row = db_fetch_array($res)) {
-    //     $result[] = array(
-    //         'date' => $row['date']
-    //     );
-    // }
-
+    include_once("$hooks_dir/header-extras-reports.php");    
 ?>
 <?php
 	/*
@@ -52,6 +43,14 @@
 		margin: 0 10px;
 		max-height: 32px;
 	}
+
+    .dis{
+        pointer-events:none
+    }
+
+    .hideDiv {
+        display: none
+    }
 </style>
 <div class="navbar-default sidebar" role="navigation">
     <div class="sidebar-nav navbar-collapse1" id="dash-sidebar-nav" > 
@@ -194,12 +193,219 @@
     </div>
 </div>
     <!-- /.sidebar-collapse -->
-</div class="page-wrapper" id="page-wrapper" >
+
+<div class="container-fluid">
     <div style="margin-top: 150px; margin-left:250px">
-        
-        <div id="barChart" style="margin-top: 200px; width: 100%; height: 300px; position: relative"></div>
-        <div id="lineChart" style="margin-top: 30px; width: 100%; height: 300px; position: relative"></div>
-        <div id="tableChart" style="margin-top: 100px; margin-left: 100px; width: 100%; height: 200px; position: relative"></div>
+        <span id="chartLoading" style="position: relative; left: 50%"></span>
+        <div class="row page-titles">
+            <div class="col-md-12 align-self-center">
+                <h3 id="titleReport" class="text-themecolor m-b-0 m-t-0">Reports Dashboard</h3>
+			</div>
+		</div>
+        <div id="defaultReports">
+            <!-- Start Row -->
+            <div class="row">
+                <!-- Column -->
+                <div class="col-lg-4 col-md-6 pr-2">
+                    <div class="card my-3">
+                        <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                            <h4 class="card-title m-b-0">My Work Orders</h4>
+                            <p class="text-muted">Completed / Total</p>
+                            <div class="row">
+                                <div class="col-12"><span><h2 class="font-light d-inline">33 / </h2><span class="text-muted"></span> <h2 class="font-light d-inline">59</h2><span class="text-muted"></span></span></div>
+                                <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <div class="col-lg-4 col-md-6 pr-2">
+                    <div class="card my-3">
+                        <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                            <h4 class="card-title m-b-0">My Average Work Orders</h4>
+                            <p class="text-muted">Per Month</p>
+                            <div class="row">
+                                <div class="col-12"><span><h2 class="font-light d-inline">33 / </h2><span class="text-muted"></span> <h2 class="font-light d-inline">59</h2><span class="text-muted"></span></span></div>
+                                <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <div class="col-lg-4 col-md-6 pr-2">
+                    <div class="card my-3">
+                        <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                            <h4 class="card-title m-b-0">My Average Work Order</h4>
+                            <p class="text-muted">Completion Time</p>
+                            <div class="row">
+                                <div class="col-12"><span><h2 class="font-light d-inline">33 / </h2><span class="text-muted"></span> <h2 class="font-light d-inline">59</h2><span class="text-muted"></span></span></div>
+                                <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <!-- End Row -->
+            <!-- Start Row -->
+            <div class="row">
+                <!-- Column -->
+                <div class="col-lg-6 col-md-6 pr-2">
+                    <div class="card my-3">
+                        <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                            <h4 class="card-title m-b-0">Organization Newest Updates</h4>
+                            <p class="text-muted">Recent 5</p>
+                        </div>
+                        <div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th width="150px">Date</th>
+                                        <th>Data</th>
+                                    </tr>
+                                </thead>
+                            <?php
+                                $res=sql("select tableName, pkValue, dateUpdated, recID from membership_userrecords order by dateUpdated desc limit 5", $eo);
+                                while($row=db_fetch_row($res)){
+                            ?>
+                                <tr>
+                                    <td>
+                                        <span class="text-muted"><i class="fa fa-clock-o"></i> 
+                                            <?php echo @date($adminConfig['PHPDateTimeFormat'], $row[2]); ?>
+                                        </span> 
+                                    </td>
+                                    <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> 
+                                        <?php echo $row[3]; ?>"></a> <?php echo getCSVData($row[0], $row[1]); ?>
+                                    </td>
+                                    <td><span class="text-muted"><i class="fa fa-clock-o"></i> 
+                                </tr>
+                            <?php
+                                }
+                            ?>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <div class="col-lg-6 col-md-6 pr-2">
+                    <div class="card my-3">
+                        <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                            <h4 class="card-title m-b-0">Organization Newest Entries</h4>
+                            <p class="text-muted">Recent 5</p>
+                        </div>
+                        <div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th width="150px">Date</th>
+                                        <th>Data</th>
+                                    </tr>
+                                </thead>
+                            <?php
+                                $res=sql("select tableName, pkValue, dateAdded, recID from membership_userrecords order by dateAdded desc limit 5", $eo);
+                                while($row=db_fetch_row($res)){
+                            ?>
+                                <tr>
+                                    <td>
+                                        <span class="text-muted"><i class="fa fa-clock-o"></i> 
+                                            <?php echo @date($adminConfig['PHPDateTimeFormat'], $row[2]); ?>
+                                        </span> 
+                                    </td>
+                                    <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> 
+                                        <?php echo $row[3]; ?>"></a> <?php echo getCSVData($row[0], $row[1]); ?>
+                                    </td>
+                                    <td><span class="text-muted"><i class="fa fa-clock-o"></i> 
+                                </tr>
+                            <?php
+                                }
+                            ?>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <!-- End Row -->
+            <!-- Start Row -->
+            <div class="row">
+                <!-- Column -->
+                <div class="col-lg-6 col-md-6 pr-2">
+                    <div class="card my-3">
+                        <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                            <h4 class="card-title m-b-0">Top Members</h4>
+                            <p class="text-muted"></p>
+                        </div>
+                        <div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th width="150px">Date</th>
+                                        <th>Data</th>
+                                    </tr>
+                                </thead>
+                            <?php
+                                $res=sql("select tableName, pkValue, dateUpdated, recID from membership_userrecords order by dateUpdated desc limit 5", $eo);
+                                while($row=db_fetch_row($res)){
+                            ?>
+                                <tr>
+                                    <td>
+                                        <span class="text-muted"><i class="fa fa-clock-o"></i> 
+                                            <?php echo @date($adminConfig['PHPDateTimeFormat'], $row[2]); ?>
+                                        </span> 
+                                    </td>
+                                    <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> 
+                                        <?php echo $row[3]; ?>"></a> <?php echo getCSVData($row[0], $row[1]); ?>
+                                    </td>
+                                    <td><span class="text-muted"><i class="fa fa-clock-o"></i> 
+                                </tr>
+                            <?php
+                                }
+                            ?>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <div class="col-lg-6 col-md-6 pr-2">
+                    <div class="card my-3">
+                        <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                            <h4 class="card-title m-b-0">Member Stats</h4>
+                            <p class="text-muted"></p>
+                        </div>
+                        <div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th width="150px">Date</th>
+                                        <th>Data</th>
+                                    </tr>
+                                </thead>
+                            <?php
+                                $res=sql("select tableName, pkValue, dateAdded, recID from membership_userrecords order by dateAdded desc limit 5", $eo);
+                                while($row=db_fetch_row($res)){
+                            ?>
+                                <tr>
+                                    <td>
+                                        <span class="text-muted"><i class="fa fa-clock-o"></i> 
+                                            <?php echo @date($adminConfig['PHPDateTimeFormat'], $row[2]); ?>
+                                        </span> 
+                                    </td>
+                                    <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> 
+                                        <?php echo $row[3]; ?>"></a> <?php echo getCSVData($row[0], $row[1]); ?>
+                                    </td>
+                                    <td><span class="text-muted"><i class="fa fa-clock-o"></i> 
+                                </tr>
+                            <?php
+                                }
+                            ?>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <!-- End Row -->
+        </div>
+        <div id="barChart" style="margin-top: 50px; width: 100%; height: 300px; position: relative;" class = "hideDiv"></div>
+        <div id="lineChart" style="margin-top: 30px; width: 100%; height: 300px; position: relative;" class = "hideDiv"></div>
+        <div id="tableChart" style="margin-top: 100px; margin-left: 100px; width: 100%; height: 200px; position: relative;" class = "hideDiv"></div>
     </div>
 </div>
 
