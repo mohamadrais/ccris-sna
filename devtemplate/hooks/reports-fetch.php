@@ -17,11 +17,11 @@ if (isset($_POST["report2"]) && isset($_POST["startDate"]) && isset($_POST["endD
             
     while($row = db_fetch_array($res)) {
         $output[] = array(
-            'date'   => $row['date'],
-            'total_count'  => intval($row['total_count']),
-            'total_reviews_closed'  => intval($row['total_reviews_closed']),
-            'total_approvals_closed'  => intval($row['total_approvals_closed']),
-            'total_ims_controls_closed'  => intval($row['total_ims_controls_closed']),
+            'date'                      => $row['date'],
+            'total_count'               => intval($row['total_count']),
+            'total_reviews_closed'      => intval($row['total_reviews_closed']),
+            'total_approvals_closed'    => intval($row['total_approvals_closed']),
+            'total_ims_controls_closed' => intval($row['total_ims_controls_closed']),
         );
     }
     echo json_encode($output);
@@ -39,30 +39,19 @@ else if (isset($_POST["type"])) {
 
         while($row = db_fetch_array($resTopMembers)) {
             $output[] = array(
-                'members'   => $row[0],
-                'record_counts'  => intval($row[1])
+                'members'       => $row[0],
+                'record_counts' => intval($row[1])
             );
         }
-        
+        $output[] = array(
+            'total_groups'  => intval($tg),
+            'active'        => intval($activeM),
+            'awaiting'      => intval($awaitingM),
+            'banned'        => intval($bannedM),
+            'total_members' => intval($totalM)
+        );
         echo json_encode($output);
 
     }
-    $startDate = makeSafe($_POST["startDate"]);
-    $endDate = makeSafe($_POST["endDate"]);
-    $query = "SELECT `ot_ap_Date` as 'date', sum(`fo_TotalCount`) as 'total_count', sum(`fo_ReviewCount`) as 'total_reviews_closed', sum(`fo_ApprovalCount`) as 'total_approvals_closed', sum(`fo_IMSControlCount`) as 'total_ims_controls_closed' from `summary_dashboard` where `fo_Section_Name` = '". $tn ."' and `ot_ap_Date` between '" . $startDate . "' and '". $endDate . "' group by `ot_ap_Date`";
-
-    $res = sql($query, $eo);
-
-            
-    while($row = db_fetch_array($res)) {
-        $output[] = array(
-            'date'   => $row['date'],
-            'total_count'  => intval($row['total_count']),
-            'total_reviews_closed'  => intval($row['total_reviews_closed']),
-            'total_approvals_closed'  => intval($row['total_approvals_closed']),
-            'total_ims_controls_closed'  => intval($row['total_ims_controls_closed']),
-        );
-    }
-    echo json_encode($output);
 }
 
