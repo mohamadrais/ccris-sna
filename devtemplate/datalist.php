@@ -791,32 +791,8 @@ class DataList{
 					$buttonsCount++;
 				}
 
-				// display Print icon
-				if($this->AllowPrinting){
-					$buttons_all .= '<button onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="Print_x" id="Print" value="1" class="btn btn-outline-secondary"><i class="glyphicon glyphicon-print"></i> ' . $Translation['Print Preview'] . '</button>';
-					$buttonsCount++;
-				}
-
-				// display CSV icon
-				if($this->AllowCSV){
-					$buttons_all .= '<button onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="CSV_x" id="CSV" value="1" class="btn btn-outline-secondary"><i class="glyphicon glyphicon-download-alt"></i> ' . $Translation['CSV'] . '</button>';
-					$buttonsCount++;
-				}
-
-				// display Filter icon
-				if($this->AllowFilters){
-					$buttons_all .= '<button onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="Filter_x" id="Filter" value="1" class="btn btn-outline-secondary"><i class="glyphicon glyphicon-filter"></i> ' . $Translation['filter'] . '</button>';
-					$buttonsCount++;
-				}
-
-				// display Show All icon
-				if(($this->AllowFilters)){
-					$buttons_all .= '<button onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="NoFilter_x" id="NoFilter" value="1" class="btn btn-outline-secondary"><i class="glyphicon glyphicon-remove-circle"></i> ' . $Translation['Reset Filters'] . '</button>';
-					$buttonsCount++;
-				}
-
 				$quick_search_html .= quick_search_html($SearchString, $this->QuickSearchText, $this->SeparateDV);
-				$fab_buttons = '<div class="adminActions">
+				$fab_buttons = '<div id="adminActions" class="adminActions">
 				<input type="checkbox" name="adminToggle" class="adminToggle" />
 				<a class="adminButton" href="#!"><i class="fa fa-ellipsis-v"></i></a>
 				<div class="adminButtons">
@@ -929,6 +905,10 @@ class DataList{
 									/* .selected_records: container for buttons that need a selection */
 									$this->HTML .= '<div class="btn-group btn-group-md visible-md visible-lg all_records pull-left">' . $buttons_all . '</div>';
 									// $this->HTML .= '<p></p>';
+								$this->HTML .= $this->tv_tools();
+								$this->HTML .= '<div class="btn-group btn-group-md visible-md visible-lg selected_records hidden pull-left">' . ($actual_more_count ? $more_menu : '') . '</div>';
+								$this->HTML .= '<div class="btn-group-vertical btn-group-md visible-xs visible-sm all_records">' . $buttons_all . '</div>';
+								$this->HTML .= '<div class="btn-group-vertical btn-group-md visible-xs visible-sm selected_records hidden">' . ($actual_more_count ? $more_menu : '') . '</div>';
 								$this->HTML .= '</div>';
 								// $this->HTML .= '<a style="text-decoration: none; color: inherit;" href="' . $this->TableName . '_view.php"><img src="' . $this->TableIcon . '"> ' . $this->TableTitle . '</a>';
 								/* show add new button if user can insert and there is a selected record */
@@ -940,12 +920,7 @@ class DataList{
 									$this->HTML .= $quick_search_html;
 								$this->HTML .= '</div>';
 							}
-							$this->HTML .= '</div>';
-							$this->HTML .= '<div class="col-sm-12 button-group">';
-								$this->HTML .= $this->tv_tools();
-								$this->HTML .= '<div class="btn-group btn-group-lg visible-md visible-lg selected_records hidden pull-left">' . ($actual_more_count ? $more_menu : '') . '</div>';
-								$this->HTML .= '<div class="btn-group-vertical btn-group-lg visible-xs visible-sm all_records">' . $buttons_all . '</div>';
-								$this->HTML .= '<div class="btn-group-vertical btn-group-lg visible-xs visible-sm selected_records hidden">' . ($actual_more_count ? $more_menu : '') . '</div>';
+							
 							$this->HTML .= '</div>';
 						$this->HTML .= '</div>';
 				$this->HTML .= '</div>';
@@ -1360,7 +1335,7 @@ class DataList{
 			if(($this->SeparateDV && $this->HideTableView) || !$this->SeparateDV){
 				$dvCode = call_user_func("{$this->TableName}_form", $SelectedID, $this->AllowUpdate, (($this->HideTableView && $SelectedID) ? 0 : $this->AllowInsert), $this->AllowDelete, $this->SeparateDV, $this->TemplateDV, $this->TemplateDVP);
 
-				$this->HTML .= "\n\t<div class=\"col-xs-12 detail_view {$this->DVClasses}\">{$tv_dv_separator}<div class=\"panel panel-default\">{$dvCode}</div></div>";
+				$this->HTML .= "\n\t<div class=\"col-xs-12 detail_view {$this->DVClasses}\">{$tv_dv_separator}<div>{$dvCode}</div></div>";
 				$this->HTML .= ($this->SeparateDV ? '<input name="SearchString" value="' . html_attr($SearchString) . '" type="hidden">' : '');
 				if($dvCode){
 					$this->ContentType = 'detailview';
@@ -1498,7 +1473,7 @@ class DataList{
 		?>
 
 		<?php // if($this->ShowTableHeader){ ?>
-			<div class="btn-group btn-group-lg visible-md visible-lg all_records pull-left">
+			<div class="btn-group btn-group-md visible-md visible-lg all_records pull-left ml-3">
 				<button title="<?php echo html_attr($Translation['hide/show columns']); ?>" type="button" class="btn btn-outline-secondary tv-toggle" data-toggle="collapse" data-target="#toggle-columns-container"><i class="fa fa-sliders"></i></button>
 			</div>
 		<?php // } ?>

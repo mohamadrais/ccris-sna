@@ -3347,25 +3347,29 @@
 		<div class="navbar-collapse">
 			<ul class="navbar-nav mr-auto mt-md-0 "></ul>
 			<ul class="navbar-nav my-lg-0">
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:grey !important;"><i class="fa fa-user-circle" style="font-size: 2rem;vertical-align: middle;"></i></a>
-					<div class="dropdown-menu dropdown-menu-right animated flipInY">
-						<ul class="dropdown-user">
-							<li>
-								<div class="dw-user-box">
-									<div class="u-img"><i class="fa fa-user-circle" style="font-size: 5rem;"></i></div>
-									<div class="u-text">
-										<h4><?php echo getLoggedMemberID(); ?></h4>
-										<a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
-								</div>
-							</li>
-							<li role="separator" class="divider"></li>
-							<li><a href="<?php echo PREPEND_PATH; ?>../index.php"><i class="fa fa-retweet"></i><?php echo 'Switch Account' ?></a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="fa fa-power-off"></i> <?php echo $Translation['sign out']; ?></a></li>
-						</ul>
-					</div>
-				</li>
+			<div class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:grey !important;"><i class="fa fa-user-circle" style="font-size: 4rem;vertical-align: middle;"></i></a>
+				<div class="dropdown-menu dropdown-menu-right animated flipInY">
+					<ul class="dropdown-user">
+						<li>
+							<div class="dw-user-box">
+								<div class="u-img"><i class="fa fa-user-circle" style="font-size: 5rem;"></i></div>
+								<div class="u-text">
+									<h4><?php echo getLoggedMemberID(); ?></h4>
+									<a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="btn btn-rounded btn-danger btn-sm no-margin">View Profile</a></div>
+							</div>
+						</li>
+						<?php if(getLoggedAdmin()){ ?>
+						<li role="separator" class="divider"></li>
+						<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>admin/pageHome.php"><i class="fa fa-cog"></i><?php echo $Translation['admin area']; ?></a></li>
+						<?php } ?>
+						<li role="separator" class="divider"></li>
+						<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>../index.php"><i class="fa fa-retweet"></i><?php echo 'Switch Account' ?></a></li>
+						<li role="separator" class="divider"></li>
+						<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="fa fa-power-off"></i> <?php echo $Translation['sign out']; ?></a></li>
+					</ul>
+				</div>
+			</div>
 			</ul>
 		</div>
 	</nav>
@@ -3392,13 +3396,6 @@
 						<?php echo NavMenus(); ?>
 					<?php /*} */?>
 				</ul>
-
-				<?php if(getLoggedAdmin()){ ?>
-					<ul class="nav navbar-nav">
-						<a href="<?php echo PREPEND_PATH; ?>admin/pageHome.php" class="btn btn-danger navbar-btn hidden-xs" title="<?php echo html_attr($Translation['admin area']); ?>"><i class="glyphicon glyphicon-cog"></i> <?php echo $Translation['admin area']; ?></a>
-						<a href="<?php echo PREPEND_PATH; ?>admin/pageHome.php" class="btn btn-danger navbar-btn visible-xs btn-lg" title="<?php echo html_attr($Translation['admin area']); ?>"><i class="glyphicon glyphicon-cog"></i> <?php echo $Translation['admin area']; ?></a>
-					</ul>
-				<?php } ?>
 
 				<?php if(!$_GET['signIn'] && !$_GET['loginFailed']){ ?>
 					<?php if(getLoggedMemberID() == $adminConfig['anonymousMember']){ ?>
@@ -4245,10 +4242,10 @@ EOT;
 
 		$html = <<<EOT
 		<div class="input-group" id="quick-search">
-			<input type="text" id="SearchString" name="SearchString" value="{$safe_search}" class="form-control" placeholder="{$safe_label}">
-			<span class="input-group-btn">
-				<button name="Search_x" value="1" id="Search" type="submit" onClick="{$reset_selection}" class="btn btn-default" title="{$safe_label}"><i class="glyphicon glyphicon-search"></i></button>
-				<button name="ClearQuickSearch" value="1" id="ClearQuickSearch" type="submit" onClick="\$j('#SearchString').val(''); {$reset_selection}" class="btn btn-default" title="{$safe_clear_label}"><i class="glyphicon glyphicon-remove-circle"></i></button>
+			<input type="text" id="SearchString" name="SearchString" value="{$safe_search}" class="form-control" style="margin-right: 78px;" placeholder="{$safe_label}">
+			<span class="input-group-btn table-search">
+				<button name="Search_x" value="1" id="Search" type="submit" onClick="{$reset_selection}" class="btn btn-outline-primary" title="{$safe_label}"><i class="glyphicon glyphicon-search"></i></button>
+				<button name="ClearQuickSearch" value="1" id="ClearQuickSearch" type="submit" onClick="\$j('#SearchString').val(''); {$reset_selection}" class="btn btn-outline-primary" title="{$safe_clear_label}"><i class="glyphicon glyphicon-remove-circle"></i></button>
 			</span>
 		</div>
 EOT;

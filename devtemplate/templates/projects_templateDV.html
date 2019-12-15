@@ -9,67 +9,73 @@
 </nav>
 <a name="detail-view"></a>
 <div class="panel-heading">
-	<h3 class="panel-title"><strong>
-			<!-- <%%DETAIL_VIEW_TITLE%%> -->
-		</strong></h3>
-
-
 	<!-- <div class="form-group">
 	<hr class="hidden-md hidden-lg"> -->
-	<label for="Name" class="control-label col-lg-3">Project title <i class="glyphicon glyphicon-info-sign text-info"
-			data-toggle="collapse" data-target="#Name-description"></i></label>
-	<div class="col-lg-9">
-		<span class="help-block collapse" id="Name-description">
-			<div class="alert alert-info">Title for the project</div>
-		</span>
-
-		<input maxlength="250" type="text" class="form-control" name="Name" id="Name" value="<%%VALUE(Name)%%>">
-	</div>
+	
 	<!-- </div> -->
-
-	<!-- <div class="form-group">
-	<hr class="hidden-md hidden-lg"> -->
-	<label for="Id" class="control-label col-lg-3">ID</label>
-	<div class="col-lg-9">
-		<div class="form-control-static" id="Id">
-			<%%VALUE(Id)%%>
-		</div>
-	</div>
-	<!-- </div> -->
-
-
-	<!-- <div class="form-group">
-	<hr class="hidden-md hidden-lg"> -->
-	<label for="projectID" class="control-label col-lg-3">Project ID<span class="text-danger">
-			<%%TRANSLATION(*)%%>
-		</span> <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse"
-			data-target="#projectID-description"></i></label>
-	<div class="col-lg-9">
-		<span class="help-block collapse" id="projectID-description">
-			<div class="alert alert-info">Record identification</div>
-		</span>
-
-		<input maxlength="200" type="text" class="form-control" name="projectID" id="projectID"
-			value="<%%VALUE(projectID)%%>" required>
-		<div class="text-danger vspacer-md" id="projectID-uniqueness-note" style="display: none;">
-			<%%TRANSLATION(unique field error)%%>
-		</div>
-	</div>
-	<!-- </div> -->
-	<div class="btn-group" role="group" aria-label="Basic example">
-		<button type="button" class="btn btn-secondary" data-target="#carouselDetail" data-slide-to="0"
-			class="active">Description</button>
-		<button type="button" class="btn btn-secondary" data-target="#carouselDetail"
-			data-slide-to="1">Attachment</button>
-		<button type="button" class="btn btn-secondary" data-target="#carouselDetail" data-slide-to="2">Review</button>
-	</div>
 
 </div>
 <!-- </div> -->
 
 <div class="panel-body" id="projects_dv_container">
+	<div class="form-group row">
+		<label for="Name" class="control-label col-lg-2">Project title <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#Name-description"></i></label>
+		<div class="col-lg-10">
+			<span class="help-block collapse" id="Name-description">
+				<div class="alert alert-info">Title for the project</div>
+			</span>
+
+			<input maxlength="250" type="text" class="form-control" name="Name" id="Name" value="<%%VALUE(Name)%%>">
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label for="Id" class="control-label col-lg-2">ID</label>
+		<div class="col-lg-10">
+			<div class="form-control-static" id="Id">
+				<%%VALUE(Id)%%>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="form-group row">
+		<label for="projectID" class="control-label col-lg-2">Project ID<span class="text-danger">
+				<%%TRANSLATION(*)%%>
+			</span> <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse"
+				data-target="#projectID-description"></i></label>
+		<div class="col-lg-10">
+			<span class="help-block collapse" id="projectID-description">
+				<div class="alert alert-info">Record identification</div>
+			</span>
+
+			<input maxlength="200" type="text" class="form-control" name="projectID" id="projectID"
+				value="<%%VALUE(projectID)%%>" required>
+			<div class="text-danger vspacer-md" id="projectID-uniqueness-note" style="display: none;">
+				<%%TRANSLATION(unique field error)%%>
+			</div>
+		</div>
+	</div>
+	<!-- <ul class="nav nav-tabs customtab2 d-block" role="tablist" aria-label="Basic example">
+		<li class="nav-item"> <a class="nav-link active" data-target="#carouselDetail" data-slide-to="0" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Description</span></a> </li>
+		<li class="nav-item"> <a class="nav-link" data-target="#carouselDetail" data-slide-to="1" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Attachment</span></a> </li>
+		<li class="nav-item"> <a class="nav-link" data-target="#carouselDetail" data-slide-to="2" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Review</span></a> </li>
+	</ul> -->
+	<div class="row">
+	<ul class="nav nav-tabs customtab2 d-block w-100" role="tablist">
+		<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#Description" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Description</span></a> </li>
+		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Attachment" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Attachment</span></a> </li>
+		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Review" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Review</span></a> </li>
+	</ul>
+
+	<!-- <div class="btn-group" role="group" aria-label="Basic example">
+		<button type="button" class="btn btn-secondary" data-target="#carouselDetail" data-slide-to="0"
+			class="active">Description</button>
+		<button type="button" class="btn btn-secondary" data-target="#carouselDetail"
+			data-slide-to="1">Attachment</button>
+		<button type="button" class="btn btn-secondary" data-target="#carouselDetail" data-slide-to="2">Review</button>
+	</div> -->
 	<!-- child links -->
-	<div class="row vspacer-md">
 		<div class="col-xs-12">
 			<input type="hidden" id="LogisticRequest_hclink"
 				value="LogisticRequest_view.php?filterer_fo_ProjectID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
@@ -93,391 +99,324 @@
 				value="Receivables_view.php?filterer_ProjectsID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
 			<div class="clearfix"></div>
 		</div>
-	</div>
-	<hr class="hidden-xs hidden-sm">
-
-	<div class="row">
-
-		<div class="col-md-12 col-lg-12" id="projects_dv_form">
-			<div id="carouselDetail" class="carousel slide" data-ride="carousel">
-				<!-- <ol class="carousel-indicators">
-							<li data-target="#carouselDetail" data-slide-to="0" class="active">Description</li>
-							<li data-target="#carouselDetail" data-slide-to="1">Attachment</li>
-							<li data-target="#carouselDetail" data-slide-to="2">Review</li>
-						  </ol> -->
-				<fieldset class="form-horizontal">
-					<div class="carousel-inner">
-						<div class="carousel-item active">
-
-							<div class="form-group">
-								<hr class="hidden-md hidden-lg">
-								<label for="fo_ProjectIndication" class="control-label col-lg-3">Project Tier<span
-										class="text-danger">
-										<%%TRANSLATION(*)%%>
-									</span> <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse"
-										data-target="#fo_ProjectIndication-description"></i></label>
-								<div class="col-lg-9">
-									<span class="help-block collapse" id="fo_ProjectIndication-description">
-										<div class="alert alert-info">Contractor level of execution</div>
-									</span>
-
-									<%%COMBO(fo_ProjectIndication)%%>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<hr class="hidden-md hidden-lg">
-								<label for="fo_DocumentDescription" class="control-label col-lg-3">Description<span
-										class="text-danger">
-										<%%TRANSLATION(*)%%>
-									</span> <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse"
-										data-target="#fo_DocumentDescription-description"></i></label>
-								<div class="col-lg-9">
-									<span class="help-block collapse" id="fo_DocumentDescription-description">
-										<div class="alert alert-info">Description of Reference</div>
-									</span>
-
-									<textarea class="form-control" name="fo_DocumentDescription"
-										id="fo_DocumentDescription"
-										rows="5"><%%VALUE(fo_DocumentDescription)%%></textarea>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<hr class="hidden-md hidden-lg">
-								<label for="fo_StartDate" class="control-label col-lg-3">Start Date</label>
-								<div class="col-lg-9">
-									<%%COMBO(fo_StartDate)%%>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<hr class="hidden-md hidden-lg">
-								<label for="fo_EndDate" class="control-label col-lg-3">End Date</label>
-								<div class="col-lg-9">
-									<%%COMBO(fo_EndDate)%%>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<hr class="hidden-md hidden-lg">
-								<label for="ot_FileLoc" class="control-label col-lg-3">File Location & Number</label>
-								<div class="col-lg-9">
-									<input maxlength="100" type="text" class="form-control" name="ot_FileLoc"
-										id="ot_FileLoc" value="<%%VALUE(ot_FileLoc)%%>">
-								</div>
-							</div>
-
-							<div class="form-group">
-								<hr class="hidden-md hidden-lg">
-								<label for="ot_otherdetails" class="control-label col-lg-3">Other details</label>
-								<div class="col-lg-9">
-									<textarea class="form-control" name="ot_otherdetails" id="ot_otherdetails"
-										rows="5"><%%VALUE(ot_otherdetails)%%></textarea>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<hr class="hidden-md hidden-lg">
-								<label for="ot_comments" class="control-label col-lg-3">Comments</label>
-								<div class="col-lg-9">
-									<%%HTMLAREA(ot_comments)%%>
-								</div>
-							</div>
-						</div>
-						<div class="carousel-item">
-							<div class="form-group">
-								<hr class="hidden-md hidden-lg">
-								<label class="control-label col-lg-3">Shared Link</label>
-								<br />
-								<label class="control-label col-lg-3">Attached <span
-										id="totalLinkAttached"></span>>/2</label>
-								<div class="col-lg-9">
-
-									<div class="row">
-										<!-- <div class="col-md-1">
-											<a id="ot_SharedLink1-link"
-												href="link.php?t=projects&f=ot_SharedLink1&i=<%%VALUE(Id)%%>"
-												target="_blank"><i class="glyphicon glyphicon-globe"
-													title="<%%VALUE(ot_SharedLink1)%%>"
-													style="font-size: x-large; top: .35em;"></i></a>
-										</div> -->
-										<!-- <script>jQuery(function () { /* */ var e_ot_SharedLink1 = '<%%VALUE(ot_SharedLink1)%%>'; if (e_ot_SharedLink1 == '' || e_ot_SharedLink1 == '&nbsp;' || e_ot_SharedLink1 == 'blank.gif') jQuery('#ot_SharedLink1-link').hide(); });</script> -->
-										<input maxlength="200" placeholder="Place Link here" type="text"
-											class="form-control collapse" name="ot_SharedLink1" id="ot_SharedLink1"
-											value="<%%VALUE(ot_SharedLink1)%%>">
-										<button type="button" class="btn btn-outline-danger"
-											id="ot_SharedLink1_remove">Remove</button>
-										<input maxlength="200" placeholder="Place Link here" type="text"
-											class="form-control collapse" name="ot_SharedLink2" id="ot_SharedLink2"
-											value="<%%VALUE(ot_SharedLink2)%%>">
-										<button type="button" class="btn btn-outline-danger"
-											id="ot_SharedLink2_remove">Remove</button>
-
-										<button type="button" class="btn btn-light btn-block" id="addLink">+</button>
-									</div>
-
-								</div>
-							</div>
-
-							<div class="form-group">
-								<hr class="hidden-md hidden-lg">
-								<label class="control-label col-lg-3">Document</label>
-								<br />
-								<label class="control-label col-lg-3">Attached <span
-										id="totalDocumentAttached"></span>>/3</label>
-								<div class="col-lg-9">
-
-									<div class="row">
-										<a id="ot_Ref01-link" href="link.php?t=projects&f=ot_Ref01&i=<%%VALUE(Id)%%>"
-											target="_blank">
-											<%%VALUE(ot_Ref01)%%>
-										</a>
-										<script>jQuery(function () { /* */ var e_ot_Ref01 = '<%%VALUE(ot_Ref01)%%>'; if (e_ot_Ref01 == '' || e_ot_Ref01 == '&nbsp;' || e_ot_Ref01 == 'blank.gif') jQuery('#ot_Ref01-link').hide(); });</script>
-
-										<div class="pull-right" style="overflow-x: hidden;">
-											<div class="hidden-md hidden-lg vspacer-lg"></div>
-											<%%UPLOADFILE(ot_Ref01)%%>
-												<%%REMOVEFILE(ot_Ref01)%%>
-										</div>
-
-										<!------>
-
-										<a id="ot_Ref02-link" href="link.php?t=projects&f=ot_Ref02&i=<%%VALUE(Id)%%>"
-											target="_blank">
-											<%%VALUE(ot_Ref02)%%>
-										</a>
-										<script>jQuery(function () { /* */ var e_ot_Ref02 = '<%%VALUE(ot_Ref02)%%>'; if (e_ot_Ref02 == '' || e_ot_Ref02 == '&nbsp;' || e_ot_Ref02 == 'blank.gif') jQuery('#ot_Ref02-link').hide(); });</script>
-
-										<div class="pull-right" style="overflow-x: hidden;">
-											<div class="hidden-md hidden-lg vspacer-lg"></div>
-											<%%UPLOADFILE(ot_Ref02)%%>
-												<%%REMOVEFILE(ot_Ref02)%%>
-										</div>
-
-										<!------>
-
-										<a id="ot_Ref03-link" href="link.php?t=projects&f=ot_Ref03&i=<%%VALUE(Id)%%>"
-											target="_blank">
-											<%%VALUE(ot_Ref03)%%>
-										</a>
-										<script>jQuery(function () { /* */ var e_ot_Ref03 = '<%%VALUE(ot_Ref03)%%>'; if (e_ot_Ref03 == '' || e_ot_Ref03 == '&nbsp;' || e_ot_Ref03 == 'blank.gif') jQuery('#ot_Ref03-link').hide(); });</script>
-
-										<div class="pull-right" style="overflow-x: hidden;">
-											<div class="hidden-md hidden-lg vspacer-lg"></div>
-											<%%UPLOADFILE(ot_Ref03)%%>
-												<%%REMOVEFILE(ot_Ref03)%%>
-										</div>
-
-										<!------>
-
-										<button type="button" class="btn btn-light btn-block"
-											id="addDocument">+</button>
-
-										<br />
-										<label class="control-label col-lg-3">Maximum file size allowed: 64000
-											KB.<br>Allowed
-											file types: txt, doc, docx, docm, odt, pdf, rtf</label>
-
-									</div>
-
-								</div>
-							</div>
-
-							<div class="form-group">
-								<hr class="hidden-md hidden-lg">
-								<label class="control-label col-lg-3">Compressed Folder</label>
-								<br />
-								<label class="control-label col-lg-3">Attached <span
-										id="totalCompFolderAttached"></span>>/3</label>
-								<div class="col-lg-9">
-
-									<div class="row">
-										<a id="ot_Ref04-link" href="link.php?t=projects&f=ot_Ref04&i=<%%VALUE(Id)%%>"
-											target="_blank">
-											<%%VALUE(ot_Ref04)%%>
-										</a>
-										<script>jQuery(function () { /* */ var e_ot_Ref04 = '<%%VALUE(ot_Ref04)%%>'; if (e_ot_Ref04 == '' || e_ot_Ref04 == '&nbsp;' || e_ot_Ref04 == 'blank.gif') jQuery('#ot_Ref04-link').hide(); });</script>
-
-										<div class="pull-right" style="overflow-x: hidden;">
-											<div class="hidden-md hidden-lg vspacer-lg"></div>
-											<%%UPLOADFILE(ot_Ref04)%%>
-												<%%REMOVEFILE(ot_Ref04)%%>
-										</div>
-
-										<!------>
-
-										<a id="ot_Ref05-link" href="link.php?t=projects&f=ot_Ref05&i=<%%VALUE(Id)%%>"
-											target="_blank">
-											<%%VALUE(ot_Ref05)%%>
-										</a>
-										<script>jQuery(function () { /* */ var e_ot_Ref05 = '<%%VALUE(ot_Ref05)%%>'; if (e_ot_Ref05 == '' || e_ot_Ref05 == '&nbsp;' || e_ot_Ref05 == 'blank.gif') jQuery('#ot_Ref05-link').hide(); });</script>
-
-										<div class="pull-right" style="overflow-x: hidden;">
-											<div class="hidden-md hidden-lg vspacer-lg"></div>
-											<%%UPLOADFILE(ot_Ref05)%%>
-												<%%REMOVEFILE(ot_Ref05)%%>
-										</div>
-
-										<!------>
-
-										<a id="ot_Ref06-link" href="link.php?t=projects&f=ot_Ref06&i=<%%VALUE(Id)%%>"
-											target="_blank">
-											<%%VALUE(ot_Ref06)%%>
-										</a>
-										<script>jQuery(function () { /* */ var e_ot_Ref06 = '<%%VALUE(ot_Ref06)%%>'; if (e_ot_Ref06 == '' || e_ot_Ref06 == '&nbsp;' || e_ot_Ref06 == 'blank.gif') jQuery('#ot_Ref06-link').hide(); });</script>
-
-										<div class="pull-right" style="overflow-x: hidden;">
-											<div class="hidden-md hidden-lg vspacer-lg"></div>
-											<%%UPLOADFILE(ot_Ref06)%%>
-												<%%REMOVEFILE(ot_Ref06)%%>
-										</div>
-
-										<!------>
-
-										<button type="button" class="btn btn-light btn-block"
-											id="addCompFolder">+</button>
-
-										<br />
-										<label class="control-label col-lg-3">Maximum file size allowed: 64000
-											KB.<br>Allowed
-											file types: zip, rar, gz, tar, iso</label>
-
-									</div>
-
-								</div>
-							</div>
-
-							<div class="form-group">
-								<hr class="hidden-md hidden-lg">
-								<label class="control-label col-lg-3">Photo</label>
-								<br />
-								<label class="control-label col-lg-3">Attached <span
-										id="totalPhotoAttached"></span>>/3</label>
-								<div class="col-lg-9">
-
-									<div class="row">
-										<a id="ot_Photo01-link"
-											href="link.php?t=projects&f=ot_Photo01&i=<%%VALUE(Id)%%>" target="_blank">
-											<%%VALUE(ot_Photo01)%%>
-										</a>
-										<script>jQuery(function () { /* */ var e_ot_Photo01 = '<%%VALUE(ot_Photo01)%%>'; if (e_ot_Photo01 == '' || e_ot_Photo01 == '&nbsp;' || e_ot_Photo01 == 'blank.gif') jQuery('#ot_Photo01-link').hide(); });</script>
-
-										<div class="pull-right" style="overflow-x: hidden;">
-											<div class="hidden-md hidden-lg vspacer-lg"></div>
-											<%%UPLOADFILE(ot_Photo01)%%>
-												<%%REMOVEFILE(ot_Photo01)%%>
-										</div>
-
-										<!------>
-
-										<a id="ot_Photo02-link"
-											href="link.php?t=projects&f=ot_Photo02&i=<%%VALUE(Id)%%>" target="_blank">
-											<%%VALUE(ot_Photo02)%%>
-										</a>
-										<script>jQuery(function () { /* */ var e_ot_Photo02 = '<%%VALUE(ot_Photo02)%%>'; if (e_ot_Photo02 == '' || e_ot_Photo02 == '&nbsp;' || e_ot_Photo02 == 'blank.gif') jQuery('#ot_Photo02-link').hide(); });</script>
-
-										<div class="pull-right" style="overflow-x: hidden;">
-											<div class="hidden-md hidden-lg vspacer-lg"></div>
-											<%%UPLOADFILE(ot_Photo02)%%>
-												<%%REMOVEFILE(ot_Photo02)%%>
-										</div>
-
-										<!------>
-
-										<a id="ot_Photo03-link"
-											href="link.php?t=projects&f=ot_Photo03&i=<%%VALUE(Id)%%>" target="_blank">
-											<%%VALUE(ot_Photo03)%%>
-										</a>
-										<script>jQuery(function () { /* */ var e_ot_Photo03 = '<%%VALUE(ot_Photo03)%%>'; if (e_ot_Photo03 == '' || e_ot_Photo03 == '&nbsp;' || e_ot_Photo03 == 'blank.gif') jQuery('#ot_Photo03-link').hide(); });</script>
-
-										<div class="pull-right" style="overflow-x: hidden;">
-											<div class="hidden-md hidden-lg vspacer-lg"></div>
-											<%%UPLOADFILE(ot_Photo03)%%>
-												<%%REMOVEFILE(ot_Photo03)%%>
-										</div>
-
-										<!------>
-
-										<button type="button" class="btn btn-light btn-block" id="addPhoto">+</button>
-
-										<br />
-										<label class="control-label col-lg-3">Maximum file size allowed: 10000
-											KB.<br>Allowed
-											file types: jpg, jpeg, gif, png</label>
-
-									</div>
-
-								</div>
-							</div>
-
-						</div>
-						<div class="carousel-item">
-							<div class="form-group">
-								<hr class="hidden-md hidden-lg">
-								<label for="ot_ap_Review" class="control-label col-lg-3"
-									data-parent_link="view_parent_modal">Review</label>
-								<div class="col-lg-9">
-									<div class="form-control-static" style="white-space: nowrap; overflow-x: hidden;">
-										<%%COMBO(ot_ap_Review)%%>
-									</div>
-								</div>
-							</div>
 	
-							<div class="form-group">
-								<hr class="hidden-md hidden-lg">
-								<label for="ot_ap_RevComment" class="control-label col-lg-3">Review Comment</label>
-								<div class="col-lg-9">
-									<textarea class="form-control" name="ot_ap_RevComment" id="ot_ap_RevComment"
-										rows="5"><%%VALUE(ot_ap_RevComment)%%></textarea>
-								</div>
-							</div>
-	
-							<div class="form-group">
-								<hr class="hidden-md hidden-lg">
-								<label for="ot_ap_Approval" class="control-label col-lg-3"
-									data-parent_link="view_parent_modal">Approval</label>
-								<div class="col-lg-9">
-									<div class="form-control-static" style="white-space: nowrap; overflow-x: hidden;">
-										<%%COMBO(ot_ap_Approval)%%>
-									</div>
-								</div>
-							</div>
-	
-							<div class="form-group">
-								<hr class="hidden-md hidden-lg">
-								<label for="ot_ap_ApprComment" class="control-label col-lg-3">Approval Comment</label>
-								<div class="col-lg-9">
-									<textarea class="form-control" name="ot_ap_ApprComment" id="ot_ap_ApprComment"
-										rows="5"><%%VALUE(ot_ap_ApprComment)%%></textarea>
-								</div>
-							</div>
-	
-							<div class="form-group">
-								<hr class="hidden-md hidden-lg">
-								<label for="ot_ap_QC" class="control-label col-lg-3"
-									data-parent_link="view_parent_modal">IMS Control</label>
-								<div class="col-lg-9">
-									<div class="form-control-static" style="white-space: nowrap; overflow-x: hidden;">
-										<%%COMBO(ot_ap_QC)%%>
-									</div>
-								</div>
-							</div>
-	
-							<div class="form-group">
-								<hr class="hidden-md hidden-lg">
-								<label for="ot_ap_QCComment" class="control-label col-lg-3">IMS Control Comment</label>
-								<div class="col-lg-9">
-									<textarea class="form-control" name="ot_ap_QCComment" id="ot_ap_QCComment"
-										rows="5"><%%VALUE(ot_ap_QCComment)%%></textarea>
-								</div>
-							</div>
-						</div>
-					</div>
+	<div class="tab-content w-100">
+		<div class="tab-pane p-t-30 active show" id="Description" role="tabpanel">
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="fo_ProjectIndication" class="control-label col-lg-2">Project Tier<span
+						class="text-danger">
+						<%%TRANSLATION(*)%%>
+					</span> <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse"
+						data-target="#fo_ProjectIndication-description"></i></label>
+				<div class="col-lg-10">
+					<span class="help-block collapse" id="fo_ProjectIndication-description">
+						<div class="alert alert-info">Contractor level of execution</div>
+					</span>
+
+					<%%COMBO(fo_ProjectIndication)%%>
+				</div>
 			</div>
-			</fieldset>
+
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="fo_DocumentDescription" class="control-label col-lg-2">Description<span
+						class="text-danger">
+						<%%TRANSLATION(*)%%>
+					</span> <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse"
+						data-target="#fo_DocumentDescription-description"></i></label>
+				<div class="col-lg-10">
+					<span class="help-block collapse" id="fo_DocumentDescription-description">
+						<div class="alert alert-info">Description of Reference</div>
+					</span>
+
+					<textarea class="form-control" name="fo_DocumentDescription"
+						id="fo_DocumentDescription"
+						rows="5"><%%VALUE(fo_DocumentDescription)%%></textarea>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="fo_StartDate" class="control-label col-lg-2">Start Date</label>
+				<div class="col-lg-10">
+					<%%COMBO(fo_StartDate)%%>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="fo_EndDate" class="control-label col-lg-2">End Date</label>
+				<div class="col-lg-10">
+					<%%COMBO(fo_EndDate)%%>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="ot_FileLoc" class="control-label col-lg-2">File Location & Number</label>
+				<div class="col-lg-10">
+					<input maxlength="100" type="text" class="form-control" name="ot_FileLoc"
+						id="ot_FileLoc" value="<%%VALUE(ot_FileLoc)%%>">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="ot_otherdetails" class="control-label col-lg-2">Other details</label>
+				<div class="col-lg-10">
+					<textarea class="form-control" name="ot_otherdetails" id="ot_otherdetails"
+						rows="5"><%%VALUE(ot_otherdetails)%%></textarea>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="ot_comments" class="control-label col-lg-2">Comments</label>
+				<div class="col-lg-10">
+					<%%HTMLAREA(ot_comments)%%>
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane panel-body p-t-30" id="Attachment" role="tabpanel">
+			<div class="form-group row">
+				<label class="control-label col-lg-2">Shared Link<div class="text-muted">Attached <span id="totalLinkAttached"></span>/2</div></label>
+				<div class="col-lg-10">
+						<!-- <div class="col-md-1">
+							<a id="ot_SharedLink1-link"
+								href="link.php?t=projects&f=ot_SharedLink1&i=<%%VALUE(Id)%%>"
+								target="_blank"><i class="glyphicon glyphicon-globe"
+									title="<%%VALUE(ot_SharedLink1)%%>"
+									style="font-size: x-large; top: .35em;"></i></a>
+						</div> -->
+						<!-- <script>jQuery(function () { /* */ var e_ot_SharedLink1 = '<%%VALUE(ot_SharedLink1)%%>'; if (e_ot_SharedLink1 == '' || e_ot_SharedLink1 == '&nbsp;' || e_ot_SharedLink1 == 'blank.gif') jQuery('#ot_SharedLink1-link').hide(); });</script> -->
+						<input maxlength="200" placeholder="Place Link here" type="text"
+							class="form-control collapse m-b-5" name="ot_SharedLink1" id="ot_SharedLink1"
+							value="<%%VALUE(ot_SharedLink1)%%>">
+						<button type="button" class="btn btn-sm btn-outline-danger m-b-5"
+							id="ot_SharedLink1_remove">Remove</button>
+						<input maxlength="200" placeholder="Place Link here" type="text"
+							class="form-control collapse m-b-5" name="ot_SharedLink2" id="ot_SharedLink2"
+							value="<%%VALUE(ot_SharedLink2)%%>">
+						<button type="button" class="btn  btn-sm btn-outline-danger m-b-5"
+							id="ot_SharedLink2_remove">Remove</button>
+
+						<button type="button" class="btn btn-circle btn-sm btn-light btn-block mx-auto" id="addLink"><i class="fa fa-plus" aria-hidden="true"></i></button>
+
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="control-label col-lg-2">Document<div class="text-muted">Attached <span id="totalLinkAttached"></span>/3</div></label>
+				<div class="col-lg-10">
+					<a id="ot_Ref01-link" href="link.php?t=projects&f=ot_Ref01&i=<%%VALUE(Id)%%>"
+						target="_blank">
+						<%%VALUE(ot_Ref01)%%>
+					</a>
+					<script>jQuery(function () { /* */ var e_ot_Ref01 = '<%%VALUE(ot_Ref01)%%>'; if (e_ot_Ref01 == '' || e_ot_Ref01 == '&nbsp;' || e_ot_Ref01 == 'blank.gif') jQuery('#ot_Ref01-link').hide(); });</script>
+
+					<div style="overflow-x: hidden;font-size: small;">
+						<div class="hidden-md hidden-lg vspacer-lg"></div>
+						<%%UPLOADFILE(ot_Ref01)%%>
+							<%%REMOVEFILE(ot_Ref01)%%>
+					</div>
+
+					<!------>
+
+					<a id="ot_Ref02-link" href="link.php?t=projects&f=ot_Ref02&i=<%%VALUE(Id)%%>"
+						target="_blank">
+						<%%VALUE(ot_Ref02)%%>
+					</a>
+					<script>jQuery(function () { /* */ var e_ot_Ref02 = '<%%VALUE(ot_Ref02)%%>'; if (e_ot_Ref02 == '' || e_ot_Ref02 == '&nbsp;' || e_ot_Ref02 == 'blank.gif') jQuery('#ot_Ref02-link').hide(); });</script>
+
+					<div style="overflow-x: hidden;font-size: small;">
+						<div class="hidden-md hidden-lg vspacer-lg"></div>
+						<%%UPLOADFILE(ot_Ref02)%%>
+							<%%REMOVEFILE(ot_Ref02)%%>
+					</div>
+
+					<!------>
+
+					<a id="ot_Ref03-link" href="link.php?t=projects&f=ot_Ref03&i=<%%VALUE(Id)%%>"
+						target="_blank">
+						<%%VALUE(ot_Ref03)%%>
+					</a>
+					<script>jQuery(function () { /* */ var e_ot_Ref03 = '<%%VALUE(ot_Ref03)%%>'; if (e_ot_Ref03 == '' || e_ot_Ref03 == '&nbsp;' || e_ot_Ref03 == 'blank.gif') jQuery('#ot_Ref03-link').hide(); });</script>
+
+					<div style="overflow-x: hidden;font-size: small;">
+						<div class="hidden-md hidden-lg vspacer-lg"></div>
+						<%%UPLOADFILE(ot_Ref03)%%>
+							<%%REMOVEFILE(ot_Ref03)%%>
+					</div>
+					<button type="button" class="btn btn-circle btn-sm btn-light btn-block mx-auto" id="addDocument"><i class="fa fa-plus" aria-hidden="true"></i></button>
+					<p class="control-label text-muted">Maximum file size allowed: 64000KB.<br>Allowed file types: txt, doc, docx, docm, odt, pdf, rtf</p>
+
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="control-label col-lg-2">Compressed Folder<div class="text-muted">Attached <span id="totalCompFolderAttached"></span>/3</div></label>
+				<div class="col-lg-10">
+					<a id="ot_Ref04-link" href="link.php?t=projects&f=ot_Ref04&i=<%%VALUE(Id)%%>"
+						target="_blank">
+						<%%VALUE(ot_Ref04)%%>
+					</a>
+					<script>jQuery(function () { /* */ var e_ot_Ref04 = '<%%VALUE(ot_Ref04)%%>'; if (e_ot_Ref04 == '' || e_ot_Ref04 == '&nbsp;' || e_ot_Ref04 == 'blank.gif') jQuery('#ot_Ref04-link').hide(); });</script>
+
+					<div style="overflow-x: hidden;font-size: small;">
+						<div class="hidden-md hidden-lg vspacer-lg"></div>
+						<%%UPLOADFILE(ot_Ref04)%%>
+							<%%REMOVEFILE(ot_Ref04)%%>
+					</div>
+
+					<!------>
+
+					<a id="ot_Ref05-link" href="link.php?t=projects&f=ot_Ref05&i=<%%VALUE(Id)%%>"
+						target="_blank">
+						<%%VALUE(ot_Ref05)%%>
+					</a>
+					<script>jQuery(function () { /* */ var e_ot_Ref05 = '<%%VALUE(ot_Ref05)%%>'; if (e_ot_Ref05 == '' || e_ot_Ref05 == '&nbsp;' || e_ot_Ref05 == 'blank.gif') jQuery('#ot_Ref05-link').hide(); });</script>
+
+					<div style="overflow-x: hidden;font-size: small;">
+						<div class="hidden-md hidden-lg vspacer-lg"></div>
+						<%%UPLOADFILE(ot_Ref05)%%>
+							<%%REMOVEFILE(ot_Ref05)%%>
+					</div>
+
+					<!------>
+
+					<a id="ot_Ref06-link" href="link.php?t=projects&f=ot_Ref06&i=<%%VALUE(Id)%%>"
+						target="_blank">
+						<%%VALUE(ot_Ref06)%%>
+					</a>
+					<script>jQuery(function () { /* */ var e_ot_Ref06 = '<%%VALUE(ot_Ref06)%%>'; if (e_ot_Ref06 == '' || e_ot_Ref06 == '&nbsp;' || e_ot_Ref06 == 'blank.gif') jQuery('#ot_Ref06-link').hide(); });</script>
+
+					<div style="overflow-x: hidden;font-size: small;">
+						<div class="hidden-md hidden-lg vspacer-lg"></div>
+						<%%UPLOADFILE(ot_Ref06)%%>
+							<%%REMOVEFILE(ot_Ref06)%%>
+					</div>
+					<button type="button" class="btn btn-circle btn-sm btn-light btn-block mx-auto" id="addCompFolder"><i class="fa fa-plus" aria-hidden="true"></i></button>
+
+					<br />
+					<p class="control-label text-muted">Maximum file size allowed: 64000KB.<br>Allowed file types: zip, rar, gz, tar, iso</p>
+
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="control-label col-lg-2">Photo<div class="text-muted">Attached <span id="totalLinkAttached"></span>/3</div></label>
+				<div class="col-lg-10">
+					<a id="ot_Photo01-link"
+						href="link.php?t=projects&f=ot_Photo01&i=<%%VALUE(Id)%%>" target="_blank">
+						<%%VALUE(ot_Photo01)%%>
+					</a>
+					<script>jQuery(function () { /* */ var e_ot_Photo01 = '<%%VALUE(ot_Photo01)%%>'; if (e_ot_Photo01 == '' || e_ot_Photo01 == '&nbsp;' || e_ot_Photo01 == 'blank.gif') jQuery('#ot_Photo01-link').hide(); });</script>
+
+					<div style="overflow-x: hidden;font-size: small;">
+						<div class="hidden-md hidden-lg vspacer-lg"></div>
+						<%%UPLOADFILE(ot_Photo01)%%>
+							<%%REMOVEFILE(ot_Photo01)%%>
+					</div>
+
+					<!------>
+
+					<a id="ot_Photo02-link"
+						href="link.php?t=projects&f=ot_Photo02&i=<%%VALUE(Id)%%>" target="_blank">
+						<%%VALUE(ot_Photo02)%%>
+					</a>
+					<script>jQuery(function () { /* */ var e_ot_Photo02 = '<%%VALUE(ot_Photo02)%%>'; if (e_ot_Photo02 == '' || e_ot_Photo02 == '&nbsp;' || e_ot_Photo02 == 'blank.gif') jQuery('#ot_Photo02-link').hide(); });</script>
+
+					<div style="overflow-x: hidden;font-size: small;">
+						<div class="hidden-md hidden-lg vspacer-lg"></div>
+						<%%UPLOADFILE(ot_Photo02)%%>
+							<%%REMOVEFILE(ot_Photo02)%%>
+					</div>
+
+					<!------>
+
+					<a id="ot_Photo03-link"
+						href="link.php?t=projects&f=ot_Photo03&i=<%%VALUE(Id)%%>" target="_blank">
+						<%%VALUE(ot_Photo03)%%>
+					</a>
+					<script>jQuery(function () { /* */ var e_ot_Photo03 = '<%%VALUE(ot_Photo03)%%>'; if (e_ot_Photo03 == '' || e_ot_Photo03 == '&nbsp;' || e_ot_Photo03 == 'blank.gif') jQuery('#ot_Photo03-link').hide(); });</script>
+
+					<div style="overflow-x: hidden;font-size: small;">
+						<div class="hidden-md hidden-lg vspacer-lg"></div>
+						<%%UPLOADFILE(ot_Photo03)%%>
+							<%%REMOVEFILE(ot_Photo03)%%>
+					</div>
+					<button type="button" class="btn btn-circle btn-sm btn-light btn-block mx-auto" id="addPhoto"><i class="fa fa-plus" aria-hidden="true"></i></button>
+					<br />
+					<p class="control-label text-muted">Maximum file size allowed: 10000KB.<br>Allowed file types: jpg, jpeg, gif, png</label>
+
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane p-t-30" id="Review" role="tabpanel">
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="ot_ap_Review" class="control-label col-lg-3"
+					data-parent_link="view_parent_modal">Review</label>
+				<div class="col-lg-9">
+					<div class="form-control-static" style="white-space: nowrap; overflow-x: hidden;">
+						<%%COMBO(ot_ap_Review)%%>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="ot_ap_RevComment" class="control-label col-lg-3">Review Comment</label>
+				<div class="col-lg-9">
+					<textarea class="form-control" name="ot_ap_RevComment" id="ot_ap_RevComment"
+						rows="5"><%%VALUE(ot_ap_RevComment)%%></textarea>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="ot_ap_Approval" class="control-label col-lg-3"
+					data-parent_link="view_parent_modal">Approval</label>
+				<div class="col-lg-9">
+					<div class="form-control-static" style="white-space: nowrap; overflow-x: hidden;">
+						<%%COMBO(ot_ap_Approval)%%>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="ot_ap_ApprComment" class="control-label col-lg-3">Approval Comment</label>
+				<div class="col-lg-9">
+					<textarea class="form-control" name="ot_ap_ApprComment" id="ot_ap_ApprComment"
+						rows="5"><%%VALUE(ot_ap_ApprComment)%%></textarea>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="ot_ap_QC" class="control-label col-lg-3"
+					data-parent_link="view_parent_modal">IMS Control</label>
+				<div class="col-lg-9">
+					<div class="form-control-static" style="white-space: nowrap; overflow-x: hidden;">
+						<%%COMBO(ot_ap_QC)%%>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="ot_ap_QCComment" class="control-label col-lg-3">IMS Control Comment</label>
+				<div class="col-lg-9">
+					<textarea class="form-control" name="ot_ap_QCComment" id="ot_ap_QCComment"
+						rows="5"><%%VALUE(ot_ap_QCComment)%%></textarea>
+				</div>
+			</div>
 		</div>
 	</div>
+</div>
+	
 	<!-- form inputs -->
 	<!-- <div class="col-md-8 col-lg-10" id="projects_dv_form">
 			<fieldset class="form-horizontal">
@@ -526,7 +465,6 @@
 
 
 <!-- child records -->
-<hr>
 <div class="row">
 	<div class="col-lg-10 col-lg-offset-1">
 		<div id="projects-children" class="children-tabs"></div>

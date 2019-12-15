@@ -60,93 +60,71 @@ function summary_counters($contentType, $memberInfo, $tableName)
 			max-height: 32px;
 		}
 	</style>
-	<div class="container-fluid">
 		<div class="summary-counter-wrapper">
 			<!-- Row -->
 			<div class="row">
 				<!-- Column Total Count-->
 				<div class="col-lg-2 col-md-6">
 					<div class="card">
-						<div class="card-body" style="max-height: 140px; overflow: hidden;">
-							<h4 class="card-title m-b-0">Total</h4>
-							<p class="text-muted">$totalDisplayField</p>
-							<div class="row">
-								<div class="col-12"><span><h2 class="font-light d-inline">$totalCount</h2></span></div>
-								<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
-							</div>
+						<div class="card-body text-center">
+							<h6 class="card-title text-muted m-b-0">Total</h6>
+							<!-- <p class="text-muted">$totalDisplayField</p> -->
+							<h1 class="font-light d-inline">$totalCount</h1>
 						</div>
 					</div>
 				</div>
 				<!-- Column Review Count-->
 				<div class="col-lg-2 col-md-6">
 					<div class="card">
-						<div class="card-body" style="max-height: 140px; overflow: hidden;">
-							<h4 class="card-title m-b-0">$reviewDisplayField</h4>
-							<p class="text-muted">Overall</p>
-							<div class="row">
-								<div class="col-12"><span><h2 class="font-light d-inline">$reviewCount</h2></span></div>
-								<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
-							</div>
+						<div class="card-body text-center">
+							<h6 class="card-title text-muted m-b-0">$reviewDisplayField</h6>
+							<!-- <p class="text-muted">Overall</p> -->
+							<h1 class="font-light d-inline">$reviewCount</h1>
 						</div>
 					</div>
 				</div>
 				<!-- Column Approval Count-->
 				<div class="col-lg-2 col-md-6">
 					<div class="card">
-						<div class="card-body" style="max-height: 140px; overflow: hidden;">
-							<h4 class="card-title m-b-0">$approvalDisplayField</h4>
-							<p class="text-muted">Overall</p>
-							<div class="row">
-								<div class="col-12"><span><h2 class="font-light d-inline">$approvalCount</h2></span></div>
-								<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
-							</div>
+						<div class="card-body text-center">
+							<h6 class="card-title text-muted m-b-0">$approvalDisplayField</h6>
+							<!-- <p class="text-muted">Overall</p> -->
+							<h1 class="font-light d-inline">$approvalCount</h1>
 						</div>
 					</div>
 				</div>
 				<!-- IMS Control Count-->
 				<div class="col-lg-2 col-md-6">
 					<div class="card">
-						<div class="card-body" style="max-height: 140px; overflow: hidden;">
-							<h4 class="card-title m-b-0">$imsControlDisplayField</h4>
-							<p class="text-muted">Overall</p>
-							<div class="row">
-								<div class="col-12"><span><h2 class="font-light d-inline">$imsControlCount</h2></span></div>
-								<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
-							</div>
+						<div class="card-body text-center">
+							<h6 class="card-title text-muted m-b-0">$imsControlDisplayField</h6>
+							<!-- <p class="text-muted">Overall</p> -->
+							<h1 class="font-light d-inline">$imsControlCount</h1>
 						</div>
 					</div>
 				</div>
 				<!-- Custom Metric 1 -->
 				<div class="col-lg-2 col-md-6">
 					<div class="card">
-						<div class="card-body" style="max-height: 140px; overflow: hidden;">
-							<h4 class="card-title m-b-0">$customDisplayField1</h4>
-							<p class="text-muted"></p>
-							<div class="row">
-								<div class="col-12"><span><h2 class="font-light d-inline">$customDisplayValue1</h2></span></div>
-								<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
-							</div>
+						<div class="card-body text-center">
+							<h6 class="card-title text-muted m-b-0">$customDisplayField1</h6>
+							<!-- <p class="text-muted"></p> -->
+							<h1 class="font-light d-inline">$customDisplayValue1</h1>
 						</div>
 					</div>
 				</div>
 				<!-- Custom Metric 2 -->
 				<div class="col-lg-2 col-md-6">
 					<div class="card">
-						<div class="card-body" style="max-height: 140px; overflow: hidden;">
-							<h4 class="card-title m-b-0">$customDisplayField2</h4>
-							<p class="text-muted"></p>
-							<div class="row">
-								<div class="col-12">
-									<span><h2 class="font-light d-inline">$customDisplayValue2</h2></span>
-								</div>
-								<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
-							</div>
+						<div class="card-body text-center">
+							<h6 class="card-title text-muted m-b-0">$customDisplayField2</h6>
+							<!-- <p class="text-muted"></p> -->
+							<h1 class="font-light d-inline">$customDisplayValue2</h1>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 HTML;
 
 	return $summaryTemplate;

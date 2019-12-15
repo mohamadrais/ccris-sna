@@ -106,6 +106,7 @@ $self_baseurl = _baseurl();
 		
 		<script src="<?php echo PREPEND_PATH; ?>dist/metisMenu/metisMenu.js"></script>
 		<script src="<?php echo PREPEND_PATH; ?>dist/js/sb-admin-2.js"></script>
+		<script src="<?php echo PREPEND_PATH; ?>assets/js/common.js"></script>
 		<!-- <link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/css/style.css"> -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.8.1/js/perfect-scrollbar.jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.8.1/js/perfect-scrollbar.min.js"></script>
