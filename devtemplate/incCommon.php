@@ -3319,7 +3319,7 @@
 		$home_page = (basename($_SERVER['PHP_SELF'])=='index.php' ? true : false);
 
 		?>
-<header class="topbar" style="position: fixed; top: 0px; width: 1440px;">
+<header class="topbar" style="position: fixed; top: 0px; width: 100%;">
 	<nav class="navbar top-navbar navbar-expand-md navbar-light">
 		<!-- ============================================================== -->
 		<!-- Logo -->
@@ -3431,7 +3431,7 @@
 						</script>
 					<?php } ?>
 				<?php } ?>
-			<div class="collapse navbar-collapse mainBg sidebar-nav">
+			<!-- <div class="collapse navbar-collapse mainBg sidebar-nav">
 				<ul class="nav navbar-nav navbar-right hidden-xs sign-out">
 					<a class="btn btn-sm btn-danger" href="<?php echo PREPEND_PATH; ?>../index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
 					<p class="navbar-text">
@@ -3440,7 +3440,7 @@
 						<?php } ?>
 					</p>
 				</ul>
-			</div>
+			</div> -->
 		</nav>
                 <!-- End Sidebar navigation -->
             </div>

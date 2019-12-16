@@ -6486,7 +6486,7 @@ For Laptop & above all (1370px)
   column-count: 2; }
 .container-fluid, .topbar .top-navbar, .scroll-sidebar {
   max-width: 1170px;
-  margin: 0; } }
+  margin: auto; } }
 
 /*-- ============================================================== 
 Small Desktop & above all (1024px) 
