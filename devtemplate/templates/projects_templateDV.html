@@ -65,8 +65,11 @@
 		<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#Description" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Description</span></a> </li>
 		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Attachment" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Attachment</span></a> </li>
 		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Review" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Review</span></a> </li>
-	</ul>
 
+	</ul>
+	<a id="startEdit" href="#Edit">Edit</span>
+	<a id="exitEdit" href="./projects_view.php?SelectedID=<%%VALUE(Id)%%>" style="display:none">Back</a>
+		
 	<!-- <div class="btn-group" role="group" aria-label="Basic example">
 		<button type="button" class="btn btn-secondary" data-target="#carouselDetail" data-slide-to="0"
 			class="active">Description</button>
@@ -469,9 +472,71 @@
 
 </div><!-- /div class="panel-body" -->
 <script src="nicEdit.js"></script>
+<style>
+	input[readonly], input[readonly="readonly"] {
+		border:unset;
+	}
+
+	input[readonly]::-webkit-input-placeholder, input[readonly="readonly"]::-webkit-input-placeholder {
+		color:transparent;
+	}
+
+	input[readonly]:-ms-input-placeholder, input[readonly="readonly"]:-ms-input-placeholder {  
+		color:transparent;
+	}
+
+</style>
 <script>
 
 	$j(function () {
+
+		/////////////////////////////////////
+		{
+			$j("input").attr("readonly", true);
+			$j("textarea").attr("readonly", true);
+			$j("select").attr("disabled", true);
+			$j("radio").attr("disabled", true);
+			$j(".nicEdit-main").attr("contenteditable", "false");
+			$j('#ot_SharedLink1_remove').hide();
+			$j('#ot_SharedLink2_remove').hide();
+
+			$j("#startEdit").click(function(){
+				$j("input").attr("readonly", false);
+				$j("textarea").attr("readonly", false);
+				$j("select").attr("disabled", false);
+				$j("radio").attr("disabled", false);
+				$j(".nicEdit-main").attr("contenteditable", "true");
+
+				if (!$j("#ot_SharedLink1").is(":visible")) {
+					$j("#ot_SharedLink1").show();
+					$j('#ot_SharedLink1_remove').show();
+				} else if (!$j("#ot_SharedLink2").is(":visible")) {
+					$j("#ot_SharedLink2").show();
+					$j('#ot_SharedLink2_remove').show();
+				}
+
+				if ($j("#ot_SharedLink1").is(":visible") && $j("#ot_SharedLink2").is(":visible")) {
+					$j("#addLink").hide();
+				}
+
+				$j(this).hide();
+				$j("#exitEdit").show();
+			});
+			
+			$j("#exitEdit").click(function(){
+				$j("input").attr("readonly", true);
+				$j("textarea").attr("readonly", true);
+				$j("select").attr("disabled", true);
+				$j("radio").attr("disabled", true);
+				$j(".nicEdit-main").attr("contenteditable", "false");
+				$j('#ot_SharedLink1_remove').hide();
+				$j('#ot_SharedLink2_remove').hide();
+				$j(this).hide();
+				$j("#startEdit").show();
+			});
+		}
+
+		///////////////////////////////////////////////
 		{
 			var _x = $j('#totalLinkAttached').html();
 			if (!_x) {
