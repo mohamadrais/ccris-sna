@@ -1,4 +1,5 @@
 <script type="text/javascript">
+    google.charts.setOnLoadCallback(load_default_data());
     function load_default_data() {
         $j.ajax({
             url: "hooks/reportsFetch.php",
@@ -248,7 +249,7 @@
     }
 
     $j(document).ready(function() {
-        load_default_data();
+        // load_default_data();
 
         var start = moment().startOf('month');
         var end = moment();
