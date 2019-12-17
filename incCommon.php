@@ -2656,6 +2656,7 @@
 	#########################################################
 
 	function logInMember(){
+		global $adminConfig;
 		$redir = 'userDashboard.php';
 		if($_POST['signIn'] != ''){
 			if($_POST['username'] != '' && $_POST['password'] != ''){
@@ -2745,8 +2746,8 @@
 					$resultgetLoggedAdmin = getLoggedAdmin();
 				 if(getLoggedAdmin()){ ?>
 					<ul class="nav navbar-nav">
-						<a href="<?php echo PREPEND_PATH; ?>admin/pageHome.php" class="btn btn-danger navbar-btn hidden-xs" title="<?php echo html_attr($Translation['admin area']); ?>"><i class="glyphicon glyphicon-cog"></i> <?php echo $Translation['admin area']; ?></a>
-						<a href="<?php echo PREPEND_PATH; ?>admin/pageHome.php" class="btn btn-danger navbar-btn visible-xs btn-lg" title="<?php echo html_attr($Translation['admin area']); ?>"><i class="glyphicon glyphicon-cog"></i> <?php echo $Translation['admin area']; ?></a>
+						<!-- <a href="<?php echo PREPEND_PATH; ?>admin/pageHome.php" class="btn btn-danger navbar-btn hidden-xs" title="<?php echo html_attr($Translation['admin area']); ?>"><i class="glyphicon glyphicon-cog"></i> <?php echo $Translation['admin area']; ?></a>
+						<a href="<?php echo PREPEND_PATH; ?>admin/pageHome.php" class="btn btn-danger navbar-btn visible-xs btn-lg" title="<?php echo html_attr($Translation['admin area']); ?>"><i class="glyphicon glyphicon-cog"></i> <?php echo $Translation['admin area']; ?></a> -->
 					</ul>
 				<?php } ?>
 
@@ -2759,16 +2760,16 @@
 						</p>
 					<?php }else{ ?>
 						<ul class="nav navbar-nav navbar-right hidden-xs" style="min-width: 330px;">
-							<a class="btn navbar-btn btn-default" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
+							<!-- <a class="btn navbar-btn btn-default" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
 							<p class="navbar-text whiteColor">
 								<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link whiteColor"><?php echo getLoggedMemberID(); ?></a></strong>
-							</p>
+							</p> -->
 						</ul>
 						<ul class="nav navbar-nav visible-xs">
-							<a class="btn navbar-btn btn-default btn-lg visible-xs" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
+							<!-- <a class="btn navbar-btn btn-default btn-lg visible-xs" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
 							<p class="navbar-text text-center whiteColor">
 								<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link whiteColor"><?php echo getLoggedMemberID(); ?></a></strong>
-							</p>
+							</p> -->
 						</ul>
 						<script>
 							/* periodically check if user is still signed in */

@@ -3366,7 +3366,7 @@
 						<li role="separator" class="divider"></li>
 						<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>../index.php"><i class="fa fa-retweet"></i><?php echo 'Switch Account' ?></a></li>
 						<li role="separator" class="divider"></li>
-						<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="fa fa-power-off"></i> <?php echo $Translation['sign out']; ?></a></li>
+						<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>../index.php?signOut=1"><i class="fa fa-power-off"></i> <?php echo $Translation['sign out']; ?></a></li>
 					</ul>
 				</div>
 			</div>
@@ -3400,19 +3400,19 @@
 				<?php if(!$_GET['signIn'] && !$_GET['loginFailed']){ ?>
 					<?php if(getLoggedMemberID() == $adminConfig['anonymousMember']){ ?>
 						<p class="navbar-text navbar-right">&nbsp;</p>
-						<a href="<?php echo PREPEND_PATH; ?>index.php?signIn=1" class="btn btn-success navbar-btn navbar-right"><?php echo $Translation['sign in']; ?></a>
+						<a href="<?php echo PREPEND_PATH; ?>../index.php?signIn=1" class="btn btn-success navbar-btn navbar-right"><?php echo $Translation['sign in']; ?></a>
 						<p class="navbar-text navbar-right">
 							<?php echo $Translation['not signed in']; ?>
 						</p>
 					<?php }else{ ?>
 						<!-- <ul class="nav navbar-nav navbar-right hidden-xs" style="min-width: 330px;">
-							<a class="btn navbar-btn btn-default" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
+							<a class="btn navbar-btn btn-default" href="<?php echo PREPEND_PATH; ?>../index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
 							<p class="navbar-text">
 								<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link"><?php echo getLoggedMemberID(); ?></a></strong>
 							</p>
 						</ul>
 						<ul class="nav navbar-nav visible-xs">
-							<a class="btn navbar-btn btn-default btn-lg visible-xs" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
+							<a class="btn navbar-btn btn-default btn-lg visible-xs" href="<?php echo PREPEND_PATH; ?>../index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
 							<p class="navbar-text text-center">
 								<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link"><?php echo getLoggedMemberID(); ?></a></strong>
 							</p>
@@ -4392,7 +4392,14 @@ EOT;
 			"update summary_dashboard set fo_CustomDisplayValue1='{$metricValue}' where fo_Section_Name='" . makeSafe($tableName). "' and ot_ap_Date = (select CURRENT_DATE)",
 			"update summary_dashboard set fo_CustomDisplayValue2='{$metricValue}' where fo_Section_Name='" . makeSafe($tableName). "' and ot_ap_Date = (select CURRENT_DATE)"
 		);
-		
+
+		if($metricPosition == 4 && get_summary_custom_display($tableName, 2) == "null"){
+			$arrSummaryUpdateSqlList[$metricPosition] = "update summary_dashboard set fo_CustomDisplayValue1=null where fo_Section_Name='" . makeSafe($tableName). "' and ot_ap_Date = (select CURRENT_DATE)";
+		}
+		else if ($metricPosition == 5 && get_summary_custom_display($tableName, 4) == "null"){
+			$arrSummaryUpdateSqlList[$metricPosition] = "update summary_dashboard set fo_CustomDisplayValue2=null where fo_Section_Name='" . makeSafe($tableName). "' and ot_ap_Date = (select CURRENT_DATE)";
+		}
+
 		if(is_array($arrSummaryUpdateSqlList) && array_key_exists($metricPosition, $arrSummaryUpdateSqlList)){
 			$returnQuery = $arrSummaryUpdateSqlList[$metricPosition];
 		}

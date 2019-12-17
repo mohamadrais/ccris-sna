@@ -74,6 +74,11 @@ $self_baseurl = _baseurl();
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/css/style.css">
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/css/daterangepicker.css">
 
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<script type="text/javascript">
+			google.charts.load('46', { packages: ['corechart', 'table'] });
+			google.charts.setOnLoadCallback();
+		</script>
 		<!--[if lt IE 9]>
 			<script src="<?php echo PREPEND_PATH; ?>resources/initializr/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 		<![endif]-->

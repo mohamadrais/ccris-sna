@@ -5,6 +5,7 @@ $currDir = dirname(__FILE__);
 include_once("{$currDir}/defaultLang.php");
 include_once("{$currDir}/language.php");
 include_once("{$currDir}/lib.php");
+include_once("$currDir/header.php");
 ?>
 <?php if (!defined('PREPEND_PATH')) define('PREPEND_PATH', ''); ?>
 <?php
@@ -48,9 +49,12 @@ $block_classes = array(
 
 
 
-<div class="navbar-default sidebar" role="navigation">
+<!-- <div class="navbar-default sidebar" role="navigation">
 	<div class="sidebar-nav navbar-collapse1" id="dash-sidebar-nav">
-		<ul class="nav" id="side-menu" style="padding: 12px;">
+		<ul class="nav" id="side-menu" style="padding: 12px;"> -->
+<div class="container-fluid">
+	<div class="card">
+		<ul class="text-themecolor m-b-0 m-t-0">
 			<?php
 			/* accessible tables */
 			$userLoggedIn = true;
@@ -65,9 +69,9 @@ $block_classes = array(
 					<?php
 						// echo $token 
 						?> </h4> -->
-				<div style="width:100%;background:teal; padding:2em; color:white">
+				<!-- <div style="width:100%;background:teal; padding:2em; color:white">
 					<h4> I am logged in as <?php echo $username ?> </h4>
-				</div>
+				</div> -->
 				<?php
 					// 					$table = <<< TABLE
 					// 		<table border="0">
@@ -90,7 +94,7 @@ $block_classes = array(
 								<div class="w3-container">
 								<div class="card">
     
-    <div class="front side">
+    <!-- <div class="front side">
       <h1 class="logo">Zach Saucier</h1>
     </div>
     
@@ -103,7 +107,7 @@ $block_classes = array(
         <p><span class="property">Phone: </span>(123) 456-7890</p>
         <p><span class="property">Website: </span>zachsaucier.com</p>
       </div>
-    </div>
+    </div> -->
     
   </div>
 								<h3>
@@ -199,9 +203,6 @@ $block_classes = array(
 	<!-- /.sidebar-collapse -->
 </div>
 <!-- /.navbar-static-side -->
-<div id="page-wrapper">
-
-</div>
 <footer class="footerd">
 	Powered by Supply Network Agency PLT
 </footer>

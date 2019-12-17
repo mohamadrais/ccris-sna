@@ -11,7 +11,8 @@ $self_baseurl = _baseurl();
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 	<head>
 		<meta charset="<?php echo datalist_db_encoding; ?>">
-		<title><?php echo ucwords('IMS'); ?> | <?php echo (isset($x->TableTitle) ? $x->TableTitle : ''); ?></title>
+		<title><?php echo ucwords('PufferGroup'); ?> | <?php echo (isset($x->TableTitle) ? $x->TableTitle : ''); ?></title>
+		<link id="browser_favicon" rel="shortcut icon" href="<?php echo PREPEND_PATH; ?>images/logo/browser-icon.png">
 <!-- start webapp -->
 <meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport">

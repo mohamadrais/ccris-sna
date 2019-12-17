@@ -10,7 +10,7 @@
     $x = new DataList;
     $x->TableTitle = 'Reports';
     include_once("$currDir/header.php");
-    include_once("$hooks_dir/header-extras-reports.php");
+    include_once("$hooks_dir/reportsCommon.php");
 ?>
 <?php
 	/*
@@ -206,7 +206,8 @@
             <div class="col-md-12 align-self-center">
                 <h3 id="titleReport" class="text-themecolor m-b-0 m-t-0">Reports Dashboard</h3>
 			</div>
-		</div>
+        </div>
+        <!-- Default Reports Dashboard Start -->
         <div id="defaultReports">
             <!-- Start Row -->
             <div class="row">
@@ -359,10 +360,14 @@
             </div> 
             <!-- End Row -->
         </div>
+        <!-- Default Reports Dashboard End -->
+        <!-- Dynamic Reports Start -->
+        <div id="notify" style="margin-top: 50px; left: 50%; position: relative; color: red" class = "hideDiv"></div>
         <div id="noResult" style="margin-top: 50px; left: 50%; position: relative;" class = "hideDiv"></div>
         <div id="barChart" style="margin-top: 50px; width: 100%; height: 300px; position: relative;" class = "hideDiv"></div>
         <div id="lineChart" style="margin-top: 30px; width: 100%; height: 300px; position: relative;" class = "hideDiv"></div>
         <div id="tableChart" style="margin-top: 100px; width: 100%; height: 200px; position: relative;" class = "hideDiv"></div>
+        <!-- Dynamic Reports End -->
     </div>
 </div>
 
