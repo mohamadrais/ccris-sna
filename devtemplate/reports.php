@@ -346,10 +346,16 @@
                                                 $myTaskRatingWeekly[]= $myTaskRatingItem;
                                             }
                                         }
-                                        $myTaskRatingWeekly = array_filter($myTaskRatingWeekly, function($x) { return $x !== ''; });
-                                        if(count($myTaskRatingWeekly) > 0) {
-                                            $myTaskRatingWeeklyAvg = array_sum($myTaskRatingWeekly)/count($myTaskRatingWeekly);
+                                        if(isset($myTaskRatingWeekly)) {
+                                            $myTaskRatingWeekly = array_filter($myTaskRatingWeekly, function($x) { return $x !== ''; });
+                                            if(count($myTaskRatingWeekly) > 0) {
+                                                $myTaskRatingWeeklyAvg = array_sum($myTaskRatingWeekly)/count($myTaskRatingWeekly);
+                                            }
                                         }
+                                        else{
+                                            $myTaskRatingWeeklyAvg = 0;
+                                        }
+                                        
                                     ?>
                                     <div class="row">
                                         <div class="col-12"><span><h2 class="font-light d-inline"><?php echo round($myTaskRatingWeeklyAvg, 1) ?> / </h2><span class="text-muted"></span> <h2 class="font-light d-inline">10</h2><span class="text-muted"></span></span></div>
@@ -374,11 +380,16 @@
                                                 $myTaskRatingMonthly[]= $myTaskRatingItem;
                                             }
                                         }
-                                        $myTaskRatingMonthly = array_filter($myTaskRatingMonthly, function($x) { return $x !== ''; });
-                                        if(count($myTaskRatingMonthly) > 0) {
-                                            $sum = array_sum($myTaskRatingMonthly);
-                                            $count = count($myTaskRatingMonthly);
-                                            $myTaskRatingMonthlyAvg = array_sum($myTaskRatingMonthly)/count($myTaskRatingMonthly);
+                                        if(isset($myTaskRatingMonthly)) {
+                                            $myTaskRatingMonthly = array_filter($myTaskRatingMonthly, function($x) { return $x !== ''; });
+                                            if(count($myTaskRatingMonthly) > 0) {
+                                                $sum = array_sum($myTaskRatingMonthly);
+                                                $count = count($myTaskRatingMonthly);
+                                                $myTaskRatingMonthlyAvg = array_sum($myTaskRatingMonthly)/count($myTaskRatingMonthly);
+                                            }
+                                        }
+                                        else{
+                                            $myTaskRatingMonthlyAvg = 0;
                                         }
                                     ?>
                                     <div class="row">
