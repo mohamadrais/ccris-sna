@@ -524,8 +524,9 @@
         <!-- Dynamic Reports Start -->
         <div id="notify" style="margin-top: 50px; left: 50%; position: relative; color: red" class = "hideDiv"></div>
         <div id="noResult" style="margin-top: 50px; left: 50%; position: relative;" class = "hideDiv"></div>
-        <div id="barChart" style="margin-top: 50px; width: 100%; height: 300px; position: relative;" class = "hideDiv"></div>
-        <div id="lineChart" style="margin-top: 30px; width: 100%; height: 300px; position: relative;" class = "hideDiv"></div>
+        <div id="comboChart" style="margin-top: 50px; width: 100%; height: 300px; position: relative;" class = "hideDiv"></div>
+        <!-- <div id="barChart" style="margin-top: 50px; width: 100%; height: 300px; position: relative;" class = "hideDiv"></div>
+        <div id="lineChart" style="margin-top: 30px; width: 100%; height: 300px; position: relative;" class = "hideDiv"></div> -->
         <div id="tableChart" style="margin-top: 100px; width: 100%; height: 200px; position: relative;" class = "hideDiv"></div>
         <!-- Dynamic Reports End -->
     </div>

@@ -137,53 +137,39 @@
             show_divs();
         }
 
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Date');
-        data.addColumn('number', 'Total Count');
-        data.addColumn('number', 'Total Approvals Closed');
-        data.addColumn('number', 'Total Reviews Closed');
-        data.addColumn('number', 'Total IMS Controls Closed');
+        var keys = Object.keys(jsonData[0]);
+        dataTable = [];
 
-        $j.each(jsonData, function(i, jsonData) {
-            var date = jsonData.date;
-            var total_count = parseInt($j.trim(jsonData.total_count));
-            var total_reviews_closed = parseInt($j.trim(jsonData.total_reviews_closed));
-            var total_approvals_closed = parseInt($j.trim(jsonData.total_approvals_closed));
-            var total_ims_controls_closed = parseInt($j.trim(jsonData.total_ims_controls_closed));
+        let _dataColumnNames=[];
+        for (i=0; i< keys.length; i++){
+            _dataColumnNames.push(keys[i].replace(/_/g, ' '));
+        }
+        dataTable.push(_dataColumnNames);
 
-            data.addRows([
-                [date, total_count, total_reviews_closed, total_approvals_closed, total_ims_controls_closed]
-            ]);
-        });
+        for(x=0; x< jsonData.length; x++){
+            let _dataColumnValues=[];
+            Object.keys(jsonData[x]).forEach(function(k){
+                _dataColumnValues.push(jsonData[x][k]);
+            });
+            dataTable.push(_dataColumnValues);
+        }
 
-        var barChartOptions = {
-            // title: chart_main_title,
-            vAxis: {
-                title: "No. of " + report
-            },
-            legend: {
-                position: 'bottom'
-            }
-        };
+        var data = google.visualization.arrayToDataTable(dataTable);
 
-        var lineChartOptions = {
-            curveType: 'function',
-            legend: {
-                position: 'bottom'
-            }
+        var comboChartOptions = {
+            hAxis: {title: 'Date'},
+            seriesType: 'bars',
+            series: [ {type: 'scatter'}, {}, {}, {}, {type: 'area'}, {type: 'line'} ]
         };
 
         var tableChartOptions = {
             showRowNumber: true, 
-            width: '80%', 
+            width: '100%', 
             height: '80%'
         }
-
-        var barChart = new google.visualization.ColumnChart(document.getElementById('barChart'));
-        barChart.draw(data, barChartOptions);
         
-        var lineChart = new google.visualization.LineChart(document.getElementById('lineChart'));
-        lineChart.draw(data, lineChartOptions);
+        var comboChart = new google.visualization.ComboChart(document.getElementById('comboChart'));
+        comboChart.draw(data, comboChartOptions);
 
         var tableChart = new google.visualization.Table(document.getElementById('tableChart'));
         tableChart.draw(data, tableChartOptions);

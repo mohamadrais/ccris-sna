@@ -10,19 +10,145 @@ if (isset($_POST["report2"]) && isset($_POST["startDate"]) && isset($_POST["endD
     $tn = makeSafe($_POST["report2"]);
     $startDate = makeSafe($_POST["startDate"]);
     $endDate = makeSafe($_POST["endDate"]);
-    $query = "SELECT `ot_ap_Date` as 'date', sum(`fo_TotalCount`) as 'total_count', sum(`fo_ReviewCount`) as 'total_reviews_closed', sum(`fo_ApprovalCount`) as 'total_approvals_closed', sum(`fo_IMSControlCount`) as 'total_ims_controls_closed' from `summary_dashboard` where `fo_Section_Name` = '". $tn ."' and `ot_ap_Date` between '" . $startDate . "' and '". $endDate . "' group by `ot_ap_Date`";
+    $num_of_fields = 0; 
+    $query = '';
+    $total_display = 'Total ' . get_summary_custom_display($tn, 0);
+    $total_custom_display_1 = '';
+    $total_custom_display_2 = '';
+
+    switch($tn){
+        // Only Total (1 field)
+        case 'EventNotification':
+        case 'batches':
+        case 'categories':
+            $num_of_fields = 1; 
+            $query = "SELECT `ot_ap_Date` as 'date', sum(`fo_TotalCount`) as 'total_count' from `summary_dashboard` where `fo_Section_Name` = '". $tn ."' and `ot_ap_Date` between '" . $startDate . "' and '". $endDate . "' group by `ot_ap_Date`";
+            break;
+        // Only Total and Custom 1 (2 fields)
+        case 'PersonnalFile':
+        case 'Item':
+        case 'IMSReport':
+        case 'TeamSoftBoard':
+            $num_of_fields = 2;
+            $total_custom_display_1 = get_summary_custom_display($tn, 1);
+            $query = "SELECT `ot_ap_Date` as 'date', sum(`fo_TotalCount`) as 'total_count', sum(`fo_CustomDisplayValue1`) as 'total_custom_value_1' from `summary_dashboard` where `fo_Section_Name` = '". $tn ."' and `ot_ap_Date` between '" . $startDate . "' and '". $endDate . "' group by `ot_ap_Date`";
+            break;
+        // Only Total, Custom 1 and Custom 2 (3 fields)
+        case 'ActCard':
+        case 'Recruitment':
+        case 'ReportComment':
+        case 'SoftboardComment':
+        case 'resources':
+        case 'transactions':
+            $num_of_fields = 3;
+            $total_custom_display_1 = get_summary_custom_display($tn, 1);
+            $total_custom_display_2 = get_summary_custom_display($tn, 3);
+            $query = "SELECT `ot_ap_Date` as 'date', sum(`fo_TotalCount`) as 'total_count', sum(`fo_CustomDisplayValue1`) as 'total_custom_value_1', sum(`fo_CustomDisplayValue2`) as 'total_custom_value_2' from `summary_dashboard` where `fo_Section_Name` = '". $tn ."' and `ot_ap_Date` between '" . $startDate . "' and '". $endDate . "' group by `ot_ap_Date`";
+            break;
+        // Only Total, Reviews, Approvals and IMS Controls (4 fields)
+        case 'JD_JS':
+            $num_of_fields = 4;
+            $query = "SELECT `ot_ap_Date` as 'date', sum(`fo_TotalCount`) as 'total_count', sum(`fo_ReviewCount`) as 'total_reviews_closed', sum(`fo_ApprovalCount`) as 'total_approvals_closed', sum(`fo_IMSControlCount`) as 'total_ims_controls_closed' from `summary_dashboard` where `fo_Section_Name` = '". $tn ."' and `ot_ap_Date` between '" . $startDate . "' and '". $endDate . "' group by `ot_ap_Date`";
+            break;
+        // Only Total, Reviews, Approvals, IMS Controls and Custom1 (5 fields)
+        case 'CalibrationCtrl':
+        case 'Logistics':
+        case 'vendor':
+        case 'Bi_WeeklyMeeting':
+        case 'DCN':
+        case 'DeliveryOrder':
+        case 'MWConditionBased':
+        case 'MWOCorrective':
+        case 'MWOPlanned':
+        case 'MWOpreventive':
+        case 'MWOproactive':
+        case 'MWOReactive':
+        case 'ObsoleteRec':
+        case 'QuarterlyMeeting':
+        case 'ToolBoxMeeting':
+        case 'PROInitiation':
+        case 'WorkLocation':
+        case 'CommConsParticipate':
+        case 'StakeholderSatisfaction':
+            $num_of_fields = 5;
+            $total_custom_display_1 = get_summary_custom_display($tn, 1);
+            $query = "SELECT `ot_ap_Date` as 'date', sum(`fo_TotalCount`) as 'total_count', sum(`fo_ReviewCount`) as 'total_reviews_closed', sum(`fo_ApprovalCount`) as 'total_approvals_closed', sum(`fo_IMSControlCount`) as 'total_ims_controls_closed', sum(`fo_CustomDisplayValue1`) as 'total_custom_value_1' from `summary_dashboard` where `fo_Section_Name` = '". $tn ."' and `ot_ap_Date` between '" . $startDate . "' and '". $endDate . "' group by `ot_ap_Date`";
+            break;
+        // Total, Reviews, Approvals, IMS Controls, Custom1 and Custom2 (All 6 fields)
+        default:
+            $num_of_fields = 6;
+            $total_custom_display_1 = get_summary_custom_display($tn, 1);
+            $total_custom_display_2 = get_summary_custom_display($tn, 3);
+            $query = "SELECT `ot_ap_Date` as 'date', sum(`fo_TotalCount`) as 'total_count', sum(`fo_ReviewCount`) as 'total_reviews_closed', sum(`fo_ApprovalCount`) as 'total_approvals_closed', sum(`fo_IMSControlCount`) as 'total_ims_controls_closed', sum(`fo_CustomDisplayValue1`) as 'total_custom_value_1', sum(`fo_CustomDisplayValue2`) as 'total_custom_value_2' from `summary_dashboard` where `fo_Section_Name` = '". $tn ."' and `ot_ap_Date` between '" . $startDate . "' and '". $endDate . "' group by `ot_ap_Date`";
+    }
+
+    $total_custom_display_1 = str_replace("this", "per", $total_custom_display_1);
+    $total_custom_display_1 = str_replace(" ", "_", $total_custom_display_1);
+    $total_custom_display_2 = str_replace("this", "per", $total_custom_display_2);
+    $total_custom_display_2 = str_replace(" ", "_", $total_custom_display_2);
 
     $res = sql($query, $eo);
-
             
     while($row = db_fetch_array($res)) {
-        $output[] = array(
-            'date'                      => $row['date'],
-            'total_count'               => intval($row['total_count']),
-            'total_reviews_closed'      => intval($row['total_reviews_closed']),
-            'total_approvals_closed'    => intval($row['total_approvals_closed']),
-            'total_ims_controls_closed' => intval($row['total_ims_controls_closed']),
-        );
+        switch($num_of_fields){
+            // Only Total (1 field)
+            case '1':
+                $output[] = array(
+                    'Date'                      => $row['date'],
+                    'Total_Count'               => intval($row['total_count'])
+                );
+                break;
+            // Only Total and Custom 1 (2 fields)
+            case '2':
+                $output[] = array(
+                    'Date'                      => $row['date'],
+                    'Total_Count'               => intval($row['total_count']),
+                    $total_custom_display_1     => intval($row['total_custom_value_1'])
+                );
+                break;
+            // Only Total, Custom 1 and Custom 2 (3 fields)
+            case '3':
+                $output[] = array(
+                    'Date'                      => $row['date'],
+                    'Total_Count'               => intval($row['total_count']),
+                    $total_custom_display_1     => intval($row['total_custom_value_1']),
+                    $total_custom_display_2     => intval($row['total_custom_value_2'])
+                );
+                break;
+            // Only Total, Reviews, Approvals and IMS Controls (4 fields)
+            case '4':
+                $output[] = array(
+                    'Date'                      => $row['date'],
+                    'Total_Count'               => intval($row['total_count']),
+                    'Total_Reviews_Closed'      => intval($row['total_reviews_closed']),
+                    'Total_Approvals_Closed'    => intval($row['total_approvals_closed']),
+                    'Total_IMS_Controls_Closed' => intval($row['total_ims_controls_closed'])
+                );
+                break;
+            // Only Total, Reviews, Approvals, IMS Controls and Custom1 (5 fields)
+            case '5':
+                $output[] = array(
+                    'Date'                      => $row['date'],
+                    'Total_Count'               => intval($row['total_count']),
+                    'Total_Reviews_Closed'      => intval($row['total_reviews_closed']),
+                    'Total_Approvals_Closed'    => intval($row['total_approvals_closed']),
+                    'Total_IMS_Controls_Closed' => intval($row['total_ims_controls_closed']),
+                    $total_custom_display_1     => intval($row['total_custom_value_1'])
+                );
+                break;
+            // Total, Reviews, Approvals, IMS Controls, Custom1 and Custom2 (All 6 fields)
+            default:
+                $output[] = array(
+                    'Date'                      => $row['date'],
+                    'Total_Count'               => intval($row['total_count']),
+                    'Total_Reviews_Closed'      => intval($row['total_reviews_closed']),
+                    'Total_Approvals_Closed'    => intval($row['total_approvals_closed']),
+                    'Total_IMS_Controls_Closed' => intval($row['total_ims_controls_closed']),
+                    $total_custom_display_1     => intval($row['total_custom_value_1']),
+                    $total_custom_display_2     => intval($row['total_custom_value_2'])
+                );
+        }
+        
     }
     echo json_encode($output);
 }
