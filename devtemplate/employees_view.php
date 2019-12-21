@@ -23,6 +23,7 @@
 	// Fields that can be displayed in the table view
 	$x->QueryFieldsTV = array(   
 		"`employees`.`EmployeeID`" => "EmployeeID",
+		"IF(    CHAR_LENGTH(`membership_users`.`memberID`) || CHAR_LENGTH(`membership_users`.`email`), CONCAT_WS('',   `membership_users`.`memberID`, ': ', `membership_users`.`email`), '') /* Member ID */" => "memberID",
 		"`employees`.`EmpNo`" => "EmpNo",
 		"`employees`.`Name`" => "Name",
 		"IF(    CHAR_LENGTH(`WorkLocation1`.`BaseLocation`) || CHAR_LENGTH(`WorkLocation1`.`DocItem`), CONCAT_WS('',   `WorkLocation1`.`BaseLocation`, ': ', `WorkLocation1`.`DocItem`), '') /* Work Location */" => "BaseLocation",
@@ -75,9 +76,9 @@
 		7 => 7,
 		8 => 8,
 		9 => 9,
-		10 => '`employees`.`fo_HireDate`',
-		11 => '`employees`.`fo_OffHireDate`',
-		12 => 12,
+		10 => 10,
+		11 => '`employees`.`fo_HireDate`',
+		12 => '`employees`.`fo_OffHireDate`',
 		13 => 13,
 		14 => 14,
 		15 => 15,
@@ -86,9 +87,9 @@
 		18 => 18,
 		19 => 19,
 		20 => 20,
-		21 => '`employees`.`fo_Acknowledgement`',
-		22 => '`employees`.`fo_Induction`',
-		23 => 23,
+		21 => 21,
+		22 => '`employees`.`fo_Acknowledgement`',
+		23 => '`employees`.`fo_Induction`',
 		24 => 24,
 		25 => 25,
 		26 => 26,
@@ -99,19 +100,21 @@
 		31 => 31,
 		32 => 32,
 		33 => 33,
-		34 => '`Leadership1`.`Status`',
-		35 => 35,
-		36 => '`Approval1`.`Status`',
-		37 => 37,
-		38 => '`IMSControl1`.`Status`',
-		39 => 39,
-		40 => '`employees`.`ot_ap_filed`',
-		41 => '`employees`.`ot_ap_lastmodified`'
+		34 => 34,
+		35 => '`Leadership1`.`Status`',
+		36 => 36,
+		37 => '`Approval1`.`Status`',
+		38 => 38,
+		39 => '`IMSControl1`.`Status`',
+		40 => 40,
+		41 => '`employees`.`ot_ap_filed`',
+		42 => '`employees`.`ot_ap_lastmodified`'
 	);
 
 	// Fields that can be displayed in the csv file
 	$x->QueryFieldsCSV = array(   
 		"`employees`.`EmployeeID`" => "EmployeeID",
+		"IF(    CHAR_LENGTH(`membership_users`.`memberID`) || CHAR_LENGTH(`membership_users`.`email`), CONCAT_WS('',   `membership_users`.`memberID`, ': ', `membership_users`.`email`), '') /* Member ID */" => "memberID",
 		"`employees`.`EmpNo`" => "EmpNo",
 		"`employees`.`Name`" => "Name",
 		"IF(    CHAR_LENGTH(`WorkLocation1`.`BaseLocation`) || CHAR_LENGTH(`WorkLocation1`.`DocItem`), CONCAT_WS('',   `WorkLocation1`.`BaseLocation`, ': ', `WorkLocation1`.`DocItem`), '') /* Work Location */" => "BaseLocation",
@@ -156,6 +159,7 @@
 	// Fields that can be filtered
 	$x->QueryFieldsFilters = array(   
 		"`employees`.`EmployeeID`" => "Employee ID",
+		"IF(    CHAR_LENGTH(`membership_users`.`memberID`) || CHAR_LENGTH(`membership_users`.`email`), CONCAT_WS('',   `membership_users`.`memberID`, ': ', `membership_users`.`email`), '') /* Member ID */" => "Member ID",
 		"`employees`.`EmpNo`" => "Employee Number",
 		"`employees`.`Name`" => "Full Name",
 		"IF(    CHAR_LENGTH(`WorkLocation1`.`BaseLocation`) || CHAR_LENGTH(`WorkLocation1`.`DocItem`), CONCAT_WS('',   `WorkLocation1`.`BaseLocation`, ': ', `WorkLocation1`.`DocItem`), '') /* Work Location */" => "Work Location",
@@ -197,6 +201,7 @@
 	// Fields that can be quick searched
 	$x->QueryFieldsQS = array(   
 		"`employees`.`EmployeeID`" => "EmployeeID",
+		"IF(    CHAR_LENGTH(`membership_users`.`memberID`) || CHAR_LENGTH(`membership_users`.`email`), CONCAT_WS('',   `membership_users`.`memberID`, ': ', `membership_users`.`email`), '') /* Member ID */" => "memberID",
 		"`employees`.`EmpNo`" => "EmpNo",
 		"`employees`.`Name`" => "Name",
 		"IF(    CHAR_LENGTH(`WorkLocation1`.`BaseLocation`) || CHAR_LENGTH(`WorkLocation1`.`DocItem`), CONCAT_WS('',   `WorkLocation1`.`BaseLocation`, ': ', `WorkLocation1`.`DocItem`), '') /* Work Location */" => "BaseLocation",
@@ -236,9 +241,9 @@
 	);
 
 	// Lookup fields that can be used as filterers
-	$x->filterers = array(  'BaseLocation' => 'Work Location', 'fo_ReportsTo' => 'ReportsTo', 'ot_ap_Review' => 'Review', 'ot_ap_Approval' => 'Approval', 'ot_ap_QC' => 'IMS Control');
+	$x->filterers = array(  'memberID' => 'Member ID', 'BaseLocation' => 'Work Location', 'fo_ReportsTo' => 'ReportsTo', 'ot_ap_Review' => 'Review', 'ot_ap_Approval' => 'Approval', 'ot_ap_QC' => 'IMS Control');
 
-	$x->QueryFrom = "`employees` LEFT JOIN `WorkLocation` as WorkLocation1 ON `WorkLocation1`.`id`=`employees`.`BaseLocation` LEFT JOIN `employees` as employees1 ON `employees1`.`EmployeeID`=`employees`.`fo_ReportsTo` LEFT JOIN `Leadership` as Leadership1 ON `Leadership1`.`id`=`employees`.`ot_ap_Review` LEFT JOIN `Approval` as Approval1 ON `Approval1`.`id`=`employees`.`ot_ap_Approval` LEFT JOIN `IMSControl` as IMSControl1 ON `IMSControl1`.`id`=`employees`.`ot_ap_QC` ";
+	$x->QueryFrom = "`employees` LEFT JOIN `membership_users` as membership_users ON `membership_users`.`memberID`=`employees`.`memberID` LEFT JOIN `WorkLocation` as WorkLocation1 ON `WorkLocation1`.`id`=`employees`.`BaseLocation` LEFT JOIN `employees` as employees1 ON `employees1`.`EmployeeID`=`employees`.`fo_ReportsTo` LEFT JOIN `Leadership` as Leadership1 ON `Leadership1`.`id`=`employees`.`ot_ap_Review` LEFT JOIN `Approval` as Approval1 ON `Approval1`.`id`=`employees`.`ot_ap_Approval` LEFT JOIN `IMSControl` as IMSControl1 ON `IMSControl1`.`id`=`employees`.`ot_ap_QC` ";
 	$x->QueryWhere = '';
 	$x->QueryOrder = '';
 
@@ -270,7 +275,7 @@
 	$x->ColWidth   = array(  150, 100, 200, 150, 60, 60, 60, 200, 150, 150, 150, 150, 150);
 	$x->ColCaption = array("Employee Number", "Full Name", "Work Location", "Employment Term", "Photo_1", "Photo_2", "Photo_3", "Position", "Review", "Approval", "IMS Control", "Register", "Last modified");
 	$x->ColFieldName = array('EmpNo', 'Name', 'BaseLocation', 'fo_TermEmployment', 'fo_Photo01', 'fo_Photo02', 'fo_Photo03', 'fo_Position', 'ot_ap_Review', 'ot_ap_Approval', 'ot_ap_QC', 'ot_ap_filed', 'ot_ap_lastmodified');
-	$x->ColNumber  = array(2, 3, 4, 5, 6, 7, 8, 9, 34, 36, 38, 40, 41);
+	$x->ColNumber  = array(3, 4, 5, 6, 7, 8, 9, 10, 35, 37, 39, 41, 42);
 
 	// template paths below are based on the app main directory
 	$x->Template = 'templates/employees_templateTV.html';

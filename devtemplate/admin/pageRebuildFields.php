@@ -219,6 +219,7 @@
 		),
 		'employees' => array(   
 			'EmployeeID' => array('appgini' => 'INT not null primary key auto_increment '),
+			'memberID' => array('appgini' => 'VARCHAR(20) not null '),
 			'EmpNo' => array('appgini' => 'VARCHAR(255) not null unique '),
 			'Name' => array('appgini' => 'VARCHAR(255) '),
 			'BaseLocation' => array('appgini' => 'INT unsigned '),

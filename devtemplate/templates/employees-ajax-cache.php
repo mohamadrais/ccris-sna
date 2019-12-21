@@ -8,6 +8,7 @@
 
 		/* data for selected record, or defaults if none is selected */
 		var data = {
+			memberID: <?php echo json_encode(array('id' => $rdata['memberID'], 'value' => $rdata['memberID'], 'text' => $jdata['memberID'])); ?>,
 			BaseLocation: <?php echo json_encode(array('id' => $rdata['BaseLocation'], 'value' => $rdata['BaseLocation'], 'text' => $jdata['BaseLocation'])); ?>,
 			fo_ReportsTo: <?php echo json_encode(array('id' => $rdata['fo_ReportsTo'], 'value' => $rdata['fo_ReportsTo'], 'text' => $jdata['fo_ReportsTo'])); ?>,
 			ot_ap_Review: <?php echo json_encode(array('id' => $rdata['ot_ap_Review'], 'value' => $rdata['ot_ap_Review'], 'text' => $jdata['ot_ap_Review'])); ?>,
@@ -19,6 +20,14 @@
 		AppGini.cache = AppGini.cache || {};
 		AppGini.cache[tn] = AppGini.cache[tn] || AppGini.ajaxCache();
 		var cache = AppGini.cache[tn];
+
+		/* saved value for memberID */
+		cache.addCheck(function(u, d){
+			if(u != 'ajax_combo.php') return false;
+			if(d.t == tn && d.f == 'memberID' && d.id == data.memberID.id)
+				return { results: [ data.memberID ], more: false, elapsed: 0.01 };
+			return false;
+		});
 
 		/* saved value for BaseLocation */
 		cache.addCheck(function(u, d){

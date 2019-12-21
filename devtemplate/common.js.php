@@ -337,6 +337,8 @@ function ContractDeployment_validateData(){
 }
 function employees_validateData(){
 	$j('.has-error').removeClass('has-error');
+	/* Field memberID can't be empty */
+	if($j('#memberID').val() == ''){ modal_window({ message: '<div class="alert alert-danger"><?php echo addslashes($Translation['field not null']); ?></div>', title: "<?php echo addslashes($Translation['error:']); ?> Member ID", close: function(){ /* */ $j('[name=memberID]').eq(0).focus().parents('.form-group').addClass('has-error'); }, footer: [{ label: '<?php echo addslashes($Translation['ok']); ?>' }] }); return false; };
 	/* Field EmpNo can't be empty */
 	if($j('#EmpNo').val() == ''){ modal_window({ message: '<div class="alert alert-danger"><?php echo addslashes($Translation['field not null']); ?></div>', title: "<?php echo addslashes($Translation['error:']); ?> Employee Number", close: function(){ /* */ $j('[name=EmpNo]').eq(0).focus().parents('.form-group').addClass('has-error'); }, footer: [{ label: '<?php echo addslashes($Translation['ok']); ?>' }] }); return false; };
 	return true;

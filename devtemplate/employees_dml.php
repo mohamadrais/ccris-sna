@@ -14,6 +14,8 @@ function employees_insert(){
 		return false;
 	}
 
+	$data['memberID'] = makeSafe($_REQUEST['memberID']);
+		if($data['memberID'] == empty_lookup_value){ $data['memberID'] = ''; }
 	$data['EmpNo'] = makeSafe($_REQUEST['EmpNo']);
 		if($data['EmpNo'] == empty_lookup_value){ $data['EmpNo'] = ''; }
 	$data['Name'] = makeSafe($_REQUEST['Name']);
@@ -80,6 +82,11 @@ function employees_insert(){
 	$data['ot_Ref04'] = PrepareUploadedFile('ot_Ref04', 65536000,'zip|rar|gz|tar|iso', true, '');
 	$data['ot_Ref05'] = PrepareUploadedFile('ot_Ref05', 65536000,'zip|rar|gz|tar|iso', true, '');
 	$data['ot_Ref06'] = PrepareUploadedFile('ot_Ref06', 65536000,'zip|rar|gz|tar|iso', true, '');
+	if($data['memberID']== ''){
+		echo StyleSheet() . "\n\n<div class=\"alert alert-danger\">" . $Translation['error:'] . " 'Member ID': " . $Translation['field not null'] . '<br><br>';
+		echo '<a href="" onclick="history.go(-1); return false;">'.$Translation['< back'].'</a></div>';
+		exit;
+	}
 	if($data['EmpNo']== ''){
 		echo StyleSheet() . "\n\n<div class=\"alert alert-danger\">" . $Translation['error:'] . " 'Employee Number': " . $Translation['field not null'] . '<br><br>';
 		echo '<a href="" onclick="history.go(-1); return false;">'.$Translation['< back'].'</a></div>';
@@ -112,7 +119,7 @@ function employees_insert(){
 	}
 
 	$o = array('silentErrors' => true);
-	sql('insert into `employees` set       `EmpNo`=' . (($data['EmpNo'] !== '' && $data['EmpNo'] !== NULL) ? "'{$data['EmpNo']}'" : 'NULL') . ', `Name`=' . (($data['Name'] !== '' && $data['Name'] !== NULL) ? "'{$data['Name']}'" : 'NULL') . ', `BaseLocation`=' . (($data['BaseLocation'] !== '' && $data['BaseLocation'] !== NULL) ? "'{$data['BaseLocation']}'" : 'NULL') . ', `fo_TermEmployment`=' . (($data['fo_TermEmployment'] !== '' && $data['fo_TermEmployment'] !== NULL) ? "'{$data['fo_TermEmployment']}'" : 'NULL') . ', ' . ($data['fo_Photo01'] != '' ? "`fo_Photo01`='{$data['fo_Photo01']}'" : '`fo_Photo01`=NULL') . ', ' . ($data['fo_Photo02'] != '' ? "`fo_Photo02`='{$data['fo_Photo02']}'" : '`fo_Photo02`=NULL') . ', ' . ($data['fo_Photo03'] != '' ? "`fo_Photo03`='{$data['fo_Photo03']}'" : '`fo_Photo03`=NULL') . ', `fo_Position`=' . (($data['fo_Position'] !== '' && $data['fo_Position'] !== NULL) ? "'{$data['fo_Position']}'" : 'NULL') . ', `fo_HireDate`=' . (($data['fo_HireDate'] !== '' && $data['fo_HireDate'] !== NULL) ? "'{$data['fo_HireDate']}'" : 'NULL') . ', `fo_OffHireDate`=' . (($data['fo_OffHireDate'] !== '' && $data['fo_OffHireDate'] !== NULL) ? "'{$data['fo_OffHireDate']}'" : 'NULL') . ', `fo_Address`=' . (($data['fo_Address'] !== '' && $data['fo_Address'] !== NULL) ? "'{$data['fo_Address']}'" : 'NULL') . ', `fo_City`=' . (($data['fo_City'] !== '' && $data['fo_City'] !== NULL) ? "'{$data['fo_City']}'" : 'NULL') . ', `fo_Region`=' . (($data['fo_Region'] !== '' && $data['fo_Region'] !== NULL) ? "'{$data['fo_Region']}'" : 'NULL') . ', `fo_PostalCode`=' . (($data['fo_PostalCode'] !== '' && $data['fo_PostalCode'] !== NULL) ? "'{$data['fo_PostalCode']}'" : 'NULL') . ', `fo_Country`=' . (($data['fo_Country'] !== '' && $data['fo_Country'] !== NULL) ? "'{$data['fo_Country']}'" : 'NULL') . ', `fo_HomePhone`=' . (($data['fo_HomePhone'] !== '' && $data['fo_HomePhone'] !== NULL) ? "'{$data['fo_HomePhone']}'" : 'NULL') . ', `fo_Extension`=' . (($data['fo_Extension'] !== '' && $data['fo_Extension'] !== NULL) ? "'{$data['fo_Extension']}'" : 'NULL') . ', `fo_Notes`=' . (($data['fo_Notes'] !== '' && $data['fo_Notes'] !== NULL) ? "'{$data['fo_Notes']}'" : 'NULL') . ', `fo_ReportsTo`=' . (($data['fo_ReportsTo'] !== '' && $data['fo_ReportsTo'] !== NULL) ? "'{$data['fo_ReportsTo']}'" : 'NULL') . ', `fo_Acknowledgement`=' . (($data['fo_Acknowledgement'] !== '' && $data['fo_Acknowledgement'] !== NULL) ? "'{$data['fo_Acknowledgement']}'" : 'NULL') . ', `fo_Induction`=' . (($data['fo_Induction'] !== '' && $data['fo_Induction'] !== NULL) ? "'{$data['fo_Induction']}'" : 'NULL') . ', `ot_FileLoc`=' . (($data['ot_FileLoc'] !== '' && $data['ot_FileLoc'] !== NULL) ? "'{$data['ot_FileLoc']}'" : 'NULL') . ', `ot_otherdetails`=' . (($data['ot_otherdetails'] !== '' && $data['ot_otherdetails'] !== NULL) ? "'{$data['ot_otherdetails']}'" : 'NULL') . ', `ot_comments`=' . (($data['ot_comments'] !== '' && $data['ot_comments'] !== NULL) ? "'{$data['ot_comments']}'" : 'NULL') . ', `ot_SharedLink1`=' . (($data['ot_SharedLink1'] !== '' && $data['ot_SharedLink1'] !== NULL) ? "'{$data['ot_SharedLink1']}'" : 'NULL') . ', `ot_SharedLink2`=' . (($data['ot_SharedLink2'] !== '' && $data['ot_SharedLink2'] !== NULL) ? "'{$data['ot_SharedLink2']}'" : 'NULL') . ', ' . ($data['ot_Ref01'] != '' ? "`ot_Ref01`='{$data['ot_Ref01']}'" : '`ot_Ref01`=NULL') . ', ' . ($data['ot_Ref02'] != '' ? "`ot_Ref02`='{$data['ot_Ref02']}'" : '`ot_Ref02`=NULL') . ', ' . ($data['ot_Ref03'] != '' ? "`ot_Ref03`='{$data['ot_Ref03']}'" : '`ot_Ref03`=NULL') . ', ' . ($data['ot_Ref04'] != '' ? "`ot_Ref04`='{$data['ot_Ref04']}'" : '`ot_Ref04`=NULL') . ', ' . ($data['ot_Ref05'] != '' ? "`ot_Ref05`='{$data['ot_Ref05']}'" : '`ot_Ref05`=NULL') . ', ' . ($data['ot_Ref06'] != '' ? "`ot_Ref06`='{$data['ot_Ref06']}'" : '`ot_Ref06`=NULL') . ', `ot_ap_Review`=' . (($data['ot_ap_Review'] !== '' && $data['ot_ap_Review'] !== NULL) ? "'{$data['ot_ap_Review']}'" : 'NULL') . ', `ot_ap_RevComment`=' . (($data['ot_ap_RevComment'] !== '' && $data['ot_ap_RevComment'] !== NULL) ? "'{$data['ot_ap_RevComment']}'" : 'NULL') . ', `ot_ap_Approval`=' . (($data['ot_ap_Approval'] !== '' && $data['ot_ap_Approval'] !== NULL) ? "'{$data['ot_ap_Approval']}'" : 'NULL') . ', `ot_ap_ApprComment`=' . (($data['ot_ap_ApprComment'] !== '' && $data['ot_ap_ApprComment'] !== NULL) ? "'{$data['ot_ap_ApprComment']}'" : 'NULL') . ', `ot_ap_QC`=' . (($data['ot_ap_QC'] !== '' && $data['ot_ap_QC'] !== NULL) ? "'{$data['ot_ap_QC']}'" : 'NULL') . ', `ot_ap_QCComment`=' . (($data['ot_ap_QCComment'] !== '' && $data['ot_ap_QCComment'] !== NULL) ? "'{$data['ot_ap_QCComment']}'" : 'NULL') . ', `ot_ap_filed`=' . "'{$data['ot_ap_filed']}'", $o);
+	sql('insert into `employees` set       `memberID`=' . (($data['memberID'] !== '' && $data['memberID'] !== NULL) ? "'{$data['memberID']}'" : 'NULL') . ', `EmpNo`=' . (($data['EmpNo'] !== '' && $data['EmpNo'] !== NULL) ? "'{$data['EmpNo']}'" : 'NULL') . ', `Name`=' . (($data['Name'] !== '' && $data['Name'] !== NULL) ? "'{$data['Name']}'" : 'NULL') . ', `BaseLocation`=' . (($data['BaseLocation'] !== '' && $data['BaseLocation'] !== NULL) ? "'{$data['BaseLocation']}'" : 'NULL') . ', `fo_TermEmployment`=' . (($data['fo_TermEmployment'] !== '' && $data['fo_TermEmployment'] !== NULL) ? "'{$data['fo_TermEmployment']}'" : 'NULL') . ', ' . ($data['fo_Photo01'] != '' ? "`fo_Photo01`='{$data['fo_Photo01']}'" : '`fo_Photo01`=NULL') . ', ' . ($data['fo_Photo02'] != '' ? "`fo_Photo02`='{$data['fo_Photo02']}'" : '`fo_Photo02`=NULL') . ', ' . ($data['fo_Photo03'] != '' ? "`fo_Photo03`='{$data['fo_Photo03']}'" : '`fo_Photo03`=NULL') . ', `fo_Position`=' . (($data['fo_Position'] !== '' && $data['fo_Position'] !== NULL) ? "'{$data['fo_Position']}'" : 'NULL') . ', `fo_HireDate`=' . (($data['fo_HireDate'] !== '' && $data['fo_HireDate'] !== NULL) ? "'{$data['fo_HireDate']}'" : 'NULL') . ', `fo_OffHireDate`=' . (($data['fo_OffHireDate'] !== '' && $data['fo_OffHireDate'] !== NULL) ? "'{$data['fo_OffHireDate']}'" : 'NULL') . ', `fo_Address`=' . (($data['fo_Address'] !== '' && $data['fo_Address'] !== NULL) ? "'{$data['fo_Address']}'" : 'NULL') . ', `fo_City`=' . (($data['fo_City'] !== '' && $data['fo_City'] !== NULL) ? "'{$data['fo_City']}'" : 'NULL') . ', `fo_Region`=' . (($data['fo_Region'] !== '' && $data['fo_Region'] !== NULL) ? "'{$data['fo_Region']}'" : 'NULL') . ', `fo_PostalCode`=' . (($data['fo_PostalCode'] !== '' && $data['fo_PostalCode'] !== NULL) ? "'{$data['fo_PostalCode']}'" : 'NULL') . ', `fo_Country`=' . (($data['fo_Country'] !== '' && $data['fo_Country'] !== NULL) ? "'{$data['fo_Country']}'" : 'NULL') . ', `fo_HomePhone`=' . (($data['fo_HomePhone'] !== '' && $data['fo_HomePhone'] !== NULL) ? "'{$data['fo_HomePhone']}'" : 'NULL') . ', `fo_Extension`=' . (($data['fo_Extension'] !== '' && $data['fo_Extension'] !== NULL) ? "'{$data['fo_Extension']}'" : 'NULL') . ', `fo_Notes`=' . (($data['fo_Notes'] !== '' && $data['fo_Notes'] !== NULL) ? "'{$data['fo_Notes']}'" : 'NULL') . ', `fo_ReportsTo`=' . (($data['fo_ReportsTo'] !== '' && $data['fo_ReportsTo'] !== NULL) ? "'{$data['fo_ReportsTo']}'" : 'NULL') . ', `fo_Acknowledgement`=' . (($data['fo_Acknowledgement'] !== '' && $data['fo_Acknowledgement'] !== NULL) ? "'{$data['fo_Acknowledgement']}'" : 'NULL') . ', `fo_Induction`=' . (($data['fo_Induction'] !== '' && $data['fo_Induction'] !== NULL) ? "'{$data['fo_Induction']}'" : 'NULL') . ', `ot_FileLoc`=' . (($data['ot_FileLoc'] !== '' && $data['ot_FileLoc'] !== NULL) ? "'{$data['ot_FileLoc']}'" : 'NULL') . ', `ot_otherdetails`=' . (($data['ot_otherdetails'] !== '' && $data['ot_otherdetails'] !== NULL) ? "'{$data['ot_otherdetails']}'" : 'NULL') . ', `ot_comments`=' . (($data['ot_comments'] !== '' && $data['ot_comments'] !== NULL) ? "'{$data['ot_comments']}'" : 'NULL') . ', `ot_SharedLink1`=' . (($data['ot_SharedLink1'] !== '' && $data['ot_SharedLink1'] !== NULL) ? "'{$data['ot_SharedLink1']}'" : 'NULL') . ', `ot_SharedLink2`=' . (($data['ot_SharedLink2'] !== '' && $data['ot_SharedLink2'] !== NULL) ? "'{$data['ot_SharedLink2']}'" : 'NULL') . ', ' . ($data['ot_Ref01'] != '' ? "`ot_Ref01`='{$data['ot_Ref01']}'" : '`ot_Ref01`=NULL') . ', ' . ($data['ot_Ref02'] != '' ? "`ot_Ref02`='{$data['ot_Ref02']}'" : '`ot_Ref02`=NULL') . ', ' . ($data['ot_Ref03'] != '' ? "`ot_Ref03`='{$data['ot_Ref03']}'" : '`ot_Ref03`=NULL') . ', ' . ($data['ot_Ref04'] != '' ? "`ot_Ref04`='{$data['ot_Ref04']}'" : '`ot_Ref04`=NULL') . ', ' . ($data['ot_Ref05'] != '' ? "`ot_Ref05`='{$data['ot_Ref05']}'" : '`ot_Ref05`=NULL') . ', ' . ($data['ot_Ref06'] != '' ? "`ot_Ref06`='{$data['ot_Ref06']}'" : '`ot_Ref06`=NULL') . ', `ot_ap_Review`=' . (($data['ot_ap_Review'] !== '' && $data['ot_ap_Review'] !== NULL) ? "'{$data['ot_ap_Review']}'" : 'NULL') . ', `ot_ap_RevComment`=' . (($data['ot_ap_RevComment'] !== '' && $data['ot_ap_RevComment'] !== NULL) ? "'{$data['ot_ap_RevComment']}'" : 'NULL') . ', `ot_ap_Approval`=' . (($data['ot_ap_Approval'] !== '' && $data['ot_ap_Approval'] !== NULL) ? "'{$data['ot_ap_Approval']}'" : 'NULL') . ', `ot_ap_ApprComment`=' . (($data['ot_ap_ApprComment'] !== '' && $data['ot_ap_ApprComment'] !== NULL) ? "'{$data['ot_ap_ApprComment']}'" : 'NULL') . ', `ot_ap_QC`=' . (($data['ot_ap_QC'] !== '' && $data['ot_ap_QC'] !== NULL) ? "'{$data['ot_ap_QC']}'" : 'NULL') . ', `ot_ap_QCComment`=' . (($data['ot_ap_QCComment'] !== '' && $data['ot_ap_QCComment'] !== NULL) ? "'{$data['ot_ap_QCComment']}'" : 'NULL') . ', `ot_ap_filed`=' . "'{$data['ot_ap_filed']}'", $o);
 	if($o['error']!=''){
 		echo $o['error'];
 		echo "<a href=\"employees_view.php?addNew_x=1\">{$Translation['< back']}</a>";
@@ -519,6 +526,13 @@ function employees_update($selected_id){
 		return false;
 	}
 
+	$data['memberID'] = makeSafe($_REQUEST['memberID']);
+		if($data['memberID'] == empty_lookup_value){ $data['memberID'] = ''; }
+	if($data['memberID']==''){
+		echo StyleSheet() . "\n\n<div class=\"alert alert-danger\">{$Translation['error:']} 'Member ID': {$Translation['field not null']}<br><br>";
+		echo '<a href="" onclick="history.go(-1); return false;">'.$Translation['< back'].'</a></div>';
+		exit;
+	}
 	$data['EmpNo'] = makeSafe($_REQUEST['EmpNo']);
 		if($data['EmpNo'] == empty_lookup_value){ $data['EmpNo'] = ''; }
 	if($data['EmpNo']==''){
@@ -809,7 +823,7 @@ function employees_update($selected_id){
 	}
 
 	$o=array('silentErrors' => true);
-	sql('update `employees` set       `EmpNo`=' . (($data['EmpNo'] !== '' && $data['EmpNo'] !== NULL) ? "'{$data['EmpNo']}'" : 'NULL') . ', `Name`=' . (($data['Name'] !== '' && $data['Name'] !== NULL) ? "'{$data['Name']}'" : 'NULL') . ', `BaseLocation`=' . (($data['BaseLocation'] !== '' && $data['BaseLocation'] !== NULL) ? "'{$data['BaseLocation']}'" : 'NULL') . ', `fo_TermEmployment`=' . (($data['fo_TermEmployment'] !== '' && $data['fo_TermEmployment'] !== NULL) ? "'{$data['fo_TermEmployment']}'" : 'NULL') . ', ' . ($data['fo_Photo01']!='' ? "`fo_Photo01`='{$data['fo_Photo01']}'" : ($_REQUEST['fo_Photo01_remove'] != 1 ? '`fo_Photo01`=`fo_Photo01`' : '`fo_Photo01`=NULL')) . ', ' . ($data['fo_Photo02']!='' ? "`fo_Photo02`='{$data['fo_Photo02']}'" : ($_REQUEST['fo_Photo02_remove'] != 1 ? '`fo_Photo02`=`fo_Photo02`' : '`fo_Photo02`=NULL')) . ', ' . ($data['fo_Photo03']!='' ? "`fo_Photo03`='{$data['fo_Photo03']}'" : ($_REQUEST['fo_Photo03_remove'] != 1 ? '`fo_Photo03`=`fo_Photo03`' : '`fo_Photo03`=NULL')) . ', `fo_Position`=' . (($data['fo_Position'] !== '' && $data['fo_Position'] !== NULL) ? "'{$data['fo_Position']}'" : 'NULL') . ', `fo_HireDate`=' . (($data['fo_HireDate'] !== '' && $data['fo_HireDate'] !== NULL) ? "'{$data['fo_HireDate']}'" : 'NULL') . ', `fo_OffHireDate`=' . (($data['fo_OffHireDate'] !== '' && $data['fo_OffHireDate'] !== NULL) ? "'{$data['fo_OffHireDate']}'" : 'NULL') . ', `fo_Address`=' . (($data['fo_Address'] !== '' && $data['fo_Address'] !== NULL) ? "'{$data['fo_Address']}'" : 'NULL') . ', `fo_City`=' . (($data['fo_City'] !== '' && $data['fo_City'] !== NULL) ? "'{$data['fo_City']}'" : 'NULL') . ', `fo_Region`=' . (($data['fo_Region'] !== '' && $data['fo_Region'] !== NULL) ? "'{$data['fo_Region']}'" : 'NULL') . ', `fo_PostalCode`=' . (($data['fo_PostalCode'] !== '' && $data['fo_PostalCode'] !== NULL) ? "'{$data['fo_PostalCode']}'" : 'NULL') . ', `fo_Country`=' . (($data['fo_Country'] !== '' && $data['fo_Country'] !== NULL) ? "'{$data['fo_Country']}'" : 'NULL') . ', `fo_HomePhone`=' . (($data['fo_HomePhone'] !== '' && $data['fo_HomePhone'] !== NULL) ? "'{$data['fo_HomePhone']}'" : 'NULL') . ', `fo_Extension`=' . (($data['fo_Extension'] !== '' && $data['fo_Extension'] !== NULL) ? "'{$data['fo_Extension']}'" : 'NULL') . ', `fo_Notes`=' . (($data['fo_Notes'] !== '' && $data['fo_Notes'] !== NULL) ? "'{$data['fo_Notes']}'" : 'NULL') . ', `fo_ReportsTo`=' . (($data['fo_ReportsTo'] !== '' && $data['fo_ReportsTo'] !== NULL) ? "'{$data['fo_ReportsTo']}'" : 'NULL') . ', `fo_Acknowledgement`=' . (($data['fo_Acknowledgement'] !== '' && $data['fo_Acknowledgement'] !== NULL) ? "'{$data['fo_Acknowledgement']}'" : 'NULL') . ', `fo_Induction`=' . (($data['fo_Induction'] !== '' && $data['fo_Induction'] !== NULL) ? "'{$data['fo_Induction']}'" : 'NULL') . ', `ot_FileLoc`=' . (($data['ot_FileLoc'] !== '' && $data['ot_FileLoc'] !== NULL) ? "'{$data['ot_FileLoc']}'" : 'NULL') . ', `ot_otherdetails`=' . (($data['ot_otherdetails'] !== '' && $data['ot_otherdetails'] !== NULL) ? "'{$data['ot_otherdetails']}'" : 'NULL') . ', `ot_comments`=' . (($data['ot_comments'] !== '' && $data['ot_comments'] !== NULL) ? "'{$data['ot_comments']}'" : 'NULL') . ', `ot_SharedLink1`=' . (($data['ot_SharedLink1'] !== '' && $data['ot_SharedLink1'] !== NULL) ? "'{$data['ot_SharedLink1']}'" : 'NULL') . ', `ot_SharedLink2`=' . (($data['ot_SharedLink2'] !== '' && $data['ot_SharedLink2'] !== NULL) ? "'{$data['ot_SharedLink2']}'" : 'NULL') . ', ' . ($data['ot_Ref01']!='' ? "`ot_Ref01`='{$data['ot_Ref01']}'" : ($_REQUEST['ot_Ref01_remove'] != 1 ? '`ot_Ref01`=`ot_Ref01`' : '`ot_Ref01`=NULL')) . ', ' . ($data['ot_Ref02']!='' ? "`ot_Ref02`='{$data['ot_Ref02']}'" : ($_REQUEST['ot_Ref02_remove'] != 1 ? '`ot_Ref02`=`ot_Ref02`' : '`ot_Ref02`=NULL')) . ', ' . ($data['ot_Ref03']!='' ? "`ot_Ref03`='{$data['ot_Ref03']}'" : ($_REQUEST['ot_Ref03_remove'] != 1 ? '`ot_Ref03`=`ot_Ref03`' : '`ot_Ref03`=NULL')) . ', ' . ($data['ot_Ref04']!='' ? "`ot_Ref04`='{$data['ot_Ref04']}'" : ($_REQUEST['ot_Ref04_remove'] != 1 ? '`ot_Ref04`=`ot_Ref04`' : '`ot_Ref04`=NULL')) . ', ' . ($data['ot_Ref05']!='' ? "`ot_Ref05`='{$data['ot_Ref05']}'" : ($_REQUEST['ot_Ref05_remove'] != 1 ? '`ot_Ref05`=`ot_Ref05`' : '`ot_Ref05`=NULL')) . ', ' . ($data['ot_Ref06']!='' ? "`ot_Ref06`='{$data['ot_Ref06']}'" : ($_REQUEST['ot_Ref06_remove'] != 1 ? '`ot_Ref06`=`ot_Ref06`' : '`ot_Ref06`=NULL')) . ', `ot_ap_Review`=' . (($data['ot_ap_Review'] !== '' && $data['ot_ap_Review'] !== NULL) ? "'{$data['ot_ap_Review']}'" : 'NULL') . ', `ot_ap_RevComment`=' . (($data['ot_ap_RevComment'] !== '' && $data['ot_ap_RevComment'] !== NULL) ? "'{$data['ot_ap_RevComment']}'" : 'NULL') . ', `ot_ap_Approval`=' . (($data['ot_ap_Approval'] !== '' && $data['ot_ap_Approval'] !== NULL) ? "'{$data['ot_ap_Approval']}'" : 'NULL') . ', `ot_ap_ApprComment`=' . (($data['ot_ap_ApprComment'] !== '' && $data['ot_ap_ApprComment'] !== NULL) ? "'{$data['ot_ap_ApprComment']}'" : 'NULL') . ', `ot_ap_QC`=' . (($data['ot_ap_QC'] !== '' && $data['ot_ap_QC'] !== NULL) ? "'{$data['ot_ap_QC']}'" : 'NULL') . ', `ot_ap_QCComment`=' . (($data['ot_ap_QCComment'] !== '' && $data['ot_ap_QCComment'] !== NULL) ? "'{$data['ot_ap_QCComment']}'" : 'NULL') . ', `ot_ap_filed`=`ot_ap_filed`' . ', `ot_ap_lastmodified`=' . "'{$data['ot_ap_lastmodified']}'" . " where `EmployeeID`='".makeSafe($selected_id)."'", $o);
+	sql('update `employees` set       `memberID`=' . (($data['memberID'] !== '' && $data['memberID'] !== NULL) ? "'{$data['memberID']}'" : 'NULL') . ', `EmpNo`=' . (($data['EmpNo'] !== '' && $data['EmpNo'] !== NULL) ? "'{$data['EmpNo']}'" : 'NULL') . ', `Name`=' . (($data['Name'] !== '' && $data['Name'] !== NULL) ? "'{$data['Name']}'" : 'NULL') . ', `BaseLocation`=' . (($data['BaseLocation'] !== '' && $data['BaseLocation'] !== NULL) ? "'{$data['BaseLocation']}'" : 'NULL') . ', `fo_TermEmployment`=' . (($data['fo_TermEmployment'] !== '' && $data['fo_TermEmployment'] !== NULL) ? "'{$data['fo_TermEmployment']}'" : 'NULL') . ', ' . ($data['fo_Photo01']!='' ? "`fo_Photo01`='{$data['fo_Photo01']}'" : ($_REQUEST['fo_Photo01_remove'] != 1 ? '`fo_Photo01`=`fo_Photo01`' : '`fo_Photo01`=NULL')) . ', ' . ($data['fo_Photo02']!='' ? "`fo_Photo02`='{$data['fo_Photo02']}'" : ($_REQUEST['fo_Photo02_remove'] != 1 ? '`fo_Photo02`=`fo_Photo02`' : '`fo_Photo02`=NULL')) . ', ' . ($data['fo_Photo03']!='' ? "`fo_Photo03`='{$data['fo_Photo03']}'" : ($_REQUEST['fo_Photo03_remove'] != 1 ? '`fo_Photo03`=`fo_Photo03`' : '`fo_Photo03`=NULL')) . ', `fo_Position`=' . (($data['fo_Position'] !== '' && $data['fo_Position'] !== NULL) ? "'{$data['fo_Position']}'" : 'NULL') . ', `fo_HireDate`=' . (($data['fo_HireDate'] !== '' && $data['fo_HireDate'] !== NULL) ? "'{$data['fo_HireDate']}'" : 'NULL') . ', `fo_OffHireDate`=' . (($data['fo_OffHireDate'] !== '' && $data['fo_OffHireDate'] !== NULL) ? "'{$data['fo_OffHireDate']}'" : 'NULL') . ', `fo_Address`=' . (($data['fo_Address'] !== '' && $data['fo_Address'] !== NULL) ? "'{$data['fo_Address']}'" : 'NULL') . ', `fo_City`=' . (($data['fo_City'] !== '' && $data['fo_City'] !== NULL) ? "'{$data['fo_City']}'" : 'NULL') . ', `fo_Region`=' . (($data['fo_Region'] !== '' && $data['fo_Region'] !== NULL) ? "'{$data['fo_Region']}'" : 'NULL') . ', `fo_PostalCode`=' . (($data['fo_PostalCode'] !== '' && $data['fo_PostalCode'] !== NULL) ? "'{$data['fo_PostalCode']}'" : 'NULL') . ', `fo_Country`=' . (($data['fo_Country'] !== '' && $data['fo_Country'] !== NULL) ? "'{$data['fo_Country']}'" : 'NULL') . ', `fo_HomePhone`=' . (($data['fo_HomePhone'] !== '' && $data['fo_HomePhone'] !== NULL) ? "'{$data['fo_HomePhone']}'" : 'NULL') . ', `fo_Extension`=' . (($data['fo_Extension'] !== '' && $data['fo_Extension'] !== NULL) ? "'{$data['fo_Extension']}'" : 'NULL') . ', `fo_Notes`=' . (($data['fo_Notes'] !== '' && $data['fo_Notes'] !== NULL) ? "'{$data['fo_Notes']}'" : 'NULL') . ', `fo_ReportsTo`=' . (($data['fo_ReportsTo'] !== '' && $data['fo_ReportsTo'] !== NULL) ? "'{$data['fo_ReportsTo']}'" : 'NULL') . ', `fo_Acknowledgement`=' . (($data['fo_Acknowledgement'] !== '' && $data['fo_Acknowledgement'] !== NULL) ? "'{$data['fo_Acknowledgement']}'" : 'NULL') . ', `fo_Induction`=' . (($data['fo_Induction'] !== '' && $data['fo_Induction'] !== NULL) ? "'{$data['fo_Induction']}'" : 'NULL') . ', `ot_FileLoc`=' . (($data['ot_FileLoc'] !== '' && $data['ot_FileLoc'] !== NULL) ? "'{$data['ot_FileLoc']}'" : 'NULL') . ', `ot_otherdetails`=' . (($data['ot_otherdetails'] !== '' && $data['ot_otherdetails'] !== NULL) ? "'{$data['ot_otherdetails']}'" : 'NULL') . ', `ot_comments`=' . (($data['ot_comments'] !== '' && $data['ot_comments'] !== NULL) ? "'{$data['ot_comments']}'" : 'NULL') . ', `ot_SharedLink1`=' . (($data['ot_SharedLink1'] !== '' && $data['ot_SharedLink1'] !== NULL) ? "'{$data['ot_SharedLink1']}'" : 'NULL') . ', `ot_SharedLink2`=' . (($data['ot_SharedLink2'] !== '' && $data['ot_SharedLink2'] !== NULL) ? "'{$data['ot_SharedLink2']}'" : 'NULL') . ', ' . ($data['ot_Ref01']!='' ? "`ot_Ref01`='{$data['ot_Ref01']}'" : ($_REQUEST['ot_Ref01_remove'] != 1 ? '`ot_Ref01`=`ot_Ref01`' : '`ot_Ref01`=NULL')) . ', ' . ($data['ot_Ref02']!='' ? "`ot_Ref02`='{$data['ot_Ref02']}'" : ($_REQUEST['ot_Ref02_remove'] != 1 ? '`ot_Ref02`=`ot_Ref02`' : '`ot_Ref02`=NULL')) . ', ' . ($data['ot_Ref03']!='' ? "`ot_Ref03`='{$data['ot_Ref03']}'" : ($_REQUEST['ot_Ref03_remove'] != 1 ? '`ot_Ref03`=`ot_Ref03`' : '`ot_Ref03`=NULL')) . ', ' . ($data['ot_Ref04']!='' ? "`ot_Ref04`='{$data['ot_Ref04']}'" : ($_REQUEST['ot_Ref04_remove'] != 1 ? '`ot_Ref04`=`ot_Ref04`' : '`ot_Ref04`=NULL')) . ', ' . ($data['ot_Ref05']!='' ? "`ot_Ref05`='{$data['ot_Ref05']}'" : ($_REQUEST['ot_Ref05_remove'] != 1 ? '`ot_Ref05`=`ot_Ref05`' : '`ot_Ref05`=NULL')) . ', ' . ($data['ot_Ref06']!='' ? "`ot_Ref06`='{$data['ot_Ref06']}'" : ($_REQUEST['ot_Ref06_remove'] != 1 ? '`ot_Ref06`=`ot_Ref06`' : '`ot_Ref06`=NULL')) . ', `ot_ap_Review`=' . (($data['ot_ap_Review'] !== '' && $data['ot_ap_Review'] !== NULL) ? "'{$data['ot_ap_Review']}'" : 'NULL') . ', `ot_ap_RevComment`=' . (($data['ot_ap_RevComment'] !== '' && $data['ot_ap_RevComment'] !== NULL) ? "'{$data['ot_ap_RevComment']}'" : 'NULL') . ', `ot_ap_Approval`=' . (($data['ot_ap_Approval'] !== '' && $data['ot_ap_Approval'] !== NULL) ? "'{$data['ot_ap_Approval']}'" : 'NULL') . ', `ot_ap_ApprComment`=' . (($data['ot_ap_ApprComment'] !== '' && $data['ot_ap_ApprComment'] !== NULL) ? "'{$data['ot_ap_ApprComment']}'" : 'NULL') . ', `ot_ap_QC`=' . (($data['ot_ap_QC'] !== '' && $data['ot_ap_QC'] !== NULL) ? "'{$data['ot_ap_QC']}'" : 'NULL') . ', `ot_ap_QCComment`=' . (($data['ot_ap_QCComment'] !== '' && $data['ot_ap_QCComment'] !== NULL) ? "'{$data['ot_ap_QCComment']}'" : 'NULL') . ', `ot_ap_filed`=`ot_ap_filed`' . ', `ot_ap_lastmodified`=' . "'{$data['ot_ap_lastmodified']}'" . " where `EmployeeID`='".makeSafe($selected_id)."'", $o);
 	if($o['error']!=''){
 		echo $o['error'];
 		echo '<a href="employees_view.php?SelectedID='.urlencode($selected_id)."\">{$Translation['< back']}</a>";
@@ -851,6 +865,7 @@ function employees_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $
 		$dvprint = true;
 	}
 
+	$filterer_memberID = thisOr(undo_magic_quotes($_REQUEST['filterer_memberID']), '');
 	$filterer_BaseLocation = thisOr(undo_magic_quotes($_REQUEST['filterer_BaseLocation']), '');
 	$filterer_fo_ReportsTo = thisOr(undo_magic_quotes($_REQUEST['filterer_fo_ReportsTo']), '');
 	$filterer_ot_ap_Review = thisOr(undo_magic_quotes($_REQUEST['filterer_ot_ap_Review']), '');
@@ -861,6 +876,8 @@ function employees_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $
 
 	// unique random identifier
 	$rnd1 = ($dvprint ? rand(1000000, 9999999) : '');
+	// combobox: memberID
+	$combo_memberID = new DataCombo;
 	// combobox: BaseLocation
 	$combo_BaseLocation = new DataCombo;
 	// combobox: fo_TermEmployment
@@ -947,6 +964,7 @@ function employees_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $
 		$urow = $row; /* unsanitized data */
 		$hc = new CI_Input();
 		$row = $hc->xss_clean($row); /* sanitize data */
+		$combo_memberID->SelectedData = $row['memberID'];
 		$combo_BaseLocation->SelectedData = $row['BaseLocation'];
 		$combo_fo_TermEmployment->SelectedData = $row['fo_TermEmployment'];
 		$combo_fo_HireDate->DefaultDate = $row['fo_HireDate'];
@@ -957,14 +975,17 @@ function employees_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $
 		$combo_ot_ap_Approval->SelectedData = $row['ot_ap_Approval'];
 		$combo_ot_ap_QC->SelectedData = $row['ot_ap_QC'];
 	}else{
+		$combo_memberID->SelectedData = $filterer_memberID;
 		$combo_BaseLocation->SelectedData = $filterer_BaseLocation;
-		$combo_fo_TermEmployment->SelectedText = ( $_REQUEST['FilterField'][1]=='5' && $_REQUEST['FilterOperator'][1]=='<=>' ? (get_magic_quotes_gpc() ? stripslashes($_REQUEST['FilterValue'][1]) : $_REQUEST['FilterValue'][1]) : "");
-		$combo_fo_Country->SelectedText = ( $_REQUEST['FilterField'][1]=='16' && $_REQUEST['FilterOperator'][1]=='<=>' ? (get_magic_quotes_gpc() ? stripslashes($_REQUEST['FilterValue'][1]) : $_REQUEST['FilterValue'][1]) : "");
+		$combo_fo_TermEmployment->SelectedText = ( $_REQUEST['FilterField'][1]=='6' && $_REQUEST['FilterOperator'][1]=='<=>' ? (get_magic_quotes_gpc() ? stripslashes($_REQUEST['FilterValue'][1]) : $_REQUEST['FilterValue'][1]) : "");
+		$combo_fo_Country->SelectedText = ( $_REQUEST['FilterField'][1]=='17' && $_REQUEST['FilterOperator'][1]=='<=>' ? (get_magic_quotes_gpc() ? stripslashes($_REQUEST['FilterValue'][1]) : $_REQUEST['FilterValue'][1]) : "");
 		$combo_fo_ReportsTo->SelectedData = $filterer_fo_ReportsTo;
 		$combo_ot_ap_Review->SelectedData = $filterer_ot_ap_Review;
 		$combo_ot_ap_Approval->SelectedData = $filterer_ot_ap_Approval;
 		$combo_ot_ap_QC->SelectedData = $filterer_ot_ap_QC;
 	}
+	$combo_memberID->HTML = '<span id="memberID-container' . $rnd1 . '"></span><input type="hidden" name="memberID" id="memberID' . $rnd1 . '" value="' . html_attr($combo_memberID->SelectedData) . '">';
+	$combo_memberID->MatchText = '<span id="memberID-container-readonly' . $rnd1 . '"></span><input type="hidden" name="memberID" id="memberID' . $rnd1 . '" value="' . html_attr($combo_memberID->SelectedData) . '">';
 	$combo_BaseLocation->HTML = '<span id="BaseLocation-container' . $rnd1 . '"></span><input type="hidden" name="BaseLocation" id="BaseLocation' . $rnd1 . '" value="' . html_attr($combo_BaseLocation->SelectedData) . '">';
 	$combo_BaseLocation->MatchText = '<span id="BaseLocation-container-readonly' . $rnd1 . '"></span><input type="hidden" name="BaseLocation" id="BaseLocation' . $rnd1 . '" value="' . html_attr($combo_BaseLocation->SelectedData) . '">';
 	$combo_fo_TermEmployment->Render();
@@ -980,6 +1001,7 @@ function employees_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $
 
 	<script>
 		// initial lookup values
+		AppGini.current_memberID__RAND__ = { text: "", value: "<?php echo addslashes($selected_id ? $urow['memberID'] : $filterer_memberID); ?>"};
 		AppGini.current_BaseLocation__RAND__ = { text: "", value: "<?php echo addslashes($selected_id ? $urow['BaseLocation'] : $filterer_BaseLocation); ?>"};
 		AppGini.current_fo_ReportsTo__RAND__ = { text: "", value: "<?php echo addslashes($selected_id ? $urow['fo_ReportsTo'] : $filterer_fo_ReportsTo); ?>"};
 		AppGini.current_ot_ap_Review__RAND__ = { text: "<?php echo ($selected_id ? '' : '1'); ?>", value: "<?php echo addslashes($selected_id ? $urow['ot_ap_Review'] : $filterer_ot_ap_Review); ?>"};
@@ -988,6 +1010,7 @@ function employees_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $
 
 		jQuery(function() {
 			setTimeout(function(){
+				if(typeof(memberID_reload__RAND__) == 'function') memberID_reload__RAND__();
 				if(typeof(BaseLocation_reload__RAND__) == 'function') BaseLocation_reload__RAND__();
 				if(typeof(fo_ReportsTo_reload__RAND__) == 'function') fo_ReportsTo_reload__RAND__();
 				if(typeof(ot_ap_Review_reload__RAND__) == 'function') ot_ap_Review_reload__RAND__();
@@ -995,6 +1018,83 @@ function employees_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $
 				if(typeof(ot_ap_QC_reload__RAND__) == 'function') ot_ap_QC_reload__RAND__();
 			}, 10); /* we need to slightly delay client-side execution of the above code to allow AppGini.ajaxCache to work */
 		});
+		function memberID_reload__RAND__(){
+		<?php if(($AllowUpdate || $AllowInsert) && !$dvprint){ ?>
+
+			$j("#memberID-container__RAND__").select2({
+				/* initial default value */
+				initSelection: function(e, c){
+					$j.ajax({
+						url: 'ajax_combo.php',
+						dataType: 'json',
+						data: { id: AppGini.current_memberID__RAND__.value, t: 'employees', f: 'memberID' },
+						success: function(resp){
+							c({
+								id: resp.results[0].id,
+								text: resp.results[0].text
+							});
+							$j('[name="memberID"]').val(resp.results[0].id);
+							$j('[id=memberID-container-readonly__RAND__]').html('<span id="memberID-match-text">' + resp.results[0].text + '</span>');
+							if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=membership_users_view_parent]').hide(); }else{ $j('.btn[id=membership_users_view_parent]').show(); }
+
+
+							if(typeof(memberID_update_autofills__RAND__) == 'function') memberID_update_autofills__RAND__();
+						}
+					});
+				},
+				width: '100%',
+				formatNoMatches: function(term){ /* */ return '<?php echo addslashes($Translation['No matches found!']); ?>'; },
+				minimumResultsForSearch: 10,
+				loadMorePadding: 200,
+				ajax: {
+					url: 'ajax_combo.php',
+					dataType: 'json',
+					cache: true,
+					data: function(term, page){ /* */ return { s: term, p: page, t: 'employees', f: 'memberID' }; },
+					results: function(resp, page){ /* */ return resp; }
+				},
+				escapeMarkup: function(str){ /* */ return str; }
+			}).on('change', function(e){
+				AppGini.current_memberID__RAND__.value = e.added.id;
+				AppGini.current_memberID__RAND__.text = e.added.text;
+				$j('[name="memberID"]').val(e.added.id);
+				if(e.added.id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=membership_users_view_parent]').hide(); }else{ $j('.btn[id=membership_users_view_parent]').show(); }
+
+
+				if(typeof(memberID_update_autofills__RAND__) == 'function') memberID_update_autofills__RAND__();
+			});
+
+			if(!$j("#memberID-container__RAND__").length){
+				$j.ajax({
+					url: 'ajax_combo.php',
+					dataType: 'json',
+					data: { id: AppGini.current_memberID__RAND__.value, t: 'employees', f: 'memberID' },
+					success: function(resp){
+						$j('[name="memberID"]').val(resp.results[0].id);
+						$j('[id=memberID-container-readonly__RAND__]').html('<span id="memberID-match-text">' + resp.results[0].text + '</span>');
+						if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=membership_users_view_parent]').hide(); }else{ $j('.btn[id=membership_users_view_parent]').show(); }
+
+						if(typeof(memberID_update_autofills__RAND__) == 'function') memberID_update_autofills__RAND__();
+					}
+				});
+			}
+
+		<?php }else{ ?>
+
+			$j.ajax({
+				url: 'ajax_combo.php',
+				dataType: 'json',
+				data: { id: AppGini.current_memberID__RAND__.value, t: 'employees', f: 'memberID' },
+				success: function(resp){
+					$j('[id=memberID-container__RAND__], [id=memberID-container-readonly__RAND__]').html('<span id="memberID-match-text">' + resp.results[0].text + '</span>');
+					if(resp.results[0].id == '<?php echo empty_lookup_value; ?>'){ $j('.btn[id=membership_users_view_parent]').hide(); }else{ $j('.btn[id=membership_users_view_parent]').show(); }
+
+					if(typeof(memberID_update_autofills__RAND__) == 'function') memberID_update_autofills__RAND__();
+				}
+			});
+		<?php } ?>
+
+		}
 		function BaseLocation_reload__RAND__(){
 		<?php if(($AllowUpdate || $AllowInsert) && !$dvprint){ ?>
 
@@ -1276,6 +1376,8 @@ function employees_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $
 
 	// set records to read only if user can't insert new records and can't edit current record
 	if(($selected_id && !$AllowUpdate && !$AllowInsert) || (!$selected_id && !$AllowInsert)){
+		$jsReadOnly .= "\tjQuery('#memberID').prop('disabled', true).css({ color: '#555', backgroundColor: '#fff' });\n";
+		$jsReadOnly .= "\tjQuery('#memberID_caption').prop('disabled', true).css({ color: '#555', backgroundColor: 'white' });\n";
 		$jsReadOnly .= "\tjQuery('#EmpNo').replaceWith('<div class=\"form-control-static\" id=\"EmpNo\">' + (jQuery('#EmpNo').val() || '') + '</div>');\n";
 		$jsReadOnly .= "\tjQuery('#Name').replaceWith('<div class=\"form-control-static\" id=\"Name\">' + (jQuery('#Name').val() || '') + '</div>');\n";
 		$jsReadOnly .= "\tjQuery('#BaseLocation').prop('disabled', true).css({ color: '#555', backgroundColor: '#fff' });\n";
@@ -1336,6 +1438,9 @@ function employees_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $
 	}
 
 	// process combos
+	$templateCode = str_replace('<%%COMBO(memberID)%%>', $combo_memberID->HTML, $templateCode);
+	$templateCode = str_replace('<%%COMBOTEXT(memberID)%%>', $combo_memberID->MatchText, $templateCode);
+	$templateCode = str_replace('<%%URLCOMBOTEXT(memberID)%%>', urlencode($combo_memberID->MatchText), $templateCode);
 	$templateCode = str_replace('<%%COMBO(BaseLocation)%%>', $combo_BaseLocation->HTML, $templateCode);
 	$templateCode = str_replace('<%%COMBOTEXT(BaseLocation)%%>', $combo_BaseLocation->MatchText, $templateCode);
 	$templateCode = str_replace('<%%URLCOMBOTEXT(BaseLocation)%%>', urlencode($combo_BaseLocation->MatchText), $templateCode);
@@ -1378,6 +1483,7 @@ function employees_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $
 
 	// process images
 	$templateCode = str_replace('<%%UPLOADFILE(EmployeeID)%%>', '', $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(memberID)%%>', '', $templateCode);
 	$templateCode = str_replace('<%%UPLOADFILE(EmpNo)%%>', '', $templateCode);
 	$templateCode = str_replace('<%%UPLOADFILE(Name)%%>', '', $templateCode);
 	$templateCode = str_replace('<%%UPLOADFILE(BaseLocation)%%>', '', $templateCode);
@@ -1469,6 +1575,9 @@ function employees_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $
 		if( $dvprint) $templateCode = str_replace('<%%VALUE(EmployeeID)%%>', safe_html($urow['EmployeeID']), $templateCode);
 		if(!$dvprint) $templateCode = str_replace('<%%VALUE(EmployeeID)%%>', html_attr($row['EmployeeID']), $templateCode);
 		$templateCode = str_replace('<%%URLVALUE(EmployeeID)%%>', urlencode($urow['EmployeeID']), $templateCode);
+		if( $dvprint) $templateCode = str_replace('<%%VALUE(memberID)%%>', safe_html($urow['memberID']), $templateCode);
+		if(!$dvprint) $templateCode = str_replace('<%%VALUE(memberID)%%>', html_attr($row['memberID']), $templateCode);
+		$templateCode = str_replace('<%%URLVALUE(memberID)%%>', urlencode($urow['memberID']), $templateCode);
 		if( $dvprint) $templateCode = str_replace('<%%VALUE(EmpNo)%%>', safe_html($urow['EmpNo']), $templateCode);
 		if(!$dvprint) $templateCode = str_replace('<%%VALUE(EmpNo)%%>', html_attr($row['EmpNo']), $templateCode);
 		$templateCode = str_replace('<%%URLVALUE(EmpNo)%%>', urlencode($urow['EmpNo']), $templateCode);
@@ -1610,6 +1719,8 @@ function employees_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $
 	}else{
 		$templateCode = str_replace('<%%VALUE(EmployeeID)%%>', '', $templateCode);
 		$templateCode = str_replace('<%%URLVALUE(EmployeeID)%%>', urlencode(''), $templateCode);
+		$templateCode = str_replace('<%%VALUE(memberID)%%>', '', $templateCode);
+		$templateCode = str_replace('<%%URLVALUE(memberID)%%>', urlencode(''), $templateCode);
 		$templateCode = str_replace('<%%VALUE(EmpNo)%%>', '', $templateCode);
 		$templateCode = str_replace('<%%URLVALUE(EmpNo)%%>', urlencode(''), $templateCode);
 		$templateCode = str_replace('<%%VALUE(Name)%%>', '', $templateCode);

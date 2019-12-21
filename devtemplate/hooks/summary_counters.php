@@ -67,7 +67,7 @@ function summary_counters($contentType, $memberInfo, $tableName)
 				<div class="col-lg-2 col-md-6">
 					<div class="card">
 						<div class="card-body text-center">
-							<h6 class="card-title text-muted m-b-0">Total</h6>
+							<h6 class="card-title text-muted m-b-0">Total $totalDisplayField</h6>
 							<!-- <p class="text-muted">$totalDisplayField</p> -->
 							<h1 class="font-light d-inline">$totalCount</h1>
 						</div>
