@@ -32,7 +32,7 @@ class DataCombo{
 		$this->MatchText = '';
 		$this->ListType = 0;
 		$this->ListBoxHeight=10;
-		$this->RadiosPerLine=1;
+		$this->RadiosPerLine=4;
 		$this->AllowNull=1;
 	}
 
@@ -72,8 +72,11 @@ class DataCombo{
 			$rnd = rand(100, 999);
 			$SelectedID = html_attr(urlencode($this->SelectedData));
 			$pt_perm = getTablePermissions($this->parent_table);
+			// if($pt_perm['view'] || $pt_perm['edit']){
+			// 	$this->HTML = str_replace(">{$this->MatchText}</label>", ">{$this->MatchText}</label> <button type=\"button\" class=\"btn btn-default view_parent hspacer-lg\" id=\"{$this->parent_table}_view_parent\" title=" . html_attr($Translation['View']) . "><i class=\"glyphicon glyphicon-eye-open\"></i></button>", $combo->HTML);
+			// }
 			if($pt_perm['view'] || $pt_perm['edit']){
-				$this->HTML = str_replace(">{$this->MatchText}</label>", ">{$this->MatchText}</label> <button type=\"button\" class=\"btn btn-default view_parent hspacer-lg\" id=\"{$this->parent_table}_view_parent\" title=" . html_attr($Translation['View']) . "><i class=\"glyphicon glyphicon-eye-open\"></i></button>", $combo->HTML);
+				$this->HTML = str_replace(">{$this->MatchText}</label>", ">{$this->MatchText}</label>", $combo->HTML);
 			}
 			$this->HTML = str_replace(' type="radio" ', ' type="radio" onclick="' . $this->SelectName . '_changed();" ', $this->HTML);
 		}else{

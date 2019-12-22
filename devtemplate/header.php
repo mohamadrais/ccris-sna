@@ -66,6 +66,7 @@ $self_baseurl = _baseurl();
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>dist/metisMenu/metisMenu.css">
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>dist/css/sb-admin-2.css">
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>dist/font-awesome/css/font-awesome.css">
+		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/plugins/dropify/dist/css/dropify.min.css">
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/demo/demo.css" />
 		<!-- Morris Charts CSS -->
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>dist/morrisjs/morris.css" >
@@ -109,6 +110,7 @@ $self_baseurl = _baseurl();
 		<script src="<?php echo PREPEND_PATH; ?>common.js.php"></script>
 		
 		<script src="<?php echo PREPEND_PATH; ?>dist/metisMenu/metisMenu.js"></script>
+		<script src="<?php echo PREPEND_PATH; ?>assets/plugins/dropify/dist/js/dropify.min.js"></script>
 		<script src="<?php echo PREPEND_PATH; ?>dist/js/sb-admin-2.js"></script>
 		<script src="<?php echo PREPEND_PATH; ?>assets/js/common.js"></script>
 		<!-- <link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/css/style.css"> -->
