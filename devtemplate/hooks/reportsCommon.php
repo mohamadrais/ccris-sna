@@ -24,73 +24,81 @@
     }
 
     function draw_default_data(chart_data) {
-        if (!canAccessGoogleVisualization()){
-            notify('Oops... something went wrong. Could not load Google charts library.', 'error');
-            return;
-        }
-
-        var combined_data = chart_data;
-        if (combined_data == null || (combined_data.length && combined_data.length < 1)){
-            return;
-        }
-
-        var topMemberData = new google.visualization.DataTable();
-        topMemberData.addColumn('string', 'Members');
-        topMemberData.addColumn('number', 'Records');
-        topMemberData.addColumn({ type: 'string', role: 'annotation' });
-
-        var memberStatsData = new google.visualization.DataTable();
-        memberStatsData.addColumn('string', 'Metric');
-        memberStatsData.addColumn('number', 'Count');
-        memberStatsData.addColumn({ type: 'string', role: 'style' });
-
-        var topMemberDataPieOptions = {
-            legend: 'bottom'
-        };
-
-        var topMemberDataBarOptions = {
-            legend: 'none',
-            annotations: {
-                alwaysOutside: true
-            },
-        };
-
-        var memberStatsDataOptions = {
-            legend: {
-                position: 'none'
-            }
-        };
-
-        $j.each(combined_data, function(i, jsonData) {
-            if(i < combined_data.length-1){
-                var members = jsonData.members;
-                var record_counts = parseFloat($j.trim(jsonData.record_counts));
-
-                topMemberData.addRows([
-                    [members, record_counts, record_counts.toString()]
-                ]);
-            }
-            else {
-                memberStatsData.addRows([
-                    ['Total groups', parseFloat($j.trim(jsonData.total_groups)), 'blue'],
-                    ['Active members', parseFloat($j.trim(jsonData.active)), 'green'],
-                    ['Members awaiting approval', parseFloat($j.trim(jsonData.awaiting)), 'orange'],
-                    ['Banned members', parseFloat($j.trim(jsonData.banned)), 'red'],
-                    ['Total members', parseFloat($j.trim(jsonData.total_members)), 'purple'],
-                ]);
+        try {
+            if (!canAccessGoogleVisualization()){
+                notify('Oops... something went wrong. Could not load Google charts library.', 'error');
+                return;
             }
 
+            var combined_data = chart_data;
+            if (combined_data == null || (combined_data.length && combined_data.length < 1)){
+                return;
+            }
+
+            var topMemberData = new google.visualization.DataTable();
+            topMemberData.addColumn('string', 'Members');
+            topMemberData.addColumn('number', 'Records');
+            topMemberData.addColumn({ type: 'string', role: 'annotation' });
+
+            var memberStatsData = new google.visualization.DataTable();
+            memberStatsData.addColumn('string', 'Metric');
+            memberStatsData.addColumn('number', 'Count');
+            memberStatsData.addColumn({ type: 'string', role: 'style' });
+
+            var topMemberDataPieOptions = {
+                legend: 'bottom'
+            };
+
+            var topMemberDataBarOptions = {
+                legend: 'none',
+                annotations: {
+                    alwaysOutside: true
+                },
+            };
+
+            var memberStatsDataOptions = {
+                legend: {
+                    position: 'none'
+                }
+            };
+
+            $j.each(combined_data, function(i, jsonData) {
+                if(i < combined_data.length-1){
+                    var members = jsonData.members;
+                    var record_counts = parseFloat($j.trim(jsonData.record_counts));
+
+                    topMemberData.addRows([
+                        [members, record_counts, record_counts.toString()]
+                    ]);
+                }
+                else {
+                    memberStatsData.addRows([
+                        ['Total groups', parseFloat($j.trim(jsonData.total_groups)), 'blue'],
+                        ['Active members', parseFloat($j.trim(jsonData.active)), 'green'],
+                        ['Members awaiting approval', parseFloat($j.trim(jsonData.awaiting)), 'orange'],
+                        ['Banned members', parseFloat($j.trim(jsonData.banned)), 'red'],
+                        ['Total members', parseFloat($j.trim(jsonData.total_members)), 'purple'],
+                    ]);
+                }
+
+                
+            });
             
-        });
-        
-        var pieTopMembersChart = new google.visualization.PieChart(document.getElementById("pieTopMembers"));
-        pieTopMembersChart.draw(topMemberData, topMemberDataPieOptions);
-        
-        var barTopMembersChart = new google.visualization.BarChart(document.getElementById("barTopMembers"));
-        barTopMembersChart.draw(topMemberData, topMemberDataBarOptions);
+            var pieTopMembersChart = new google.visualization.PieChart(document.getElementById("pieTopMembers"));
+            pieTopMembersChart.draw(topMemberData, topMemberDataPieOptions);
+            
+            var barTopMembersChart = new google.visualization.BarChart(document.getElementById("barTopMembers"));
+            barTopMembersChart.draw(topMemberData, topMemberDataBarOptions);
 
-        var columnMemberStatsChart = new google.visualization.ColumnChart(document.getElementById('columnMemberStats'));
-        columnMemberStatsChart.draw(memberStatsData, memberStatsDataOptions);
+            var columnMemberStatsChart = new google.visualization.ColumnChart(document.getElementById('columnMemberStats'));
+            columnMemberStatsChart.draw(memberStatsData, memberStatsDataOptions);
+        }
+        catch(err){
+            console.log('draw_default_data error: ' + err);
+            notify('Oops... something went wrong. Please try again later.', 'error');
+            return;
+        }
+        
     }
 
     function load_data(report, report2, startDate, endDate) {
@@ -121,58 +129,65 @@
     }
 
     function draw_data(chart_data, chart_main_title, report) {
-        if (!canAccessGoogleVisualization()){
-            notify('Oops... something went wrong. Could not load Google charts library.', 'error');
+        try {
+            if (!canAccessGoogleVisualization()){
+                notify('Oops... something went wrong. Could not load Google charts library.', 'error');
+                return;
+            }
+            
+            $j("#titleReport").html(chart_main_title);
+
+            var jsonData = chart_data;
+            if (jsonData == null || (jsonData.length && jsonData.length < 1)){
+                hide_divs();
+                return;
+            }
+            else {
+                show_divs();
+            }
+
+            var keys = Object.keys(jsonData[0]);
+            dataTable = [];
+
+            let _dataColumnNames=[];
+            for (i=0; i< keys.length; i++){
+                _dataColumnNames.push(keys[i].replace(/_/g, ' '));
+            }
+            dataTable.push(_dataColumnNames);
+
+            for(x=0; x< jsonData.length; x++){
+                let _dataColumnValues=[];
+                Object.keys(jsonData[x]).forEach(function(k){
+                    _dataColumnValues.push(jsonData[x][k]);
+                });
+                dataTable.push(_dataColumnValues);
+            }
+
+            var data = google.visualization.arrayToDataTable(dataTable);
+
+            var comboChartOptions = {
+                hAxis: {title: 'Date'},
+                seriesType: 'bars',
+                series: [ {type: 'scatter'}, {}, {}, {}, {type: 'area'}, {type: 'line'} ]
+            };
+
+            var tableChartOptions = {
+                showRowNumber: true, 
+                width: '100%', 
+                height: '80%'
+            }
+            
+            var comboChart = new google.visualization.ComboChart(document.getElementById('comboChart'));
+            comboChart.draw(data, comboChartOptions);
+
+            var tableChart = new google.visualization.Table(document.getElementById('tableChart'));
+            tableChart.draw(data, tableChartOptions);
+        }
+        catch(err){
+            console.log('draw_data error: ' + err);
+            notify('Oops... something went wrong. Please try again later.', 'error');
             return;
         }
-        
-        $j("#titleReport").html(chart_main_title);
-
-        var jsonData = chart_data;
-        if (jsonData == null || (jsonData.length && jsonData.length < 1)){
-            hide_divs();
-            return;
-        }
-        else {
-            show_divs();
-        }
-
-        var keys = Object.keys(jsonData[0]);
-        dataTable = [];
-
-        let _dataColumnNames=[];
-        for (i=0; i< keys.length; i++){
-            _dataColumnNames.push(keys[i].replace(/_/g, ' '));
-        }
-        dataTable.push(_dataColumnNames);
-
-        for(x=0; x< jsonData.length; x++){
-            let _dataColumnValues=[];
-            Object.keys(jsonData[x]).forEach(function(k){
-                _dataColumnValues.push(jsonData[x][k]);
-            });
-            dataTable.push(_dataColumnValues);
-        }
-
-        var data = google.visualization.arrayToDataTable(dataTable);
-
-        var comboChartOptions = {
-            hAxis: {title: 'Date'},
-            seriesType: 'bars',
-            series: [ {type: 'scatter'}, {}, {}, {}, {type: 'area'}, {type: 'line'} ]
-        };
-
-        var tableChartOptions = {
-            showRowNumber: true, 
-            width: '100%', 
-            height: '80%'
-        }
-        
-        var comboChart = new google.visualization.ComboChart(document.getElementById('comboChart'));
-        comboChart.draw(data, comboChartOptions);
-
-        var tableChart = new google.visualization.Table(document.getElementById('tableChart'));
-        tableChart.draw(data, tableChartOptions);
     }
 
     function disable_click(type) {
@@ -201,6 +216,8 @@
         $j("div[id$='Chart']").each(function(i, el) {
             $j(el).addClass("hideDiv");
         });
+        $j("#notify").html('');
+        $j("#notify").addClass("hideDiv");
     }
 
     function show_divs() {
@@ -209,6 +226,8 @@
         $j("div[id$='Chart']").each(function(i, el) {
             $j(el).removeClass("hideDiv");
         });
+        $j("#notify").html('');
+        $j("#notify").addClass("hideDiv");
     }
 
     function canAccessGoogleVisualization() {
@@ -229,12 +248,12 @@
             if($j("#notify") != undefined) window.setTimeout(function(){ $j("#notify").hide(); }, 10000);
         }
         else{
-
+            // error styling
         }
     }
 
     $j(document).ready(function() {
-        google.charts.setOnLoadCallback(load_default_data());
+        google.charts.setOnLoadCallback( function() { load_default_data() });
 
         var start = moment().startOf('month');
         var end = moment();
