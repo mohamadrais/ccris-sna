@@ -1,6 +1,7 @@
 <?php if(!isset($Translation)){ @header('Location: index.php'); exit; } ?>
 <?php include_once("{$currDir}/header.php"); ?>
 <?php @include("{$currDir}/hooks/links-home.php"); ?>
+<?php $memberInfo = getMemberInfo(); ?>
 
 <?php
 	/*
@@ -323,10 +324,24 @@
 			<div class="col-lg-2 col-md-6 pr-2">
 				<div class="card my-3">
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
-						<h4 class="card-title m-b-0">My Hours</h4>
-						<p class="text-muted">This Week</p>
+						<h4 class="card-title m-b-0">Average Hours</h4>
+						<!-- <h4 class="card-title m-b-0">My Work Days</h4> -->
+						<p class="text-muted">Per Task</p>
 						<div class="row">
-							<div class="col-12"><span><h2 class="font-light d-inline">33</h2><span class="text-muted">h</span> <h2 class="font-light d-inline">59</h2><span class="text-muted">m</span></span></div>
+							<?php
+								$myHoursWeek = sqlValue("SELECT COALESCE(SEC_TO_TIME(AVG(`dateUpdated` - `dateAdded`)), '00:00:00.0000') as my_hours_week from `membership_userrecords` WHERE `memberID` = '" . makeSafe($memberInfo['username']) . "' and (YEARWEEK(from_unixtime(`dateAdded`), 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(from_unixtime(`dateUpdated`), 1) = YEARWEEK(CURDATE(), 1))");
+								$myHoursWeekArr = explode(":", $myHoursWeek, 2);
+								// $myHoursWeek = sqlValue("SELECT COALESCE(SUM(`dateUpdated` - `dateAdded`) / 24 / 8, 0) as my_hours_week from `membership_userrecords` WHERE `memberID` = '" . makeSafe($memberInfo['username']) . "' and (YEARWEEK(from_unixtime(`dateAdded`), 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(from_unixtime(`dateUpdated`), 1) = YEARWEEK(CURDATE(), 1))");
+								// if(isset($myHoursWeek) && $myHoursWeek != 0){
+								// 	$myHoursWeekArr = secondsToTime(intval($myHoursWeek));
+								// 	$myHoursWeekArr = explode(" ", $myHoursWeekArr, 4);
+								// }
+								// else {
+								// 	$myHoursWeekArr = [0, 0, 0, 0];
+								// }
+							?>
+							<div class="col-12"><span><h2 class="font-light d-inline"><?php echo number_format($myHoursWeekArr[0]) ?></h2><span class="text-muted"> h</span> <h2 class="font-light d-inline"><?php echo number_format($myHoursWeekArr[1]) ?></h2><span class="text-muted"> m</span></span></div>
+							<!-- <div class="col-12"><span><h2 class="font-light d-inline"><?php echo number_format($myHoursWeekArr[0]) ?></h2><span class="text-muted"> days</span> <h2 class="font-light d-inline"><?php echo number_format($myHoursWeekArr[2]) ?></h2><span class="text-muted"> h</span></span></div> -->
 							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
 						</div>
 					</div>
@@ -340,7 +355,16 @@
 						<h4 class="card-title m-b-0">Project Claimed</h4>
 						<p class="text-muted">Lump Sum Amount</p>
 						<div class="row">
-							<div class="col-12"><span><span class="text-muted">RM</span> <h2 class="font-light d-inline">40</h2><span class="text-muted">k</span></span></div>
+							<?php
+								$claimTotal=sqlValue("SELECT COALESCE(sum(fo_UnitPrice), 0.00) FROM `ClaimRecord`");
+								$claimTotalFormatted = '';
+								$claimTotalSymbol = '';
+								if($claimTotal > 1000) {
+									$claimTotalFormatted = thousandsCurrencyFormat($claimTotal);
+									$claimTotalSymbol = substr($claimTotalFormatted, -1);
+								}
+							?>
+							<div class="col-12"><span><span class="text-muted">RM </span> <h2 class="font-light d-inline"><?php if ($claimTotalFormatted != '') echo substr($claimTotalFormatted, 0, -1); else echo round($claimTotal, 2); ?></h2><span class="text-muted"> <?php echo $claimTotalSymbol ?></span></span></div>
 							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/claim.svg">
 						</div>
 					</div>
@@ -354,7 +378,10 @@
 						<h4 class="card-title m-b-0">Inquiries</h4>
 						<p class="text-muted">This Month</p>
 						<div class="row">
-							<div class="col-12"><span><h2 class="font-light d-inline">2</h2><span class="text-muted">quotes</span></span></div>
+							<?php
+								$inquiryThisMonth=sqlValue("SELECT count(1) FROM `Inquiry` WHERE (MONTH(`fo_InquiryDate`) = MONTH(CURRENT_DATE()) and YEAR(`fo_InquiryDate`) = YEAR(CURRENT_DATE()))");
+							?>
+							<div class="col-12"><span><h2 class="font-light d-inline"><?php echo number_format($inquiryThisMonth) ?></h2><span class="text-muted"> quotes</span></span></div>
 							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/inquiries.svg">
 						</div>
 					</div>
@@ -368,7 +395,17 @@
 						<h4 class="card-title m-b-0">Invoices</h4>
 						<p class="text-muted">Outstanding</p>
 						<div class="row">
-							<div class="col-12"><span><span class="text-muted">RM</span> <h2 class="font-light d-inline">2950</h2></span></div>
+							<?php
+								$receivableTotalInitial=sqlValue("SELECT COALESCE(sum(`fo_UnitPrice`), 0.00) FROM `Receivables`");
+								$receivableTotal = ($claimTotal - $receivableTotalInitial);
+								$receivableTotalFormatted = '';
+								$receivableTotalSymbol = '';
+								if($receivableTotal > 1000) {
+									$receivableTotalFormatted = thousandsCurrencyFormat($receivableTotal);
+									$receivableTotalSymbol = substr($receivableTotalFormatted, -1);
+								}
+							?>
+							<div class="col-12"><span><span class="text-muted">RM </span> <h2 class="font-light d-inline"><?php if ($receivableTotalFormatted != '') echo substr($receivableTotalFormatted, 0, -1); else echo round($receivableTotal, 2); ?></h2><span class="text-muted"> <?php echo $receivableTotalSymbol ?></span></span></div>
 							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/invoice.svg">
 						</div>
 					</div>
@@ -382,7 +419,16 @@
 						<h4 class="card-title m-b-0">Revenue</h4>
 						<p class="text-muted">This Month</p>
 						<div class="row">
-							<div class="col-12"><span><span class="text-muted">RM</span> <h2 class="font-light d-inline">5550</h2></span></div>
+							<?php
+								$receivableThisMonth=sqlValue("SELECT COALESCE(sum(`fo_UnitPrice`), 0.00) FROM `Receivables` WHERE (MONTH(`fo_Registerdate`) = MONTH(CURRENT_DATE()) and YEAR(`fo_Registerdate`) = YEAR(CURRENT_DATE()))");
+								$receivableThisMonthFormatted = '';
+								$receivableThisMonthSymbol = '';
+								if($receivableThisMonth > 1000) {
+									$receivableThisMonthFormatted = thousandsCurrencyFormat($receivableThisMonth);
+									$receivableThisMonthSymbol = substr($receivableThisMonthFormatted, -1);
+								}
+							?>
+							<div class="col-12"><span><span class="text-muted">RM </span> <h2 class="font-light d-inline"><?php if ($receivableThisMonthFormatted != '') echo substr($receivableThisMonthFormatted, 0, -1); else echo round($receivableThisMonth, 2); ?></h2><span class="text-muted"> <?php echo $receivableThisMonthSymbol ?></span></span></div>
 							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/revenue.svg">
 						</div>
 					</div>
@@ -396,7 +442,16 @@
 						<h4 class="card-title m-b-0">Payable</h4>
 						<p class="text-muted">This Month</p>
 						<div class="row">
-							<div class="col-12"><span><span class="text-muted">RM</span> <h2 class="font-light d-inline">141.3</h2><span class="text-muted">k</span></span></div>
+							<?php
+								$payableThisMonth=sqlValue("SELECT coalesce(sum(`fo_UnitPrice`), 0.00) from `AccountPayables` where MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE())");
+								$payableThisMonthFormatted = '';
+								$payableThisMonthSymbol = '';
+								if($payableThisMonth > 1000) {
+									$payableThisMonthFormatted = thousandsCurrencyFormat($payableThisMonth);
+									$payableThisMonthSymbol = substr($payableThisMonthFormatted, -1);
+								}
+							?>
+							<div class="col-12"><span><span class="text-muted">RM</span> <h2 class="font-light d-inline"><?php if ($payableThisMonthFormatted != '') echo substr($payableThisMonthFormatted, 0, -1); else echo round($payableThisMonth, 2); ?></h2><span class="text-muted"> <?php echo $payableThisMonthSymbol ?></span></span></div>
 							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/payable.svg">
 						</div>
 					</div>
@@ -454,41 +509,48 @@
 			<div class="col-lg-4 px-2">
 				<div class="card my-3">
 					<div class="card-body">
-						<h4 class="card-title">Active Task</h4>
+						<h4 class="card-title">Active Tasks</h4>
 						<!-- ============================================================== -->
 						<!-- To do list widgets -->
 						<!-- ============================================================== -->
-						<div class="to-do-widget m-t-20" style="max-height: 350px;overflow: scroll;">
+						<div class="message-box" style="height: 358px;overflow: scroll;">
 							<!-- /.modal -->
 							<ul class="list-task todo-list list-group m-b-0">
+								<?php
+									$activeTasks = sql("SELECT `id`, `WONumber`, `ot_ap_Approval`, `fo_DueDate` FROM `WorkOrder` WHERE `fo_EmployeeID` = (select `employees`.`EmployeeID` from `employees` where `employees`.`memberID` = '" . makeSafe($memberInfo['username']) . "') and `ot_ap_Approval` <> 4 order by `fo_DueDate`", $eo);
+									if (isset($activeTasks) && $activeTasks->num_rows > 0) {
+										while($row=db_fetch_row($activeTasks)){ 
+											$currentStatus = ''; $currentDate = '';
+											switch ($row[2]){
+												case '1':
+													$currentStatus = "<span class='label label-light-info pull-right'>Open</span> ";
+													break;
+												case '2':
+													$currentStatus = "<span class='label label-light-success pull-right'>On Going</span> ";
+													break;
+												case '3':
+													$currentStatus = "<span class='label label-light-warning pull-right'>Pending</span> ";
+													break;
+											}
+											(parseMySQLDate($row[3], false) == $row[3]) ? $currentDate = date("d M, Y", strtotime($row[3])) : '' ;
+								?>
 								<li class="list-group-item">
-									<h5>Schedule meeting with<span class="label label-light-warning">On Going</span> </h5>
-									<div class="item-date"> 26 jun 2017</div>
+									<h5><a href='WorkOrder_view.php?SelectedID=<?php echo $row[0]?>'><?php echo $row[1] ?><?php echo $currentStatus ?></a></h5>
+									<div class="item-date"><?php echo $currentDate ?></div>
 								</li>
+								<?php
+											
+										}
+									}
+									else {
+								?>
 								<li class="list-group-item">
-									<h5>Give Purchase report to<span class="label label-light-danger">On Hold</span> </h5>
-									<div class="item-date"> 26 jun 2017</div>
+									<h5>There are no active tasks currently.</h5>
+									<div class="item-date"></div>
 								</li>
-								<li class="list-group-item">
-									<h5>Book flight for holiday<span class="label label-light-warning">On Going</span> </h5>
-									<div class="item-date"> 26 jun 2017</div>
-								</li>
-								<li class="list-group-item">
-									<h5>Forward all tasks<span class="label label-light-danger">On Hold</span> </h5>
-									<div class="item-date"> 26 jun 2017</div>
-								</li>
-								<li class="list-group-item">
-									<h5>Recieve shipment<span class="label label-light-danger">On Hold</span> </h5>
-									<div class="item-date"> 26 jun 2017</div>
-								</li>
-								<li class="list-group-item">
-									<h5>Send payment today<span class="label label-light-warning">On Going</span> </h5>
-									<div class="item-date"> 26 jun 2017</div>
-								</li>
-								<li class="list-group-item">
-									<h5>Important tasks<span class="label label-light-warning">On Going</span> </h5>
-									<div class="item-date"> 26 jun 2017</div>
-								</li>
+								<?php
+									}
+								?>
 							</ul>
 						</div>
 					</div>
@@ -497,49 +559,39 @@
 			<div class="col-lg-4 pl-2">
 				<div class="card my-3">
 					<div class="card-body">
-						<h4 class="card-title">This Week Leaderboard</h4>
+						<h4 class="card-title">This Week's Leaderboard</h4>
 						<div class="message-box" style="height: 358px;overflow: scroll;">
 							<div class="message-widget">
+							<?php
+								$leaderBoard = sql("SELECT COALESCE(SEC_TO_TIME(SUM(mu.`dateUpdated` - mu.`dateAdded`)), '00:00:00.0000') 'total_hours_this_week', mu.`memberID`, e.`Name` as 'name', SUM(mu.`dateUpdated` - mu.`dateAdded`) as 'total_seconds' from `membership_userrecords` as mu left join `employees` as e on e.`memberID` = mu.`memberID` WHERE (YEARWEEK(from_unixtime(`dateAdded`), 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(from_unixtime(`dateUpdated`), 1) = YEARWEEK(CURDATE(), 1)) group by 2, 3 limit 5", $eo);
+								if (isset($leaderBoard) && $leaderBoard->num_rows > 0) {
+									$progressPercentages = []; $leaderBoardStored = [];
+									while($row=db_fetch_row($leaderBoard)){ 
+										$currSecondsArr[] = $row[3];
+										$currSecondsArrTotal += $row[3];
+										$leaderBoardStored[] = $row;
+									}
+
+									for ($i=0; $i< $leaderBoard->num_rows; $i++){
+										$progressPercentages[] = round(($currSecondsArr[$i] / $currSecondsArrTotal) * 100, 0);
+									}
+									
+									for ($j=0; $j< count($leaderBoardStored); $j++){
+										$currHoursWeekArr = explode(":", $leaderBoardStored[$j][0], 2);
+							?>
 								<!-- Message -->
-								<a href="#">
-									<div class="mail-contnet">
-										<h5>John Doe</h5> <span class="time">11h 23m</span> </div>
-										<div class="progress">
-											<div class="progress-bar bg-info" role="progressbar" style="width: 70%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
+								<!-- @TODO: Select one's own records (cannot visit admin/ pages) -->
+								<!-- <a <?php if ($memberInfo['admin'] || $memberInfo['username'] == $leaderBoardStored[$j][1]) { ?>href="admin/pageViewRecords.php?memberID=<?php echo $leaderBoardStored[$j][1] ?>" <?php } ?>> -->
+								<a <?php if ($memberInfo['admin']) { ?>href="admin/pageViewRecords.php?memberID=<?php echo $leaderBoardStored[$j][1] ?>" <?php } ?>>
+									<div class="mail-contnet"><h5><?php echo $leaderBoardStored[$j][2] ?></h5> <span class="time"><?php echo number_format($currHoursWeekArr[0]) ?>h <?php echo number_format($currHoursWeekArr[1]) ?>m</span> </div>
+									<div class="progress">
+										<div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $progressPercentages[$j]?>%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
 								</a>
-								<!-- Message -->
-								<a href="#">
-									<div class="mail-contnet">
-										<h5>Harry Potter</h5> <span class="time">9h 41m</span> </div>
-										<div class="progress">
-											<div class="progress-bar bg-info" role="progressbar" style="width: 60%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-								</a>
-								<!-- Message -->
-								<a href="#">
-									<div class="mail-contnet">
-										<h5>Keanu Reeves</h5> <span class="time">7h 32m</span> </div>
-										<div class="progress">
-											<div class="progress-bar bg-info" role="progressbar" style="width: 50%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-								</a>
-								<!-- Message -->
-								<a href="#">
-									<div class="mail-contnet">
-										<h5>Frodo</h5> <span class="time">7h 15m</span> </div>
-										<div class="progress">
-											<div class="progress-bar bg-info" role="progressbar" style="width: 49%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-								</a>
-								<!-- Message -->
-								<a href="#">
-									<div class="mail-contnet">
-										<h5>Luke Skywalker</h5> <span class="time">6h 59m</span> </div>
-										<div class="progress">
-											<div class="progress-bar bg-info" role="progressbar" style="width: 30%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-								</a>
+							<?php	
+									}
+								}
+							?>
 							</div>
 						</div>
 					</div>

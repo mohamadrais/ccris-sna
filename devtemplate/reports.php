@@ -319,7 +319,7 @@
                             <div class="card my-3">
                                 <div class="card-body" style="max-height: 140px; overflow: hidden;">
                                     <h4 class="card-title m-b-0">My Performance</h4>
-                                    <p class="text-muted">Work Order Ratings</p>
+                                    <p class="text-muted">Average Work Order Ratings</p>
                                     <?php
                                         $myWORating=sqlValue("SELECT COALESCE(AVG(`ot_ap_QCComment`), 0) FROM `WorkOrder` WHERE `fo_EmployeeID` = (select `employees`.`EmployeeID` from `employees` where `employees`.`memberID` = '" . makeSafe($memberInfo['username']) . "') and `ot_ap_QCComment` REGEXP '^[0-9]+$' and `ot_ap_QCComment` between 0 and 10");
                                     ?>
