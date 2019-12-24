@@ -40,7 +40,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -51,7 +51,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -62,7 +62,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -75,7 +75,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -86,7 +86,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -97,7 +97,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -110,7 +110,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -121,7 +121,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -132,7 +132,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -233,7 +233,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -244,7 +244,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -255,7 +255,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -279,7 +279,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -290,7 +290,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -301,7 +301,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -325,7 +325,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -336,7 +336,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -347,7 +347,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -393,7 +393,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -404,7 +404,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -415,7 +415,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -498,7 +498,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -509,7 +509,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -520,7 +520,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -555,7 +555,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -566,7 +566,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -577,7 +577,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -612,7 +612,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -623,7 +623,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -634,7 +634,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -647,7 +647,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -658,7 +658,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -669,7 +669,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -682,7 +682,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -693,7 +693,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -704,7 +704,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -728,7 +728,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -739,7 +739,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -750,7 +750,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -774,7 +774,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -785,7 +785,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -796,7 +796,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -809,7 +809,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -820,7 +820,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -831,7 +831,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -844,7 +844,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -855,7 +855,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -866,7 +866,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -901,7 +901,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -912,7 +912,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -923,7 +923,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -969,7 +969,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -980,7 +980,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -991,7 +991,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1015,7 +1015,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1026,7 +1026,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1037,7 +1037,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1083,7 +1083,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1094,7 +1094,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1105,7 +1105,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1151,7 +1151,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1162,7 +1162,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1173,7 +1173,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1219,7 +1219,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1230,7 +1230,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1241,7 +1241,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1287,7 +1287,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1298,7 +1298,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1309,7 +1309,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1355,7 +1355,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1366,7 +1366,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1377,7 +1377,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1423,7 +1423,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1434,7 +1434,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1445,7 +1445,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1491,7 +1491,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1502,7 +1502,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1513,7 +1513,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1581,7 +1581,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1592,7 +1592,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1603,7 +1603,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1649,7 +1649,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1660,7 +1660,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1671,7 +1671,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1717,7 +1717,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1728,7 +1728,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1739,7 +1739,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1785,7 +1785,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1796,7 +1796,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1807,7 +1807,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1853,7 +1853,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1864,7 +1864,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1875,7 +1875,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1973,7 +1973,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1984,7 +1984,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -1995,7 +1995,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2019,7 +2019,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2030,7 +2030,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2041,7 +2041,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2065,7 +2065,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2076,7 +2076,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2087,7 +2087,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2111,7 +2111,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2122,7 +2122,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2133,7 +2133,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2157,7 +2157,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2168,7 +2168,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2179,7 +2179,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2203,7 +2203,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2214,7 +2214,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2225,7 +2225,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2249,7 +2249,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2260,7 +2260,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2271,7 +2271,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2310,7 +2310,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2321,7 +2321,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2332,7 +2332,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2345,7 +2345,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2356,7 +2356,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2367,7 +2367,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2380,7 +2380,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2391,7 +2391,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2402,7 +2402,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2415,7 +2415,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2426,7 +2426,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2437,7 +2437,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2472,7 +2472,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2483,7 +2483,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2494,7 +2494,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2529,7 +2529,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2540,7 +2540,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2551,7 +2551,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2575,7 +2575,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2586,7 +2586,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2597,7 +2597,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2621,7 +2621,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2632,7 +2632,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2643,7 +2643,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2667,7 +2667,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2678,7 +2678,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2689,7 +2689,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2713,7 +2713,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2724,7 +2724,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2735,7 +2735,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2759,7 +2759,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2770,7 +2770,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2781,7 +2781,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2794,7 +2794,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2805,7 +2805,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2816,7 +2816,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2840,7 +2840,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2851,7 +2851,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2862,7 +2862,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2886,7 +2886,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2897,7 +2897,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2908,7 +2908,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2921,7 +2921,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2932,7 +2932,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2943,7 +2943,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2967,7 +2967,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2978,7 +2978,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -2989,7 +2989,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3002,7 +3002,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3013,7 +3013,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3024,7 +3024,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3070,7 +3070,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3081,7 +3081,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3092,7 +3092,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3105,7 +3105,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3116,7 +3116,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3127,7 +3127,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3175,7 +3175,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3186,7 +3186,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3197,7 +3197,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3221,7 +3221,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3232,7 +3232,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3243,7 +3243,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3278,7 +3278,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3289,7 +3289,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3300,7 +3300,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3326,7 +3326,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3337,7 +3337,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3348,7 +3348,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3372,7 +3372,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3383,7 +3383,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3394,7 +3394,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3418,7 +3418,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3429,7 +3429,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3440,7 +3440,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3464,7 +3464,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3475,7 +3475,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3486,7 +3486,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3510,7 +3510,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3521,7 +3521,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3532,7 +3532,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3567,7 +3567,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3578,7 +3578,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3589,7 +3589,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3613,7 +3613,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3624,7 +3624,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3635,7 +3635,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3659,7 +3659,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3670,7 +3670,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3681,7 +3681,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3705,7 +3705,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3716,7 +3716,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3727,7 +3727,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3762,7 +3762,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3773,7 +3773,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3784,7 +3784,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3808,7 +3808,7 @@
 				'parent_caption' => '`Leadership`.`Status`',
 				'parent_from' => '`Leadership` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Leadership`.`id`, `Leadership`.`Status` FROM `Leadership` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3819,7 +3819,7 @@
 				'parent_caption' => '`Approval`.`Status`',
 				'parent_from' => '`Approval` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `Approval`.`id`, `Approval`.`Status` FROM `Approval` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false
@@ -3830,7 +3830,7 @@
 				'parent_caption' => '`IMSControl`.`Status`',
 				'parent_from' => '`IMSControl` ',
 				'filterers' => array(),
-				'custom_query' => '',
+				'custom_query' => 'SELECT `IMSControl`.`id`, `IMSControl`.`Status` FROM `IMSControl` ORDER BY 1',
 				'inherit_permissions' => false,
 				'list_type' => 2,
 				'not_null' => false

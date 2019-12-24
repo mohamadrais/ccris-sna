@@ -326,7 +326,7 @@
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
 						<h4 class="card-title m-b-0">Average Hours</h4>
 						<!-- <h4 class="card-title m-b-0">My Work Days</h4> -->
-						<p class="text-muted">Per Task</p>
+						<p class="text-muted">Weekly Task Completion</p>
 						<div class="row">
 							<?php
 								$myHoursWeek = sqlValue("SELECT COALESCE(SEC_TO_TIME(AVG(`dateUpdated` - `dateAdded`)), '00:00:00.0000') as my_hours_week from `membership_userrecords` WHERE `memberID` = '" . makeSafe($memberInfo['username']) . "' and (YEARWEEK(from_unixtime(`dateAdded`), 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(from_unixtime(`dateUpdated`), 1) = YEARWEEK(CURDATE(), 1))");
@@ -523,10 +523,10 @@
 											$currentStatus = ''; $currentDate = '';
 											switch ($row[2]){
 												case '1':
-													$currentStatus = "<span class='label label-light-info pull-right'>Open</span> ";
+													$currentStatus = "<span class='label label-light-danger pull-right'>Open</span> ";
 													break;
 												case '2':
-													$currentStatus = "<span class='label label-light-success pull-right'>On Going</span> ";
+													$currentStatus = "<span class='label label-light-info pull-right'>On Going</span> ";
 													break;
 												case '3':
 													$currentStatus = "<span class='label label-light-warning pull-right'>Pending</span> ";
@@ -545,7 +545,7 @@
 									else {
 								?>
 								<li class="list-group-item">
-									<h5>There are no active tasks currently.</h5>
+									<h5>No active tasks currently</h5>
 									<div class="item-date"></div>
 								</li>
 								<?php
@@ -563,7 +563,7 @@
 						<div class="message-box" style="height: 358px;overflow: scroll;">
 							<div class="message-widget">
 							<?php
-								$leaderBoard = sql("SELECT COALESCE(SEC_TO_TIME(SUM(mu.`dateUpdated` - mu.`dateAdded`)), '00:00:00.0000') 'total_hours_this_week', mu.`memberID`, e.`Name` as 'name', SUM(mu.`dateUpdated` - mu.`dateAdded`) as 'total_seconds' from `membership_userrecords` as mu left join `employees` as e on e.`memberID` = mu.`memberID` WHERE (YEARWEEK(from_unixtime(`dateAdded`), 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(from_unixtime(`dateUpdated`), 1) = YEARWEEK(CURDATE(), 1)) group by 2, 3 limit 5", $eo);
+								$leaderBoard = sql("SELECT COALESCE(SEC_TO_TIME(SUM(mu.`dateUpdated` - mu.`dateAdded`)), '00:00:00.0000') 'total_hours_this_week', mu.`memberID`, e.`Name` as 'name', SUM(mu.`dateUpdated` - mu.`dateAdded`) as 'total_seconds' from `membership_userrecords` as mu left join `employees` as e on e.`memberID` = mu.`memberID` WHERE (YEARWEEK(from_unixtime(`dateAdded`), 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(from_unixtime(`dateUpdated`), 1) = YEARWEEK(CURDATE(), 1)) group by 2, 3 order by 1 desc limit 5", $eo);
 								if (isset($leaderBoard) && $leaderBoard->num_rows > 0) {
 									$progressPercentages = []; $leaderBoardStored = [];
 									while($row=db_fetch_row($leaderBoard)){ 
@@ -591,6 +591,16 @@
 							<?php	
 									}
 								}
+								else {
+							?>
+							<a>
+								<div class="mail-contnet"><h5>No active users yet</h5><span class="time">0h 0m</span></div>
+								<div class="progress">
+									<div class="progress-bar bg-info" role="progressbar" style="width: 0%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+							</a>
+							<?php
+								}
 							?>
 							</div>
 						</div>
@@ -604,36 +614,58 @@
 			<div class="col-lg-8 col-md-12 pr-2">
 				<div class="card my-3">
 					<div class="card-body">
-							<h4 class="card-title">Buletin</h4>
+						<h4 class="card-title">Bulletin</h4>
+						<?php
+							$teamSoftBoardStored = [];
+							$teamSoftBoard = sql("SELECT `Postid`, `Title`, `image01`, `TextPost`, `filed`  FROM `TeamSoftBoard` order by 5 desc limit 5", $eo);
+							if (isset($teamSoftBoard) && $teamSoftBoard->num_rows > 0) {
+								
+								while($row=db_fetch_row($teamSoftBoard)){ 
+									$teamSoftBoardStored[] = $row;
+								}
+									
+						?>
 						<div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel" style="height: 535px;overflow: hidden;">
 							<ol class="carousel-indicators">
-								<li data-target="#carouselExampleIndicators3" data-slide-to="0" class=""></li>
-								<li data-target="#carouselExampleIndicators3" data-slide-to="1" class=""></li>
-								<li data-target="#carouselExampleIndicators3" data-slide-to="2" class="active"></li>
+							<?php
+								for ($i=0; $i< count($teamSoftBoardStored); $i++){
+							?>
+								<li data-target="#carouselExampleIndicators3" data-slide-to="<?php echo $i?>" class="<?php if ($i == 0){ ?>active<?php } ?>"></li>
+							<?php
+								}
+							?>
 							</ol>
 							<div class="carousel-inner" role="listbox">
-								<div class="carousel-item">
-									<img class="img-responsive" src="images/gallery/slider2.jpeg" alt="First slide" style="height: 535px;width:auto;">
+								<?php
+									$teamSoftBoard = sql("SELECT `Postid`, `Title`, `image01`, `TextPost`, `filed`  FROM `TeamSoftBoard` order by 5 desc limit 5", $eo);
+									for ($i=0; $i< count($teamSoftBoardStored); $i++){
+										$currentBulletinDate = '';
+										(parseMySQLDate(substr($teamSoftBoardStored[$i][4], 0, 10), false) == substr($teamSoftBoardStored[$i][4], 0, 10)) ? $currentBulletinDate = date("d M, Y", strtotime(substr($teamSoftBoardStored[$i][4], 0, 10))) : '' ;
+											
+								?>
+								<div class="carousel-item <?php if ($i == 0){ ?>active" style="max-height: 553px;<?php } ?>">
+									<a href="TeamSoftBoard_view.php?SelectedID=<?php echo $teamSoftBoardStored[$i][0] ?>"><img class="img-responsive" src="images/<?php echo $teamSoftBoardStored[$i][2]?>" alt="<?php echo $teamSoftBoardStored[$i][1]?>" style="height: 535px;width:auto;">
 									<div class="carousel-caption d-none d-md-block" style="background: #333; padding: 20px; opacity: 0.7;">
-										<h3 class="text-white">Thanks ..😎</h3>
-										<p style="max-height: 50px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Together we make this transformation happen.</p>
-									</div>
+										<h3 class="text-white"><?php echo $teamSoftBoardStored[$i][1]?></h3>
+										<p style="max-height: 50px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?php echo $teamSoftBoardStored[$i][3] ?> <?php if ($currentBulletinDate != '') { echo ' - '. $currentBulletinDate;  } ?></p>
+									</div></a>
 								</div>
-								<div class="carousel-item">
-									<img class="img-responsive" src="images/gallery/slider3.gif" alt="Second slide" style="height: 535px;width:auto;">
-									<div class="carousel-caption d-none d-md-block" style="background: #333; padding: 20px; opacity: 0.7;">
-										<h3 class="text-white">EMS TRAINING</h3>
-										<p style="max-height: 50px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">13/8/2018</p>
-									</div>
-								</div>
+						<?php
+									}
+							}
+							else {
+								$teamSoftBoardStored = ['0', 'No team softboard posts yet', 'teamSoftBoardDefault.jpg', '<a href="TeamSoftBoard_view.php" class="text-white">You can be the first to create one!</a>', 'null'];
+						?>
 								<div class="carousel-item active" style="max-height: 553px;">
-									<img class="img-responsive" src="images/gallery/slider1.jpg" alt="Third slide" style="height: 535px;width:auto;">
+									<img class="img-responsive" src="images/<?php echo $teamSoftBoardStored[2]?>" alt="<?php echo $teamSoftBoardStored[2]?>" style="height: 535px;width:auto;">
 									<div class="carousel-caption d-none d-md-block" style="background: #333; padding: 20px; opacity: 0.7;">
-										<h3 class="text-white">ORGANIZATIONAL TRANSFORMATION</h3>
-										<p style="max-height: 50px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Businesses are struggling to keep the pace with rapid rate of change and disruption around. To keep up with the change, businesses try to diversify into newer areas, build products and services to cater to new market needs and innovate. Organizations on their transformation journeys cannot afford to rely only on the technology innovations because innovation is a result of something more deeper – innovation is a result of mindset, behavioral constructs, leadership and culture.
-										</p>
+										<h3 class="text-white"><?php echo $teamSoftBoardStored[1]?></h3>
+										<p style="max-height: 50px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?php echo $teamSoftBoardStored[3] ?></p>
 									</div>
 								</div>
+						<?php
+							}
+						?>
 							</div>
 							<a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
 								<i class="fa fa-angle-left" aria-hidden="true" style="font-size: 4rem; color: #333;"></i>
@@ -657,45 +689,48 @@
 					<!-- ============================================================== -->
 					<div class="comment-widgets">
 						<!-- Comment Row -->
+						<?php
+							$reportComments = sql("SELECT `Postid`, `Title`, `TextPost`, COALESCE(`last_modified`,`filed`), COALESCE(`ClosedIssue`,0)  FROM `IMSReport`  order by 4 desc limit 5", $eo);
+							if (isset($reportComments) && $reportComments->num_rows > 0) {
+								while($row=db_fetch_row($reportComments)){ 
+									$currentStatus = '';
+										switch ($row[4]){
+											case '0':
+												$currentStatus = "<span class='label label-light-danger pull-right'>Open</span> ";
+												break;
+											case '1':
+												$currentStatus = "<span class='label label-light-success pull-right'>Closed</span> ";
+												break;
+										}
+									$currentDate = '';
+									(parseMySQLDate(substr($row[3], 0, 10), false) == substr($row[3], 0, 10)) ? $currentDate = date("d M, Y", strtotime(substr($row[3], 0, 10))) : '' ;
+						?>
 						<div class="d-flex flex-row comment-row">
 							<div class="w-100">
-								<h5>Unable to log in</h5>
-								<p class="m-b-5" style="max-height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.</p>
+								<h5><a href='IMSReport_view.php?SelectedID=<?php echo $row[0]?>'><?php echo $row[1]?><?php echo $currentStatus ?></a></h5>
+								<p class="m-b-5" style="max-height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?php echo $row[2]?></p>
 								<div class="comment-footer">
-									<span class="text-muted pull-right">April 14, 2016</span>
+									<span class="text-muted pull-right"><?php echo $currentDate?></span>
 								</div>
 							</div>
 						</div>
-						<!-- Comment Row -->
+						<?php		
+								}
+							}
+							else {
+						?>
 						<div class="d-flex flex-row comment-row">
 							<div class="w-100">
-								<h5>Late Delivery</h5>
-								<p class="m-b-5" style="max-height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry..</p>
-								<div class="comment-footer ">
-									<span class="text-muted pull-right">April 14, 2016</span>
-								</div>
-							</div>
-						</div>
-						<!-- Comment Row -->
-						<div class="d-flex flex-row comment-row">
-							<div class="w-100">
-								<h5>Missing Items</h5>
-								<p class="m-b-5" style="max-height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry.</p>
+								<h5>No complaints so far</h5>
+								<p class="m-b-5" style="max-height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Keep up the good work!</p>
 								<div class="comment-footer">
-									<span class="text-muted pull-right">April 14, 2016</span>
+									<span class="text-muted pull-right"></span>
 								</div>
 							</div>
 						</div>
-						<!-- Comment Row -->
-						<div class="d-flex flex-row comment-row">
-							<div class="w-100">
-								<h5>Broken Packaging</h5>
-								<p class="m-b-5" style="max-height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has beenorem Ipsum is simply dummy text of the printing and type setting industry..</p>
-								<div class="comment-footer">
-									<span class="text-muted pull-right">April 14, 2016</span>
-								</div>
-							</div>
-						</div>
+						<?php
+							}
+						?>
 					</div>
 				</div>
 			</div>
