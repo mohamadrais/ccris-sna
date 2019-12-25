@@ -470,37 +470,45 @@
 						<!-- ============================================================== -->
 						<!-- To do list widgets -->
 						<!-- ============================================================== -->
-						<div class="to-do-widget m-t-20" style="max-height: 350px;overflow: scroll;">
+						<div class="to-do-widget m-t-20" style="height: 358px;overflow: scroll;">
 							<!-- /.modal -->
 							<ul class="list-task todo-list list-group m-b-0">
+								<?php
+									$activeEvents = sql("SELECT `id`, `title`, `start`, `end`, `tableName`, `pkValue`, `ot_ap_Approval`  from `events` where ((YEARWEEK(`start`, 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(coalesce(`end`, `start`), 1) = YEARWEEK(CURDATE(), 1))) and `ot_ap_Approval` <> 4 order by `end` desc", $eo);
+									if (isset($activeEvents) && $activeEvents->num_rows > 0) {
+										while($row=db_fetch_row($activeEvents)){ 
+											$currentStatus = ''; $currentStartDate = ''; $currentEndDate = '';
+											switch ($row[6]){
+												case '1':
+													$currentStatus = "<span class='label label-light-danger pull-right'>Open</span> ";
+													break;
+												case '2':
+													$currentStatus = "<span class='label label-light-info pull-right'>On Going</span> ";
+													break;
+												case '3':
+													$currentStatus = "<span class='label label-light-warning pull-right'>Pending</span> ";
+													break;
+											}
+											(parseMySQLDate(substr($row[2],0,10), false) == substr($row[2],0,10)) ? $currentStartDate = date("d M, Y", strtotime(substr($row[2],0,10))) : '' ;
+											((isset($row[3]) && !empty($row[3])) && parseMySQLDate(substr($row[3],0,10), false) == substr($row[3],0,10)) ? $currentEndDate   = date("d M, Y", strtotime(substr($row[3],0,10))) : '' ;
+								?>
 								<li class="list-group-item">
-									<h5>Schedule meeting with<span class="label label-light-warning">On Going</span> </h5>
-									<div class="item-date"> 26 jun 2017</div>
+									<h5><a href='<?php echo $row[4]?>_view.php?SelectedID=<?php echo $row[5]?>'><?php echo $row[1] ?><?php echo $currentStatus ?></a></h5>
+									<div class="item-date"><?php echo $currentStartDate ?><?php if ($currentEndDate != '') { echo ' - '. $currentEndDate;  } ?></div>
 								</li>
+								<?php
+											
+										}
+									}
+									else {
+								?>
 								<li class="list-group-item">
-									<h5>Give Purchase report to<span class="label label-light-danger">On Hold</span> </h5>
-									<div class="item-date"> 26 jun 2017</div>
+									<h5>No active events this week</h5>
+									<div class="item-date"></div>
 								</li>
-								<li class="list-group-item">
-									<h5>Book flight for holiday<span class="label label-light-warning">On Going</span> </h5>
-									<div class="item-date"> 26 jun 2017</div>
-								</li>
-								<li class="list-group-item">
-									<h5>Forward all tasks<span class="label label-light-danger">On Hold</span> </h5>
-									<div class="item-date"> 26 jun 2017</div>
-								</li>
-								<li class="list-group-item">
-									<h5>Recieve shipment<span class="label label-light-danger">On Hold</span> </h5>
-									<div class="item-date"> 26 jun 2017</div>
-								</li>
-								<li class="list-group-item">
-									<h5>Send payment today<span class="label label-light-warning">On Going</span> </h5>
-									<div class="item-date"> 26 jun 2017</div>
-								</li>
-								<li class="list-group-item">
-									<h5>Important tasks<span class="label label-light-warning">On Going</span> </h5>
-									<div class="item-date"> 26 jun 2017</div>
-								</li>
+								<?php
+									}
+								?>
 							</ul>
 						</div>
 					</div>

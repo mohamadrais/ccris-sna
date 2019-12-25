@@ -1,0 +1,77 @@
+<?php
+// url example: "calendar/event.php?from=1575129600000&to=1577808000000&utc_offset_from=-480&utc_offset_to=-480"
+
+include_once("db_connect.php");
+// $from = intval((intval($_GET["from"])/1000) + (intval($_GET["utc_offset_from"])*60));
+$from = intval(intval($_GET["from"])/1000);
+$to = intval(intval($_GET["to"])/1000);
+
+$sql = "SELECT `id`, `title`, `start`, `end`, `tableName`, `pkValue`, `ot_ap_Approval` FROM `events` where (`start` >= from_unixtime($from) and coalesce(`end`, `start`) <= from_unixtime($to)) or (from_unixtime($from) between `start` and coalesce(`end`, `start`)) or (from_unixtime($to) between `start` and coalesce(`end`, `start`))";
+$events = sql($sql, $eo);
+
+$calendar = array();
+while( $rows = db_fetch_row($events) ) {
+    $start = ''; $end = ''; $tempStart = ''; $tempEnd = ''; $class = ''; $status = ''; $statusClass = ''; 
+    switch ($rows[6]){
+        case 1:
+            $class = 'event-important';
+            $status = 'Open';
+            $statusClass = 'label label-light-danger';
+            break;
+        case 2:
+            $class = 'event-info';
+            $status = 'On Going';
+            $statusClass = 'label label-light-info';
+            break;
+        case 3:
+            $class = 'event-warning';
+            $status = 'Pending';
+            $statusClass = 'label label-light-warning';
+            break;
+        case 4:
+            $class = 'event-success';
+            $status = 'Closed';
+            $statusClass = 'label label-light-success';
+            break;
+        default:
+            $class = 'event-inverse';
+            $status = '';
+            $statusClass = '';
+
+    }
+    // convert  date to milliseconds
+    // if start timestamp is midnight and there is no end date, convert them to working hours start and end for the day
+    if((substr($rows[2],11,8) == '00:00:00') && ( (!isset($rows[3]) || empty($rows[3])) || ((substr($rows[2],0,10) == substr($rows[3],0,10)) && (substr($rows[3],11,8) == '00:00:00')) ) ){
+        $tempStart = substr($rows[2],0,10) . ' 08:00:00';
+        $tempEnd = substr($rows[2],0,10) . ' 18:00:00';
+        $start = strtotime($tempStart) * 1000;
+        $end = strtotime($tempEnd) * 1000;
+    }
+    // else set convert normally and set end to start if empty
+    else{
+        $start = strtotime($rows[2]) * 1000;
+        $end = (isset($rows[3]) && !empty($rows[3])) ? strtotime($rows[3]) * 1000 : (strtotime($rows[2]) + 3600) * 1000;
+    }
+    
+    $url = "";
+    if(isset($rows[4]) && !empty($rows[4]) && isset($rows[5]) && !empty($rows[5])){
+        $url = "".$rows[4]."_view.php?SelectedID=".$rows[5]."";
+    }
+	$calendar[] = array(
+        'id' => $rows[0],
+        'title' => $rows[1],
+        'titleAbbreviated' => substr($rows[1],0,20) . '...',
+        'url' => "$url",
+		"class" => $class,
+        'start' => "$start",
+        'end' => "$end",
+        'status' => "$status",
+        'statusClass' => "$statusClass"
+    );
+}
+$calendarData = array(
+	"success" => 1,	
+    "result"=>$calendar);
+echo json_encode($calendarData);
+exit;
+?>

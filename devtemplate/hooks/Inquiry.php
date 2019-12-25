@@ -87,6 +87,9 @@
 		if(function_exists('summary_update_after_insert_delete')){
 			summary_update_after_insert_delete($tableName, 'insert');
 		}
+		if(function_exists('dbCalendarEvent')){
+			dbCalendarEvent($data["InqNumber"], $data["fo_InquiryDate"], $data["fo_DueDate"], $tableName, $data["id"], $data["ot_ap_Review"], $data["ot_ap_Approval"], $data["ot_ap_QC"], 'insert');
+		}
 
 		return TRUE;
 	}
@@ -101,6 +104,9 @@
 		if(function_exists('summary_update_after_update')){
 			summary_update_after_update($tableName);
 		}
+		if(function_exists('dbCalendarEvent')){
+			dbCalendarEvent($data["InqNumber"], $data["fo_InquiryDate"], $data["fo_DueDate"], $tableName, $data["id"], $data["ot_ap_Review"], $data["ot_ap_Approval"], $data["ot_ap_QC"], 'update');
+		}
 
 		return TRUE;
 	}
@@ -114,6 +120,9 @@
 		global $tableName;
 		if(function_exists('summary_update_after_insert_delete')){
 			summary_update_after_insert_delete($tableName, 'delete');
+		}
+		if(function_exists('dbCalendarEvent')){
+			dbCalendarEvent(null, null, null, $tableName, $selectedID, null, null, null, 'delete');
 		}
 	}
 

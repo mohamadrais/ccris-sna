@@ -4607,4 +4607,29 @@ EOT;
 		}
 	  
 		return $num;
+	}
+
+	#########################################################
+
+	function dbCalendarEvent($title, $start, $end, $tableName, $pkValue, $review, $approval, $imscontrol, $operation) {
+		if((!isset($start) || empty($start)) && $operation != 'delete') return FALSE;  else $start = "'".$start."'";
+		if(!isset($end) || empty($end)) $end = 'null'; else $end = "'".$end."'";
+		$sql_operation = '';
+		$values = [];
+
+		switch ($operation) {
+			case 'insert':	
+				$sql_operation = "INSERT INTO `events` (`title`, `start`, `end`, `tableName`, `pkValue`, `ot_ap_Review`, `ot_ap_Approval`, `ot_ap_QC`) VALUES ('".$title."', ".$start.", ".$end.", '".$tableName."', '".$pkValue."', ".$review.", ".$approval.", ".$imscontrol.")";
+				break;
+			case 'update':
+				$sql_operation = "UPDATE `events` SET `title`='".$title."',`start`=".$start.",`end`=".$end.",`tableName`='".$tableName."',`pkValue`='".$pkValue."',`ot_ap_Review`=".$review.",`ot_ap_Approval`=".$approval.",`ot_ap_QC`=".$imscontrol." WHERE `tableName`='".$tableName."' and `pkValue`='".$pkValue."'";
+				break;
+			case 'delete':
+				$sql_operation = "DELETE FROM `events` WHERE `tableName`='".$tableName."' and `pkValue`='".$pkValue."'";
+				break;
+			default:
+				return FALSE;
+		}
+		sql($sql_operation, $eo);
+		return TRUE;
 	  }

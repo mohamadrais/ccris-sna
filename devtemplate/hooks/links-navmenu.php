@@ -18,3 +18,11 @@
 		'table_group' => 8, // optional index of table group, default is 0
 	);
 
+	$navLinks[] = array(
+		'url' => 'calendar.php', 
+		'title' => 'Calendar', 
+		'groups' => array('*'), // groups allowed to see this link, use '*' if you want to show the link to all groups
+		'icon' => '',
+		'table_group' => 6, // optional index of table group, default is 0
+	);
+

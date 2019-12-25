@@ -2165,7 +2165,11 @@ Ajax.PeriodicalUpdater = Class.create(Ajax.Base, {
       isBootstrapEvent = false;
       return;
     }
-	if (element.id == 'reportrange'){
+  if (
+       (element.id == 'reportrange')
+    || (element.dataset && element.dataset.eventClass && element.dataset.eventClass == 'event-important')
+    || (element.dataset && element.dataset.toggle && element.dataset.toggle == 'tooltip')
+    ){
 		return;
 	}
     element = $(element);
