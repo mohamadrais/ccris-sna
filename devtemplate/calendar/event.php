@@ -40,14 +40,28 @@ while( $rows = db_fetch_row($events) ) {
 
     }
     // convert  date to milliseconds
-    // if start timestamp is midnight and there is no end date, convert them to working hours start and end for the day
-    if((substr($rows[2],11,8) == '00:00:00') && ( (!isset($rows[3]) || empty($rows[3])) || ((substr($rows[2],0,10) == substr($rows[3],0,10)) && (substr($rows[3],11,8) == '00:00:00')) ) ){
-        $tempStart = substr($rows[2],0,10) . ' 08:00:00';
-        $tempEnd = substr($rows[2],0,10) . ' 18:00:00';
-        $start = strtotime($tempStart) * 1000;
-        $end = strtotime($tempEnd) * 1000;
+    // if start timestamp is midnight
+    if ( substr($rows[2],11,8) == '00:00:00' ) {
+        $tempStart = substr($rows[2],0,10) . ' 00:00:00';
+        $start = strtotime($rows[2]) * 1000;
+
+        // if there is no end date, convert end date to start timestamp but hours set to 23:59:59
+        if ( !isset($rows[3]) || empty($rows[3]) ){
+            $tempEnd = substr($rows[2],0,10) . ' 23:59:59';
+            $end = strtotime($tempEnd) * 1000;
+        }
+        // else if end timestamp is midnight for the same day, set it to 23:59:59 as well
+        else if ( (substr($rows[2],0,10) == substr($rows[3],0,10)) && (substr($rows[3],11,8) == '00:00:00') ){
+            $tempEnd = substr($rows[2],0,10) . ' 23:59:59';
+            $end = strtotime($tempEnd) * 1000;
+        }
+        // else if end timestamp is midnight, then set it to 23:59:59
+        else if ( (substr($rows[3],11,8) == '00:00:00') ){
+            $tempEnd = substr($rows[3],0,10) . ' 23:59:59';
+            $end = strtotime($tempEnd) * 1000;
+        }
     }
-    // else set convert normally and set end to start if empty
+    // else (i.e. for timestamps other than midnight) convert normally and set end to start + 1 hour if empty
     else{
         $start = strtotime($rows[2]) * 1000;
         $end = (isset($rows[3]) && !empty($rows[3])) ? strtotime($rows[3]) * 1000 : (strtotime($rows[2]) + 3600) * 1000;
