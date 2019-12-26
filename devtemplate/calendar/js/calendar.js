@@ -57,13 +57,13 @@ if(!String.prototype.formatNum) {
 		// Width of the calendar
 		width: '100%',
 		// Initial view (can be 'month', 'week', 'day')
-		view: 'month',
+		view: 'week',
 		// Initial date. No matter month, week or day this will be a starting point. Can be 'now' or a date in format 'yyyy-mm-dd'
 		day: 'now',
 		// Day Start time and end time with time intervals. Time split 10, 15 or 30.
-		time_start: '06:00',
-		time_end: '22:00',
-		time_split: '30',
+		time_start: '00:00',
+		time_end: '24:00',
+		time_split: '60',
 		// Source of events data. It can be one of the following:
 		// - URL to return JSON list of events in special format.
 		//   {success:1, result: [....]} or for error {success:0, error:'Something terrible happened'}
@@ -170,26 +170,26 @@ if(!String.prototype.formatNum) {
 		first_day: 1,
 		week_numbers_iso_8601: false,
 		holidays: {
-			// January 1
-			'01-01': "New Year's Day",
-			// Third (+3*) Monday (1) in January (01)
-			'01+3*1': "Birthday of Dr. Martin Luther King, Jr.",
-			// Third (+3*) Monday (1) in February (02)
-			'02+3*1': "Washington's Birthday",
-			// Last (-1*) Monday (1) in May (05)
-			'05-1*1': "Memorial Day",
-			// July 4
-			'04-07': "Independence Day",
-			// First (+1*) Monday (1) in September (09)
-			'09+1*1': "Labor Day",
-			// Second (+2*) Monday (1) in October (10)
-			'10+2*1': "Columbus Day",
-			// November 11
-			'11-11': "Veterans Day",
-			// Fourth (+4*) Thursday (4) in November (11)
-			'11+4*4': "Thanksgiving Day",
-			// December 25
-			'25-12': "Christmas"
+			// // January 1
+			// '01-01': "New Year's Day",
+			// // Third (+3*) Monday (1) in January (01)
+			// '01+3*1': "Birthday of Dr. Martin Luther King, Jr.",
+			// // Third (+3*) Monday (1) in February (02)
+			// '02+3*1': "Washington's Birthday",
+			// // Last (-1*) Monday (1) in May (05)
+			// '05-1*1': "Memorial Day",
+			// // July 4
+			// '04-07': "Independence Day",
+			// // First (+1*) Monday (1) in September (09)
+			// '09+1*1': "Labor Day",
+			// // Second (+2*) Monday (1) in October (10)
+			// '10+2*1': "Columbus Day",
+			// // November 11
+			// '11-11': "Veterans Day",
+			// // Fourth (+4*) Thursday (4) in November (11)
+			// '11+4*4': "Thanksgiving Day",
+			// // December 25
+			// '25-12': "Christmas"
 		}
 	};
 

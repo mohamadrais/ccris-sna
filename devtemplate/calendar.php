@@ -28,8 +28,8 @@ include("header.php");
 			</div>
 			<div class="btn-group">
 				<button class="btn btn-default" data-calendar-view="year">Year</button>
-				<button class="btn btn-default active" data-calendar-view="month">Month</button>
-				<button class="btn btn-default" data-calendar-view="week">Week</button>
+				<button class="btn btn-default" data-calendar-view="month">Month</button>
+				<button class="btn btn-default active" data-calendar-view="week">Week</button>
 				<button class="btn btn-default" data-calendar-view="day">Day</button>
 			</div>
 		</div>

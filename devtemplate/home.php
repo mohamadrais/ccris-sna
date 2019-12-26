@@ -466,7 +466,7 @@
 			<div class="col-lg-4 pr-2">
 				<div class="card my-3">
 					<div class="card-body">
-					<h4 class="card-title">Calender - Weekly</h4>
+					<a href="calendar.php"><h4 class="card-title">Calender - Weekly</h4></a>
 						<!-- ============================================================== -->
 						<!-- To do list widgets -->
 						<!-- ============================================================== -->
@@ -571,7 +571,7 @@
 						<div class="message-box" style="height: 358px;overflow: scroll;">
 							<div class="message-widget">
 							<?php
-								$leaderBoard = sql("SELECT COALESCE(SEC_TO_TIME(SUM(mu.`dateUpdated` - mu.`dateAdded`)), '00:00:00.0000') 'total_hours_this_week', mu.`memberID`, e.`Name` as 'name', SUM(mu.`dateUpdated` - mu.`dateAdded`) as 'total_seconds' from `membership_userrecords` as mu left join `employees` as e on e.`memberID` = mu.`memberID` WHERE (YEARWEEK(from_unixtime(`dateAdded`), 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(from_unixtime(`dateUpdated`), 1) = YEARWEEK(CURDATE(), 1)) group by 2, 3 order by 1 desc limit 5", $eo);
+								$leaderBoard = sql("SELECT COALESCE(SEC_TO_TIME(AVG(mu.`dateUpdated` - mu.`dateAdded`)), '00:00:00.0000') 'total_hours_this_week', mu.`memberID`, e.`Name` as 'name', SUM(mu.`dateUpdated` - mu.`dateAdded`) as 'total_seconds' from `membership_userrecords` as mu left join `employees` as e on e.`memberID` = mu.`memberID` WHERE (YEARWEEK(from_unixtime(`dateAdded`), 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(from_unixtime(`dateUpdated`), 1) = YEARWEEK(CURDATE(), 1)) group by 2, 3 order by 4 desc limit 5", $eo);
 								if (isset($leaderBoard) && $leaderBoard->num_rows > 0) {
 									$progressPercentages = []; $leaderBoardStored = [];
 									while($row=db_fetch_row($leaderBoard)){ 

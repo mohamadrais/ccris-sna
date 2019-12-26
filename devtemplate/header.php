@@ -86,6 +86,7 @@ $self_baseurl = _baseurl();
 		<script src="<?php echo PREPEND_PATH; ?>resources/jquery/js/jquery-1.12.4.min.js"></script>
 		<script>var $j = jQuery.noConflict();</script>
 		<script src="<?php echo PREPEND_PATH; ?>resources/moment/moment-with-locales.min.js"></script>
+		<script src="<?php echo PREPEND_PATH; ?>resources/moment/moment-timezone-with-data.js"></script>
    		<!-- Bootstrap tether Core JavaScript -->
 		<script src="<?php echo PREPEND_PATH; ?>assets/plugins/bootstrap/js/popper.min.js"></script>
 		<script src="<?php echo PREPEND_PATH; ?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>

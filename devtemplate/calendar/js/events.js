@@ -2,10 +2,11 @@
 	"use strict";
 	var options = {
 		events_source: 'calendar/event.php',
-		view: 'month',
+		view: 'week',
 		tmpl_path: 'calendar/tmpls/',
 		tmpl_cache: false,
-		day: new Date().toJSON().slice(0,10),
+		// day: new Date().toJSON().slice(0,10),
+		day: moment($j.ajax({async: false}).getResponseHeader( 'Date' )).tz("Asia/Kuala_Lumpur").format('YYYY-MM-DD'),
 		onAfterEventsLoad: function(events) {
 			if(!events) {
 				return;
