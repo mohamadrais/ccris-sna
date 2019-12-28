@@ -7,43 +7,18 @@
             setTimeout(function(){ 
                 $j(".nicEdit-main").attr("contenteditable", "false");
                 $j('input[type="radio"]').attr("disabled", true);
-            }, 1000);
-			
-			$j('[class="control-label text-muted"]').hide();
-			$j('#ot_SharedLink1_remove').hide();
-			$j('#ot_SharedLink2_remove').hide();
-			$j('#addLink').hide();
-			$j('#addDocument').hide();
-            $j('#addCompFolder').hide();
-            $j('#addPhoto').hide();
-            
-            if ($j('#ot_Ref01').val().length == 0) {
-                       $j('#ot_Ref01').parent().hide();
-            }
-            if ($j('#ot_Ref02').val().length == 0) {
-                       $j('#ot_Ref02').parent().hide();
-            }
-            if ($j('#ot_Ref03').val().length == 0) {
-                       $j('#ot_Ref03').parent().hide();
-            }
-            if ($j('#ot_Ref04').val().length == 0) {
-                       $j('#ot_Ref04').parent().hide();
-            }
-            if ($j('#ot_Ref05').val().length == 0) {
-                       $j('#ot_Ref05').parent().hide();
-            }
-            if ($j('#ot_Ref06').val().length == 0) {
-                       $j('#ot_Ref06').parent().hide();
-            }
-            if ($j('#ot_Photo01').val().length == 0) {
-                       $j('#ot_Photo01').parent().hide();
-            }
-            if ($j('#ot_Photo02').val().length == 0) {
-                       $j('#ot_Photo02').parent().hide();
-            }
-            if ($j('#ot_Photo03').val().length == 0) {
-                       $j('#ot_Photo03').parent().hide();
-            }
+            }, 3000);
+            $j("[id*='_remove']").each(function (i, el) {
+                el.hide();
+            });
+            $j('.dropify').each(function (i, el) {
+                if(el.files.length==0) {
+                    $j(this).parent().hide();
+                }
+            });
+            $j('[for="editAttachment"]').each(function (i, el) {
+                el.hide();
+            });
 
 			$j("#startEdit").click(function(){
 				$j("input").attr("readonly", false);
@@ -67,11 +42,10 @@
                 if (!$j("#ot_Photo01").is(":visible")) {
 					$j("#ot_Photo01").parent().parent().show();
                 }
-                
-                $j('#addLink').show();
-                $j('#addDocument').show();
-                $j('#addCompFolder').show();
-                $j('#addPhoto').show();
+
+                $j('[for="editAttachment"]').each(function (i, el) {
+                    el.show();
+                });
 
 				$j(this).hide();
 				$j("#exitEdit").show();
