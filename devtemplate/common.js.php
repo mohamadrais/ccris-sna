@@ -1098,6 +1098,135 @@ function summary_dashboard_validateData(){
 	return true;
 }
 
+function get_workorder_related_records(selected_wo_ID){
+	var data = {
+		o: 'getrelated',
+		t: 'WorkOrder',
+		w: selected_wo_ID
+	};
+
+	$j.ajax({
+		url: 'ajax_crud_workorder.php',
+		data: data,
+		success: function(jsonData) {
+			var woRelatedHTML = '';
+			if (jsonData == null || (jsonData.length && jsonData.length > 0)){
+				for(x=0; x < jsonData.length; x++){
+					let _dataColumnValues=[];
+					Object.keys(jsonData[x]).forEach(function(k){
+						_dataColumnValues.push(jsonData[x][k]);
+					});
+					woRelatedHTML += '<button class="btn btn-outline-success" id="' + _dataColumnValues[0] + '" class="list-group-item"><a href="' + _dataColumnValues[1] + '_view.php?SelectedID=' + _dataColumnValues[2] + '">' + _dataColumnValues[3] + '</a> </button> &nbsp;&nbsp;';
+				}
+			}
+			$j('#wo_related_area').replaceWith(woRelatedHTML);
+			return false;
+		},         
+		error: function(response) {
+			console.log('get_workorder_related_records error: ' + response.statusText);
+			return false;
+		},
+		complete: function(resp){
+			return false;
+		}
+	})
+}
+
+function get_workorders(table, selectedID){
+	var data = {
+		o: 'select',
+		t: table,
+		si: selectedID
+	};
+
+	$j.ajax({
+		url: 'ajax_crud_workorder.php',
+		data: data,
+		success: function(jsonData) {
+			var woHTML = '';
+			if (jsonData == null || (jsonData.length && jsonData.length > 0)){
+				for(x=0; x < jsonData.length; x++){
+					let _dataColumnValues=[];
+					Object.keys(jsonData[x]).forEach(function(k){
+						_dataColumnValues.push(jsonData[x][k]);
+					});
+					(_dataColumnValues[2] == "yes") ? woHTML += '<li class="list-group-item active" ' : woHTML += '<li class="list-group-item" ';
+					woHTML += 'id="' + _dataColumnValues[0] + '" ';
+					woHTML += 'onclick="attach_to_workorder(\'' + _dataColumnValues[0] + '\', \'' + _dataColumnValues[1] + '\', \'' + _dataColumnValues[2] + '\', \'' + table + '\', ' + selectedID + ')">';
+					woHTML += '<h5>' + _dataColumnValues[1] + '</h5></li>';
+				}
+			}
+			$j('#wo_content').replaceWith(woHTML);
+			return false;
+			
+			
+		},         
+		error: function(response) {
+			console.log('attach_to_workorder error: ' + response.statusText);
+			return false;
+		},
+		complete: function(resp){
+			return false;
+		}
+	})
+}
+
+function attach_to_workorder(WOid, WONumber, selected, tableName, pkValue){
+	var confirm_message = '<div class="alert alert-info">' +
+			'<i class="glyphicon glyphicon-warning-sign"></i> ' + 
+			'<?php echo addslashes($Translation['are you sure attach workorder?']); ?>' +
+		'</div>';
+	var confirm_title = '<?php echo addslashes($Translation['confirm workorder attachment']); ?>';
+	var label_yes = '<?php echo addslashes($Translation['yes']); ?>';
+	var label_no = '<?php echo addslashes($Translation['no']); ?>';
+	
+	modal_window({
+		message: confirm_message,
+		title: confirm_title,
+		footer: [
+			{
+				label: '<i class="glyphicon glyphicon-ok"></i> ' + label_yes,
+				bs_class: 'warning',
+				click: function(){
+
+					var data = {
+						o: 'addupdate',
+						t: tableName,
+						si: pkValue,
+						w: WOid,
+						wn: WONumber,
+						same: selected
+					};
+
+					jQuery.ajax('ajax_crud_workorder.php', {
+						type: 'POST',
+						data: data,
+						success: function(resp){
+							if(resp.result && resp.result == 'ok'){
+								jQuery("#wo_content_list").append('<li class="text-success"><?php echo addslashes($Translation['workorder attach success']); ?></li>');
+							}else{
+								jQuery("#wo_content_list").append('<li class="text-danger">' + resp + '</li>');
+							}
+						},
+						error: function(){
+							jQuery("#wo_content_list").append('<li class="text-warning"><?php echo addslashes($Translation['Connection error']); ?></li>');
+						},
+						complete: function(){
+							setTimeout(function(){ location.reload(); }, 3000);
+						}
+					});
+					
+					
+				}
+			},
+			{
+				label: '<i class="glyphicon glyphicon-remove"></i> ' + label_no,
+				bs_class: 'success' 
+			}
+		]
+	});
+}
+
 function post(url, params, update, disable, loading, success_callback){
 	$j.ajax({
 		url: url,
@@ -1853,7 +1982,7 @@ AppGini.TVScroll = function(){
 			var mod = $j(
 				'<div class="modal fade" tabindex="-1" role="dialog" id="' + op.id + '">' +
 					'<div class="modal-dialog" role="document">' +
-						'<div class="modal-content">' +
+						'<div class="modal-content" style="margin-top: 180px">' +
 							( op.title != undefined ?
 								'<div class="modal-header">' +
 									'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +

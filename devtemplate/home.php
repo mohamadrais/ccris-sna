@@ -483,7 +483,7 @@
 													$currentStatus = "<span class='label label-light-danger pull-right'>Open</span> ";
 													break;
 												case '2':
-													$currentStatus = "<span class='label label-light-info pull-right'>On Going</span> ";
+													$currentStatus = "<span class='label label-light-info pull-right'>Ongoing</span> ";
 													break;
 												case '3':
 													$currentStatus = "<span class='label label-light-warning pull-right'>Pending</span> ";
@@ -534,7 +534,7 @@
 													$currentStatus = "<span class='label label-light-danger pull-right'>Open</span> ";
 													break;
 												case '2':
-													$currentStatus = "<span class='label label-light-info pull-right'>On Going</span> ";
+													$currentStatus = "<span class='label label-light-info pull-right'>Ongoing</span> ";
 													break;
 												case '3':
 													$currentStatus = "<span class='label label-light-warning pull-right'>Pending</span> ";

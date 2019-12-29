@@ -1,4 +1,46 @@
-<script>
+<?php
+$memberInfo = getMemberInfo();
+// echo $memberInfo['group'];
+if ($memberInfo['group'] != 'Admins') {
+?>
+    <script type='text/javascript'>
+        document.observe("dom:loaded", function() {
+            $j('label[for="memberID"]').parent().hide();
+        });
+    </script>
+<?php
+}
+?>
+<script type='text/javascript'>
+    $j('#attach').on('click', function(e) {
+        // e.preventDefault(); 
+        // e.stopPropagation();
+        var tableName = $j('[name ="myform"]').attr('action');
+        tableName = tableName.substr(0, tableName.indexOf('_view.php'));
+        var selectedID = $j("[aria-labelledby='selectedID']").html().trim();
+        get_workorders(tableName, selectedID);
+        $j('div[id$="dv_action_buttons"]').append(`
+            <div class="modal" id="wo_modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="card-title">Select a work order</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="message-box" style="max-height: 358px;overflow: scroll;">
+                                <ul class="list-task todo-list list-group m-b-0" id="wo_content_list"><span id="wo_content"></span></ul>
+                            </div>
+                        </div>
+                        <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+                    </div>
+                </div>
+            </div>
+        `);
+    });
+    document.observe("dom:loaded", function() {
+        var selected_wo_ID = $j("[aria-labelledby='selected_wo_ID']").html().trim();
+        get_workorder_related_records(selected_wo_ID);
+    });
         ///////////////////////////////////////////////
         {
 			$j("input").attr("readonly", true);

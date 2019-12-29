@@ -21,7 +21,7 @@
 					<hr class="hidden-md hidden-lg">
 					<label for="PersonalFileID" class="control-label col-lg-3">Personal File ID</label>
 					<div class="col-lg-9">
-						<div class="form-control-static" id="PersonalFileID"><%%VALUE(PersonalFileID)%%></div>
+						<div class="form-control-static" id="PersonalFileID" aria-labelledby="selectedID"><%%VALUE(PersonalFileID)%%></div>
 					</div>
 				</div>
 
@@ -370,6 +370,9 @@
 				</div><p></p>
 				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
 					<%%INSERT_BUTTON%%>
+				</div>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%ATTACH_BUTTON%%>
 				</div>
 			</div>
 		</div>

@@ -101,7 +101,7 @@ $self_baseurl = _baseurl();
 		<!--Custom JavaScript -->
 		<script src="<?php echo PREPEND_PATH; ?>assets/js/custom.min.js"></script>
 		<script src="<?php echo PREPEND_PATH; ?>resources/jquery/js/jquery.mark.min.js"></script>
-		<script src="<?php echo PREPEND_PATH; ?>resources/initializr/js/vendor/bootstrap.min.js"></script>
+		<!-- <script src="<?php echo PREPEND_PATH; ?>resources/initializr/js/vendor/bootstrap.min.js"></script> -->
 		<script src="<?php echo PREPEND_PATH; ?>resources/lightbox/js/prototype.js"></script>
 		<script src="<?php echo PREPEND_PATH; ?>resources/lightbox/js/scriptaculous.js?load=effects"></script>
 		<script src="<?php echo PREPEND_PATH; ?>resources/select2/select2.min.js"></script>

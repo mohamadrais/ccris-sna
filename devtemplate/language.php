@@ -65,6 +65,9 @@
 	$Translation['Start typing to get suggestions'] = 'Start typing to get suggestions.';
 
 	// _dml.php
+	$Translation['are you sure attach workorder?'] = 'Are you sure you want to attach to this work order? Please finalize all work on this entry since a notification will be sent to work order assigner upon clicking Yes.';
+	$Translation['workorder attach success'] = 'This entry has been successfully attached to the work order selected.';
+	$Translation['confirm workorder attachment'] = 'Confirm attachment';
 	$Translation['are you sure?'] = 'Are you sure you want to delete this record?';
 	$Translation['add new record'] = 'Add new record';
 	$Translation['update record'] = 'Update record';
@@ -84,7 +87,7 @@
 	$Translation['today'] = 'Today';
 	$Translation['Hold CTRL key to select multiple items from the above list.'] = 'Hold CTRL key to select multiple items from the above list.';
 	$Translation['Save New'] = 'Save New';
-	$Translation['Save As Copy'] = 'Save As Copy';
+	$Translation['Save As Copy'] = 'Duplicate';
 	$Translation['Deselect'] = 'Cancel';
 	$Translation['Add New'] = 'Add New';
 	$Translation['Delete'] = 'Delete';
@@ -97,6 +100,7 @@
 	$Translation['Previous'] = 'Previous';
 	$Translation['Next'] = 'Next';
 	$Translation['Back'] = 'Back';
+	$Translation['Attach'] = 'Attach to';
 
 	// lib.php
 	$Translation['select a table'] = "Jump to ...";

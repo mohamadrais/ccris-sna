@@ -28,7 +28,7 @@
 					<hr class="hidden-md hidden-lg">
 					<label for="ShipperID" class="control-label col-lg-3">Shipper ID</label>
 					<div class="col-lg-9">
-						<div class="form-control-static" id="ShipperID"><%%VALUE(ShipperID)%%></div>
+						<div class="form-control-static" id="ShipperID" aria-labelledby="selectedID"><%%VALUE(ShipperID)%%></div>
 					</div>
 				</div>
 
@@ -407,6 +407,9 @@
 				</div><p></p>
 				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
 					<%%INSERT_BUTTON%%>
+				</div>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%ATTACH_BUTTON%%>
 				</div>
 			</div>
 		</div>

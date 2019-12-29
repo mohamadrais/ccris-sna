@@ -30,7 +30,7 @@
 					<hr class="hidden-md hidden-lg">
 					<label for="VendorID" class="control-label col-lg-3">Vendor ID</label>
 					<div class="col-lg-9">
-						<div class="form-control-static" id="VendorID"><%%VALUE(VendorID)%%></div>
+						<div class="form-control-static" id="VendorID" aria-labelledby="selectedID"><%%VALUE(VendorID)%%></div>
 					</div>
 				</div>
 
@@ -482,6 +482,9 @@
 				</div><p></p>
 				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
 					<%%INSERT_BUTTON%%>
+				</div>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%ATTACH_BUTTON%%>
 				</div>
 			</div>
 		</div>

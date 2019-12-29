@@ -21,7 +21,7 @@
 					<hr class="hidden-md hidden-lg">
 					<label for="RunningID" class="control-label col-lg-3">Comment ID</label>
 					<div class="col-lg-9">
-						<div class="form-control-static" id="RunningID"><%%VALUE(RunningID)%%></div>
+						<div class="form-control-static" id="RunningID" aria-labelledby="selectedID"><%%VALUE(RunningID)%%></div>
 					</div>
 				</div>
 
@@ -80,6 +80,9 @@
 				</div><p></p>
 				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
 					<%%INSERT_BUTTON%%>
+				</div>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%ATTACH_BUTTON%%>
 				</div>
 			</div>
 		</div>

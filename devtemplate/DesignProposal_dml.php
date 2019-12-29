@@ -910,6 +910,7 @@ function DesignProposal_form($selected_id = '', $AllowUpdate = 1, $AllowInsert =
 	if($AllowInsert){
 		if(!$selected_id) $templateCode = str_replace('<%%INSERT_BUTTON%%>', '<button type="submit" class="btn btn-success" id="insert" name="insert_x" value="1" onclick="return DesignProposal_validateData();"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Save New'] . '</button>', $templateCode);
 		$templateCode = str_replace('<%%INSERT_BUTTON%%>', '<button type="submit" class="btn btn-default" id="insert" name="insert_y" value="1" onclick="return DesignProposal_validateData();"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Save As Copy'] . '</button>', $templateCode);
+		$templateCode = str_replace('<%%ATTACH_BUTTON%%>', '<button class="btn btn-default" id="attach"><a href="#wo_modal" data-toggle="modal" style="width:100%"><i class="glyphicon glyphicon-send"></i> ' . $Translation['Attach'] . '</a></button>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%INSERT_BUTTON%%>', '', $templateCode);
 	}

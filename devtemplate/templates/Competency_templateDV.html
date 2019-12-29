@@ -21,7 +21,7 @@
 					<hr class="hidden-md hidden-lg">
 					<label for="CompetencyID" class="control-label col-lg-3">Competency ID</label>
 					<div class="col-lg-9">
-						<div class="form-control-static" id="CompetencyID"><%%VALUE(CompetencyID)%%></div>
+						<div class="form-control-static" id="CompetencyID" aria-labelledby="selectedID"><%%VALUE(CompetencyID)%%></div>
 					</div>
 				</div>
 
@@ -430,6 +430,9 @@
 				</div><p></p>
 				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
 					<%%INSERT_BUTTON%%>
+				</div>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%ATTACH_BUTTON%%>
 				</div>
 			</div>
 		</div>

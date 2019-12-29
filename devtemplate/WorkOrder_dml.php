@@ -1272,6 +1272,7 @@ function WorkOrder_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $
 		}
 		$templateCode = str_replace('<%%VALUE(ot_comments)%%>', nl2br($row['ot_comments']), $templateCode);
 		$templateCode = str_replace('<%%URLVALUE(ot_comments)%%>', urlencode($urow['ot_comments']), $templateCode);
+		$templateCode = str_replace('<%%WOAREA%%>', '<div id="wo_related_area"></div>', $templateCode);
 		if( $dvprint) $templateCode = str_replace('<%%VALUE(ot_SharedLink1)%%>', safe_html($urow['ot_SharedLink1']), $templateCode);
 		if(!$dvprint) $templateCode = str_replace('<%%VALUE(ot_SharedLink1)%%>', html_attr($row['ot_SharedLink1']), $templateCode);
 		$templateCode = str_replace('<%%URLVALUE(ot_SharedLink1)%%>', urlencode($urow['ot_SharedLink1']), $templateCode);
