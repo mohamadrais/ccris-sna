@@ -67,6 +67,20 @@ p {
   font-size: 1.4rem;
 }
 
+#printOnly {
+  display : none;
+}
+
+@media print {
+   #printOnly {
+      display : block;
+   }
+
+   .left-sidebar{
+     display:none;
+   }
+}
+
 ::-webkit-scrollbar {
   width: 12px;
 }
