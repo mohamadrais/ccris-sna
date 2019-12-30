@@ -42,7 +42,7 @@ if ($memberInfo['group'] != 'Admins') {
         get_workorder_related_records(selected_wo_ID);
     });
         ///////////////////////////////////////////////
-        {
+        if ($j("#startEdit").is(":visible")){
 			$j("input").attr("readonly", true);
 			$j("textarea").attr("readonly", true);
             $j("select").attr("disabled", true);
