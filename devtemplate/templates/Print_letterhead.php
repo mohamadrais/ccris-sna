@@ -40,9 +40,9 @@ $letterhead = <<<HTML
 						<i class="glyphicon glyphicon-envelope"></i>
 					</td>
 					<td style="border-left:1px solid red;padding-left:10px">
-						$comp_addressLn1
+						$comp_addressLn1,
 						<br />
-						$comp_city . $comp_postalCode . $comp_region . $comp_country
+						$comp_city, $comp_postalCode, $comp_region, $comp_country
 					</td>
 				</tr>
 				<tr>
