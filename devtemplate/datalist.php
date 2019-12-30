@@ -1474,7 +1474,7 @@ class DataList{
 
 		<?php // if($this->ShowTableHeader){ ?>
 			<div class="btn-group btn-group-md visible-md visible-lg all_records pull-left ml-3">
-				<button title="<?php echo html_attr($Translation['hide/show columns']); ?>" type="button" class="btn btn-outline-secondary tv-toggle" data-toggle="collapse" data-target="#toggle-columns-container"><i class="fa fa-sliders"></i></button>
+				<button title="<?php echo html_attr($Translation['hide/show columns']); ?>" type="button" class="btn btn-outline-plain tv-toggle" data-toggle="collapse" data-target="#toggle-columns-container"><i class="fa fa-sliders"></i></button>
 			</div>
 		<?php // } ?>
 

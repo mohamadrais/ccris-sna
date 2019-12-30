@@ -4246,8 +4246,8 @@ EOT;
 		<div class="input-group" id="quick-search">
 			<input type="text" id="SearchString" name="SearchString" value="{$safe_search}" class="form-control" style="margin-right: 78px;" placeholder="{$safe_label}">
 			<span class="input-group-btn table-search">
-				<button name="Search_x" value="1" id="Search" type="submit" onClick="{$reset_selection}" class="btn btn-outline-primary" title="{$safe_label}"><i class="glyphicon glyphicon-search"></i></button>
-				<button name="ClearQuickSearch" value="1" id="ClearQuickSearch" type="submit" onClick="\$j('#SearchString').val(''); {$reset_selection}" class="btn btn-outline-primary" title="{$safe_clear_label}"><i class="glyphicon glyphicon-remove-circle"></i></button>
+				<button name="Search_x" value="1" id="Search" type="submit" onClick="{$reset_selection}" class="btn btn-outline-plain" title="{$safe_label}"><i class="glyphicon glyphicon-search"></i></button>
+				<button name="ClearQuickSearch" value="1" id="ClearQuickSearch" type="submit" onClick="\$j('#SearchString').val(''); {$reset_selection}" class="btn btn-outline-plain" title="{$safe_clear_label}"><i class="glyphicon glyphicon-remove-circle"></i></button>
 			</span>
 		</div>
 EOT;
