@@ -4,6 +4,7 @@
     include("$hooks_dir/../defaultLang.php");
     include("$hooks_dir/../language.php");
     include("$hooks_dir/../lib.php");
+    $output = array();
 
 //fetch-reports.php
 if (isset($_POST["report2"]) && isset($_POST["startDate"]) && isset($_POST["endDate"])) {
@@ -180,4 +181,19 @@ else if (isset($_POST["type"])) {
 
     }
 }
-
+else if (isset($_POST["kpi"])) {
+    $kpi = makeSafe($_POST["kpi"]);
+    $tn = makeSafe($_POST["report2"]);
+    if($kpi == 'true'){
+        $tn = makeSafe($_POST["report2"]);
+        $kpiResult=sql("SELECT `fo_MinRecordRequired`, `fo_TaskCompDuration`, (SELECT CONCAT (COALESCE(ROUND((count(mu.`recID`)/k.`fo_minRecordRequired`)*100, 2), 0.00), '%') from `kpi` k inner join `membership_userrecords` mu on mu.`tableName` = k.`fo_Section_Name` where k.`id` = `kpi`.`id` and (YEAR(from_unixtime(mu.`dateAdded`)) = YEAR(CURRENT_DATE()))) as `fo_PercentageAchieved` from `kpi` where `kpi`.`fo_Section_Name` = '$tn'", $eo);
+        while($row = db_fetch_array($kpiResult)) {
+            $output[] = array(
+                'min_records_required'  => $row[0],
+                'task_completion'       => $row[1],
+                'percentage_kpi_annum'  => $row[2]
+            );
+        }
+        echo json_encode($output);
+    }
+}

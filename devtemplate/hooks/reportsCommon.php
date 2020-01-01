@@ -190,6 +190,90 @@
         }
     }
 
+    function load_kpi(report, report2) {
+        var temp_title = 'KPI metrics for ' + report;
+        $j.ajax({
+            url: "hooks/reportsFetch.php",
+            method: "POST",
+            data: {
+                'kpi': 'true',
+                'report2': report2.substr(report2.indexOf("-") + 1, report2.length)
+            },
+            dataType: "JSON",
+            beforeSend: function() {
+                disable_click('nondefault');
+		    },
+            success: function(data) {
+                draw_kpi(data, temp_title, report);
+            },         
+            error: function(response) {
+                console.log('load_kpi error: ' + response.statusText);
+                notify('Apologies, we could not get KPI metrics for this table.');
+            },
+            complete: function() {
+                enable_click();
+            }
+        });
+    }
+
+    function draw_kpi(kpi_data, chart_main_title, report) {
+        try {            
+            $j("#titleReport").html(chart_main_title);
+
+            var jsonData = kpi_data;
+            if (jsonData == null || (jsonData.length && jsonData.length < 1)){
+                hide_divs();
+                return;
+            }
+            else {
+                show_divs();
+            }
+
+            kpiTable = [];
+            Object.keys(jsonData[0]).forEach(function(k){
+                kpiTable.push(jsonData[0][k]);
+            });
+   
+            $j('#kpi_min_record_required').replaceWith("<span id='kpi_min_record_required' style='padding-left:50%; font-size:20px'>" + kpiTable[0] + "</span>");
+            // $j('#kpi_task_completion_duration').replaceWith("<span id='kpi_task_completion_duration'>" + kpiTable[1] + "</span>");
+
+            for(var i=0; i<parseInt(kpiTable[1]); i++){
+                $j('#kpi_task_completion_duration .progress-bar').attr('style', 'width: ' + (Math.round((kpiTable[1]) / 365 * 100)) + '%;').html((kpiTable[1]));
+            }
+            var circular_chart_color = ''; var kpi_percentage = parseFloat(kpiTable[2], 2);
+            if(kpi_percentage < 50.00) circular_chart_color = 'orange'; else if (kpi_percentage < 100.00) circular_chart_color = 'blue'; else circular_chart_color = 'green';
+            
+            $j('#kpi_percentage_kpi_achieved').replaceWith(
+            `
+                <div id="kpi_percentage_kpi_achieved" class="single-chart">
+                    <svg viewBox="0 0 36 36" class="circular-chart ${circular_chart_color}">
+                    <path class="circle-bg"
+                        d="M18 2.0845
+                        a 15.9155 15.9155 0 0 1 0 31.831
+                        a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                    <path class="circle"
+                        stroke-dasharray="${kpi_percentage}, 100"
+                        d="M18 2.0845
+                        a 15.9155 15.9155 0 0 1 0 31.831
+                        a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                    <text x="18" y="20.35" class="percentage">${kpiTable[2]}</text>
+                    </svg>
+                </div>
+            
+            `
+            );
+            
+
+        }
+        catch(err){
+            console.log('draw_kpi error: ' + err);
+            notify('Oops... something went wrong. Please try again later.', 'error');
+            return;
+        }
+    }
+
     function disable_click(type) {
         $j("div[id^='summaryfor']").each(function(i, el) {
             $j(el).addClass("dis");
@@ -253,7 +337,9 @@
     }
 
     $j(document).ready(function() {
-        google.charts.setOnLoadCallback( function() { load_default_data() });
+        if(getUrlVars()["kpi"] != "true"){
+            google.charts.setOnLoadCallback( function() { load_default_data() });
+        }
 
         var start = moment().startOf('month');
         var end = moment();
@@ -284,7 +370,7 @@
         $j("div[id^='summaryfor']").each(function(i, el) {
             $j(el).click(function() {
                 console.log(`id clicked: ${el.id}`);
-                if ($j('#reportrange').html() != '') {
+                if ($j('#reportrange').html() != '' && getUrlVars()["kpi"] != "true") {
                     var startDate = moment($j('#reportrange').html().substr(0, $j('#reportrange').html().indexOf("-") - 1));
                     var endDate = moment($j('#reportrange').html().substr($j('#reportrange').html().indexOf("-") + 1, $j('#reportrange').html().length));
 
@@ -293,8 +379,19 @@
                         load_data($j(el).find('a:first').text(), el.id, startDate, endDate);
                     }
                 }
+                else if (getUrlVars()["kpi"] == "true") {
+                    load_kpi($j(el).find('a:first').text(), el.id);
+                }
             });
         });
 
     });
+
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
 </script>

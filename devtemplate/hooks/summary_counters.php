@@ -126,6 +126,10 @@ function summary_counters($contentType, $memberInfo, $tableName)
 			</div>
 		</div>
 HTML;
-
-	return $summaryTemplate;
+	// only show summary counters except for these tables
+	if (in_array($tableName, ['actcard', 'approval', 'batches', 'categories', 'eventnotification', 'imscontrol', 'imsreport', 'item', 'kpi', 'leadership', 'membership_company', 'membership_grouppermissions', 'membership_groups', 'membership_userpermissions', 'membership_userrecords', 'membership_users', 'personnalfile', 'recruitment', 'reportcomment', 'resources', 'softboardcomment', 'summary_dashboard', 'teamsoftboard', 'transactions'])){
+		return '';
+	}
+	else
+		return $summaryTemplate;
 }

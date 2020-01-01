@@ -571,19 +571,26 @@
 						<div class="message-box" style="height: 358px;overflow: scroll;">
 							<div class="message-widget">
 							<?php
-								$leaderBoard = sql("SELECT COALESCE(SEC_TO_TIME(AVG(mu.`dateUpdated` - mu.`dateAdded`)), '00:00:00.0000') 'total_hours_this_week', mu.`memberID`, e.`Name` as 'name', SUM(mu.`dateUpdated` - mu.`dateAdded`) as 'total_seconds' from `membership_userrecords` as mu left join `employees` as e on e.`memberID` = mu.`memberID` WHERE (YEARWEEK(from_unixtime(`dateAdded`), 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(from_unixtime(`dateUpdated`), 1) = YEARWEEK(CURDATE(), 1)) group by 2, 3 order by 4 desc limit 5", $eo);
+								// get top 5 avg task completion time for any form entrys created or modified in current week
+								$leaderBoard = sql("SELECT COALESCE(SEC_TO_TIME(AVG(mu.`dateUpdated` - mu.`dateAdded`)), '00:00:00.0000') 'total_hours_this_week', mu.`memberID`, e.`Name` as 'name', SUM(mu.`dateUpdated` - mu.`dateAdded`) as 'total_seconds' from `membership_userrecords` as mu left join `employees` as e on e.`memberID` = mu.`memberID` WHERE (YEARWEEK(from_unixtime(`dateAdded`), 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(from_unixtime(`dateUpdated`), 1) = YEARWEEK(CURDATE(), 1)) group by 2, 3 order by 4 asc limit 5", $eo);
 								if (isset($leaderBoard) && $leaderBoard->num_rows > 0) {
 									$progressPercentages = []; $leaderBoardStored = [];
 									while($row=db_fetch_row($leaderBoard)){ 
-										$currSecondsArr[] = $row[3];
-										$currSecondsArrTotal += $row[3];
-										$leaderBoardStored[] = $row;
+										$currSecondsArr[] = $row[3];		// total_seconds for (modified - created)
+										$currSecondsArrTotal += $row[3];	// cumulative total_seconds for (modified - created)
+										$leaderBoardStored[] = $row;		// current record
 									}
-
+									// calculate progress percentages
 									for ($i=0; $i< $leaderBoard->num_rows; $i++){
-										$progressPercentages[] = round(($currSecondsArr[$i] / $currSecondsArrTotal) * 100, 0);
+										// make sure division by 0 is avoided
+										if($currSecondsArrTotal != 0){
+											$progressPercentages[] = round(($currSecondsArr[$i] / $currSecondsArrTotal) * 100, 0);
+										}
+										else{
+											$progressPercentages[] = 0;
+										}
 									}
-									
+									// display avg in hh:mm format
 									for ($j=0; $j< count($leaderBoardStored); $j++){
 										$currHoursWeekArr = explode(":", $leaderBoardStored[$j][0], 2);
 							?>

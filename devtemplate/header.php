@@ -64,7 +64,7 @@ $self_baseurl = _baseurl();
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.8.1/css/perfect-scrollbar.css">
 		
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>dist/metisMenu/metisMenu.css">
-		<!-- <link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>dist/css/sb-admin-2.css"> -->
+		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>dist/css/sb-admin-2.css">
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>dist/font-awesome/css/font-awesome.css">
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/plugins/dropify/dist/css/dropify.min.css">
 		<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/demo/demo.css" />

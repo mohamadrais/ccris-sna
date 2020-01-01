@@ -1103,7 +1103,8 @@ class DataList{
 
 				if($this->PrimaryKey)
 					$fieldList .= ", $this->PrimaryKey as '" . str_replace('`', '', $this->PrimaryKey) . "'";
-
+				if($this->TableName == 'kpi')
+					$fieldList = "`kpi`.`id` as `id`, if(`kpi`.`ot_ap_Date`,date_format(`kpi`.`ot_ap_Date`,'%m/%d/%Y'),'') as `ot_ap_Date`, `kpi`.`fo_Section_Name` as `fo_Section_Name`, `kpi`.`fo_Section_Caption` as `fo_Section_Caption`, `kpi`.`fo_MinRecordRequired` as `fo_MinRecordRequired`, `kpi`.`fo_TaskCompDuration` as `fo_TaskCompDuration`, (SELECT CONCAT (COALESCE(ROUND((count(mu.`recID`)/k.`fo_minRecordRequired`)*100, 2), 0.00), '%') from `kpi` k inner join `membership_userrecords` mu on mu.`tableName` = k.`fo_Section_Name` where k.`id` = `kpi`.`id` and (YEAR(from_unixtime(mu.`dateAdded`)) = YEAR(CURRENT_DATE()))) as `fo_PercentageAchieved`, if(`kpi`.`ot_ap_lastmodified`,date_format(`kpi`.`ot_ap_lastmodified`,'%m/%d/%Y %h:%i %p'),'') as `ot_ap_lastmodified`, `kpi`.`id` as 'kpi.id'";
 				$tvQuery = "SELECT {$fieldList} from {$this->QueryFrom} {$this->QueryWhere} {$this->QueryOrder}";
 				$result = sql($tvQuery . " limit " . ($i-1) . ",{$this->RecordsPerPage}", $eo);
 				while(($row = db_fetch_array($result)) && ($i < ($FirstRecord + $this->RecordsPerPage))){

@@ -1,8 +1,5 @@
 <?php
 	// For help on using hooks, please refer to https://bigprof.com/appgini/help/working-with-generated-web-database-application/hooks
-	$hooks_dir = dirname(__FILE__);
-	$tableName = basename(__FILE__, '.php');
-	include("$hooks_dir/summary_counters.php");
 		
 	function membership_company_init(&$options, $memberInfo, &$args){
 
@@ -10,15 +7,11 @@
 	}
 
 	function membership_company_header($contentType, $memberInfo, &$args){
-		global $tableName;
 		$header='';
-		// if(function_exists('summary_counters')){
-		// 	$summaryCode=summary_counters($contentType, $memberInfo, $tableName);
-		// }
 		switch($contentType){
 			case 'tableview':
-				// $header='<%%HEADER%%>'.$summaryCode;
 				$header='';
+
 				break;
 
 			case 'detailview':
@@ -84,10 +77,6 @@
 	}
 
 	function membership_company_after_insert($data, $memberInfo, &$args){
-		global $tableName;
-		if(function_exists('summary_update_after_insert_delete')){
-			summary_update_after_insert_delete($tableName, 'insert');
-		}
 
 		return TRUE;
 	}
@@ -98,10 +87,6 @@
 	}
 
 	function membership_company_after_update($data, $memberInfo, &$args){
-		global $tableName;
-		if(function_exists('summary_update_after_update')){
-			summary_update_after_update($tableName);
-		}
 
 		return TRUE;
 	}
@@ -112,10 +97,7 @@
 	}
 
 	function membership_company_after_delete($selectedID, $memberInfo, &$args){
-		global $tableName;
-		if(function_exists('summary_update_after_insert_delete')){
-			summary_update_after_insert_delete($tableName, 'delete');
-		}
+
 	}
 
 	function membership_company_dv($selectedID, $memberInfo, &$html, &$args){

@@ -15,6 +15,9 @@
     include("{$currDir}/language-admin.php");
     $memberInfo = getMemberInfo();
     global $Translation;
+
+    $kpi = $_REQUEST["kpi"];
+    // echo $kpi;
 ?>
 <?php
 	/*
@@ -82,13 +85,16 @@
         $i = 0; $current_group = '';
         ?>
         <div class="col-md-12" style="width: 50px; margin-top: 100px; position: static">
-            <div><a href="./reports.php"><span style="font-size: 14px; line-height: 30px; color: #777; padding: 15px; position: relative; background-color: transparent;">DASHBOARD</span></a></div>
+            <div><a href="./reports.php"><span style="font-size: 14px; line-height: 30px; color: #777; padding: 15px; position: relative; background-color: transparent;">SUMMARY DASHBOARD</span></a></div>
+            <div><a href="./reports.php?kpi=true"><span style="font-size: 14px; line-height: 30px; color: #777; padding: 15px; position: relative; background-color: transparent;">KPI METRICS</span></a></div>
+            <?php if($kpi != "true") { ?>
             <div class="text-muted" ><br><br>Select Report Range:<br><br></div>
             <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
                 <i class="fa fa-calendar"></i>&nbsp;
                 <span></span> <i class="fa fa-caret-down"></i>
             </div>
-            <div class="text-muted" ><br><br>Select Individual Report:</div>
+            <?php } ?>
+            <div class="text-muted" ><br><br>Select an individual <?php if($kpi != "true") { ?>Report<?php } else { ?>Section<?php } ?>:</div>
             <!-- <select name="date" class="form-control" id="date">
                 <option value="">Select Date</option>
             <?php
@@ -153,11 +159,11 @@
 
 										<div id="summaryfor-<?php echo $tn; ?>" class="btn-group" style="width: 100%; word-wrap: break-word;">
                                            <a style="width: 80%;text-align: left; white-space: pre-wrap; word-wrap: break-word; padding: 10px" class="btn btn-lg1 " title="<?php echo preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", html_attr(strip_tags($tc['Description']))); ?>"><?php echo $tc['Caption']; ?></a>
-                                            <a class="width: 20%; badge badge-success pull-right sidebar-badge"><?php echo $count_badge; ?></a>
+                                            <?php if($kpi != "true") { ?><a class="width: 20%; badge badge-success pull-right sidebar-badge"><?php echo $count_badge; ?></a><?php } ?>
 										</div>
 									<?php }else{ ?>
 
-										<a class="btn btn-block btn-lg  <?php echo (!$i ? $block_classes['first']['link'] : $block_classes['other']['link']); ?>" title="<?php echo preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", html_attr(strip_tags($tc['Description']))); ?>" href="<?php echo $tn; ?>_view.php<?php echo $searchFirst; ?>"><?php /*echo ($tc['tableIcon'] ? '<img src="' . $tc['tableIcon'] . '">' : '');*/?><strong class="table-caption"><?php echo $tc['Caption']; ?></strong><?php echo $count_badge; ?></a>
+										<a class="btn btn-block btn-lg  <?php echo (!$i ? $block_classes['first']['link'] : $block_classes['other']['link']); ?>" title="<?php echo preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", html_attr(strip_tags($tc['Description']))); ?>" href="<?php echo $tn; ?>_view.php<?php echo $searchFirst; ?>"><?php /*echo ($tc['tableIcon'] ? '<img src="' . $tc['tableIcon'] . '">' : '');*/?><strong class="table-caption"><?php echo $tc['Caption']; ?></strong><?php if($kpi != "true") { ?><?php echo $count_badge; ?><?php } ?></a>
 									<?php } ?>
 
 									<!-- <div class="panel-body-description"><?php /*echo $tc['Description']; */?></div> -->
@@ -208,9 +214,13 @@
         <span id="chartLoading" style="position: relative; left: 50%"></span>
         <div class="row page-titles">
             <div class="col-md-12 align-self-center">
-                <h3 id="titleReport" class="text-themecolor m-b-0 m-t-0">Reports Dashboard</h3>
+                <h3 id="titleReport" class="text-themecolor m-b-0 m-t-0"><?php if($kpi != "true") { ?>Reports Dashboard<?php } else { ?>KPI Metrics<?php } ?></h3>
 			</div>
         </div>
+        <?php 
+        // start of reports dashboard
+        if($kpi != "true") { 
+        ?> 
         <!-- Default Reports Dashboard Start -->
         <div id="defaultReports">
             <!-- Start Row -->
@@ -529,6 +539,92 @@
         <div id="lineChart" style="margin-top: 30px; width: 100%; height: 300px; position: relative;" class = "hideDiv"></div> -->
         <div id="tableChart" style="margin-top: 100px; width: 100%; height: 200px; position: relative;" class = "hideDiv"></div>
         <!-- Dynamic Reports End -->
+        <?php 
+        } 
+        // end of reports dashboard
+        // show kpi dashboard
+        else { ?> 
+        <div id="kpiMetrics">
+            <!-- Start Row -->
+            <div class="row">
+                <!-- Start Row Min Record -->
+                <div class="card my-3">
+                    <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                        <h4 class="card-title m-b-0">Minimum Record Required</h4>
+                        <p class="text-muted"></p>
+                    </div>
+                    <div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 70%">Record</th>
+                                    <th>Remarks</th>
+                                    <!-- <th>Percentage of KPI Achieved this Year</th> -->
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td>
+                                    <span id='kpi_min_record_required'></span> 
+                                </td>
+                                <td>
+                                    <span>
+                                        The number shown is the minimum records required for each section. Every section needs to achieve at least the minimum records to be generated for the year.
+                                    </span> 
+                                </td>
+                                <!-- <td>
+                                    <span id='kpi_percentage_kpi_achieved'></span> 
+                                </td> -->
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- End Row Min Record -->
+                <!-- Start Row KPI percentage per annum -->
+                <div class="card my-3">
+                    <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                        <h4 class="card-title m-b-0">KPI Percentage Achieved per Annum</h4>
+                        <p class="text-muted"></p>
+                    </div>
+                    <div id='kpi_percentage_kpi_achieved'></div>
+                </div>
+                <!-- End Row KPI percentage per annum -->
+                <!-- Start Task Completion Duration -->
+                <div class="card my-3">
+                    <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                        <h4 class="card-title m-b-0">Task Completion Duration (Days)</h4>
+                        <p class="text-muted"></p>
+                    </div>
+                    <div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 70%">Duration</th>
+                                    <th>Remarks</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td>
+                                    <div class="progress" id='kpi_task_completion_duration' >
+                                        <div class="progress-bar progress-bar-info" role="progressbar" style="width: 0;"></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span>
+                                        The number shown is the task completion duration for each section. Every section must be completed within the specified period.
+                                    </span> 
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- End Task Completion Duration -->
+            </div> 
+            <!-- End Row -->
+        </div>
+        <?php 
+        // end of kpi dashboard
+        } 
+        ?>
     </div>
 </div>
 
