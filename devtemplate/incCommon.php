@@ -4632,4 +4632,227 @@ EOT;
 		}
 		sql($sql_operation, $eo);
 		return TRUE;
-	  }
+	}
+
+	#########################################################
+
+	function getTableList2($skip_authentication = false){
+		$arrAccessTables = array();
+		$arrTables = array(   
+			'OrgContentContext' => 'Organization Content & Context',
+			'Marketing' => 'Marketing & Lead Generation',
+			'Client' => 'Client & Main Contractor',
+			'Inquiry' => 'Inquiry & Tender',
+			'DesignProposal' => 'Service Design & Proposal',
+			'ContractDeployment' => 'Project & Contract Deployment',
+			'employees' => 'Human Resources Matrix',
+			'Recruitment' => 'Recruitment',
+			'PersonnalFile' => 'Personal File',
+			'Competency' => 'Competency',
+			'Training' => 'Training',
+			'JD_JS' => 'Job Description & Specification Register',
+			'InOutRegister' => 'Incoming & Outgoing Record Register',
+			'vendor' => 'Vendor & Subcontractor Register',
+			'ManagingVendor' => 'Managing Vendor & Subcontractor',
+			'VenPerformance' => 'Vendor Performance and Evaluation',
+			'Logistics' => 'Logistics & Freight Agent',
+			'Inventory' => 'Asset Register',
+			'CalibrationCtrl' => 'Calibration Control',
+			'WorkOrder' => 'General Work Order',
+			'MWO' => 'Maintenance Work Order',
+			'MWOPlanned' => 'Planned Schedule',
+			'MWOpreventive' => 'Preventive',
+			'MWOproactive' => 'Proactive',
+			'MWConditionBased' => 'Condition Based',
+			'MWOReactive' => 'Reactive',
+			'MWOCorrective' => 'Corrective',
+			'LogisticRequest' => 'Logistic Request Order',
+			'orders' => 'Request & Service Order',
+			'Quotation' => 'Quotations',
+			'PurchaseOrder' => 'Purchase Order',
+			'DeliveryOrder' => 'Delivery Order',
+			'AccountPayables' => 'Account Payables',
+			'Item' => 'Resources Inventory',
+			'categories' => 'Item Categories',
+			'batches' => 'Batches',
+			'transactions' => 'Transfer Item',
+			'CommConsParticipate' => 'Communication, Consultation & Participation',
+			'ToolBoxMeeting' => 'ToolBox Meeting',
+			'Bi_WeeklyMeeting' => 'Bi-Weekly Meeting',
+			'QuarterlyMeeting' => 'Quarterly Meeting',
+			'Campaign' => 'Campaign',
+			'DrillNInspection' => 'Drill & Inspection',
+			'ManagementVisit' => 'Management Visit',
+			'EventNotification' => 'Event Notification',
+			'ActCard' => 'Act Card',
+			'KM' => 'Organizational Knowledge',
+			'LegalRegister' => 'Legal Register',
+			'RiskandOpportunity' => 'Risks Management',
+			'DocControl' => 'Document & Record Control',
+			'DCN' => 'Document Change Notice',
+			'ObsoleteRec' => 'Obsolete Record Register',
+			'QA' => 'IMS Planning & Assurance',
+			'ERP' => 'Emergency Preparedness & Response',
+			'WorkEnvMonitoring' => 'Work Environment Monitoring and Control',
+			'ScheduleWaste' => 'Schedule Waste Disposal Register',
+			'IncidentReporting' => 'Incident & Accident Reporting',
+			'MgtofChange' => 'Management Of Change',
+			'IMStrackingNmonitoring' => 'IMS Data Tracking & Monitoring',
+			'IMSDataAnalysis' => 'Continual Improvement Plan',
+			'Audit' => 'Management System Audit',
+			'NonConformance' => 'IMS Non Conformance',
+			'ContinualImprovement' => 'CAPAR',
+			'StakeholderSatisfaction' => 'Stakeholder Satisfaction Survey',
+			'MRM' => 'Management Review Meeting',
+			'projects' => 'Project Register',
+			'WorkLocation' => 'Work Site Location',
+			'WorkPermit' => 'Work Permit',
+			'ProjectTeam' => 'Project Team Matrix',
+			'resources' => 'Resources & Equipment',
+			'PROInitiation' => 'Project Initiation',
+			'PROPlanning' => 'Project Planning',
+			'PROExecution' => 'Project Execution',
+			'DailyProgressReport' => 'Daily Progress Report',
+			'MonthlyTimesheet' => 'Monthly Timesheet',
+			'Breakdown' => 'Breakdown & Fault Report',
+			'PROControlMonitoring' => 'Project Control And Monitoring',
+			'PROVariation' => 'Project Variation Order',
+			'PROCompletion' => 'Project Completion',
+			'Receivables' => 'Project Receivables',
+			'ClaimRecord' => 'Claim Submission',
+			'TeamSoftBoard' => 'Organization Softboard',
+			'SoftboardComment' => 'Softboard Comment',
+			'IMSReport' => 'IMS Complaint Report',
+			'ReportComment' => 'Report Comment',
+			'Leadership' => 'Review & Verification',
+			'Approval' => 'Approval',
+			'IMSControl' => 'IMS Control',
+			'membership_company' => 'Company',
+			'kpi' => 'KPI',
+			'summary_dashboard' => 'Summary Dashboard'
+		);
+		if($skip_authentication || getLoggedAdmin()) return $arrTables;
+
+		if(is_array($arrTables)){
+			foreach($arrTables as $tn => $tc){
+				$arrPerm = getTablePermissions($tn);
+				if($arrPerm[0]){
+					$arrAccessTables[$tn] = $tc;
+				}
+			}
+		}
+
+		return $arrAccessTables;
+	}
+
+	#########################################################
+
+	function getDbDateFiledField($tableName, $sort){
+		$arrTables = array(   
+			'OrgContentContext' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'Marketing' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'Client' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'Inquiry' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'DesignProposal' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'ContractDeployment' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'employees' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'Recruitment' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'PersonnalFile' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'Competency' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'Training' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'JD_JS' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'InOutRegister' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'vendor' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'ManagingVendor' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'VenPerformance' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'Logistics' => array('ot_ap_filed', 'ot_ap_last_modified' ),
+			'Inventory' => array('ot_ap_filed', 'ot_ap_last_modified' ),
+			'CalibrationCtrl' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'WorkOrder' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'MWO' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'MWOPlanned' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'MWOpreventive' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'MWOproactive' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'MWConditionBased' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'MWOReactive' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'MWOCorrective' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'LogisticRequest' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'orders' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'Quotation' => array('ot_ap_filed', 'ot_ap_last_modified' ),
+			'PurchaseOrder' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'DeliveryOrder' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'AccountPayables' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'Item' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'categories' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'batches' => array('fo_ap_filed', 'fo_lastmodified' ),
+			'transactions' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'CommConsParticipate' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'ToolBoxMeeting' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'Bi_WeeklyMeeting' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'QuarterlyMeeting' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'Campaign' => array('ot_ap_filed', 'ot_ap_last_modified' ),
+			'DrillNInspection' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'ManagementVisit' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'EventNotification' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'ActCard' => array('ot_ap_filed', 'ot_ap_last_modified' ),
+			'KM' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'LegalRegister' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'RiskandOpportunity' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'DocControl' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'DCN' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'ObsoleteRec' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'QA' => array('ot_ap_filed', 'ot_ap_last_modified' ),
+			'ERP' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'WorkEnvMonitoring' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'ScheduleWaste' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'IncidentReporting' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'MgtofChange' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'IMStrackingNmonitoring' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'IMSDataAnalysis' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'Audit' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'NonConformance' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'ContinualImprovement' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'StakeholderSatisfaction' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'MRM' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'projects' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'WorkLocation' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'WorkPermit' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'ProjectTeam' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'resources' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'PROInitiation' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'PROPlanning' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'PROExecution' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'DailyProgressReport' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'MonthlyTimesheet' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'Breakdown' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'PROControlMonitoring' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'PROVariation' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'PROCompletion' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'Receivables' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'ClaimRecord' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'TeamSoftBoard' => array('filed', 'last_modified' ),
+			'SoftboardComment' => array('filed', 'last_modified' ),
+			'IMSReport' => array('filed', 'last_modified' ),
+			'ReportComment' => array('filed', 'last_modified' ),
+			'Leadership' => array('filed', 'last_modified' ),
+			'Approval' => array('filed', 'last_modified' ),
+			'IMSControl' => array('filed', 'last_modified' ),
+			'membership_company' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
+			'kpi' => array('ot_ap_lastmodified', 'ot_ap_lastmodified' ),
+			'summary_dashboard' => array('ot_ap_Date', 'ot_ap_lastmodified' )
+		);
+		$field = '';
+		if(is_array($arrTables)){
+			foreach($arrTables as $tn => $tc){
+				if($tableName == $tn){
+					if($sort=='dateAdded') $field = $tc[0];
+					else if($sort=='dateModified') $field = $tc[1];
+				}
+			}
+		}
+
+		return $field;
+	}
+
+
+	

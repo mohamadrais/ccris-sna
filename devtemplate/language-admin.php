@@ -416,6 +416,9 @@
 	$Translation['data records'] = "Data Records";
 	$Translation['show records'] = "Show records from";
 	$Translation['all tables'] = "All tables";
+	$Translation['all departments'] = "All departments";
+	$Translation['date range'] = "Select date range";
+	$Translation['search for'] = "Search text";
 	$Translation['sort records'] = "Sort records by";
 	$Translation['date created'] = "Date created";
 	$Translation['date modified'] = "Date modified";

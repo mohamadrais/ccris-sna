@@ -187,6 +187,7 @@
 	$Translation['confirm password']="Confirm Password";
 	$Translation['email']="Email Address";
 	$Translation['group']="Group";
+	$Translation['department']="Department";
 	$Translation['groups *']="If you choose to sign up to a group marked with an asterisk (*), you won't be able to log in until the admin approves you. You'll receive an email when you are approved.";
 	$Translation['sign up']="Sign Up";
 
