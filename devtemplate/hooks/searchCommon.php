@@ -3,12 +3,12 @@
     $hooks_dir = dirname(__FILE__);
     $output = array();
 
-    function searchQueryBuilder($departmentID, $tableName, $searchText, $sort, $sortDir, $dateStart, $dateEnd, $countFlag){
+    function searchQueryBuilder($departmentID, $tableName, $searchText, $sort, $sortDir, $dateStart, $dateEnd, $countFlag, $start, $recordsPerPage){
         $departments = get_table_groups();
         $tables = getTableList2();
         $dID = intval($departmentID); // d
         $tableList = array();
-        $tableName = $tableName->sql; // t
+        $tableName = $tableName; // t
         $whereConvertArr = array();
         $keywords = preg_split("/[\s,\']+/", $searchText);
         $keywordsCount = count($keywords);
@@ -136,6 +136,9 @@
                 if ($whereDate != '') $whereConvertArr[$tn] .= ' AND ' . $whereDate;
                 // add order by clause
                 $whereConvertArr[$tn] .= "order by `" . $tn . "`.`" . "$currDateField" . "` " . $sortDir;
+
+                if ($countFlag != 1) $whereConvertArr[$tn] .= " limit $start, " . $recordsPerPage;
+                
             }
             
         }

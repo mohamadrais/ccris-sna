@@ -4854,5 +4854,29 @@ EOT;
 		return $field;
 	}
 
+	#########################################################
+
+	function getTableDepartment($tableName){
+		$departments = get_table_groups();
+		foreach ($departments as $d => $tables){
+			foreach ($tables as $tn => $v ){
+				if($v == $tableName)
+					return $d;
+			}
+		}
+		return false;
+	}
+
+	#########################################################
+
+	function getTableDisplayName($tableName){
+		$tables = getTableList2();
+		foreach ($tables as $t => $tn){
+			if($t == $tableName)
+				return $tn;
+		}
+		return false;
+	}
+
 
 	

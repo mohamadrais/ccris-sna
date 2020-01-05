@@ -417,7 +417,7 @@
 	$Translation['show records'] = "Show records from";
 	$Translation['all tables'] = "All tables";
 	$Translation['all departments'] = "All departments";
-	$Translation['date range'] = "Select date range";
+	$Translation['date range'] = "Date range";
 	$Translation['search for'] = "Search text";
 	$Translation['sort records'] = "Sort records by";
 	$Translation['date created'] = "Date created";
@@ -427,10 +427,12 @@
 	$Translation['created'] = "Created";
 	$Translation['modified'] = "Modified";
 	$Translation['data'] = "Data";
+	$Translation['matched'] = "Matches";
 	$Translation['change record ownership'] = "Change ownership of this record";
 	$Translation['sure delete record'] = "Are you sure you want to delete this record?";
 	$Translation['delete record'] = "Delete this record";
 	$Translation['displaying records'] = "Displaying records <RECORDNUM1> to <RECORDNUM2> of <RECORDS>";
+	$Translation['displaying records table'] = "Total <RECORDS> results";
 
 	/* Added in AppGini 5.51 */
 	$Translation['maintenance mode admin notification'] = 'Maintenance mode is enabled! You can disable it from the admin home page.';
