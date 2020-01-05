@@ -26,3 +26,11 @@
 		'table_group' => 6, // optional index of table group, default is 0
 	);
 
+	$navLinks[] = array(
+		'url' => 'search.php', 
+		'title' => '<i class="glyphicon glyphicon-search"></i>', 
+		'groups' => array('*'), // groups allowed to see this link, use '*' if you want to show the link to all groups
+		'icon' => '',
+		'table_group' => 9, // optional index of table group, default is 0
+	);
+

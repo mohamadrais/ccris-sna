@@ -12,6 +12,8 @@
         $whereConvertArr = array();
         $keywords = preg_split("/[\s,\']+/", $searchText);
         $keywordsCount = count($keywords);
+        $dateStart = $dateStart . " 00:00:00";
+        $dateEnd = $dateEnd . " 23:59:59";
         
         //  if d is All and t is All, check for all tables in #0
         //  if d is Specified and t is ALL, check for all t in Specified d in #0
@@ -116,7 +118,7 @@
                     $currIndex++;
                 }
                 if($currKeywordIndex != intval($keywordsCount)-1){ // if more keywords to search
-                    $whereConvertArr[$tn] .= " OR ";
+                    $whereConvertArr[$tn] .= " AND ";
                 }
                 $currKeywordIndex++;
             }

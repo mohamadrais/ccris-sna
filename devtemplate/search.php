@@ -150,74 +150,63 @@
 </style>
 <div class="page-wrapper ps ps--theme_default">
 <div class="container-fluid">
-	<form class="form-inline" method="get" action="search.php" class="form-horizontal">
+	<form method="get" action="search.php">
 		<input type="hidden" name="page" value="1">
-	<div class="row">
-		<div class="row">
-			<div class="col-lg-3 col-md-3 pr-2">
-				<div class="form-group">
-					<label for="departmentID" class="control-label"><?php echo $Translation['department']; ?></label> &nbsp;
-					<?php 
-						$departmentsSelect = array_merge(array('0' => $Translation['all departments']), array_keys($departments));
-						$arrFields = array_keys($departmentsSelect);
-						$arrFieldCaptions = array_values($departmentsSelect);
-						echo htmlSelect('departmentID', $arrFields, $arrFieldCaptions, $departmentID);
-					?>
-				</div>
+		<input type="hidden" id="dateStart" name="dateStart" value="">
+		<input type="hidden" id="dateEnd" name="dateEnd" value="">
+		<div class="form-row">
+		
+			<div class="form-group col-lg-3 col-md-3 pr-2">
+				<label for="departmentID" class="control-label"><?php echo $Translation['department']; ?></label> &nbsp;
+				<?php 
+					$departmentsSelect = array_merge(array('0' => $Translation['all departments']), array_keys($departments));
+					$arrFields = array_keys($departmentsSelect);
+					$arrFieldCaptions = array_values($departmentsSelect);
+					echo htmlSelect('departmentID', $arrFields, $arrFieldCaptions, $departmentID);
+				?>
 			</div>
-			<div class="col-lg-3 col-md-3 pr-2">
-				<div class="form-group">
-					<label for="tableName" class="control-label"><?php echo $Translation['show records'] ; ?></label> &nbsp;
-					<?php
-						$tables = array_merge(array('' => $Translation['all tables']), getTableList2(true));
-						$arrFields = array_keys($tables);
-						$arrFieldCaptions = array_values($tables);
-						echo htmlSelect('tableName', $arrFields, $arrFieldCaptions, $tableName->raw);
-					?>
-				</div>
+			<div class="form-group col-lg-3 col-md-3 pr-2">
+				<label for="tableName" class="control-label"><?php echo $Translation['show records'] ; ?></label> &nbsp;
+				<?php
+					$tables = array_merge(array('' => $Translation['all tables']), getTableList2(true));
+					$arrFields = array_keys($tables);
+					$arrFieldCaptions = array_values($tables);
+					echo htmlSelect('tableName', $arrFields, $arrFieldCaptions, $tableName->raw);
+				?>
 			</div>
-			<div class="col-lg-2 col-md-2 pr-2">
-				<div class="form-group">
-					<label for="reportrange" class="control-label"><?php echo $Translation['date range'] ; ?></label> &nbsp;
-					<input type="hidden" id="dateStart" name="dateStart" value="">
-					<input type="hidden" id="dateEnd" name="dateEnd" value="">
-					<span id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;">
-						<i class="fa fa-calendar"></i>
-					</span>
-				</div>
+			<div class="form-group col-lg-2 col-md-2 pr-2">
+				<label for="reportrange" class="control-label"><?php echo $Translation['date range'] ; ?>&nbsp;<i class="fa fa-calendar"></i></label> &nbsp;
+				<input id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc;">
+				
 			</div>
-			<div class="col-lg-4 col-md-4 pr-2">
-				<div class="form-group">
-					<label for="sort" class="control-label"><?php echo $Translation['sort records'] ; ?></label> &nbsp;
-					<?php
-						$arrFields = array('dateAdded', 'dateUpdated');
-						$arrFieldCaptions = array( $Translation['date created'] , $Translation['date modified'] );
-						echo htmlSelect('sort', $arrFields, $arrFieldCaptions, $sort);
-					?>
-					<span class="hspacer-md"></span>
-					<?php
-						$arrFields=array('desc', '');
-						$arrFieldCaptions = array( $Translation['newer first'] , $Translation['older first'] );
-						echo htmlSelect('sortDir', $arrFields, $arrFieldCaptions, $sortDir);
-					?>
-				</div>
+			<div class="form-group col-lg-2 col-md-2 pr-2">
+				<label for="sort" class="control-label"><?php echo $Translation['sort records'] ; ?></label> &nbsp;
+				<?php
+					$arrFields = array('dateAdded', 'dateUpdated');
+					$arrFieldCaptions = array( $Translation['date created'] , $Translation['date modified'] );
+					echo htmlSelect('sort', $arrFields, $arrFieldCaptions, $sort);
+				?>
+			</div>
+			<div class="form-group col-lg-2 col-md-2 pr-2">
+			<label for="sortDir" class="control-label"><?php echo $Translation['sort order'] ; ?></label> &nbsp;
+				<?php
+					$arrFields=array('desc', '');
+					$arrFieldCaptions = array( $Translation['newer first'] , $Translation['older first'] );
+					echo htmlSelect('sortDir', $arrFields, $arrFieldCaptions, $sortDir);
+				?>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-lg-6 col-md-6 pr-2">
-				<div class="form-group">
-					<label for="searchText" class="control-label"><?php echo $Translation['search for'] ; ?></label> &nbsp;
-					<input type="text" id="searchText" name="searchText" value="<?php echo $searchText ?>">
-				</div>
+		<div class="form-row">
+			<div class="form-group col-lg-10 col-md-10 pr-2">
+				<label for="searchText" class="control-label"><?php echo $Translation['search for'] ; ?></label> &nbsp;
+				<input type="text" id="searchText" name="searchText" value="<?php echo $searchText ?>" >
 			</div>
-			<div class="col-lg-6 col-md-6 pr-2">
-				<div class="form-group">
-					<button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i> <?php echo $Translation['find'] ; ?></button> &nbsp; &nbsp;
-					<button type="button" id="reset-search" class="btn btn-warning"><i class="glyphicon glyphicon-remove"></i> <?php echo $Translation['reset'] ; ?></button>
-				</div>
+			<div class="form-group col-lg-2 col-md-2 pr-2 text-center">
+				<br><br>
+				<button type="submit" class="btn btn-secondary"><i class="glyphicon glyphicon-search"></i> <?php echo $Translation['find'] ; ?></button>&nbsp;&nbsp;&nbsp;
+				<button type="button" id="reset-search" class="btn btn-warning"><i class="glyphicon glyphicon-remove"></i> <?php echo $Translation['reset'] ; ?></button>
 			</div>
 		</div>
-	</div>
 	</form>
 <table class="table table-striped table-condensed table-hover" >
 	<thead>
@@ -364,7 +353,7 @@
 			window.location = 'search.php';
 		});
 
-		$j('#tableName, #departmentID, #reportrange, #sort, #sortDir').addClass('form-control');
+		$j('#tableName, #departmentID, #reportrange, #sort, #sortDir, #searchText').addClass('form-control');
 
 		$j('#departmentID').on('change', function(){
 			var departmentID = $j( "#departmentID" ).val();

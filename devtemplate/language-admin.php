@@ -420,6 +420,7 @@
 	$Translation['date range'] = "Date range";
 	$Translation['search for'] = "Search text";
 	$Translation['sort records'] = "Sort records by";
+	$Translation['sort order'] = "Sort order";
 	$Translation['date created'] = "Date created";
 	$Translation['date modified'] = "Date modified";
 	$Translation['newer first'] = "Newer first";
