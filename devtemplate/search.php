@@ -378,9 +378,9 @@
 		var dateStartURL = getUrlParameter('dateStart');
 		var dateEndURL = getUrlParameter('dateEnd');
 
-		var start = moment().startOf('year');
+		var start = moment().subtract(365, 'days');
 		if(dateStartURL != ''){
-			start = moment(dateStartURL).startOf('month');
+			start = moment(dateStartURL);
 		}
 		
 		var end = moment();
@@ -408,7 +408,7 @@
                 'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
             },
             "linkedCalendars": false,
-            "startDate": moment().startOf('month'),
+            "startDate": moment().subtract(365, 'days'),
             "endDate": moment()
         }, cb);
 		cb(start, end);

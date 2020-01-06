@@ -7272,3 +7272,23 @@ select.form-control:not([size]):not([multiple]){
   font-size: 0.5em;
   text-anchor: middle;
 }
+
+.search-field {
+  max-width:0px;
+  overflow: hidden;
+  opacity:0;
+  transition: 0.3s linear all;
+}
+
+.search-field.open {
+  max-width: 100%;
+  opacity:1;
+}
+
+.errorSearch {
+  border: 1px solid red
+}
+
+.successSearch {
+  border: 1px solid green
+}

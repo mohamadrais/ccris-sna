@@ -38,8 +38,64 @@ if ($memberInfo['group'] != 'Admins') {
         `);
     });
     document.observe("dom:loaded", function() {
-        var selected_wo_ID = $j("[aria-labelledby='selected_wo_ID']").html().trim();
-        get_workorder_related_records(selected_wo_ID);
+		$j('#fullsearchicon').parent().replaceWith(`
+			<form role="search" method="get" class="search-form" action="search.php" id="searchForm">
+				<label>
+					<input class="search-field" placeholder="Search" value="" name="searchText" type="search" id="searchText">
+				</label>
+				<i id="fullsearchicon" class="glyphicon glyphicon-search" style="font-size: 18px"></i>
+				<input type="hidden" name="page" value="1" class="form-control">
+				<input type="hidden" id="dateStart" name="dateStart" value="" class="form-control">
+				<input type="hidden" id="dateEnd" name="dateEnd" value="" class="form-control">
+				<input type="hidden" id="departmentID" name="departmentID" value="0" class="form-control">
+				<input type="hidden" id="tableName" name="tableName" value="All tables" class="form-control">
+			</form>`);
+		
+		var today = moment($j.ajax({async: false}).getResponseHeader( 'Date' )).tz("Asia/Kuala_Lumpur");
+		var dateStart = moment(today).subtract(365, 'days').format("YYYY-MM-DD");
+		var dateEnd = moment(today).format("YYYY-MM-DD");
+		$j('#dateStart').val(dateStart);
+		$j('#dateEnd').val(dateEnd);
+		
+		$j("#fullsearchicon").on("click",function(e){
+			e.preventDefault();
+			if($j('#searchText').hasClass('open') && $j('#searchText').val().length >= 3){
+				$j('#searchForm').submit();
+				// 	window.location.replace("search.php");
+			}
+			else{
+				$j(".search-field").toggleClass("open");
+			}
+		});
+
+
+		$j('#searchText').keypress(function(e){
+			if(e.which == 13){	// Enter key pressed
+				e.preventDefault();
+				if(e.target.value.length >= 3){
+					$j("#fullsearchicon").click();
+				}
+			}
+		});
+		
+		$j("#searchText").on("change paste keyup", function() {
+			if($j(this).val().length == 0){
+				$j(this).removeClass("successSearch");
+				$j(this).removeClass("errorSearch");
+			}
+			else if($j(this).val().length<3){
+				$j(this).addClass("errorSearch");
+				$j(this).removeClass("successSearch");
+			}
+			else{
+				$j(this).addClass("successSearch");
+				$j(this).removeClass("errorSearch");
+			}
+		});
+		if($j("[aria-labelledby='selected_wo_ID']").is(":visible")){
+			var selected_wo_ID = $j("[aria-labelledby='selected_wo_ID']").html().trim();
+			get_workorder_related_records(selected_wo_ID);
+		}
     });
         ///////////////////////////////////////////////
         if ($j("#startEdit").is(":visible")){
