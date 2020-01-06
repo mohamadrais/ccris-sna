@@ -6,6 +6,10 @@
     function searchQueryBuilder($departmentID, $tableName, $searchText, $sort, $sortDir, $dateStart, $dateEnd, $countFlag, $start, $recordsPerPage){
         $departments = get_table_groups();
         $tables = getTableList2();
+        $tablesToExclude = array('Leadership','Approval','IMSControl','membership_company','kpi','summary_dashboard');
+        foreach($tablesToExclude as $te){
+            if(isset($tables[$te])) unset($tables[$te]);
+        }
         $dID = intval($departmentID); // d
         $tableList = array();
         $tableName = $tableName; // t
@@ -61,6 +65,9 @@
                     2:"ProjectTeam"
                     3:"resources"
             */
+            foreach($tablesToExclude as $te){
+                if(isset($returnTables[$te])) unset($returnTables[$te]);
+            }
             foreach($returnTables as $tn => $tc){
                 $tableList[$tc] = get_sql_fields($tc);
             }

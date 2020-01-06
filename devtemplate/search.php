@@ -10,7 +10,8 @@
     include("$currDir/language.php");
 	include("{$currDir}/language-admin.php");
 	include("$hooks_dir/searchCommon.php");
-    $memberInfo = getMemberInfo();
+	$memberInfo = getMemberInfo();
+	$tablesToExclude = array('Leadership','Approval','IMSControl','membership_company','kpi','summary_dashboard');
     global $Translation;
 	
 
@@ -150,7 +151,7 @@
 </style>
 <div class="page-wrapper ps ps--theme_default">
 <div class="container-fluid">
-	<form method="get" action="search.php">
+	<form method="get" action="search.php" id="searchPageForm">
 		<input type="hidden" name="page" value="1">
 		<input type="hidden" id="dateStart" name="dateStart" value="">
 		<input type="hidden" id="dateEnd" name="dateEnd" value="">
@@ -169,6 +170,9 @@
 				<label for="tableName" class="control-label"><?php echo $Translation['show records'] ; ?></label> &nbsp;
 				<?php
 					$tables = array_merge(array('' => $Translation['all tables']), getTableList2(true));
+					foreach($tablesToExclude as $te){
+						if(isset($tables[$te])) unset($tables[$te]);
+					}
 					$arrFields = array_keys($tables);
 					$arrFieldCaptions = array_values($tables);
 					echo htmlSelect('tableName', $arrFields, $arrFieldCaptions, $tableName->raw);
@@ -203,7 +207,7 @@
 			</div>
 			<div class="form-group col-lg-2 col-md-2 pr-2 text-center">
 				<br><br>
-				<button type="submit" class="btn btn-secondary"><i class="glyphicon glyphicon-search"></i> <?php echo $Translation['find'] ; ?></button>&nbsp;&nbsp;&nbsp;
+				<button id="submitSearch" type="submit" class="btn btn-secondary"><i class="glyphicon glyphicon-search"></i> <?php echo $Translation['find'] ; ?></button>&nbsp;&nbsp;&nbsp;
 				<button type="button" id="reset-search" class="btn btn-warning"><i class="glyphicon glyphicon-remove"></i> <?php echo $Translation['reset'] ; ?></button>
 			</div>
 		</div>
@@ -298,7 +302,7 @@
 				?>
 			</td>
 			<td colspan="4" class="text-right flip" style="width: 25%;">
-				<?php if(count($maxIndexArr)){ if(($start + $recordsPerPage) <= max($maxIndexArr)){ ?>
+				<?php if(count($maxIndexArr)){ if(($start + $recordsPerPage) < max($maxIndexArr)){ ?>
 					<a href="search.php?page=<?php echo ($page<ceil($numRecords/$adminConfig['recordsPerPage']) ? $page+1 : ceil($numRecords/$adminConfig['recordsPerPage'])); ?>&departmentID=<?php echo $departmentID; ?>&tableName=<?php echo $tableName->url; ?>&dateStart=<?php echo $dateStart; ?>&dateEnd=<?php echo $dateEnd; ?>&sort=<?php echo $sort; ?>&sortDir=<?php echo $sortDir; ?>&searchText=<?php echo $searchText;?>" class="btn btn-secondary"><?php echo $Translation['next'] ; ?></a>
 				<?php } }?>
 			</td>

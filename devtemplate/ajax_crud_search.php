@@ -11,6 +11,10 @@
 	$memberInfo = getMemberInfo();
 	$departments = get_table_groups();
 	$tables = getTableList2();
+	$tablesToExclude = array('Leadership','Approval','IMSControl','membership_company','kpi','summary_dashboard');
+	foreach($tablesToExclude as $te){
+		if(isset($tables[$te])) unset($tables[$te]);
+	}
 
 	/*
 	<select name="departmentID" id="departmentID">
@@ -112,6 +116,9 @@
 			case '8':
 				$returnTables = array_values($departments["Misc."]);
 				break;
+		}
+		foreach($tablesToExclude as $te){
+			if(isset($returnTables[$te])) unset($returnTables[$te]);
 		}
 
 		$output =  '<select name="tableName" id="tableName"><option value="" selected="" class="">All tables</option>';

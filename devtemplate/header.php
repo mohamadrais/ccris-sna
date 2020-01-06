@@ -84,6 +84,7 @@ $self_baseurl = _baseurl();
 		<![endif]-->
 		<script src="<?php echo PREPEND_PATH; ?>assets/plugins/jquery/jquery.min.js"></script>
 		<script src="<?php echo PREPEND_PATH; ?>resources/jquery/js/jquery-1.12.4.min.js"></script>
+		<script type="text/javascript" src="assets/plugins/calendar/jquery-ui.min.js"></script>
 		<script>var $j = jQuery.noConflict();</script>
 		<script src="<?php echo PREPEND_PATH; ?>resources/moment/moment-with-locales.min.js"></script>
 		<script src="<?php echo PREPEND_PATH; ?>resources/moment/moment-timezone-with-data.js"></script>
