@@ -3349,41 +3349,39 @@
 		<div class="navbar-collapse">
 			<ul class="navbar-nav mr-auto mt-md-0 "></ul>
 			<div class="nav-item dropdown notify-container">
-				<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell-o"></i>
-					<div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+				<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" id="notif-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell-o"></i>
+					<?php $unread = sqlValue("SELECT COUNT(*) FROM `notif` WHERE `active_flag` = 'Y' and `read_flag` = 'N' and memberID = '" . getLoggedMemberID() . "'") ?>
+					<div class="notify"> <span id="notif-heartbit" <?php if($unread != 0) { ?> class="heartbit" <?php } ?>></span> <span id="notif-point" <?php if($unread != 0) { ?> class="point" <?php } ?>></span> </div>
 				</a>
-				<div class="dropdown-menu mailbox animated bounceInDown" aria-labelledby="2">
+				<div class="dropdown-menu mailbox animated bounceInDown" aria-labelledby="notif-dropdown">
 					<ul>
 						<li class="d-flex">
 							<div class="drop-title col-md-6">Notification</div>
-							<div class="col-md-6 text-right"><a class="nav-link" href="#">mark all as read</a></div>
+							<div class="col-md-6 text-right"><a class="nav-link" href="#" id ='mark-all-read'>Mark all as Read</a></div>
 						</li>
 						<li>
-							<div class="message-center">
+							<div class="message-center" id="notif-dropdown-area">
 								<!-- Message -->
-								<a href="#" class="new">
+								<!-- <a href="#" class="new">
 									<div class="mail-contnet">
 										<h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span> </div>
 								</a>
-								<!-- Message -->
 								<a href="#">
 									<div class="mail-contnet">
 										<h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
 								</a>
-								<!-- Message -->
 								<a href="#">
 									<div class="mail-contnet">
 										<h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span> </div>
 								</a>
-								<!-- Message -->
 								<a href="#">
 									<div class="mail-contnet">
 										<h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
-								</a>
+								</a> -->
 							</div>
 						</li>
-						<li>
-							<h6><a class="nav-link text-center" href="javascript:void(0);"> See all <i class="fa fa-angle-right"></i> </a></h6>
+						<li id='see-all-notif'>
+							<h6><a class="nav-link text-center" href="notifications.php"> See all <i class="fa fa-angle-right"></i> </a></h6>
 						</li>
 					</ul>
 				</div>

@@ -234,6 +234,9 @@
 	$Translation['Your password was changed successfully'] = 'Your password was changed successfully';
 	$Translation['Your IP address'] = 'Your IP address';
 	
+	// notification
+	$Translation['view all noti'] = 'View all notifications';
+
 	/* Added in AppGini 4.90 */
 	$Translation['Records to display'] = 'Records to display';
 	

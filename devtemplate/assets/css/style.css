@@ -5744,13 +5744,20 @@ position: relative; }
       background: #ffbc34; }
   .mailbox .message-center a .mail-contnet {
     display: inline-block;
-    width: 75%;
+    width: 95%;
     vertical-align: middle; }
     .mailbox .message-center a .mail-contnet h5 {
       margin: 5px 0px 0; }
-    .mailbox .message-center a .mail-contnet .mail-desc,
-    .mailbox .message-center a .mail-contnet .time {
+    .mailbox .message-center a .mail-contnet .mail-desc {
       font-size: 12px;
+      display: block;
+      margin: 1px 0;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      color: #54667a; }
+    .mailbox .message-center a .mail-contnet .time {
+      font-size: 10px;
       display: block;
       margin: 1px 0;
       -o-text-overflow: ellipsis;
