@@ -3380,7 +3380,7 @@
 								</a> -->
 							</div>
 						</li>
-							<h6><a class="nav-link text-center pb-2" href="javascript:void(0);"> See all <i class="fa fa-angle-right"></i> </a></h6>
+							<h6><a class="nav-link text-center pb-2" href="notifications.php" id="see-all-notif"> See all <i class="fa fa-angle-right"></i> </a></h6>
 						</li>
 					</ul>
 				</div>
