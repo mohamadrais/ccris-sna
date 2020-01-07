@@ -3356,7 +3356,7 @@
 					<ul>
 						<li class="d-flex">
 							<div class="drop-title col-md-6">Notification</div>
-							<div class="col-md-6 text-right"><a class="nav-link" href="#">mark all as read</a></div>
+							<h6 class="col-md-6 text-right"><a class="nav-link" href="#">Mark all as read</a></h6>
 						</li>
 						<li>
 							<div class="message-center">
@@ -3383,7 +3383,7 @@
 							</div>
 						</li>
 						<li>
-							<h6><a class="nav-link text-center" href="javascript:void(0);"> See all <i class="fa fa-angle-right"></i> </a></h6>
+							<h6><a class="nav-link text-center pb-2" href="javascript:void(0);"> See all <i class="fa fa-angle-right"></i> </a></h6>
 						</li>
 					</ul>
 				</div>
