@@ -3348,6 +3348,46 @@
 		
 		<div class="navbar-collapse">
 			<ul class="navbar-nav mr-auto mt-md-0 "></ul>
+			<div class="nav-item dropdown notify-container">
+				<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell-o"></i>
+					<div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+				</a>
+				<div class="dropdown-menu mailbox animated bounceInDown" aria-labelledby="2">
+					<ul>
+						<li class="d-flex">
+							<div class="drop-title col-md-6">Notification</div>
+							<div class="col-md-6 text-right"><a class="nav-link" href="#">mark all as read</a></div>
+						</li>
+						<li>
+							<div class="message-center">
+								<!-- Message -->
+								<a href="#" class="new">
+									<div class="mail-contnet">
+										<h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span> </div>
+								</a>
+								<!-- Message -->
+								<a href="#">
+									<div class="mail-contnet">
+										<h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
+								</a>
+								<!-- Message -->
+								<a href="#">
+									<div class="mail-contnet">
+										<h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span> </div>
+								</a>
+								<!-- Message -->
+								<a href="#">
+									<div class="mail-contnet">
+										<h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
+								</a>
+							</div>
+						</li>
+						<li>
+							<h6><a class="nav-link text-center" href="javascript:void(0);"> See all <i class="fa fa-angle-right"></i> </a></h6>
+						</li>
+					</ul>
+				</div>
+			</div>
 			<ul class="navbar-nav my-lg-0">
 			<div class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:grey !important;"><i class="fa fa-user-circle" style="font-size: 4rem;vertical-align: middle;"></i></a>

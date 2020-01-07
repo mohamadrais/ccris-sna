@@ -127,10 +127,10 @@ display: block; }
 .tab-pane .form-control-static label {
   display: inline-block;
   background-color: #ddd;
-  padding: 10px 20px;
+  padding: 5px 15px;
   font-family: sans-serif, Arial;
-  font-size: 16px;
-  border-radius: 4px;
+  font-size: 14px;
+  border-radius: 50px;
 }
 
 .tab-pane .form-control-static input[value="1"]:checked + label {
@@ -1520,9 +1520,19 @@ Buttons
 /*******************
 Notify
 *******************/
+.notify-container{
+  height: 68px;
+}
+.notify-container a{
+  padding: 2.5rem 1rem;
+  color: #808080 !important;
+}
+.notify-container a i{
+  font-size: 2rem;
+}
 .notify {
 position: relative;
-top: -25px;
+top: -10px;
 right: -7px; }
 .notify .heartbit {
   position: absolute;
@@ -1928,13 +1938,30 @@ Form-control
 .form-control {
 color: #54667a;
 min-height: 38px;
-display: initial; }
+display: initial;
+font-size: 1.5rem; }
+
+.form-control.force-bg{
+background-color: #fff !important;
+background-clip: padding-box !important;
+border: 1px solid #ced4da !important;
+border-radius: .25rem !important;
+padding: .375rem .75rem !important;
+line-height: 1.5 !important;
+}
 
 .form-control-sm {
 min-height: 20px; }
 
 .form-control:disabled, .form-control[readonly] {
-opacity: 0.7; }
+background: transparent;
+border: none;
+box-shadow: 0 0 0 0;
+padding: 0px;
+font-weight: 400;
+color: #323232;
+font-size: 1.5rem;
+opacity: 1; }
 
 .custom-control-input:focus ~ .custom-control-indicator {
 -webkit-box-shadow: none;
@@ -1945,7 +1972,8 @@ background-color: #55ce63; }
 
 form label {
 font-weight: 400;
-font-size: 14px; }
+font-size: 13px;
+color: #90a4ae; }
 
 .form-group {
 margin-bottom: 25px; }
@@ -1954,12 +1982,21 @@ margin-bottom: 25px; }
 margin-bottom: 0px; }
 
 .form-control-static {
-padding-top: 0px; }
+padding-top: 0px;
+line-height: 3.5rem;
+padding-bottom: 0px;
+min-height: 37px;
+font-size: 1.5rem;
+font-weight: 400;
+color: #323232; }
 
 .form-bordered .form-group {
 border-bottom: 1px solid rgba(120, 130, 140, 0.13);
 padding-bottom: 20px; }
 
+.select2-container-disabled{
+
+}
 /*******************
 Layouts
 ******************/
@@ -1984,7 +2021,7 @@ background: #ffffff; }
 border: 1px solid rgba(120, 130, 140, 0.13); }
 
 .card-header {
-background-color: #dae6e8; }
+background-color: #fff; }
 
 /*******************/
 /*widgets -app*/
@@ -5647,7 +5684,8 @@ File: scss
 /*User mail widgets*/
 /*******************/
 .topbar .top-navbar .mailbox {
-width: 300px; }
+  width: 300px !important;
+  left: -270px; }
 .topbar .top-navbar .mailbox ul {
   padding: 0px; }
   .topbar .top-navbar .mailbox ul li {
@@ -5656,7 +5694,8 @@ width: 300px; }
 .mailbox ul li .drop-title {
 font-weight: 500;
 padding: 11px 20px 15px;
-border-bottom: 1px solid rgba(120, 130, 140, 0.13); }
+border-bottom: 1px solid rgba(120, 130, 140, 0.13);
+font-size: 14px; }
 
 .mailbox ul li .nav-link {
 border-top: 1px solid rgba(120, 130, 140, 0.13);
@@ -5671,6 +5710,10 @@ position: relative; }
   display: block;
   text-decoration: none;
   padding: 9px 15px; }
+  .mailbox .message-center a.new{
+    background: #d8e3ef;
+    font-weight: bold;
+  }
   .mailbox .message-center a:hover {
     background: #f2f4f8; }
   .mailbox .message-center a div {
@@ -7207,16 +7250,42 @@ select.form-control:not([size]):not([multiple]){
 }
 .select2-container .select2-choice{
   height: 38px;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  background: #fff;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: #54667a;
 }
 .select2-container .select2-choice > .select2-chosen{
   height: 100%;
   padding: 8px 0;
 }
+.select2-container.select2-container-disabled .select2-choice{
+  background-image: none;
+  border: 1px solid #ddd;
+  cursor: default;
+  background: transparent;
+  border: none;
+  box-shadow: 0 0 0 0;
+  padding: 0px;
+  font-weight: 400;
+  color: #323232;
+  font-size: 1.5rem;
+  opacity: 1;
+}
+.select2-container.select2-container-disabled .select2-choice .select2-chosen{
+  padding: 0;
+  line-height: 2rem;
+}
 .select2-container.select2-container-disabled .select2-choice .select2-arrow{
   padding: 8px 0;
+  display: none;
 }
 .select2-container .select2-choice .select2-arrow{
   padding: 8px 0;
+  background: #fff;
+  border: 0;
 }
 .flex-wrapper {
   display: flex;
@@ -7272,7 +7341,6 @@ select.form-control:not([size]):not([multiple]){
   font-size: 0.5em;
   text-anchor: middle;
 }
-
 .search-field {
   max-width:0px;
   overflow: hidden;
