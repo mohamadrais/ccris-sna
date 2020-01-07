@@ -3357,7 +3357,7 @@
 					<ul>
 						<li class="d-flex">
 							<div class="drop-title col-md-6">Notification</div>
-							<div class="col-md-6 text-right"><a class="nav-link" href="#" id ='mark-all-read'>Mark all as Read</a></div>
+							<h6 class="col-md-6 text-right"><a class="nav-link" href="#"  id ='mark-all-read'>Mark all as Read</a></h6>
 						</li>
 						<li>
 							<div class="message-center" id="notif-dropdown-area">
@@ -3380,9 +3380,7 @@
 								</a> -->
 							</div>
 						</li>
-						<li id='see-all-notif'>
-							<h6><a class="nav-link text-center" href="notifications.php"> See all <i class="fa fa-angle-right"></i> </a></h6>
-						</li>
+							<h6><a class="nav-link text-center pb-2" href="javascript:void(0);"> See all <i class="fa fa-angle-right"></i> </a></h6>						</li>
 					</ul>
 				</div>
 			</div>

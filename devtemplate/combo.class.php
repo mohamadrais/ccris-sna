@@ -95,7 +95,7 @@ class Combo{
 			if($this->ListType == 3 && strlen($this->MatchText)>0)   $this->MatchText=substr($this->MatchText, 0, -1 * strlen($this->MultipleSeparator));
 		}else{
 			global $Translation;
-			$separator = '&nbsp; &nbsp; &nbsp; &nbsp;';
+			$separator = '&nbsp;';
 
 			$j=0;
 			$this->HTML .= '<div>';

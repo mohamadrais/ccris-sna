@@ -1,16 +1,16 @@
-<div class="d-block pb-3 text-right">
-	<a id="startEdit" class="btn btn-warning" href="#Edit"><i class="fa fa-pencil-square-o mr-2" aria-hidden="true"></i>Edit</span>
-	<a id="exitEdit" class="btn btn-warning"  href="./projects_view.php?SelectedID=<%%VALUE(Id)%%>" style="display:none"><i class="fa fa-floppy-o mr-2" aria-hidden="true"></i>Back</a>
-</div>
 <!-- Edit this file to change the layout of the detail view form -->
-<nav aria-label="breadcrumb">
+<!-- <nav aria-label="breadcrumb">
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="#">Project</a></li>
 		<li class="breadcrumb-item"><a href="#">Project Register</a></li>
 		<li class="breadcrumb-item"><a href="#">Project Register Detail</a></li>
-		<!-- <li class="breadcrumb-item"><a href="#">Project Register Edit</a></li> -->
 	</ol>
-</nav>
+</nav> -->
+<div class="d-block pb-3 text-right">
+	<a id="startEdit" class="btn btn-warning" href="#Edit"><i class="fa fa-pencil-square-o mr-2" aria-hidden="true"></i>Edit</span>
+	<a id="exitEdit" class="btn btn-warning"  href="./projects_view.php?SelectedID=<%%VALUE(Id)%%>" style="display:none"><i class="fa fa-floppy-o mr-2" aria-hidden="true"></i>Save</a>
+</div>
+
 <a name="detail-view"></a>
 <div class="panel-heading">
 	<!-- <div class="form-group">
@@ -21,34 +21,30 @@
 </div>
 <!-- </div> -->
 
-<div class="panel-body" id="projects_dv_container">
-	<div class="form-group row">
-		<label for="Name" class="control-label col-lg-2">Project title <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#Name-description"></i></label>
-		<div class="col-lg-10">
+<div id="projects_dv_container">
+	<div class="row">
+
+		<div class="form-group col-lg-4">
+			<label for="Id" class="control-label">ID</label>
+			<div class="form-control-static" id="Id" aria-labelledby="selectedID">
+				<%%VALUE(Id)%%>
+			</div>
+		</div>
+
+		<div class="form-group col-lg-4">
+			<label for="Name" class="control-label">Project title <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#Name-description"></i></label>
 			<span class="help-block collapse" id="Name-description">
 				<div class="alert alert-info">Title for the project</div>
 			</span>
 
 			<input maxlength="250" type="text" class="form-control" name="Name" id="Name" value="<%%VALUE(Name)%%>">
 		</div>
-	</div>
 
-	<div class="form-group row">
-		<label for="Id" class="control-label col-lg-2">ID</label>
-		<div class="col-lg-10">
-			<div class="form-control-static" id="Id" aria-labelledby="selectedID">
-				<%%VALUE(Id)%%>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="form-group row">
-		<label for="projectID" class="control-label col-lg-2">Project ID<span class="text-danger">
-				<%%TRANSLATION(*)%%>
-			</span> <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse"
-				data-target="#projectID-description"></i></label>
-		<div class="col-lg-10">
+		<div class="form-group col-lg-4">
+			<label for="projectID" class="control-label">Project ID<span class="text-danger">
+					<%%TRANSLATION(*)%%>
+				</span> <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse"
+					data-target="#projectID-description"></i></label>
 			<span class="help-block collapse" id="projectID-description">
 				<div class="alert alert-info">Record identification</div>
 			</span>
@@ -59,7 +55,7 @@
 				<%%TRANSLATION(unique field error)%%>
 			</div>
 		</div>
-	</div>
+		</div>
 	<!-- <ul class="nav nav-tabs customtab2 d-block" role="tablist" aria-label="Basic example">
 		<li class="nav-item"> <a class="nav-link active" data-target="#carouselDetail" data-slide-to="0" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Description</span></a> </li>
 		<li class="nav-item"> <a class="nav-link" data-target="#carouselDetail" data-slide-to="1" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Attachment</span></a> </li>
@@ -144,19 +140,20 @@
 
 			<div class="form-group row">
 				<hr class="hidden-md hidden-lg">
-				<label for="fo_StartDate" class="control-label col-lg-2">Start Date</label>
-				<div class="col-lg-10">
-					<%%COMBO(fo_StartDate)%%>
+				<label for="fo_StartDate" class="control-label col-lg-2">Date (From - To)</label>
+				<div class="col-md-10 row">
+					<div class="col-md-6"><%%COMBO(fo_StartDate)%%></div>
+					<div class="col-md-6"><%%COMBO(fo_EndDate)%%></div>
 				</div>
 			</div>
 
-			<div class="form-group row">
+			<!-- <div class="form-group row">
 				<hr class="hidden-md hidden-lg">
 				<label for="fo_EndDate" class="control-label col-lg-2">End Date</label>
 				<div class="col-lg-10">
 					<%%COMBO(fo_EndDate)%%>
 				</div>
-			</div>
+			</div> -->
 
 			<div class="form-group row">
 				<hr class="hidden-md hidden-lg">
@@ -368,9 +365,9 @@
 		<div class="tab-pane p-t-30" id="Review" role="tabpanel">
 			<div class="form-group row">
 				<hr class="hidden-md hidden-lg">
-				<label for="ot_ap_Review" class="control-label col-lg-3"
+				<label for="ot_ap_Review" class="control-label col-lg-2"
 					data-parent_link="view_parent_modal">Review</label>
-				<div class="col-lg-9">
+				<div class="col-lg-10">
 					<div class="form-control-static" style="white-space: nowrap; overflow-x: hidden;">
 						<%%COMBO(ot_ap_Review)%%>
 					</div>
@@ -383,9 +380,9 @@
 
 			<div class="form-group row">
 				<hr class="hidden-md hidden-lg">
-				<label for="ot_ap_Approval" class="control-label col-lg-3"
+				<label for="ot_ap_Approval" class="control-label col-lg-2"
 					data-parent_link="view_parent_modal">Approval</label>
-				<div class="col-lg-9">
+				<div class="col-lg-10">
 					<div class="form-control-static" style="white-space: nowrap; overflow-x: hidden;">
 						<%%COMBO(ot_ap_Approval)%%>
 					</div>
@@ -398,9 +395,9 @@
 
 			<div class="form-group row">
 				<hr class="hidden-md hidden-lg">
-				<label for="ot_ap_QC" class="control-label col-lg-3"
+				<label for="ot_ap_QC" class="control-label col-lg-2"
 					data-parent_link="view_parent_modal">IMS Control</label>
-				<div class="col-lg-9">
+				<div class="col-lg-10">
 					<div class="form-control-static" style="white-space: nowrap; overflow-x: hidden;">
 						<%%COMBO(ot_ap_QC)%%>
 					</div>

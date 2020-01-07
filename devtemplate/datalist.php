@@ -767,7 +767,7 @@ class DataList{
 		$resetSelection = ($this->SeparateDV ? "document.myform.SelectedID.value = '';" : "document.myform.writeAttribute('novalidate', 'novalidate');");
 
 		if($current_view == 'DV' && !$Embedded){
-			$this->HTML .= '<div class="page-header">';
+			$this->HTML .= '<div>';
 				// $this->HTML .= '<h1>';
 				// 	$this->HTML .= '<a style="text-decoration: none; color: inherit;" href="' . $this->TableName . '_view.php"><img src="' . $this->TableIcon . '"> ' . $this->TableTitle . '</a>';
 					/* show add new button if user can insert and there is a selected record */
@@ -787,7 +787,7 @@ class DataList{
 
 				// display 'Add New' icon
 				if($this->Permissions[1] && $this->SeparateDV && $this->AllowInsert){
-					$buttons_all .= '<button type="submit" id="addNew" name="addNew_x" value="1" class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Add New'] . '</button>';
+					// $buttons_all .= '<button type="submit" id="addNew" name="addNew_x" value="1" class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Add New'] . '</button>';
 					$buttonsCount++;
 				}
 
@@ -796,6 +796,8 @@ class DataList{
 				<input type="checkbox" name="adminToggle" class="adminToggle" />
 				<a class="adminButton" href="#!"><i class="fa fa-ellipsis-v"></i></a>
 				<div class="adminButtons">
+					<button style="width:unset;height:unset;color:unset;border:none;background:none" type="submit" id="addNew" name="addNew_x" value="1" ><a href="#" title="Show All"><i class="glyphicon glyphicon-plus-sign"></i></a></button>
+
 					<button style="width:unset;height:unset;color:unset;border:none;background:none"  onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="NoFilter_x" id="NoFilter" value="1" ><a href="#" title="Show All"><i class="fa fa-th-list"></i></a></button>
 
 					<button style="width:unset;height:unset;color:unset;border:none;background:none" onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="Filter_x" id="Filter" value="1" ><a href="#" title="Filter"><i class="fa fa-filter"></i></a></button>
@@ -897,9 +899,9 @@ class DataList{
 			if($Embedded){
 				$this->HTML .= '<script>$j(function(){ $j(\'[id^=notification-]\').parent().css({\'margin-top\': \'15px\', \'margin-bottom\': \'0\'}); })</script>';
 			}else{
-				$this->HTML .= '<div class="page-header">';
+				$this->HTML .= '<div>';
 						$this->HTML .= '<div class="row">';
-							$this->HTML .= '<div class="col-sm-12 action-panel">';
+							$this->HTML .= '<div class="col-sm-12">';
 								$this->HTML .= '<div id="top_buttons" class="hidden-print">';
 									/* .all_records: container for buttons that don't need a selection */
 									/* .selected_records: container for buttons that need a selection */
