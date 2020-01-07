@@ -161,7 +161,7 @@ if ($memberInfo['group'] != 'Admins') {
 		}
 		
 		
-		if(!$j('#attach').is(':visible')){
+		if($j('#attach').is(':visible')){
 			$j('#attach').on('click touchstart', function(e) {
 				// e.preventDefault(); 
 				// e.stopPropagation();
