@@ -3935,7 +3935,12 @@
 	}
 
 	if(count($wheres)){
-		$where = 'WHERE ' . implode(' AND ', $wheres);
+		if ($table_name == 'employees' && $field_name == 'memberID'){
+			$where = 'AND ' . implode(' AND ', $wheres);
+		}
+		else{
+			$where = 'WHERE ' . implode(' AND ', $wheres);
+		}
 	}
 
 	// define the combo and return the code

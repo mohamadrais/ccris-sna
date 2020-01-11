@@ -13,6 +13,28 @@ if ($memberInfo['group'] != 'Admins') {
 ?>
 <script type='text/javascript'>
     document.observe("dom:loaded", function() {
+		var $el = $j('#fo_ReportsTo-container'),
+			s2Version3 = false,
+			s2Version4 = false;
+
+		$el.on( 'select2:opening', function() {
+			// this event only works for v4
+			s2Version4 = true;
+		});
+
+		$el.on( 'select2-opening', function() {
+			// this event only works for v3
+			s2Version3 = true;
+		});
+
+		$el.on( 'change', function() {
+			if ( s2Version3 ) {
+				console.log('s2 version: 3');
+			} else {
+				console.log('s2 version: 4');
+			}
+		});
+		
 		if($j('#notif-dropdown').is(':visible')){
 			$j('#notif-dropdown').on('click touchstart', function(e) {
 				e.preventDefault(); 
@@ -168,7 +190,7 @@ if ($memberInfo['group'] != 'Admins') {
 				var tableName = $j('[name ="myform"]').attr('action');
 				tableName = tableName.substr(0, tableName.indexOf('_view.php'));
 				var selectedID = $j("[aria-labelledby='selectedID']").html().trim();
-				get_workorders(tableName, selectedID);
+				var uniqID = uniqId();
 				$j('div[id$="dv_action_buttons"]').append(`
 					<div class="modal" id="wo_modal">
 						<div class="modal-dialog">
@@ -178,15 +200,25 @@ if ($memberInfo['group'] != 'Admins') {
 								</div>
 								<div class="modal-body">
 									<div class="message-box" style="max-height: 358px;overflow: scroll;">
-										<ul class="list-task todo-list list-group m-b-0" id="wo_content_list"><span id="wo_content"></span></ul>
+										<ul class="list-task todo-list list-group m-b-0" id="wo_content_list">
+											<span id="wo_content-container${uniqID}"></span>
+											<input type="hidden" name="wo_content-input" id="wo_content-input${uniqID}" value="">
+										</ul>
 									</div>
 								</div>
-								<div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary" id="attachWOButton" disabled>Attach</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
 							</div>
 						</div>
 					</div>
 				`);
+				get_workorders(tableName, selectedID, uniqID);
 			});
+		}
+		function uniqId() {
+			return Math.round(new Date().getTime() + (Math.random() * 100));
 		}
 		if(!$j('#searchPageForm').is(':visible')){
 			$j('#fullsearchicon').parent().replaceWith(`

@@ -25,7 +25,7 @@
 	$operation = new Request('o');
 	$selectedID = new Request('si');
 	$workOrderID = new Request('w');
-	$workOrderNumber = new Request('wn');
+	$workOrderNumber = sqlValue("SELECT `WONumber` from `WorkOrder` where `id` = '" . makeSafe($workOrderID->sql) . "'");
 	$sameRecord = new Request('same');
 	/* prevent conventional error output via a shutdown handler */
 	function cancel_all_buffers(){

@@ -1110,7 +1110,7 @@ function get_workorder_related_records(selected_wo_ID){
 		data: data,
 		success: function(jsonData) {
 			var woRelatedHTML = '';
-			if (jsonData == null || (jsonData.length && jsonData.length > 0)){
+			if (jsonData != null && (jsonData.length && jsonData.length > 0)){
 				for(x=0; x < jsonData.length; x++){
 					let _dataColumnValues=[];
 					Object.keys(jsonData[x]).forEach(function(k){
@@ -1132,7 +1132,7 @@ function get_workorder_related_records(selected_wo_ID){
 	})
 }
 
-function get_workorders(table, selectedID){
+function get_workorders(table, selectedID, uniqID){
 	var data = {
 		o: 'select',
 		t: table,
@@ -1143,26 +1143,22 @@ function get_workorders(table, selectedID){
 		url: 'ajax_crud_workorder.php',
 		data: data,
 		success: function(jsonData) {
-			var woHTML = '';
-			if (jsonData == null || (jsonData.length && jsonData.length > 0)){
+			var currID = '';
+			if (jsonData != null && (jsonData.length && jsonData.length > 0)){
 				for(x=0; x < jsonData.length; x++){
-					let _dataColumnValues=[];
-					Object.keys(jsonData[x]).forEach(function(k){
-						_dataColumnValues.push(jsonData[x][k]);
-					});
-					(_dataColumnValues[2] == "yes") ? woHTML += '<li class="list-group-item active" ' : woHTML += '<li class="list-group-item" ';
-					woHTML += 'id="' + _dataColumnValues[0] + '" ';
-					woHTML += 'onclick="attach_to_workorder(\'' + _dataColumnValues[0] + '\', \'' + _dataColumnValues[1] + '\', \'' + _dataColumnValues[2] + '\', \'' + table + '\', ' + selectedID + ')">';
-					woHTML += '<h5>' + _dataColumnValues[1] + '</h5></li>';
+					if(jsonData[x]["selected"] == "yes"){
+						currID = jsonData[x]["id"];
+					}
 				}
 			}
-			$j('#wo_content').replaceWith(woHTML);
+			if(!currID || currID == ''){
+				currID = '';
+			}
+			get_workorders2(table, currID, uniqID, selectedID);
 			return false;
-			
-			
 		},         
 		error: function(response) {
-			console.log('attach_to_workorder error: ' + response.statusText);
+			console.log('get_workorders error: ' + response.statusText);
 			return false;
 		},
 		complete: function(resp){
@@ -1171,7 +1167,57 @@ function get_workorders(table, selectedID){
 	})
 }
 
-function attach_to_workorder(WOid, WONumber, selected, tableName, pkValue){
+function get_workorders2(table, selectedWOID, uniqID, selectedID){
+	var data = {
+		o: 'select',
+		t: table,
+		si: selectedWOID
+	};
+
+	$j("#"+"wo_content-container"+uniqID).select2({
+		/* initial default value */
+		initSelection: function(e, c){
+			$j.ajax({
+				url: 'ajax_crud_workorder2.php',
+				dataType: 'json',
+				data: { id: selectedWOID, t: 'WorkOrder', f: 'assignToWO' },
+				success: function(resp){
+					c({
+						id: resp.results[0].id,
+						text: resp.results[0].text
+					});
+					$j('[name="wo_content-input"]').val(resp.results[0].id);
+					if(resp.results[0].id == ''){ $j('.btn[id=wo_content_view_parent]').hide(); }else{ $j('.btn[id=wo_content_view_parent]').show(); }
+
+					$j("#attachWOButton").prop('disabled', false);
+				}
+			});
+		},
+		width: '100%',
+		formatNoMatches: function(term){ /* */ return 'No matches found!'; },
+		minimumResultsForSearch: 10,
+		loadMorePadding: 200,
+		ajax: {
+			url: 'ajax_crud_workorder2.php',
+			dataType: 'json',
+			cache: true,
+			data: function(term, page){ /* */ return { s: term, p: page, t: 'WorkOrder', f: 'assignToWO' }; },
+			results: function(resp, page){ /* */ return resp; }
+		},
+		escapeMarkup: function(str){ /* */ return str; }
+	}).on('change', function(e){
+		$j('[name="wo_content-input"]').val(e.added.id);
+		if(e.added.id == ''){ $j('.btn[id=wo_content_view_parent]').hide(); }else{ $j('.btn[id=wo_content_view_parent]').show(); }
+	});
+	$j("#attachWOButton").on('click touchstart', function(e){
+		e.preventDefault();
+		var newWOID = $j('[name="wo_content-input"]').val();
+		var same = (newWOID == selectedWOID) ? "yes" : "no";
+		attach_to_workorder(newWOID, same, table, selectedID)
+	});
+}
+
+function attach_to_workorder(WOid, selected, tableName, pkValue){
 	var confirm_message = '<div class="alert alert-info">' +
 			'<i class="glyphicon glyphicon-warning-sign"></i> ' + 
 			'<?php echo addslashes($Translation['are you sure attach workorder?']); ?>' +
@@ -1194,7 +1240,6 @@ function attach_to_workorder(WOid, WONumber, selected, tableName, pkValue){
 						t: tableName,
 						si: pkValue,
 						w: WOid,
-						wn: WONumber,
 						same: selected
 					};
 
@@ -1202,6 +1247,7 @@ function attach_to_workorder(WOid, WONumber, selected, tableName, pkValue){
 						type: 'POST',
 						data: data,
 						success: function(resp){
+							$j("#attachWOButton").prop('disabled', true);
 							if(resp.result && resp.result == 'ok'){
 								jQuery("#wo_content_list").append('<li class="text-success"><?php echo addslashes($Translation['workorder attach success']); ?></li>');
 							}else{
