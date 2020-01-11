@@ -1218,7 +1218,7 @@ function get_workorders2(table, selectedWOID, uniqID, selectedID){
 }
 
 function attach_to_workorder(WOid, selected, tableName, pkValue){
-	var confirm_message = '<div class="alert alert-info">' +
+	var confirm_message = '<div class="alert alert-danger">' +
 			'<i class="glyphicon glyphicon-warning-sign"></i> ' + 
 			'<?php echo addslashes($Translation['are you sure attach workorder?']); ?>' +
 		'</div>';
@@ -1232,7 +1232,7 @@ function attach_to_workorder(WOid, selected, tableName, pkValue){
 		footer: [
 			{
 				label: '<i class="glyphicon glyphicon-ok"></i> ' + label_yes,
-				bs_class: 'warning',
+				bs_class: 'danger',
 				click: function(){
 
 					var data = {
@@ -1267,7 +1267,7 @@ function attach_to_workorder(WOid, selected, tableName, pkValue){
 			},
 			{
 				label: '<i class="glyphicon glyphicon-remove"></i> ' + label_no,
-				bs_class: 'success' 
+				bs_class: '' 
 			}
 		]
 	});

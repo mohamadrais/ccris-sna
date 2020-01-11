@@ -87,6 +87,22 @@
 		if(function_exists('summary_update_after_insert_delete')){
 			summary_update_after_insert_delete($tableName, 'insert');
 		}
+		// get workorder owner details
+		$workOrderOwner = getMemberIDDetails($memberInfo['username']);
+		$workOrderOwnerFirstName = (isset($workOrderOwner['custom1']) && !empty($workOrderOwner['custom1'])) ? explode(' ',trim($workOrderOwner['custom1']))[0] : $workOrderOwner['memberID'];
+
+		// get form entry owner details
+		$workOrderAssigneeMID = sqlValue("SELECT `memberID` from `employees` where `EmployeeID` = '" . $data["fo_EmployeeID"] . "'");
+		$workOrderAssignee = getMemberIDDetails($workOrderAssigneeMID);
+		$workOrderAssigneeFirstName = (isset($workOrderAssignee['custom1']) && !empty($workOrderAssignee['custom1'])) ? explode(' ',trim($workOrderAssignee['custom1']))[0] : $workOrderAssignee['memberID'];
+
+		$newNotification = new UserNotification([]);
+		$newNotification->setNotif_title('New work order');
+		$newNotification->setNotif_msg($workOrderOwnerFirstName . ' has assigned ' . $data["WONumber"] . ' to you');
+		$newNotification->setNotif_url('WorkOrder_view.php?SelectedID=' . $data["id"]);
+		$newNotification->setNotif_time(date('Y-m-d H:i:s'));
+		$newNotification->setMemberID($workOrderAssignee['memberID']);
+		$newNotification->createNotification();
 
 		return TRUE;
 	}
@@ -101,6 +117,23 @@
 		if(function_exists('summary_update_after_update')){
 			summary_update_after_update($tableName);
 		}
+
+		// get workorder owner details
+		$workOrderOwner = getMemberIDDetails($memberInfo['username']);
+		$workOrderOwnerFirstName = (isset($workOrderOwner['custom1']) && !empty($workOrderOwner['custom1'])) ? explode(' ',trim($workOrderOwner['custom1']))[0] : $workOrderOwner['memberID'];
+
+		// get form entry owner details
+		$workOrderAssigneeMID = sqlValue("SELECT `memberID` from `employees` where `EmployeeID` = '" . $data["fo_EmployeeID"] . "'");
+		$workOrderAssignee = getMemberIDDetails($workOrderAssigneeMID);
+		$workOrderAssigneeFirstName = (isset($workOrderAssignee['custom1']) && !empty($workOrderAssignee['custom1'])) ? explode(' ',trim($workOrderAssignee['custom1']))[0] : $workOrderAssignee['memberID'];
+
+		$newNotification = new UserNotification([]);
+		$newNotification->setNotif_title('Update on work order');
+		$newNotification->setNotif_msg($workOrderOwnerFirstName . ' has updated ' . $data["WONumber"] . ' that was assigned to you');
+		$newNotification->setNotif_url('WorkOrder_view.php?SelectedID=' . $data["id"]);
+		$newNotification->setNotif_time(date('Y-m-d H:i:s'));
+		$newNotification->setMemberID($workOrderAssignee['memberID']);
+		$newNotification->createNotification();
 
 		return TRUE;
 	}

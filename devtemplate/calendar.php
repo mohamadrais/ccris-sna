@@ -47,7 +47,7 @@ include("header.php");
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <script type="text/javascript" src="<?php echo CALENDAR_PATH; ?>js/calendar.js"></script>
 <script type="text/javascript" src="<?php echo CALENDAR_PATH; ?>js/events.js"></script>
-<!-- <script type="text/javascript" src="assets/plugins/calendar/jquery-ui.min.js"></script>
+<!-- <script type="text/javascript" src="assets/plugins/calendar/jquery-ui.min.js"></script> -->
 <script type="text/javascript" src="assets/plugins/calendar/dist/fullcalendar.min.js"></script>
 <script type="text/javascript" src="assets/plugins/calendar/dist/cal-init.js"></script>
 <?php include('footer.php');?>

@@ -797,7 +797,7 @@ class DataList{
 				<input type="checkbox" name="adminToggle" class="adminToggle" />
 				<a class="adminButton" href="#!"><i class="fa fa-ellipsis-v"></i></a>
 				<div class="adminButtons">
-					<button style="width:unset;height:unset;color:unset;border:none;background:none" type="submit" id="addNew" name="addNew_x" value="1" ><a href="#" title="Show All"><i class="glyphicon glyphicon-plus-sign"></i></a></button>
+					<button style="width:unset;height:unset;color:unset;border:none;background:none" type="submit" id="addNew" name="addNew_x" value="1" ><a href="#" title="Add New"><i class="glyphicon glyphicon-plus-sign"></i></a></button>
 
 					<button style="width:unset;height:unset;color:unset;border:none;background:none"  onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="NoFilter_x" id="NoFilter" value="1" ><a href="#" title="Show All"><i class="fa fa-th-list"></i></a></button>
 

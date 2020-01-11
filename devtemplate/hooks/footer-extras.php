@@ -13,28 +13,6 @@ if ($memberInfo['group'] != 'Admins') {
 ?>
 <script type='text/javascript'>
     document.observe("dom:loaded", function() {
-		var $el = $j('#fo_ReportsTo-container'),
-			s2Version3 = false,
-			s2Version4 = false;
-
-		$el.on( 'select2:opening', function() {
-			// this event only works for v4
-			s2Version4 = true;
-		});
-
-		$el.on( 'select2-opening', function() {
-			// this event only works for v3
-			s2Version3 = true;
-		});
-
-		$el.on( 'change', function() {
-			if ( s2Version3 ) {
-				console.log('s2 version: 3');
-			} else {
-				console.log('s2 version: 4');
-			}
-		});
-		
 		if($j('#notif-dropdown').is(':visible')){
 			$j('#notif-dropdown').on('click touchstart', function(e) {
 				e.preventDefault(); 
@@ -183,7 +161,7 @@ if ($memberInfo['group'] != 'Admins') {
 		}
 		
 		
-		if($j('#attach').is(':visible')){
+		// if($j('#attach').is(':visible')){
 			$j('#attach').on('click touchstart', function(e) {
 				// e.preventDefault(); 
 				// e.stopPropagation();
@@ -191,7 +169,7 @@ if ($memberInfo['group'] != 'Admins') {
 				tableName = tableName.substr(0, tableName.indexOf('_view.php'));
 				var selectedID = $j("[aria-labelledby='selectedID']").html().trim();
 				var uniqID = uniqId();
-				$j('div[id$="dv_action_buttons"]').append(`
+				$j('[name ="myform"]').append(`
 					<div class="modal" id="wo_modal">
 						<div class="modal-dialog">
 							<div class="modal-content">
@@ -216,7 +194,7 @@ if ($memberInfo['group'] != 'Admins') {
 				`);
 				get_workorders(tableName, selectedID, uniqID);
 			});
-		}
+		// }
 		function uniqId() {
 			return Math.round(new Date().getTime() + (Math.random() * 100));
 		}

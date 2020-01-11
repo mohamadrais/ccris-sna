@@ -10,6 +10,7 @@
 	include("$currDir/language.php");
 	include("$currDir/lib.php");
 	$memberInfo = getMemberInfo();
+	$currUserFirstName = (isset($memberInfo['custom'][0]) && !empty($memberInfo['custom'][0])) ? explode(' ',trim($memberInfo['custom'][0]))[0] : $memberInfo['username'];
 
 	/* maintenance mode */
 	handle_maintenance();
@@ -55,6 +56,14 @@
 		$GLOBALS['result'] = json_encode($workOrderList);
 	}
 	else if ($operation->sql == 'addupdate'){
+		// get workorder owner details
+		$workOrderOwner = getRecordOwnerDetails('WorkOrder', $workOrderID->sql);
+		$workOrderOwnerFirstName = (isset($workOrderOwner['custom1']) && !empty($workOrderOwner['custom1'])) ? explode(' ',trim($workOrderOwner['custom1']))[0] : $workOrderOwner['memberID'];
+
+		// get form entry owner details
+		$formEntryOwner = getRecordOwnerDetails($table->sql, $selectedID->sql);
+		$formEntryOwnerFirstName = (isset($formEntryOwner['custom1']) && !empty($formEntryOwner['custom1'])) ? explode(' ',trim($formEntryOwner['custom1']))[0] : $formEntryOwner['memberID'];
+
 		// check if it is the same work order that already existed
 		// if not the same work order
 		if ($sameRecord->raw == 'no'){
@@ -64,13 +73,13 @@
 			if (isset($checkExists)){
 				// proceed to add if no records found
 				if (intval($checkExists) == 0){
-					$sqlInsert = "INSERT INTO `work_order_map` ( `WOid`, `WONumber`, `tableName`, `pkValue`, `memberID`, `ot_ap_filed` ) VALUES ( " . $workOrderID->sql . ", '" .  $workOrderNumber->sql . "', '" . $table->sql . "', '" . $selectedID->sql . "', '" . makeSafe($memberInfo['username']) . "', CURRENT_TIMESTAMP)";
+					$sqlInsert = "INSERT INTO `work_order_map` ( `WOid`, `WONumber`, `tableName`, `pkValue`, `memberID`, `ot_ap_filed` ) VALUES ( " . $workOrderID->sql . ", '" .  $workOrderNumber . "', '" . $table->sql . "', '" . $selectedID->sql . "', '" . makeSafe($memberInfo['username']) . "', CURRENT_TIMESTAMP)";
 					sql($sqlInsert, $eo);
 				}
 				// proceed to update if a record exists
 				else if (intval($checkExists) > 0){
 					$uniqueId = sqlValue("SELECT `id` from `work_order_map` where `tableName` = '" . $table->sql . "' and `pkValue` = '" . $selectedID->sql . "' limit 1");
-					$sqlUpdate = "UPDATE `work_order_map` SET `WOid` = " . $workOrderID->sql . ", `WONumber` = '" . $workOrderNumber->sql . "', `tableName` = '" . $table->sql . "', `pkValue` = '" . $selectedID->sql . "', `ot_ap_lastmodified` = CURRENT_TIMESTAMP WHERE `id` = " .  $uniqueId;
+					$sqlUpdate = "UPDATE `work_order_map` SET `WOid` = " . $workOrderID->sql . ", `WONumber` = '" . $workOrderNumber . "', `tableName` = '" . $table->sql . "', `pkValue` = '" . $selectedID->sql . "', `ot_ap_lastmodified` = CURRENT_TIMESTAMP WHERE `id` = " .  $uniqueId;
 					sql($sqlUpdate, $eo);
 				}
 			}
@@ -78,11 +87,19 @@
 		// proceed to update if it is the same work order
 		else {
 			$uniqueId = sqlValue("SELECT `id` from `work_order_map` where `WOid` = " . $workOrderID->sql . " and `tableName` = '" . $table->sql . "' and `pkValue` = '" . $selectedID->sql . "' limit 1");
-			$sqlUpdate = "UPDATE `work_order_map` SET `WOid` = " . $workOrderID->sql . ", `WONumber` = '" . $workOrderNumber->sql . "', `tableName` = '" . $table->sql . "', `pkValue` = '" . $selectedID->sql . "', `ot_ap_lastmodified` = CURRENT_TIMESTAMP WHERE `id` = " .  $uniqueId;
+			$sqlUpdate = "UPDATE `work_order_map` SET `WOid` = " . $workOrderID->sql . ", `WONumber` = '" . $workOrderNumber . "', `tableName` = '" . $table->sql . "', `pkValue` = '" . $selectedID->sql . "', `ot_ap_lastmodified` = CURRENT_TIMESTAMP WHERE `id` = " .  $uniqueId;
 			sql($sqlUpdate, $eo);
 		}
+		// create a notification for the work order owner (assigner)
+		$newNotification = new UserNotification([]);
+		$newNotification->setNotif_title('Update on work order');
+		$newNotification->setNotif_msg($formEntryOwnerFirstName . ' has requested you to review ' . $workOrderNumber);
+		$newNotification->setNotif_url('WorkOrder_view.php?SelectedID=' . $workOrderID->sql);
+		$newNotification->setNotif_time(date('Y-m-d H:i:s'));
+		$newNotification->setMemberID($workOrderOwner['memberID']);
+		$newNotification->createNotification();
 
-			$GLOBALS['result'] = $ok_return;
+		$GLOBALS['result'] = $ok_return;
 	}
 	else if($operation->sql == 'getrelated'){
 		$related_sql = "SELECT `id`, `tableName`, `pkValue` FROM `work_order_map` WHERE `WOid` = " . $workOrderID->sql;

@@ -517,7 +517,16 @@
 			<div class="col-lg-4 px-2">
 				<div class="card my-3">
 					<div class="card-body">
-						<h4 class="card-title">Active Tasks</h4>
+						<h4 class="card-title">Active Tasks
+							<?php if(in_array($memberInfo['groupID'], [2] )) { ?>
+							<span class="hspacer-lg fa-pull-right" title="Create new job ticket">
+							<a href="WorkOrder_view.php?addNew_x=1">
+									<i class="fa fa-plus"></i>
+							</a>
+							</span>
+							<?php } ?>
+						</h4>
+						
 						<!-- ============================================================== -->
 						<!-- To do list widgets -->
 						<!-- ============================================================== -->

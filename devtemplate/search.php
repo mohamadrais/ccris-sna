@@ -205,7 +205,7 @@
 		</div>
 			<div class="input-group">
 				<label for="searchText" class="control-label"><?php echo $Translation['search for'] ; ?></label> &nbsp;
-				<input type="text" class="form-control" placeholder="Search for..." value="<?php echo $searchText ?>">
+				<input type="text" class="form-control" placeholder="Search for..." id="searchText" name="searchText" value="<?php echo $searchText ?>">
 				<div class="input-group-append">
 					<button class="btn btn-primary search-btn" type="button" id="submitSearch">Go!</button>
 				</div>

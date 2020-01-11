@@ -2758,3 +2758,262 @@
 		if(datalist_db_encoding == 'UTF-8') return $str;
 		return iconv('UTF-8', datalist_db_encoding, $str);
 	}
+	#########################################################
+	class UserNotification{
+		protected $id;
+		protected $notif_title;
+		protected $notif_msg;
+		protected $notif_url;
+		protected $notif_time;
+		protected $notif_repeat;
+		protected $notif_loop;
+		protected $read_flag;
+		protected $active_flag;
+		protected $publish_date;
+		protected $memberID;
+
+		public function __construct ($param) {
+			$this->id = (isset($param['id'])) ? $param['id'] : '';
+			$this->notif_title = (isset($param['notif_title'])) ? $param['notif_title'] : '';
+			$this->notif_msg = (isset($param['notif_msg'])) ? $param['notif_msg'] : '';
+			$this->notif_url = (isset($param['notif_url'])) ? $param['notif_url'] : '';
+			$this->notif_time = (isset($param['notif_time'])) ? $param['notif_time'] : '';
+			$this->notif_repeat = (isset($param['notif_repeat'])) ? $param['notif_repeat'] : '';
+			$this->notif_loop = (isset($param['notif_loop'])) ? $param['notif_loop'] : '';
+			$this->read_flag = (isset($param['read_flag'])) ? $param['read_flag'] : '';
+			$this->active_flag = (isset($param['active_flag'])) ? $param['active_flag'] : '';
+			$this->publish_date = (isset($param['publish_date'])) ? $param['publish_date'] : '';
+			$this->memberID = (isset($param['memberID'])) ? $param['memberID'] : '';
+		}
+		
+		public function createNotification(){
+			$createNotif = "INSERT INTO `notif` (`notif_title`, `notif_msg`, `notif_url`, `notif_time`, `memberID`) VALUES ('" . $this->getNotif_title() . "','" . $this->getNotif_msg() . "','" . $this->getNotif_url() . "','" . $this->getNotif_time() . "','" . $this->getMemberID() . "')";
+			sql($createNotif, $eo);
+			return true;
+		}
+
+		public function getUserNotification(){
+			return $this;
+		}
+
+		/**
+		 * Get the value of id
+		 */ 
+		public function getId()
+		{
+				return $this->id;
+		}
+
+		/**
+		 * Set the value of id
+		 *
+		 * @return  self
+		 */ 
+		public function setId($id)
+		{
+				$this->id = $id;
+
+				return $this;
+		}
+
+		/**
+		 * Get the value of notif_title
+		 */ 
+		public function getNotif_title()
+		{
+				return $this->notif_title;
+		}
+
+		/**
+		 * Set the value of notif_title
+		 *
+		 * @return  self
+		 */ 
+		public function setNotif_title($notif_title)
+		{
+				$this->notif_title = $notif_title;
+
+				return $this;
+		}
+
+		/**
+		 * Get the value of notif_msg
+		 */ 
+		public function getNotif_msg()
+		{
+				return $this->notif_msg;
+		}
+
+		/**
+		 * Set the value of notif_msg
+		 *
+		 * @return  self
+		 */ 
+		public function setNotif_msg($notif_msg)
+		{
+				$this->notif_msg = $notif_msg;
+
+				return $this;
+		}
+
+		/**
+		 * Get the value of notif_url
+		 */ 
+		public function getNotif_url()
+		{
+				return $this->notif_url;
+		}
+
+		/**
+		 * Set the value of notif_url
+		 *
+		 * @return  self
+		 */ 
+		public function setNotif_url($notif_url)
+		{
+				$this->notif_url = $notif_url;
+
+				return $this;
+		}
+
+		/**
+		 * Get the value of notif_time
+		 */ 
+		public function getNotif_time()
+		{
+				return $this->notif_time;
+		}
+
+		/**
+		 * Set the value of notif_time
+		 *
+		 * @return  self
+		 */ 
+		public function setNotif_time($notif_time)
+		{
+				$this->notif_time = $notif_time;
+
+				return $this;
+		}
+
+		/**
+		 * Get the value of notif_repeat
+		 */ 
+		public function getNotif_repeat()
+		{
+				return $this->notif_repeat;
+		}
+
+		/**
+		 * Set the value of notif_repeat
+		 *
+		 * @return  self
+		 */ 
+		public function setNotif_repeat($notif_repeat)
+		{
+				$this->notif_repeat = $notif_repeat;
+
+				return $this;
+		}
+
+		/**
+		 * Get the value of notif_loop
+		 */ 
+		public function getNotif_loop()
+		{
+				return $this->notif_loop;
+		}
+
+		/**
+		 * Set the value of notif_loop
+		 *
+		 * @return  self
+		 */ 
+		public function setNotif_loop($notif_loop)
+		{
+				$this->notif_loop = $notif_loop;
+
+				return $this;
+		}
+
+		/**
+		 * Get the value of read_flag
+		 */ 
+		public function getRead_flag()
+		{
+				return $this->read_flag;
+		}
+
+		/**
+		 * Set the value of read_flag
+		 *
+		 * @return  self
+		 */ 
+		public function setRead_flag($read_flag)
+		{
+				$this->read_flag = $read_flag;
+
+				return $this;
+		}
+
+		/**
+		 * Get the value of active_flag
+		 */ 
+		public function getActive_flag()
+		{
+				return $this->active_flag;
+		}
+
+		/**
+		 * Set the value of active_flag
+		 *
+		 * @return  self
+		 */ 
+		public function setActive_flag($active_flag)
+		{
+				$this->active_flag = $active_flag;
+
+				return $this;
+		}
+
+		/**
+		 * Get the value of publish_date
+		 */ 
+		public function getPublish_date()
+		{
+				return $this->publish_date;
+		}
+
+		/**
+		 * Set the value of publish_date
+		 *
+		 * @return  self
+		 */ 
+		public function setPublish_date($publish_date)
+		{
+				$this->publish_date = $publish_date;
+
+				return $this;
+		}
+
+		/**
+		 * Get the value of memberID
+		 */ 
+		public function getMemberID()
+		{
+				return $this->memberID;
+		}
+
+		/**
+		 * Set the value of memberID
+		 *
+		 * @return  self
+		 */ 
+		public function setMemberID($memberID)
+		{
+				$this->memberID = $memberID;
+
+				return $this;
+		}
+	}
+	#########################################################
