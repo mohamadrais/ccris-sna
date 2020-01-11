@@ -149,8 +149,126 @@
 		max-height: 32px;
 	}
 </style>
+
 <div class="page-wrapper ps ps--theme_default">
 <div class="container-fluid">
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+				<div class="message-box">
+					<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 570px;"><div class="message-widget message-scroll" style="overflow: hidden; width: auto; height: 570px;">
+						<!-- Message -->
+						<a href="#" class="new">
+							<div class="mail-contnet">
+								<h5>Pavan kumar
+									<span class="action-icons notify">
+										<i class="ti-check-box" data-toggle="tooltip" data-placement="bottom" title="Mark as read"></i>
+										<i class="icon-close" data-toggle="tooltip" data-placement="bottom" title="Delete"></i>
+									</span>
+								</h5> 
+								<span class="mail-desc">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been.</span>
+								<span class="time">9:30 AM</span>
+							</div>
+						</a>
+						<!-- Message -->
+						<a href="#">
+							<div class="mail-contnet">
+								<h5>Sonu Nigam
+									<span class="action-icons notify">
+										<i class="ti-check-box" data-toggle="tooltip" data-placement="bottom" title="Mark as read"></i>
+										<i class="icon-close" data-toggle="tooltip" data-placement="bottom" title="Delete"></i>
+									</span>
+								</h5> 
+								<span class="mail-desc">I've sung a song! See you at</span> 
+								<span class="time">9:10 AM</span> 
+							</div>
+						</a>
+						<!-- Message -->
+						<a href="#">
+							<div class="mail-contnet">
+								<h5>Arijit Sinh
+									<span class="action-icons notify">
+										<i class="ti-check-box" data-toggle="tooltip" data-placement="bottom" title="Mark as read"></i>
+										<i class="icon-close" data-toggle="tooltip" data-placement="bottom" title="Delete"></i>
+									</span>
+								</h5> 
+								<span class="mail-desc">Simply dummy text of the printing and typesetting industry.</span> 
+								<span class="time">9:08 AM</span> 
+							</div>
+						</a>
+						<!-- Message -->
+						<a href="#">
+							<div class="mail-contnet">
+								<h5>Pavan kumar
+									<span class="action-icons notify">
+										<i class="ti-check-box" data-toggle="tooltip" data-placement="bottom" title="Mark as read"></i>
+										<i class="icon-close" data-toggle="tooltip" data-placement="bottom" title="Delete"></i>
+									</span>
+								</h5> 
+								<span class="mail-desc">Just see the my admin!</span> 
+								<span class="time">9:02 AM</span> 
+							</div>
+						</a>
+						<!-- Message -->
+						<a href="#">
+							<div class="mail-contnet">
+								<h5>Pavan kumar
+									<span class="action-icons notify">
+										<i class="ti-check-box" data-toggle="tooltip" data-placement="bottom" title="Mark as read"></i>
+										<i class="icon-close" data-toggle="tooltip" data-placement="bottom" title="Delete"></i>
+									</span>
+								</h5> 
+								<span class="mail-desc">Welcome to the Elite Admin</span> 
+								<span class="time">9:30 AM</span> 
+							</div>
+						</a>
+						<!-- Message -->
+						<a href="#">
+							<div class="mail-contnet">
+								<h5>Sonu Nigam
+									<span class="action-icons notify">
+										<i class="ti-check-box" data-toggle="tooltip" data-placement="bottom" title="Mark as read"></i>
+										<i class="icon-close" data-toggle="tooltip" data-placement="bottom" title="Delete"></i>
+									</span>
+								</h5> 
+								<span class="mail-desc">I've sung a song! See you at</span> 
+								<span class="time">9:10 AM</span> 
+							</div>
+						</a>
+						<!-- Message -->
+						<a href="#">
+							<div class="mail-contnet">
+								<h5>Arijit Sinh
+									<span class="action-icons notify">
+										<i class="ti-check-box" data-toggle="tooltip" data-placement="bottom" title="Mark as read"></i>
+										<i class="icon-close" data-toggle="tooltip" data-placement="bottom" title="Delete"></i>
+									</span>
+								</h5> 
+								<span class="mail-desc">I am a singer!</span> 
+								<span class="time">9:08 AM</span> 
+							</div>
+						</a>
+						<!-- Message -->
+						<a href="#">
+							<div class="mail-contnet">
+								<h5>Pavan kumar
+									<span class="action-icons notify">
+										<i class="ti-check-box" data-toggle="tooltip" data-placement="bottom" title="Mark as read"></i>
+										<i class="icon-close" data-toggle="tooltip" data-placement="bottom" title="Delete"></i>
+									</span>
+								</h5> 
+								<span class="mail-desc">Just see the my admin!</span> 
+								<span class="time">9:02 AM</span> 
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<form method="get" action="search.php" id="searchPageForm">
 		<input type="hidden" name="page" value="1">
 		<input type="hidden" id="dateStart" name="dateStart" value="">
@@ -434,5 +552,4 @@
 		
 	})
 </script>
-
 <?php include_once("$currDir/footer.php"); ?>

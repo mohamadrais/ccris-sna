@@ -5834,7 +5834,19 @@ visibility: hidden; }
   color: #90a4ae; }
   .comment-footer .action-icons a:hover, .comment-footer .action-icons a.active {
     color: #009efb; }
-
+.action-icons.notify{
+  float: right;
+  margin-top: 10px;
+}
+.action-icons i{
+  font-size: 1.5rem;
+  color: #90a4ae;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+.action-icons i:hover{
+  color: #113d6a;
+}
 /*******************/
 /*To do widgets*/
 /*******************/
@@ -5964,7 +5976,7 @@ position: relative; }
       background: #ffbc34; }
   .message-box .message-widget a .mail-contnet {
     display: inline-block;
-    width: 71%;
+    width: 100%;
     vertical-align: middle; }
     .message-box .message-widget a .mail-contnet h5 {
       margin: 5px 0px 0; }
@@ -5979,6 +5991,10 @@ position: relative; }
       color: #54667a;
       white-space: nowrap; }
 
+.message-box div div a.new{
+  background: #d8e3ef;
+  font-weight: bold;
+}
 /*******************/
 /*Calendar widget*/
 /*******************/
@@ -7366,4 +7382,9 @@ select.form-control:not([size]):not([multiple]){
 
 .successSearch {
   border: 1px solid green
+}
+.search-btn{
+  position: absolute !important;
+  right: 0;
+  z-index: 3 !important;
 }

@@ -151,6 +151,9 @@
 </style>
 <div class="page-wrapper ps ps--theme_default">
 <div class="container-fluid">
+	<div class="card">
+		<div class="card-body">
+			
 	<form method="get" action="search.php" id="searchPageForm">
 		<input type="hidden" name="page" value="1">
 		<input type="hidden" id="dateStart" name="dateStart" value="">
@@ -200,18 +203,28 @@
 				?>
 			</div>
 		</div>
-		<div class="form-row">
-			<div class="form-group col-lg-10 col-md-10 pr-2">
+			<div class="input-group">
 				<label for="searchText" class="control-label"><?php echo $Translation['search for'] ; ?></label> &nbsp;
+				<input type="text" class="form-control" placeholder="Search for..." value="<?php echo $searchText ?>">
+				<div class="input-group-append">
+					<button class="btn btn-primary search-btn" type="button" id="submitSearch">Go!</button>
+				</div>
+			</div>
+		<!-- <div class="form-row">
+			<div class="form-group col-lg-10 col-md-10 pr-2">
 				<input type="text" id="searchText" name="searchText" value="<?php echo $searchText ?>" >
 			</div>
 			<div class="form-group col-lg-2 col-md-2 pr-2 text-center">
-				<br><br>
 				<button id="submitSearch" type="submit" class="btn btn-secondary"><i class="glyphicon glyphicon-search"></i> <?php echo $Translation['find'] ; ?></button>&nbsp;&nbsp;&nbsp;
 				<button type="button" id="reset-search" class="btn btn-warning"><i class="glyphicon glyphicon-remove"></i> <?php echo $Translation['reset'] ; ?></button>
 			</div>
-		</div>
+		</div> -->
 	</form>
+		</div>
+	</div>
+	<div class="card">
+		<div class="card-body">
+			
 <table class="table table-striped table-condensed table-hover" >
 	<thead>
 		<tr>
@@ -221,6 +234,8 @@
 		</tr>
 	</thead>
 </table>
+		</div>
+	</div>
 		<?php 
 	$maxIndexArr = array();
 	if(isset($sqlSet)){
