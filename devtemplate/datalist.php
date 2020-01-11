@@ -228,10 +228,11 @@ class DataList{
 		}
 
 		$this->HTML .= '<div class="page-wrapper ps ps--theme_default"><div class="container-fluid"><div class="row"><div class="col-xs-12">';
+		$this->HTML .= '<div class="card"><div class="card-body">';
 		$this->HTML .= '<h3>';
 		$this->HTML .= '<a style="text-decoration: none; color: inherit;" href="' . $this->TableName . '_view.php"><img src="' . $this->TableIcon . '"> ' . $this->TableTitle . '</a>';
 		$this->HTML .= '</h3>';
-		$this->HTML .= '<div class="card"><div class="card-body">';
+		$this->HTML .= '<hr>';
 		$this->HTML .= '<form ' . (datalist_image_uploads_exist ? 'enctype="multipart/form-data" ' : '') . 'method="post" name="myform" action="' . $this->ScriptFileName . '">';
 		if($Embedded) $this->HTML .= '<input name="Embedded" value="1" type="hidden">';
 		if($AutoClose) $this->HTML .= '<input name="AutoClose" value="1" type="hidden">';
