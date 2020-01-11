@@ -73,7 +73,7 @@ $(function () {
                 }
             }
         }
-        , color: ["#edf1f5", "#009efb", "#55ce63", "#745af2"]
+        , color: ["#edf1f5", "#ad3a62", "#55ce63", "#745af2"]
         , calculable: false
         , series: [
             {

@@ -59,7 +59,7 @@ a.link {
 }
 a.link:hover,
 a.link:focus {
-    color: #009efb
+    color: #ad3a62
 }
 .img-responsive {
     width: 100%;
@@ -132,7 +132,7 @@ html body .db {
 }
 blockquote {
     border: 1px solid rgba(120, 130, 140, 0.13);
-    border-left: 5px solid #009efb;
+    border-left: 5px solid #ad3a62;
     padding: 15px
 }
 .clear {
@@ -370,7 +370,7 @@ html body .text-muted {
     background-color: #55ce63 
 }
 .bg-info {
-    background-color: #009efb 
+    background-color: #ad3a62 
 }
 .bg-warning {
     background-color: #ffbc34 
@@ -382,7 +382,7 @@ html body .text-muted {
     background-color: #01c0c8
 }
 .bg-theme {
-    background-color: #009efb
+    background-color: #ad3a62
 }
 .bg-inverse {
     background-color: #2f3d4a 
@@ -426,13 +426,13 @@ html body .text-muted {
     font-weight: 400;
     text-align: center;
     border-radius: 100%;
-    background: #009efb
+    background: #ad3a62
 }
 .round img {
     border-radius: 100%
 }
 .round.round-info {
-    background: #009efb
+    background: #ad3a62
 }
 .round.round-warning {
     background: #ffbc34
@@ -464,7 +464,7 @@ html body .text-muted {
     background-color: #55ce63
 }
 .label-info {
-    background-color: #009efb
+    background-color: #ad3a62
 }
 .label-warning {
     background-color: #ffbc34
@@ -499,7 +499,7 @@ html body .text-muted {
 }
 .label-light-info {
     background-color: #cfecfe;
-    color: #009efb
+    color: #ad3a62
 }
 .label-light-warning {
     background-color: #fff8ec;
@@ -560,8 +560,8 @@ html body .text-muted {
 .pagination>.active>span:hover,
 .pagination>.active>a:focus,
 .pagination>.active>span:focus {
-    background-color: #009efb;
-    border-color: #009efb
+    background-color: #ad3a62;
+    border-color: #ad3a62
 }
 .pager li>a,
 .pager li>span {
@@ -715,7 +715,7 @@ html body .waves-notransition {
     background-color: #55ce63
 }
 .badge-info {
-    background-color: #009efb
+    background-color: #ad3a62
 }
 .badge-primary {
     background-color: #7460ee
@@ -751,7 +751,7 @@ html body .waves-notransition {
     color: #55ce63 
 }
 .text-info {
-    color: #009efb 
+    color: #ad3a62 
 }
 .text-inverse {
     color: #2f3d4a
@@ -772,7 +772,7 @@ html body .waves-notransition {
     color: #54667a
 }
 .text-themecolor {
-    color: #009efb
+    color: #ad3a62
 }
 .btn {
     padding: 7px 12px;
@@ -848,16 +848,16 @@ html body .waves-notransition {
 }
 .btn-custom,
 .btn-custom.disabled {
-    background: #009efb;
-    border: 1px solid #009efb;
+    background: #ad3a62;
+    border: 1px solid #ad3a62;
     color: #fff
 }
 .btn-custom:hover,
 .btn-custom.disabled:hover {
-    background: #009efb;
+    background: #ad3a62;
     opacity: 0.8;
     color: #fff;
-    border: 1px solid #009efb
+    border: 1px solid #ad3a62
 }
 .btn-primary,
 .btn-primary.disabled {
@@ -878,15 +878,15 @@ html body .waves-notransition {
 }
 .btn-themecolor,
 .btn-themecolor.disabled {
-    background: #009efb;
+    background: #ad3a62;
     color: #fff;
-    border: 1px solid #009efb
+    border: 1px solid #ad3a62
 }
 .btn-themecolor:hover,
 .btn-themecolor.disabled:hover {
-    background: #009efb;
+    background: #ad3a62;
     opacity: 0.7;
-    border: 1px solid #009efb
+    border: 1px solid #ad3a62
 }
 .btn-themecolor.active,
 .btn-themecolor:focus,
@@ -913,14 +913,14 @@ html body .waves-notransition {
 }
 .btn-info,
 .btn-info.disabled {
-    background: #009efb;
-    border: 1px solid #009efb
+    background: #ad3a62;
+    border: 1px solid #ad3a62
 }
 .btn-info:hover,
 .btn-info.disabled:hover {
-    background: #009efb;
+    background: #ad3a62;
     opacity: 0.7;
-    border: 1px solid #009efb
+    border: 1px solid #ad3a62
 }
 .btn-info.active,
 .btn-info:focus,
@@ -1033,15 +1033,15 @@ html body .waves-notransition {
     color: #fff
 }
 .btn-outline-info {
-    color: #009efb;
+    color: #ad3a62;
     background-color: transparent;
-    border-color: #009efb
+    border-color: #ad3a62
 }
 .btn-outline-info:hover,
 .btn-outline-info:focus,
 .btn-outline-info.focus {
-    background: #009efb;
-    border-color: #009efb;
+    background: #ad3a62;
+    border-color: #ad3a62;
     color: #fff
 }
 .btn-outline-warning {
@@ -1410,8 +1410,8 @@ html body .waves-notransition {
     color: #fff
 }
 .checkbox-info input[type="checkbox"]:checked+label::before {
-    background-color: #009efb;
-    border-color: #009efb
+    background-color: #ad3a62;
+    border-color: #ad3a62
 }
 .checkbox-info input[type="checkbox"]:checked+label::after {
     color: #fff
@@ -1543,13 +1543,13 @@ html body .waves-notransition {
     background-color: #f62d51
 }
 .radio-info input[type="radio"]+label::after {
-    background-color: #009efb
+    background-color: #ad3a62
 }
 .radio-info input[type="radio"]:checked+label::before {
-    border-color: #009efb
+    border-color: #ad3a62
 }
 .radio-info input[type="radio"]:checked+label::after {
-    background-color: #009efb
+    background-color: #ad3a62
 }
 .radio-warning input[type="radio"]+label::after {
     background-color: #ffbc34
@@ -1652,7 +1652,7 @@ ul.list-style-none li a {
     text-decoration: none
 }
 ul.list-style-none li a:hover {
-    color: #009efb
+    color: #ad3a62
 }
 .dropdown-item {
     padding: 8px 1rem;
@@ -1890,7 +1890,7 @@ form label {
 }
 .topbar ul.dropdown-user li a:hover {
     background: #f2f4f8;
-    color: #009efb;
+    color: #ad3a62;
     text-decoration: none
 }
 .mini-sidebar .top-navbar .navbar-header {
@@ -1982,7 +1982,7 @@ form label {
     color: #fff;
     text-transform: uppercase;
     font-size: 15px;
-    background: #009efb
+    background: #ad3a62
 }
 .right-sidebar .rpanel-title span {
     float: right;
@@ -2068,7 +2068,7 @@ ul#themecolors li a.working:before {
     background: #f62d51
 }
 .blue-theme {
-    background: #009efb
+    background: #ad3a62
 }
 .purple-theme {
     background: #7460ee
@@ -2096,9 +2096,9 @@ ul#themecolors li a.working:before {
 }
 .blue-dark-theme {
     background: #263238;
-    background: -moz-linear-gradient(left, #263238 0%, #263238 23%, #009efb 23%, #009efb 99%);
-    background: -webkit-linear-gradient(left, #263238 0%, #263238 23%, #009efb 23%, #009efb 99%);
-    background: linear-gradient(to right, #263238 0%, #263238 23%, #009efb 23%, #009efb 99%)
+    background: -moz-linear-gradient(left, #263238 0%, #263238 23%, #ad3a62 23%, #ad3a62 99%);
+    background: -webkit-linear-gradient(left, #263238 0%, #263238 23%, #ad3a62 23%, #ad3a62 99%);
+    background: linear-gradient(to right, #263238 0%, #263238 23%, #ad3a62 23%, #ad3a62 99%)
 }
 .purple-dark-theme {
     background: #263238;
@@ -2159,8 +2159,8 @@ ul#themecolors li a.working:before {
     border-color: #ffbc34
 }
 .card-info {
-    background: #009efb;
-    border-color: #009efb
+    background: #ad3a62;
+    border-color: #ad3a62
 }
 .card-primary {
     background: #7460ee;
@@ -2212,19 +2212,19 @@ ul#themecolors li a.working:before {
     transition: height .08s ease
 }
 .card-info {
-    background: #009efb;
-    border-color: #009efb
+    background: #ad3a62;
+    border-color: #ad3a62
 }
 .card-primary {
     background: #7460ee;
     border-color: #7460ee
 }
 .card-outline-info {
-    border-color: #009efb
+    border-color: #ad3a62
 }
 .card-outline-info .card-header {
-    background: #009efb;
-    border-color: #009efb
+    background: #ad3a62;
+    border-color: #ad3a62
 }
 .card-outline-inverse {
     border-color: #2f3d4a
@@ -2289,7 +2289,7 @@ ul.list-icons li a {
     color: #54667a
 }
 ul.list-icons li a:hover {
-    color: #009efb
+    color: #ad3a62
 }
 ul.list-icons li i {
     font-size: 13px;
@@ -2389,13 +2389,13 @@ html body .flotTip {
 .total-revenue .ct-series-a .ct-line,
 .income-year .ct-series-a .ct-line,
 .total-revenue2 .ct-series-a .ct-line {
-    stroke: #009efb;
+    stroke: #ad3a62;
     stroke-width: 2px
 }
 .total-revenue .ct-series-a .ct-point,
 .income-year .ct-series-a .ct-point,
 .total-revenue2 .ct-series-a .ct-point {
-    stroke: #009efb;
+    stroke: #ad3a62;
     stroke-width: 7px
 }
 .total-revenue .ct-series-b .ct-line,
@@ -2419,7 +2419,7 @@ html body .flotTip {
     fill: transparent
 }
 .income-year .ct-series-a .ct-bar {
-    stroke: #009efb
+    stroke: #ad3a62
 }
 .income-year .ct-series-b .ct-bar {
     stroke: #55ce63
@@ -2458,7 +2458,7 @@ html body .flotTip {
 }
 .stylish-table tbody tr:hover,
 .stylish-table tbody tr.active {
-    border-left: 4px solid #009efb
+    border-left: 4px solid #ad3a62
 }
 .stylish-table tbody td {
     vertical-align: middle
@@ -2503,7 +2503,7 @@ html body .flotTip {
     stroke: #f2f4f8
 }
 .ct-chart .ct-series-c .ct-slice-donut {
-    stroke: #009efb
+    stroke: #ad3a62
 }
 #visitfromworld path.jvectormap-region.jvectormap-element {
     stroke-width: 1px;
@@ -2525,11 +2525,11 @@ html body .flotTip {
     position: relative
 }
 .total-revenue4 .ct-series-a .ct-line {
-    stroke: #009efb;
+    stroke: #ad3a62;
     stroke-width: 1px
 }
 .total-revenue4 .ct-series-a .ct-point {
-    stroke: #009efb;
+    stroke: #ad3a62;
     stroke-width: 5px
 }
 .total-revenue4 .ct-series-b .ct-line {
@@ -2541,7 +2541,7 @@ html body .flotTip {
     stroke-width: 5px
 }
 .total-revenue4 .ct-series-a .ct-area {
-    fill: #009efb;
+    fill: #ad3a62;
     fill-opacity: 0.2
 }
 .total-revenue4 .ct-series-b .ct-area {
@@ -2642,12 +2642,12 @@ html body .flotTip {
 }
 .profile-tab li a.nav-link.active,
 .customtab li a.nav-link.active {
-    border-bottom: 2px solid #009efb;
-    color: #009efb
+    border-bottom: 2px solid #ad3a62;
+    color: #ad3a62
 }
 .profile-tab li a.nav-link:hover,
 .customtab li a.nav-link:hover {
-    color: #009efb
+    color: #ad3a62
 }
 .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
     width: 100%
@@ -2662,7 +2662,7 @@ html body .flotTip {
     white-space: nowrap
 }
 .bootstrap-select .dropdown-menu li a:hover {
-    color: #009efb;
+    color: #ad3a62;
     background: #f2f4f8
 }
 .bootstrap-touchspin .input-group-btn-vertical>.btn {
@@ -2682,7 +2682,7 @@ html body .flotTip {
 .form-material .form-control,
 .form-material .form-control.focus,
 .form-material .form-control:focus {
-    background-image: linear-gradient(#009efb, #009efb), linear-gradient(#d9d9d9, #d9d9d9);
+    background-image: linear-gradient(#ad3a62, #ad3a62), linear-gradient(#d9d9d9, #d9d9d9);
     border: 0 none;
     border-radius: 0;
     box-shadow: none;
@@ -2704,7 +2704,7 @@ html body .flotTip {
     border-bottom: 1px solid #d9d9d9
 }
 .form-control-line .form-control:focus {
-    border-bottom: 1px solid #009efb
+    border-bottom: 1px solid #ad3a62
 }
 .floating-labels .form-group {
     position: relative
@@ -2759,7 +2759,7 @@ html body .flotTip {
     width: 0;
     bottom: 1px;
     position: absolute;
-    background: #009efb;
+    background: #ad3a62;
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all
@@ -2895,13 +2895,13 @@ table th {
 }
 .daterangepicker td.active,
 .daterangepicker td.active:hover {
-    background-color: #009efb
+    background-color: #ad3a62
 }
 .datepicker table tr td.today,
 .datepicker table tr td.today.disabled,
 .datepicker table tr td.today.disabled:hover,
 .datepicker table tr td.today:hover {
-    background: #009efb;
+    background: #ad3a62;
     color: #fff
 }
 .datepicker td,
@@ -2939,7 +2939,7 @@ table th {
     background: #ffbc34
 }
 .icolors>li.info {
-    background: #009efb
+    background: #ad3a62
 }
 .icolors>li.green {
     background: #55ce63
@@ -2994,7 +2994,7 @@ table th {
     color: #fff
 }
 .color-table.info-table thead th {
-    background-color: #009efb;
+    background-color: #ad3a62;
     color: #fff
 }
 .color-table.warning-table thead th {
@@ -3040,10 +3040,10 @@ table th {
     color: #fff
 }
 .color-bordered-table.info-bordered-table {
-    border: 2px solid #009efb
+    border: 2px solid #ad3a62
 }
 .color-bordered-table.info-bordered-table thead th {
-    background-color: #009efb;
+    background-color: #ad3a62;
     color: #fff
 }
 .color-bordered-table.warning-bordered-table {
@@ -3129,7 +3129,7 @@ table th {
     background-color: #cfecfe
 }
 .full-color-table.full-info-table thead th {
-    background-color: #009efb;
+    background-color: #ad3a62;
     border: 0;
     color: #fff
 }
@@ -3137,7 +3137,7 @@ table th {
     border: 0
 }
 .full-color-table.full-info-table tr:hover {
-    background-color: #009efb;
+    background-color: #ad3a62;
     color: #fff
 }
 .full-color-table.full-warning-table {
@@ -3253,7 +3253,7 @@ table th {
 .dt-buttons .dt-button {
     padding: 5px 15px;
     border-radius: 4px;
-    background: #009efb;
+    background: #ad3a62;
     color: #fff;
     margin-right: 3px
 }
@@ -3318,8 +3318,8 @@ table.dataTable thead .sorting:after {
 .dataTables_wrapper .dataTables_paginate .paginate_button.current,
 .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
     color: #fff;
-    border: 1px solid #009efb;
-    background-color: #009efb
+    border: 1px solid #ad3a62;
+    background-color: #ad3a62
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
@@ -3362,7 +3362,7 @@ table.dataTable thead .sorting:after {
 }
 .paging_simple_numbers .pagination .paginate_button.active a,
 .paging_simple_numbers .pagination .paginate_button:hover a {
-    background: #009efb;
+    background: #ad3a62;
     color: #fff
 }
 .footable .pagination {
@@ -3379,7 +3379,7 @@ table.dataTable thead .sorting:after {
 }
 .footable .pagination li a:hover,
 .footable .pagination li a.active {
-    background: #009efb;
+    background: #ad3a62;
     color: #fff;
     border-radius: 4px
 }
@@ -3458,7 +3458,7 @@ table.dataTable thead .sorting:after {
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info,
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info {
     color: #fff;
-    background: #009efb
+    background: #ad3a62
 }
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success,
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success {
@@ -3548,7 +3548,7 @@ table.dataTable thead .sorting:after {
     right: 0px
 }
 .dp-selected[style] {
-    background-color: #009efb 
+    background-color: #ad3a62 
 }
 .datepaginator-sm .pagination li a,
 .datepaginator-lg .pagination li a,
@@ -3596,7 +3596,7 @@ table.dataTable thead .sorting:after {
 .tabs-vertical li .nav-link.active,
 .tabs-vertical li .nav-link:hover,
 .tabs-vertical li .nav-link.active:focus {
-    background: #009efb;
+    background: #ad3a62;
     border: 0px;
     color: #fff
 }
@@ -3605,9 +3605,9 @@ table.dataTable thead .sorting:after {
 .customvtab .tabs-vertical li .nav-link:focus {
     background: #fff;
     border: 0px;
-    border-right: 2px solid #009efb;
+    border-right: 2px solid #ad3a62;
     margin-right: -1px;
-    color: #009efb
+    color: #ad3a62
 }
 .tabcontent-border {
     border: 1px solid #ddd;
@@ -3619,12 +3619,12 @@ table.dataTable thead .sorting:after {
     color: #54667a
 }
 .customtab2 li a.nav-link.active {
-    background: #009efb;
+    background: #ad3a62;
     color: #fff
 }
 .customtab2 li a.nav-link:hover {
     color: #fff;
-    background: #009efb
+    background: #ad3a62
 }
 .progress.active .progress-bar,
 .progress-bar.active {
@@ -3668,7 +3668,7 @@ table.dataTable thead .sorting:after {
     }
 }
 .jq-icon-info {
-    background-color: #009efb;
+    background-color: #ad3a62;
     color: #fff
 }
 .jq-icon-success {
@@ -3691,8 +3691,8 @@ table.dataTable thead .sorting:after {
 }
 .list-group-item.active,
 .list-group .list-group-item.active:hover {
-    background: #009efb;
-    border-color: #009efb
+    background: #ad3a62;
+    border-color: #ad3a62
 }
 .list-group-item.disabled {
     color: #90a4ae;
@@ -3723,7 +3723,7 @@ table.dataTable thead .sorting:after {
     color: #54667a
 }
 .el-element-overlay .el-card-item .el-card-content a:hover {
-    color: #009efb
+    color: #ad3a62
 }
 .el-element-overlay .el-card-item .el-overlay-1 {
     width: 100%;
@@ -3775,8 +3775,8 @@ table.dataTable thead .sorting:after {
     padding: 12px 15px 10px
 }
 .el-element-overlay .el-card-item .el-overlay-1 .el-info>li a:hover {
-    background: #009efb;
-    border-color: #009efb
+    background: #ad3a62;
+    border-color: #ad3a62
 }
 .el-element-overlay .el-card-item .el-overlay {
     width: 100%;
@@ -3923,7 +3923,7 @@ table.dataTable thead .sorting:after {
     background-color: #f62d51
 }
 .timeline-badge.info {
-    background-color: #009efb
+    background-color: #ad3a62
 }
 .timeline-title {
     margin-top: 0;
@@ -3939,14 +3939,14 @@ table.dataTable thead .sorting:after {
 }
 .cd-horizontal-timeline .events a {
     padding-bottom: 6px;
-    color: #009efb
+    color: #ad3a62
 }
 .cd-horizontal-timeline .filling-line,
 .cd-horizontal-timeline .events a.selected::after {
-    background: #009efb
+    background: #ad3a62
 }
 .cd-horizontal-timeline .events a.selected::after {
-    border-color: #009efb
+    border-color: #ad3a62
 }
 .myadmin-dd .dd-list .dd-item .dd-handle {
     background: #fff;
@@ -4105,8 +4105,8 @@ table.dataTable thead .sorting:after {
     height: 0;
     content: '';
     border: 30px solid transparent;
-    border-top-color: #009efb;
-    border-left-color: #009efb
+    border-top-color: #ad3a62;
+    border-left-color: #ad3a62
 }
 .ribbon-corner.ribbon-right:before {
     right: 0;
@@ -4131,15 +4131,15 @@ table.dataTable thead .sorting:after {
     padding: 0 10px 6px 10px
 }
 .ribbon-custom {
-    background: #009efb
+    background: #ad3a62
 }
 .ribbon-bookmark.ribbon-right.ribbon-custom:before {
-    border-right-color: #009efb;
+    border-right-color: #ad3a62;
     border-left-color: transparent
 }
 .ribbon-bookmark.ribbon-vertical-l.ribbon-custom:before,
 .ribbon-bookmark.ribbon-vertical-r.ribbon-custom:before {
-    border-right-color: #009efb;
+    border-right-color: #ad3a62;
     border-bottom-color: transparent
 }
 .ribbon-primary {
@@ -4199,32 +4199,32 @@ table.dataTable thead .sorting:after {
     border-bottom-color: #55ce63
 }
 .ribbon-info {
-    background: #009efb
+    background: #ad3a62
 }
 .ribbon-bookmark.ribbon-info:before {
-    border-color: #009efb;
+    border-color: #ad3a62;
     border-right-color: transparent
 }
 .ribbon-bookmark.ribbon-right.ribbon-info:before {
-    border-right-color: #009efb;
+    border-right-color: #ad3a62;
     border-left-color: transparent
 }
 .ribbon-bookmark.ribbon-vertical-l.ribbon-info:before,
 .ribbon-bookmark.ribbon-vertical-r.ribbon-info:before {
-    border-right-color: #009efb;
+    border-right-color: #ad3a62;
     border-bottom-color: transparent
 }
 .ribbon-info.ribbon-corner:before {
-    border-top-color: #009efb;
-    border-left-color: #009efb
+    border-top-color: #ad3a62;
+    border-left-color: #ad3a62
 }
 .ribbon-info.ribbon-corner.ribbon-right:before {
-    border-right-color: #009efb;
+    border-right-color: #ad3a62;
     border-left-color: transparent
 }
 .ribbon-info.ribbon-corner.ribbon-bottom:before {
     border-top-color: transparent;
-    border-bottom-color: #009efb
+    border-bottom-color: #ad3a62
 }
 .ribbon-warning {
     background: #ffbc34
@@ -4311,8 +4311,8 @@ table.dataTable thead .sorting:after {
     border-bottom-color: #263238
 }
 #idletimeout {
-    background: #009efb;
-    border: 3px solid #009efb;
+    background: #ad3a62;
+    border: 3px solid #ad3a62;
     color: #fff;
     font-family: arial, sans-serif;
     text-align: center;
@@ -4463,7 +4463,7 @@ table.dataTable thead .sorting:after {
     bottom: 100%;
     border-radius: 50%;
     text-align: center;
-    background: #009efb;
+    background: #ad3a62;
     color: #fff;
     opacity: 0;
     margin-bottom: 20px;
@@ -4589,7 +4589,7 @@ table.dataTable thead .sorting:after {
     display: block
 }
 .tooltip-text3 {
-    border-bottom: 10px solid #009efb;
+    border-bottom: 10px solid #ad3a62;
     overflow: hidden;
     transform: scale3d(0, 1, 1);
     transition: transform 0.3s 0.3s
@@ -4610,7 +4610,7 @@ table.dataTable thead .sorting:after {
     position: absolute;
     pointer-events: none;
     border-color: transparent;
-    border-top-color: #009efb;
+    border-top-color: #ad3a62;
     border-width: 10px;
     margin-left: -10px
 }
@@ -4638,7 +4638,7 @@ table.dataTable thead .sorting:after {
 }
 a.mytooltip {
     font-weight: 500;
-    color: #009efb
+    color: #ad3a62
 }
 .tooltip-effect-7 .tooltip-content2 {
     transform: translate3d(0, 10px, 0);
@@ -4746,7 +4746,7 @@ a.mytooltip {
     font-size: 18px
 }
 .search-listing li h3 a {
-    color: #009efb
+    color: #ad3a62
 }
 .search-listing li h3 a:hover {
     text-decoration: underline
@@ -4946,7 +4946,7 @@ a.mytooltip {
 .inbox-panel .list-group .list-group-item.active,
 .inbox-panel .list-group .list-group-item:hover {
     background: #f2f4f8;
-    border-left: 3px solid #009efb
+    border-left: 3px solid #ad3a62
 }
 .inbox-center .unread td {
     font-weight: 400
@@ -5011,7 +5011,7 @@ a.mytooltip {
     color: #54667a
 }
 .list-style-none li a:hover {
-    color: #009efb
+    color: #ad3a62
 }
 .list-style-none li a span {
     float: right
@@ -5057,7 +5057,7 @@ a.mytooltip {
 }
 .sidebar-nav ul li a.active,
 .sidebar-nav ul li a:hover {
-    color: #009efb
+    color: #ad3a62
 }
 .sidebar-nav ul li a.active {
     font-weight: 400;
@@ -5077,14 +5077,14 @@ a.mytooltip {
     display: none
 }
 .sidebar-nav>ul>li.active>a {
-    color: #009efb
+    color: #ad3a62
 }
 .sidebar-nav>ul>li.active>a i {
-    color: #009efb
+    color: #ad3a62
 }
 .sidebar-nav>ul>li>a.active i,
 .sidebar-nav>ul>li>a:hover i {
-    color: #009efb
+    color: #ad3a62
 }
 .sidebar-nav>ul>li>a i {
     width: 27px;
@@ -5100,7 +5100,7 @@ a.mytooltip {
 .sidebar-nav>ul>li>a.active {
     font-weight: 400;
     background: #fff;
-    color: #009efb
+    color: #ad3a62
 }
 @media (min-width: 768px) {
     .sidebar-nav>ul>li {
@@ -5108,7 +5108,7 @@ a.mytooltip {
     }
     .sidebar-nav>ul>li:hover>a,
     .sidebar-nav>ul>li:hover>a i {
-        color: #009efb
+        color: #ad3a62
     }
     .sidebar-nav>ul>li:last-child ul {
         right: 0px
@@ -5322,7 +5322,7 @@ a.mytooltip {
 .city-weather-days li i {
     display: block;
     font-size: 20px;
-    color: #009efb
+    color: #ad3a62
 }
 .city-weather-days li h3 {
     font-weight: 300;
@@ -5338,7 +5338,7 @@ a.mytooltip {
 }
 .comment-widgets .comment-row:hover,
 .comment-widgets .comment-row.active {
-    border-color: #009efb
+    border-color: #ad3a62
 }
 .comment-text {
     padding: 15px 15px 15px 20px
@@ -5361,7 +5361,7 @@ a.mytooltip {
 }
 .comment-footer .action-icons a:hover,
 .comment-footer .action-icons a.active {
-    color: #009efb
+    color: #ad3a62
 }
 .todo-list li {
     border: 0px;
@@ -5633,7 +5633,7 @@ a.mytooltip {
     margin: 1px -1px 0 -1px;
     padding: 5px 5px;
     text-align: center;
-    background: #009efb
+    background: #ad3a62
 }
 .calendar-event {
     cursor: move;
@@ -5643,7 +5643,7 @@ a.mytooltip {
     color: #fff;
     min-width: 140px;
     text-align: center;
-    background: #009efb
+    background: #ad3a62
 }
 .calendar-event a {
     float: right;

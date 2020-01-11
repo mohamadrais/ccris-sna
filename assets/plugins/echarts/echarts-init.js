@@ -20,7 +20,7 @@ option = {
             saveAsImage : {show: true}
         }
     },
-    color: ["#55ce63", "#009efb"],
+    color: ["#55ce63", "#ad3a62"],
     calculable : true,
     xAxis : [
         {
@@ -103,7 +103,7 @@ option = {
             saveAsImage : {show: true}
         }
     },
-    color: ["#55ce63", "#009efb"],
+    color: ["#55ce63", "#ad3a62"],
     calculable : true,
     xAxis : [
         {
@@ -219,7 +219,7 @@ option = {
             saveAsImage : {show: true}
         }
     },
-    color: ["#f62d51", "#dddddd","#ffbc34", "#173C6A","#009efb", "#2f3d4a","#90a4ae", "#55ce63"],
+    color: ["#f62d51", "#dddddd","#ffbc34", "#173C6A","#ad3a62", "#2f3d4a","#90a4ae", "#55ce63"],
     calculable : true,
     series : [
         {
@@ -332,7 +332,7 @@ option = {
             ]
         }
     ],
-    color: ["#55ce63", "#009efb"],
+    color: ["#55ce63", "#ad3a62"],
     calculable : true,
     series : [
         {
@@ -402,7 +402,7 @@ option = {
             saveAsImage : {show: true}
         }
     },
-    color: ["#f62d51", "#009efb", "#55ce63", "#ffbc34", "#2f3d4a"],
+    color: ["#f62d51", "#ad3a62", "#55ce63", "#ffbc34", "#2f3d4a"],
     calculable : true,
     series : [
         {
@@ -478,7 +478,7 @@ option = {
             data:[{value: 50, name: 'Speed'}],
             axisLine: {            // 坐标轴线
                 lineStyle: {       // 属性lineStyle控制线条样式
-                    color: [[0.2, '#55ce63'],[0.8, '#009efb'],[1, '#f62d51']], 
+                    color: [[0.2, '#55ce63'],[0.8, '#ad3a62'],[1, '#f62d51']], 
                     
                 }
             },
@@ -526,7 +526,7 @@ option = {
             splitNumber: 10,       // 分割段数，默认为5
             axisLine: {            // 坐标轴线
                 lineStyle: {       // 属性lineStyle控制线条样式
-                    color: [[0.2, '#55ce63'],[0.8, '#009efb'],[1, '#f62d51']], 
+                    color: [[0.2, '#55ce63'],[0.8, '#ad3a62'],[1, '#f62d51']], 
                     width: 8
                 }
             },

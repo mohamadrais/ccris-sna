@@ -231,11 +231,32 @@ $self_baseurl = _baseurl();
 
 	</head>
 	<body>
-	<div class="container theme-bootstrap theme-3d theme-compact">
-
 		<!-- top navbar -->
-		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<header class="topbar" style="position: fixed; top: 0px; width: 100%;">
+		<nav class="navbar top-navbar navbar-expand-md navbar-light" role="navigation">
+			<!-- ============================================================== -->
+			<!-- Logo -->
+			<!-- ============================================================== -->
 			<div class="navbar-header">
+				<a class="navbar-brand" href="<?php echo PREPEND_PATH; ?>index.php">
+					<!-- Logo icon --><b>
+						<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+						<!-- Dark Logo icon -->
+						<img src="../images/logo/icon.png" alt="homepage" class="icon dark-logo">
+						<!-- Light Logo icon -->
+						<img src="../images/logo/light-icon.png" alt="homepage" class="light-logo">
+					</b>
+					<!--End Logo icon -->
+					<!-- Logo text --><span>
+						<!-- dark Logo text -->
+						<img src="../images/logo/text.png" alt="homepage" class="text dark-logo">
+						<!-- Light Logo text -->    
+						<img src="../images/logo/light-text.png" class="light-logo" alt="homepage"></span> </a>
+			</div>
+			<!-- ============================================================== -->
+			<!-- End Logo -->
+			<!-- ============================================================== -->
+			<!-- <div class="navbar-header">
 
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 					<span class="sr-only"><?php echo $Translation['toggle navigation'];?></span>
@@ -245,71 +266,107 @@ $self_baseurl = _baseurl();
 				</button>
 				
 				<a class="navbar-brand" href="pageHome.php"><span class="text-info"><i class="glyphicon glyphicon-cog"></i> <?php echo $Translation['admin area']; ?></span></a>
-			</div>
+			</div> -->
 
-			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<ul class="nav navbar-nav">
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-globe"></i> <?php echo $Translation['groups']; ?> <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="pageViewGroups.php"><i class="glyphicon menu-item-icon text-info glyphicon-eye-open"></i> <?php echo $Translation['view groups']; ?></a></li>
-							<li><a href="pageEditGroup.php"><i class="glyphicon menu-item-icon text-info glyphicon-plus"></i> <?php echo   $Translation['add group']  ; ?></a></li>
-							<li class="divider"></li>
-							<li><a href="pageEditGroup.php?groupID=<?php echo sqlValue("select groupID from membership_groups where name='" . makeSafe($adminConfig['anonymousGroup']) . "'"); ?>"><i class="glyphicon menu-item-icon text-info glyphicon-user"></i> <?php echo  $Translation['edit anonymous permissions'] ; ?></a></li>
-						</ul>
-					</li>
-
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <?php echo $Translation['members']  ;?> <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="pageViewMembers.php"><i class="glyphicon menu-item-icon text-info glyphicon-eye-open"></i> <?php echo $Translation['view members'] ; ?></a></li>
-							<li><a href="pageEditMember.php"><i class="glyphicon menu-item-icon text-info glyphicon-plus"></i> <?php echo $Translation['add member']  ; ?></a></li>
-							<li class="divider"></li>
-							<li><a href="pageViewRecords.php"><i class="glyphicon menu-item-icon text-info glyphicon-th"></i> <?php echo $Translation["view members' records"]; ?> </a></li>
-						</ul>
-					</li>
-
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> <?php echo $Translation["utilities"] ; ?> <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="pageSettings.php"><i class="glyphicon menu-item-icon text-info glyphicon-cog"></i> <?php echo $Translation["admin settings"]  ; ?></a></li>
-							<li class="divider"></li>
-							<li><a href="pageRebuildThumbnails.php"><i class="glyphicon menu-item-icon text-info glyphicon-picture"></i> <?php echo  $Translation["rebuild thumbnails"]  ; ?></a></li>
-							<li><a href="pageRebuildFields.php"><i class="glyphicon menu-item-icon text-info glyphicon-refresh"></i> <?php echo  $Translation['rebuild fields'] ; ?></a></li>
-							<li><a href="pageUploadCSV.php"><i class="glyphicon menu-item-icon text-info glyphicon-upload"></i> <?php echo $Translation['import CSV'] ; ?></a></li>
-							<li><a href="pageTransferOwnership.php"><i class="glyphicon menu-item-icon text-info glyphicon-random"></i> <?php echo $Translation['batch transfer'] ; ?></a></li>
-							<li><a href="pageMail.php?sendToAll=1"><i class="glyphicon menu-item-icon text-info glyphicon-envelope"></i> <?php echo $Translation['mail all users'] ; ?></a></li>
-							<li><a href="pageBackupRestore.php"><i class="glyphicon menu-item-icon text-info glyphicon-tasks"></i> <?php echo $Translation['database backups'] ; ?></a></li>
-							<li class="divider"></li>
-							<li><a href="https://forums.appgini.com" target="_blank"><i class="glyphicon menu-item-icon text-info glyphicon-new-window"></i> <?php echo $Translation['AppGini forum']; ?></a></li>
-						</ul>
-					</li>
-
-					<?php $plugins = get_plugins(); ?>
-
-					<?php if(count($plugins)){ ?>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-plus"></i> <?php echo $Translation["plugins"] ; ?> <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<?php foreach($plugins as $plugin){ ?>
-									<?php
-										$plugin_icon = '';
-										if($plugin['glyphicon']) $plugin_icon = "<i class=\"glyphicon glyphicon-{$plugin['glyphicon']}\"></i> ";
-										if($plugin['icon']) $plugin_icon = "<img src=\"{$plugin['admin_path']}/{$plugin['icon']}\"> ";
-									?>
-									<li><a target="_blank" href="<?php echo $plugin['admin_path']; ?>"><?php echo $plugin_icon . $plugin['title']; ?></a></li>
-								<?php } ?>
-							</ul>
+		<div class="navbar-collapse">
+			<ul class="navbar-nav mr-auto mt-md-0 "></ul>
+			<ul class="navbar-nav my-lg-0">
+			<div class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:grey !important;"><i class="fa fa-user-circle" style="font-size: 4rem;vertical-align: middle;"></i></a>
+				<div class="dropdown-menu dropdown-menu-right animated flipInY">
+					<ul class="dropdown-user">
+						<li>
+							<div class="dw-user-box">
+								<div class="u-img"><i class="fa fa-user-circle" style="font-size: 5rem;"></i></div>
+								<div class="u-text">
+									<h4><?php echo getLoggedMemberID(); ?></h4>
+									<a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="btn btn-rounded btn-danger btn-sm no-margin">View Profile</a></div>
+							</div>
 						</li>
-					<?php } ?>
-				</ul>
-
-				<div class="navbar-right">
-					<a href="<?php echo PREPEND_PATH; ?>index.php" class="btn btn-success navbar-btn"><?php echo $Translation["user's area"] ; ?></a>
-					<a href="<?php echo PREPEND_PATH; ?>index.php?signOut=1" class="btn btn-warning navbar-btn"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation["sign out"] ; ?></a>
+						<?php if(getLoggedAdmin()){ ?>
+						<li role="separator" class="divider"></li>
+						<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>index.php"><i class="fa fa-cog"></i><?php echo $Translation["user's area"] ; ?></a></li>
+						<?php } ?>
+						<li role="separator" class="divider"></li>
+						<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>../index.php?signOut=1"><i class="fa fa-power-off"></i> <?php echo $Translation['sign out']; ?></a></li>
+					</ul>
 				</div>
 			</div>
+			</ul>
+		</div>
 		</nav>
+	</header>
+
+	<aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+				<nav class="sidebar-nav active" role="navigation">
+					<div class="navbar-header">
+							<ul class="in top-menu" style="display: -webkit-inline-box;">
+								<li class="dropdown">
+									<a href="#" class="topbar dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-globe"></i> <?php echo $Translation['groups']; ?> <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="pageViewGroups.php"><i class="glyphicon menu-item-icon text-info glyphicon-eye-open"></i> <?php echo $Translation['view groups']; ?></a></li>
+										<li><a href="pageEditGroup.php"><i class="glyphicon menu-item-icon text-info glyphicon-plus"></i> <?php echo   $Translation['add group']  ; ?></a></li>
+										<li class="divider"></li>
+										<li><a href="pageEditGroup.php?groupID=<?php echo sqlValue("select groupID from membership_groups where name='" . makeSafe($adminConfig['anonymousGroup']) . "'"); ?>"><i class="glyphicon menu-item-icon text-info glyphicon-user"></i> <?php echo  $Translation['edit anonymous permissions'] ; ?></a></li>
+									</ul>
+								</li>
+
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <?php echo $Translation['members']  ;?> <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="pageViewMembers.php"><i class="glyphicon menu-item-icon text-info glyphicon-eye-open"></i> <?php echo $Translation['view members'] ; ?></a></li>
+										<li><a href="pageEditMember.php"><i class="glyphicon menu-item-icon text-info glyphicon-plus"></i> <?php echo $Translation['add member']  ; ?></a></li>
+										<li class="divider"></li>
+										<li><a href="pageViewRecords.php"><i class="glyphicon menu-item-icon text-info glyphicon-th"></i> <?php echo $Translation["view members' records"]; ?> </a></li>
+									</ul>
+								</li>
+
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> <?php echo $Translation["utilities"] ; ?> <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="pageSettings.php"><i class="glyphicon menu-item-icon text-info glyphicon-cog"></i> <?php echo $Translation["admin settings"]  ; ?></a></li>
+										<li class="divider"></li>
+										<li><a href="pageRebuildThumbnails.php"><i class="glyphicon menu-item-icon text-info glyphicon-picture"></i> <?php echo  $Translation["rebuild thumbnails"]  ; ?></a></li>
+										<li><a href="pageRebuildFields.php"><i class="glyphicon menu-item-icon text-info glyphicon-refresh"></i> <?php echo  $Translation['rebuild fields'] ; ?></a></li>
+										<li><a href="pageUploadCSV.php"><i class="glyphicon menu-item-icon text-info glyphicon-upload"></i> <?php echo $Translation['import CSV'] ; ?></a></li>
+										<li><a href="pageTransferOwnership.php"><i class="glyphicon menu-item-icon text-info glyphicon-random"></i> <?php echo $Translation['batch transfer'] ; ?></a></li>
+										<li><a href="pageMail.php?sendToAll=1"><i class="glyphicon menu-item-icon text-info glyphicon-envelope"></i> <?php echo $Translation['mail all users'] ; ?></a></li>
+										<li><a href="pageBackupRestore.php"><i class="glyphicon menu-item-icon text-info glyphicon-tasks"></i> <?php echo $Translation['database backups'] ; ?></a></li>
+										<li class="divider"></li>
+										<li><a href="https://forums.appgini.com" target="_blank"><i class="glyphicon menu-item-icon text-info glyphicon-new-window"></i> <?php echo $Translation['AppGini forum']; ?></a></li>
+									</ul>
+								</li>
+
+								<?php $plugins = get_plugins(); ?>
+
+								<?php if(count($plugins)){ ?>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-plus"></i> <?php echo $Translation["plugins"] ; ?> <b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<?php foreach($plugins as $plugin){ ?>
+												<?php
+													$plugin_icon = '';
+													if($plugin['glyphicon']) $plugin_icon = "<i class=\"glyphicon glyphicon-{$plugin['glyphicon']}\"></i> ";
+													if($plugin['icon']) $plugin_icon = "<img src=\"{$plugin['admin_path']}/{$plugin['icon']}\"> ";
+												?>
+												<li><a target="_blank" href="<?php echo $plugin['admin_path']; ?>"><?php echo $plugin_icon . $plugin['title']; ?></a></li>
+											<?php } ?>
+										</ul>
+									</li>
+								<?php } ?>
+							</ul>
+					</div>
+				</nav>
+			</div>
+		</aside>
+
+	
+<div class="page-wrapper ps ps--theme_default">
+<div class="container-fluid">
+
 		<script>
 			/* periodically check if user is still signed in */
 			setInterval(function(){
@@ -323,7 +380,7 @@ $self_baseurl = _baseurl();
 		</script>
 
 		<?php echo handle_maintenance(true); ?>
-		<div style="height: 80px;"></div>
+		<div style="height: 40px;"></div>
 
 		<?php echo Notification::placeholder(); ?>
 

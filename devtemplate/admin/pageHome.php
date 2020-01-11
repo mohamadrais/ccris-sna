@@ -36,7 +36,7 @@
 	}
 ?>
 
-<div class="page-header"><h1><?php echo $Translation['membership management homepage']; ?></h1></div>
+<div class="page-header"><h4 class="text-themecolor"><?php echo $Translation['membership management homepage']; ?></h4></div>
 
 <?php if(!$adminConfig['hide_twitter_feed']){ ?>
 	<div class="row" id="outer-row"><div class="col-md-8">
@@ -55,7 +55,7 @@
 	}
 ?>
 <div class="col-md-12 text-right vspacer-lg">
-	<label><?php echo $Translation['maintenance mode']; ?></label>
+	<label class="control-label text-mute"><?php echo $Translation['maintenance mode']; ?></label>
 	<div class="btn-group" id="toggle_maintenance_mode">
 		<button type="button" class="btn <?php echo $off_classes; ?>"><?php echo $Translation['OFF']; ?></button>
 		<button type="button" class="btn <?php echo $on_classes; ?>"><?php echo $Translation['ON']; ?></button>
@@ -87,11 +87,11 @@
 
 <!-- ################# Newest Updates ######################## -->
 <div class="col-md-6">
-<div class="panel panel-info">
-	<div class="panel-heading">
-		<h3 class="panel-title"><?php echo $Translation["newest updates"]; ?> <a class="btn btn-default btn-sm" href="pageViewRecords.php?sort=dateUpdated&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a></h3>
-	</div>
-	<div class="panel-body">
+<div class="card">
+	<div class="card-body">
+	<h4 class="card-title"><?php echo $Translation["newest updates"]; ?> <a class="btn btn-outline-plain btn-sm" href="pageViewRecords.php?sort=dateUpdated&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a></h4>
+	<div class="row">
+		<div class="col-md-12" style="overflow:scroll;">
 	<table class="table table-striped table-hover">
 	<?php
 		$res=sql("select tableName, pkValue, dateUpdated, recID from membership_userrecords order by dateUpdated desc limit 5", $eo);
@@ -105,6 +105,8 @@
 		}
 	?>
 	</table>
+		</div>
+	</div>
 	</div>
 </div>
 </div>
@@ -113,11 +115,11 @@
 
 <!-- ################# Newest Entries ######################## -->
 <div class="col-md-6">
-<div class="panel panel-info">
-	<div class="panel-heading">
-		<h3 class="panel-title"><?php echo $Translation["newest entries"]; ?> <a class="btn btn-default btn-sm" href="pageViewRecords.php?sort=dateAdded&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a></h3>
-	</div>
-	<div class="panel-body">
+<div class="card">
+	<div class="card-body">
+	<h4 class="card-title"><?php echo $Translation["newest entries"]; ?> <a class="btn btn-outline-plain btn-sm" href="pageViewRecords.php?sort=dateAdded&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a></h4>
+	<div class="row">
+		<div class="col-md-12" style="overflow:scroll;">
 	<table class="table table-striped table-hover">
 	<?php
 		$res=sql("select tableName, pkValue, dateAdded, recID from membership_userrecords order by dateAdded desc limit 5", $eo);
@@ -131,6 +133,8 @@
 		}
 	?>
 	</table>
+		</div>
+	</div>
 	</div>
 </div>
 </div>
@@ -141,11 +145,9 @@
 
 <!-- ################# Top Members ######################## -->
 <div class="col-md-6">
-<div class="panel panel-info">
-	<div class="panel-heading">
-		<h3 class="panel-title"><?php echo $Translation["top members"]; ?></h3>
-	</div>
-	<div class="panel-body">
+<div class="card">
+	<div class="card-body">
+	<h4 class="card-title"><?php echo $Translation["top members"]; ?></h4>
 	<table class="table table-striped table-hover">
 	<?php
 		$res=sql("select lcase(memberID), count(1) from membership_userrecords group by memberID order by 2 desc limit 5", $eo);
@@ -167,11 +169,9 @@
 
 <!-- ################# Members Stats ######################## -->
 <div class="col-md-6">
-<div class="panel panel-info">
-	<div class="panel-heading">
-		<h3 class="panel-title"><?php echo $Translation["members stats"]; ?></h3>
-	</div>
-	<div class="panel-body">
+<div class="card">
+	<div class="card-body">
+	<h4 class="card-title"><?php echo $Translation["members stats"]; ?></h4>
 	<table class="table table-striped table-hover">
 		<tr>
 			<th class=""><?php echo $Translation["total groups"]; ?></th>
@@ -208,7 +208,9 @@
 		</div> <!-- /div.col-md-8 -->
 
 		<div class="col-md-4" id="twitter-feed">
-			<h3>
+		<div class="card">
+			<div class="card-body">
+			<h4 class="card-title">
 				<?php echo $Translation["BigProf tweets"]; ?>
 				<span class="pull-right">
 					<a class="twitter-follow-button" href="https://twitter.com/bigprof" data-show-count="false" data-lang="en"><?php echo $Translation["follow BigProf"]; ?></a>
@@ -223,7 +225,7 @@
 						}(document, "script", "twitter-wjs"));
 					</script>
 				</span>
-			</h3><hr>
+			</h4>
 			<div class="text-center">
 				<a class="twitter-timeline" height="400" href="https://twitter.com/bigprof" data-widget-id="552758720300843008" data-chrome="nofooter noheader"><?php echo $Translation["loading bigprof feed"]; ?></a>
 				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -241,6 +243,8 @@
 					show_remove_feed_link();
 				});
 			</script>
+		</div>
+		</div>
 		</div>
 	</div> <!-- /div.row#outer-row -->
 <?php } ?>

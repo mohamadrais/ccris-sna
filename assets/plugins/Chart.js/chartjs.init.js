@@ -16,12 +16,12 @@ $( document ).ready(function() {
             },
             {
                 label: "My First dataset",
-                fillColor: "#009efb",
-                strokeColor: "#009efb",
-                pointColor: "#009efb",
+                fillColor: "#ad3a62",
+                strokeColor: "#ad3a62",
+                pointColor: "#ad3a62",
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
-                pointHighlightStroke: "#009efb",
+                pointHighlightStroke: "#ad3a62",
                 data: [0, 59, 80, 65, 10, 55, 40]
             }
             
@@ -73,10 +73,10 @@ $( document ).ready(function() {
         datasets: [
             {
                 label: "My First dataset",
-                fillColor: "#009efb",
-                strokeColor: "#009efb",
-                highlightFill: "#009efb",
-                highlightStroke: "#009efb",
+                fillColor: "#ad3a62",
+                strokeColor: "#ad3a62",
+                highlightFill: "#ad3a62",
+                highlightStroke: "#ad3a62",
                 data: [10, 30, 80, 61, 26, 75, 40]
             },
             {
@@ -109,8 +109,8 @@ $( document ).ready(function() {
     var data3 = [
         {
             value: 300,
-            color:"#009efb",
-            highlight: "#009efb",
+            color:"#ad3a62",
+            highlight: "#ad3a62",
             label: "Blue"
         },
         {
@@ -162,8 +162,8 @@ $( document ).ready(function() {
         },
         {
             value: 50,
-            color: "#009efb",
-            highlight: "#009efb",
+            color: "#ad3a62",
+            highlight: "#ad3a62",
             label: "Blue"
         },
         {
@@ -197,8 +197,8 @@ $( document ).ready(function() {
         },
         {
             value: 50,
-            color: "#009efb",
-            highlight: "#009efb",
+            color: "#ad3a62",
+            highlight: "#ad3a62",
             label: "Blue"
         },
         {

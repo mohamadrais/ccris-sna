@@ -20,8 +20,8 @@ $(function () {
           },
           limitMax: false,     // If false, the max value of the gauge will be updated if value surpass max
           limitMin: false,     // If true, the min value of the gauge will be fixed unless you set it manually
-          colorStart: '#009efb',   // Colors
-          colorStop: '#009efb',    // just experiment with them
+          colorStart: '#ad3a62',   // Colors
+          colorStop: '#ad3a62',    // just experiment with them
           strokeColor: '#E0E0E0',  // to see which ones work best for you
           generateGradient: true,
           highDpiSupport: true     // High resolution support
@@ -132,12 +132,12 @@ $(function () {
             type: 'line',
             width: '100%',
             height: '50',
-            lineColor: '#009efb',
-            fillColor: '#009efb',
-            minSpotColor:'#009efb',
-            maxSpotColor: '#009efb',
+            lineColor: '#ad3a62',
+            fillColor: '#ad3a62',
+            minSpotColor:'#ad3a62',
+            maxSpotColor: '#ad3a62',
             highlightLineColor: 'rgba(0, 0, 0, 0.2)',
-            highlightSpotColor: '#009efb'
+            highlightSpotColor: '#ad3a62'
         });
         $("#spark3").sparkline([2,4,4,6,8,5,6,4,8,6,6,2], {
             type: 'line',
@@ -164,10 +164,10 @@ $(function () {
             width: '100%',
             height: '50',
             lineColor: '#fff',
-            fillColor: '#009efb',
-            maxSpotColor: '#009efb',
+            fillColor: '#ad3a62',
+            maxSpotColor: '#ad3a62',
             highlightLineColor: 'rgba(0, 0, 0, 0.2)',
-            highlightSpotColor: '#009efb'
+            highlightSpotColor: '#ad3a62'
         });
         $("#spark6").sparkline([2,4,4,6,8,5,6,4,8,6,6,2], {
             type: 'line',

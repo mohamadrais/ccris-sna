@@ -105,7 +105,7 @@ $(document).ready(function () {
                 min: -1.2
                 , max: 1.2
             }
-            , colors: ["#009efb", "#55ce63"]
+            , colors: ["#ad3a62", "#55ce63"]
             , grid: {
                 color: "#AFAFAF"
                 , hoverable: true
@@ -143,7 +143,7 @@ $(function () {
     , }, {
         label: "Series 2"
         , data: 3
-        , color: "#009efb"
+        , color: "#ad3a62"
     , }, {
         label: "Series 3"
         , data: 1
@@ -286,7 +286,7 @@ $(function () {
     };
     var barData = {
         label: "bar"
-        , color: "#009efb"
+        , color: "#ad3a62"
         , data: [
             [1354521600000, 1000]
             , [1355040000000, 2000]
@@ -379,7 +379,7 @@ $(function () {
                 color: '#bdbdbd'
             }
         }
-        , colors: ["#4F5467", "#009efb", "#55ce63"]
+        , colors: ["#4F5467", "#ad3a62", "#55ce63"]
         , tooltip: true, //activate tooltip
         tooltipOpts: {
             content: "%s : %y.0"

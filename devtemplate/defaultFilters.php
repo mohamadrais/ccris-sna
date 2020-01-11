@@ -1,8 +1,8 @@
 <?php if(!isset($Translation)){ @header('Location: index.php'); exit; } ?>
 
-<div class="page-header"><h1>
-	<span id="table-title-img"><img align="top" src="<?php echo $this->TableIcon; ?>" /></span> <?php echo $this->TableTitle . " " . $Translation['filters']; ?>
-</h1></div>
+<h5>
+	<?php echo $this->TableTitle . " " . $Translation['filters']; ?>
+</h5>
 
 <?php
 	/* SPM link for admin */
@@ -58,10 +58,10 @@
 
 
 <!-- filters header -->
-<div class="row hidden-sm hidden-xs" style="border-bottom: solid 2px #DDD;">
-	<div class="col-md-2 col-md-offset-4 vspacer-lg"><strong><?php echo $Translation['filtered field']; ?></strong></div>
-	<div class="col-md-2 vspacer-lg"><strong><?php echo $Translation['comparison operator']; ?></strong></div>
-	<div class="col-md-2 vspacer-lg"><strong><?php echo $Translation['comparison value']; ?></strong></div>
+<div class="row hidden-sm hidden-xs">
+	<div class="col-md-3 col-md-offset-2 vspacer-lg"><label class="control-label"><?php echo $Translation['filtered field']; ?></label></div>
+	<div class="col-md-3 vspacer-lg"><label class="control-label"><?php echo $Translation['comparison operator']; ?></label></div>
+	<div class="col-md-3 vspacer-lg"><label class="control-label"><?php echo $Translation['comparison value']; ?></label></div>
 </div>
 
 
@@ -80,19 +80,21 @@
 			$seland->Render();
 			?>
 			<!-- how to combine next group with previous one: and/or? -->
-			<div class="row FilterSet<?php echo ($i - 1); ?>" style="border-bottom: dotted 1px #DDD;">
-				<div class="col-md-5 vspacer-md"></div>
-				<div class="col-md-2 vspacer-md">
+			<div class="row FilterSet<?php echo ($i - 1); ?>">
+				<div class="col-md-12"><br></div>
+				<div class="col-md-1 vspacer-md">
+					<label class="control-label">Combine</label>
+				</div>
+				<div class="col-md-1 vspacer-md">
 					<?php echo $seland->HTML; ?>
 				</div>
 			</div>
 		<?php } ?>
 
 		<!-- filter rule -->
-		<div class="row FilterSet<?php echo $i; ?>" style="border-bottom: dotted 1px #DDD;">
-			<div class="col-md-2 vspacer-md"></div>
-			<div class="col-md-1 text-right hidden-sm hidden-xs vspacer-md"><strong><?php echo $Translation["filter"] . sprintf(" %02d", $i); ?></strong></div>
-			<div class="col-md-1 hidden-md hidden-lg vspacer-md"><strong><?php echo $Translation["filter"] . sprintf(" %02d", $i); ?></strong></div>
+		<div class="row FilterSet<?php echo $i; ?>">
+			<div class="col-md-1 hidden-sm hidden-xs vspacer-md"><label class="control-label"><?php echo $Translation["filter"] . sprintf(" %02d", $i); ?></label></div>
+			<div class="col-md-1 hidden-md hidden-lg vspacer-md"><label class="control-label"><?php echo $Translation["filter"] . sprintf(" %02d", $i); ?></label></div>
 			<div class="col-md-1 vspacer-md">
 				<?php
 					// And, Or select
@@ -107,7 +109,7 @@
 					}
 				?>
 			</div>
-			<div class="col-md-2 vspacer-md">
+			<div class="col-md-3 vspacer-md">
 				<?php
 					// Fields list
 					$selfields = new Combo;
@@ -119,7 +121,7 @@
 					echo $selfields->HTML;
 				?>
 			</div>
-			<div class="col-md-2 vspacer-md">
+			<div class="col-md-3 vspacer-md">
 				<?php
 					// Operators list
 					$selop = new Combo;
@@ -131,12 +133,12 @@
 					echo $selop->HTML;
 				?>
 			</div>
-			<div class="col-md-2 vspacer-md">
+			<div class="col-md-3 vspacer-md">
 				<?php /* Comparison expression */ ?>
 				<input name="FilterValue[<?php echo $i; ?>]" value="<?php echo html_attr($FilterValue[$i]); ?>" class="form-control">
 			</div>
-			<div class="col-md-2 vspacer-md">
-				<button type="button" class="btn btn-default clear_filter" id="filter_<?php echo $i; ?>"><i class="glyphicon glyphicon-trash text-danger"></i></button>
+			<div class="col-md-1 vspacer-md">
+				<button type="button" class="btn btn-outline-plain clear_filter" id="filter_<?php echo $i; ?>"><i class="ti-eraser"></i></button>
 			</div>
 		</div>
 		<?php
@@ -156,8 +158,8 @@
 </script>
 
 <!-- sorting header  -->   
-<div class="row" style="border-bottom: solid 2px #DDD;">
-	<div class="col-md-offset-2 col-md-8 vspacer-lg"><strong><?php echo $Translation['order by']; ?></strong></div>
+<div class="row mt-5">
+	<div class="col-md-1 vspacer-lg"><label class="control-label"><?php echo $Translation['order by']; ?></label></div>
 </div>
 
 <!-- sorting rules -->
@@ -189,12 +191,11 @@
 		$sortDirs->SelectedText = '';
 		$sortDirs->Render();
 
-		$border_style = ($i == $num_rules - 1 ? 'solid 2px #DDD' : 'dotted 1px #DDD');
 		?>
 		<!-- sorting rule -->
 		<div class="row" style="border-bottom: <?php echo $border_style; ?>;">
-			<div class="col-xs-2 vspacer-md hidden-md hidden-lg"><strong><?php echo ($i ? $Translation['then by'] : $Translation['order by']); ?></strong></div>
-			<div class="col-md-2 col-md-offset-2 vspacer-md hidden-xs hidden-sm text-right"><strong><?php echo ($i ? $Translation['then by'] : $Translation['order by']); ?></strong></div>
+			<div class="col-xs-2 vspacer-md hidden-md hidden-lg"><label class="control-label"><?php echo ($i ? $Translation['then by'] : $Translation['order by']); ?></label></div>
+			<div class="col-md-1 vspacer-md hidden-xs hidden-sm"><label class="control-label"><?php echo ($i ? $Translation['then by'] : $Translation['order by']); ?></label></div>
 			<div class="col-xs-6 col-md-4 vspacer-md"><?php echo $sortFields->HTML; ?></div>
 			<div class="col-xs-4 col-md-2 vspacer-md"><?php echo $sortDirs->HTML; ?></div>
 		</div>
@@ -209,13 +210,13 @@
 	if(!$isAnonymous){
 		?>
 		<!-- ownership header  --> 
-		<div class="row filterByOwnership" style="border-bottom: solid 2px #DDD;">
-			<div class="col-md-offset-2 col-md-8 vspacer-lg"><strong><?php echo $Translation['Records to display']; ?></strong></div>
+		<div class="row filterByOwnership">
+			<div class="col-md-8 vspacer-lg"><label class="control-label"><?php echo $Translation['Records to display']; ?></label></div>
 		</div>
 
 		<!-- ownership options -->
-		<div class="row" style="border-bottom: dotted 2px #DDD;">
-			<div class="col-md-8 col-md-offset-2">
+		<div class="row">
+			<div class="col-md-8">
 				<div class="radio filterByOwnership">
 					<label>
 						<input type="radio" name="DisplayRecords" id="DisplayRecordsUser" value="user"/>
@@ -241,7 +242,7 @@
 ?>
 
 <!-- filter actions -->
-<div class="row">
+<!-- <div class="row">
 	<div class="col-md-2 col-md-offset-2 vspacer-lg">
 		<input type="hidden" name="apply_sorting" value="1">
 		<button type="submit" id="applyFilters" class="btn btn-success btn-block btn-lg"><i class="glyphicon glyphicon-ok"></i> <?php echo $Translation['apply filters']; ?></button>
@@ -254,8 +255,20 @@
 	<div class="col-md-2 vspacer-lg">
 		<button onclick="jQuery('form')[0].reset();" type="submit" id="cancelFilters" class="btn btn-warning btn-block btn-lg"><i class="glyphicon glyphicon-remove"></i> <?php echo $Translation['Cancel']; ?></button>
 	</div>
-</div>
+</div> -->
+<div id="adminActions" class="adminActions">
+	<input type="checkbox" name="adminToggle" class="adminToggle" />
+	<a class="adminButton" href="#!"><i class="fa fa-ellipsis-v"></i></a>
+	<div class="adminButtons">
+	<button style="width:unset;height:unset;color:unset;border:none;background:none" type="submit" id="applyFilters" name="apply_sorting" value="1"><a href="#"><i class="ti-check"></i></a></button>
+	
+	<?php if($this->AllowSavingFilters){ ?>
+	<button style="width:unset;height:unset;color:unset;border:none;background:none" type="submit" id="SaveFilter" name="SaveFilter_x" value="1"><a href="#"><i class="ti-save"></i></a></button>
+	<?php } ?>
 
+	<button style="width:unset;height:unset;color:unset;border:none;background:none" onclick="jQuery('form')[0].reset();" type="submit" id="cancelFilters"><a href="#"><i class="ti-close"></i></a></button>
+	</div>
+</div>
 
 <script>
 	var FiltersPerGroup = <?php echo $FiltersPerGroup; ?>;

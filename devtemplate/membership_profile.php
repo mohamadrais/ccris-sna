@@ -97,122 +97,70 @@
 
 	/* the profile page view */
 	include_once("$currDir/header.php"); ?>
+<div class="page-wrapper ps ps--theme_default">
+<div class="container-fluid">
 
 	<div class="page-header">
-		<h1><?php echo sprintf($Translation['Hello user'], $mi['username']); ?></h1>
+		<h4 class="text-themecolor m-b-0 m-t-0"><?php echo sprintf($Translation['Hello user'], $mi['username']); ?></h4>
 	</div>
 	<div id="notify" class="alert alert-success" style="display: none;"></div>
 	<div id="loader" style="display: none;"><i class="glyphicon glyphicon-refresh"></i> <?php echo $Translation['Loading ...']; ?></div>
 
 	<?php echo csrf_token(); ?>
+
 	<div class="row">
 
+		<!-- group and IP address -->
 		<div class="col-md-6">
+			<div class="card mt-0">
+				<div class="card-body" style="overflow: hidden; max-height: 150px;">
+					<div class="form-group">
+						<h6 class="text-muted"><?php echo $Translation['Your IP address']; ?></h6>
+						<h1 class="font-light"><?php echo $mi['IP']; ?></h1>
+					</div>
+					<img style="width: 200px; position: relative; opacity: 0.1; left: 445px; top: -80px;" src="images/dashboard-icon/ip-address.svg">
+				</div>
+			</div>
+		</div>
+
+		<!-- group and IP address -->
+		<div class="col-md-6">
+			<div class="card mt-0">
+				<div class="card-body" style="overflow: hidden; max-height: 150px;">
+					<div class="form-group">
+						<h6 class="text-muted"><?php echo $Translation['group']; ?></h6>
+						<h1 class="font-light"><?php echo $mi['group']; ?></h1>
+					</div>
+					<img style="width: 200px; position: relative; opacity: 0.1; left: 445px; top: -80px;" src="images/dashboard-icon/group.svg">
+				</div>
+			</div>
+		</div>
+
+	</div>
 
 			<!-- user info form -->
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					<h3 class="panel-title">
-						<i class="glyphicon glyphicon-info-sign"></i>
-						<?php echo $Translation['Your info']; ?>
-					</h3>
-				</div>
-				<div class="panel-body">
+		<form>
+			<div class="card my-0">
+				<div class="card-body">
 					<fieldset id="profile">
 						<div class="form-group">
-							<label for="email"><?php echo $Translation['email']; ?></label>
+							<label class="control-label" for="email"><?php echo $Translation['email']; ?></label>
 							<input type="email" id="email" name="email" value="<?php echo $mi['email']; ?>" class="form-control">
 						</div>
 
 						<?php for($i=1; $i<5; $i++){ ?>
 							<div class="form-group">
-								<label for="custom<?php echo $i; ?>"><?php echo $adminConfig['custom'.$i]; ?></label>
+								<label class="control-label" for="custom<?php echo $i; ?>"><?php echo $adminConfig['custom'.$i]; ?></label>
 								<input type="text" id="custom<?php echo $i; ?>" name="custom<?php echo $i; ?>" value="<?php echo $mi['custom'][$i-1]; ?>" class="form-control">
 							</div>
 						<?php } ?>
 
 						<div class="row">
-							<div class="col-md-4 col-md-offset-4">
-								<button id="update-profile" class="btn btn-success btn-block" type="button"><i class="glyphicon glyphicon-ok"></i> <?php echo $Translation['Update profile']; ?></button>
+							<div class="col-md-2 col-md-offset-10">
+								<button id="update-profile" class="btn btn-primary btn-block pull-right" type="button"><i class="glyphicon glyphicon-ok"></i> <?php echo $Translation['Update profile']; ?></button>
 							</div>
 						</div>
 					</fieldset>
-				</div>
-			</div>
-
-			<!-- access permissions -->
-			<div class="panel panel-info">
-				<div class="panel-heading">
-					<h3 class="panel-title">
-						<i class="glyphicon glyphicon-lock"></i>
-						<?php echo $Translation['Your access permissions']; ?>
-					</h3>
-				</div>
-				<div class="panel-body">
-					<p><strong><?php echo $Translation['Legend']; ?></strong></p>
-					<div class="row">
-						<div class="col-xs-2 col-md-1 text-right"><img src="admin/images/stop_icon.gif"></div>
-						<div class="col-xs-10 col-md-5"><?php echo $Translation['Not allowed']; ?></div>
-						<div class="col-xs-2 col-md-1 text-right"><img src="admin/images/member_icon.gif"></div>
-						<div class="col-xs-10 col-md-5"><?php echo $Translation['Only your own records']; ?></div>
-					</div>
-					<div class="row">
-						<div class="col-xs-2 col-md-1 text-right"><img src="admin/images/members_icon.gif"></div>
-						<div class="col-xs-10 col-md-5"><?php echo $Translation['All records owned by your group']; ?></div>
-						<div class="col-xs-2 col-md-1 text-right"><img src="admin/images/approve_icon.gif"></div>
-						<div class="col-xs-10 col-md-5"><?php echo $Translation['All records']; ?></div>
-					</div>
-
-					<p class="vspacer-lg"></p>
-
-					<div class="table-responsive">
-						<table class="table table-striped table-hover table-bordered" id="permissions">
-							<thead>
-								<tr>
-									<th><?php echo $Translation['Table']; ?></th>
-									<th class="text-center"><?php echo $Translation['View']; ?></th>
-									<th class="text-center"><?php echo $Translation['Add New']; ?></th>
-									<th class="text-center"><?php echo $Translation['Edit']; ?></th>
-									<th class="text-center"><?php echo $Translation['Delete']; ?></th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php foreach($permissions as $tn => $perm){ ?>
-									<tr>
-										<td><img src="<?php echo $userTables[$tn][2]; ?>"> <a href="<?php echo $tn; ?>_view.php"><?php echo $userTables[$tn][0]; ?></a></td>
-										<td class="text-center"><img src="admin/images/<?php echo permIcon($perm[2]); ?>" /></td>
-										<td class="text-center"><img src="admin/images/<?php echo ($perm[1] ? 'approve' : 'stop'); ?>_icon.gif" /></td>
-										<td class="text-center"><img src="admin/images/<?php echo permIcon($perm[3]); ?>" /></td>
-										<td class="text-center"><img src="admin/images/<?php echo permIcon($perm[4]); ?>" /></td>
-									</tr>
-								<?php } ?>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-
-		</div>
-
-		<div class="col-md-6">
-
-			<!-- group and IP address -->
-			<div class="panel panel-info">
-				<div class="panel-body">
-					<div class="form-group">
-						<label><?php echo $Translation['Your IP address']; ?></label>
-						<div class="form-control-static"><?php echo $mi['IP']; ?></div>
-					</div>
-				</div>
-			</div>
-
-			<!-- group and IP address -->
-			<div class="panel panel-info">
-				<div class="panel-body">
-					<div class="form-group">
-						<label><?php echo $Translation['group']; ?></label>
-						<div class="form-control-static"><?php echo $mi['group']; ?></div>
-					</div>
 				</div>
 			</div>
 
@@ -230,18 +178,18 @@
 							<div id="password-change-form">
 
 								<div class="form-group">
-									<label for="old-password"><?php echo $Translation['Old password']; ?></label>
+									<label class="control-label" for="old-password"><?php echo $Translation['Old password']; ?></label>
 									<input type="password" id="old-password" autocomplete="off" class="form-control">
 								</div>
 
 								<div class="form-group">
-									<label for="new-password"><?php echo $Translation['new password']; ?></label>
+									<label class="control-label" for="new-password"><?php echo $Translation['new password']; ?></label>
 									<input type="password" id="new-password" autocomplete="off" class="form-control">
 									<p id="password-strength" class="help-block"></p>
 								</div>
 
 								<div class="form-group">
-									<label for="confirm-password"><?php echo $Translation['confirm password']; ?></label>
+									<label class="control-label" for="confirm-password"><?php echo $Translation['confirm password']; ?></label>
 									<input type="password" id="confirm-password" autocomplete="off" class="form-control">
 									<p id="confirm-status" class="help-block"></p>
 								</div>
@@ -257,9 +205,64 @@
 					</div>
 				</div>
 			<?php } ?>
+			</form>	
 
+			<!-- access permissions -->
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">
+						<i class="glyphicon glyphicon-lock"></i>
+						<?php echo $Translation['Your access permissions']; ?>
+					</h4>
+					<div class="panel-body">
+						<p><strong><?php echo $Translation['Legend']; ?></strong></p>
+						<div class="row">
+							<div class="col-xs-2 col-md-1 text-right"><img src="admin/images/stop_icon.gif"></div>
+							<div class="col-xs-10 col-md-5"><?php echo $Translation['Not allowed']; ?></div>
+							<div class="col-xs-2 col-md-1 text-right"><img src="admin/images/member_icon.gif"></div>
+							<div class="col-xs-10 col-md-5"><?php echo $Translation['Only your own records']; ?></div>
+						</div>
+						<div class="row">
+							<div class="col-xs-2 col-md-1 text-right"><img src="admin/images/members_icon.gif"></div>
+							<div class="col-xs-10 col-md-5"><?php echo $Translation['All records owned by your group']; ?></div>
+							<div class="col-xs-2 col-md-1 text-right"><img src="admin/images/approve_icon.gif"></div>
+							<div class="col-xs-10 col-md-5"><?php echo $Translation['All records']; ?></div>
+						</div>
+
+						<p class="vspacer-lg"></p>
+
+						<div class="table-responsive">
+							<table class="table table-striped table-hover table-bordered" id="permissions">
+								<thead>
+									<tr>
+										<th><?php echo $Translation['Table']; ?></th>
+										<th class="text-center"><?php echo $Translation['View']; ?></th>
+										<th class="text-center"><?php echo $Translation['Add New']; ?></th>
+										<th class="text-center"><?php echo $Translation['Edit']; ?></th>
+										<th class="text-center"><?php echo $Translation['Delete']; ?></th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php foreach($permissions as $tn => $perm){ ?>
+										<tr>
+											<td><img src="<?php echo $userTables[$tn][2]; ?>"> <a href="<?php echo $tn; ?>_view.php"><?php echo $userTables[$tn][0]; ?></a></td>
+											<td class="text-center"><img src="admin/images/<?php echo permIcon($perm[2]); ?>" /></td>
+											<td class="text-center"><img src="admin/images/<?php echo ($perm[1] ? 'approve' : 'stop'); ?>_icon.gif" /></td>
+											<td class="text-center"><img src="admin/images/<?php echo permIcon($perm[3]); ?>" /></td>
+											<td class="text-center"><img src="admin/images/<?php echo permIcon($perm[4]); ?>" /></td>
+										</tr>
+									<?php } ?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
+	</div>
+	</div>
+	</div>
 	</div>
 
 
