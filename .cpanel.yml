@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/puffergroup/public_html/dev
+    - export DEPLOYPATH=/home/puffergroup/public_html/app
     - /bin/cp -r * $DEPLOYPATH
