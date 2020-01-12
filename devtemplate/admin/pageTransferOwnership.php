@@ -153,221 +153,242 @@
 	}
 ?>
 
-<div class="page-header"><h1><?php echo $Translation['ownership batch transfer']; ?></h1></div>
 
-<form method="get" action="pageTransferOwnership.php" class="form-horizontal">
-
-	<div id="step-1" class="panel panel-default">
-		<div class="panel-heading">
-			<h3 class="panel-title">
-				<b><?php echo $Translation['step 1']; ?></b>
-				<?php if($sourceGroupID){ ?>
-					<span class="pull-right text-success">
-						<i class="glyphicon glyphicon-ok"></i> 
-						<?php echo $Translation['source group']; ?>:
-						<b><?php echo sqlValue("select name from membership_groups where groupID='{$sourceGroupID}'"); ?></b>
-					</span>
-				<?php } ?>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<form method="get" action="pageTransferOwnership.php" class="form-horizontal">
+			<h3>
+				<?php echo $Translation['ownership batch transfer']; ?>
 			</h3>
-		</div>
-		<div class="panel-body">
-			<div class="step-details"><?php echo $Translation['batch transfer wizard']; ?></div>
-			<div class="form-group">
-				<label for="sourceGroupID" class="control-label col-sm-2"><?php echo $Translation['source group']; ?></label>
-				<div class="col-sm-6 col-md-4">
-					<?php echo htmlSQLSelect("sourceGroupID", "select distinct g.groupID, g.name from membership_groups g, membership_users u where g.groupID=u.groupID order by g.name", $sourceGroupID); ?>
-					<?php if($sourceGroupID){ ?>
-						<span class="help-block text-info">
-							<i class="glyphicon glyphicon-info-sign"></i> 
-							<?php 
-								$originalValues =  array( '<MEMBERS>', '<RECORDS>');
-								$membersNum = sqlValue("select count(1) from membership_users where groupID='$sourceGroupID'"); 
-								$recordsNum = sqlValue("select count(1) from membership_userrecords where groupID='$sourceGroupID'");
-								$replaceValues = array($membersNum, $recordsNum);
-								echo str_replace($originalValues, $replaceValues, $Translation['group statistics']);
-							?>
-						</span>
-					<?php } ?>
-				</div>
-				<div class="col-sm-4 col-md-2">
-					<button type="submit" class="btn btn-block btn-primary">
-						<i class="glyphicon glyphicon-ok"></i> 
-						<?php echo ($sourceGroupID ? $Translation['update'] : $Translation['next step']); ?>
-					</button>
+			<div id="step-1"  class="card">
+				<div class="card-body">
+					<div class="card-title">
+						<h3>
+							<?php echo $Translation['step 1']; ?>
+						</h3>
+						<h6>
+							<?php if($sourceGroupID){ ?>
+								<span class="text-success">
+									<i class="glyphicon glyphicon-ok"></i> 
+									<?php echo $Translation['source group']; ?>:
+									<b><?php echo sqlValue("select name from membership_groups where groupID='{$sourceGroupID}'"); ?></b>
+								</span>
+							<?php } ?>
+						</h6>
+					</div>
+					<span class="help-block"><?php echo $Translation['batch transfer wizard']; ?></span>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="input-group">
+								<label for="sourceGroupID" class="control-label"><?php echo $Translation['source group']; ?></label>
+									<?php echo htmlSQLSelect("sourceGroupID", "select distinct g.groupID, g.name from membership_groups g, membership_users u where g.groupID=u.groupID order by g.name", $sourceGroupID); ?>
+									<?php if($sourceGroupID){ ?>
+										<span class="help-block text-info">
+											<i class="glyphicon glyphicon-info-sign"></i> 
+											<?php 
+												$originalValues =  array( '<MEMBERS>', '<RECORDS>');
+												$membersNum = sqlValue("select count(1) from membership_users where groupID='$sourceGroupID'"); 
+												$recordsNum = sqlValue("select count(1) from membership_userrecords where groupID='$sourceGroupID'");
+												$replaceValues = array($membersNum, $recordsNum);
+												echo str_replace($originalValues, $replaceValues, $Translation['group statistics']);
+											?>
+										</span>
+									<?php } ?>
+							</div>
+						</div>
+						<div class="col-md-12 text-right mt-3">
+							<button type="submit" class="btn btn-primary">
+								<i class="glyphicon glyphicon-ok"></i> 
+								<?php echo ($sourceGroupID ? $Translation['update'] : $Translation['next step']); ?>
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
 
-	<?php if($sourceGroupID){ ?>
-		<div id="step-2" class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">
-					<b><?php echo $Translation['step 2'] ; ?></b>
-					<?php if($sourceMemberID){ ?>
-						<span class="pull-right text-success">
-							<i class="glyphicon glyphicon-ok"></i> 
-							<?php echo $Translation['source member']; ?>:
-							<b><?php echo $sourceMemberID; ?></b>
-						</span>
-					<?php } ?>
-				</h3>
-			</div>
-			<div class="panel-body">
-				<div class="step-details"><?php echo $Translation['source member message'] ; ?></div>
-				<div class="form-group">
-					<label for="sourceGroupID" class="control-label col-sm-2"><?php echo $Translation['source member'] ; ?></label>
-					<div class="col-sm-6 col-md-4">
-						<?php
-							$arrVal[] = '';
-							$arrCap[] = '';
-							$arrVal[] = '-1';
-							$arrCap[] = str_replace ('<GROUPNAME>', html_attr(sqlValue("select name from membership_groups where groupID='$sourceGroupID'")), $Translation['all group members']);
-							if($res = sql("select lcase(memberID), lcase(memberID) from membership_users where groupID='$sourceGroupID' order by memberID", $eo)){
-								while($row = db_fetch_row($res)){
-									$arrVal[] = $row[0];
-									$arrCap[] = $row[1];
-								}
-								echo htmlSelect("sourceMemberID", $arrVal, $arrCap, $sourceMemberID);
-							}
-						?>
-						<?php if($sourceMemberID){ ?>
-							<span class="help-block text-info">
-								<i class="glyphicon glyphicon-info-sign"></i> 
-								<?php
-									$recordsNum = sqlValue("select count(1) from membership_userrecords where ".($sourceMemberID==-1 ? "groupID='$sourceGroupID'" : "memberID='$sourceMemberID'"));
-									echo str_replace ('<RECORDS>', $recordsNum, $Translation['member statistics']);
-								?>
-							</span>
-						<?php } ?>
-					</div>
-					<div class="col-sm-4 col-md-2">
-						<button type="submit" class="btn btn-block btn-primary">
-							<i class="glyphicon glyphicon-ok"></i> 
-							<?php echo ($sourceMemberID ? $Translation['update'] : $Translation['next step']); ?>
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	<?php } ?>
-
-	<?php if($sourceMemberID){ ?>
-		<div id="step-3" class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">
-					<b><?php echo $Translation['step 3']; ?></b>
-					<?php if($destinationGroupID){ ?>
-						<span class="pull-right text-success">
-							<i class="glyphicon glyphicon-ok"></i> 
-							<?php echo $Translation['destination group']; ?>:
-							<b><?php echo sqlValue("select name from membership_groups where groupID='{$destinationGroupID}'"); ?></b>
-						</span>
-					<?php } ?>
-				</h3>
-			</div>
-			<div class="panel-body">
-				<div class="step-details"><?php echo $Translation['destination group message']; ?></div>
-				<div class="form-group">
-					<label for="destinationGroupID" class="control-label col-sm-2"><?php echo $Translation['destination group']; ?></label>
-					<div class="col-sm-6 col-md-4">
-						<?php echo htmlSQLSelect("destinationGroupID", "select distinct membership_groups.groupID, name from membership_groups, membership_users where membership_groups.groupID=membership_users.groupID order by name", $destinationGroupID); ?>
-						<span class="help-block"></span>
-					</div>
-					<div class="col-sm-4 col-md-2">
-						<button type="submit" class="btn btn-block btn-primary">
-							<i class="glyphicon glyphicon-ok"></i> 
-							<?php echo ($destinationGroupID ? $Translation['update'] : $Translation['next step']); ?>
-						</button>
+			<?php if($sourceGroupID){ ?>
+				<div id="step-2" class="card">
+					<div class="card-body">
+						<div class="card-title">
+							<h3>
+								<?php echo $Translation['step 2'] ; ?>
+							</h3>
+							<h6>
+								<?php if($sourceMemberID){ ?>
+									<span class="text-success">
+										<i class="glyphicon glyphicon-ok"></i> 
+										<?php echo $Translation['source member']; ?>:
+										<b><?php echo $sourceMemberID; ?></b>
+									</span>
+								<?php } ?>
+							</h6>
+						</div>
+					<span class="help-block"><?php echo $Translation['source member message'] ; ?></span>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="input-group">
+								<label for="sourceGroupID" class="control-label"><?php echo $Translation['source member'] ; ?></label>
+									<?php
+										$arrVal[] = '';
+										$arrCap[] = '';
+										$arrVal[] = '-1';
+										$arrCap[] = str_replace ('<GROUPNAME>', html_attr(sqlValue("select name from membership_groups where groupID='$sourceGroupID'")), $Translation['all group members']);
+										if($res = sql("select lcase(memberID), lcase(memberID) from membership_users where groupID='$sourceGroupID' order by memberID", $eo)){
+											while($row = db_fetch_row($res)){
+												$arrVal[] = $row[0];
+												$arrCap[] = $row[1];
+											}
+											echo htmlSelect("sourceMemberID", $arrVal, $arrCap, $sourceMemberID);
+										}
+									?>
+									<?php if($sourceMemberID){ ?>
+										<span class="help-block text-info">
+											<i class="glyphicon glyphicon-info-sign"></i> 
+											<?php
+												$recordsNum = sqlValue("select count(1) from membership_userrecords where ".($sourceMemberID==-1 ? "groupID='$sourceGroupID'" : "memberID='$sourceMemberID'"));
+												echo str_replace ('<RECORDS>', $recordsNum, $Translation['member statistics']);
+											?>
+										</span>
+									<?php } ?>
+							</div>
+						</div>
+						<div class="col-md-12 text-right mt-3">
+							<button type="submit" class="btn btn-primary">
+								<i class="glyphicon glyphicon-ok"></i> 
+								<?php echo ($sourceMemberID ? $Translation['update'] : $Translation['next step']); ?>
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	<?php } ?>
+		<?php } ?>
 
-	<?php if($destinationGroupID && $destinationGroupID == $sourceGroupID){ /* source group same as destination */ ?>
-		<div id="step-4" class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">
-					<b><?php echo $Translation['step 4'] ; ?></b>
-					<?php if($destinationMemberID){ ?>
-						<span class="pull-right text-success">
-							<i class="glyphicon glyphicon-ok"></i> 
-							<?php echo $Translation['destination member']; ?>:
-							<b><?php echo $destinationMemberID; ?></b>
-						</span>
-					<?php } ?>
-				</h3>
+		<?php if($sourceMemberID){ ?>
+			<div id="step-3" class="card">
+				<div class="card-body">
+					<div class="card-title">
+						<h3>
+							<?php echo $Translation['step 3']; ?>
+						</h3>
+						<h6>
+							<?php if($destinationGroupID){ ?>
+								<span class="pull-right text-success">
+									<i class="glyphicon glyphicon-ok"></i> 
+									<?php echo $Translation['destination group']; ?>:
+									<b><?php echo sqlValue("select name from membership_groups where groupID='{$destinationGroupID}'"); ?></b>
+								</span>
+							<?php } ?>
+						</h6>
+					</div>
+					<span class="help-block"><?php echo $Translation['destination group message']; ?></span>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="input-group">
+								<label for="destinationGroupID" class="control-label"><?php echo $Translation['destination group']; ?></label>
+									<?php echo htmlSQLSelect("destinationGroupID", "select distinct membership_groups.groupID, name from membership_groups, membership_users where membership_groups.groupID=membership_users.groupID order by name", $destinationGroupID); ?>
+									<span class="help-block"></span>
+							</div>
+						</div>
+						<div class="col-md-12 text-right mt-3">
+							<button type="submit" class="btn btn-primary">
+								<i class="glyphicon glyphicon-ok"></i> 
+								<?php echo ($destinationGroupID ? $Translation['update'] : $Translation['next step']); ?>
+							</button>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="panel-body">
-				<div class="step-details"><?php echo $Translation['destination member message'] ; ?></div>
-				<div class="form-group">
-					<label for="sourceGroupID" class="control-label col-sm-2"><?php echo $Translation['destination member'] ; ?></label>
-					<div class="col-sm-6 col-md-4">
+		<?php } ?>
+
+		<?php if($destinationGroupID && $destinationGroupID == $sourceGroupID){ /* source group same as destination */ ?>
+			<div id="step-4" class="card">
+				<div class="card-body">
+					<div class="card-title">
+						<h3>
+							<?php echo $Translation['step 4'] ; ?>
+						</h3>
+						<h6>
+							<?php if($destinationMemberID){ ?>
+								<span class="pull-right text-success">
+									<i class="glyphicon glyphicon-ok"></i> 
+									<?php echo $Translation['destination member']; ?>:
+									<b><?php echo $destinationMemberID; ?></b>
+								</span>
+							<?php } ?>
+						</h6>
+					</div>
+					<span class="help-block"><?php echo $Translation['destination member message'] ; ?></span>
+					<div class="input-group">
+						<label for="sourceGroupID" class="control-label"><?php echo $Translation['destination member'] ; ?></label>
 						<?php
 							echo htmlSQLSelect("destinationMemberID", "select lcase(memberID), lcase(memberID) from membership_users where groupID='$destinationGroupID' and lcase(memberID)!='$sourceMemberID' order by memberID", $destinationMemberID);
 						?>
 					</div>
 				</div>
 			</div>
-		</div>
 
-	<?php }elseif($destinationGroupID){ /* source group not same as destination */ ?>
-		<div id="step-4" class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">
-					<b><?php echo $Translation['step 4'] ; ?></b>
-				</h3>
-			</div>
-			<div class="panel-body">
-				<div class="step-details">
-					<?php
-						$anon_group_safe = makeSafe($adminConfig['anonymousGroup'], false);
-						$noMove = ($sourceGroupID == sqlValue("select groupID from membership_groups where name='{$anon_group_safe}'"));
-						$destinationHasMembers = sqlValue("select count(1) from membership_users where groupID='{$destinationGroupID}'");
+		<?php }elseif($destinationGroupID){ /* source group not same as destination */ ?>
+			<div id="step-4" class="card">
+				<div class="card-body">
+					<div class="card-title">
+						<h3>
+							<?php echo $Translation['step 4'] ; ?>
+						</h3>
+					</div>
+					<span class="help-block">
+						<?php
+							$anon_group_safe = makeSafe($adminConfig['anonymousGroup'], false);
+							$noMove = ($sourceGroupID == sqlValue("select groupID from membership_groups where name='{$anon_group_safe}'"));
+							$destinationHasMembers = sqlValue("select count(1) from membership_users where groupID='{$destinationGroupID}'");
 
-						if(!$noMove){
-							echo $Translation['move records'] ; 
-						}
-					?>
+							if(!$noMove){
+								echo $Translation['move records'] ; 
+							}
+						?>
+					</span>
+					<div class="col-md-12">
+						<?php if($destinationHasMembers){ ?>
+							<div class="input-group">
+								<label class="control-label mb-2">
+								
+								<input type="radio" name="moveMembers" id="dontMoveMembers" value="0" <?php echo ($moveMembers ? "" : "checked"); ?>>
+								<?php 
+									echo $Translation['move data records to member'] . ' '; 
+								?></label>
+								<?php
+									echo htmlSQLSelect("destinationMemberID", "select lcase(memberID), lcase(memberID) from membership_users where groupID='$destinationGroupID' order by memberID", $destinationMemberID);
+								?>
+							</div>
+						<?php } ?>
+
+						<?php if(!$noMove){ ?>
+							<div class="input-group">
+								<label class="control-label">
+									<input type="radio" name="moveMembers" id="moveMembers" value="1" <?php echo ($moveMembers || !$destinationHasMembers ? "checked" : ""); ?>>
+									<?php echo str_replace('<GROUPNAME>', sqlValue("select name from membership_groups where groupID='$destinationGroupID'"), $Translation['move source member to group']); ?>
+								</label>
+							</div>
+						<?php } ?>
+					</div>
 				</div>
-
-				<?php if($destinationHasMembers){ ?>
-					<div class="form-group">
-						<label class="col-xs-12 col-sm-8 col-md-6">
-							<input type="radio" name="moveMembers" id="dontMoveMembers" value="0" <?php echo ($moveMembers ? "" : "checked"); ?>>
-							<?php 
-								echo $Translation['move data records to member'] . ' '; 
-								echo htmlSQLSelect("destinationMemberID", "select lcase(memberID), lcase(memberID) from membership_users where groupID='$destinationGroupID' order by memberID", $destinationMemberID);
-							?>
-						</label>
-					</div>
-				<?php } ?>
-
-				<?php if(!$noMove){ ?>
-					<div class="form-group">
-						<label class="col-md-10">
-							<input type="radio" name="moveMembers" id="moveMembers" value="1" <?php echo ($moveMembers || !$destinationHasMembers ? "checked" : ""); ?>>
-							<?php echo str_replace('<GROUPNAME>', sqlValue("select name from membership_groups where groupID='$destinationGroupID'"), $Translation['move source member to group']); ?>
-						</label>
-					</div>
-				<?php } ?>
-
 			</div>
-		</div>
-	<?php } ?>
+		<?php } ?>
 
-	<?php if($destinationGroupID){ ?>
-		<div class="row">
-			<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
-				<button type="submit" name="beginTransfer" value="1" class="btn btn-lg btn-success btn-block" onClick="return jsConfirmTransfer();">
-					<i class="glyphicon glyphicon-ok"></i> 
-					<?php echo $Translation['begin transfer']; ?>
-				</button>
+		<?php if($destinationGroupID){ ?>
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+					<button type="submit" name="beginTransfer" value="1" class="btn btn-lg btn-success btn-block" onClick="return jsConfirmTransfer();">
+						<i class="glyphicon glyphicon-ok"></i> 
+						<?php echo $Translation['begin transfer']; ?>
+					</button>
+				</div>
 			</div>
+		<?php } ?>
+			</form>
 		</div>
-	<?php } ?>
-</form>
+	</div>
+</div>
 
 <style>
 	.step-details{ margin: 1em 0; font-size: 1.2em; }

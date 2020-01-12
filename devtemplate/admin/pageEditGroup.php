@@ -122,144 +122,151 @@ if($groupID != ''){
 }
 ?>
 
-<div class="page-header">
-	<h1>
-		<?php echo($groupID ? str_replace('<GROUPNAME>', '<span class="text-info">' . html_attr($name) . '</span>', $Translation['edit group']) : $Translation['add new group']); ?>
-		<div class="pull-right">
-			<div class="btn-group">
-				<a href="pageViewGroups.php" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-arrow-left"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['back to groups']; ?></span></a>
-				<?php if($groupID){ ?>
-					<a href="pageViewMembers.php?groupID=<?php echo $groupID; ?>" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-user"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['view group members']; ?></span></a>
-					<a href="pageEditMember.php?groupID=<?php echo $groupID; ?>" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-plus"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['add member to group']; ?></span></a>
-					<a href="pageViewRecords.php?groupID=<?php echo $groupID; ?>" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-th"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['view group records']; ?></span></a>
-				<?php } ?>
-			</div>
-		</div>
-		<div class="clearfix"></div>
-	</h1>
-</div>
-
-<?php if($anonGroupID == $groupID){ ?>
-	<div class="alert alert-warning"><?php echo $Translation["anonymous group attention"]; ?></div>
-<?php } ?> 
-
-
-<div class="form-group">
-	<label class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"></label>
-	<div class="col-sm-8 col-md-9 col-lg-6">
-		<div class="checkbox">
-			<label>
-				<input type="checkbox" id="showToolTips" value="1" checked>
-				<?php echo $Translation["show tool tips"]; ?>
-			</label>
-		</div>
-	</div>
-</div>
-
-<form method="post" action="pageEditGroup.php" class="form-horizontal">
-	<input type="hidden" name="groupID" value="<?php echo $groupID; ?>">
-
-	<div class="form-group ">
-		<label for="group name" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["group name"]; ?></label>
-		<div class="col-sm-8 col-md-9 col-lg-6 ">
-			<input class="form-control" type="text" name="name" <?php echo ($anonGroupID == $groupID ? "readonly" : ""); ?> value="<?php echo html_attr($name); ?>">
-			<span class="help-block">
-				<?php
-					if($anonGroupID == $groupID){
-						echo $Translation["readonly group name"];
-					}else{
-						echo str_replace('<ANONYMOUSGROUP>', $adminConfig['anonymousGroup'], $Translation["anonymous group name"]);
-					}
-				?>
-			</span>
-		</div>
-	</div>
-
-	<div class="form-group ">
-		<label for="description" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["description"]; ?></label>
-		<div class="col-sm-8 col-md-9 col-lg-6 ">
-			<textarea class="form-control" name="description" rows="5"><?php echo html_attr($description); ?></textarea>
-		</div>
-	</div>
-
-	<?php if($anonGroupID != $groupID){ ?>
-		<div class="form-group ">
-			<label for="allow visitors sign up" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["allow visitors sign up"]; ?></label>
-			<div class="col-sm-8 col-md-9 col-lg-6 ">
-				<?php
-					echo htmlRadioGroup(
-						"visitorSignup",
-						array(0, 1, 2),
-						array(
-							$Translation["admin add users"],
-							$Translation["admin approve users"],
-							$Translation["automatically approve users"]
-						), 
-						($groupID ? $visitorSignup : $adminConfig['defaultSignUp'])
-					);
-				?>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class=" col-lg-3 col-lg-offset-9 col-sm-4 col-sm-offset-8" >
-				<button type="submit" name="saveChanges" value="1" class="btn btn-primary btn-lg pull-right btn-block"><i class="glyphicon glyphicon-ok"></i> <?php echo $Translation["save changes"]; ?></button>
-			</div>
-		</div>
-
-		<div style="height: 3em;"></div>
-	<?php } ?>
-
-	<?php
-		// permissions arrays common to the radio groups below
-		$arrPermVal = array(0, 1, 2, 3);
-		$arrPermText = array($Translation["no"], $Translation["owner"], $Translation["group"], $Translation["all"]);
-	?>
-
-	<div class="table-responsive">
-		<table class="table table-striped table-bordered table-hover">
-			<caption><h2><?php echo $Translation["group table permissions"]; ?></h2></caption>
-			<thead>
-				<tr>
-					<th><div><?php echo $Translation["table"]; ?></div></th>
-					<th><div><?php echo $Translation["insert"]; ?></div></th>
-					<th><div><?php echo $Translation["view"]; ?></div></th>
-					<th><div><?php echo $Translation["edit"]; ?></div></th>
-					<th><div><?php echo $Translation["delete"]; ?></div></th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php foreach($table_list as $tn => $tc){ ?>
-					<!-- <?php echo $tn; ?> table -->
-					<tr>
-						<th><?php echo $tc; ?></th>
-						<td>
-							<input onMouseOver="stm(<?php echo $tn; ?>_addTip, toolTipStyle);" onMouseOut="htm();" type="checkbox" name="<?php echo $tn; ?>_insert" value="1" <?php echo ($perm["{$tn}_insert"] ? "checked class=\"text-primary\"" : ""); ?>>
-						</td>
-						<td>
-							<?php echo htmlRadioGroup("{$tn}_view", $arrPermVal, $arrPermText, $perm["{$tn}_view"], 'text-primary'); ?>
-						</td>
-						<td>
-							<?php echo htmlRadioGroup("{$tn}_edit", $arrPermVal, $arrPermText, $perm["{$tn}_edit"], 'text-primary'); ?>
-						</td>
-						<td>
-							<?php echo htmlRadioGroup("{$tn}_delete", $arrPermVal, $arrPermText, $perm["{$tn}_delete"], 'text-primary'); ?>
-						</td>
-					</tr>
-				<?php } ?>
-			</tbody>
-		</table>
-	</div>
-
+<div class="container-fluid">
 	<div class="row">
-		<div class=" col-lg-3 col-lg-offset-9 col-sm-4 col-sm-offset-8 " >
-			<button type="submit" name="saveChanges" value="1" class="btn btn-primary btn-lg btn-block "><i class="glyphicon glyphicon-ok"></i> <?php echo $Translation["save changes"]; ?></button>
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<h3>
+						<?php echo($groupID ? str_replace('<GROUPNAME>', '<span class="text-info">' . html_attr($name) . '</span>', $Translation['edit group']) : $Translation['add new group']); ?>
+					</h3>
+
+					<?php if($anonGroupID == $groupID){ ?>
+						<div class="alert alert-warning"><?php echo $Translation["anonymous group attention"]; ?></div>
+					<?php } ?> 
+
+
+					<div class="form-group">
+						<label class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"></label>
+						<div class="col-sm-8 col-md-9 col-lg-6">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" id="showToolTips" value="1" checked>
+									<?php echo $Translation["show tool tips"]; ?>
+								</label>
+							</div>
+						</div>
+					</div>
+
+					<form method="post" action="pageEditGroup.php" class="form-horizontal">
+						<input type="hidden" name="groupID" value="<?php echo $groupID; ?>">
+
+						<div class="form-group ">
+							<label for="group name" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["group name"]; ?></label>
+							<div class="col-sm-8 col-md-9 col-lg-6 ">
+								<input class="form-control" type="text" name="name" <?php echo ($anonGroupID == $groupID ? "readonly" : ""); ?> value="<?php echo html_attr($name); ?>">
+								<span class="help-block">
+									<?php
+										if($anonGroupID == $groupID){
+											echo $Translation["readonly group name"];
+										}else{
+											echo str_replace('<ANONYMOUSGROUP>', $adminConfig['anonymousGroup'], $Translation["anonymous group name"]);
+										}
+									?>
+								</span>
+							</div>
+						</div>
+
+						<div class="form-group ">
+							<label for="description" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["description"]; ?></label>
+							<div class="col-sm-8 col-md-9 col-lg-6 ">
+								<textarea class="form-control" name="description" rows="5"><?php echo html_attr($description); ?></textarea>
+							</div>
+						</div>
+
+						<?php if($anonGroupID != $groupID){ ?>
+							<div class="form-group ">
+								<label for="allow visitors sign up" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["allow visitors sign up"]; ?></label>
+								<div class="col-sm-8 col-md-9 col-lg-6 ">
+									<?php
+										echo htmlRadioGroup(
+											"visitorSignup",
+											array(0, 1, 2),
+											array(
+												$Translation["admin add users"],
+												$Translation["admin approve users"],
+												$Translation["automatically approve users"]
+											), 
+											($groupID ? $visitorSignup : $adminConfig['defaultSignUp'])
+										);
+									?>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class=" col-lg-3 col-lg-offset-9 col-sm-4 col-sm-offset-8" >
+									<button type="submit" name="saveChanges" value="1" class="btn btn-primary btn-lg pull-right btn-block"><i class="glyphicon glyphicon-ok"></i> <?php echo $Translation["save changes"]; ?></button>
+								</div>
+							</div>
+
+							<div style="height: 3em;"></div>
+						<?php } ?>
+
+						<?php
+							// permissions arrays common to the radio groups below
+							$arrPermVal = array(0, 1, 2, 3);
+							$arrPermText = array($Translation["no"], $Translation["owner"], $Translation["group"], $Translation["all"]);
+						?>
+
+						<div class="table-responsive">
+								<caption><h3><?php echo $Translation["group table permissions"]; ?></h3></caption>
+							<table class="table">
+								<thead>
+									<tr>
+										<th><a><?php echo $Translation["table"]; ?></a></th>
+										<th><a><?php echo $Translation["insert"]; ?></a></th>
+										<th><a><?php echo $Translation["view"]; ?></a></th>
+										<th><a><?php echo $Translation["edit"]; ?></a></th>
+										<th><a><?php echo $Translation["delete"]; ?></a></th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php foreach($table_list as $tn => $tc){ ?>
+										<!-- <?php echo $tn; ?> table -->
+										<tr>
+											<th><a><?php echo $tc; ?></a></th>
+											<td>
+												<input onMouseOver="stm(<?php echo $tn; ?>_addTip, toolTipStyle);" onMouseOut="htm();" type="checkbox" name="<?php echo $tn; ?>_insert" value="1" <?php echo ($perm["{$tn}_insert"] ? "checked class=\"text-primary\"" : ""); ?>>
+											</td>
+											<td>
+												<?php echo htmlRadioGroup("{$tn}_view", $arrPermVal, $arrPermText, $perm["{$tn}_view"], 'text-primary'); ?>
+											</td>
+											<td>
+												<?php echo htmlRadioGroup("{$tn}_edit", $arrPermVal, $arrPermText, $perm["{$tn}_edit"], 'text-primary'); ?>
+											</td>
+											<td>
+												<?php echo htmlRadioGroup("{$tn}_delete", $arrPermVal, $arrPermText, $perm["{$tn}_delete"], 'text-primary'); ?>
+											</td>
+										</tr>
+									<?php } ?>
+								</tbody>
+							</table>
+						</div>
+						<hr>
+						<div class="row">
+							<div class=" col-lg-3 col-lg-offset-9 col-sm-4 col-sm-offset-8 " >
+								<button type="submit" name="saveChanges" value="1" class="btn btn-primary btn-lg btn-block "><i class="glyphicon glyphicon-ok"></i> <?php echo $Translation["save changes"]; ?></button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
-</form>
+</div>
 
-<div style="height: 10em;"></div>
-
+<div id="fab1" class="adminActions">
+	<a class="btn btn-warning float-btn-2" href="pageViewGroups.php" title="Back To Groups"><i class="ti-arrow-left"></i></a>
+	<?php if($groupID){ ?>
+	<input type="checkbox" name="adminToggle" class="adminToggle" />
+	<a class="adminButton" href="#!"><i class="ti-more"></i></a>
+	<div class="adminButtons show" id="fab1_content">
+		<button style="width:unset;height:unset;color:unset;border:none;background:none"><a href="pageViewMembers.php?groupID=<?php echo $groupID; ?>" title="View Group Members"><i class="ti-user"></i></a></button>
+		<button style="width:unset;height:unset;color:unset;border:none;background:none"><a href="pageEditMember.php?groupID=<?php echo $groupID; ?>" title="Add Member To Group"><i class="ti-plus"></i></a></button>
+		<button style="width:unset;height:unset;color:unset;border:none;background:none"><a href="pageViewRecords.php?groupID=<?php echo $groupID; ?>" title="View Group Records"><i class="ti-layout-list-thumb"></i></a></button>
+	<?php } ?>
+	</div>
+</div>
 <script>
 	$j(function(){
 		var highlight_selections = function(){

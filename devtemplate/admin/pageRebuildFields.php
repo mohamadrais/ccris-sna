@@ -2827,49 +2827,61 @@
 	</div>
 <?php } ?>
 
-<div class="page-header"><h1>
-	<?php echo $Translation['view or rebuild fields'] ; ?>
-	<button type="button" class="btn btn-default" id="show_deviations_only"><i class="glyphicon glyphicon-eye-close"></i> <?php echo $Translation['show deviations only'] ; ?></button>
-	<button type="button" class="btn btn-default hidden" id="show_all_fields"><i class="glyphicon glyphicon-eye-open"></i> <?php echo $Translation['show all fields'] ; ?></button>
-</h1></div>
 
-<p class="lead"><?php echo $Translation['compare tables page'] ; ?></p>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<h3>
+						<?php echo $Translation['view or rebuild fields'] ; ?>
+					</h3>
 
-<div class="alert summary"></div>
-<table class="table table-responsive table-hover table-striped">
-	<thead><tr>
-		<th></th>
-		<th><?php echo $Translation['field'] ; ?></th>
-		<th><?php echo $Translation['AppGini definition'] ; ?></th>
-		<th><?php echo $Translation['database definition'] ; ?></th>
-		<th id="fix_all"></th>
-	</tr></thead>
+					<p class="lead"><?php echo $Translation['compare tables page'] ; ?></p>
 
-	<tbody>
-	<?php foreach($schema as $tn => $fields){ ?>
-		<tr class="text-info"><td colspan="5"><h4 data-placement="left" data-toggle="tooltip" title="<?php echo str_replace ( "<TABLENAME>" , $tn , $Translation['table name title']) ; ?>"><i class="glyphicon glyphicon-th-list"></i> <?php echo $table_captions[$tn]; ?></h4></td></tr>
-		<?php foreach($fields as $fn => $fd){ ?>
-			<?php $diff = ((prepare_def($fd['appgini']) == prepare_def($fd['db'])) ? false : true); ?>
-			<?php $no_db = ($fd['db'] ? false : true); ?>
-			<tr class="<?php echo ($diff ? 'warning' : 'field_ok'); ?>">
-				<td><i class="glyphicon glyphicon-<?php echo ($diff ? 'remove text-danger' : 'ok text-success'); ?>"></i></td>
-				<td><?php echo $fn; ?></td>
-				<td class="<?php echo ($diff ? 'bold text-success' : ''); ?>"><?php echo $fd['appgini']; ?></td>
-				<td class="<?php echo ($diff ? 'bold text-danger' : ''); ?>"><?php echo thisOr($fd['db'], $Translation['does not exist']); ?></td>
-				<td>
-					<?php if($diff && $no_db){ ?>
-						<a href="pageRebuildFields.php?t=<?php echo $tn; ?>&f=<?php echo $fn; ?>" class="btn btn-success btn-xs btn_create" data-toggle="tooltip" data-placement="top" title="<?php echo $Translation['create field'] ; ?>"><i class="glyphicon glyphicon-plus"></i> <?php echo $Translation['create it'] ; ?></a>
-					<?php }elseif($diff){ ?>
-						<a href="pageRebuildFields.php?t=<?php echo $tn; ?>&f=<?php echo $fn; ?>" class="btn btn-warning btn-xs btn_update" data-toggle="tooltip" title="<?php echo $Translation['fix field'] ; ?>"><i class="glyphicon glyphicon-cog"></i> <?php echo $Translation['fix it'] ; ?></a>
-					<?php } ?>
-				</td>
-			</tr>
-		<?php } ?>
-	<?php } ?>
-	</tbody>
-</table>
-<div class="alert summary"></div>
+					<div class="alert summary"></div>
+					<table class="table">
+						<thead><tr>
+							<th></th>
+							<th><a><?php echo $Translation['field'] ; ?></a></th>
+							<th><a><?php echo $Translation['AppGini definition'] ; ?></a></th>
+							<th><a><?php echo $Translation['database definition'] ; ?></a></th>
+							<th id="fix_all"></th>
+						</tr></thead>
 
+						<tbody>
+						<?php foreach($schema as $tn => $fields){ ?>
+							<tr class="text-info"><td colspan="5"><h4 data-placement="left" data-toggle="tooltip" title="<?php echo str_replace ( "<TABLENAME>" , $tn , $Translation['table name title']) ; ?>"><i class="glyphicon glyphicon-th-list"></i> <?php echo $table_captions[$tn]; ?></h4></td></tr>
+							<?php foreach($fields as $fn => $fd){ ?>
+								<?php $diff = ((prepare_def($fd['appgini']) == prepare_def($fd['db'])) ? false : true); ?>
+								<?php $no_db = ($fd['db'] ? false : true); ?>
+								<tr class="<?php echo ($diff ? 'warning' : 'field_ok'); ?>">
+									<td><a><i class="glyphicon glyphicon-<?php echo ($diff ? 'remove text-danger' : 'ok text-success'); ?>"></i></a></td>
+									<td><a><?php echo $fn; ?></a></td>
+									<td class="<?php echo ($diff ? 'bold text-success' : ''); ?>"><a><?php echo $fd['appgini']; ?></a></td>
+									<td class="<?php echo ($diff ? 'bold text-danger' : ''); ?>"><a><?php echo thisOr($fd['db'], $Translation['does not exist']); ?></a></td>
+									<td>
+										<?php if($diff && $no_db){ ?>
+											<a href="pageRebuildFields.php?t=<?php echo $tn; ?>&f=<?php echo $fn; ?>" class="btn btn-success btn-xs btn_create" data-toggle="tooltip" data-placement="top" title="<?php echo $Translation['create field'] ; ?>"><i class="glyphicon glyphicon-plus"></i> <?php echo $Translation['create it'] ; ?></a>
+										<?php }elseif($diff){ ?>
+											<a href="pageRebuildFields.php?t=<?php echo $tn; ?>&f=<?php echo $fn; ?>" class="btn btn-warning btn-xs btn_update" data-toggle="tooltip" title="<?php echo $Translation['fix field'] ; ?>"><i class="glyphicon glyphicon-cog"></i> <?php echo $Translation['fix it'] ; ?></a>
+										<?php } ?>
+									</td>
+								</tr>
+							<?php } ?>
+						<?php } ?>
+						</tbody>
+					</table>
+					<div class="alert summary"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="fab1" class="adminActions">
+		<a type="button" class="btn btn-warning float-btn-2" id="show_deviations_only" title="Show Deviations Only"><i class="fa fa-eye-slash"></i></a>
+		<a type="button" class="btn btn-warning float-btn-2 hidden" id="show_all_fields" title="Show All Fields"><i class="fa fa-eye"></i></a>
+	</div>
+</div>
 <style>
 	.bold{ font-weight: bold; }
 	[data-toggle="tooltip"]{ display: block !important; }

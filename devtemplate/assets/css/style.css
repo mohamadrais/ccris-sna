@@ -7065,10 +7065,11 @@ button.login {
 }
 .adminActions input{
   margin: 0;
+  box-shadow: none;
 }
 .adminActions input:focus{
   outline: 0;
-  background: #33333336;
+  box-shadow: none;
 }
 .adminButton {
   height: 60px;
@@ -7080,6 +7081,7 @@ button.login {
   text-align: center;
   position: relative;
   z-index: 1;
+  box-shadow: 0px 2px 3px 2px #dedede;
 }
 
 .adminButton i {
@@ -7088,8 +7090,9 @@ button.login {
 
 .adminButtons {
 position: absolute;
-width: 100%;
+width: 50%;
 bottom: 120%;
+right: 0px;
 text-align: center;
 font-size: 2.2rem;
 display: none;
@@ -7394,14 +7397,18 @@ select.form-control:not([size]):not([multiple]){
   z-index: 3 !important;
 }
 .float-btn-2{
-  position: absolute;
+  position: relative;
   border-radius: 50px;
   height: 50px;
   width: 50px;
-  right: 75px;
+  /* right: 75px; */
   top: 5px;
+  /* bottom: 0px; */
   font-size: 2.2rem;
   text-align: center;
+  box-shadow: 0px 2px 3px 2px #dedede;
+  display: block;
+  margin: 0 10px;
 }
 .page-header{
   margin: 20px 0;
@@ -7416,6 +7423,12 @@ select.form-control:not([size]):not([multiple]){
   color: #721c24;
   background-color: #f8d7da;
   border-color: #f5c6cb;
+  background-image: none;
+}
+.alert-warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
   background-image: none;
 }
 .dropdown-toggle::after{

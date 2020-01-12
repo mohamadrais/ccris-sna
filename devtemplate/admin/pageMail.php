@@ -124,87 +124,99 @@
 	}
 ?>
 
-<div class="page-header"><h1><?php echo $Translation['send mail']; ?></h1></div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<h3>
+						<?php echo $Translation['send mail']; ?>
+					</h3>
 
-<form method="post" action="pageMail.php" class="form-horizontal">
-	<?php echo csrf_token(); ?>
-	<input type="hidden" name="memberID" value="<?php echo $memberID->attr; ?>">
-	<input type="hidden" name="groupID" value="<?php echo $groupID; ?>">
-	<input type="hidden" name="sendToAll" value="<?php echo $sendToAll; ?>">
-	<?php if(isset($_REQUEST['simulate'])){ ?>
-		<input type="hidden" name="simulate" value="1">
-	<?php } ?>
+					<form method="post" action="pageMail.php" class="form-horizontal">
+						<?php echo csrf_token(); ?>
+						<input type="hidden" name="memberID" value="<?php echo $memberID->attr; ?>">
+						<input type="hidden" name="groupID" value="<?php echo $groupID; ?>">
+						<input type="hidden" name="sendToAll" value="<?php echo $sendToAll; ?>">
+						<?php if(isset($_REQUEST['simulate'])){ ?>
+							<input type="hidden" name="simulate" value="1">
+						<?php } ?>
 
-	<div class="form-group">
-		<label class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["from"]; ?></label>
-		<div class="col-sm-8 col-md-9 col-lg-6">
-			<p class="form-control-static">
-				<?php echo "{$adminConfig['senderName']} &lt;{$adminConfig['senderEmail']}&gt;"; ?>
-				<div>
-					<a href="pageSettings.php#mail-settings" class="btn btn-default">
-						<i class="glyphicon glyphicon-pencil"></i>
-						<?php echo $Translation['configure mail settings']; ?>
-					</a>
+						<div class="form-group">
+							<label class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["from"]; ?></label>
+							<div class="col-sm-8 col-md-9 col-lg-6">
+								<p class="form-control-static">
+									<?php echo "{$adminConfig['senderName']} &lt;{$adminConfig['senderEmail']}&gt;"; ?>
+									<div>
+										<a href="pageSettings.php#mail-settings" class="btn btn-default">
+											<i class="glyphicon glyphicon-pencil"></i>
+											<?php echo $Translation['configure mail settings']; ?>
+										</a>
+									</div>
+								</p>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation['to']; ?></label>
+							<div class="col-sm-8 col-md-9 col-lg-6">
+								<p class="form-control-static">
+									<?php
+										$to_link = "pageEditMember.php?memberID={$memberID->url}";
+										if($sendToAll)
+											$to_link = "pageViewMembers.php";
+										if(!$sendToAll && $isGroup)
+											$to_link = "pageViewMembers.php?groupID={$groupID}";
+									?>
+									<a href="<?php echo $to_link; ?>">
+										<i class="glyphicon glyphicon-user text-info"></i> 
+										<?php echo $recipient; ?>
+									</a>
+									<div class="btn-group">
+										<a href="pageViewGroups.php" class="btn btn-default"><?php echo $Translation['send email to all members']; ?></a>
+										<a href="pageViewMembers.php" class="btn btn-default"><?php echo $Translation['send email to member']; ?></a>
+									</div>
+								</p>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="mailSubject" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["subject"]; ?></label>
+							<div class="col-sm-8 col-md-9 col-lg-6">
+								<input class="form-control" name="mailSubject" id="mailSubject" autofocus>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="mailMessage" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["message"]; ?></label>
+							<div class="col-sm-8 col-md-9 col-lg-6">
+								<textarea rows="10" class="form-control" name="mailMessage" id="mailMessage"></textarea>
+							</div>
+						</div>
+
+						<?php if($adminConfig['mail_function'] == 'smtp'){ ?>
+							<div class="checkbox">
+								<div class="col-sm-offset-4 col-md-offset-3 col-lg-offset-4 col-sm-8 col-md-9 col-lg-6">
+									<label for="showDebug">
+										<input type="checkbox" name="showDebug" value="1" id="showDebug">
+										<?php echo $Translation['display debugging info']; ?>
+										<span class="help-block"><?php echo $Translation['debugging info hint']; ?></span>
+									</label>
+								</div>
+							</div>
+						<?php } ?>
+
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-4 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+								<button name="saveChanges" type="submit" class="btn btn-primary btn-lg btn-block"><i class="glyphicon glyphicon-envelope"></i> <?php echo $Translation["send message"]; ?></button>
+							</div>
+						</div>
+					</form>
 				</div>
-			</p>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation['to']; ?></label>
-		<div class="col-sm-8 col-md-9 col-lg-6">
-			<p class="form-control-static">
-				<?php
-					$to_link = "pageEditMember.php?memberID={$memberID->url}";
-					if($sendToAll)
-						$to_link = "pageViewMembers.php";
-					if(!$sendToAll && $isGroup)
-						$to_link = "pageViewMembers.php?groupID={$groupID}";
-				?>
-				<a href="<?php echo $to_link; ?>">
-					<i class="glyphicon glyphicon-user text-info"></i> 
-					<?php echo $recipient; ?>
-				</a>
-				<div class="btn-group">
-					<a href="pageViewGroups.php" class="btn btn-default"><?php echo $Translation['send email to all members']; ?></a>
-					<a href="pageViewMembers.php" class="btn btn-default"><?php echo $Translation['send email to member']; ?></a>
-				</div>
-			</p>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="mailSubject" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["subject"]; ?></label>
-		<div class="col-sm-8 col-md-9 col-lg-6">
-			<input class="form-control" name="mailSubject" id="mailSubject" autofocus>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label for="mailMessage" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["message"]; ?></label>
-		<div class="col-sm-8 col-md-9 col-lg-6">
-			<textarea rows="10" class="form-control" name="mailMessage" id="mailMessage"></textarea>
-		</div>
-	</div>
-
-	<?php if($adminConfig['mail_function'] == 'smtp'){ ?>
-		<div class="checkbox">
-			<div class="col-sm-offset-4 col-md-offset-3 col-lg-offset-4 col-sm-8 col-md-9 col-lg-6">
-				<label for="showDebug">
-					<input type="checkbox" name="showDebug" value="1" id="showDebug">
-					<?php echo $Translation['display debugging info']; ?>
-					<span class="help-block"><?php echo $Translation['debugging info hint']; ?></span>
-				</label>
 			</div>
 		</div>
-	<?php } ?>
-
-	<div class="form-group">
-		<div class="col-sm-4 col-sm-offset-4 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
-			<button name="saveChanges" type="submit" class="btn btn-primary btn-lg btn-block"><i class="glyphicon glyphicon-envelope"></i> <?php echo $Translation["send message"]; ?></button>
-		</div>
 	</div>
-</form>
+</div>
 
 <script>
 	$j(function(){

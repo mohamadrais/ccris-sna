@@ -389,7 +389,7 @@
 	$Translation['send email to all members'] = "Send an email message to all members of a group.";
 	
 	//pageViewMembers.php
-	$Translation['search members'] = "Search members <SEARCH> in <HTMLSELECT>";
+	$Translation['search members'] = "<SEARCH> in <HTMLSELECT>";
 	$Translation['all fields'] = "All fields";
 	$Translation['any'] = "Any";
 	$Translation['waiting approval'] = "Waiting approval";

@@ -195,133 +195,130 @@ if($memberID != '' && $groupID != sqlValue("select groupID from membership_group
 }
 ?>
 
-<div class="page-header">
-	<h1>
-		<?php echo ($memberID ? str_replace('<MEMBERID>', '<span class="text-primary">' . $memberID . '</span>', $Translation["edit member"]) : $Translation["add new member"] . $addend); ?>
-		<div class="pull-right">
-			<div class="btn-group">
-				<a href="pageViewMembers.php" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-arrow-left"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['back to members']; ?></span></a>
-				<?php if($memberID){ ?>
-					<a href="pageViewRecords.php?memberID=<?php echo urlencode($memberID); ?>" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-th"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['View member records']; ?></span></a>
-					<a href="pageMail.php?memberID=<?php echo urlencode($memberID); ?>" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-envelope"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['send message to member']; ?></span></a>
-				<?php } ?>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<h3>
+						<?php echo ($memberID ? str_replace('<MEMBERID>', '<span class="text-primary">' . $memberID . '</span>', $Translation["edit member"]) : $Translation["add new member"] . $addend); ?>
+					</h3>
+
+					<?php if($superadmin){ ?>
+						<div class="alert alert-warning"><?php echo $Translation["admin member"]; ?></div>
+					<?php } ?>
+
+					<form method="post" action="pageEditMember.php" class="form-horizontal">
+						<?php echo csrf_token(); ?>
+						<input type="hidden" name="oldMemberID" value="<?php echo ($memberID ? html_attr($memberID) : ""); ?>">
+
+						<?php if(!$superadmin){ /* non-admin user fields */ ?>
+							<div class="form-group ">
+								<label for="memberID" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["member username"]; ?></label>
+								<div class="col-sm-8 col-md-9 col-lg-6">
+									<input type="text" class="form-control" name="memberID" id="memberID" value="<?php echo html_attr($memberID); ?>" autofocus>
+									<span id="username-available" class="help-block hidden"><i class="glyphicon glyphicon-ok"></i> <?php echo str_ireplace(array("'", '"', '<memberid>'), '', $Translation['user available']); ?></span>
+									<span id="username-not-available" class="help-block hidden"><i class="glyphicon glyphicon-remove"></i> <?php echo str_ireplace(array("'", '"', '<memberid>'), '', $Translation['username invalid']); ?></span>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="password" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["password"]; ?></label>
+								<div class="col-sm-8 col-md-9 col-lg-6">
+									<input  class="form-control" type="password" name="password" id="password" value=""   autocomplete="off">
+									<?php echo ($memberID ? "<span class='help-block'>" . $Translation["change password"] : "" . "</span>"); ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="confirmPassword" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["confirm password"]; ?> </label>
+								<div class="col-sm-8 col-md-9 col-lg-6">
+									<input class="form-control" type="password" name="confirmPassword" id="confirmPassword" value=""  autocomplete="off">  
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="email" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["email"]; ?> </label>
+								<div class="col-sm-8 col-md-9 col-lg-6">
+									<input class="form-control" type="text" id="email" name="email" value="<?php echo $email; ?>">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="group" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["group"]; ?></label>
+								<div class="col-sm-8 col-md-9 col-lg-6">
+									<?php
+										$safe_anonGroup = makeSafe($anonGroup, false);
+										echo bootstrapSQLSelect('groupID', "select groupID, name from membership_groups where name!='{$safe_anonGroup}' order by name", $groupID);
+										echo $userPermissionsNote;
+									?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"></label>
+								<div class="col-sm-8 col-md-9 col-lg-6">
+									<div class="checkbox">
+										<label>
+											<input  type="checkbox" name="isApproved" value="1" <?php echo ($isApproved ? "checked" : ($memberID ? "" : "checked")); ?>>
+											<?php echo $Translation["approved"]; ?>
+										</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"></label>
+								<div class="col-sm-8 col-md-9 col-lg-6">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" name="isBanned" value="1" <?php echo ($isBanned ? 'checked' : ''); ?>>
+											<?php echo $Translation['banned']; ?>
+										</label>
+									</div>
+								</div>
+							</div>
+						<?php } /* end of non-admin user fields */ ?>
+
+						<?php for($cust = 1; $cust <= 4; $cust++){ ?>
+							<?php if($adminConfig["custom{$cust}"] != ''){ ?>
+								<div class="form-group">
+									<label for="custom<?php echo $cust; ?>" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $adminConfig["custom{$cust}"]; ?></label>
+									<div class="col-sm-8 col-md-9 col-lg-6">
+										<input class="form-control" type="text" name="custom<?php echo $cust; ?>" id="custom<?php echo $cust; ?>" value="<?php echo $customs[$cust]; ?>" >
+									</div>
+								</div>
+							<?php } ?>
+						<?php } ?>
+
+						<div class="form-group">
+							<label for="comments" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["comments"]; ?> </label>
+							<div class="col-sm-8 col-md-9 col-lg-6">
+								<textarea id="comments" name="comments" rows="10" class="form-control"><?php echo $comments; ?></textarea>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"></label>
+							<div class="col-sm-8 col-md-9 col-lg-6 text-right">
+								<?php if($memberID != ''){ /* for existing members, cancel reloads the member */ ?>
+									<a href="pageEditMember.php?memberID=<?php echo urlencode($memberID); ?>" class="btn btn-warning btn-lg hspacer-md"><i class="glyphicon glyphicon-remove"></i> <?php echo $Translation['cancel']; ?></a>
+									<a href="pageViewMembers.php" class="btn btn-default btn-lg hspacer-md"><i class="glyphicon glyphicon-arrow-left"></i> <?php echo $Translation['back to members']; ?></a>
+								<?php }else{ /* for new members, cancel goes to list of members */ ?>
+									<a href="pageViewMembers.php" class="btn btn-warning btn-lg hspacer-md"><i class="glyphicon glyphicon-remove"></i> <?php echo $Translation['cancel']; ?></a>
+								<?php } ?>
+								<button type="button" id="saveChanges" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok"></i> <?php echo $Translation["save changes"]; ?></button>
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
-		<div class="clearfix"></div>
-	</h1>
+	</div>
+	<div class="adminActions">
+		<a class="btn btn-warning float-btn-2" href="pageViewMembers.php" title="Back To Members"><i class="ti-arrow-left"></i></a>
+	</div>
 </div>
-
-
-<div style="height: 3em;"></div>
-
-<?php if($superadmin){ ?>
-	<div class="alert alert-warning"><?php echo $Translation["admin member"]; ?></div>
-<?php } ?>
-
-<form method="post" action="pageEditMember.php" class="form-horizontal">
-	<?php echo csrf_token(); ?>
-	<input type="hidden" name="oldMemberID" value="<?php echo ($memberID ? html_attr($memberID) : ""); ?>">
-
-	<?php if(!$superadmin){ /* non-admin user fields */ ?>
-		<div class="form-group ">
-			<label for="memberID" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["member username"]; ?></label>
-			<div class="col-sm-8 col-md-9 col-lg-6">
-				<input type="text" class="form-control" name="memberID" id="memberID" value="<?php echo html_attr($memberID); ?>" autofocus>
-				<span id="username-available" class="help-block hidden"><i class="glyphicon glyphicon-ok"></i> <?php echo str_ireplace(array("'", '"', '<memberid>'), '', $Translation['user available']); ?></span>
-				<span id="username-not-available" class="help-block hidden"><i class="glyphicon glyphicon-remove"></i> <?php echo str_ireplace(array("'", '"', '<memberid>'), '', $Translation['username invalid']); ?></span>
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label for="password" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["password"]; ?></label>
-			<div class="col-sm-8 col-md-9 col-lg-6">
-				<input  class="form-control" type="password" name="password" id="password" value=""   autocomplete="off">
-				<?php echo ($memberID ? "<span class='help-block'>" . $Translation["change password"] : "" . "</span>"); ?>
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label for="confirmPassword" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["confirm password"]; ?> </label>
-			<div class="col-sm-8 col-md-9 col-lg-6">
-				<input class="form-control" type="password" name="confirmPassword" id="confirmPassword" value=""  autocomplete="off">  
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label for="email" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["email"]; ?> </label>
-			<div class="col-sm-8 col-md-9 col-lg-6">
-				<input class="form-control" type="text" id="email" name="email" value="<?php echo $email; ?>">
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label for="group" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["group"]; ?></label>
-			<div class="col-sm-8 col-md-9 col-lg-6">
-				<?php
-					$safe_anonGroup = makeSafe($anonGroup, false);
-					echo bootstrapSQLSelect('groupID', "select groupID, name from membership_groups where name!='{$safe_anonGroup}' order by name", $groupID);
-					echo $userPermissionsNote;
-				?>
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"></label>
-			<div class="col-sm-8 col-md-9 col-lg-6">
-				<div class="checkbox">
-					<label>
-						<input  type="checkbox" name="isApproved" value="1" <?php echo ($isApproved ? "checked" : ($memberID ? "" : "checked")); ?>>
-						<?php echo $Translation["approved"]; ?>
-					</label>
-				</div>
-			</div>
-		</div>
-
-		<div class="form-group">
-			<label class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"></label>
-			<div class="col-sm-8 col-md-9 col-lg-6">
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" name="isBanned" value="1" <?php echo ($isBanned ? 'checked' : ''); ?>>
-						<?php echo $Translation['banned']; ?>
-					</label>
-				</div>
-			</div>
-		</div>
-	<?php } /* end of non-admin user fields */ ?>
-
-	<?php for($cust = 1; $cust <= 4; $cust++){ ?>
-		<?php if($adminConfig["custom{$cust}"] != ''){ ?>
-			<div class="form-group">
-				<label for="custom<?php echo $cust; ?>" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $adminConfig["custom{$cust}"]; ?></label>
-				<div class="col-sm-8 col-md-9 col-lg-6">
-					<input class="form-control" type="text" name="custom<?php echo $cust; ?>" id="custom<?php echo $cust; ?>" value="<?php echo $customs[$cust]; ?>" >
-				</div>
-			</div>
-		<?php } ?>
-	<?php } ?>
-
-	<div class="form-group">
-		<label for="comments" class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"><?php echo $Translation["comments"]; ?> </label>
-		<div class="col-sm-8 col-md-9 col-lg-6">
-			<textarea id="comments" name="comments" rows="10" class="form-control"><?php echo $comments; ?></textarea>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"></label>
-		<div class="col-sm-8 col-md-9 col-lg-6">
-			<button type="button" id="saveChanges" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok"></i> <?php echo $Translation["save changes"]; ?></button>
-			<?php if($memberID != ''){ /* for existing members, cancel reloads the member */ ?>
-				<a href="pageEditMember.php?memberID=<?php echo urlencode($memberID); ?>" class="btn btn-warning btn-lg hspacer-md"><i class="glyphicon glyphicon-remove"></i> <?php echo $Translation['cancel']; ?></a>
-				<a href="pageViewMembers.php" class="btn btn-default btn-lg hspacer-md"><i class="glyphicon glyphicon-arrow-left"></i> <?php echo $Translation['back to members']; ?></a>
-			<?php }else{ /* for new members, cancel goes to list of members */ ?>
-				<a href="pageViewMembers.php" class="btn btn-warning btn-lg hspacer-md"><i class="glyphicon glyphicon-remove"></i> <?php echo $Translation['cancel']; ?></a>
-			<?php } ?>
-		</div>
-	</div>
-</form>
-
 <style>
 	#username-available, #username-not-available{ cursor: pointer; }
 </style>

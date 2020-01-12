@@ -226,107 +226,122 @@
 
 ?>
 
-<div class="page-header"><h1><?php echo $Translation['admin settings'] ; ?></h1></div>
 
-<form method="post" action="pageSettings.php" class="form-horizontal">
-	<?php echo csrf_token(); ?>
 
-	<?php echo settings_textbox('adminUsername', $Translation['admin username'], $adminConfig['adminUsername']); ?>
-	<?php echo settings_textbox('adminPassword', $Translation['admin password'], '', $Translation['change admin password'], 'password'); ?>
-	<?php echo settings_textbox('confirmPassword', $Translation['confirm password'], '', '', 'password'); ?>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<h3>
+						<?php echo $Translation['admin settings'] ; ?>
+					</h3>
 
-	<?php
-		echo settings_radiogroup(
-			'notifyAdminNewMembers', 
-			$Translation['admin notifications'], 
-			intval($adminConfig['notifyAdminNewMembers']), 
-			array(
-				0 => $Translation['no email notifications'],
-				1 => $Translation['member waiting approval'],
-				2 => $Translation['new sign-ups']
-			)
-		); 
-	?>
+					<form method="post" action="pageSettings.php" class="form-horizontal">
+						<?php echo csrf_token(); ?>
 
-	<?php echo settings_textbox('custom1', $Translation['members custom field 1'], $adminConfig['custom1']); ?>
-	<?php echo settings_textbox('custom2', $Translation['members custom field 2'], $adminConfig['custom2']); ?>
-	<?php echo settings_textbox('custom3', $Translation['members custom field 3'], $adminConfig['custom3']); ?>
-	<?php echo settings_textbox('custom4', $Translation['members custom field 4'], $adminConfig['custom4']); ?>
+						<?php echo settings_textbox('adminUsername', $Translation['admin username'], $adminConfig['adminUsername']); ?>
+						<?php echo settings_textbox('adminPassword', $Translation['admin password'], '', $Translation['change admin password'], 'password'); ?>
+						<?php echo settings_textbox('confirmPassword', $Translation['confirm password'], '', '', 'password'); ?>
 
-	<?php echo settings_textbox('approvalSubject', $Translation['member approval email subject'], $adminConfig['approvalSubject'], $Translation['member approval email subject control']); ?>
-	<?php echo settings_textarea('approvalMessage', $Translation['member approval email message'], $adminConfig['approvalMessage']); ?>
+						<?php
+							echo settings_radiogroup(
+								'notifyAdminNewMembers', 
+								$Translation['admin notifications'], 
+								intval($adminConfig['notifyAdminNewMembers']), 
+								array(
+									0 => $Translation['no email notifications'],
+									1 => $Translation['member waiting approval'],
+									2 => $Translation['new sign-ups']
+								)
+							); 
+						?>
 
-	<?php echo settings_textbox('MySQLDateFormat', $Translation['MySQL date'], $adminConfig['MySQLDateFormat'], $Translation['MySQL reference']); ?>
-	<?php echo settings_textbox('PHPDateFormat', $Translation['PHP short date'], $adminConfig['PHPDateFormat'], $Translation['PHP manual']); ?>
-	<?php echo settings_textbox('PHPDateTimeFormat', $Translation['PHP long date'], $adminConfig['PHPDateTimeFormat'], $Translation['PHP manual']); ?>
+						<?php echo settings_textbox('custom1', $Translation['members custom field 1'], $adminConfig['custom1']); ?>
+						<?php echo settings_textbox('custom2', $Translation['members custom field 2'], $adminConfig['custom2']); ?>
+						<?php echo settings_textbox('custom3', $Translation['members custom field 3'], $adminConfig['custom3']); ?>
+						<?php echo settings_textbox('custom4', $Translation['members custom field 4'], $adminConfig['custom4']); ?>
 
-	<?php echo settings_textbox('groupsPerPage', $Translation['groups per page'], $adminConfig['groupsPerPage']); ?>
-	<?php echo settings_textbox('membersPerPage', $Translation['members per page'], $adminConfig['membersPerPage']); ?>
-	<?php echo settings_textbox('recordsPerPage', $Translation['records per page'], $adminConfig['recordsPerPage']); ?>
+						<?php echo settings_textbox('approvalSubject', $Translation['member approval email subject'], $adminConfig['approvalSubject'], $Translation['member approval email subject control']); ?>
+						<?php echo settings_textarea('approvalMessage', $Translation['member approval email message'], $adminConfig['approvalMessage']); ?>
 
-	<?php
-		echo settings_radiogroup(
-			'visitorSignup', 
-			$Translation['default sign-up mode'], 
-			intval($adminConfig['defaultSignUp']), 
-			array(
-				0 => $Translation['no sign-up allowed'],
-				1 => $Translation['admin approve members'],
-				2 => $Translation['automatically approve members']
-			)
-		); 
-	?>
+						<?php echo settings_textbox('MySQLDateFormat', $Translation['MySQL date'], $adminConfig['MySQLDateFormat'], $Translation['MySQL reference']); ?>
+						<?php echo settings_textbox('PHPDateFormat', $Translation['PHP short date'], $adminConfig['PHPDateFormat'], $Translation['PHP manual']); ?>
+						<?php echo settings_textbox('PHPDateTimeFormat', $Translation['PHP long date'], $adminConfig['PHPDateTimeFormat'], $Translation['PHP manual']); ?>
 
-	<?php echo settings_textbox('anonymousGroup', $Translation['anonymous group'], $adminConfig['anonymousGroup']); ?>
-	<?php echo settings_textbox('anonymousMember', $Translation['anonymous user name'], $adminConfig['anonymousMember']); ?>
+						<?php echo settings_textbox('groupsPerPage', $Translation['groups per page'], $adminConfig['groupsPerPage']); ?>
+						<?php echo settings_textbox('membersPerPage', $Translation['members per page'], $adminConfig['membersPerPage']); ?>
+						<?php echo settings_textbox('recordsPerPage', $Translation['records per page'], $adminConfig['recordsPerPage']); ?>
 
-	<?php echo settings_checkbox('hide_twitter_feed', $Translation['hide twitter feed'], '1', $adminConfig['hide_twitter_feed'], $Translation['twitter feed']); ?>
-	<?php echo settings_textarea('maintenance_mode_message', $Translation['maintenance mode message'], $adminConfig['maintenance_mode_message']); ?>
+						<?php
+							echo settings_radiogroup(
+								'visitorSignup', 
+								$Translation['default sign-up mode'], 
+								intval($adminConfig['defaultSignUp']), 
+								array(
+									0 => $Translation['no sign-up allowed'],
+									1 => $Translation['admin approve members'],
+									2 => $Translation['automatically approve members']
+								)
+							); 
+						?>
 
-	<hr>
-	<div id="mail-settings" style="height: 5em;"></div>
+						<?php echo settings_textbox('anonymousGroup', $Translation['anonymous group'], $adminConfig['anonymousGroup']); ?>
+						<?php echo settings_textbox('anonymousMember', $Translation['anonymous user name'], $adminConfig['anonymousMember']); ?>
 
-	<?php echo settings_textbox('senderEmail', $Translation['sender email'], $adminConfig['senderEmail'], $Translation['sender name and email'] . ' ' . $Translation['email messages']); ?>
-	<?php echo settings_textbox('senderName', $Translation['sender name'], $adminConfig['senderName']); ?>
-	<?php
-		echo settings_radiogroup(
-			'mail_function', 
-			$Translation['mail_function'], 
-			thisOr($adminConfig['mail_function'], 'mail'), 
-			array(
-				'mail' => 'PHP mail()',
-				'smtp' => 'SMTP'
-			)
-		); 
-	?>
-	<?php echo settings_textbox('smtp_server', $Translation['smtp_server'], $adminConfig['smtp_server']); ?>
-	<?php
-		echo settings_radiogroup(
-			'smtp_encryption', 
-			$Translation['smtp_encryption'], 
-			$adminConfig['smtp_encryption'], 
-			array(
-				'' => $Translation['none'],
-				'ssl' => 'SSL',
-				'tls' => 'TLS'
-			)
-		); 
-	?>
-	<?php echo settings_textbox('smtp_port', $Translation['smtp_port'], $adminConfig['smtp_port'], $Translation['smtp_port_hint']); ?>
-	<?php echo settings_textbox('smtp_user', $Translation['smtp_user'], $adminConfig['smtp_user']); ?>
-	<?php echo settings_textbox('smtp_pass', $Translation['smtp_pass'], $adminConfig['smtp_pass'], '', 'password'); ?>
+						<?php echo settings_checkbox('hide_twitter_feed', $Translation['hide twitter feed'], '1', $adminConfig['hide_twitter_feed'], $Translation['twitter feed']); ?>
+						<?php echo settings_textarea('maintenance_mode_message', $Translation['maintenance mode message'], $adminConfig['maintenance_mode_message']); ?>
 
-	<div class="form-group">
-		<label class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"></label>
-		<div class="col-sm-8 col-md-9 col-lg-6">
-			<button type="submit" name="saveChanges" value="1" onclick="return jsValidateAdminSettings();" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok"></i> <?php echo $Translation['save changes']; ?></button>
-			<a href="pageSettings.php" class="btn btn-warning btn-lg hspacer-md"><i class="glyphicon glyphicon-remove"></i> <?php echo $Translation['cancel']; ?></a>
+						<hr>
+						<div id="mail-settings" style="height: 5em;"></div>
+
+						<?php echo settings_textbox('senderEmail', $Translation['sender email'], $adminConfig['senderEmail'], $Translation['sender name and email'] . ' ' . $Translation['email messages']); ?>
+						<?php echo settings_textbox('senderName', $Translation['sender name'], $adminConfig['senderName']); ?>
+						<?php
+							echo settings_radiogroup(
+								'mail_function', 
+								$Translation['mail_function'], 
+								thisOr($adminConfig['mail_function'], 'mail'), 
+								array(
+									'mail' => 'PHP mail()',
+									'smtp' => 'SMTP'
+								)
+							); 
+						?>
+						<?php echo settings_textbox('smtp_server', $Translation['smtp_server'], $adminConfig['smtp_server']); ?>
+						<?php
+							echo settings_radiogroup(
+								'smtp_encryption', 
+								$Translation['smtp_encryption'], 
+								$adminConfig['smtp_encryption'], 
+								array(
+									'' => $Translation['none'],
+									'ssl' => 'SSL',
+									'tls' => 'TLS'
+								)
+							); 
+						?>
+						<?php echo settings_textbox('smtp_port', $Translation['smtp_port'], $adminConfig['smtp_port'], $Translation['smtp_port_hint']); ?>
+						<?php echo settings_textbox('smtp_user', $Translation['smtp_user'], $adminConfig['smtp_user']); ?>
+						<?php echo settings_textbox('smtp_pass', $Translation['smtp_pass'], $adminConfig['smtp_pass'], '', 'password'); ?>
+
+						<!-- <div class="form-group">
+							<label class="col-sm-4 col-md-3 col-lg-2 col-lg-offset-2 control-label"></label>
+							<div class="col-sm-8 col-md-9 col-lg-6">
+								<button type="submit" name="saveChanges" value="1" onclick="return jsValidateAdminSettings();" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok"></i> <?php echo $Translation['save changes']; ?></button>
+								<a href="pageSettings.php" class="btn btn-warning btn-lg hspacer-md"><i class="glyphicon glyphicon-remove"></i> <?php echo $Translation['cancel']; ?></a>
+							</div>
+						</div> -->
+
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
-
-</form>
-
-<div style="height: 600px;"></div>
+	<div class="adminActions">
+		<a type="submit" name="saveChanges" class="btn btn-warning float-btn-2" onclick="return jsValidateAdminSettings();" title="Save Changes"><i class="ti-save"></i></a>
+	</div>
+</div>
 
 <style>
 	.form-group{

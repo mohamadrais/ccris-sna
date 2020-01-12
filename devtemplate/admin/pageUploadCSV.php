@@ -90,58 +90,64 @@
 				<form method="post" action="<?php echo $this->curr_page; ?>" enctype="multipart/form-data">
 					<input type="hidden" name="action" value="upload">
 					<?php echo csrf_token(); ?>
-					<div class="page-header"><h1><?php echo $this->lang['import CSV to database']; ?></h1></div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<h3>
+				<?php echo $this->lang['import CSV to database']; ?>
+			</h3>
 
-					<h4><?php echo $this->lang['import CSV to database page']; ?></h4>
+			<p><?php echo $this->lang['import CSV to database page']; ?></p>
 
-					<div class="panel panel-success">
-						<div class="panel-heading">
-							<h3 class="panel-title"><i class="glyphicon glyphicon-th hspacer-md"></i> <?php echo "<b>{$this->lang['step 1']}</b> {$this->lang['table']}"; ?></h3>
-						</div>
-						<div class="panel-body">
-							<div class="form-group">
-								<?php echo $tables_dropdown; ?>
-								<span class="help-block"><?php echo $this->lang['populate table from CSV']; ?></span>
+			<div class="card">
+				<div class="card-body">
+					<h3 class="card-title"><i class="glyphicon glyphicon-th hspacer-md"></i> <?php echo "<b>{$this->lang['step 1']}</b> {$this->lang['table']}"; ?></h3>
+					
+					<div class="form-group">
+						<?php echo $tables_dropdown; ?>
+						<span class="help-block"><?php echo $this->lang['populate table from CSV']; ?></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-body">
+					<h3 class="card-title"><i class="glyphicon glyphicon-upload hspacer-md"></i><?php echo "<b>{$this->lang['step 2']}</b> {$this->lang['upload or choose csv file']}"; ?></h3>
+						
+					<label for="upload_csv" class="btn btn-primary btn-lg">
+						<i class="glyphicon glyphicon-upload"></i> &nbsp;<?php echo $this->lang['choose csv upload']; ?>
+					</label>
+
+					<span class="hspacer-lg"></span>
+					<span class="help-block" id="csv_file_name"><?php echo $this->lang['no file chosen yet']; ?></span>
+					<input type="file" name="upload_csv" id="upload_csv" accept=".csv, text/csv">
+					<button type="submit" class="btn btn-success btn-lg hspacer-lg hidden" id="start_upload"><i class="glyphicon glyphicon-upload"></i> <?php echo $this->lang['start upload']; ?></button>
+
+					<?php if(count($csv_files)){ ?>
+						<hr>
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title"><i class="glyphicon glyphicon-folder-open hspacer-md"></i> Open an existing CSV file</h3>
+							</div>
+							<div class="panel-body hidden">
+								<div class="row" id="existing-csv-files">
+									<?php foreach($csv_files as $csv_file){ ?>
+										<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 csv-file">
+											<button type="button" class="btn btn-link invisible delete-csv" data-csv="<?php echo html_attr($csv_file); ?>" title="<?php echo html_attr($this->lang['delete']); ?>"><i class="glyphicon glyphicon-trash text-danger"></i></button>
+											<a href="<?php echo $this->curr_page; ?>?csv=<?php echo urlencode($csv_file); ?>&action=show_preview&table=">
+												<i class="glyphicon glyphicon-file text-success"></i> <?php echo $csv_file; ?>
+											</a>
+										</div>
+									<?php } ?>
+								</div>
 							</div>
 						</div>
-					</div>
-
-					<div class="panel panel-success">
-						<div class="panel-heading">
-							<h3 class="panel-title"><i class="glyphicon glyphicon-upload hspacer-md"></i><?php echo "<b>{$this->lang['step 2']}</b> {$this->lang['upload or choose csv file']}"; ?></h3>
-						</div>
-						<div class="panel-body">
-							<label for="upload_csv" class="btn btn-primary btn-lg">
-								<i class="glyphicon glyphicon-upload"></i> &nbsp;<?php echo $this->lang['choose csv upload']; ?>
-							</label>
-
-							<span class="hspacer-lg"></span>
-							<span id="csv_file_name"><?php echo $this->lang['no file chosen yet']; ?></span>
-							<input type="file" name="upload_csv" id="upload_csv" accept=".csv, text/csv">
-							<button type="submit" class="btn btn-success btn-lg hspacer-lg hidden" id="start_upload"><i class="glyphicon glyphicon-upload"></i> <?php echo $this->lang['start upload']; ?></button>
-
-							<?php if(count($csv_files)){ ?>
-								<hr>
-								<div class="panel panel-primary">
-									<div class="panel-heading">
-										<h3 class="panel-title"><i class="glyphicon glyphicon-folder-open hspacer-md"></i> Open an existing CSV file</h3>
-									</div>
-									<div class="panel-body hidden">
-										<div class="row" id="existing-csv-files">
-										   <?php foreach($csv_files as $csv_file){ ?>
-											  <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 csv-file">
-												  <button type="button" class="btn btn-link invisible delete-csv" data-csv="<?php echo html_attr($csv_file); ?>" title="<?php echo html_attr($this->lang['delete']); ?>"><i class="glyphicon glyphicon-trash text-danger"></i></button>
-												  <a href="<?php echo $this->curr_page; ?>?csv=<?php echo urlencode($csv_file); ?>&action=show_preview&table=">
-													  <i class="glyphicon glyphicon-file text-success"></i> <?php echo $csv_file; ?>
-												  </a>
-											  </div>
-										   <?php } ?>
-										</div>
-									</div>
-								</div>
-							<?php } ?>
-						</div>
-					</div>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 				</form>
 
 				<script>

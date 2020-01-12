@@ -53,118 +53,131 @@
 	$start = ($page - 1) * $adminConfig['recordsPerPage'];
 
 ?>
-<div class="page-header"><h1><?php echo $Translation['data records'] ; ?></h1></div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-body">
+					<h3>
+						<?php echo $Translation['data records'] ; ?>
+					</h3>
+				
+				<table class="table">
+					<thead>
+						<tr>
+							<th colspan="12">
+								<form method="get" action="pageViewRecords.php">
+									<div class="row">
+										<div class="col-md-3">
+											<input type="hidden" name="page" value="1">
 
-<table class="table table-striped table-bordered table-hover">
-	<thead>
-		<tr>
-			<th colspan="7">
-				<form class="form-inline" method="get" action="pageViewRecords.php" class="form-horizontal">
-					<input type="hidden" name="page" value="1">
+											<div class="form-group">
+												<label for="groupID" class="control-label"><?php echo $Translation["group"]; ?></label>
+												<?php echo htmlSQLSelect("groupID", "select groupID, name from membership_groups order by name", $groupID); ?>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label for="memberID" class="control-label"><?php echo $Translation["member username"] ; ?></label>
+												<input type="text" class="form-control" id="memberID" name="memberID" value="<?php echo $memberID->attr; ?>">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label for="tableName" class="control-label"><?php echo $Translation['show records'] ; ?></label>
+												<?php
+													$tables = array_merge(array('' => $Translation['all tables']), getTableList(true));
+													$arrFields = array_keys($tables);
+													$arrFieldCaptions = array_values($tables);
+													echo htmlSelect('tableName', $arrFields, $arrFieldCaptions, $tableName->raw);
+												?>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label for="sort" class="control-label"><?php echo $Translation['sort records'] ; ?></label>
+												<?php
+													$arrFields = array('dateAdded', 'dateUpdated');
+													$arrFieldCaptions = array( $Translation['date created'] , $Translation['date modified'] );
+													echo htmlSelect('sort', $arrFields, $arrFieldCaptions, $sort);
+												?>
+												<div class="m-2"></div>
+												<?php
+													$arrFields=array('desc', '');
+													$arrFieldCaptions = array( $Translation['newer first'] , $Translation['older first'] );
+													echo htmlSelect('sortDir', $arrFields, $arrFieldCaptions, $sortDir);
+												?>
+											</div>
+										</div>
+										<div class="col-md-12 button-group text-right">
+											<button type="button" id="reset-search" class="btn btn-warning"><i class="glyphicon glyphicon-remove"></i> <?php echo $Translation['reset'] ; ?></button>
+											<button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i> <?php echo $Translation['find'] ; ?></button>
+										</div>
+									</div>
+								</form>
+							</th>
+						</tr>
+						<tr>
+							<th>&nbsp;</td>
+							<th><a><?php echo $Translation['username'] ; ?></a></th>
+							<th><a><?php echo $Translation["group"] ; ?></a></th>
+							<th><a><?php echo $Translation["table"] ; ?></a></th>
+							<th><a><?php echo $Translation['created'] ; ?></a></th>
+							<th><a><?php echo $Translation['modified'] ; ?></a></th>
+							<th><a><?php echo $Translation['data'] ; ?></a></th>
+						</tr>
+					</thead>
+					<tbody>
+				<?php
 
-					<div class="form-group">
-						<label for="groupID" class="control-label"><?php echo $Translation["group"]; ?></label>
-						<?php echo htmlSQLSelect("groupID", "select groupID, name from membership_groups order by name", $groupID); ?>
-					</div>
-					<div class="form-group">
-						<label for="memberID" class="control-label"><?php echo $Translation["member username"] ; ?></label>
-						<input type="text" class="form-control" id="memberID" name="memberID" value="<?php echo $memberID->attr; ?>">
-					</div>
-					<div class="form-group">
-						<label for="tableName" class="control-label"><?php echo $Translation['show records'] ; ?></label>
-						<?php
-							$tables = array_merge(array('' => $Translation['all tables']), getTableList(true));
-							$arrFields = array_keys($tables);
-							$arrFieldCaptions = array_values($tables);
-							echo htmlSelect('tableName', $arrFields, $arrFieldCaptions, $tableName->raw);
+					$res = sql("select r.recID, r.memberID, g.name, r.tableName, r.dateAdded, r.dateUpdated, r.pkValue from membership_userrecords r left join membership_groups g on r.groupID=g.groupID $where $sortClause limit $start, " . $adminConfig['recordsPerPage'], $eo);
+					while($row = db_fetch_row($res)){
 						?>
-					</div>
-					<div class="form-group">
-						<label for="sort" class="control-label"><?php echo $Translation['sort records'] ; ?></label>
+						<tr>
+							<td class="text-center">
+								<a href="pageEditOwnership.php?recID=<?php echo $row[0]; ?>" title="<?php echo $Translation['change record ownership'] ; ?>"><i class="glyphicon glyphicon-user"></i></a>
+								<a href="pageDeleteRecord.php?recID=<?php echo $row[0]; ?>" onClick="return confirm('<?php echo $Translation['sure delete record'] ; ?>');" title="<?php echo $Translation['delete record'] ; ?>"><i class="glyphicon glyphicon-trash text-danger"></i></a>
+							</td>
+							<td><a><?php echo $row[1]; ?></a></td>
+							<td><a><?php echo $row[2]; ?></a></td>
+							<td><a><?php echo $row[3]; ?></a></td>
+							<td class="<?php echo ($sort == 'dateAdded' ? 'warning' : '');?>"><a><?php echo @date($adminConfig['PHPDateTimeFormat'], $row[4]); ?></a></td>
+							<td class="<?php echo ($sort == 'dateUpdated' ? 'warning' : '');?>"><a><?php echo @date($adminConfig['PHPDateTimeFormat'], $row[5]); ?></a></td>
+							<td>
+								<a href="#" class="view-record" data-record-id="<?php echo $row[0]; ?>"><i class="glyphicon glyphicon-search hspacer-md"></i></a>
+								<a><?php echo substr(getCSVData($row[3], $row[6]), 0, 80) . " ... "; ?></a>
+							</td>
+						</tr>
 						<?php
-							$arrFields = array('dateAdded', 'dateUpdated');
-							$arrFieldCaptions = array( $Translation['date created'] , $Translation['date modified'] );
-							echo htmlSelect('sort', $arrFields, $arrFieldCaptions, $sort);
-						?>
-						<span class="hspacer-md"></span>
-						<?php
-							$arrFields=array('desc', '');
-							$arrFieldCaptions = array( $Translation['newer first'] , $Translation['older first'] );
-							echo htmlSelect('sortDir', $arrFields, $arrFieldCaptions, $sortDir);
-						?>
-					</div>
-					<div class="form-group">
-						<button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i> <?php echo $Translation['find'] ; ?></button>
-						<button type="button" id="reset-search" class="btn btn-warning"><i class="glyphicon glyphicon-remove"></i> <?php echo $Translation['reset'] ; ?></button>
-					</div>
-				</form>
-			</th>
-		</tr>
-		<tr>
-			<th>&nbsp;</td>
-			<th><?php echo $Translation['username'] ; ?></th>
-			<th><?php echo $Translation["group"] ; ?></th>
-			<th><?php echo $Translation["table"] ; ?></th>
-			<th><?php echo $Translation['created'] ; ?></th>
-			<th><?php echo $Translation['modified'] ; ?></th>
-			<th><?php echo $Translation['data'] ; ?></th>
-		</tr>
-	</thead>
-	<tbody>
-<?php
-
-	$res = sql("select r.recID, r.memberID, g.name, r.tableName, r.dateAdded, r.dateUpdated, r.pkValue from membership_userrecords r left join membership_groups g on r.groupID=g.groupID $where $sortClause limit $start, " . $adminConfig['recordsPerPage'], $eo);
-	while($row = db_fetch_row($res)){
-		?>
-		<tr>
-			<td class="text-center">
-				<a href="pageEditOwnership.php?recID=<?php echo $row[0]; ?>" title="<?php echo $Translation['change record ownership'] ; ?>"><i class="glyphicon glyphicon-user"></i></a>
-				<a href="pageDeleteRecord.php?recID=<?php echo $row[0]; ?>" onClick="return confirm('<?php echo $Translation['sure delete record'] ; ?>');" title="<?php echo $Translation['delete record'] ; ?>"><i class="glyphicon glyphicon-trash text-danger"></i></a>
-			</td>
-			<td><?php echo $row[1]; ?></td>
-			<td><?php echo $row[2]; ?></td>
-			<td><?php echo $row[3]; ?></td>
-			<td class="<?php echo ($sort == 'dateAdded' ? 'warning' : '');?>"><?php echo @date($adminConfig['PHPDateTimeFormat'], $row[4]); ?></td>
-			<td class="<?php echo ($sort == 'dateUpdated' ? 'warning' : '');?>"><?php echo @date($adminConfig['PHPDateTimeFormat'], $row[5]); ?></td>
-			<td>
-				<a href="#" class="view-record" data-record-id="<?php echo $row[0]; ?>"><i class="glyphicon glyphicon-search hspacer-md"></i></a>
-				<?php echo substr(getCSVData($row[3], $row[6]), 0, 80) . " ... "; ?>
-			</td>
-		</tr>
-		<?php
-	}
-	?>
-	</tbody>
-	<tfoot>
-		<tr>
-			<td colspan="7" style="padding: .3em;">
-				<table width="100%" cellspacing="0">
-					<tr>
-						<th class="text-left flip" style="width: 25%;">
-							<?php if($start){ ?>
-								<a href="pageViewRecords.php?groupID=<?php echo $groupID; ?>&memberID=<?php echo $memberID->url; ?>&tableName=<?php echo $tableName->url; ?>&page=<?php echo ($page > 1 ? $page - 1 : 1); ?>&sort=<?php echo $sort; ?>&sortDir=<?php echo $sortDir; ?>" class="btn btn-default"><?php echo $Translation['previous'] ; ?></a>
-							<?php } ?>
-						</th>
-						<th class="text-center">
-							<?php
-								$record1 = $start + 1;
-								$record2 = $start + db_num_rows($res);
-								$originalValues =  array('<RECORDNUM1>', '<RECORDNUM2>', '<RECORDS>');
-								$replaceValues = array($record1, $record2, $numRecords);
-								echo str_replace($originalValues, $replaceValues, $Translation['displaying records']);
-							?>
-						</th>
-						<th class="text-right flip" style="width: 25%;">
-							<?php if($record2 < $numRecords){ ?>
-								<a href="pageViewRecords.php?groupID=<?php echo $groupID; ?>&memberID=<?php echo $memberID->url; ?>&tableName=<?php echo $tableName->url; ?>&page=<?php echo ($page<ceil($numRecords/$adminConfig['recordsPerPage']) ? $page+1 : ceil($numRecords/$adminConfig['recordsPerPage'])); ?>&sort=<?php echo $sort; ?>&sortDir=<?php echo $sortDir; ?>" class="btn btn-default"><?php echo $Translation['next'] ; ?></a>
-							<?php } ?>
-						</th>
-					</tr>
+					}
+					?>
+					</tbody>
 				</table>
-			</td>
-		</tr>
-	</tfoot>
-</table>
+				<div class="row pagination-section">
+					<div class="col-xs-4 col-md-3 col-lg-2 vspacer-lg">
+						<?php if($start){ ?>
+							<button class="btn btn-outline-primary btn-block" href="pageViewRecords.php?groupID=<?php echo $groupID; ?>&memberID=<?php echo $memberID->url; ?>&tableName=<?php echo $tableName->url; ?>&page=<?php echo ($page > 1 ? $page - 1 : 1); ?>&sort=<?php echo $sort; ?>&sortDir=<?php echo $sortDir; ?>"><span class="hidden-xs"><?php echo $Translation['previous']; ?></span><i class="glyphicon glyphicon-chevron-left"></i></button>
+						<?php } ?>
+					</div>
+					<div class="col-xs-4 col-md-6 col-lg-8 text-center">
+						<?php
+							$record1 = $start + 1;
+							$record2 = $start + db_num_rows($res);
+							$originalValues =  array('<RECORDNUM1>', '<RECORDNUM2>', '<RECORDS>');
+							$replaceValues = array($record1, $record2, $numRecords);
+							echo str_replace($originalValues, $replaceValues, $Translation['displaying records']);
+						?>
+					</div>
+					<div class="col-xs-4 col-md-3 col-lg-2 vspacer-lg">
+						<?php if($record2 < $numRecords){ ?>
+							<button class="btn btn-primary btn-block" href="pageViewRecords.php?groupID=<?php echo $groupID; ?>&memberID=<?php echo $memberID->url; ?>&tableName=<?php echo $tableName->url; ?>&page=<?php echo ($page<ceil($numRecords/$adminConfig['recordsPerPage']) ? $page+1 : ceil($numRecords/$adminConfig['recordsPerPage'])); ?>&sort=<?php echo $sort; ?>&sortDir=<?php echo $sortDir; ?>" ><span class="hidden-xs"><?php echo $Translation['next'] ; ?></span><i class="glyphicon glyphicon-chevron-right"></i></button>
+						<?php } ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <div class="modal fade" tabindex="-1" id="view-record-modal">
 	<div class="modal-dialog modal-lg">

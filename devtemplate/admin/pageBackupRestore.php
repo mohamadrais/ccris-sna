@@ -148,9 +148,12 @@
 			$can_backup = $this->create_backup_folder();
 
 			?>
-			<div class="page-header"><h1><?php echo $this->lang['database backups']; ?></h1></div>
+			<h3>
+				<?php echo $this->lang['database backups']; ?>
+			</h3>
 
 			<div id="in-page-notifications"></div>
+			
 			<script>
 				/* move notifications below page title */
 				$j(function(){
@@ -179,8 +182,20 @@
 				<button type="button" class="vspacer-lg btn btn-primary btn-lg" id="create-backup"><i class="glyphicon glyphicon-plus"></i> <?php echo $this->lang['create backup file']; ?></button>
 				<pre id="backup-log" class="hidden"></pre>
 
-				<h2><?php echo $this->lang['available backups']; ?></h2>
-				<div id="backup-files-list"></div>
+				<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<div class="card-body">
+								<h3>
+									<?php echo $this->lang['available backups']; ?>
+								</h3>
+								<div id="backup-files-list"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 				<style>
 					.backup-file{
