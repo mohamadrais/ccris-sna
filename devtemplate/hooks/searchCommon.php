@@ -132,7 +132,7 @@
             $whereConvertArr[$tn] .= ' ) ';
 
             // get the respective date field name for given table name and sort field
-            $currDateField = getDbDateFiledField($tn, $sort);
+            $currDateField = getDbDateField($tn, $sort);
             $whereDate = '';
             if(isset($currDateField) && $currDateField != ''){
                 // process date range if available only for tables other than kpi and summary_dashboard

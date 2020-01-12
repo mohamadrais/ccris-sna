@@ -4787,7 +4787,7 @@ EOT;
 
 	#########################################################
 
-	function getDbDateFiledField($tableName, $sort){
+	function getDbDateField($tableName, $sort){
 		$arrTables = array(   
 			'OrgContentContext' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
 			'Marketing' => array('ot_ap_filed', 'ot_ap_lastmodified' ),
@@ -4948,5 +4948,113 @@ EOT;
 		return $memberDetails;
 	}
 
+	#########################################################
+
+	function getDbTitleField($tableName){
+		$arrTables = array(   
+			'AccountPayables' => 'APID',
+			'ActCard' => 'ACID',
+			'Approval' => 'Status',
+			'Audit' => 'AuditNo',
+			'batches' => 'batch_no',
+			'Bi_WeeklyMeeting' => 'BwmID',
+			'Breakdown' => 'recID',
+			'CalibrationCtrl' => 'CalibrationID',
+			'Campaign' => 'CampaignID',
+			'categories' => 'CategoryName',
+			'ClaimRecord' => 'CRID',
+			'Client' => 'ClientID',
+			'CommConsParticipate' => 'ccpID',
+			'Competency' => 'CompID',
+			'ContinualImprovement' => 'CAPARno',
+			'ContractDeployment' => 'DocconNumber',
+			'DailyProgressReport' => 'ProgressReportId',
+			'DCN' => 'DocconNumber',
+			'DeliveryOrder' => 'DOID',
+			'DesignProposal' => 'DocconNumber',
+			'DocControl' => 'DocconNumber',
+			'DrillNInspection' => 'DillID',
+			'employees' => 'Name',
+			'ERP' => 'DocconNumber',
+			'EventNotification' => 'ENID',
+			'events' => 'title',
+			'IMSControl' => 'Status',
+			'IMSDataAnalysis' => 'DocconNumber',
+			'IMSReport' => 'Title',
+			'IMStrackingNmonitoring' => 'DocconNumber',
+			'IncidentReporting' => 'DocconNumber',
+			'InOutRegister' => 'RecordNumber',
+			'Inquiry' => 'InqNumber',
+			'Inventory' => 'InventoryID',
+			'Item' => 'ItemID',
+			'JD_JS' => 'RecordNumber',
+			'KM' => 'DocumentName',
+			'kpi' => 'fo_Section_Name',
+			'Leadership' => 'Status',
+			'LegalRegister' => 'LRNumber',
+			'LogisticRequest' => 'LogisticNumber',
+			'Logistics' => 'LogisticID',
+			'ManagementVisit' => 'MgtVstID',
+			'ManagingVendor' => 'ManagingVendNumber',
+			'Marketing' => 'RecordNumber',
+			'membership_company' => 'fo_Name',
+			'MgtofChange' => 'DocconNumber',
+			'MonthlyTimesheet' => 'TimesheetID',
+			'MRM' => 'DocconNumber',
+			'MWConditionBased' => 'CondBaseID',
+			'MWO' => 'MWONumber',
+			'MWOCorrective' => 'CorrectiveID',
+			'MWOPlanned' => 'PlannedID',
+			'MWOpreventive' => 'PreventiveID',
+			'MWOproactive' => 'ProactiveID',
+			'MWOReactive' => 'ReactiveID',
+			'NonConformance' => 'DocconNumber',
+			'notif' => 'notif_title',
+			'ObsoleteRec' => 'DocconNumber',
+			'orders' => 'OrderID',
+			'OrgContentContext' => 'RecordNumber',
+			'PersonnalFile' => 'FileID',
+			'PROCompletion' => 'CompletionNo',
+			'PROControlMonitoring' => 'ContMonitNo',
+			'PROExecution' => 'ExecutionNo',
+			'PROInitiation' => 'InitiationNo',
+			'projects' => 'projectID',
+			'ProjectTeam' => 'EmpNo',
+			'PROPlanning' => 'PlanningNo',
+			'PROVariation' => 'VariationNo',
+			'PurchaseOrder' => 'POID',
+			'QA' => 'DocconNumber',
+			'QuarterlyMeeting' => 'QmID',
+			'Quotation' => 'QuoID',
+			'Receivables' => 'ClaimNo',
+			'Recruitment' => 'CompID',
+			'ReportComment' => 'PostID',
+			'resources' => 'ResourcesID',
+			'RiskandOpportunity' => 'RISKid',
+			'ScheduleWaste' => 'DocconNumber',
+			'SoftboardComment' => 'PostID',
+			'StakeholderSatisfaction' => 'RecordID',
+			'summary_dashboard' => 'fo_Section_Name',
+			'TeamSoftBoard' => 'Title',
+			'ToolBoxMeeting' => 'tbmID',
+			'Training' => 'TraningNo',
+			'transactions' => 'TransCode',
+			'vendor' => 'CompanyID',
+			'VenPerformance' => 'VendPerfNumber',
+			'WorkEnvMonitoring' => 'DocconNumber',
+			'WorkLocation' => 'BaseLocation',
+			'WorkOrder' => 'WONumber',
+			'WorkPermit' => 'RecNum'
+		);
+		if(is_array($arrTables)){
+			foreach($arrTables as $tn => $tc){
+				if($tableName == $tn){
+					return $tc;
+				}
+			}
+		}
+
+		return false;
+	}
 
 	
