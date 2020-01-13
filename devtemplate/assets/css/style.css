@@ -7090,7 +7090,7 @@ button.login {
 
 .adminButtons {
 position: absolute;
-width: 50%;
+width: 100%;
 bottom: 120%;
 right: 0px;
 text-align: center;
@@ -7128,6 +7128,16 @@ display: none;
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.sub-adminAction{
+  width: unset;
+  height: unset;
+  color: #fff;
+  border: none;
+  background: none;
+  display: block;
+  margin-left: auto;
 }
 
 .adminToggle {
@@ -7433,4 +7443,28 @@ select.form-control:not([size]):not([multiple]){
 }
 .dropdown-toggle::after{
   content: none;
+}
+.report-menu{
+  color: #54667a;
+  padding: 8px 0px;
+  display: block;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+.report-menu:hover{
+  color: #ad3a62;
+}
+#reportrange{
+  background: #f7fdff;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #a6b7bf;
+  width: 100%;
+  color: #a6b7bf;
+  font-weight: 400;
+  border-radius: 5px;
+}
+.report-sidemenu:hover{
+  color:#ad3a62;
+  cursor: pointer;
 }

@@ -61,9 +61,16 @@
         display: none
     }
 </style>
-<div class="navbar-default sidebar" role="navigation">
+
+<div class="page-wrapper">
+<div class="container-fluid">
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-2 border-right px-2 py-0">
+            <div class="role="navigation">
     <div class="sidebar-nav navbar-collapse1" id="dash-sidebar-nav" > 
-        <ul class="nav" id="side-menu">
+        <ul class="nav pt-0" id="side-menu">
 <?php
 	/* accessible tables */
 	$arrTables = get_tables_info();
@@ -84,12 +91,12 @@
 
         $i = 0; $current_group = '';
         ?>
-        <div class="col-md-12" style="width: 50px; margin-top: 100px; position: static">
-            <div><a href="./reports.php"><span style="font-size: 14px; line-height: 30px; color: #777; padding: 15px; position: relative; background-color: transparent;">SUMMARY DASHBOARD</span></a></div>
-            <div><a href="./reports.php?kpi=true"><span style="font-size: 14px; line-height: 30px; color: #777; padding: 15px; position: relative; background-color: transparent;">KPI METRICS</span></a></div>
+        <div class="col-md-12">
+            <a href="./reports.php" class="report-menu"><span>SUMMARY DASHBOARD</span></a>
+            <a href="./reports.php?kpi=true" class="report-menu"><span>KPI METRICS</span></a>
             <?php if($kpi != "true") { ?>
             <div class="text-muted" ><br><br>Select Report Range:<br><br></div>
-            <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+            <div id="reportrange">
                 <i class="fa fa-calendar"></i>&nbsp;
                 <span></span> <i class="fa fa-caret-down"></i>
             </div>
@@ -119,7 +126,7 @@
 			if($tc['homepageShowCount']){
 				$sql_from = get_sql_from($tn);
 				$count_records = ($sql_from ? sqlValue("select count(1) from " . $sql_from) : 0);
-				$count_badge = '<span class="hspacer-lg text-bold pull-right" style="font-weight: normal;font-size: 12px;">' . number_format($count_records) . '</span>';
+				$count_badge = number_format($count_records);
 			}
 
 			$t_perm = getTablePermissions($tn);
@@ -152,14 +159,14 @@
 				<?php } ?>
 
 					<?php if($tChkHL === false || $tChkHL === null){ /* if table is not set as hidden in homepage */ ?>
-						<div id="<?php echo $tn; ?>-tile" class="listChild <?php echo (!$i ? $block_classes['first']['grid_column'] : $block_classes['other']['grid_column']); ?>">
-							<div class="panel1 <?php /*echo (!$i ? $block_classes['first']['panel'] : $block_classes['other']['panel']); */?>" style="padding: 2px 6px;">
+						<div id="<?php echo $tn; ?>-tile" class="report-sidemenu <?php echo (!$i ? $block_classes['first']['grid_column'] : $block_classes['other']['grid_column']); ?>">
+							<div class="panel1 <?php /*echo (!$i ? $block_classes['first']['panel'] : $block_classes['other']['panel']); */?>">
 								<li class="submenu">
 									<?php if($can_insert && $tChkAHAN !== false && $tChkAHAN !== null){ ?>
 
 										<div id="summaryfor-<?php echo $tn; ?>" class="btn-group" style="width: 100%; word-wrap: break-word;">
-                                           <a style="width: 80%;text-align: left; white-space: pre-wrap; word-wrap: break-word; padding: 10px" class="btn btn-lg1 " title="<?php echo preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", html_attr(strip_tags($tc['Description']))); ?>"><?php echo $tc['Caption']; ?></a>
-                                            <?php if($kpi != "true") { ?><a class="width: 20%; badge badge-success pull-right sidebar-badge"><?php echo $count_badge; ?></a><?php } ?>
+                                           <a class="px-3" title="<?php echo preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", html_attr(strip_tags($tc['Description']))); ?>"><?php echo $tc['Caption']; ?></a>
+                                            <?php if($kpi != "true") { ?><span class="badge badge-success ml-auto" style="font-size: 12px; height: fit-content; margin: auto;"><?php echo $count_badge; ?></span><?php } ?>
 										</div>
 									<?php }else{ ?>
 
@@ -208,9 +215,9 @@
     </div>
 </div>
     <!-- /.sidebar-collapse -->
-
-<div class="container-fluid">
-    <div style="margin-top: 150px; margin-left:250px">
+            </div>
+            <div class="col-10">
+            <div class="container">
         <span id="chartLoading" style="position: relative; left: 50%"></span>
         <div class="row page-titles">
             <div class="col-md-12 align-self-center">
@@ -625,14 +632,13 @@
         // end of kpi dashboard
         } 
         ?>
+</div>
+            </div>
+        </div>
     </div>
 </div>
-
-    
-
-
-
-
+</div>
+</div>
 
 <?php
     include_once("$currDir/footer.php");
