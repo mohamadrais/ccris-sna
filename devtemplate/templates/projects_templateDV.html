@@ -455,17 +455,21 @@
 	</div> -->
 	<div id="adminActions" class="adminActions">
 		<input type="checkbox" name="adminToggle" class="adminToggle" />
-		<a id="startEdit" class="btn btn-warning float-btn-2" href="#Edit"><i class="ti-pencil-alt mr-2" aria-hidden="true"></i></a>
-		<a id="exitEdit" class="btn btn-warning float-btn-2"  href="./projects_view.php?SelectedID=<%%VALUE(Id)%%>" style="display:none;"><i class="ti-save mr-2" aria-hidden="true"></i></a>
 		<a class="adminButton" href="#!"><i class="ti-more"></i></a>
 		<div class="adminButtons">
-			<%%UPDATE_BUTTON%%>
+				<!-- <%%UPDATE_BUTTON%%> -->
 			<%%DESELECT_BUTTON%%>
 			<%%DVPRINT_BUTTON%%>
 			<%%DELETE_BUTTON%%>
 			<%%INSERT_BUTTON%%>
 			<%%ATTACH_BUTTON%%>
 		</div>
+		
+	</div>
+	<div class="adminActions" style="bottom:90px">
+		<a id="startEdit" class="btn btn-warning float-btn-2" href="#Edit"><i class="ti-pencil-alt mr-2" aria-hidden="true"></i></a>
+		<!-- <a id="exitEdit" class="btn btn-warning float-btn-2"  href="./projects_view.php?SelectedID=<%%VALUE(Id)%%>" style="display:none;"><i class="fa fa-floppy-o mr-2" aria-hidden="true"></i></a> -->
+		<%%UPDATE_BUTTON%%>
 	</div>
 </div>
 
