@@ -2396,6 +2396,16 @@
 		$mail['debug'] = isset($mail['debug']) ? min(4, max(0, intval($mail['debug']))) : 0;
 
 		$cfg = config('adminConfig');
+		$whitelist = array(
+			'127.0.0.1',
+			'::1'
+		);
+		
+		if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
+			return mail($mail['to'], $mail['subject'], $mail['message'], 'From: ' . $cfg['senderEmail']);
+		}
+		else{
+		
 		$smtp = ($cfg['mail_function'] == 'smtp');
 
 		if(!class_exists('PHPMailer')){
@@ -2434,6 +2444,7 @@
 
 		if(!$pm->send()) return $pm->ErrorInfo;
 
+		}
 		return true;
 	}
 	#########################################################

@@ -333,14 +333,15 @@
 							</div>
 						</div> -->
 
-					</form>
+					
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="adminActions">
-		<a type="submit" name="saveChanges" class="btn btn-warning float-btn-2" onclick="return jsValidateAdminSettings();" title="Save Changes"><i class="ti-save"></i></a>
+		<a><button type="submit" name="saveChanges" value="1" onclick="return jsValidateAdminSettings();" title="<?php echo $Translation['save changes']; ?>" class="btn btn-warning float-btn-2" ><i class="ti-save"></i></button></a>
 	</div>
+	</form>
 </div>
 
 <style>

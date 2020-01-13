@@ -103,7 +103,7 @@
 						</table>
 						<div class="row pagination-section">
 							<div class="col-xs-4 col-md-3 col-lg-2 vspacer-lg">
-								<button class="btn btn-outline-primary btn-block" href="pageViewGroups.php?searchGroups=<?php echo $searchHTML; ?>&page=<?php echo ($page > 1 ? $page - 1 : 1); ?>"><span class="hidden-xs"><?php echo $Translation['previous']; ?></span><i class="glyphicon glyphicon-chevron-left"></i></button>
+								<a href="pageViewGroups.php?searchGroups=<?php echo $searchHTML; ?>&page=<?php echo ($page > 1 ? $page - 1 : 1); ?>"><button class="btn btn-outline-primary btn-block"><span class="hidden-xs"><?php echo $Translation['previous']; ?></span><i class="glyphicon glyphicon-chevron-left"></i></button></a>
 							</div>
 							<div class="col-xs-4 col-md-6 col-lg-8 text-center">
 								<?php 
@@ -113,7 +113,7 @@
 								?>
 							</div>
 							<div class="col-xs-4 col-md-3 col-lg-2 vspacer-lg">
-								<button class="btn btn-primary btn-block" href="pageViewGroups.php?searchGroups=<?php echo $searchHTML; ?>&page=<?php echo ($page < ceil($numGroups / $adminConfig['groupsPerPage']) ? $page + 1 : ceil($numGroups / $adminConfig['groupsPerPage'])); ?>"><span class="hidden-xs"><?php echo $Translation['next'] ; ?></span><i class="glyphicon glyphicon-chevron-right"></i></button>
+								<a href="pageViewGroups.php?searchGroups=<?php echo $searchHTML; ?>&page=<?php echo ($page < ceil($numGroups / $adminConfig['groupsPerPage']) ? $page + 1 : ceil($numGroups / $adminConfig['groupsPerPage'])); ?>"><button class="btn btn-primary btn-block"><span class="hidden-xs"><?php echo $Translation['next'] ; ?></span><i class="glyphicon glyphicon-chevron-right"></i></button></a>
 							</div>
 						</div>
 						<hr>

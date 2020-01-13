@@ -303,7 +303,7 @@ if($memberID != '' && $groupID != sqlValue("select groupID from membership_group
 							<div class="col-sm-8 col-md-9 col-lg-6 text-right">
 								<?php if($memberID != ''){ /* for existing members, cancel reloads the member */ ?>
 									<a href="pageEditMember.php?memberID=<?php echo urlencode($memberID); ?>" class="btn btn-warning btn-lg hspacer-md"><i class="glyphicon glyphicon-remove"></i> <?php echo $Translation['cancel']; ?></a>
-									<a href="pageViewMembers.php" class="btn btn-default btn-lg hspacer-md"><i class="glyphicon glyphicon-arrow-left"></i> <?php echo $Translation['back to members']; ?></a>
+									<!-- <a href="pageViewMembers.php" class="btn btn-default btn-lg hspacer-md"><i class="glyphicon glyphicon-arrow-left"></i> <?php echo $Translation['back to members']; ?></a> -->
 								<?php }else{ /* for new members, cancel goes to list of members */ ?>
 									<a href="pageViewMembers.php" class="btn btn-warning btn-lg hspacer-md"><i class="glyphicon glyphicon-remove"></i> <?php echo $Translation['cancel']; ?></a>
 								<?php } ?>
@@ -316,7 +316,7 @@ if($memberID != '' && $groupID != sqlValue("select groupID from membership_group
 		</div>
 	</div>
 	<div class="adminActions">
-		<a class="btn btn-warning float-btn-2" href="pageViewMembers.php" title="Back To Members"><i class="ti-arrow-left"></i></a>
+		<a class="btn btn-warning float-btn-2" href="pageViewMembers.php" title="<?php echo $Translation['back to members']; ?>"><i class="ti-arrow-left"></i></a>
 	</div>
 </div>
 <style>

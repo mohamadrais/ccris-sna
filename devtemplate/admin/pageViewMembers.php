@@ -223,7 +223,7 @@
 						</table>
 						<div class="row pagination-section">
 							<div class="col-xs-4 col-md-3 col-lg-2 vspacer-lg">
-								<button class="btn btn-outline-primary btn-block" href="pageViewMembers.php?searchMembers=<?php echo $searchURL; ?>&groupID=<?php echo $groupID; ?>&status=<?php echo $status; ?>&searchField=<?php echo $searchField; ?>&page=<?php echo ($page>1 ? $page-1 : 1); ?>"><span class="hidden-xs"><?php echo $Translation['previous']; ?></span><i class="glyphicon glyphicon-chevron-left"></i></button>
+								<a href="pageViewMembers.php?searchMembers=<?php echo $searchURL; ?>&groupID=<?php echo $groupID; ?>&status=<?php echo $status; ?>&searchField=<?php echo $searchField; ?>&page=<?php echo ($page>1 ? $page-1 : 1); ?>"><button class="btn btn-outline-primary btn-block"><span class="hidden-xs"><?php echo $Translation['previous']; ?></span><i class="glyphicon glyphicon-chevron-left"></i></button></a>
 							</div>
 							<div class="col-xs-4 col-md-6 col-lg-8 text-center">
 							<?php 
@@ -233,7 +233,7 @@
 							?>
 							</div>
 							<div class="col-xs-4 col-md-3 col-lg-2 vspacer-lg">
-								<button class="btn btn-primary btn-block" href="pageViewMembers.php?searchMembers=<?php echo $searchURL; ?>&groupID=<?php echo $groupID; ?>&status=<?php echo $status; ?>&searchField=<?php echo $searchField; ?>&page=<?php echo ($page<ceil($numMembers/$adminConfig['membersPerPage']) ? $page+1 : ceil($numMembers/$adminConfig['membersPerPage'])); ?>"><span class="hidden-xs"><?php echo $Translation['next'] ; ?></span><i class="glyphicon glyphicon-chevron-right"></i></button>
+								<a href="pageViewMembers.php?searchMembers=<?php echo $searchURL; ?>&groupID=<?php echo $groupID; ?>&status=<?php echo $status; ?>&searchField=<?php echo $searchField; ?>&page=<?php echo ($page<ceil($numMembers/$adminConfig['membersPerPage']) ? $page+1 : ceil($numMembers/$adminConfig['membersPerPage'])); ?>"><button class="btn btn-primary btn-block"><span class="hidden-xs"><?php echo $Translation['next'] ; ?></span><i class="glyphicon glyphicon-chevron-right"></i></button></a>
 							</div>
 						</div>
 						<hr>

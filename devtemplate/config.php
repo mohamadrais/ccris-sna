@@ -5,10 +5,10 @@
 	$dbDatabase = 'puffergr_devtemplate';
 
 	$adminConfig = array(
-		'adminUsername' => "admin",
-		'adminPassword' => "21232f297a57a5a743894a0e4a801fc3",
-		'notifyAdminNewMembers' => "",
-		'defaultSignUp' => "1",
+		'adminUsername' => "adminpg",
+		'adminPassword' => "637724e8688276e97918153aa3b5976f",
+		'notifyAdminNewMembers' => "0",
+		'defaultSignUp' => "0",
 		'anonymousGroup' => "anonymous",
 		'anonymousMember' => "guest",
 		'groupsPerPage' => "10",
@@ -22,10 +22,10 @@
 		'PHPDateFormat' => "n/j/Y",
 		'PHPDateTimeFormat' => "m/d/Y, h:i a",
 		'senderName' => "Membership management",
-		'senderEmail' => "aahil.me@gmail.com",
+		'senderEmail' => "puffergroupdev@gmail.com",
 		'approvalSubject' => "Your membership is now approved",
-		'approvalMessage' => "Dear member,\n\nYour membership is now approved by the admin. You can log in to your account here:\nhttp://localhost/devtemplate\n\nRegards,\nAdmin",
-		'hide_twitter_feed' => "true",
+		'approvalMessage' => "Dear member,\r\n\r\nYour membership is now approved by the admin. You can log in to your account here:\r\nhttp://localhost/devtemplate\r\n\r\nRegards,\r\nAdmin",
+		'hide_twitter_feed' => "1",
 		'maintenance_mode_message' => "<b>Our website is currently down for maintenance</b><br>\r\nWe expect to be back in a couple hours. Thanks for your patience.",
 		'mail_function' => "mail",
 		'smtp_server' => "",
