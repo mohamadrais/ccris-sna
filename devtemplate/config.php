@@ -25,7 +25,7 @@
 		'senderEmail' => "aahil.me@gmail.com",
 		'approvalSubject' => "Your membership is now approved",
 		'approvalMessage' => "Dear member,\n\nYour membership is now approved by the admin. You can log in to your account here:\nhttp://localhost/devtemplate\n\nRegards,\nAdmin",
-		'hide_twitter_feed' => "",
+		'hide_twitter_feed' => "true",
 		'maintenance_mode_message' => "<b>Our website is currently down for maintenance</b><br>\r\nWe expect to be back in a couple hours. Thanks for your patience.",
 		'mail_function' => "mail",
 		'smtp_server' => "",

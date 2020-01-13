@@ -4922,12 +4922,13 @@ EOT;
 
 	function getRecordOwnerDetails($tableName, $pkValue){
 		$recordOwner = array();
-		$recordOwnerSql = "SELECT mur.`memberID`, mu.`custom1` FROM `membership_userrecords` mur inner join `membership_users` mu on mu.`memberID` = mur.`memberID` WHERE mur.`tableName` = '" . $tableName . "' and mur.`pkValue` = '" . $pkValue . "' LIMIT 1";
+		$recordOwnerSql = "SELECT mur.`memberID`, mu.`custom1`, mu.`email` FROM `membership_userrecords` mur inner join `membership_users` mu on mu.`memberID` = mur.`memberID` WHERE mur.`tableName` = '" . $tableName . "' and mur.`pkValue` = '" . $pkValue . "' LIMIT 1";
 		$recordOwnerResults = sql($recordOwnerSql, $eo);
 		while($row = db_fetch_row($recordOwnerResults)){
 			$recordOwner = array(
 				'memberID' => $row[0],
-				'custom1' => $row[1]
+				'custom1' => $row[1],
+				'email' => $row[2]
 			);
 		}
 		return $recordOwner;
@@ -4937,12 +4938,13 @@ EOT;
 
 	function getMemberIDDetails($memberID){
 		$memberDetails = array();
-		$memberDetailsSql = "SELECT e.`memberID`, mu.`custom1` FROM `employees` e inner join `membership_users` mu on mu.`memberID` = e.`memberID` WHERE e.`memberID` = '" . $memberID . "' LIMIT 1";
+		$memberDetailsSql = "SELECT e.`memberID`, mu.`custom1`, mu.`email` FROM `employees` e inner join `membership_users` mu on mu.`memberID` = e.`memberID` WHERE e.`memberID` = '" . $memberID . "' LIMIT 1";
 		$memberDetailsResults = sql($memberDetailsSql, $eo);
 		while($row = db_fetch_row($memberDetailsResults)){
 			$memberDetails = array(
 				'memberID' => $row[0],
-				'custom1' => $row[1]
+				'custom1' => $row[1],
+				'email' => $row[2]
 			);
 		}
 		return $memberDetails;

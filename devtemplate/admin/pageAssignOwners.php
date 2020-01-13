@@ -71,8 +71,10 @@
 		// refresh the list of tables with records that have no owners
 		unset($arrTablesNoOwners);
 		foreach($arrTables as $tn=>$tc){
-			$countOwned=sqlValue("select count(1) from membership_userrecords where tableName='$tn'");
-			$countAll=sqlValue("select count(1) from `$tn`");
+			if(!in_array($tn, ['summary_dashboard', 'kpi'])){
+				$countOwned=sqlValue("select count(1) from membership_userrecords where tableName='$tn'");
+				$countAll=sqlValue("select count(1) from `$tn`");
+			}
 
 			if($countAll>$countOwned){
 				$arrTablesNoOwners[$tn]=($countAll-$countOwned);

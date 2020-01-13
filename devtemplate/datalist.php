@@ -854,12 +854,12 @@ class DataList{
 					'title' => $Translation['Change owner'],
 					'icon' => 'user'
 				);
-				$selected_records_more[] = array(
-					'function' => 'add_more_actions_link',
-					'title' => $Translation['Add more actions'],
-					'icon' => 'question-sign',
-					'class' => 'text-info'
-				);
+				// $selected_records_more[] = array(
+				// 	'function' => 'add_more_actions_link',
+				// 	'title' => $Translation['Add more actions'],
+				// 	'icon' => 'question-sign',
+				// 	'class' => 'text-info'
+				// );
 			}
 
 			/* user-defined actions ... should be set in the {tablename}_batch_actions() function in hooks/{tablename}.php */

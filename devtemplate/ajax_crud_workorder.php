@@ -90,7 +90,7 @@
 			$sqlUpdate = "UPDATE `work_order_map` SET `WOid` = " . $workOrderID->sql . ", `WONumber` = '" . $workOrderNumber . "', `tableName` = '" . $table->sql . "', `pkValue` = '" . $selectedID->sql . "', `ot_ap_lastmodified` = CURRENT_TIMESTAMP WHERE `id` = " .  $uniqueId;
 			sql($sqlUpdate, $eo);
 		}
-		// create a notification for the work order owner (assigner)
+		// send app notification to workorder assigner
 		$newNotification = new UserNotification([]);
 		$newNotification->setNotif_title('Update on work order');
 		$newNotification->setNotif_msg($formEntryOwnerFirstName . ' has requested you to review ' . $workOrderNumber);
@@ -98,6 +98,19 @@
 		$newNotification->setNotif_time(date('Y-m-d H:i:s'));
 		$newNotification->setMemberID($workOrderOwner['memberID']);
 		$newNotification->createNotification();
+
+		// send email notification to workorder assigner
+		$emailTo = $workOrderOwner['email'];
+		$emailName = $workOrderOwnerFirstName;
+		$emailWorkOrderUrl = application_url("WorkOrder_view.php") . "?SelectedID={$workOrderID->sql}";
+		if(isEmail($emailTo)){
+			sendmail(array(
+				'to' => $emailTo,
+				'name' => $emailName,
+				'subject' => $newNotification->getNotif_title(),
+				'message' => $newNotification->getNotif_msg() . ".\n\n". "To view it, please go to:\n".	$emailWorkOrderUrl
+			));
+		}
 
 		$GLOBALS['result'] = $ok_return;
 	}
