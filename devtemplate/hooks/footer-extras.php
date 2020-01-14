@@ -12,6 +12,7 @@ if ($memberInfo['group'] != 'Admins') {
 }
 ?>
 <script type='text/javascript'>
+
     document.observe("dom:loaded", function() {
 		if($j('#notif-dropdown').is(':visible')){
 			$j('#notif-dropdown').on('click touchstart', function(e) {
@@ -285,8 +286,8 @@ if ($memberInfo['group'] != 'Admins') {
             $j("select").attr("disabled", true);
             setTimeout(function(){ 
                 $j(".nicEdit-main").attr("contenteditable", "false");
-                $j('input[type="radio"]').attr("disabled", true);
             }, 3000);
+			$j('input[type="radio"]').attr("disabled", true);
             $j("[id*='_remove']").each(function (i, el) {
                 el.hide();
             });
@@ -304,12 +305,15 @@ if ($memberInfo['group'] != 'Admins') {
 				$j("textarea").attr("readonly", false);
                 $j("select").attr("disabled", false);
                 $j('[class="control-label text-muted"]').show();
-                $j('input[type="radio"]').attr("disabled", false);
+				$j('input[type="radio"]').attr("disabled", false);
+				$j("[id*='_remove']").each(function (i, el) {
+					el.show();
+				});
 				$j(".nicEdit-main").attr("contenteditable", "true");
 
 				if (!$j("#ot_SharedLink1").is(":visible")) {
 					$j("#ot_SharedLink1").show();
-					$j('#ot_SharedLink1_remove').show();
+					$j('#sl1').show();
 				}
 
 				if (!$j("#ot_Ref01").is(":visible")) {
@@ -327,20 +331,23 @@ if ($memberInfo['group'] != 'Admins') {
                 });
 
 				$j(this).hide();
+				$j("#deselect").hide();
+				$j('[ aria-labelledby="attachment-readMode"]').hide();
+				$j("#backToReadMode").show();
+				$j("#backToReadMode").show();
 				$j("#updateRecord").show();
 			});
-			
-			// $j("#cancelEdit").click(function(){
-			// 	if(!$j("#startEdit").is(":visible")){
-			// 		var tableName = $j('[name ="myform"]').attr('action');
-			// 		// tableName = tableName.substr(0, tableName.indexOf('_view.php'));
-			// 		window.location.href="./"+tableName+"?SelectedID="+$j("[aria-labelledby='selectedID']").html().trim();
-			// 	}
-			// 	else{
-			// 		window.location.href="./"+tableName+"?SelectedID="+$j("[aria-labelledby='selectedID']").html().trim();
-			// 	}
-            // });
-        }
+
+		}
+
+		$j("backToReadMode").click(function(){
+			location.reload();
+			$j(this).hide();
+			$j("#updateRecord").hide();
+			$j("#startEdit").show();
+			$j("#deselect").show();
+			$j('[ aria-labelledby="attachment-readMode"]').show();
+		})
             
             ///////////////////////////////////////////////
 		{
@@ -357,7 +364,7 @@ if ($memberInfo['group'] != 'Admins') {
 				_x++;
 			} else {
 				$j('#ot_SharedLink2').hide();
-				$j('#ot_SharedLink2_remove').hide();
+				$j('#sl2').hide();
 			}
 
 			$j('#totalLinkAttached').html(_x);
@@ -390,7 +397,7 @@ if ($memberInfo['group'] != 'Admins') {
 				if ($j('#ot_SharedLink1').val().length > 0 && $j('#ot_SharedLink2').val().length > 0) {
 					$j('#ot_SharedLink1').val('');
 					$j("#ot_SharedLink1").hide();
-					$j('#ot_SharedLink1_remove').hide();
+					$j('#sl1').hide();
 					$j("#addLink").show()
 					x--;
 				} else if ($j('#ot_SharedLink1').val().length > 0 && $j('#ot_SharedLink2').val().length == 0) {
@@ -398,7 +405,7 @@ if ($memberInfo['group'] != 'Admins') {
 					x--;
 				} else if ($j('#ot_SharedLink1').val().length == 0 && $j('#ot_SharedLink2').val().length == 0) {
 					$j("#ot_SharedLink1").hide();
-					$j('#ot_SharedLink1_remove').hide();
+					$j('#sl1').hide();
 					$j("#addLink").show();
 				}
 				$j('#totalLinkAttached').html(x);
@@ -411,7 +418,7 @@ if ($memberInfo['group'] != 'Admins') {
 				if ($j('#ot_SharedLink1').val().length > 0 && $j('#ot_SharedLink2').val().length > 0) {
 					$j('#ot_SharedLink2').val('');
 					$j("#ot_SharedLink2").hide();
-					$j('#ot_SharedLink2_remove').hide();
+					$j('#sl2').hide();
 					$j("#addLink").show();
 					x--;
 				} else if ($j('#ot_SharedLink1').val().length == 0 && $j('#ot_SharedLink2').val().length > 0) {
@@ -419,7 +426,7 @@ if ($memberInfo['group'] != 'Admins') {
 					x--;
 				} else if ($j('#ot_SharedLink1').val().length == 0 && $j('#ot_SharedLink2').val().length == 0) {
 					$j("#ot_SharedLink2").hide();
-					$j('#ot_SharedLink2_remove').hide();
+					$j('#sl2').hide();
 					$j("#addLink").show();
 				}
 				$j('#totalLinkAttached').html(x);
@@ -428,10 +435,10 @@ if ($memberInfo['group'] != 'Admins') {
 
 				if (!$j("#ot_SharedLink1").is(":visible")) {
 					$j("#ot_SharedLink1").show();
-					$j('#ot_SharedLink1_remove').show();
+					$j('#sl1').show();
 				} else if (!$j("#ot_SharedLink2").is(":visible")) {
 					$j("#ot_SharedLink2").show();
-					$j('#ot_SharedLink2_remove').show();
+					$j('#sl2').show();
 				}
 
 				if ($j("#ot_SharedLink1").is(":visible") && $j("#ot_SharedLink2").is(":visible")) {
@@ -441,11 +448,12 @@ if ($memberInfo['group'] != 'Admins') {
 		}
 		///////////////////////////////////////////////
 		{
+			var attach_documents = $j("[aria-label='attach-documents']");
 			var _x = $j('#totalDocumentAttached').html();
 			if (!_x) {
 				_x = 0;
 			}
-			if ($j('#ot_Ref01').val().length > 0) {
+			if ($j('#ot_Ref01' ).val().length > 0) {
 				_x++;
 			}
 			if ($j('#ot_Ref02').val().length > 0) {

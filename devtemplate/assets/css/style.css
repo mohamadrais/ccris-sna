@@ -7468,3 +7468,7 @@ select.form-control:not([size]):not([multiple]){
   color:#ad3a62;
   cursor: pointer;
 }
+
+.attach-group{
+  display:flex
+}
