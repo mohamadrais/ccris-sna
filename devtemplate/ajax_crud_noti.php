@@ -9,8 +9,10 @@
 	include("$currDir/language.php");
 	include("$currDir/lib.php");
 	$memberInfo = getMemberInfo();
+	$memberID = $memberInfo["username"];
 	$output = array();
-
+	define('results_per_page', 10);
+	
 	/* maintenance mode */
 	handle_maintenance();
 
@@ -25,6 +27,7 @@
 	$notifId = new Request('nId');
 	$notiLimitStart = new Request('nls');
 	$notiLimit = new Request('nl');
+	$p = new Request('p');
 
 	/* prevent conventional error output via a shutdown handler */
 	function cancel_all_buffers(){
@@ -38,8 +41,7 @@
 
 
 	if($operation->sql == 'select'){
-		$memberID = $memberInfo["username"];
-		$notiSql = "SELECT `id`, `notif_title`, `notif_msg`, `notif_url`, `notif_time`, `read_flag` FROM `notif` WHERE `active_flag` = 'Y' AND `memberID` = '" . $memberID . "' ORDER BY `notif_time` DESC LIMIT " . $notiLimitStart->sql . ", " . $notiLimit->sql;
+		$notiSql = "SELECT `id`, `notif_title`, `notif_msg`, `notif_url`, `notif_time`, `read_flag` FROM `notif` WHERE `active_flag` = 'Y' AND `memberID` = '" . $memberID . "' ORDER BY `read_flag`, `notif_time` DESC LIMIT " . $notiLimitStart->sql . ", " . $notiLimit->sql;
 		$notiResult = sql($notiSql, $eo);
 		if($notiResult->num_rows > 0){
 			while($row=db_fetch_row($notiResult)){
@@ -62,6 +64,36 @@
 		$GLOBALS['result'] = json_encode($readFlagReturned);
 	}
 	else if($operation->sql == 'mark_d'){
+		sql("UPDATE `notif` SET `active_flag` = 'N' WHERE `id` = " . $notifId->sql, $eo);
+		$GLOBALS['result'] = $ok_return;
+	}
+	else if($operation->sql == 'selectAll'){
+		
+		// check requested page number
+		$page = 1; // default is page 1
+		if(isset($p->sql)) $page = intval($p->sql);
+		if($page < 1) $page = 1;
+		
+		// offset formula
+		$skip = results_per_page * ($page - 1);
+		
+		/* finally, apply this in the query */
+		$query = "SELECT `id`, `notif_title`, `notif_msg`, `notif_url`, `notif_time`, `read_flag` FROM `notif` WHERE `active_flag` = 'Y' AND `memberID` = '" . $memberID . "' ORDER BY `notif_time` DESC LIMIT " . $skip . ", " . results_per_page;
+		$notiResult = sql($query, $eo);
+		if($notiResult->num_rows > 0){
+			while($row=db_fetch_row($notiResult)){
+				$output[] = array(
+					'id'  		=> $row[0],
+					'notif_title'  => $row[1],
+					'notif_msg'  => $row[2],
+					'notif_url'  => $row[3],
+					'notif_time'  => $row[4],
+					'read_flag'  => $row[5]
+				);
+			}
+		}
+		$GLOBALS['result'] = json_encode($output);
+
 	}
 
 	
