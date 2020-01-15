@@ -52,155 +52,326 @@ $block_classes = array(
 <!-- <div class="navbar-default sidebar" role="navigation">
 	<div class="sidebar-nav navbar-collapse1" id="dash-sidebar-nav">
 		<ul class="nav" id="side-menu" style="padding: 12px;"> -->
-<div class="container-fluid">
-	<div class="card">
-		<ul class="text-themecolor m-b-0 m-t-0">
-			<?php
-			/* accessible tables */
-			$userLoggedIn = true;
-			$resultUserDashboardData = $_SESSION['resultUserDashboardData'];
-			$token = $_SESSION['token'];
-			$username = $_SESSION['memberID'];
-			if ($resultUserDashboardData && count($resultUserDashboardData) > 0) { ?>
-				<!-- <h4 style="border-bottom:1px"> I am logged in as 
-					<?php
-						// echo $username 
-						?> with token 
-					<?php
-						// echo $token 
-						?> </h4> -->
-				<!-- <div style="width:100%;background:teal; padding:2em; color:white">
-					<h4> I am logged in as <?php echo $username ?> </h4>
-				</div> -->
+<div class="page-wrapper ps ps--theme_default">
+	<div class="container-fluid">
+
+	<div class="col-lg-6">
+			<div class="card">
+				<div class="card-header">
+					<div class="row">
+						<div class="col-md-2">
+							<img class="img-circle" style="width: 70px;" src="assets/images/no-logo.png" alt="user" width="50"> </td>
+						</div>
+						<div class="col-md-10">
+							<h4 href="#" class="card-title font-bold">Puffer Group</h4>
+							<h6 class="card-subtitle">
+								Kawasan Perindustrian, Bukit Serdang, 43300 Seri Kembangan, Selangor.
+							</h6>
+						</div>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-hover v-middle">
+							<thead>
+								<tr>
+									<th> Table </th>
+									<th> Created </th>
+									<th> Modified </th>
+									<th> Data </th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										Doc Control
+									</td>
+									<td> 12/01/2020 </td>
+									<td> 12/01/2020 </td>
+									<td>
+										Lorum Ipsum
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Doc Control
+									</td>
+									<td> 12/01/2020 </td>
+									<td> 12/01/2020 </td>
+									<td>
+										Lorum Ipsum
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Doc Control
+									</td>
+									<td> 12/01/2020 </td>
+									<td> 12/01/2020 </td>
+									<td>
+										Lorum Ipsum
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Doc Control
+									</td>
+									<td> 12/01/2020 </td>
+									<td> 12/01/2020 </td>
+									<td>
+										Lorum Ipsum
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="text-center">
+							<button class="btn btn-primary">Login Account</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Portfolio</h4>
+					<h6 class="card-subtitle">
+						user's entries and work log records.
+						<div class="pull-right">
+							<i class="ti-list mr-2"></i>156 entries
+						</div>
+					</h6>
+					<div class="table-responsive m-t-40">
+						<table class="table table-hover v-middle">
+							<thead>
+								<tr>
+									<th style="width: 60px;"> Company </th>
+									<th> Table </th>
+									<th> Created </th>
+									<th> Modified </th>
+									<th> Data </th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<img class="img-circle" src="assets/images/no-logo.png" alt="user" width="50"> </td>
+									<td>
+										Doc Control
+									</td>
+									<td> 12/01/2020 </td>
+									<td> 12/01/2020 </td>
+									<td>
+										Lorum Ipsum
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img class="img-circle" src="assets/images/no-logo.png" alt="user" width="50"> </td>
+									<td>
+										Doc Control
+									</td>
+									<td> 12/01/2020 </td>
+									<td> 12/01/2020 </td>
+									<td>
+										Lorum Ipsum
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img class="img-circle" src="assets/images/no-logo.png" alt="user" width="50"> </td>
+									<td>
+										Doc Control
+									</td>
+									<td> 12/01/2020 </td>
+									<td> 12/01/2020 </td>
+									<td>
+										Lorum Ipsum
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img class="img-circle" src="assets/images/no-logo.png" alt="user" width="50"> </td>
+									<td>
+										Doc Control
+									</td>
+									<td> 12/01/2020 </td>
+									<td> 12/01/2020 </td>
+									<td>
+										Lorum Ipsum
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img class="img-circle" src="assets/images/no-logo.png" alt="user" width="50"> </td>
+									<td>
+										Doc Control
+									</td>
+									<td> 12/01/2020 </td>
+									<td> 12/01/2020 </td>
+									<td>
+										Lorum Ipsum
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-body">
+			<ul class="text-themecolor m-b-0 m-t-0">
 				<?php
-					// 					$table = <<< TABLE
-					// 		<table border="0">
-					// 		<tbody><tr><td>
-					// TABLE;
-					// if($resultUserDashboardData && count($resultUserDashboardData)>0){
-
-					// $i=0;
-					foreach ($resultUserDashboardData as $arr) {
-
-						$j = 0;
-						$url = '';
-						foreach ($arr as $a) {
-
-							if ($j == 0) {
-								$url = $a;
-							} else if ($j == 1) {
-								//company name
-								?>
-								<div class="w3-container">
-								<div class="card">
-    
-    <!-- <div class="front side">
-      <h1 class="logo">Zach Saucier</h1>
-    </div>
-    
-    <div class="back side">
-      <h3 class="name">Zach Saucier</h3>
-      <div>Front-end developer</div>      
-      <div class="info">
-        <p><span class="property">Email: </span>hello@zachsaucier.com</p>
-        <p><span class="property">Twitter: </span>@ZachSaucier</p>
-        <p><span class="property">Phone: </span>(123) 456-7890</p>
-        <p><span class="property">Website: </span>zachsaucier.com</p>
-      </div>
-    </div> -->
-    
-  </div>
-								<h3>
-									<b><u><?php echo $a ?></b></u>
-								</h3>
-							<?php
-							} else if ($j == 2) {
-							// company address
-							?>
-								<h4>
-									<?php echo $a ?>
-								</h4>
-								<h5>Continue as</h5>
-
-								<form method="post" action="<?php echo $url ?>/index.php">
-									<input type="hidden" name="token" id="token" value="<?php echo $token ?>">
-
-									<input type="hidden" name="rememberMe" id="rememberMe" value="1">
-									<button name="signIn" type="submit" id="submit" value="signIn" style="background: none;color: inherit;border:1px solid grey;padding: 5px;font: inherit;cursor: pointer;outline: inherit;width:inherit" class="w3-hover-shadow">
-										<img src="http://globalmatrixsolution.com/wp-content/uploads/2018/06/cutomer-icon-copy.png" alt="Admin-logo" style="width:50%;">
-									<?php
-							} else if ($j == 3) {
-							//username/memberID
-									?> 
-										<input type="hidden" name="username" id="username" value="<?php echo $a ?>">
-									<?php
-							} else if ($j == 4) {
-							//username/email
-									?> 
-									<div class="w3-container w3-center">
-										<h4>
-											<?php echo $a ?>
-										</h4>
-									<?php
-							} else if ($j == 6) {
-							//role
-									?>
-										<h5>
-											<?php echo '(' . $a . ')' ?>
-										<h5>
-									</div>
-									</button>
-								</form>
+				/* accessible tables */
+				$userLoggedIn = true;
+				$resultUserDashboardData = $_SESSION['resultUserDashboardData'];
+				$token = $_SESSION['token'];
+				$username = $_SESSION['memberID'];
+				if ($resultUserDashboardData && count($resultUserDashboardData) > 0) { ?>
+					<!-- <h4 style="border-bottom:1px"> I am logged in as 
 						<?php
-							}
-									$j++;
-						}
-								// $table .='<td>';
-								// $table .='</td>';
-								?>
-							</div>
-							<hr /> <?php
-											// $i++;
-					}
-
-
-
-										// $table .= "test</td></tr></tbody></table>";
-										// printf($table);
-
-										// }
-
-										?>
-
-						<!-- <div class="w3-container">
-					<h3>PGS66 - 66 Sdn Bhd</h3>
-					<h4>No 1, Jalan Terus 1, Putra Heights, 47650 Subang Jaya</h4>
-					<h5>Continue as</h5>
-					<form method="post" action="pgs66/index.php">
-						<input type="hidden" name="username" id="username" value="administrator">
-						<input type="hidden" name="password" id="password" value="administrator">
-						<input type="hidden" name="rememberMe" id="rememberMe" value="1">
-						<button name="signIn" type="submit" id="submit" value="signIn" style="background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;width:inherit" class="w3-hover-shadow">
-							<div class="w3-card-4" style="height:280px;text-align:center;padding:2em;">
-								<img src="http://globalmatrixsolution.com/wp-content/uploads/2018/06/cutomer-icon-copy.png" alt="Admin-logo" style="width:50%;">
-								<div class="w3-container w3-center">
-									<h4>Adminsitrator</h4>
-									<h5>(Admin)</h5>
-								</div>
-							</div>
-						</button>
-					</form>
-				</div> -->
+							// echo $username 
+							?> with token 
+						<?php
+							// echo $token 
+							?> </h4> -->
+					<!-- <div style="width:100%;background:teal; padding:2em; color:white">
+						<h4> I am logged in as <?php echo $username ?> </h4>
+					</div> -->
 					<?php
-					} else {
-						?><script>
-							window.location = 'index.php?signIn=1';
-						</script><?php
-									}
+						// 					$table = <<< TABLE
+						// 		<table border="0">
+						// 		<tbody><tr><td>
+						// TABLE;
+						// if($resultUserDashboardData && count($resultUserDashboardData)>0){
+
+						// $i=0;
+						foreach ($resultUserDashboardData as $arr) {
+
+							$j = 0;
+							$url = '';
+							foreach ($arr as $a) {
+
+								if ($j == 0) {
+									$url = $a;
+								} else if ($j == 1) {
+									//company name
 									?>
-		</ul>
+									<div class="w3-container">
+									<div class="card">
+		
+		<!-- <div class="front side">
+		<h1 class="logo">Zach Saucier</h1>
+		</div>
+		
+		<div class="back side">
+		<h3 class="name">Zach Saucier</h3>
+		<div>Front-end developer</div>      
+		<div class="info">
+			<p><span class="property">Email: </span>hello@zachsaucier.com</p>
+			<p><span class="property">Twitter: </span>@ZachSaucier</p>
+			<p><span class="property">Phone: </span>(123) 456-7890</p>
+			<p><span class="property">Website: </span>zachsaucier.com</p>
+		</div>
+		</div> -->
+		
 	</div>
+									<h3>
+										<b><u><?php echo $a ?></b></u>
+									</h3>
+								<?php
+								} else if ($j == 2) {
+								// company address
+								?>
+									<h4>
+										<?php echo $a ?>
+									</h4>
+									<h5>Continue as</h5>
+
+									<form method="post" action="<?php echo $url ?>/index.php">
+										<input type="hidden" name="token" id="token" value="<?php echo $token ?>">
+
+										<input type="hidden" name="rememberMe" id="rememberMe" value="1">
+										<button name="signIn" type="submit" id="submit" value="signIn" style="background: none;color: inherit;border:1px solid grey;padding: 5px;font: inherit;cursor: pointer;outline: inherit;width:inherit" class="w3-hover-shadow">
+											<img src="http://globalmatrixsolution.com/wp-content/uploads/2018/06/cutomer-icon-copy.png" alt="Admin-logo" style="width:50%;">
+										<?php
+								} else if ($j == 3) {
+								//username/memberID
+										?> 
+											<input type="hidden" name="username" id="username" value="<?php echo $a ?>">
+										<?php
+								} else if ($j == 4) {
+								//username/email
+										?> 
+										<div class="w3-container w3-center">
+											<h4>
+												<?php echo $a ?>
+											</h4>
+										<?php
+								} else if ($j == 6) {
+								//role
+										?>
+											<h5>
+												<?php echo '(' . $a . ')' ?>
+											<h5>
+										</div>
+										</button>
+									</form>
+							<?php
+								}
+										$j++;
+							}
+									// $table .='<td>';
+									// $table .='</td>';
+									?>
+								</div>
+								<hr /> <?php
+												// $i++;
+						}
+
+
+
+											// $table .= "test</td></tr></tbody></table>";
+											// printf($table);
+
+											// }
+
+											?>
+
+							<!-- <div class="w3-container">
+						<h3>PGS66 - 66 Sdn Bhd</h3>
+						<h4>No 1, Jalan Terus 1, Putra Heights, 47650 Subang Jaya</h4>
+						<h5>Continue as</h5>
+						<form method="post" action="pgs66/index.php">
+							<input type="hidden" name="username" id="username" value="administrator">
+							<input type="hidden" name="password" id="password" value="administrator">
+							<input type="hidden" name="rememberMe" id="rememberMe" value="1">
+							<button name="signIn" type="submit" id="submit" value="signIn" style="background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;width:inherit" class="w3-hover-shadow">
+								<div class="w3-card-4" style="height:280px;text-align:center;padding:2em;">
+									<img src="http://globalmatrixsolution.com/wp-content/uploads/2018/06/cutomer-icon-copy.png" alt="Admin-logo" style="width:50%;">
+									<div class="w3-container w3-center">
+										<h4>Adminsitrator</h4>
+										<h5>(Admin)</h5>
+									</div>
+								</div>
+							</button>
+						</form>
+					</div> -->
+						<?php
+						} else {
+							?><script>
+								window.location = 'index.php?signIn=1';
+							</script><?php
+										}
+										?>
+			</ul>
+		</div>
 	<!-- /.sidebar-collapse -->
+		</div>
+	</div>]
 </div>
 <!-- /.navbar-static-side -->
 <footer class="footerd">

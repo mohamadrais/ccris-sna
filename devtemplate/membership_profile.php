@@ -111,27 +111,27 @@
 	<div class="row">
 
 		<!-- group and IP address -->
-		<div class="col-md-6">
+		<div class="col-md-3">
 			<div class="card mt-0">
 				<div class="card-body" style="overflow: hidden; max-height: 150px;">
 					<div class="form-group">
 						<h6 class="text-muted"><?php echo $Translation['Your IP address']; ?></h6>
 						<h1 class="font-light"><?php echo $mi['IP']; ?></h1>
 					</div>
-					<img style="width: 200px; position: relative; opacity: 0.1; left: 445px; top: -80px;" src="images/dashboard-icon/ip-address.svg">
+					<img style="width: 150px; position: relative; opacity: 0.1; left: 145px; top: -75px;" src="images/dashboard-icon/ip-address.svg">
 				</div>
 			</div>
 		</div>
 
 		<!-- group and IP address -->
-		<div class="col-md-6">
+		<div class="col-md-3">
 			<div class="card mt-0">
 				<div class="card-body" style="overflow: hidden; max-height: 150px;">
 					<div class="form-group">
 						<h6 class="text-muted"><?php echo $Translation['group']; ?></h6>
 						<h1 class="font-light"><?php echo $mi['group']; ?></h1>
 					</div>
-					<img style="width: 200px; position: relative; opacity: 0.1; left: 445px; top: -80px;" src="images/dashboard-icon/group.svg">
+					<img style="width: 150px; position: relative; opacity: 0.1; left: 145px; top: -75px;" src="images/dashboard-icon/group.svg">
 				</div>
 			</div>
 		</div>
@@ -140,39 +140,42 @@
 
 			<!-- user info form -->
 		<form>
-			<div class="card my-0">
+			<div class="card">
 				<div class="card-body">
-					<fieldset id="profile">
-						<div class="form-group">
-							<label class="control-label" for="email"><?php echo $Translation['email']; ?></label>
-							<input type="email" id="email" name="email" value="<?php echo $mi['email']; ?>" class="form-control">
-						</div>
-
-						<?php for($i=1; $i<5; $i++){ ?>
+					<h3 class="card-title">
+						Profile Information
+					</h3>
+					<div class="panel-body">
+						<fieldset id="profile">
 							<div class="form-group">
-								<label class="control-label" for="custom<?php echo $i; ?>"><?php echo $adminConfig['custom'.$i]; ?></label>
-								<input type="text" id="custom<?php echo $i; ?>" name="custom<?php echo $i; ?>" value="<?php echo $mi['custom'][$i-1]; ?>" class="form-control">
+								<label class="control-label" for="email"><?php echo $Translation['email']; ?></label>
+								<input type="email" id="email" name="email" value="<?php echo $mi['email']; ?>" class="form-control">
 							</div>
-						<?php } ?>
 
-						<div class="row">
-							<div class="col-md-2 col-md-offset-10">
-								<button id="update-profile" class="btn btn-primary btn-block pull-right" type="button"><i class="glyphicon glyphicon-ok"></i> <?php echo $Translation['Update profile']; ?></button>
+							<?php for($i=1; $i<5; $i++){ ?>
+								<div class="form-group">
+									<label class="control-label" for="custom<?php echo $i; ?>"><?php echo $adminConfig['custom'.$i]; ?></label>
+									<input type="text" id="custom<?php echo $i; ?>" name="custom<?php echo $i; ?>" value="<?php echo $mi['custom'][$i-1]; ?>" class="form-control">
+								</div>
+							<?php } ?>
+
+							<div class="row">
+								<div class="col-md-2 col-md-offset-10">
+									<button id="update-profile" class="btn btn-primary btn-block pull-right" type="button"><i class="glyphicon glyphicon-ok"></i> <?php echo $Translation['Update profile']; ?></button>
+								</div>
 							</div>
-						</div>
-					</fieldset>
+						</fieldset>
+					</div>
 				</div>
 			</div>
 
 			<?php if($mi['username'] != $adminConfig['adminUsername']){ ?>
-				<!-- change password -->
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						<h3 class="panel-title">
-							<i class="glyphicon glyphicon-asterisk"></i><i class="glyphicon glyphicon-asterisk"></i>
-							<?php echo $Translation['Change your password']; ?>
-						</h3>
-					</div>
+			<!-- change password -->
+			<div class="card">
+				<div class="card-body">
+					<h3 class="card-title">
+						<?php echo $Translation['Change your password']; ?>
+					</h3>
 					<div class="panel-body">
 						<fieldset id="change-password">
 							<div id="password-change-form">
@@ -195,25 +198,24 @@
 								</div>
 
 								<div class="row">
-									<div class="col-md-4 col-md-offset-4">
-										<button id="update-password" class="btn btn-success btn-block" type="button"><i class="glyphicon glyphicon-ok"></i> <?php echo $Translation['Update password']; ?></button>
+									<div class="col-md-2 col-md-offset-10">
+										<button id="update-password" class="btn btn-primary btn-block pull-right" type="button"><i class="glyphicon glyphicon-ok"></i> <?php echo $Translation['Update password']; ?></button>
 									</div>
 								</div>
-
 							</div>
 						</fieldset>
 					</div>
 				</div>
+			</div>
 			<?php } ?>
 			</form>	
 
 			<!-- access permissions -->
 			<div class="card">
 				<div class="card-body">
-					<h4 class="card-title">
-						<i class="glyphicon glyphicon-lock"></i>
+					<h3 class="card-title">
 						<?php echo $Translation['Your access permissions']; ?>
-					</h4>
+					</h3>
 					<div class="panel-body">
 						<p><strong><?php echo $Translation['Legend']; ?></strong></p>
 						<div class="row">

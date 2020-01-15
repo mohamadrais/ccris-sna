@@ -91,17 +91,28 @@
 
         $i = 0; $current_group = '';
         ?>
-        <div class="col-md-12">
-            <a href="./reports.php" class="report-menu"><span>SUMMARY DASHBOARD</span></a>
-            <a href="./reports.php?kpi=true" class="report-menu"><span>KPI METRICS</span></a>
-            <?php if($kpi != "true") { ?>
-            <div class="text-muted" ><br><br>Select Report Range:<br><br></div>
-            <div id="reportrange">
-                <i class="fa fa-calendar"></i>&nbsp;
-                <span></span> <i class="fa fa-caret-down"></i>
+        <div class="col-md-12 px-0">
+            <div class="card-body inbox-panel p-0">
+                <ul class="list-group list-group-full pb-3">
+                    <li class="list-group-item">
+                        <a href="./reports.php" class="p-0">SUMMARY DASHBOARD</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="./reports.php?kpi=true" class="p-0">KPI METRICS</a>
+                    </li>
+                </ul>
             </div>
+            
+            <div class="px-4">
+            <?php if($kpi != "true") { ?>
+            <div class="text-muted report-label pb-2 pt-4">Select Report Range:</div>
+            <button class="btn btn-outline-primary waves-effect waves-light rangereport-btn" type="button"><span class="btn-label"><i class="fa fa-calendar"></i></span><span id="reportrange"></span></button>
+            <!-- <button>
+                <i class="fa fa-calendar"></i>
+                <span id="reportrange"></span>
+            </button> -->
             <?php } ?>
-            <div class="text-muted" ><br><br>Select an individual <?php if($kpi != "true") { ?>Report<?php } else { ?>Section<?php } ?>:</div>
+            <div class="text-muted report-label pb-2 pt-4">Select an individual <?php if($kpi != "true") { ?>Report<?php } else { ?>Section<?php } ?>:</div>
             <!-- <select name="date" class="form-control" id="date">
                 <option value="">Select Date</option>
             <?php
@@ -110,6 +121,7 @@
             // }
             ?>
             </select> -->
+            </div>
         </div>
         <?php
 		foreach($tg as $tn => $tgroup){
@@ -216,12 +228,11 @@
 </div>
     <!-- /.sidebar-collapse -->
             </div>
-            <div class="col-10">
-            <div class="container">
+            <div class="col-10 px-5">
         <span id="chartLoading" style="position: relative; left: 50%"></span>
-        <div class="row page-titles">
-            <div class="col-md-12 align-self-center">
-                <h3 id="titleReport" class="text-themecolor m-b-0 m-t-0"><?php if($kpi != "true") { ?>Reports Dashboard<?php } else { ?>KPI Metrics<?php } ?></h3>
+        <div class="page-titles">
+            <div class="col-md-12 align-self-center px-0">
+                <h3 id="titleReport" class="text-themecolor m-b-0 m-t-0"><?php if($kpi != "true") { ?>Summary Dashboard<?php } else { ?>KPI Metrics<?php } ?></h3>
 			</div>
         </div>
         <?php 
@@ -232,51 +243,11 @@
         <div id="defaultReports">
             <!-- Start Row -->
             <div class="row">
-                <!-- First Column -->
-                <div class="col-lg-6 col-md-6 pr-2">
-                    <div class="card my-3">
-                        <div class="card-body" style="max-height: 140px; overflow: hidden;">
-                            <h4 class="card-title m-b-0">Organization Top Members</h4>
-                            <p class="text-muted"></p>
-                        </div>
-                        <div>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th width="150px">Member</th>
-                                        <th>No. of Records</th>
-                                    </tr>
-                                </thead>
-                            <?php
-                                $res=sql("select lcase(memberID), count(1) from membership_userrecords group by memberID order by 2 desc limit 5", $eo);
-                                while($row=db_fetch_row($res)){
-                            ?>
-                                <tr>
-                                    <td>
-                                        <span class="text-muted">
-                                            <?php echo $row[0]; ?>
-                                        </span> 
-                                    </td>
-                                    <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> 
-                                        <?php if ($memberInfo['admin']) { ?>
-                                            <a href="admin/pageViewRecords.php?memberID=<?php echo urlencode($row[0]); ?>"><img src="admin/images/data_icon.gif" border="0" alt="<?php echo $Translation["view member records"]; ?>" title="<?php echo $Translation["view member records"]; ?>"></a>
-                                        <?php } ?> 
-                                        <?php echo $row[1]; ?>
-                                    </td>
-                                </tr>
-                            <?php
-                                }
-                            ?>
-                            </table>
-                        </div>
-                    </div>
-                </div>
                 <!-- Second Column -->
-                <div class="col-lg-6 col-md-6 pr-2">
+                <div class="col-lg-12 col-md-12 p-0">
                     <!-- Start SubRow 1 -->
-                    <div class="row">
                         <!-- Column -->
-                        <div class="col-lg-4 col-md-6 pr-2">
+                        <div class="col-lg-2 col-md-4">
                             <div class="card my-3">
                                 <div class="card-body" style="max-height: 140px; overflow: hidden;">
                                     <h4 class="card-title m-b-0">My Work Orders</h4>
@@ -294,7 +265,7 @@
                             </div>
                         </div>
                         <!-- Column -->
-                        <div class="col-lg-4 col-md-6 pr-2">
+                        <div class="col-lg-2 col-md-4">
                             <div class="card my-3">
                                 <div class="card-body" style="max-height: 140px; overflow: hidden;">
                                     <h4 class="card-title m-b-0">My Average Work Orders</h4>
@@ -303,14 +274,14 @@
                                         $myWOAvgPerMonth=sqlValue("SELECT COALESCE(AVG(a.woCount), 0) FROM (select count(`WorkOrder`.`id`) as woCount FROM `WorkOrder` WHERE `WorkOrder`.`fo_EmployeeID` = (SELECT `employees`.`EmployeeID` FROM `employees` WHERE `employees`.`memberID` = '" . makeSafe($memberInfo['username']) . "') GROUP BY DATE_FORMAT(`WorkOrder`.`ot_ap_filed`, '%m-%Y')) a");
                                     ?>
                                     <div class="row">
-                                        <div class="col-12"><span><h2 class="font-light d-inline"><?php echo number_format($myWOAvgPerMonth) ?></h2><span class="text-muted"></span> <h2 class="font-light d-inline"></h2><span class="text-muted"></span></span></div>
+                                        <div class="col-12"><span><h2 class="font-light d-inline"><?php echo number_format($myWOAvgPerMonth) ?></h2><span></span> <h2 class="font-light d-inline"></h2><span></span></span></div>
                                         <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/invoice.svg">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Column -->
-                        <div class="col-lg-4 col-md-6 pr-2">
+                        <div class="col-lg-2 col-md-4">
                             <div class="card my-3">
                                 <div class="card-body" style="max-height: 140px; overflow: hidden;">
                                     <h4 class="card-title m-b-0">My Average Work Order</h4>
@@ -327,12 +298,9 @@
                                 </div>
                             </div>
                         </div>
-                        
-                    </div>
                     <!-- Start SubRow 2 -->
-                    <div class="row">
                         <!-- Column -->
-                        <div class="col-lg-4 col-md-6 pr-2">
+                        <div class="col-lg-2 col-md-4">
                             <div class="card my-3">
                                 <div class="card-body" style="max-height: 140px; overflow: hidden;">
                                     <h4 class="card-title m-b-0">My Performance</h4>
@@ -348,7 +316,7 @@
                             </div>
                         </div>
                         <!-- Column -->
-                        <div class="col-lg-4 col-md-6 pr-2">
+                        <div class="col-lg-2 col-md-4">
                             <div class="card my-3">
                                 <div class="card-body" style="max-height: 140px; overflow: hidden;">
                                     <h4 class="card-title m-b-0">My Average Task Rating</h4>
@@ -382,7 +350,7 @@
                             </div>
                         </div>
                         <!-- Column -->
-                        <div class="col-lg-4 col-md-6 pr-2">
+                        <div class="col-lg-2 col-md-4">
                             <div class="card my-3">
                                 <div class="card-body" style="max-height: 140px; overflow: hidden;">
                                     <h4 class="card-title m-b-0">My Average Task Rating</h4>
@@ -416,8 +384,6 @@
                                 </div>
                             </div>
                         </div>
-                        
-                    </div>
 
 
                 </div>
@@ -425,19 +391,59 @@
             <!-- End Row -->
             <!-- Start Row -->
             <div class="row">
+            <!-- First Column -->
+            <div class="col-lg-6 col-md-6 pr-2">
+                <div class="card my-3">
+                    <div class="card-body px-0">
+                        <h4 class="card-title m-b-0">Organization Top Members</h4>
+                    </div>
+                    <div>
+                        <table class="table table-bordered dataTable">
+                            <thead>
+                                <tr>
+                                    <th width="150px"><a>Member</a></th>
+                                    <th><a>No. of Records</a></th>
+                                </tr>
+                            </thead>
+                        <?php
+                            $res=sql("select lcase(memberID), count(1) from membership_userrecords group by memberID order by 2 desc limit 5", $eo);
+                            while($row=db_fetch_row($res)){
+                        ?>
+                            <tr>
+                                <td>
+                                    <a class="text-muted">
+                                        <?php echo $row[0]; ?>
+                                    </a> 
+                                </td>
+                                <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> 
+                                    <a>
+                                        <?php if ($memberInfo['admin']) { ?>
+                                            <a href="admin/pageViewRecords.php?memberID=<?php echo urlencode($row[0]); ?>"><img src="admin/images/data_icon.gif" border="0" alt="<?php echo $Translation["view member records"]; ?>" title="<?php echo $Translation["view member records"]; ?>"></a>
+                                        <?php } ?> 
+                                        <?php echo $row[1]; ?>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php
+                            }
+                        ?>
+                        </table>
+                    </div>
+                </div>
+            </div>
                 <!-- Column -->
-                <div class="col-lg-6 col-md-6 pr-2">
+                <div class="col-lg-12 col-md-12 pr-2">
                     <div class="card my-3">
-                        <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                        <div class="card-body px-0" style="max-height: 140px; overflow: hidden;">
                             <h4 class="card-title m-b-0">Organization Newest Updates  <?php if ($memberInfo['admin']) { ?><a class="btn btn-default btn-sm" href="admin/pageViewRecords.php?sort=dateUpdated&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a><?php } ?></h4>
                             <p class="text-muted">Recent 5</p>
                         </div>
                         <div>
-                            <table class="table">
+                            <table class="table table-bordered dataTable">
                                 <thead>
                                     <tr>
-                                        <th width="150px">Date</th>
-                                        <th>Data</th>
+                                        <th width="200px"><a>Date</a></th>
+                                        <th><a>Data</a></th>
                                     </tr>
                                 </thead>
                             <?php
@@ -446,15 +452,17 @@
                             ?>
                                 <tr>
                                     <td>
-                                        <span class="text-muted"><i class="fa fa-clock-o"></i> 
+                                        <a class="text-muted"><i class="fa fa-clock-o"></i> 
                                             <?php echo @date($adminConfig['PHPDateTimeFormat'], $row[2]); ?>
-                                        </span> 
+                                        </a> 
                                     </td>
                                     <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> 
-                                        <?php if ($memberInfo['admin']) { ?>
+                                        <a>
+                                            <?php if ($memberInfo['admin']) { ?>
                                             <a href="admin/pageEditOwnership.php?recID=<?php echo $row[3]; ?>"><img src="admin/images/data_icon.gif" border="0" alt="<?php echo $Translation["view record details"]; ?>" title="<?php echo $Translation["view record details"]; ?>"></a>
-                                        <?php } ?> 
-                                        <?php echo getCSVData($row[0], $row[1]); ?>
+                                            <?php } ?> 
+                                            <?php echo getCSVData($row[0], $row[1]); ?>
+                                        </a>
                                     </td>
                                 </tr>
                             <?php
@@ -465,18 +473,18 @@
                     </div>
                 </div>
                 <!-- Column -->
-                <div class="col-lg-6 col-md-6 pr-2">
+                <div class="col-lg-12 col-md-12 pr-2">
                     <div class="card my-3">
-                        <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                        <div class="card-body px-0" style="max-height: 140px; overflow: hidden;">
                             <h4 class="card-title m-b-0">Organization Newest Entries  <?php if ($memberInfo['admin']) { ?><a class="btn btn-default btn-sm" href="admin/pageViewRecords.php?sort=dateAdded&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a><?php } ?> </h4>
                             <p class="text-muted">Recent 5</p>
                         </div>
                         <div>
-                            <table class="table">
+                            <table class="table table-bordered dataTable">
                                 <thead>
                                     <tr>
-                                        <th width="150px">Date</th>
-                                        <th>Data</th>
+                                        <th width="200px"><a>Date</a></th>
+                                        <th><a>Data</a></th>
                                     </tr>
                                 </thead>
                             <?php
@@ -485,15 +493,17 @@
                             ?>
                                 <tr>
                                     <td>
-                                        <span class="text-muted"><i class="fa fa-clock-o"></i> 
+                                        <a class="text-muted"><i class="fa fa-clock-o"></i> 
                                             <?php echo @date($adminConfig['PHPDateTimeFormat'], $row[2]); ?>
-                                        </span> 
+                                        </a> 
                                     </td>
                                     <td style="max-height: 22px; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> 
-                                        <?php if ($memberInfo['admin']) { ?>
+                                        <a>
+                                            <?php if ($memberInfo['admin']) { ?>
                                             <a href="admin/pageEditOwnership.php?recID=<?php echo $row[3]; ?>"><img src="admin/images/data_icon.gif" border="0" alt="<?php echo $Translation["view record details"]; ?>" title="<?php echo $Translation["view record details"]; ?>"></a>
-                                        <?php } ?> 
-                                        <?php echo getCSVData($row[0], $row[1]); ?>
+                                            <?php } ?> 
+                                            <?php echo getCSVData($row[0], $row[1]); ?>
+                                        </a>
                                     </td>
                                 </tr>
                             <?php
@@ -539,8 +549,8 @@
         </div>
         <!-- Default Reports Dashboard End -->
         <!-- Dynamic Reports Start -->
-        <div id="notify" style="margin-top: 50px; left: 50%; position: relative; color: red" class = "hideDiv"></div>
-        <div id="noResult" style="margin-top: 50px; left: 50%; position: relative;" class = "hideDiv"></div>
+        <div id="notify" style="margin-top: 50px; position: relative; color: red" class = "hideDiv"></div>
+        <div id="noResult" style="margin-top: 50px; position: relative;" class = "hideDiv"></div>
         <div id="comboChart" style="margin-top: 50px; width: 100%; height: 300px; position: relative;" class = "hideDiv"></div>
         <!-- <div id="barChart" style="margin-top: 50px; width: 100%; height: 300px; position: relative;" class = "hideDiv"></div>
         <div id="lineChart" style="margin-top: 30px; width: 100%; height: 300px; position: relative;" class = "hideDiv"></div> -->
@@ -552,20 +562,18 @@
         // show kpi dashboard
         else { ?> 
         <div id="kpiMetrics">
-            <!-- Start Row -->
-            <div class="row">
                 <!-- Start Row Min Record -->
                 <div class="card my-3">
-                    <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                    <div class="card-body px-0" style="max-height: 140px; overflow: hidden;">
                         <h4 class="card-title m-b-0">Minimum Record Required</h4>
                         <p class="text-muted"></p>
                     </div>
                     <div>
-                        <table class="table">
+                        <table class="table table-bordered dataTable">
                             <thead>
                                 <tr>
                                     <th style="width: 70%">Record</th>
-                                    <th>Remarks</th>
+                                    <th><a>Remarks</a></th>
                                     <!-- <th>Percentage of KPI Achieved this Year</th> -->
                                 </tr>
                             </thead>
@@ -574,9 +582,9 @@
                                     <span id='kpi_min_record_required'></span> 
                                 </td>
                                 <td>
-                                    <span>
+                                    <a>
                                         The number shown is the minimum records required for each section. Every section needs to achieve at least the minimum records to be generated for the year.
-                                    </span> 
+                                    </a> 
                                 </td>
                                 <!-- <td>
                                     <span id='kpi_percentage_kpi_achieved'></span> 
@@ -588,7 +596,7 @@
                 <!-- End Row Min Record -->
                 <!-- Start Row KPI percentage per annum -->
                 <div class="card my-3">
-                    <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                    <div class="card-body px-0" style="max-height: 140px; overflow: hidden;">
                         <h4 class="card-title m-b-0">KPI Percentage Achieved per Annum</h4>
                         <p class="text-muted"></p>
                     </div>
@@ -597,16 +605,16 @@
                 <!-- End Row KPI percentage per annum -->
                 <!-- Start Task Completion Duration -->
                 <div class="card my-3">
-                    <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                    <div class="card-body px-0" style="max-height: 140px; overflow: hidden;">
                         <h4 class="card-title m-b-0">Task Completion Duration (Days)</h4>
                         <p class="text-muted"></p>
                     </div>
                     <div>
-                        <table class="table">
+                        <table class="table table-bordered dataTable">
                             <thead>
                                 <tr>
-                                    <th style="width: 70%">Duration</th>
-                                    <th>Remarks</th>
+                                    <th style="width: 70%"><a>Duration</a></th>
+                                    <th><a>Remarks</a></th>
                                 </tr>
                             </thead>
                             <tr>
@@ -625,14 +633,11 @@
                     </div>
                 </div>
                 <!-- End Task Completion Duration -->
-            </div> 
-            <!-- End Row -->
         </div>
         <?php 
         // end of kpi dashboard
         } 
         ?>
-</div>
             </div>
         </div>
     </div>

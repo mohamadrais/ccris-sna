@@ -7454,7 +7454,7 @@ select.form-control:not([size]):not([multiple]){
 .report-menu:hover{
   color: #ad3a62;
 }
-#reportrange{
+/* #reportrange{
   background: #f7fdff;
   cursor: pointer;
   padding: 5px 10px;
@@ -7463,7 +7463,7 @@ select.form-control:not([size]):not([multiple]){
   color: #a6b7bf;
   font-weight: 400;
   border-radius: 5px;
-}
+} */
 .report-sidemenu:hover{
   color:#ad3a62;
   cursor: pointer;
@@ -7471,4 +7471,24 @@ select.form-control:not([size]):not([multiple]){
 
 .attach-group{
   display:flex
+}
+.list-group-item{
+  cursor: pointer;
+}
+.list-group-item .sidebar-nav ul li a.active, .sidebar-nav ul li a:hover{
+  background-color: transparent;
+}
+.list-group-item:hover a{
+  color: #AC3A61 !important;
+}
+.daterangepicker.ltr.show-ranges.opensright.show-calendar{
+  top: 310px !important;
+  left: 90px !important;
+  right: auto !important;
+}
+.rangereport-btn{
+  font-size: 0.7rem;
+}
+.report-label{
+  font-size: 1.2rem;
 }

@@ -16,11 +16,11 @@
 
 <div class="page-wrapper ps ps--theme_default">
 <div class="container-fluid">
-
 	<div class="row">
 		<div class="col-12">
 			<div class="card">
 				<div class="card-body">
+					<h3>Notifications</h3>
 					<div class="message-box">
 						<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 570px;">
 							<div id="notif-area" class="message-widget message-scroll" style="overflow: scroll; width: auto; height: 570px;">
