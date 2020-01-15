@@ -187,7 +187,7 @@
 			});
 		}
 
-		$j('#notif-area').on("click touchstart", "a[id^='notif_id_']" , function(e) {
+		$j('#notif-area').on("click", "a[id^='notif_id_']" , function(e) {
 			e.preventDefault();
 			// e.stopPropagation();
 			
@@ -212,7 +212,7 @@
 			window.location = $j(this).attr('href');
 		});
 		
-		$j('#notif-area').on("click touchstart", "a[id^='notif_id_'] div h5 span i[id^='r_id_']" , function(e) {
+		$j('#notif-area').on("click", "a[id^='notif_id_'] div h5 span i[id^='r_id_']" , function(e) {
 			e.preventDefault();
 			e.stopPropagation();
 			var nId = $j(this).attr('id').substr(5, $j(this).attr('id').length-1);

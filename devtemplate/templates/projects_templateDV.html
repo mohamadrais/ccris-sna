@@ -194,6 +194,8 @@
 							<input maxlength="200" placeholder="Place Link here" type="text"
 								class="form-control collapse m-b-5" name="ot_SharedLink1" id="ot_SharedLink1"
 								value="<%%VALUE(ot_SharedLink1)%%>">
+								<a id="ot_SharedLink1-link" href="link.php?t=projects&f=ot_SharedLink1&i=<%%VALUE(Id)%%>" target="_blank"><i class="glyphicon glyphicon-globe" title="<%%VALUE(ot_SharedLink1)%%>" style="font-size: x-large; top: .35em;"></i></a>
+								<script>jQuery(function () { /* */ var e_ot_SharedLink1 = '<%%VALUE(ot_SharedLink1)%%>'; if (e_ot_SharedLink1 == '' || e_ot_SharedLink1 == '&nbsp;' || e_ot_SharedLink1 == 'blank.gif') jQuery('#ot_SharedLink1-link').hide(); });</script>
 							<button type="button" class="btn btn-sm btn-outline-danger m-b-5"
 								id="ot_SharedLink1_remove">Remove</button>
 						</span>
@@ -201,6 +203,8 @@
 							<input maxlength="200" placeholder="Place Link here" type="text"
 								class="form-control collapse m-b-5" name="ot_SharedLink2" id="ot_SharedLink2"
 								value="<%%VALUE(ot_SharedLink2)%%>">
+								<a id="ot_SharedLink2-link" href="link.php?t=projects&f=ot_SharedLink2&i=<%%VALUE(Id)%%>" target="_blank"><i class="glyphicon glyphicon-globe" title="<%%VALUE(ot_SharedLink2)%%>" style="font-size: x-large; top: .35em;"></i></a>
+								<script>jQuery(function(){ /* */ var e_ot_SharedLink2 = '<%%VALUE(ot_SharedLink2)%%>'; if(e_ot_SharedLink2 == '' || e_ot_SharedLink2 == '&nbsp;' || e_ot_SharedLink2 == 'blank.gif') jQuery('#ot_SharedLink2-link').hide(); });</script>
 							<button type="button" class="btn  btn-sm btn-outline-danger m-b-5"
 								id="ot_SharedLink2_remove">Remove</button>
 						</span>
@@ -485,7 +489,7 @@
 		
 	</div>
 	<div class="adminActions"style="right:90px; bottom:40px">
-		<a id="startEdit" class="btn btn-warning float-btn-2" href="#Edit"><i class="ti-pencil-alt mr-2" aria-hidden="true"></i></a>
+		<%%EDIT_BUTTON%%>
 		<!-- <a id="exitEdit" class="btn btn-warning float-btn-2"  href="./projects_view.php?SelectedID=<%%VALUE(Id)%%>" style="display:none;"><i class="fa fa-floppy-o mr-2" aria-hidden="true"></i></a> -->
 		<%%UPDATE_BUTTON%%>
 	</div>

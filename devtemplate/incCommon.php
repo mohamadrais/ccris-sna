@@ -3359,6 +3359,7 @@
 							<div class="drop-title col-md-6">Notification</div>
 							<h7 class="col-md-6 text-right"><a class="nav-link" href="#"  id ='mark-all-read'>Mark all as Read</a></h7>
 						</li>
+						<span id="notifDropdownLoading" style="position: relative; left: 50%"></span>
 						<li>
 							<div class="message-center" id="notif-dropdown-area">
 								<!-- Message -->

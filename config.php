@@ -12,8 +12,8 @@
 	$dbDatabase = 'puffergr_admindb';
 
 	$adminConfig = array(
-		'adminUsername' => "admin",
-		'adminPassword' => "21232f297a57a5a743894a0e4a801fc3",
+		'adminUsername' => "adminpg",
+		'adminPassword' => "637724e8688276e97918153aa3b5976f",
 		'notifyAdminNewMembers' => "",
 		'defaultSignUp' => "1",
 		'anonymousGroup' => "anonymous",
@@ -28,8 +28,8 @@
 		'MySQLDateFormat' => "%m/%d/%Y",
 		'PHPDateFormat' => "n/j/Y",
 		'PHPDateTimeFormat' => "m/d/Y, h:i a",
-		'senderName' => "Membership management",
-		'senderEmail' => "syamsul.azmee@supplynetworkagency.com",
+		'senderName' => "Admin PufferGroup",
+		'senderEmail' => "puffergroupdev@gmail.com",
 		'approvalSubject' => "Your membership is now approved",
 		'approvalMessage' => "Dear member,\n\nYour membership is now approved by the admin. You can log in to your account here:\nhttp://pgs66.priggms.com\n\nRegards,\nAdmin",
 		'hide_twitter_feed' => "",
