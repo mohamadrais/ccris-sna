@@ -679,43 +679,53 @@
 
 		$j(document).ready(function(){
 			// Basic
-			$j('.dropify').dropify();
-
-			// Translated
-			$j('.dropify-fr').dropify({
-				messages: {
-					default: 'Glissez-déposez un fichier ici ou cliquez',
-					replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
-					remove:  'Supprimer',
-					error:   'Désolé, le fichier trop volumineux'
-				}
-			});
+			//$j('.dropify').dropify();
 
 			// Used events
-			var drEvent = $j('#input-file-events').dropify();
-
-			drEvent.on('dropify.beforeClear', function(event, element){
-				return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
-			});
-
-			drEvent.on('dropify.afterClear', function(event, element){
-				alert('File deleted');
-			});
-
-			drEvent.on('dropify.errors', function(event, element){
-				console.log('Has Errors');
-			});
-
-			var drDestroy = $j('#input-file-to-destroy').dropify();
-			drDestroy = drDestroy.data('dropify')
-			$j('#toggleDropify').on('click', function(e){
-				e.preventDefault();
-				if (drDestroy.isDropified()) {
-					drDestroy.destroy();
-				} else {
-					drDestroy.init();
-				}
+			var drEvent = [];
+			$j('.dropify').each(function(i, e){
+				drEvent[i] = $j(e).dropify();
 			})
+			for(x=0; x<drEvent.length; x++){
+				// drEvent[x].on('dropify.beforeClear', function(event, element){
+				// 	return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+				// });
+				drEvent[x].on('dropify.afterClear', function(event, element){
+					calcAttached("attach-documents", "totalDocumentAttached");
+					calcAttached("attach-compressed-folders", "totalCompFolderAttached");
+					calcAttached("attach-images", "totalPhotoAttached");
+				});
+
+				// drEvent[x].on('dropify.errors', function(event, element){
+				// 	console.log('Has Errors');
+				// });
+			}
+
+			// Used events
+			// var drEvent = $j('#ot_Ref01').dropify();
+
+			// drEvent.on('dropify.beforeClear', function(event, element){
+			// 	return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+			// });
+
+			// drEvent.on('dropify.afterClear', function(event, element){
+			// 	alert('File deleted');
+			// });
+
+			// drEvent.on('dropify.errors', function(event, element){
+			// 	console.log('Has Errors');
+			// });
+
+			// var drDestroy = $j('#input-file-to-destroy').dropify();
+			// drDestroy = drDestroy.data('dropify')
+			// $j('#toggleDropify').on('click', function(e){
+			// 	e.preventDefault();
+			// 	if (drDestroy.isDropified()) {
+			// 		drDestroy.destroy();
+			// 	} else {
+			// 		drDestroy.init();
+			// 	}
+			// })
 		});
 
 	});

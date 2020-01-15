@@ -296,8 +296,48 @@ if ($memberInfo['group'] != 'Admins') {
 			var selected_wo_ID = $j("[aria-labelledby='selected_wo_ID']").html().trim();
 			get_workorder_related_records(selected_wo_ID);
 		}
-    });
-        ///////////////////////////////////////////////
+	});
+	$j(document).ready(function() {
+		function calcAttached(attachType, totalLabel, initial=false){
+			var x = 0;
+			$j('input[aria-label='+attachType+']').each(function(i, e){
+				if ($j(this).val().length > 0 || ($j(this).attr('data-default-file') && $j(this).attr('data-default-file').length > 0)) {
+					x++;
+					$j(this).parent().show();
+				}
+				var selectedID = $j("[aria-labelledby='selectedID']").html().trim();
+				if(selectedID == "" && initial == true && i>0){
+					$j(this).parent().hide();
+				}
+			});
+			$j("#"+totalLabel).html(x);
+		}
+
+		function addButtonShowHide(attachType, attachLabel){
+			var x = 0;
+			$j('input[aria-label='+attachType+']').each(function(i, e){
+				if (!$j(this).parent().parent().is(":visible")) {
+					$j(this).parent().parent().show();
+					return false;
+				}
+				if(i==$j(this).length){
+					$j("#"+attachLabel).hide();
+				}
+			});
+		}
+
+		var attachArray = [["attach-documents", "totalDocumentAttached", "addDocument"], ["attach-compressed-folders", "totalCompFolderAttached", "addCompFolder"], ["attach-images", "totalPhotoAttached", "addPhoto"]];
+		
+		attachArray.forEach(function(i){
+			calcAttached(i[0], i[1], true);
+			$j('input[aria-label='+i[0]+']').on("change paste keyup", function () {
+				calcAttached(i[0], i[1]);
+			});
+			$j("#"+i[2]).click(function () {
+				addButtonShowHide(i[0], i[2]);
+			});
+		});
+
         if ($j("#startEdit").is(":visible")){
 			$j("input").attr("readonly", true);
 			$j("textarea").attr("readonly", true);
@@ -338,8 +378,8 @@ if ($memberInfo['group'] != 'Admins') {
 					$j('#sl1').show();
 				}
 
-				if (!$j("#ot_Ref01").is(":visible")) {
-					$j("#ot_Ref01").parent().parent().show();
+				if (!$j('[id$="Ref01"]').is(":visible")) {
+					$j('[id$="Ref01"]').parent().parent().show();
                 }
                 if (!$j("#ot_Ref04").is(":visible")) {
 					$j("#ot_Ref04").parent().parent().show();
@@ -369,314 +409,117 @@ if ($memberInfo['group'] != 'Admins') {
 			$j('[ aria-labelledby="attachment-readMode"]').show();
 		})
             
-            ///////////////////////////////////////////////
-		{
-			var _x = $j('#totalLinkAttached').html();
-			if (!_x) {
-				_x = 0;
-			}
+		///////////////////////////////////////////////
+	
+		var _x = $j('#totalLinkAttached').html();
+		if (!_x) {
+			_x = 0;
+		}
 
+		if ($j('input[id$="_SharedLink1"]').val().length > 0) {
+			_x++;
+		}
+
+		if ($j('input[id$="_SharedLink2"]').val().length > 0) {
+			_x++;
+		} else {
+			$j('input[id$="_SharedLink2"]').hide();
+			$j('#sl2').hide();
+		}
+
+		$j('#totalLinkAttached').html(_x);
+
+		$j('input[id$="_SharedLink1"]').on("change paste keyup", function () {
+			var x = 0;
 			if ($j('input[id$="_SharedLink1"]').val().length > 0) {
-				_x++;
+				x++;
 			}
-
 			if ($j('input[id$="_SharedLink2"]').val().length > 0) {
-				_x++;
-			} else {
+				x++;
+			}
+			$j('#totalLinkAttached').html(x);
+		});
+		$j('input[id$="_SharedLink2"]').on("change paste keyup", function () {
+			var x = 0;
+			if ($j('input[id$="_SharedLink1"]').val().length > 0) {
+				x++;
+			}
+			if ($j('input[id$="_SharedLink2"]').val().length > 0) {
+				x++;
+			}
+			$j('#totalLinkAttached').html(x);
+		});
+		$j('button[id$="_SharedLink1_remove"]').click(function () {
+			var x = $j('#totalLinkAttached').html();
+			if (!x) {
+				x = 0;
+			}
+			if ($j('input[id$="_SharedLink1"]').val().length > 0 && $j('input[id$="_SharedLink2"]').val().length > 0) {
+				$j('input[id$="_SharedLink1"]').val('');
+				$j('input[id$="_SharedLink1"]').hide();
+				$j('#sl1').hide();
+				$j("#addLink").show();
+				$j('a[id$="_SharedLink1-link"]').prop('href', '');
+				$j('a[id$="_SharedLink1-link"]').hide();
+				x--;
+			} else if ($j('input[id$="_SharedLink1"]').val().length > 0 && $j('input[id$="_SharedLink2"]').val().length == 0) {
+				$j('input[id$="_SharedLink1"]').val('');
+				$j('a[id$="_SharedLink1-link"]').prop('href', '');
+				$j('a[id$="_SharedLink1-link"]').hide();
+				x--;
+			} else if ($j('input[id$="_SharedLink1"]').val().length == 0 && $j('input[id$="_SharedLink2"]').val().length == 0) {
+				$j('input[id$="_SharedLink1"]').hide();
+				$j('#sl1').hide();
+				$j("#addLink").show();
+				$j('a[id$="_SharedLink1-link"]').prop('href', '');
+				$j('a[id$="_SharedLink1-link"]').hide();
+			}
+			$j('#totalLinkAttached').html(x);
+		});
+		$j('button[id$="_SharedLink2_remove"]').click(function () {
+			var x = $j('#totalLinkAttached').html();
+			if (!x) {
+				x = 0;
+			}
+			if ($j('input[id$="_SharedLink1"]').val().length > 0 && $j('input[id$="_SharedLink2"]').val().length > 0) {
+				$j('input[id$="_SharedLink2"]').val('');
 				$j('input[id$="_SharedLink2"]').hide();
 				$j('#sl2').hide();
+				$j("#addLink").show();
+				$j('a[id$="_SharedLink2-link"]').prop('href', '');
+				$j('a[id$="_SharedLink2-link"]').hide();
+				x--;
+			} else if ($j('input[id$="_SharedLink1"]').val().length == 0 && $j('input[id$="_SharedLink2"]').val().length > 0) {
+				$j('input[id$="_SharedLink2"]').val('');
+				$j('a[id$="_SharedLink2-link"]').prop('href', '');
+				$j('a[id$="_SharedLink2-link"]').hide();
+				x--;
+			} else if ($j('input[id$="_SharedLink1"]').val().length == 0 && $j('input[id$="_SharedLink2"]').val().length == 0) {
+				$j('input[id$="_SharedLink2"]').hide();
+				$j('#sl2').hide();
+				$j("#addLink").show();
+				$j('a[id$="_SharedLink2-link"]').prop('href', '');
+				$j('a[id$="_SharedLink2-link"]').hide();
+			}
+			$j('#totalLinkAttached').html(x);
+		});
+		$j("#addLink").click(function () {
+
+			if (!$j('input[id$="_SharedLink1"]').is(":visible")) {
+				$j('input[id$="_SharedLink1"]').show();
+				$j('#sl1').show();
+			} else if (!$j('input[id$="_SharedLink2"]').is(":visible")) {
+				$j('input[id$="_SharedLink2"]').show();
+				$j('#sl2').show();
 			}
 
-			$j('#totalLinkAttached').html(_x);
-
-			$j('input[id$="_SharedLink1"]').on("change paste keyup", function () {
-				var x = 0;
-				if ($j('input[id$="_SharedLink1"]').val().length > 0) {
-					x++;
-				}
-				if ($j('input[id$="_SharedLink2"]').val().length > 0) {
-					x++;
-				}
-				$j('#totalLinkAttached').html(x);
-			});
-			$j('input[id$="_SharedLink2"]').on("change paste keyup", function () {
-				var x = 0;
-				if ($j('input[id$="_SharedLink1"]').val().length > 0) {
-					x++;
-				}
-				if ($j('input[id$="_SharedLink2"]').val().length > 0) {
-					x++;
-				}
-				$j('#totalLinkAttached').html(x);
-			});
-			$j('button[id$="_SharedLink1_remove"]').click(function () {
-				var x = $j('#totalLinkAttached').html();
-				if (!x) {
-					x = 0;
-				}
-				if ($j('input[id$="_SharedLink1"]').val().length > 0 && $j('input[id$="_SharedLink2"]').val().length > 0) {
-					$j('input[id$="_SharedLink1"]').val('');
-					$j('input[id$="_SharedLink1"]').hide();
-					$j('#sl1').hide();
-					$j("#addLink").show();
-					$j('a[id$="_SharedLink1-link"]').prop('href', '');
-					$j('a[id$="_SharedLink1-link"]').hide();
-					x--;
-				} else if ($j('input[id$="_SharedLink1"]').val().length > 0 && $j('input[id$="_SharedLink2"]').val().length == 0) {
-					$j('input[id$="_SharedLink1"]').val('');
-					$j('a[id$="_SharedLink1-link"]').prop('href', '');
-					$j('a[id$="_SharedLink1-link"]').hide();
-					x--;
-				} else if ($j('input[id$="_SharedLink1"]').val().length == 0 && $j('input[id$="_SharedLink2"]').val().length == 0) {
-					$j('input[id$="_SharedLink1"]').hide();
-					$j('#sl1').hide();
-					$j("#addLink").show();
-					$j('a[id$="_SharedLink1-link"]').prop('href', '');
-					$j('a[id$="_SharedLink1-link"]').hide();
-				}
-				$j('#totalLinkAttached').html(x);
-			});
-			$j('button[id$="_SharedLink2_remove"]').click(function () {
-				var x = $j('#totalLinkAttached').html();
-				if (!x) {
-					x = 0;
-				}
-				if ($j('input[id$="_SharedLink1"]').val().length > 0 && $j('input[id$="_SharedLink2"]').val().length > 0) {
-					$j('input[id$="_SharedLink2"]').val('');
-					$j('input[id$="_SharedLink2"]').hide();
-					$j('#sl2').hide();
-					$j("#addLink").show();
-					$j('a[id$="_SharedLink2-link"]').prop('href', '');
-					$j('a[id$="_SharedLink2-link"]').hide();
-					x--;
-				} else if ($j('input[id$="_SharedLink1"]').val().length == 0 && $j('input[id$="_SharedLink2"]').val().length > 0) {
-					$j('input[id$="_SharedLink2"]').val('');
-					$j('a[id$="_SharedLink2-link"]').prop('href', '');
-					$j('a[id$="_SharedLink2-link"]').hide();
-					x--;
-				} else if ($j('input[id$="_SharedLink1"]').val().length == 0 && $j('input[id$="_SharedLink2"]').val().length == 0) {
-					$j('input[id$="_SharedLink2"]').hide();
-					$j('#sl2').hide();
-					$j("#addLink").show();
-					$j('a[id$="_SharedLink2-link"]').prop('href', '');
-					$j('a[id$="_SharedLink2-link"]').hide();
-				}
-				$j('#totalLinkAttached').html(x);
-			});
-			$j("#addLink").click(function () {
-
-				if (!$j('input[id$="_SharedLink1"]').is(":visible")) {
-					$j('input[id$="_SharedLink1"]').show();
-					$j('#sl1').show();
-				} else if (!$j('input[id$="_SharedLink2"]').is(":visible")) {
-					$j('input[id$="_SharedLink2"]').show();
-					$j('#sl2').show();
-				}
-
-				if ($j('input[id$="_SharedLink1"]').is(":visible") && $j('input[id$="_SharedLink2"]').is(":visible")) {
-					$j("#addLink").hide();
-				}
-			});
-		}
+			if ($j('input[id$="_SharedLink1"]').is(":visible") && $j('input[id$="_SharedLink2"]').is(":visible")) {
+				$j("#addLink").hide();
+			}
+		});
+		
 		///////////////////////////////////////////////
-		{
-			var attach_documents = $j("[aria-label='attach-documents']");
-			var _x = $j('#totalDocumentAttached').html();
-			if (!_x) {
-				_x = 0;
-			}
-			if ($j('#ot_Ref01' ).val().length > 0) {
-				_x++;
-			}
-			if ($j('#ot_Ref02').val().length > 0) {
-				_x++;
-			} else {
-				// $j('#ot_Ref02').hide();
-				$j("#ot_Ref02").parent().hide();
-			}
-			if ($j('#ot_Ref03').val().length > 0) {
-				_x++;
-			} else {
-				// $j('#ot_Ref03').hide();
-				$j("#ot_Ref03").parent().hide();
-			}
-			$j('#totalDocumentAttached').html(_x);
-
-			$j('#ot_Ref01').on("change paste keyup", function () {
-				var x = 0;
-				if ($j('#ot_Ref01').val().length > 0) {
-					x++;
-				}
-				if ($j('#ot_Ref02').val().length > 0) {
-					x++;
-				}
-				$j('#totalDocumentAttached').html(x);
-			});
-			$j('#ot_Ref02').on("change paste keyup", function () {
-				var x = 0;
-				if ($j('#ot_Ref01').val().length > 0) {
-					x++;
-				}
-				if ($j('#ot_Ref02').val().length > 0) {
-					x++;
-				}
-				$j('#totalDocumentAttached').html(x);
-			});
-
-			$j("#addDocument").click(function () {
-
-				if (!$j("#ot_Ref01").parent().parent().is(":visible")) {
-					// $j("#ot_Ref01").show();
-					$j("#ot_Ref01").parent().parent().show();
-				} else if (!$j("#ot_Ref02").parent().parent().is(":visible")) {
-					// $j("#ot_Ref02").show();
-					$j("#ot_Ref02").parent().parent().show();
-				} else if (!$j("#ot_Ref03").parent().parent().is(":visible")) {
-					// $j("#ot_Ref03").show();
-					$j("#ot_Ref03").parent().parent().show();
-				}
-
-				if ($j("#ot_Ref01").parent().parent().is(":visible") && $j("#ot_Ref02").parent().parent().is(":visible") && $j("#ot_Ref03").parent().parent().is(":visible")) {
-					$j("#addDocument").hide();
-				}
-			});
-		}
-
-		///////////////////////////////////////////////
-
-		{
-			var _x = $j('#totalCompFolderAttached').html();
-			if (!_x) {
-				_x = 0;
-			}
-			if ($j('#ot_Ref04').val().length > 0) {
-				_x++;
-			}
-			if ($j('#ot_Ref05').val().length > 0) {
-				_x++;
-			} else {
-				$j('#ot_Ref05').parent().hide()
-			}
-			if ($j('#ot_Ref06').val().length > 0) {
-				_x++;
-			} else {
-				$j('#ot_Ref06').parent().hide();
-			}
-			$j('#totalCompFolderAttached').html(_x);
-
-			$j('#ot_Ref04').on("change paste keyup", function () {
-				var x = 0;
-				if ($j('#ot_Ref04').val().length > 0) {
-					x++;
-				}
-				if ($j('#ot_Ref05').val().length > 0) {
-					x++;
-				}
-				$j('#totalCompFolderAttached').html(x);
-			});
-			$j('#ot_Ref05').on("change paste keyup", function () {
-				var x = 0;
-				if ($j('#ot_Ref04').val().length > 0) {
-					x++;
-				}
-				if ($j('#ot_Ref05').val().length > 0) {
-					x++;
-				}
-				$j('#totalCompFolderAttached').html(x);
-			});
-
-			$j("#addCompFolder").click(function () {
-
-				if (!$j("#ot_Ref04").parent().parent().is(":visible")) {
-					$j("#ot_Ref04").parent().parent().show();
-				} else if (!$j("#ot_Ref05").parent().parent().is(":visible")) {
-					$j("#ot_Ref05").parent().parent().show();
-				} else if (!$j("#ot_Ref06").parent().parent().is(":visible")) {
-					$j("#ot_Ref06").parent().parent().show();
-				}
-
-				if ($j("#ot_Ref04").parent().parent().is(":visible") && $j("#ot_Ref05").parent().parent().is(":visible") && $j("#ot_Ref06").parent().parent().is(":visible")) {
-					$j("#addCompFolder").hide();
-				}
-			});
-		}
-
-		///////////////////////////////////////////////
-
-		{
-			var _x = $j('#totalPhotoAttached').html();
-			if (!_x) {
-				_x = 0;
-			}
-			if ($j('#ot_Photo01').val().length > 0) {
-				_x++;
-			}
-			if ($j('#ot_Photo02').val().length > 0) {
-				_x++;
-			} else {
-				$j('#ot_Photo02').parent().hide()
-			}
-			if ($j('#ot_Photo03').val().length > 0) {
-				_x++;
-			} else {
-				$j('#ot_Photo03').parent().hide();
-			}
-			$j('#totalPhotoAttached').html(_x);
-
-			$j('#ot_Photo01').on("change paste keyup", function () {
-				var x = 0;
-				if ($j('#ot_Photo01').val().length > 0) {
-					x++;
-				}
-				if ($j('#ot_Photo02').val().length > 0) {
-					x++;
-				}
-				$j('#totalPhotoAttached').html(x);
-			});
-			$j('#ot_Photo02').on("change paste keyup", function () {
-				var x = 0;
-				if ($j('#ot_Photo01').val().length > 0) {
-					x++;
-				}
-				if ($j('#ot_Photo02').val().length > 0) {
-					x++;
-				}
-				$j('#totalPhotoAttached').html(x);
-			});
-
-			$j("#addPhoto").click(function () {
-
-				if (!$j("#ot_Photo01").parent().parent().is(":visible")) {
-					$j("#ot_Photo01").parent().parent().show();
-				} else if (!$j("#ot_Photo02").parent().parent().is(":visible")) {
-					$j("#ot_Photo02").parent().parent().show();
-				} else if (!$j("#ot_Photo03").parent().parent().is(":visible")) {
-					$j("#ot_Photo03").parent().parent().show();
-				}
-
-				if ($j("#ot_Photo01").parent().parent().is(":visible") && $j("#ot_Photo02").parent().parent().is(":visible") && $j("#ot_Photo03").parent().parent().is(":visible")) {
-					$j("#addPhoto").hide();
-				}
-			});
-        }
-        
-    // $j('[id$=dv_action_buttons] .btn-toolbar').append(
-    //     '<div class="btn-group-vertical btn-group-lg" style="width: 100%;">' +
-    //     '<button type="button" class="btn btn-default btn-lg" onclick="$j(\'[id$=_dv_form] :input\').attr(\'readonly\', false);$j(\'[id$=container]\').attr(\'disabled\', false);">' +
-    //     '<i class="glyphicon glyphicon-edit"></i> Enable Edit</button>' +
-    //     '</div>'
-    // );
-
-    // $j('[id$=_dv_form] :input').attr('readonly', true);
-
-    // function readyFn(jquery) {
-    //     $x = $j('[id$=_dv_form]');
-    //     $j('[id$=container]').prop('disabled', true);
-    //     $j('[id$=container]').attr('disabled', true);
-    // }
-    // jQuery(function() {
-    //     setTimeout(function() {
-    //         if (typeof(readyFn) == 'function') readyFn();
-    //     }, 10); /* we need to slightly delay client-side execution of the above code to allow AppGini.ajaxCache to work */
-    // });
+			
+		
+	});
 </script>
