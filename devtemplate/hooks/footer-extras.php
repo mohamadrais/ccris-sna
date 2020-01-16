@@ -326,6 +326,14 @@ if ($memberInfo['group'] != 'Admins') {
 			});
 		}
 
+		function dropifyShowHide(attachType){
+			$j('input[aria-label='+attachType+']').each(function(i, e){
+				if (!$j(this).is(":visible") && ($j(this).val().length > 0 || ($j(this).attr('data-default-file') && $j(this).attr('data-default-file').length > 0))) {
+					$j(this).parent().parent().show();
+				}
+			});
+		}
+
 		var attachArray = [["attach-documents", "totalDocumentAttached", "addDocument"], ["attach-compressed-folders", "totalCompFolderAttached", "addCompFolder"], ["attach-images", "totalPhotoAttached", "addPhoto"]];
 		
 		attachArray.forEach(function(i){
@@ -386,9 +394,11 @@ if ($memberInfo['group'] != 'Admins') {
                 }
                 if (!$j("#ot_Photo01").is(":visible")) {
 					$j("#ot_Photo01").parent().parent().show();
-                }
-
-                
+				}
+				
+				attachArray.forEach(function(i){
+					dropifyShowHide(i[0]);
+				});
 
 				$j(this).hide();
 				$j("#deselect").hide();
