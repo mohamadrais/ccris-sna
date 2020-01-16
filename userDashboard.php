@@ -56,7 +56,7 @@ $block_classes = array(
 	<div class="container-fluid">
 
 		<div class="col-lg-6">
-			<div class="card mt-0 mb-3" style="height: 600px">
+			<div class="card mt-0 mb-3" style="height: 606px">
 				<div class="card-body">
 					<h4 class="card-title">Portfolio</h4>
 					<h6 class="card-subtitle">
@@ -192,7 +192,13 @@ $block_classes = array(
 			</div>
 		</div>
 
-		<div class="card col-lg-6 company-list-container">
+		<div class="card col-lg-6 mt-0 p-0">
+			<div class="card-body">
+			<h4 class="card-title">Company List</h4>
+			<h6 class="card-subtitle">
+				user's company related.
+			</h6>
+			<div class="company-list-container">
 			<div class="card float mt-0 mb-3">
 				<section class="cardHeader">
 					<div class="row">
@@ -652,6 +658,8 @@ $block_classes = array(
 					</section>
 				</section>
 			</div>
+			</div>
+		</div>
 		</div>
 
 		<div class="card float mt-0 mb-3">
