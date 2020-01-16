@@ -229,7 +229,7 @@ class DataList{
 
 		$this->HTML .= '<div class="page-wrapper ps ps--theme_default"><div class="container-fluid"><div class="row"><div class="col-xs-12">';
 		$this->HTML .= '<div class="card"><div class="card-body">';
-		$this->HTML .= '<h3>';
+		$this->HTML .= '<h3 id="record-heading">';
 		$this->HTML .= '<a style="text-decoration: none; color: inherit;" href="' . $this->TableName . '_view.php"><img src="' . $this->TableIcon . '"> ' . $this->TableTitle . '</a>';
 		$this->HTML .= '</h3>';
 		$this->HTML .= '<hr>';

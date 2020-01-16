@@ -637,7 +637,7 @@
 
 		/* load admin tools for admin user */
 		if (!add_new_mode) {
-			$j('body').append('<div id="admin-tools-appendix"></div>');
+			$j('#record-heading').append('<span id="admin-tools-appendix"></span>');
 			$j('#admin-tools-appendix').load(
 				'ajax_admin_tools.php?table=projects&id=<%%URLVALUE(Id)%%>',
 				function (resp) {

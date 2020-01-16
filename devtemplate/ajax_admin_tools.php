@@ -8,15 +8,23 @@
 
 	class AdminTools{
 		private $request, $lang;
-
+		/*
+		0:"__construct"
+		1:"show_admin_tools"
+		2:"get_admin_tools_js"
+		3:"get_record_info"
+		*/
 		public function __construct($request = array()){
 			global $Translation;
 
-			if(!getLoggedAdmin()) return;
+			
 			$this->lang = $Translation;
 
 			/* process request to retrieve $this->request, and then execute the requested action */
 			$this->process_request($request);          
+			if(!$this->request['action'] == "show_admin_tools"){
+				if(!getLoggedAdmin()) return;
+			}
 			echo call_user_func_array(array($this, $this->request['action']), array());
 		}
 
@@ -55,36 +63,40 @@
 
 			ob_start();
 			?>
-
-			<div class="dropdown pull-right invisible" id="admin-tools-menu-button">
+			<div class="notify pull-right" style="width: 500px" id="admin-tools-menu-button">
 				<button
 					type="button" 
 					data-toggle="dropdown" 
-					class="btn btn-danger btn-xs" 
-					title="<?php echo html_attr($this->lang['Admin Information']); ?>" 
+					class="btn btn-danger btn-xs pull-right" 
+					style="margin-top: 10px"
+					title="<?php if (getLoggedAdmin()) { echo html_attr($this->lang['Admin Information']); } else { echo html_attr($this->lang['Record Information']); }?>" 
 				>
 					<i class="glyphicon glyphicon-option-vertical"></i>
 				</button>
-				<div class="dropdown-menu" id="admin-tools-menu">
-					<h5><b><?php echo $this->lang['Admin Information']; ?></b></h5>
+				<div class="dropdown-menu mailbox animated bounceInDown" id="admin-tools-menu">
+		<h5><b><?php if (getLoggedAdmin()) { ?><?php echo $this->lang['Admin Information']; ?><?php } else { ?><?php echo $this->lang['Record Information']; ?><?php } ?></b></h5>
 					<div class="alert alert-danger no-owner hidden"><?php echo $this->lang['record has no owner']; ?></div>
-					<dl class="dl-horizontal">
+					<dl class="message-center">
 						<dt><?php echo $this->lang['owner']; ?></dt>
 						<dd>
 							<div class="owner-username"></div>
+							<?php if (getLoggedAdmin()) { ?>
 							<a class="change-owner-link" href="#"><i class="glyphicon glyphicon-user"></i> <?php echo $this->lang['Change owner']; ?></a>
 							<br>
 							<a class="user-records-link" href="" target="_blank"><i class="glyphicon glyphicon-th"></i> <?php echo str_replace('<tablename>', $tablename, $this->lang['show all user records from table']); ?></a>
 							<br>
 							<a class="user-email-link" href="" target="_blank"><i class="glyphicon glyphicon-envelope"></i> <?php echo $this->lang['email this user']; ?></a>
+							<?php } ?>
 						</dd>
 
 						<dt><?php echo $this->lang['group']; ?></dt>
 						<dd>
 							<div class="owner-group"></div>
+							<?php if (getLoggedAdmin()) { ?>
 							<a class="group-records-link" href="" target="_blank"><i class="glyphicon glyphicon-th"></i> <?php echo str_replace('<tablename>', $tablename, $this->lang['show all group records from table']); ?></a>
 							<br>
 							<a class="group-email-link" href="" target="_blank"><i class="glyphicon glyphicon-envelope"></i> <?php echo $this->lang['email this group']; ?></a>
+							<?php } ?>
 						</dd>
 
 						<dt><?php echo $this->lang['created']; ?></dt>
