@@ -2721,8 +2721,30 @@
 		$home_page = (basename($_SERVER['PHP_SELF'])=='userDashboard.php' ? true : false);
 
 		?>
-		<nav class="navbar navbar-default navbar-fixed-top hidden-print" role="navigation">
-			<div class="navbar-header">
+		<header class="topbar" style="position: fixed; top: 0px; width: 100%;">
+			<nav class="navbar top-navbar navbar-expand-md navbar-light">
+				<!-- ============================================================== -->
+				<!-- Logo -->
+				<!-- ============================================================== -->
+				<div class="navbar-header">
+					<a class="navbar-brand" href="<?php echo PREPEND_PATH; ?>userDashboard.php">
+						<!-- Logo icon --><b>
+							<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+							<!-- Dark Logo icon -->
+							<img src="images/logo/icon.png" alt="homepage" class="icon dark-logo">
+							<!-- Light Logo icon -->
+							<img src="images/logo/light-icon.png" alt="homepage" class="light-logo">
+						</b>
+						<!--End Logo icon -->
+						<!-- Logo text --><span>
+							<!-- dark Logo text -->
+							<img src="images/logo/text.png" alt="homepage" class="text dark-logo">
+							<!-- Light Logo text -->    
+							<img src="images/logo/light-text.png" class="light-logo" alt="homepage"></span> </a>
+				</div>
+				<!-- ============================================================== -->
+				<!-- End Logo -->
+				<!-- ============================================================== -->
 				<?php if(!$_GET['signIn']) { ?>
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 					<span class="sr-only">Toggle navigation</span>
@@ -2731,61 +2753,61 @@
 					<span class="icon-bar"></span>
 				</button>
 				<?php } ?>
-				<!-- application title is obtained from the name besides the yellow database icon in AppGini, use underscores for spaces -->
-				<a class="navbar-brand whiteColor" href="<?php echo PREPEND_PATH; ?>userDashboard.php"><img src="assets/images/puffer-logo.png" /></a>
-			</div>
-			<div class="collapse navbar-collapse mainBg">
-				<!-- <ul class="nav navbar-nav" id="upperNav"> -->
-					<!-- <?php /*if(!$home_page){ */?> -->
-						<!-- <?php 
-							// echo NavMenus(); ?> -->
-					<!-- <?php /*} */?> -->
-				<!-- </ul> -->
 
-				<?php
-					$resultgetLoggedAdmin = getLoggedAdmin();
-				 if(getLoggedAdmin()){ ?>
-					<ul class="nav navbar-nav">
-						<!-- <a href="<?php echo PREPEND_PATH; ?>admin/pageHome.php" class="btn btn-danger navbar-btn hidden-xs" title="<?php echo html_attr($Translation['admin area']); ?>"><i class="glyphicon glyphicon-cog"></i> <?php echo $Translation['admin area']; ?></a>
-						<a href="<?php echo PREPEND_PATH; ?>admin/pageHome.php" class="btn btn-danger navbar-btn visible-xs btn-lg" title="<?php echo html_attr($Translation['admin area']); ?>"><i class="glyphicon glyphicon-cog"></i> <?php echo $Translation['admin area']; ?></a> -->
-					</ul>
-				<?php } ?>
+				<div class="collapse navbar-collapse mainBg">
+					<!-- <ul class="nav navbar-nav" id="upperNav"> -->
+						<!-- <?php /*if(!$home_page){ */?> -->
+							<!-- <?php 
+								// echo NavMenus(); ?> -->
+						<!-- <?php /*} */?> -->
+					<!-- </ul> -->
 
-				<?php if(!$_GET['signIn'] && !$_GET['loginFailed']){ ?>
-					<?php if(getLoggedMemberID() == $adminConfig['anonymousMember']){ ?>
-						<p class="navbar-text navbar-right">&nbsp;</p>
-						<a href="<?php echo PREPEND_PATH; ?>index.php?signIn=1" class="btn btn-success navbar-btn navbar-right"><?php echo $Translation['sign in']; ?></a>
-						<p class="navbar-text navbar-right">
-							<?php echo $Translation['not signed in']; ?>
-						</p>
-					<?php }else{ ?>
-						<ul class="nav navbar-nav navbar-right hidden-xs" style="min-width: 330px;">
-							<!-- <a class="btn navbar-btn btn-default" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
-							<p class="navbar-text whiteColor">
-								<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link whiteColor"><?php echo getLoggedMemberID(); ?></a></strong>
-							</p> -->
+					<?php
+						$resultgetLoggedAdmin = getLoggedAdmin();
+					if(getLoggedAdmin()){ ?>
+						<ul class="nav navbar-nav">
+							<!-- <a href="<?php echo PREPEND_PATH; ?>admin/pageHome.php" class="btn btn-danger navbar-btn hidden-xs" title="<?php echo html_attr($Translation['admin area']); ?>"><i class="glyphicon glyphicon-cog"></i> <?php echo $Translation['admin area']; ?></a>
+							<a href="<?php echo PREPEND_PATH; ?>admin/pageHome.php" class="btn btn-danger navbar-btn visible-xs btn-lg" title="<?php echo html_attr($Translation['admin area']); ?>"><i class="glyphicon glyphicon-cog"></i> <?php echo $Translation['admin area']; ?></a> -->
 						</ul>
-						<ul class="nav navbar-nav visible-xs">
-							<!-- <a class="btn navbar-btn btn-default btn-lg visible-xs" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
-							<p class="navbar-text text-center whiteColor">
-								<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link whiteColor"><?php echo getLoggedMemberID(); ?></a></strong>
-							</p> -->
-						</ul>
-						<script>
-							/* periodically check if user is still signed in */
-							setInterval(function(){
-								$j.ajax({
-									url: '<?php echo PREPEND_PATH; ?>ajax_check_login.php',
-									success: function(username){
-										if(!username.length) window.location = '<?php echo PREPEND_PATH; ?>index.php?signIn=1';
-									}
-								});
-							}, 60000);
-						</script>
 					<?php } ?>
-				<?php } ?>
-			</div>
-		</nav>
+
+					<?php if(!$_GET['signIn'] && !$_GET['loginFailed']){ ?>
+						<?php if(getLoggedMemberID() == $adminConfig['anonymousMember']){ ?>
+							<p class="navbar-text navbar-right">&nbsp;</p>
+							<a href="<?php echo PREPEND_PATH; ?>index.php?signIn=1" class="btn btn-success navbar-btn navbar-right"><?php echo $Translation['sign in']; ?></a>
+							<p class="navbar-text navbar-right">
+								<?php echo $Translation['not signed in']; ?>
+							</p>
+						<?php }else{ ?>
+							<ul class="nav navbar-nav navbar-right hidden-xs" style="min-width: 330px;">
+								<!-- <a class="btn navbar-btn btn-default" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
+								<p class="navbar-text whiteColor">
+									<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link whiteColor"><?php echo getLoggedMemberID(); ?></a></strong>
+								</p> -->
+							</ul>
+							<ul class="nav navbar-nav visible-xs">
+								<!-- <a class="btn navbar-btn btn-default btn-lg visible-xs" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
+								<p class="navbar-text text-center whiteColor">
+									<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link whiteColor"><?php echo getLoggedMemberID(); ?></a></strong>
+								</p> -->
+							</ul>
+							<script>
+								/* periodically check if user is still signed in */
+								setInterval(function(){
+									$j.ajax({
+										url: '<?php echo PREPEND_PATH; ?>ajax_check_login.php',
+										success: function(username){
+											if(!username.length) window.location = '<?php echo PREPEND_PATH; ?>index.php?signIn=1';
+										}
+									});
+								}, 60000);
+							</script>
+						<?php } ?>
+					<?php } ?>
+				</div>
+			</nav>
+		</header>
+
 		<?php
 
 		$html = ob_get_contents();

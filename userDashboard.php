@@ -55,85 +55,8 @@ $block_classes = array(
 <div class="page-wrapper ps ps--theme_default">
 	<div class="container-fluid">
 
-	<div class="col-lg-6">
-			<div class="card">
-				<div class="card-header">
-					<div class="row">
-						<div class="col-md-2">
-							<img class="img-circle" style="width: 70px;" src="assets/images/no-logo.png" alt="user" width="50"> </td>
-						</div>
-						<div class="col-md-10">
-							<h4 href="#" class="card-title font-bold">Puffer Group</h4>
-							<h6 class="card-subtitle">
-								Kawasan Perindustrian, Bukit Serdang, 43300 Seri Kembangan, Selangor.
-							</h6>
-						</div>
-					</div>
-				</div>
-				<div class="card-body">
-					<div class="table-responsive">
-						<table class="table table-hover v-middle">
-							<thead>
-								<tr>
-									<th> Table </th>
-									<th> Created </th>
-									<th> Modified </th>
-									<th> Data </th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										Doc Control
-									</td>
-									<td> 12/01/2020 </td>
-									<td> 12/01/2020 </td>
-									<td>
-										Lorum Ipsum
-									</td>
-								</tr>
-								<tr>
-									<td>
-										Doc Control
-									</td>
-									<td> 12/01/2020 </td>
-									<td> 12/01/2020 </td>
-									<td>
-										Lorum Ipsum
-									</td>
-								</tr>
-								<tr>
-									<td>
-										Doc Control
-									</td>
-									<td> 12/01/2020 </td>
-									<td> 12/01/2020 </td>
-									<td>
-										Lorum Ipsum
-									</td>
-								</tr>
-								<tr>
-									<td>
-										Doc Control
-									</td>
-									<td> 12/01/2020 </td>
-									<td> 12/01/2020 </td>
-									<td>
-										Lorum Ipsum
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="text-center">
-							<button class="btn btn-primary">Login Account</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-lg-12">
-			<div class="card">
+		<div class="col-lg-6">
+			<div class="card mt-0 mb-3" style="height: 600px">
 				<div class="card-body">
 					<h4 class="card-title">Portfolio</h4>
 					<h6 class="card-subtitle">
@@ -142,8 +65,8 @@ $block_classes = array(
 							<i class="ti-list mr-2"></i>156 entries
 						</div>
 					</h6>
-					<div class="table-responsive m-t-40">
-						<table class="table table-hover v-middle">
+					<div class="table-responsive tableFixHead m-t-40" style="height: 470px;">
+						<table class="table table-hover v-middle" style="max-height: 600px; overflow: scroll;">
 							<thead>
 								<tr>
 									<th style="width: 60px;"> Company </th>
@@ -153,7 +76,55 @@ $block_classes = array(
 									<th> Data </th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 570px;">
+								<tr>
+									<td>
+										<img class="img-circle" src="assets/images/no-logo.png" alt="user" width="50"> </td>
+									<td>
+										Doc Control
+									</td>
+									<td> 12/01/2020 </td>
+									<td> 12/01/2020 </td>
+									<td>
+										Lorum Ipsum
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img class="img-circle" src="assets/images/no-logo.png" alt="user" width="50"> </td>
+									<td>
+										Doc Control
+									</td>
+									<td> 12/01/2020 </td>
+									<td> 12/01/2020 </td>
+									<td>
+										Lorum Ipsum
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img class="img-circle" src="assets/images/no-logo.png" alt="user" width="50"> </td>
+									<td>
+										Doc Control
+									</td>
+									<td> 12/01/2020 </td>
+									<td> 12/01/2020 </td>
+									<td>
+										Lorum Ipsum
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img class="img-circle" src="assets/images/no-logo.png" alt="user" width="50"> </td>
+									<td>
+										Doc Control
+									</td>
+									<td> 12/01/2020 </td>
+									<td> 12/01/2020 </td>
+									<td>
+										Lorum Ipsum
+									</td>
+								</tr>
 								<tr>
 									<td>
 										<img class="img-circle" src="assets/images/no-logo.png" alt="user" width="50"> </td>
@@ -221,7 +192,469 @@ $block_classes = array(
 			</div>
 		</div>
 
-		<div class="card">
+		<div class="card col-lg-6 company-list-container">
+			<div class="card float mt-0 mb-3">
+				<section class="cardHeader">
+					<div class="row">
+						<div class="col-md-2">
+							<img class="img-circle" style="width: 90px;" src="assets/images/no-logo.png" alt="user" width="50"> </td>
+						</div>
+						<div class="col-md-10">
+							<h4 href="#" class="card-title font-bold">Puffer Group
+							<button class="btn btn-xs btn-primary ml-3 pull-right">Login Account</button></h4>
+							<h6 class="card-subtitle">
+								Kawasan Perindustrian, Bukit Serdang, 43300 Seri Kembangan, Selangor.
+							</h6>
+						</div>
+					</div>
+				</section>
+				<section class="nonSharedContent">
+					<section class="greySquaresContainer">
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-hover v-middle">
+									<thead>
+										<tr>
+											<th> Table </th>
+											<th> Created </th>
+											<th> Modified </th>
+											<th> Data </th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</section>
+				</section>
+			</div>
+
+			<div class="card float mt-0 mb-3">
+				<section class="cardHeader">
+					<div class="row">
+						<div class="col-md-2">
+							<img class="img-circle" style="width: 90px;" src="assets/images/no-logo.png" alt="user" width="50"> </td>
+						</div>
+						<div class="col-md-10">
+							<h4 href="#" class="card-title font-bold">Puffer Group
+							<button class="btn btn-xs btn-primary ml-3 pull-right">Login Account</button></h4>
+							<h6 class="card-subtitle">
+								Kawasan Perindustrian, Bukit Serdang, 43300 Seri Kembangan, Selangor.
+							</h6>
+						</div>
+					</div>
+				</section>
+				<section class="nonSharedContent">
+					<section class="greySquaresContainer">
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-hover v-middle">
+									<thead>
+										<tr>
+											<th> Table </th>
+											<th> Created </th>
+											<th> Modified </th>
+											<th> Data </th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</section>
+				</section>
+			</div>
+			<div class="card float mt-0 mb-3">
+				<section class="cardHeader">
+					<div class="row">
+						<div class="col-md-2">
+							<img class="img-circle" style="width: 90px;" src="assets/images/no-logo.png" alt="user" width="50"> </td>
+						</div>
+						<div class="col-md-10">
+							<h4 href="#" class="card-title font-bold">Puffer Group
+							<button class="btn btn-xs btn-primary ml-3 pull-right">Login Account</button></h4>
+							<h6 class="card-subtitle">
+								Kawasan Perindustrian, Bukit Serdang, 43300 Seri Kembangan, Selangor.
+							</h6>
+						</div>
+					</div>
+				</section>
+				<section class="nonSharedContent">
+					<section class="greySquaresContainer">
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-hover v-middle">
+									<thead>
+										<tr>
+											<th> Table </th>
+											<th> Created </th>
+											<th> Modified </th>
+											<th> Data </th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</section>
+				</section>
+			</div>
+
+			<div class="card float mt-0 mb-3">
+				<section class="cardHeader">
+					<div class="row">
+						<div class="col-md-2">
+							<img class="img-circle" style="width: 90px;" src="assets/images/no-logo.png" alt="user" width="50"> </td>
+						</div>
+						<div class="col-md-10">
+							<h4 href="#" class="card-title font-bold">Puffer Group
+							<button class="btn btn-xs btn-primary ml-3 pull-right">Login Account</button></h4>
+							<h6 class="card-subtitle">
+								Kawasan Perindustrian, Bukit Serdang, 43300 Seri Kembangan, Selangor.
+							</h6>
+						</div>
+					</div>
+				</section>
+				<section class="nonSharedContent">
+					<section class="greySquaresContainer">
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-hover v-middle">
+									<thead>
+										<tr>
+											<th> Table </th>
+											<th> Created </th>
+											<th> Modified </th>
+											<th> Data </th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</section>
+				</section>
+			</div>
+			<div class="card float mt-0 mb-3">
+				<section class="cardHeader">
+					<div class="row">
+						<div class="col-md-2">
+							<img class="img-circle" style="width: 90px;" src="assets/images/no-logo.png" alt="user" width="50"> </td>
+						</div>
+						<div class="col-md-10">
+							<h4 href="#" class="card-title font-bold">Puffer Group
+							<button class="btn btn-xs btn-primary ml-3 pull-right">Login Account</button></h4>
+							<h6 class="card-subtitle">
+								Kawasan Perindustrian, Bukit Serdang, 43300 Seri Kembangan, Selangor.
+							</h6>
+						</div>
+					</div>
+				</section>
+				<section class="nonSharedContent">
+					<section class="greySquaresContainer">
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-hover v-middle">
+									<thead>
+										<tr>
+											<th> Table </th>
+											<th> Created </th>
+											<th> Modified </th>
+											<th> Data </th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</section>
+				</section>
+			</div>
+
+			<div class="card float mt-0 mb-3">
+				<section class="cardHeader">
+					<div class="row">
+						<div class="col-md-2">
+							<img class="img-circle" style="width: 90px;" src="assets/images/no-logo.png" alt="user" width="50"> </td>
+						</div>
+						<div class="col-md-10">
+							<h4 href="#" class="card-title font-bold">Puffer Group
+							<button class="btn btn-xs btn-primary ml-3 pull-right">Login Account</button></h4>
+							<h6 class="card-subtitle">
+								Kawasan Perindustrian, Bukit Serdang, 43300 Seri Kembangan, Selangor.
+							</h6>
+						</div>
+					</div>
+				</section>
+				<section class="nonSharedContent">
+					<section class="greySquaresContainer">
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-hover v-middle">
+									<thead>
+										<tr>
+											<th> Table </th>
+											<th> Created </th>
+											<th> Modified </th>
+											<th> Data </th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+										<tr>
+											<td>
+												Doc Control
+											</td>
+											<td> 12/01/2020 </td>
+											<td> 12/01/2020 </td>
+											<td>
+												Lorum Ipsum
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<div class="card float mt-0 mb-3">
 			<div class="card-body">
 			<ul class="text-themecolor m-b-0 m-t-0">
 				<?php
@@ -495,5 +928,17 @@ $block_classes = array(
 		/*$j('.collapser:visible').eq(0).click();*/
 	});
 </script> -->
+
+<script>
+// Initialize
+const allCardsHeaders = document.getElementsByClassName("cardHeader");
+for(header of allCardsHeaders) {
+    header.addEventListener("click", clickCard);
+}
+
+function clickCard(e) {
+    this.parentElement.classList.toggle('cardActive');
+}
+</script>
 
 <?php include_once("$currDir/footer.php"); ?>
