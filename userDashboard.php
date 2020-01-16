@@ -737,7 +737,7 @@ $block_classes = array(
 
 										<input type="hidden" name="rememberMe" id="rememberMe" value="1">
 										<button name="signIn" type="submit" id="submit" value="signIn" style="background: none;color: inherit;border:1px solid grey;padding: 5px;font: inherit;cursor: pointer;outline: inherit;width:inherit" class="w3-hover-shadow">
-											<img src="http://globalmatrixsolution.com/wp-content/uploads/2018/06/cutomer-icon-copy.png" alt="Admin-logo" style="width:50%;">
+											<img src="https://globalmatrixsolution.com/wp-content/uploads/2018/06/cutomer-icon-copy.png" alt="Admin-logo" style="width:50%;">
 										<?php
 								} else if ($j == 3) {
 								//username/memberID
@@ -792,7 +792,7 @@ $block_classes = array(
 							<input type="hidden" name="rememberMe" id="rememberMe" value="1">
 							<button name="signIn" type="submit" id="submit" value="signIn" style="background: none;color: inherit;border: none;padding: 0;font: inherit;cursor: pointer;outline: inherit;width:inherit" class="w3-hover-shadow">
 								<div class="w3-card-4" style="height:280px;text-align:center;padding:2em;">
-									<img src="http://globalmatrixsolution.com/wp-content/uploads/2018/06/cutomer-icon-copy.png" alt="Admin-logo" style="width:50%;">
+									<img src="https://globalmatrixsolution.com/wp-content/uploads/2018/06/cutomer-icon-copy.png" alt="Admin-logo" style="width:50%;">
 									<div class="w3-container w3-center">
 										<h4>Adminsitrator</h4>
 										<h5>(Admin)</h5>
