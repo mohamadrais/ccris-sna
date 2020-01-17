@@ -800,9 +800,8 @@ function LegalRegister_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 
 	$templateCode = str_replace('<%%EMBEDDED%%>', ($_REQUEST['Embedded'] ? 'Embedded=1' : ''), $templateCode);
 	// process buttons
 	if($AllowInsert){
-		if(!$selected_id) $templateCode = str_replace('<%%INSERT_BUTTON%%>', '<button type="submit" class="btn btn-success" id="insert" name="insert_x" value="1" onclick="return LegalRegister_validateData();"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Save New'] . '</button>', $templateCode);
-		$templateCode = str_replace('<%%INSERT_BUTTON%%>', '<button type="submit" class="btn btn-default" id="insert" name="insert_y" value="1" onclick="return LegalRegister_validateData();"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Save As Copy'] . '</button>', $templateCode);
-		$templateCode = str_replace('<%%ATTACH_BUTTON%%>', '<button class="btn btn-default" id="attach"><a href="#wo_modal" data-toggle="modal" style="width:100%"><i class="glyphicon glyphicon-send"></i> ' . $Translation['Attach'] . '</a></button>', $templateCode);
+		if(!$selected_id) $templateCode = str_replace('<%%INSERT_BUTTON%%>', '<button type="submit" class="no-style-button" id="insert" name="insert_x" value="1" onclick="return LegalRegister_validateData();"><a href="#" title=" ' . $Translation['Save New'] . '"><i class="ti-plus"></i></a></button>', $templateCode);
+		$templateCode = str_replace('<%%INSERT_BUTTON%%>', '<button type="submit" class="no-style-button" id="insert" name="insert_y" value="1" onclick="return LegalRegister_validateData();"><a href="#" title=" ' . $Translation['Save As Copy'] . '"><i class="ti-files"></i></a></button>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%INSERT_BUTTON%%>', '', $templateCode);
 	}
@@ -811,30 +810,36 @@ function LegalRegister_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 
 	if($_REQUEST['Embedded']){
 		$backAction = 'AppGini.closeParentModal(); return false;';
 	}else{
-		$backAction = '$j(\'form\').eq(0).attr(\'novalidate\', \'novalidate\'); document.myform.reset(); return true;';
+		$backAction = '$j(\'form\').eq(1).attr(\'novalidate\', \'novalidate\'); document.myform.reset(); return true;';
 	}
 
 	if($selected_id){
-		if(!$_REQUEST['Embedded']) $templateCode = str_replace('<%%DVPRINT_BUTTON%%>', '<button type="submit" class="btn btn-default" id="dvprint" name="dvprint_x" value="1" onclick="$$(\'form\')[0].writeAttribute(\'novalidate\', \'novalidate\'); document.myform.reset(); return true;" title="' . html_attr($Translation['Print Preview']) . '"><i class="glyphicon glyphicon-print"></i> ' . $Translation['Print Preview'] . '</button>', $templateCode);
+		if(!$_REQUEST['Embedded']) $templateCode = str_replace('<%%DVPRINT_BUTTON%%>', '<button type="submit" class="no-style-button" id="dvprint" name="dvprint_x" value="1" onclick="$$(\'form\')[0].writeAttribute(\'novalidate\', \'novalidate\'); document.myform.reset(); return true;" title="' . html_attr($Translation['Print Preview']) . '"><a href="#" title="' . html_attr($Translation['Print Preview']) . '"><i class="ti-printer"></i></a></button>', $templateCode);
 		if($AllowUpdate){
-			$templateCode = str_replace('<%%UPDATE_BUTTON%%>', '<button type="submit" class="btn btn-success btn-lg" id="update" name="update_x" value="1" onclick="return LegalRegister_validateData();" title="' . html_attr($Translation['Save Changes']) . '"><i class="glyphicon glyphicon-ok"></i> ' . $Translation['Save Changes'] . '</button>', $templateCode);
+			$templateCode = str_replace('<%%UPDATE_BUTTON%%>', '<a id="updateRecord" class="btn btn-warning float-btn-2"  href="#" style="display:none;" title="' . html_attr($Translation['Save Changes']) . '"><button class="no-style-button" id="update" name="update_x" value="1" onclick="return LegalRegister_validateData();"><i class="fa fa-floppy-o"></i></button></a>', $templateCode);
+			$templateCode = str_replace('<%%EDIT_BUTTON%%>', '<a id="startEdit" class="btn btn-warning float-btn-2" href="#Edit"><i class="ti-pencil-alt mr-2" aria-hidden="true"></i></a>', $templateCode);
 		}else{
 			$templateCode = str_replace('<%%UPDATE_BUTTON%%>', '', $templateCode);
 		}
 		if(($arrPerm[4]==1 && $ownerMemberID==getLoggedMemberID()) || ($arrPerm[4]==2 && $ownerGroupID==getLoggedGroupID()) || $arrPerm[4]==3){ // allow delete?
-			$templateCode = str_replace('<%%DELETE_BUTTON%%>', '<button type="submit" class="btn btn-danger" id="delete" name="delete_x" value="1" onclick="return confirm(\'' . $Translation['are you sure?'] . '\');" title="' . html_attr($Translation['Delete']) . '"><i class="glyphicon glyphicon-trash"></i> ' . $Translation['Delete'] . '</button>', $templateCode);
+			$templateCode = str_replace('<%%DELETE_BUTTON%%>', '<button type="submit" class="no-style-button" id="delete" name="delete_x" value="1" onclick="return confirm(\'' . $Translation['are you sure?'] . '\');"><a href="#" title="' . html_attr($Translation['Delete']) . '"><i class="ti-trash"></i></a></button>', $templateCode);
 		}else{
 			$templateCode = str_replace('<%%DELETE_BUTTON%%>', '', $templateCode);
 		}
-		$templateCode = str_replace('<%%DESELECT_BUTTON%%>', '<button type="submit" class="btn btn-default" id="deselect" name="deselect_x" value="1" onclick="' . $backAction . '" title="' . html_attr($Translation['Back']) . '"><i class="glyphicon glyphicon-chevron-left"></i> ' . $Translation['Back'] . '</button>', $templateCode);
+		$templateCode = str_replace('<%%CANCELEDIT_BUTTON%%>', '<button style="width:unset;height:unset;color:unset;border:none;background:none;display:none;" title="' . html_attr($Translation['Cancel']) . '" type="submit" name="backToReadMode" id="backToReadMode" value="1" ><a href="#" title="' . html_attr($Translation['Cancel']) . '"><i class="ti-arrow-left"></i></a></button>', $templateCode);
+		$templateCode = str_replace('<%%DESELECT_BUTTON%%>', '<button style="width:unset;height:unset;color:unset;border:none;background:none"  onClick="' . $backAction . '" title="' . html_attr($Translation['Back']) . '"><i class="glyphicon glyphicon-chevron-left"></i> ' . $Translation['Back'] . '</button>', $templateCode);
 	}else{
+		$templateCode = str_replace('<%%EDIT_BUTTON%%>', '', $templateCode);
+		$templateCode = str_replace('<%%ATTACH_BUTTON%%>', '', $templateCode);
 		$templateCode = str_replace('<%%UPDATE_BUTTON%%>', '', $templateCode);
 		$templateCode = str_replace('<%%DELETE_BUTTON%%>', '', $templateCode);
-		$templateCode = str_replace('<%%DESELECT_BUTTON%%>', ($ShowCancel ? '<button type="submit" class="btn btn-default" id="deselect" name="deselect_x" value="1" onclick="' . $backAction . '" title="' . html_attr($Translation['Back']) . '"><i class="glyphicon glyphicon-chevron-left"></i> ' . $Translation['Back'] . '</button>' : ''), $templateCode);
+		$templateCode = str_replace('<%%CANCELEDIT_BUTTON%%>', '', $templateCode);
+		$templateCode = str_replace('<%%DESELECT_BUTTON%%>', ($ShowCancel ? '<button type="submit" class="no-style-button" id="deselect" name="deselect_x" value="1" onclick="' . $backAction . '" title="' . html_attr($Translation['Back']) . '"><a href="#" title="' . html_attr($Translation['Back']) . '"><i class="ti-arrow-left"></i></a></button>' : ''), $templateCode);
 	}
 
 	// set records to read only if user can't insert new records and can't edit current record
 	if(($selected_id && !$AllowUpdate && !$AllowInsert) || (!$selected_id && !$AllowInsert)){
+		$jsReadOnly .= "\tjQuery('#startEdit').hide();\n";
 		$jsReadOnly .= "\tjQuery('#LRNumber').replaceWith('<div class=\"form-control-static\" id=\"LRNumber\">' + (jQuery('#LRNumber').val() || '') + '</div>');\n";
 		$jsReadOnly .= "\tjQuery('#LegalItem').replaceWith('<div class=\"form-control-static\" id=\"LegalItem\">' + (jQuery('#LegalItem').val() || '') + '</div>');\n";
 		$jsReadOnly .= "\tjQuery('#fo_LRDescription').replaceWith('<div class=\"form-control-static\" id=\"fo_LRDescription\">' + (jQuery('#fo_LRDescription').val() || '') + '</div>');\n";
@@ -926,55 +931,100 @@ function LegalRegister_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 
 	$templateCode = str_replace('<%%UPLOADFILE(ot_comments)%%>', '', $templateCode);
 	$templateCode = str_replace('<%%UPLOADFILE(ot_SharedLink1)%%>', '', $templateCode);
 	$templateCode = str_replace('<%%UPLOADFILE(ot_SharedLink2)%%>', '', $templateCode);
-	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref01)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" name="ot_Ref01" id="ot_Ref01">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref01)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" data-max-file-size="65.536M" data-show-remove="true" name="ot_Ref01" id="ot_Ref01" class="dropify" accept=".txt, .doc, .docx, .docm, .odt, .pdf, .rtf" aria-label="attach-documents" %%DEFAULTVALUE(ot_Ref01)%%>'), $templateCode);
+	if($row['ot_Ref01']!= ''){
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref01)%%", ' data-default-file="'.html_attr($row['ot_Ref01']).'" ', $templateCode);
+	}else{
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref01)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['ot_Ref01'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref01)%%>', '<br><input type="checkbox" name="ot_Ref01_remove" id="ot_Ref01_remove" value="1"> <label for="ot_Ref01_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref01)%%>', '', $templateCode);
 	}
-	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref02)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" name="ot_Ref02" id="ot_Ref02">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref02)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" data-max-file-size="65.536M" data-show-remove="true" name="ot_Ref02" id="ot_Ref02" class="dropify" accept=".txt, .doc, .docx, .docm, .odt, .pdf, .rtf" aria-label="attach-documents" %%DEFAULTVALUE(ot_Ref02)%%>'), $templateCode);
+	if($row['ot_Ref02']!= ''){
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref02)%%", ' data-default-file="'.html_attr($row['ot_Ref02']).'" ', $templateCode);
+	}else{
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref02)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['ot_Ref02'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref02)%%>', '<br><input type="checkbox" name="ot_Ref02_remove" id="ot_Ref02_remove" value="1"> <label for="ot_Ref02_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref02)%%>', '', $templateCode);
 	}
-	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref03)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" name="ot_Ref03" id="ot_Ref03">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref03)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" data-max-file-size="65.536M" data-show-remove="true" name="ot_Ref03" id="ot_Ref03" class="dropify" accept=".txt, .doc, .docx, .docm, .odt, .pdf, .rtf" aria-label="attach-documents" %%DEFAULTVALUE(ot_Ref03)%%>'), $templateCode);
+	if($row['ot_Ref03']!= ''){
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref03)%%", ' data-default-file="'.html_attr($row['ot_Ref03']).'" ', $templateCode);
+	}else{
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref03)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['ot_Ref03'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref03)%%>', '<br><input type="checkbox" name="ot_Ref03_remove" id="ot_Ref03_remove" value="1"> <label for="ot_Ref03_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref03)%%>', '', $templateCode);
 	}
-	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref04)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" name="ot_Ref04" id="ot_Ref04">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref04)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" data-max-file-size="65.536M" data-show-remove="true" name="ot_Ref04" id="ot_Ref04" class="dropify" accept=".zip, .rar, .gz, .tar, .iso" aria-label="attach-compressed-folders" %%DEFAULTVALUE(ot_Ref04)%%>'), $templateCode);
+	if($row['ot_Ref04']!= ''){
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref04)%%", ' data-default-file="'.html_attr($row['ot_Ref04']).'" ', $templateCode);
+	}else{
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref04)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['ot_Ref04'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref04)%%>', '<br><input type="checkbox" name="ot_Ref04_remove" id="ot_Ref04_remove" value="1"> <label for="ot_Ref04_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref04)%%>', '', $templateCode);
 	}
-	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref05)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" name="ot_Ref05" id="ot_Ref05">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref05)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" data-max-file-size="65.536M" data-show-remove="true" name="ot_Ref05" id="ot_Ref05" class="dropify" accept=".zip, .rar, .gz, .tar, .iso" aria-label="attach-compressed-folders" %%DEFAULTVALUE(ot_Ref05)%%>'), $templateCode);
+	if($row['ot_Ref05']!= ''){
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref05)%%", ' data-default-file="'.html_attr($row['ot_Ref05']).'" ', $templateCode);
+	}else{
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref05)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['ot_Ref05'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref05)%%>', '<br><input type="checkbox" name="ot_Ref05_remove" id="ot_Ref05_remove" value="1"> <label for="ot_Ref05_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref05)%%>', '', $templateCode);
 	}
-	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref06)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" name="ot_Ref06" id="ot_Ref06">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref06)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" data-max-file-size="65.536M" data-show-remove="true" name="ot_Ref06" id="ot_Ref06" class="dropify" accept=".zip, .rar, .gz, .tar, .iso" aria-label="attach-compressed-folders" %%DEFAULTVALUE(ot_Ref06)%%>'), $templateCode);
+	if($row['ot_Ref06']!= ''){
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref06)%%", ' data-default-file="'.html_attr($row['ot_Ref06']).'" ', $templateCode);
+	}else{
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref06)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['ot_Ref06'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref06)%%>', '<br><input type="checkbox" name="ot_Ref06_remove" id="ot_Ref06_remove" value="1"> <label for="ot_Ref06_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref06)%%>', '', $templateCode);
 	}
-	$templateCode = str_replace('<%%UPLOADFILE(ot_Photo01)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=10240000>'.$Translation['upload image'].' <input type="file" name="ot_Photo01" id="ot_Photo01">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Photo01)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=10240000>'.$Translation['upload image'].' <input type="file" data-max-file-size="10.24M" data-show-remove="true" name="ot_Photo01" id="ot_Photo01" class="dropify" accept=".jpg, .jpeg, .gif, .png" aria-label="attach-images" %%DEFAULTVALUE(ot_Photo01)%%>'), $templateCode);
+	if($row['ot_Photo01']!= ''){
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Photo01)%%", ' data-default-file="./images/'.html_attr($row['ot_Photo01']).'" ', $templateCode);
+	}else{
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Photo01)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['ot_Photo01'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Photo01)%%>', '<br><input type="checkbox" name="ot_Photo01_remove" id="ot_Photo01_remove" value="1"> <label for="ot_Photo01_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Photo01)%%>', '', $templateCode);
 	}
-	$templateCode = str_replace('<%%UPLOADFILE(ot_Photo02)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=10240000>'.$Translation['upload image'].' <input type="file" name="ot_Photo02" id="ot_Photo02">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Photo02)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=10240000>'.$Translation['upload image'].' <input type="file" data-max-file-size="10.24M" data-show-remove="true" name="ot_Photo02" id="ot_Photo02" class="dropify" accept=".jpg, .jpeg, .gif, .png" aria-label="attach-images" %%DEFAULTVALUE(ot_Photo02)%%>'), $templateCode);
+	if($row['ot_Photo02']!= ''){
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Photo02)%%", ' data-default-file="./images/'.html_attr($row['ot_Photo02']).'" ', $templateCode);
+	}else{
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Photo02)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['ot_Photo02'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Photo02)%%>', '<br><input type="checkbox" name="ot_Photo02_remove" id="ot_Photo02_remove" value="1"> <label for="ot_Photo02_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Photo02)%%>', '', $templateCode);
 	}
-	$templateCode = str_replace('<%%UPLOADFILE(ot_Photo03)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=10240000>'.$Translation['upload image'].' <input type="file" name="ot_Photo03" id="ot_Photo03">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Photo03)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=10240000>'.$Translation['upload image'].' <input type="file" data-max-file-size="10.24M" data-show-remove="true" name="ot_Photo03" id="ot_Photo03" class="dropify" accept=".jpg, .jpeg, .gif, .png" aria-label="attach-images" %%DEFAULTVALUE(ot_Photo03)%%>'), $templateCode);
+	if($row['ot_Photo03']!= ''){
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Photo03)%%", ' data-default-file="./images/'.html_attr($row['ot_Photo03']).'" ', $templateCode);
+	}else{
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Photo03)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['ot_Photo03'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Photo03)%%>', '<br><input type="checkbox" name="ot_Photo03_remove" id="ot_Photo03_remove" value="1"> <label for="ot_Photo03_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{

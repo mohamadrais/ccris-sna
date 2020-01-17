@@ -1022,7 +1022,7 @@ function WorkOrder_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $
 	if($_REQUEST['Embedded']){
 		$backAction = 'AppGini.closeParentModal(); return false;';
 	}else{
-		$backAction = '$j(\'form\').eq(0).attr(\'novalidate\', \'novalidate\'); document.myform.reset(); return true;';
+		$backAction = '$j(\'form\').eq(1).attr(\'novalidate\', \'novalidate\'); document.myform.reset(); return true;';
 	}
 
 	if($selected_id){
@@ -1156,55 +1156,100 @@ function WorkOrder_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $
 	$templateCode = str_replace('<%%UPLOADFILE(ot_SharedLink1)%%>', '', $templateCode);
 	$templateCode = str_replace('<%%UPLOADFILE(ot_SharedLink2)%%>', '', $templateCode);
 	$templateCode = str_replace('<%%UPLOADFILE(ot_Location)%%>', '', $templateCode);
-	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref01)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" name="ot_Ref01" id="ot_Ref01">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref01)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" data-max-file-size="65.536M" data-show-remove="true" name="ot_Ref01" id="ot_Ref01" class="dropify" accept=".txt, .doc, .docx, .docm, .odt, .pdf, .rtf" aria-label="attach-documents" %%DEFAULTVALUE(ot_Ref01)%%>'), $templateCode);
+	if($row['ot_Ref01']!= ''){
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref01)%%", ' data-default-file="'.html_attr($row['ot_Ref01']).'" ', $templateCode);
+	}else{
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref01)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['ot_Ref01'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref01)%%>', '<br><input type="checkbox" name="ot_Ref01_remove" id="ot_Ref01_remove" value="1"> <label for="ot_Ref01_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref01)%%>', '', $templateCode);
 	}
-	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref02)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" name="ot_Ref02" id="ot_Ref02">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref02)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" data-max-file-size="65.536M" data-show-remove="true" name="ot_Ref02" id="ot_Ref02" class="dropify" accept=".txt, .doc, .docx, .docm, .odt, .pdf, .rtf" aria-label="attach-documents" %%DEFAULTVALUE(ot_Ref02)%%>'), $templateCode);
+	if($row['ot_Ref02']!= ''){
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref02)%%", ' data-default-file="'.html_attr($row['ot_Ref02']).'" ', $templateCode);
+	}else{
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref02)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['ot_Ref02'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref02)%%>', '<br><input type="checkbox" name="ot_Ref02_remove" id="ot_Ref02_remove" value="1"> <label for="ot_Ref02_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref02)%%>', '', $templateCode);
 	}
-	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref03)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" name="ot_Ref03" id="ot_Ref03">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref03)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" data-max-file-size="65.536M" data-show-remove="true" name="ot_Ref03" id="ot_Ref03" class="dropify" accept=".txt, .doc, .docx, .docm, .odt, .pdf, .rtf" aria-label="attach-documents" %%DEFAULTVALUE(ot_Ref03)%%>'), $templateCode);
+	if($row['ot_Ref03']!= ''){
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref03)%%", ' data-default-file="'.html_attr($row['ot_Ref03']).'" ', $templateCode);
+	}else{
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref03)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['ot_Ref03'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref03)%%>', '<br><input type="checkbox" name="ot_Ref03_remove" id="ot_Ref03_remove" value="1"> <label for="ot_Ref03_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref03)%%>', '', $templateCode);
 	}
-	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref04)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" name="ot_Ref04" id="ot_Ref04">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref04)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" data-max-file-size="65.536M" data-show-remove="true" name="ot_Ref04" id="ot_Ref04" class="dropify" accept=".zip, .rar, .gz, .tar, .iso" aria-label="attach-compressed-folders" %%DEFAULTVALUE(ot_Ref04)%%>'), $templateCode);
+	if($row['ot_Ref04']!= ''){
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref04)%%", ' data-default-file="'.html_attr($row['ot_Ref04']).'" ', $templateCode);
+	}else{
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref04)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['ot_Ref04'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref04)%%>', '<br><input type="checkbox" name="ot_Ref04_remove" id="ot_Ref04_remove" value="1"> <label for="ot_Ref04_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref04)%%>', '', $templateCode);
 	}
-	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref05)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" name="ot_Ref05" id="ot_Ref05">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref05)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" data-max-file-size="65.536M" data-show-remove="true" name="ot_Ref05" id="ot_Ref05" class="dropify" accept=".zip, .rar, .gz, .tar, .iso" aria-label="attach-compressed-folders" %%DEFAULTVALUE(ot_Ref05)%%>'), $templateCode);
+	if($row['ot_Ref05']!= ''){
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref05)%%", ' data-default-file="'.html_attr($row['ot_Ref05']).'" ', $templateCode);
+	}else{
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref05)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['ot_Ref05'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref05)%%>', '<br><input type="checkbox" name="ot_Ref05_remove" id="ot_Ref05_remove" value="1"> <label for="ot_Ref05_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref05)%%>', '', $templateCode);
 	}
-	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref06)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" name="ot_Ref06" id="ot_Ref06">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Ref06)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=65536000>'.$Translation['upload image'].' <input type="file" data-max-file-size="65.536M" data-show-remove="true" name="ot_Ref06" id="ot_Ref06" class="dropify" accept=".zip, .rar, .gz, .tar, .iso" aria-label="attach-compressed-folders" %%DEFAULTVALUE(ot_Ref06)%%>'), $templateCode);
+	if($row['ot_Ref06']!= ''){
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref06)%%", ' data-default-file="'.html_attr($row['ot_Ref06']).'" ', $templateCode);
+	}else{
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Ref06)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['ot_Ref06'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref06)%%>', '<br><input type="checkbox" name="ot_Ref06_remove" id="ot_Ref06_remove" value="1"> <label for="ot_Ref06_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Ref06)%%>', '', $templateCode);
 	}
-	$templateCode = str_replace('<%%UPLOADFILE(ot_Photo01)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=10240000>'.$Translation['upload image'].' <input type="file" name="ot_Photo01" id="ot_Photo01">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Photo01)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=10240000>'.$Translation['upload image'].' <input type="file" data-max-file-size="10.24M" data-show-remove="true" name="ot_Photo01" id="ot_Photo01" class="dropify" accept=".jpg, .jpeg, .gif, .png" aria-label="attach-images" %%DEFAULTVALUE(ot_Photo01)%%>'), $templateCode);
+	if($row['ot_Photo01']!= ''){
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Photo01)%%", ' data-default-file="./images/'.html_attr($row['ot_Photo01']).'" ', $templateCode);
+	}else{
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Photo01)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['ot_Photo01'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Photo01)%%>', '<br><input type="checkbox" name="ot_Photo01_remove" id="ot_Photo01_remove" value="1"> <label for="ot_Photo01_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Photo01)%%>', '', $templateCode);
 	}
-	$templateCode = str_replace('<%%UPLOADFILE(ot_Photo02)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=10240000>'.$Translation['upload image'].' <input type="file" name="ot_Photo02" id="ot_Photo02">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Photo02)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=10240000>'.$Translation['upload image'].' <input type="file" data-max-file-size="10.24M" data-show-remove="true" name="ot_Photo02" id="ot_Photo02" class="dropify" accept=".jpg, .jpeg, .gif, .png" aria-label="attach-images" %%DEFAULTVALUE(ot_Photo02)%%>'), $templateCode);
+	if($row['ot_Photo02']!= ''){
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Photo02)%%", ' data-default-file="./images/'.html_attr($row['ot_Photo02']).'" ', $templateCode);
+	}else{
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Photo02)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['ot_Photo02'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Photo02)%%>', '<br><input type="checkbox" name="ot_Photo02_remove" id="ot_Photo02_remove" value="1"> <label for="ot_Photo02_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Photo02)%%>', '', $templateCode);
 	}
-	$templateCode = str_replace('<%%UPLOADFILE(ot_Photo03)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=10240000>'.$Translation['upload image'].' <input type="file" name="ot_Photo03" id="ot_Photo03">'), $templateCode);
+	$templateCode = str_replace('<%%UPLOADFILE(ot_Photo03)%%>', ($noUploads ? '' : '<input type=hidden name=MAX_FILE_SIZE value=10240000>'.$Translation['upload image'].' <input type="file" data-max-file-size="10.24M" data-show-remove="true" name="ot_Photo03" id="ot_Photo03" class="dropify" accept=".jpg, .jpeg, .gif, .png" aria-label="attach-images" %%DEFAULTVALUE(ot_Photo03)%%>'), $templateCode);
+	if($row['ot_Photo03']!= ''){
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Photo03)%%", ' data-default-file="./images/'.html_attr($row['ot_Photo03']).'" ', $templateCode);
+	}else{
+		$templateCode = str_replace( "%%DEFAULTVALUE(ot_Photo03)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['ot_Photo03'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(ot_Photo03)%%>', '<br><input type="checkbox" name="ot_Photo03_remove" id="ot_Photo03_remove" value="1"> <label for="ot_Photo03_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{

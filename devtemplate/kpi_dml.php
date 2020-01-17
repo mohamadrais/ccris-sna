@@ -240,8 +240,8 @@ function kpi_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $AllowD
 	$templateCode = str_replace('<%%EMBEDDED%%>', ($_REQUEST['Embedded'] ? 'Embedded=1' : ''), $templateCode);
 	// process buttons
 	if($AllowInsert){
-		if(!$selected_id) $templateCode = str_replace('<%%INSERT_BUTTON%%>', '<button type="submit" class="btn btn-success" id="insert" name="insert_x" value="1" onclick="return kpi_validateData();"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Save New'] . '</button>', $templateCode);
-		$templateCode = str_replace('<%%INSERT_BUTTON%%>', '<button type="submit" class="btn btn-default" id="insert" name="insert_y" value="1" onclick="return kpi_validateData();"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Save As Copy'] . '</button>', $templateCode);
+		if(!$selected_id) $templateCode = str_replace('<%%INSERT_BUTTON%%>', '<button type="submit" class="no-style-button" id="insert" name="insert_x" value="1" onclick="return kpi_validateData();"><a href="#" title=" ' . $Translation['Save New'] . '"><i class="ti-plus"></i></a></button>', $templateCode);
+		$templateCode = str_replace('<%%INSERT_BUTTON%%>', '<button type="submit" class="no-style-button" id="insert" name="insert_y" value="1" onclick="return kpi_validateData();"><a href="#" title=" ' . $Translation['Save As Copy'] . '"><i class="ti-files"></i></a></button>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%INSERT_BUTTON%%>', '', $templateCode);
 	}
@@ -250,30 +250,36 @@ function kpi_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $AllowD
 	if($_REQUEST['Embedded']){
 		$backAction = 'AppGini.closeParentModal(); return false;';
 	}else{
-		$backAction = '$j(\'form\').eq(0).attr(\'novalidate\', \'novalidate\'); document.myform.reset(); return true;';
+		$backAction = '$j(\'form\').eq(1).attr(\'novalidate\', \'novalidate\'); document.myform.reset(); return true;';
 	}
 
 	if($selected_id){
-		if(!$_REQUEST['Embedded']) $templateCode = str_replace('<%%DVPRINT_BUTTON%%>', '<button type="submit" class="btn btn-default" id="dvprint" name="dvprint_x" value="1" onclick="$$(\'form\')[0].writeAttribute(\'novalidate\', \'novalidate\'); document.myform.reset(); return true;" title="' . html_attr($Translation['Print Preview']) . '"><i class="glyphicon glyphicon-print"></i> ' . $Translation['Print Preview'] . '</button>', $templateCode);
+		if(!$_REQUEST['Embedded']) $templateCode = str_replace('<%%DVPRINT_BUTTON%%>', '<button type="submit" class="no-style-button" id="dvprint" name="dvprint_x" value="1" onclick="$$(\'form\')[0].writeAttribute(\'novalidate\', \'novalidate\'); document.myform.reset(); return true;" title="' . html_attr($Translation['Print Preview']) . '"><a href="#" title="' . html_attr($Translation['Print Preview']) . '"><i class="ti-printer"></i></a></button>', $templateCode);
 		if($AllowUpdate){
-			$templateCode = str_replace('<%%UPDATE_BUTTON%%>', '<button type="submit" class="btn btn-success btn-lg" id="update" name="update_x" value="1" onclick="return kpi_validateData();" title="' . html_attr($Translation['Save Changes']) . '"><i class="glyphicon glyphicon-ok"></i> ' . $Translation['Save Changes'] . '</button>', $templateCode);
+			$templateCode = str_replace('<%%UPDATE_BUTTON%%>', '<a id="updateRecord" class="btn btn-warning float-btn-2"  href="#" style="display:none;" title="' . html_attr($Translation['Save Changes']) . '"><button class="no-style-button" id="update" name="update_x" value="1" onclick="return kpi_validateData();"><i class="fa fa-floppy-o"></i></button></a>', $templateCode);
+			$templateCode = str_replace('<%%EDIT_BUTTON%%>', '<a id="startEdit" class="btn btn-warning float-btn-2" href="#Edit"><i class="ti-pencil-alt mr-2" aria-hidden="true"></i></a>', $templateCode);
 		}else{
 			$templateCode = str_replace('<%%UPDATE_BUTTON%%>', '', $templateCode);
 		}
 		if(($arrPerm[4]==1 && $ownerMemberID==getLoggedMemberID()) || ($arrPerm[4]==2 && $ownerGroupID==getLoggedGroupID()) || $arrPerm[4]==3){ // allow delete?
-			$templateCode = str_replace('<%%DELETE_BUTTON%%>', '<button type="submit" class="btn btn-danger" id="delete" name="delete_x" value="1" onclick="return confirm(\'' . $Translation['are you sure?'] . '\');" title="' . html_attr($Translation['Delete']) . '"><i class="glyphicon glyphicon-trash"></i> ' . $Translation['Delete'] . '</button>', $templateCode);
+			$templateCode = str_replace('<%%DELETE_BUTTON%%>', '<button type="submit" class="no-style-button" id="delete" name="delete_x" value="1" onclick="return confirm(\'' . $Translation['are you sure?'] . '\');"><a href="#" title="' . html_attr($Translation['Delete']) . '"><i class="ti-trash"></i></a></button>', $templateCode);
 		}else{
 			$templateCode = str_replace('<%%DELETE_BUTTON%%>', '', $templateCode);
 		}
-		$templateCode = str_replace('<%%DESELECT_BUTTON%%>', '<button type="submit" class="btn btn-default" id="deselect" name="deselect_x" value="1" onclick="' . $backAction . '" title="' . html_attr($Translation['Back']) . '"><i class="glyphicon glyphicon-chevron-left"></i> ' . $Translation['Back'] . '</button>', $templateCode);
+		$templateCode = str_replace('<%%CANCELEDIT_BUTTON%%>', '<button style="width:unset;height:unset;color:unset;border:none;background:none;display:none;" title="' . html_attr($Translation['Cancel']) . '" type="submit" name="backToReadMode" id="backToReadMode" value="1" ><a href="#" title="' . html_attr($Translation['Cancel']) . '"><i class="ti-arrow-left"></i></a></button>', $templateCode);
+		$templateCode = str_replace('<%%DESELECT_BUTTON%%>', '<button style="width:unset;height:unset;color:unset;border:none;background:none"  onClick="' . $backAction . '" title="' . html_attr($Translation['Back']) . '"><i class="glyphicon glyphicon-chevron-left"></i> ' . $Translation['Back'] . '</button>', $templateCode);
 	}else{
+		$templateCode = str_replace('<%%EDIT_BUTTON%%>', '', $templateCode);
+		$templateCode = str_replace('<%%ATTACH_BUTTON%%>', '', $templateCode);
 		$templateCode = str_replace('<%%UPDATE_BUTTON%%>', '', $templateCode);
 		$templateCode = str_replace('<%%DELETE_BUTTON%%>', '', $templateCode);
-		$templateCode = str_replace('<%%DESELECT_BUTTON%%>', ($ShowCancel ? '<button type="submit" class="btn btn-default" id="deselect" name="deselect_x" value="1" onclick="' . $backAction . '" title="' . html_attr($Translation['Back']) . '"><i class="glyphicon glyphicon-chevron-left"></i> ' . $Translation['Back'] . '</button>' : ''), $templateCode);
+		$templateCode = str_replace('<%%CANCELEDIT_BUTTON%%>', '', $templateCode);
+		$templateCode = str_replace('<%%DESELECT_BUTTON%%>', ($ShowCancel ? '<button type="submit" class="no-style-button" id="deselect" name="deselect_x" value="1" onclick="' . $backAction . '" title="' . html_attr($Translation['Back']) . '"><a href="#" title="' . html_attr($Translation['Back']) . '"><i class="ti-arrow-left"></i></a></button>' : ''), $templateCode);
 	}
 
 	// set records to read only if user can't insert new records and can't edit current record
 	if(($selected_id && !$AllowUpdate && !$AllowInsert) || (!$selected_id && !$AllowInsert)){
+		$jsReadOnly .= "\tjQuery('#startEdit').hide();\n";
 		$jsReadOnly .= "\tjQuery('#fo_Section_Caption').replaceWith('<div class=\"form-control-static\" id=\"fo_Section_Caption\">' + (jQuery('#fo_Section_Caption').val() || '') + '</div>');\n";
 		$jsReadOnly .= "\tjQuery('#fo_MinRecordRequired').replaceWith('<div class=\"form-control-static\" id=\"fo_MinRecordRequired\">' + (jQuery('#fo_MinRecordRequired').val() || '') + '</div>');\n";
 		$jsReadOnly .= "\tjQuery('#fo_TaskCompDuration').replaceWith('<div class=\"form-control-static\" id=\"fo_TaskCompDuration\">' + (jQuery('#fo_TaskCompDuration').val() || '') + '</div>');\n";

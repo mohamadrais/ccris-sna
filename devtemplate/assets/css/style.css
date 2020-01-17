@@ -7492,3 +7492,7 @@ select.form-control:not([size]):not([multiple]){
 .report-label{
   font-size: 1.2rem;
 }
+
+.no-style-button{
+  width:unset;height:unset;color:unset;border:none;background:none;
+}
