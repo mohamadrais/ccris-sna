@@ -171,8 +171,8 @@
 	$x->TemplateDVP = 'templates/categories_templateDVP.html';
 
 	$x->ShowTableHeader = 0;
-	$x->TVClasses = "col-lg-6";
-	$x->DVClasses = "col-lg-6";
+	$x->TVClasses = "col-lg-12";
+	$x->DVClasses = "col-lg-12";
 	$x->HighlightColor = '#FFF0C2';
 
 	// mm: build the query based on current member's permissions
