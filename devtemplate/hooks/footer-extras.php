@@ -350,14 +350,17 @@ if (!($memberInfo['group'] == 'Admins' && $memberInfo['username'] == $admin_conf
 			});
 		});
 
-		var fieldlist='#BaseLocation-container, #ccpID-container, #ClientID-container, #DCCID-container, #DPRID-container, #EmployeeID-container, #fo_BaseLocation-container, #fo_CalCom-container, #fo_CategoryID-container, #fo_ClientID-container, #fo_DCCITEM-container, #fo_EmployeeID-container, #fo_InventoryID-container, #fo_item-container, #fo_ItemID-container, #fo_Logistic-container, #fo_Position-container, #fo_ProductID-container, #fo_ProjectID-container, #fo_ProjectTeamID-container, #fo_Recources-container, #fo_ReportsTo-container, #fo_ResourcesID-container, #fo_ShipAddress-container, #fo_ShipCity-container, #fo_ShipCountry-container, #fo_ShipName-container, #fo_ShipPostalCode-container, #fo_ShipRegion-container, #fo_ShipVia-container, #fo_SupplierID-container, #fo_suppliers-container, #fo_Vendor-container, #fo_VendorID-container, #InquiryID-container, #memberID-container, #MTSID-container, #MwoID-container, #OrderID-container, #PostID-container, #ProjectsID-container, #ProjectTeamID-container, #ReceivablesID-container, #ResourceId-container, #ResourcesID-container, #WorkLocationID-container, #worklocID-container, #WrLocID-container';
+		var select2FieldList='#BaseLocation-container, #ccpID-container, #ClientID-container, #DCCID-container, #DPRID-container, #EmployeeID-container, #fo_BaseLocation-container, #fo_CalCom-container, #fo_CategoryID-container, #fo_ClientID-container, #fo_DCCITEM-container, #fo_EmployeeID-container, #fo_InventoryID-container, #fo_item-container, #fo_ItemID-container, #fo_Logistic-container, #fo_Position-container, #fo_ProductID-container, #fo_ProjectID-container, #fo_ProjectTeamID-container, #fo_Recources-container, #fo_ReportsTo-container, #fo_ResourcesID-container, #fo_ShipAddress-container, #fo_ShipCity-container, #fo_ShipCountry-container, #fo_ShipName-container, #fo_ShipPostalCode-container, #fo_ShipRegion-container, #fo_ShipVia-container, #fo_SupplierID-container, #fo_suppliers-container, #fo_Vendor-container, #fo_VendorID-container, #InquiryID-container, #memberID-container, #MTSID-container, #MwoID-container, #OrderID-container, #PostID-container, #ProjectsID-container, #ProjectTeamID-container, #ReceivablesID-container, #ResourceId-container, #ResourcesID-container, #WorkLocationID-container, #worklocID-container, #WrLocID-container';
+		
+		var checkboxFieldList='#ClosedIssue, #fo_Acknowledgement, #fo_AuditMemo, #fo_AuditNote, #fo_AuditPlan, #fo_AuditReport, #fo_Available, #fo_AVList, #fo_ClosedIssue, #fo_Discontinued, #fo_Induction, #fo_NewList';
 
 		if ($j("#startEdit").is(":visible")){
 			$j("input").attr("readonly", true);
 			$j("textarea").attr("readonly", true);
             $j("select").attr("disabled", true);
- 			$j(fieldlist).prop('readonly', true);
-			$j(fieldlist).attr('disabled', true);
+ 			$j(select2FieldList).prop('readonly', true);
+			$j(select2FieldList).attr('disabled', true);
+			$j(checkboxFieldList).attr('disabled', true);
             setTimeout(function(){ 
                 $j(".nicEdit-main").attr("contenteditable", "false");
 			}, 3000);
@@ -383,8 +386,9 @@ if (!($memberInfo['group'] == 'Admins' && $memberInfo['username'] == $admin_conf
 				$j("input").attr("readonly", false);
 				$j("textarea").attr("readonly", false);
 				$j("select").attr("disabled", false);
-				$j(fieldlist).prop('readonly', false);
-				$j(fieldlist).attr("disabled",false);
+				$j(select2FieldList).prop('readonly', false);
+				$j(select2FieldList).attr('disabled',false);
+				$j(checkboxFieldList).attr('disabled', false);
 				$j('input[type="radio"]').attr("disabled", false);
 				setTimeout(function(){ $j('input[type="radio"]').attr("disabled", false); }, 300);
 				setTimeout(function(){ $j('input[type="radio"]').attr("disabled", false); }, 600);

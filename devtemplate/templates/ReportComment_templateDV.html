@@ -47,7 +47,7 @@
 					<div class="col-lg-10">
 						<span class="help-block collapse" id="filed-description"><div class="alert alert-info">This field is automatically populated with the date and time when this record was created.</div></span>
 
-						<div class="form-control-static" id="filed"><%%VALUE(filed)%%></div>
+						<div class="form-control-static" id="filed"><% %VALUE(filed)% %></div>
 					</div>
 				</div>
 
@@ -57,7 +57,7 @@
 					<div class="col-lg-10">
 						<span class="help-block collapse" id="last_modified-description"><div class="alert alert-info">This field is automatically populated with the date and time when this record was last modified.</div></span>
 
-						<div class="form-control-static" id="last_modified"><%%VALUE(last_modified)%%></div>
+						<div class="form-control-static" id="last_modified"><% %VALUE(last_modified)% %></div>
 					</div>
 				</div>
 
@@ -67,7 +67,7 @@
 		<!-- DV action buttons -->
 		<hr class="hidden-md hidden-lg">
 	<div id="adminActions" class="adminActions"> <!-- <div class="col-md-4 col-lg-2" id="ReportComment_dv_action_buttons"> -->
-		<input type="checkbox" name="adminToggle" class="adminToggle" />
+		<input  type="checkbox" name="adminToggle" class="adminToggle" />
 		<a class="adminButton" href="#!"><i class="ti-more"></i></a>
 		<div class="adminButtons">
 			<%%CANCELEDIT_BUTTON%%>

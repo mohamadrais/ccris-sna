@@ -36,7 +36,7 @@
 				<div class="form-group col-lg-8">
 					<!-- <hr class="hidden-md hidden-lg"> ^^inside-div-manualtitle^^-->
 					<label for="CopanyName" class="control-label">Company Name <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#CopanyName-description"></i></label>
-					<div class="col-lg-10">
+					<!-- <div class="col-lg-10"> -->
 						<span class="help-block collapse" id="CopanyName-description"><div class="alert alert-info">Company name and identification example company registration number</div></span>
 
 						<input maxlength="200" type="text" class="form-control" name="CopanyName" id="CopanyName" value="<%%VALUE(CopanyName)%%>">
@@ -412,7 +412,7 @@
 					<div class="col-lg-10">
 						<span class="help-block collapse" id="ot_ap_filed-description"><div class="alert alert-info">This field is automatically populated with the date and time when this record was created.</div></span>
 
-						<div class="form-control-static" id="ot_ap_filed"><%%VALUE(ot_ap_filed)%%></div>
+						<div class="form-control-static" id="ot_ap_filed"><% %VALUE(ot_ap_filed)% %></div>
 					</div>
 				</div>
 
@@ -422,7 +422,7 @@
 					<div class="col-lg-10">
 						<span class="help-block collapse" id="ot_ap_lastmodified-description"><div class="alert alert-info">This field is automatically populated with the date and time when this record was last modified.</div></span>
 
-						<div class="form-control-static" id="ot_ap_lastmodified"><%%VALUE(ot_ap_lastmodified)%%></div>
+						<div class="form-control-static" id="ot_ap_lastmodified"><% %VALUE(ot_ap_lastmodified)% %></div>
 					</div>
 				</div>
 
@@ -432,7 +432,7 @@
 		<!-- DV action buttons -->
 		<hr class="hidden-md hidden-lg">
 	<div id="adminActions" class="adminActions"> <!-- <div class="col-md-4 col-lg-2" id="vendor_dv_action_buttons"> -->
-		<input type="checkbox" name="adminToggle" class="adminToggle" />
+		<input  type="checkbox" name="adminToggle" class="adminToggle" />
 		<a class="adminButton" href="#!"><i class="ti-more"></i></a>
 		<div class="adminButtons">
 			<%%CANCELEDIT_BUTTON%%>
