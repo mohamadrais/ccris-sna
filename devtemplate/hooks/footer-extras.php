@@ -13,7 +13,7 @@ if ($memberInfo['group'] != 'Admins') {
 ?>
 <script type='text/javascript'>
 
-    document.observe("dom:loaded", function() {
+	$j(document).ready(function() {	
 		if($j('#notif-dropdown').is(':visible')){
 			$j('#notif-dropdown').on('click touchstart', function(e) {
 				// e.preventDefault(); 
@@ -292,12 +292,12 @@ if ($memberInfo['group'] != 'Admins') {
 			}
 		});
 		
-		if($j("[aria-labelledby='selected_wo_ID']").is(":visible")){
-			var selected_wo_ID = $j("[aria-labelledby='selected_wo_ID']").html().trim();
+		var tN = $j('[name ="myform"]').attr('action');
+		if(tN == 'WorkOrder_view.php' && $j("[aria-labelledby='selectedID']").is(":visible")){
+			var selected_wo_ID = $j("[aria-labelledby='selectedID']").html().trim();
 			get_workorder_related_records(selected_wo_ID);
 		}
-	});
-	$j(document).ready(function() {
+
 		function calcAttached(attachType, totalLabel, initial=false){
 			var x = 0;
 			$j('input[aria-label='+attachType+']').each(function(i, e){
@@ -305,7 +305,10 @@ if ($memberInfo['group'] != 'Admins') {
 					x++;
 					$j(this).parent().show();
 				}
-				var selectedID = $j("[aria-labelledby='selectedID']").html().trim();
+				var selectedID = "";
+				if($j("[aria-labelledby='selectedID']").length > 0){
+					selectedID = $j("[aria-labelledby='selectedID']").html().trim();
+				}
 				if(selectedID == "" && initial == true && i>0){
 					$j(this).parent().hide();
 				}
@@ -325,7 +328,7 @@ if ($memberInfo['group'] != 'Admins') {
 				}
 			});
 		}
-
+		
 		function dropifyShowHide(attachType){
 			$j('input[aria-label='+attachType+']').each(function(i, e){
 				if (!$j(this).is(":visible") && ($j(this).val().length > 0 || ($j(this).attr('data-default-file') && $j(this).attr('data-default-file').length > 0))) {
@@ -346,14 +349,23 @@ if ($memberInfo['group'] != 'Admins') {
 			});
 		});
 
-        if ($j("#startEdit").is(":visible")){
+		var fieldlist='#BaseLocation-container, #ccpID-container, #ClientID-container, #DCCID-container, #DPRID-container, #EmployeeID-container, #fo_BaseLocation-container, #fo_CalCom-container, #fo_CategoryID-container, #fo_ClientID-container, #fo_DCCITEM-container, #fo_EmployeeID-container, #fo_InventoryID-container, #fo_item-container, #fo_ItemID-container, #fo_Logistic-container, #fo_Position-container, #fo_ProductID-container, #fo_ProjectID-container, #fo_ProjectTeamID-container, #fo_Recources-container, #fo_ReportsTo-container, #fo_ResourcesID-container, #fo_ShipAddress-container, #fo_ShipCity-container, #fo_ShipCountry-container, #fo_ShipName-container, #fo_ShipPostalCode-container, #fo_ShipRegion-container, #fo_ShipVia-container, #fo_SupplierID-container, #fo_suppliers-container, #fo_Vendor-container, #fo_VendorID-container, #InquiryID-container, #memberID-container, #MTSID-container, #MwoID-container, #OrderID-container, #PostID-container, #ProjectsID-container, #ProjectTeamID-container, #ReceivablesID-container, #ResourceId-container, #ResourcesID-container, #WorkLocationID-container, #worklocID-container, #WrLocID-container';
+
+		if ($j("#startEdit").is(":visible")){
 			$j("input").attr("readonly", true);
 			$j("textarea").attr("readonly", true);
             $j("select").attr("disabled", true);
+ 			$j(fieldlist).prop('readonly', true);
+			$j(fieldlist).attr('disabled', true);
             setTimeout(function(){ 
                 $j(".nicEdit-main").attr("contenteditable", "false");
-            }, 3000);
+			}, 3000);
 			$j('input[type="radio"]').attr("disabled", true);
+			setTimeout(function(){ $j('input[type="radio"]').attr("disabled", true); }, 300);
+			setTimeout(function(){ $j('input[type="radio"]').attr("disabled", true); }, 600);
+			setTimeout(function(){ $j('input[type="radio"]').attr("disabled", true); }, 1200);
+			setTimeout(function(){ $j('input[type="radio"]').attr("disabled", true); }, 1800);
+			setTimeout(function(){ $j('input[type="radio"]').attr("disabled", true); }, 2400);
             $j("[id*='_remove']").each(function (i, el) {
                 el.hide();
             });
@@ -369,7 +381,15 @@ if ($memberInfo['group'] != 'Admins') {
 			$j("#startEdit").click(function(){
 				$j("input").attr("readonly", false);
 				$j("textarea").attr("readonly", false);
-                $j("select").attr("disabled", false);
+				$j("select").attr("disabled", false);
+				$j(fieldlist).prop('readonly', false);
+				$j(fieldlist).attr("disabled",false);
+				$j('input[type="radio"]').attr("disabled", false);
+				setTimeout(function(){ $j('input[type="radio"]').attr("disabled", false); }, 300);
+				setTimeout(function(){ $j('input[type="radio"]').attr("disabled", false); }, 600);
+				setTimeout(function(){ $j('input[type="radio"]').attr("disabled", false); }, 1200);
+				setTimeout(function(){ $j('input[type="radio"]').attr("disabled", false); }, 1800);
+				setTimeout(function(){ $j('input[type="radio"]').attr("disabled", false); }, 2400);
                 $j('[class="control-label text-muted"]').show();
 				$j('input[type="radio"]').attr("disabled", false);
 				$j("[id*='_remove']").each(function (i, el) {
@@ -410,13 +430,34 @@ if ($memberInfo['group'] != 'Admins') {
 
 		}
 
-		$j("backToReadMode").click(function(){
+		$j('[name="myform"]').change(function (e) {
+			if(e.target.className != 'adminToggle'){
+				if ($j(this).data('already_changed')) return;
+				if ($j('#deselect').length) $j('#deselect').removeClass('btn-default').addClass('btn-warning').get(0).lastChild.data = " <%%TRANSLATION(Cancel)%%>";
+				$j(this).data('already_changed', true);
+			}
+		});
+
+		function reloadDV(){
 			location.reload();
-			$j(this).hide();
+			$j("backToReadMode").hide();
 			$j("#updateRecord").hide();
 			$j("#startEdit").show();
 			$j("#deselect").show();
 			$j('[ aria-labelledby="attachment-readMode"]').show();
+		}
+
+		$j("#backToReadMode").click(function(e){
+			e.preventDefault();
+			if ($j('#deselect.btn-warning').length) {
+				confirm = confirm('Discard changes to this record?');
+				if(confirm){
+					reloadDV();
+				}
+			}
+			else{
+				reloadDV();
+			}
 		})
             
 		///////////////////////////////////////////////
@@ -531,5 +572,8 @@ if ($memberInfo['group'] != 'Admins') {
 		///////////////////////////////////////////////
 			
 		
+	});
+	document.addEventListener("DOMContentLoaded", function (event) {
+		$j('a[data-toggle="tab"]').removeClass('not-active');
 	});
 </script>

@@ -1,11 +1,11 @@
 <!-- Edit this file to change the layout of the detail view form -->
 
 <a name="detail-view"></a>
-<div class="panel-heading"><h3 class="panel-title"><strong><%%DETAIL_VIEW_TITLE%%></strong></h3></div>
+<div class="panel-heading"></div>
 
-<div class="panel-body" id="IMSControl_dv_container">
+<div id="IMSControl_dv_container">
 	<!-- child links -->
-	<div class="row vspacer-md">
+	<!-- <div class="row vspacer-md"> -->
 		<div class="col-xs-12">
 			<input type="hidden" id="OrgContentContext_hclink" value="OrgContentContext_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
 			<input type="hidden" id="Marketing_hclink" value="Marketing_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
@@ -81,62 +81,62 @@
 			<input type="hidden" id="ClaimRecord_hclink" value="ClaimRecord_view.php?filterer_ot_ap_QC=<%%URLVALUE(id)%%>&<%%EMBEDDED%%>">
 			<div class="clearfix"></div>
 		</div>
-	</div>
-	<hr class="hidden-xs hidden-sm">
+	<!-- </div> -->
+	<!-- <hr class="hidden-xs hidden-sm"> -->
 
-	<div class="row">
-		<!-- form inputs -->
-		<div class="col-md-8 col-lg-10" id="IMSControl_dv_form">
-			<fieldset class="form-horizontal">
 
-				<div class="form-group">
+<div id="IMSControl_dv_form">
+	<!-- <div class="row"> -->
+		<div class="tab-content w-100">
+				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="id" class="control-label col-lg-3">ID</label>
-					<div class="col-lg-9">
+					<label for="id" class="control-label col-lg-2">ID</label>
+					<div class="col-lg-10">
 						<div class="form-control-static" id="id"><%%VALUE(id)%%></div>
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="Status" class="control-label col-lg-3">Inspection Status<span class="text-danger"><%%TRANSLATION(*)%%></span> <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#Status-description"></i></label>
-					<div class="col-lg-9">
+					<label for="Status" class="control-label col-lg-2">Inspection Status<span class="text-danger"><%%TRANSLATION(*)%%></span> <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#Status-description"></i></label>
+					<div class="col-lg-10">
 						<span class="help-block collapse" id="Status-description"><div class="alert alert-info">QC inspection of the data</div></span>
 
 						<%%COMBO(Status)%%>
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="Description" class="control-label col-lg-3">Description</label>
-					<div class="col-lg-9">
+					<label for="Description" class="control-label col-lg-2">Description</label>
+					<div class="col-lg-10">
 						<textarea class="form-control" name="Description" id="Description" rows="5"><%%VALUE(Description)%%></textarea>
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="other_details" class="control-label col-lg-3">Other details</label>
-					<div class="col-lg-9">
+					<label for="other_details" class="control-label col-lg-2">Other details</label>
+					<div class="col-lg-10">
 						<textarea class="form-control" name="other_details" id="other_details" rows="5"><%%VALUE(other_details)%%></textarea>
 					</div>
 				</div>
-
-				<div class="form-group">
+		</div>
+<!--
+				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="filed" class="control-label col-lg-3">Filed <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#filed-description"></i></label>
-					<div class="col-lg-9">
+					<label for="filed" class="control-label col-lg-2">Filed <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#filed-description"></i></label>
+					<div class="col-lg-10">
 						<span class="help-block collapse" id="filed-description"><div class="alert alert-info">This field is automatically populated with the date and time when this record was created.</div></span>
 
 						<div class="form-control-static" id="filed"><%%VALUE(filed)%%></div>
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="last_modified" class="control-label col-lg-3">Last modified <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#last_modified-description"></i></label>
-					<div class="col-lg-9">
+					<label for="last_modified" class="control-label col-lg-2">Last modified <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#last_modified-description"></i></label>
+					<div class="col-lg-10">
 						<span class="help-block collapse" id="last_modified-description"><div class="alert alert-info">This field is automatically populated with the date and time when this record was last modified.</div></span>
 
 						<div class="form-control-static" id="last_modified"><%%VALUE(last_modified)%%></div>
@@ -145,38 +145,49 @@
 
 			</fieldset>
 		</div>
-
+-->
 		<!-- DV action buttons -->
 		<hr class="hidden-md hidden-lg">
-		<div class="col-md-4 col-lg-2" id="IMSControl_dv_action_buttons">
-			<div class="btn-toolbar">
-				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
-					<%%UPDATE_BUTTON%%>
-				</div><p></p>
-				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
-					<%%DESELECT_BUTTON%%>
-					<%%DVPRINT_BUTTON%%>
-					<%%DELETE_BUTTON%%>
-				</div><p></p>
-				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
-					<%%INSERT_BUTTON%%>
-				</div>
-			</div>
+	<div id="adminActions" class="adminActions"> <!-- <div class="col-md-4 col-lg-2" id="IMSControl_dv_action_buttons"> -->
+		<input type="checkbox" name="adminToggle" class="adminToggle" />
+		<a class="adminButton" href="#!"><i class="ti-more"></i></a>
+		<div class="adminButtons">
+			<%%CANCELEDIT_BUTTON%%>
+			<%%DESELECT_BUTTON%%>
+			<%%DVPRINT_BUTTON%%>
+			<%%DELETE_BUTTON%%>
+			<%%INSERT_BUTTON%%>
 		</div>
 	</div>
+	<div class="adminActions"style="right:90px; bottom:40px">
+		<%%EDIT_BUTTON%%>
+		<%%UPDATE_BUTTON%%>
+	</div>
+</div>
 
 
 	<!-- child records -->
-	<hr>
-	<div class="row">
-		<div class="col-lg-10 col-lg-offset-1">
+	<div class="panel-body">
 			<div id="IMSControl-children" class="children-tabs"></div>
-		</div>
 	</div>
 
 </div><!-- /div class="panel-body" -->
+	<style>
+		input[readonly], input[readonly="readonly"] {
+			border:unset;
+		}
+
+		input[readonly]::-webkit-input-placeholder, input[readonly="readonly"]::-webkit-input-placeholder {
+			color:transparent;
+		}
+
+		input[readonly]:-ms-input-placeholder, input[readonly="readonly"]:-ms-input-placeholder {  
+			color:transparent;
+		}
+
+	</style>
 	<script>
-		$j(function() {
+		$j(function () {
 			var add_new_mode = (!$j('input[name=SelectedID]').val());
 			var embedded_mode = ($j('input[name=Embedded]').val() == 1);
 
@@ -195,11 +206,6 @@
 				$j('select, input[type=text], textarea').not(':disabled').eq(0).focus();
 			}
 
-			$j('form').eq(0).change(function(){
-				if($j(this).data('already_changed')) return;
-				if($j('#deselect').length) $j('#deselect').removeClass('btn-default').addClass('btn-warning').get(0).lastChild.data = " <%%TRANSLATION(Cancel)%%>";
-				$j(this).data('already_changed', true);
-			});
 
 			$j('a[href="<%%TRANSLATION(ImageFolder)%%>"]').click(function(){ /* */ return false; });
 
@@ -298,8 +304,8 @@
 
 
 			/* load admin tools for admin user */
-			if(!add_new_mode){
-				$j('body').append('<div id="admin-tools-appendix"></div>');
+			if (!add_new_mode) {
+				$j('#record-heading').append('<span id="admin-tools-appendix"></span>');
 				$j('#admin-tools-appendix').load(
 					'ajax_admin_tools.php?table=IMSControl&id=<%%URLVALUE(id)%%>',
 					function(resp){
@@ -310,9 +316,28 @@
 			}
 
 			/* warn user if 'add new' clicked while unsaved changes exist */
-			$j('#addNew').click(function(){
-				if($j('#deselect.btn-warning').length){
+			$j('#addNew').click(function () {
+				if ($j('#deselect.btn-warning').length) {
 					return confirm('<%%TRANSLATION(discard changes confirm)%%>');
+				}
+			});
+
+			/* initialize dropify */
+			$j(document).ready(function(){
+				var drEvent = [];
+				$j('.dropify').each(function(i, e){
+					drEvent[i] = $j(e).dropify();
+				})
+				for(x=0; x<drEvent.length; x++){
+					drEvent[x].on('dropify.afterClear', function(event, element){
+						calcAttached("attach-documents", "totalDocumentAttached");
+						calcAttached("attach-compressed-folders", "totalCompFolderAttached");
+						calcAttached("attach-images", "totalPhotoAttached");
+					});
+
+					drEvent[x].on('dropify.errors', function(event, element){
+						console.log('Dropify ' + element + ' has errors');
+					});
 				}
 			});
 

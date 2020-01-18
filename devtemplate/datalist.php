@@ -229,6 +229,13 @@ class DataList{
 
 		$this->HTML .= '<div class="page-wrapper ps ps--theme_default"><div class="container-fluid"><div class="row"><div class="col-xs-12">';
 		$this->HTML .= '<div class="card"><div class="card-body">';
+		// $this->HTML .= '<div aria-label="breadcrumb">
+		// 					<ol class="breadcrumb">
+		// 						<li class="breadcrumb-item"><a href="#">Project</a></li>
+		// 						<li class="breadcrumb-item"><a href="#">Project Register</a></li>
+		// 						<li class="breadcrumb-item"><a href="#">Project Register Detail</a></li>
+		// 					</ol>
+		// 				</div>';
 		$this->HTML .= '<h3 id="record-heading">';
 		$this->HTML .= '<a style="text-decoration: none; color: inherit;" href="' . $this->TableName . '_view.php"><img src="' . $this->TableIcon . '"> ' . $this->TableTitle . '</a>';
 		$this->HTML .= '</h3>';
@@ -1526,7 +1533,7 @@ class DataList{
 					if(val !== undefined && val !== true && val !== false) val = true;
 
 					var cn = 'columns-' + location.pathname.split(/\//).pop().split(/\./).shift(); // cookie name
-					var op = { expires: 30, path: '' }; // cookie options
+					var op = { expires: -1, path: '' }; // cookie options
 					var c = Cookies.getJSON(cn) || {};
 
 					/* if no cookie, create it and set it to val (or true if no val) */

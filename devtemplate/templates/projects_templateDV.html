@@ -1,26 +1,47 @@
 <!-- Edit this file to change the layout of the detail view form -->
-<!-- <nav aria-label="breadcrumb">
-	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="#">Project</a></li>
-		<li class="breadcrumb-item"><a href="#">Project Register</a></li>
-		<li class="breadcrumb-item"><a href="#">Project Register Detail</a></li>
-	</ol>
-</nav> -->
 
 <a name="detail-view"></a>
-<div class="panel-heading">
-	<!-- <div class="form-group">
-	<hr class="hidden-md hidden-lg"> -->
-	
-	<!-- </div> -->
+<div class="panel-heading"></div>
 
-</div>
-<!-- </div> -->
-
+<!-- <div class="panel-body" id="projects_dv_container"></div> -->
 <div id="projects_dv_container">
+	<!-- child links -->
+	<!-- <div class="row vspacer-md"> -->
+		<div class="col-xs-12">
+			<input type="hidden" id="LogisticRequest_hclink"
+				value="LogisticRequest_view.php?filterer_fo_ProjectID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="orders_hclink"
+				value="orders_view.php?filterer_fo_ProjectID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="StakeholderSatisfaction_hclink"
+				value="StakeholderSatisfaction_view.php?filterer_fo_ProjectId=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="PROInitiation_hclink"
+				value="PROInitiation_view.php?filterer_ProjectsID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="PROPlanning_hclink"
+				value="PROPlanning_view.php?filterer_ProjectsID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="PROExecution_hclink"
+				value="PROExecution_view.php?filterer_ProjectsID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="PROControlMonitoring_hclink"
+				value="PROControlMonitoring_view.php?filterer_ProjectsID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="PROVariation_hclink"
+				value="PROVariation_view.php?filterer_ProjectsID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="PROCompletion_hclink"
+				value="PROCompletion_view.php?filterer_ProjectsID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
+			<input type="hidden" id="Receivables_hclink"
+				value="Receivables_view.php?filterer_ProjectsID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
+			<div class="clearfix"></div>
+		</div>
+	<!-- </div> -->
+	<!-- <hr class="hidden-xs hidden-sm"> -->
+
+
+<div id="projects_dv_form">
 	<div class="row">
+		<!-- form inputs -->
+		<!-- <div class="col-md-8 col-lg-10" id="projects_dv_form">
+			<fieldset class="form-horizontal"> -->
 
 		<div class="form-group col-lg-1">
+			<!-- <hr class="hidden-md hidden-lg"> -->
 			<label for="Id" class="control-label">ID</label>
 			<div class="form-control-static" id="Id" aria-labelledby="selectedID">
 				<%%VALUE(Id)%%>
@@ -51,52 +72,14 @@
 				<%%TRANSLATION(unique field error)%%>
 			</div>
 		</div>
-		</div>
-	<!-- <ul class="nav nav-tabs customtab2 d-block" role="tablist" aria-label="Basic example">
-		<li class="nav-item"> <a class="nav-link active" data-target="#carouselDetail" data-slide-to="0" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Description</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-target="#carouselDetail" data-slide-to="1" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Attachment</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-target="#carouselDetail" data-slide-to="2" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Review</span></a> </li>
-	</ul> -->
+	</div>
+	
 	<ul class="nav nav-tabs customtab2 d-block w-100" role="tablist">
-		<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#Description" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Description</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Attachment" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Attachment</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Review" role="tab"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Review</span></a> </li>
+		<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#Description" role="tab" class="not-active"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Description</span></a> </li>
+		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Attachment" role="tab" class="not-active"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Attachment</span></a> </li>
+		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Review" role="tab" class="not-active"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Review</span></a> </li>
 
 	</ul>
-	<!-- <a id="startEdit" href="#Edit">Edit</span>
-	<a id="exitEdit" href="./projects_view.php?SelectedID=<%%VALUE(Id)%%>" style="display:none">Back</a> -->
-		
-	<!-- <div class="btn-group" role="group" aria-label="Basic example">
-		<button type="button" class="btn btn-secondary" data-target="#carouselDetail" data-slide-to="0"
-			class="active">Description</button>
-		<button type="button" class="btn btn-secondary" data-target="#carouselDetail"
-			data-slide-to="1">Attachment</button>
-		<button type="button" class="btn btn-secondary" data-target="#carouselDetail" data-slide-to="2">Review</button>
-	</div> -->
-	<!-- child links -->
-		<div class="col-xs-12">
-			<input type="hidden" id="LogisticRequest_hclink"
-				value="LogisticRequest_view.php?filterer_fo_ProjectID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
-			<input type="hidden" id="orders_hclink"
-				value="orders_view.php?filterer_fo_ProjectID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
-			<input type="hidden" id="StakeholderSatisfaction_hclink"
-				value="StakeholderSatisfaction_view.php?filterer_fo_ProjectId=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
-			<input type="hidden" id="PROInitiation_hclink"
-				value="PROInitiation_view.php?filterer_ProjectsID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
-			<input type="hidden" id="PROPlanning_hclink"
-				value="PROPlanning_view.php?filterer_ProjectsID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
-			<input type="hidden" id="PROExecution_hclink"
-				value="PROExecution_view.php?filterer_ProjectsID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
-			<input type="hidden" id="PROControlMonitoring_hclink"
-				value="PROControlMonitoring_view.php?filterer_ProjectsID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
-			<input type="hidden" id="PROVariation_hclink"
-				value="PROVariation_view.php?filterer_ProjectsID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
-			<input type="hidden" id="PROCompletion_hclink"
-				value="PROCompletion_view.php?filterer_ProjectsID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
-			<input type="hidden" id="Receivables_hclink"
-				value="Receivables_view.php?filterer_ProjectsID=<%%URLVALUE(Id)%%>&<%%EMBEDDED%%>">
-			<div class="clearfix"></div>
-		</div>
 	
 	<div class="tab-content w-100">
 		<div class="tab-pane p-t-30 active show" id="Description" role="tabpanel">
@@ -136,7 +119,7 @@
 
 			<div class="form-group row">
 				<hr class="hidden-md hidden-lg">
-				<label for="fo_StartDate" class="control-label col-lg-2">Date (From - To)</label>
+				<label for="fo_StartDate" class="control-label col-lg-2">Start Date - End Date</label>
 				<div class="col-md-10 row">
 					<div class="col-md-5"><%%COMBO(fo_StartDate)%%></div>
 					<label class="col-md-2 control-label" style="text-align:center"> until </label>
@@ -180,36 +163,28 @@
 		</div>
 		<div class="tab-pane panel-body p-t-30" id="Attachment" role="tabpanel">
 			<div class="form-group row">
-				<label class="control-label col-lg-2">Shared Link<div class="text-muted">Attached <span id="totalLinkAttached"></span>/2</div></label>
+				<label class="control-label col-lg-2">Shared Links<div class="text-muted">Attached <span id="totalLinkAttached"></span>/2</div></label>
 				<div class="col-lg-10">
-						<!-- <div class="col-md-1">
-							<a id="ot_SharedLink1-link"
-								href="link.php?t=projects&f=ot_SharedLink1&i=<%%VALUE(Id)%%>"
-								target="_blank"><i class="glyphicon glyphicon-globe"
-									title="<%%VALUE(ot_SharedLink1)%%>"
-									style="font-size: x-large; top: .35em;"></i></a>
-						</div> -->
-						<!-- <script>jQuery(function () { /* */ var e_ot_SharedLink1 = '<%%VALUE(ot_SharedLink1)%%>'; if (e_ot_SharedLink1 == '' || e_ot_SharedLink1 == '&nbsp;' || e_ot_SharedLink1 == 'blank.gif') jQuery('#ot_SharedLink1-link').hide(); });</script> -->
-						<span id="sl1">
-							<input maxlength="200" placeholder="Place Link here" type="text"
-								class="form-control collapse m-b-5" name="ot_SharedLink1" id="ot_SharedLink1"
-								value="<%%VALUE(ot_SharedLink1)%%>">
-								<a id="ot_SharedLink1-link" href="link.php?t=projects&f=ot_SharedLink1&i=<%%VALUE(Id)%%>" target="_blank"><i class="glyphicon glyphicon-globe" title="<%%VALUE(ot_SharedLink1)%%>" style="font-size: x-large; top: .35em;"></i></a>
-								<script>jQuery(function () { /* */ var e_ot_SharedLink1 = '<%%VALUE(ot_SharedLink1)%%>'; if (e_ot_SharedLink1 == '' || e_ot_SharedLink1 == '&nbsp;' || e_ot_SharedLink1 == 'blank.gif') jQuery('#ot_SharedLink1-link').hide(); });</script>
-							<button type="button" class="btn btn-sm btn-outline-danger m-b-5"
-								id="ot_SharedLink1_remove">Remove</button>
-						</span>
-						<span id="sl2">
-							<input maxlength="200" placeholder="Place Link here" type="text"
-								class="form-control collapse m-b-5" name="ot_SharedLink2" id="ot_SharedLink2"
-								value="<%%VALUE(ot_SharedLink2)%%>">
-								<a id="ot_SharedLink2-link" href="link.php?t=projects&f=ot_SharedLink2&i=<%%VALUE(Id)%%>" target="_blank"><i class="glyphicon glyphicon-globe" title="<%%VALUE(ot_SharedLink2)%%>" style="font-size: x-large; top: .35em;"></i></a>
-								<script>jQuery(function(){ /* */ var e_ot_SharedLink2 = '<%%VALUE(ot_SharedLink2)%%>'; if(e_ot_SharedLink2 == '' || e_ot_SharedLink2 == '&nbsp;' || e_ot_SharedLink2 == 'blank.gif') jQuery('#ot_SharedLink2-link').hide(); });</script>
-							<button type="button" class="btn  btn-sm btn-outline-danger m-b-5"
-								id="ot_SharedLink2_remove">Remove</button>
-						</span>
+					<span id="sl1">
+						<input maxlength="200" placeholder="Place Link here" type="text"
+							class="form-control collapse m-b-5" name="ot_SharedLink1" id="ot_SharedLink1"
+							value="<%%VALUE(ot_SharedLink1)%%>">
+							<a id="ot_SharedLink1-link" href="link.php?t=projects&f=ot_SharedLink1&i=<%%VALUE(Id)%%>" target="_blank"><i class="glyphicon glyphicon-globe" title="<%%VALUE(ot_SharedLink1)%%>" style="font-size: x-large; top: .35em;"></i></a>
+							<script>jQuery(function () { /* */ var e_ot_SharedLink1 = '<%%VALUE(ot_SharedLink1)%%>'; if (e_ot_SharedLink1 == '' || e_ot_SharedLink1 == '&nbsp;' || e_ot_SharedLink1 == 'blank.gif') jQuery('#ot_SharedLink1-link').hide(); });</script>
+						<button type="button" class="btn btn-sm btn-outline-danger m-b-5"
+							id="ot_SharedLink1_remove">Remove</button>
+					</span>
+					<span id="sl2">
+						<input maxlength="200" placeholder="Place Link here" type="text"
+							class="form-control collapse m-b-5" name="ot_SharedLink2" id="ot_SharedLink2"
+							value="<%%VALUE(ot_SharedLink2)%%>">
+							<a id="ot_SharedLink2-link" href="link.php?t=projects&f=ot_SharedLink2&i=<%%VALUE(Id)%%>" target="_blank"><i class="glyphicon glyphicon-globe" title="<%%VALUE(ot_SharedLink2)%%>" style="font-size: x-large; top: .35em;"></i></a>
+							<script>jQuery(function(){ /* */ var e_ot_SharedLink2 = '<%%VALUE(ot_SharedLink2)%%>'; if(e_ot_SharedLink2 == '' || e_ot_SharedLink2 == '&nbsp;' || e_ot_SharedLink2 == 'blank.gif') jQuery('#ot_SharedLink2-link').hide(); });</script>
+						<button type="button" class="btn  btn-sm btn-outline-danger m-b-5"
+							id="ot_SharedLink2_remove">Remove</button>
+					</span>
 
-						<button type="button" class="btn btn-circle btn-sm btn-light btn-block mx-auto" id="addLink" for="editAttachment"><i class="fa fa-plus" aria-hidden="true"></i></button>
+					<button type="button" class="btn btn-circle btn-sm btn-light btn-block mx-auto" id="addLink" for="editAttachment"><i class="fa fa-plus" aria-hidden="true"></i></button>
 
 				</div>
 			</div>
@@ -217,61 +192,59 @@
 			<hr><br>
 
 			<div class="form-group row">
-				<label class="control-label col-lg-2">Document<div class="text-muted">Attached <span id="totalDocumentAttached"></span>/3</div></label>
+				<label class="control-label col-lg-2">Documents<div class="text-muted">Attached <span id="totalDocumentAttached"></span>/3</div></label>
 				<div class="col-lg-10">
 					<span class="attach-group">
 						<a id="ot_Ref01-link" href="link.php?t=projects&f=ot_Ref01&i=<%%VALUE(Id)%%>"
-								target="_blank" aria-labelledby="attachment-readMode">
-								<%%VALUE(ot_Ref01)%%>
-							</a>
-							<script>jQuery(function () { /* */ var e_ot_Ref01 = '<%%VALUE(ot_Ref01)%%>'; if (e_ot_Ref01 == '' || e_ot_Ref01 == '&nbsp;' || e_ot_Ref01 == 'blank.gif') jQuery('#ot_Ref01-link').hide(); });</script>
-		
-							<div style="overflow-x: hidden;font-size: small;" >
-								<div class="hidden-md hidden-lg vspacer-lg"></div>
-								<%%UPLOADFILE(ot_Ref01)%%>
-									<%%REMOVEFILE(ot_Ref01)%%>
-							</div>
-		
-							<!------>
-		
-							<a id="ot_Ref02-link" href="link.php?t=projects&f=ot_Ref02&i=<%%VALUE(Id)%%>"
-								target="_blank" aria-labelledby="attachment-readMode">
-								<%%VALUE(ot_Ref02)%%>
-							</a>
-							<script>jQuery(function () { /* */ var e_ot_Ref02 = '<%%VALUE(ot_Ref02)%%>'; if (e_ot_Ref02 == '' || e_ot_Ref02 == '&nbsp;' || e_ot_Ref02 == 'blank.gif') jQuery('#ot_Ref02-link').hide(); });</script>
-		
-							<div style="overflow-x: hidden;font-size: small;" >
-								<div class="hidden-md hidden-lg vspacer-lg"></div>
-								<%%UPLOADFILE(ot_Ref02)%%>
-									<%%REMOVEFILE(ot_Ref02)%%>
-							</div>
-		
-							<!------>
-		
-							<a id="ot_Ref03-link" href="link.php?t=projects&f=ot_Ref03&i=<%%VALUE(Id)%%>"
-								target="_blank" aria-labelledby="attachment-readMode">
-								<%%VALUE(ot_Ref03)%%>
-							</a>
-							<script>jQuery(function () { /* */ var e_ot_Ref03 = '<%%VALUE(ot_Ref03)%%>'; if (e_ot_Ref03 == '' || e_ot_Ref03 == '&nbsp;' || e_ot_Ref03 == 'blank.gif') jQuery('#ot_Ref03-link').hide(); });</script>
-		
-							<div style="overflow-x: hidden;font-size: small;" >
-								<div class="hidden-md hidden-lg vspacer-lg"></div>
-								<%%UPLOADFILE(ot_Ref03)%%>
-									<%%REMOVEFILE(ot_Ref03)%%>
-							</div>
-							<button type="button" class="btn btn-circle btn-sm btn-light btn-block my-auto mx-5" id="addDocument" for="editAttachment"><i class="fa fa-plus" aria-hidden="true"></i></button>
+							target="_blank" aria-labelledby="attachment-readMode">
+							<%%VALUE(ot_Ref01)%%>
+						</a>
+						<script>jQuery(function () { /* */ var e_ot_Ref01 = '<%%VALUE(ot_Ref01)%%>'; if (e_ot_Ref01 == '' || e_ot_Ref01 == '&nbsp;' || e_ot_Ref01 == 'blank.gif') jQuery('#ot_Ref01-link').hide(); });</script>
+	
+						<div style="overflow-x: hidden;font-size: small;" >
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(ot_Ref01)%%>
+							<%%REMOVEFILE(ot_Ref01)%%>
+						</div>
+
+						<!------>
+
+						<a id="ot_Ref02-link" href="link.php?t=projects&f=ot_Ref02&i=<%%VALUE(Id)%%>"
+							target="_blank" aria-labelledby="attachment-readMode">
+							<%%VALUE(ot_Ref02)%%>
+						</a>
+						<script>jQuery(function () { /* */ var e_ot_Ref02 = '<%%VALUE(ot_Ref02)%%>'; if (e_ot_Ref02 == '' || e_ot_Ref02 == '&nbsp;' || e_ot_Ref02 == 'blank.gif') jQuery('#ot_Ref02-link').hide(); });</script>
+	
+						<div style="overflow-x: hidden;font-size: small;" >
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(ot_Ref02)%%>
+							<%%REMOVEFILE(ot_Ref02)%%>
+						</div>
+	
+						<!------>
+	
+						<a id="ot_Ref03-link" href="link.php?t=projects&f=ot_Ref03&i=<%%VALUE(Id)%%>"
+							target="_blank" aria-labelledby="attachment-readMode">
+							<%%VALUE(ot_Ref03)%%>
+						</a>
+						<script>jQuery(function () { /* */ var e_ot_Ref03 = '<%%VALUE(ot_Ref03)%%>'; if (e_ot_Ref03 == '' || e_ot_Ref03 == '&nbsp;' || e_ot_Ref03 == 'blank.gif') jQuery('#ot_Ref03-link').hide(); });</script>
+	
+						<div style="overflow-x: hidden;font-size: small;" >
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(ot_Ref03)%%>
+							<%%REMOVEFILE(ot_Ref03)%%>
+						</div>
+						<button type="button" class="btn btn-circle btn-sm btn-light btn-block my-auto mx-5" id="addDocument" for="editAttachment"><i class="fa fa-plus" aria-hidden="true"></i></button>
 					</span>
-
-					
+					<br />
 					<p class="control-label text-muted" for="editAttachment">Maximum file size allowed: 64000KB.<br>Allowed file types: txt, doc, docx, docm, odt, pdf, rtf</p>
-
 				</div>
 			</div>
 
 			<hr><br>
 
 			<div class="form-group row">
-				<label class="control-label col-lg-2">Compressed Folder<div class="text-muted">Attached <span id="totalCompFolderAttached"></span>/3</div></label>
+				<label class="control-label col-lg-2">Compressed Folders<div class="text-muted">Attached <span id="totalCompFolderAttached"></span>/3</div></label>
 				<div class="col-lg-10">
 					<span class="attach-group">
 						<a id="ot_Ref04-link" href="link.php?t=projects&f=ot_Ref04&i=<%%VALUE(Id)%%>"
@@ -283,7 +256,7 @@
 						<div style="overflow-x: hidden;font-size: small;" >
 							<div class="hidden-md hidden-lg vspacer-lg"></div>
 							<%%UPLOADFILE(ot_Ref04)%%>
-								<%%REMOVEFILE(ot_Ref04)%%>
+							<%%REMOVEFILE(ot_Ref04)%%>
 						</div>
 
 						<!------>
@@ -297,7 +270,7 @@
 						<div style="overflow-x: hidden;font-size: small;" >
 							<div class="hidden-md hidden-lg vspacer-lg"></div>
 							<%%UPLOADFILE(ot_Ref05)%%>
-								<%%REMOVEFILE(ot_Ref05)%%>
+							<%%REMOVEFILE(ot_Ref05)%%>
 						</div>
 
 						<!------>
@@ -311,25 +284,24 @@
 						<div style="overflow-x: hidden;font-size: small;" >
 							<div class="hidden-md hidden-lg vspacer-lg"></div>
 							<%%UPLOADFILE(ot_Ref06)%%>
-								<%%REMOVEFILE(ot_Ref06)%%>
+							<%%REMOVEFILE(ot_Ref06)%%>
 						</div>
 						<button type="button" class="btn btn-circle btn-sm btn-light btn-block my-auto mx-5" id="addCompFolder" for="editAttachment"><i class="fa fa-plus" aria-hidden="true"></i></button>
 					</span>
 					<br />
 					<p class="control-label text-muted" for="editAttachment">Maximum file size allowed: 64000KB.<br>Allowed file types: zip, rar, gz, tar, iso</p>
-
 				</div>
 			</div>
 
 			<hr><br>
 
 			<div class="form-group row">
-				<label class="control-label col-lg-2">Photo<div class="text-muted">Attached <span id="totalPhotoAttached"></span>/3</div></label>
+				<label class="control-label col-lg-2">Photos<div class="text-muted">Attached <span id="totalPhotoAttached"></span>/3</div></label>
 				<div class="col-lg-10">
 					<span class="attach-group">
 						<a id="ot_Photo01-link"
 							href="link.php?t=projects&f=ot_Photo01&i=<%%VALUE(Id)%%>" target="_blank" aria-labelledby="attachment-readMode">
-							<img src="./images/<%%VALUE(ot_Photo01)%%>" height="200"  aria-labelledby="attachment-readMode" />
+							<img src="<%%TRANSLATION(ImageFolder)%%><%%VALUE(ot_Photo01)%%>" height="200"  aria-labelledby="attachment-readMode" />
 							<br/>
 							<%%VALUE(ot_Photo01)%%>
 						</a>
@@ -338,14 +310,14 @@
 						<div style="overflow-x: hidden;font-size: small;" >
 							<div class="hidden-md hidden-lg vspacer-lg"></div>
 							<%%UPLOADFILE(ot_Photo01)%%>
-								<%%REMOVEFILE(ot_Photo01)%%>
+							<%%REMOVEFILE(ot_Photo01)%%>
 						</div>
 
 						<!------>
 
 						<a id="ot_Photo02-link"
 							href="link.php?t=projects&f=ot_Photo02&i=<%%VALUE(Id)%%>" target="_blank" aria-labelledby="attachment-readMode">
-							<img src="./images/<%%VALUE(ot_Photo02)%%>" height="200" aria-labelledby="attachment-readMode" />
+							<img src="<%%TRANSLATION(ImageFolder)%%><%%VALUE(ot_Photo02)%%>" height="200" aria-labelledby="attachment-readMode" />
 							<br/>
 							<%%VALUE(ot_Photo02)%%>
 						</a>
@@ -354,14 +326,14 @@
 						<div style="overflow-x: hidden;font-size: small;" >
 							<div class="hidden-md hidden-lg vspacer-lg"></div>
 							<%%UPLOADFILE(ot_Photo02)%%>
-								<%%REMOVEFILE(ot_Photo02)%%>
+							<%%REMOVEFILE(ot_Photo02)%%>
 						</div>
 
 						<!------>
 
 						<a id="ot_Photo03-link"
 							href="link.php?t=projects&f=ot_Photo03&i=<%%VALUE(Id)%%>" target="_blank" aria-labelledby="attachment-readMode">
-							<img src="./images/<%%VALUE(ot_Photo03)%%>" height="200"  aria-labelledby="attachment-readMode" />
+							<img src="<%%TRANSLATION(ImageFolder)%%><%%VALUE(ot_Photo03)%%>" height="200"  aria-labelledby="attachment-readMode" />
 							<br/>
 							<%%VALUE(ot_Photo03)%%>
 						</a>
@@ -370,13 +342,12 @@
 						<div style="overflow-x: hidden;font-size: small;" >
 							<div class="hidden-md hidden-lg vspacer-lg"></div>
 							<%%UPLOADFILE(ot_Photo03)%%>
-								<%%REMOVEFILE(ot_Photo03)%%>
-							</div>
-							<button type="button" class="btn btn-circle btn-sm btn-light btn-block my-auto mx-5" id="addPhoto" for="editAttachment"><i class="fa fa-plus" aria-hidden="true"></i></button>
+							<%%REMOVEFILE(ot_Photo03)%%>
+						</div>
+						<button type="button" class="btn btn-circle btn-sm btn-light btn-block my-auto mx-5" id="addPhoto" for="editAttachment"><i class="fa fa-plus" aria-hidden="true"></i></button>
 					</span>
 					<br />
 					<p class="control-label text-muted" for="editAttachment">Maximum file size allowed: 10000KB.<br>Allowed file types: jpg, jpeg, gif, png</p>
-					
 				</div>
 			</div>
 		</div>
@@ -426,33 +397,6 @@
 
 		</div>
 	</div>
-	
-	<!-- form inputs -->
-	<!-- <div class="col-md-8 col-lg-10" id="projects_dv_form">
-			<fieldset class="form-horizontal">
-
-				<div class="form-group">
-					<hr class="hidden-md hidden-lg">
-					<label for="ot_ap_filed" class="control-label col-lg-3">Filed <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#ot_ap_filed-description"></i></label>
-					<div class="col-lg-9">
-						<span class="help-block collapse" id="ot_ap_filed-description"><div class="alert alert-info">This field is automatically populated with the date and time when this record was created.</div></span>
-
-						<div class="form-control-static" id="ot_ap_filed"><%%VALUE(ot_ap_filed)%%></div>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<hr class="hidden-md hidden-lg">
-					<label for="ot_ap_lastmodified" class="control-label col-lg-3">Last modified <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#ot_ap_lastmodified-description"></i></label>
-					<div class="col-lg-9">
-						<span class="help-block collapse" id="ot_ap_lastmodified-description"><div class="alert alert-info">This field is automatically populated with the date and time when this record was last modified.</div></span>
-
-						<div class="form-control-static" id="ot_ap_lastmodified"><%%VALUE(ot_ap_lastmodified)%%></div>
-					</div>
-				</div>
-
-			</fieldset>
-		</div> -->
 
 	<!-- DV action buttons -->
 	<hr class="hidden-md hidden-lg">
@@ -460,7 +404,7 @@
 		<input type="checkbox" name="adminToggle" class="adminToggle" />
 		<a class="adminButton" href="#!"><i class="ti-more"></i></a>
 		<div class="adminButtons">
-			<button style="width:unset;height:unset;color:unset;border:none;background:none;display:none;" title="' . html_attr($Translation['Back']) . '" type="submit" name="backToReadMode" id="backToReadMode" value="1" ><a href="#" title="' . html_attr($Translation['Back']) . '"><i class="ti-arrow-left"></i></a></button>
+			<%%CANCELEDIT_BUTTON%%>
 			<%%DESELECT_BUTTON%%>
 			<%%DVPRINT_BUTTON%%>
 			<%%DELETE_BUTTON%%>
@@ -497,16 +441,7 @@
 
 </style>
 <script>
-
 	$j(function () {
-
-		/////////////////////////////////////
-		
-
-		
-
-		///////////////////////////////////////////////
-
 		var add_new_mode = (!$j('input[name=SelectedID]').val());
 		var embedded_mode = ($j('input[name=Embedded]').val() == 1);
 
@@ -532,11 +467,11 @@
 			$j('select, input[type=text], textarea').not(':disabled').eq(0).focus();
 		}
 
-		$j('form').eq(0).change(function () {
-			if ($j(this).data('already_changed')) return;
-			if ($j('#deselect').length) $j('#deselect').removeClass('btn-default').addClass('btn-warning').get(0).lastChild.data = " <%%TRANSLATION(Cancel)%%>";
-			$j(this).data('already_changed', true);
-		});
+		// $j('form').eq(0).change(function () {
+		// 	if ($j(this).data('already_changed')) return;
+		// 	if ($j('#deselect').length) $j('#deselect').removeClass('btn-default').addClass('btn-warning').get(0).lastChild.data = " <%%TRANSLATION(Cancel)%%>";
+		// 	$j(this).data('already_changed', true);
+		// });
 
 		$j('a[href="<%%TRANSLATION(ImageFolder)%%>"]').click(function () { /* */ return false; });
 
@@ -654,57 +589,23 @@
 			}
 		});
 
-		/////////////////DROPIFY/////////////////////////
-
+		/* initialize dropify */
 		$j(document).ready(function(){
-			// Basic
-			//$j('.dropify').dropify();
-
-			// Used events
 			var drEvent = [];
 			$j('.dropify').each(function(i, e){
 				drEvent[i] = $j(e).dropify();
 			})
 			for(x=0; x<drEvent.length; x++){
-				// drEvent[x].on('dropify.beforeClear', function(event, element){
-				// 	return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
-				// });
 				drEvent[x].on('dropify.afterClear', function(event, element){
 					calcAttached("attach-documents", "totalDocumentAttached");
 					calcAttached("attach-compressed-folders", "totalCompFolderAttached");
 					calcAttached("attach-images", "totalPhotoAttached");
 				});
 
-				// drEvent[x].on('dropify.errors', function(event, element){
-				// 	console.log('Has Errors');
-				// });
+				drEvent[x].on('dropify.errors', function(event, element){
+					console.log('Dropify ' + element + ' has errors');
+				});
 			}
-
-			// Used events
-			// var drEvent = $j('#ot_Ref01').dropify();
-
-			// drEvent.on('dropify.beforeClear', function(event, element){
-			// 	return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
-			// });
-
-			// drEvent.on('dropify.afterClear', function(event, element){
-			// 	alert('File deleted');
-			// });
-
-			// drEvent.on('dropify.errors', function(event, element){
-			// 	console.log('Has Errors');
-			// });
-
-			// var drDestroy = $j('#input-file-to-destroy').dropify();
-			// drDestroy = drDestroy.data('dropify')
-			// $j('#toggleDropify').on('click', function(e){
-			// 	e.preventDefault();
-			// 	if (drDestroy.isDropified()) {
-			// 		drDestroy.destroy();
-			// 	} else {
-			// 		drDestroy.init();
-			// 	}
-			// })
 		});
 
 	});

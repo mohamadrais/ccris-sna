@@ -21,7 +21,7 @@ while( $rows = db_fetch_row($events) ) {
         case 2:
             $class = 'event-info';
             $status = 'On Going';
-            $statusClass = 'label label-light-info';
+            $statusClass = 'label label-light-megna';
             break;
         case 3:
             $class = 'event-warning';

@@ -1,62 +1,60 @@
 <!-- Edit this file to change the layout of the detail view form -->
 
 <a name="detail-view"></a>
-<div class="panel-heading"><h3 class="panel-title"><strong><%%DETAIL_VIEW_TITLE%%></strong></h3></div>
+<div class="panel-heading"></div>
 
-<div class="panel-body" id="ReportComment_dv_container">
+<div id="ReportComment_dv_container">
 	<!-- child links -->
-	<div class="row vspacer-md">
+	<!-- <div class="row vspacer-md"> -->
 		<div class="col-xs-12">
 			<div class="clearfix"></div>
 		</div>
-	</div>
-	<hr class="hidden-xs hidden-sm">
+	<!-- </div> -->
+	<!-- <hr class="hidden-xs hidden-sm"> -->
 
-	<div class="row">
-		<!-- form inputs -->
-		<div class="col-md-8 col-lg-10" id="ReportComment_dv_form">
-			<fieldset class="form-horizontal">
 
-				<div class="form-group">
+<div id="ReportComment_dv_form">
+	<!-- <div class="row"> -->
+		<div class="tab-content w-100">
+				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="RunningID" class="control-label col-lg-3">Comment ID</label>
-					<div class="col-lg-9">
+					<label for="RunningID" class="control-label col-lg-2">Comment ID</label>
+					<div class="col-lg-10">
 						<div class="form-control-static" id="RunningID" aria-labelledby="selectedID"><%%VALUE(RunningID)%%></div>
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="PostID" class="control-label col-lg-3" data-parent_link="view_parent_modal">Commenting on <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#PostID-description"></i></label>
-					<div class="col-lg-9">
-						<span class="help-block collapse" id="PostID-description"><div class="alert alert-info">This field is a lookup field that gets its data from the Orders table. Since the Orders table has a large number of orders, AppGini automatically displays this lookup field as an<br />auto-complete. Type part of the order number to see a list of matching orders to choose from.</div></span>
-
+					<label for="PostID" class="control-label col-lg-2" data-parent_link="view_parent_modal">Commenting on <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#PostID-description"></i></label>
+					<div class="col-lg-10">
 						<div class="form-control-static" style="white-space: nowrap; overflow-x: hidden;"><%%COMBO(PostID)%%><%%PLINK(PostID)%%><%%ADDNEW(IMSReport)%%></div>
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="TextPost" class="control-label col-lg-3">Comment</label>
-					<div class="col-lg-9">
+					<label for="TextPost" class="control-label col-lg-2">Comment</label>
+					<div class="col-lg-10">
 						<textarea class="form-control" name="TextPost" id="TextPost" rows="5"><%%VALUE(TextPost)%%></textarea>
 					</div>
 				</div>
-
-				<div class="form-group">
+		</div>
+<!--
+				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="filed" class="control-label col-lg-3">Write on <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#filed-description"></i></label>
-					<div class="col-lg-9">
+					<label for="filed" class="control-label col-lg-2">Write on <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#filed-description"></i></label>
+					<div class="col-lg-10">
 						<span class="help-block collapse" id="filed-description"><div class="alert alert-info">This field is automatically populated with the date and time when this record was created.</div></span>
 
 						<div class="form-control-static" id="filed"><%%VALUE(filed)%%></div>
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="last_modified" class="control-label col-lg-3">Last modified <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#last_modified-description"></i></label>
-					<div class="col-lg-9">
+					<label for="last_modified" class="control-label col-lg-2">Last modified <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#last_modified-description"></i></label>
+					<div class="col-lg-10">
 						<span class="help-block collapse" id="last_modified-description"><div class="alert alert-info">This field is automatically populated with the date and time when this record was last modified.</div></span>
 
 						<div class="form-control-static" id="last_modified"><%%VALUE(last_modified)%%></div>
@@ -65,33 +63,45 @@
 
 			</fieldset>
 		</div>
-
+-->
 		<!-- DV action buttons -->
 		<hr class="hidden-md hidden-lg">
-		<div class="col-md-4 col-lg-2" id="ReportComment_dv_action_buttons">
-			<div class="btn-toolbar">
-				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
-					<%%UPDATE_BUTTON%%>
-				</div><p></p>
-				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
-					<%%DESELECT_BUTTON%%>
-					<%%DVPRINT_BUTTON%%>
-					<%%DELETE_BUTTON%%>
-				</div><p></p>
-				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
-					<%%INSERT_BUTTON%%>
-				</div>
-				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
-					<%%ATTACH_BUTTON%%>
-				</div>
-			</div>
+	<div id="adminActions" class="adminActions"> <!-- <div class="col-md-4 col-lg-2" id="ReportComment_dv_action_buttons"> -->
+		<input type="checkbox" name="adminToggle" class="adminToggle" />
+		<a class="adminButton" href="#!"><i class="ti-more"></i></a>
+		<div class="adminButtons">
+			<%%CANCELEDIT_BUTTON%%>
+			<%%DESELECT_BUTTON%%>
+			<%%DVPRINT_BUTTON%%>
+			<%%DELETE_BUTTON%%>
+			<%%INSERT_BUTTON%%>
+			<%%ATTACH_BUTTON%%>
 		</div>
 	</div>
+	<div class="adminActions"style="right:90px; bottom:40px">
+		<%%EDIT_BUTTON%%>
+		<%%UPDATE_BUTTON%%>
+	</div>
+</div>
 
 
 </div><!-- /div class="panel-body" -->
+	<style>
+		input[readonly], input[readonly="readonly"] {
+			border:unset;
+		}
+
+		input[readonly]::-webkit-input-placeholder, input[readonly="readonly"]::-webkit-input-placeholder {
+			color:transparent;
+		}
+
+		input[readonly]:-ms-input-placeholder, input[readonly="readonly"]:-ms-input-placeholder {  
+			color:transparent;
+		}
+
+	</style>
 	<script>
-		$j(function() {
+		$j(function () {
 			var add_new_mode = (!$j('input[name=SelectedID]').val());
 			var embedded_mode = ($j('input[name=Embedded]').val() == 1);
 
@@ -110,11 +120,6 @@
 				$j('select, input[type=text], textarea').not(':disabled').eq(0).focus();
 			}
 
-			$j('form').eq(0).change(function(){
-				if($j(this).data('already_changed')) return;
-				if($j('#deselect').length) $j('#deselect').removeClass('btn-default').addClass('btn-warning').get(0).lastChild.data = " <%%TRANSLATION(Cancel)%%>";
-				$j(this).data('already_changed', true);
-			});
 
 			$j('a[href="<%%TRANSLATION(ImageFolder)%%>"]').click(function(){ /* */ return false; });
 
@@ -181,8 +186,8 @@
 
 
 			/* load admin tools for admin user */
-			if(!add_new_mode){
-				$j('body').append('<div id="admin-tools-appendix"></div>');
+			if (!add_new_mode) {
+				$j('#record-heading').append('<span id="admin-tools-appendix"></span>');
 				$j('#admin-tools-appendix').load(
 					'ajax_admin_tools.php?table=ReportComment&id=<%%URLVALUE(RunningID)%%>',
 					function(resp){
@@ -193,9 +198,28 @@
 			}
 
 			/* warn user if 'add new' clicked while unsaved changes exist */
-			$j('#addNew').click(function(){
-				if($j('#deselect.btn-warning').length){
+			$j('#addNew').click(function () {
+				if ($j('#deselect.btn-warning').length) {
 					return confirm('<%%TRANSLATION(discard changes confirm)%%>');
+				}
+			});
+
+			/* initialize dropify */
+			$j(document).ready(function(){
+				var drEvent = [];
+				$j('.dropify').each(function(i, e){
+					drEvent[i] = $j(e).dropify();
+				})
+				for(x=0; x<drEvent.length; x++){
+					drEvent[x].on('dropify.afterClear', function(event, element){
+						calcAttached("attach-documents", "totalDocumentAttached");
+						calcAttached("attach-compressed-folders", "totalCompFolderAttached");
+						calcAttached("attach-images", "totalPhotoAttached");
+					});
+
+					drEvent[x].on('dropify.errors', function(event, element){
+						console.log('Dropify ' + element + ' has errors');
+					});
 				}
 			});
 

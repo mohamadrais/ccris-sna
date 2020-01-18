@@ -1,75 +1,75 @@
 <!-- Edit this file to change the layout of the detail view form -->
 
 <a name="detail-view"></a>
-<div class="panel-heading"><h3 class="panel-title"><strong><%%DETAIL_VIEW_TITLE%%></strong></h3></div>
+<div class="panel-heading"></div>
 
-<div class="panel-body" id="kpi_dv_container">
+<div id="kpi_dv_container">
 	<!-- child links -->
-	<div class="row vspacer-md">
+	<!-- <div class="row vspacer-md"> -->
 		<div class="col-xs-12">
 			<div class="clearfix"></div>
 		</div>
-	</div>
-	<hr class="hidden-xs hidden-sm">
+	<!-- </div> -->
+	<!-- <hr class="hidden-xs hidden-sm"> -->
 
-	<div class="row">
-		<!-- form inputs -->
-		<div class="col-md-8 col-lg-10" id="kpi_dv_form">
-			<fieldset class="form-horizontal">
 
-				<div class="form-group">
+<div id="kpi_dv_form">
+	<!-- <div class="row"> -->
+		<div class="tab-content w-100">
+				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="id" class="control-label col-lg-3">ID</label>
-					<div class="col-lg-9">
+					<label for="id" class="control-label col-lg-2">ID</label>
+					<div class="col-lg-10">
 						<div class="form-control-static" id="id"><%%VALUE(id)%%></div>
 					</div>
 				</div>
 
-				<!-- <div class="form-group">
+				<!-- <div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="ot_ap_Date" class="control-label col-lg-3">Date</label>
-					<div class="col-lg-9">
+					<label for="ot_ap_Date" class="control-label col-lg-2">Date</label>
+					<div class="col-lg-10">
 						<div class="form-control-static" id="ot_ap_Date"><%%COMBOTEXT(ot_ap_Date)%%></div>
 					</div>
 				</div> -->
 
-				<div class="form-group">
+				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="fo_Section_Caption" class="control-label col-lg-3">Section</label>
-					<div class="col-lg-9">
+					<label for="fo_Section_Caption" class="control-label col-lg-2">Section</label>
+					<div class="col-lg-10">
 						<!-- <input maxlength="100" type="text" class="form-control" name="fo_Section_Caption" id="fo_Section_Caption" value="<%%VALUE(fo_Section_Caption)%%>"> -->
 						<div class="form-control-static" id="fo_Section_Caption"><%%VALUE(fo_Section_Caption)%%></div>
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="fo_MinRecordRequired" class="control-label col-lg-3">Minimum Records Required</label>
-					<div class="col-lg-9">
+					<label for="fo_MinRecordRequired" class="control-label col-lg-2">Minimum Records Required</label>
+					<div class="col-lg-10">
 						<input maxlength="" type="text" class="form-control" name="fo_MinRecordRequired" id="fo_MinRecordRequired" value="<%%VALUE(fo_MinRecordRequired)%%>">
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="fo_TaskCompDuration" class="control-label col-lg-3">Task Completion Duration</label>
-					<div class="col-lg-9">
+					<label for="fo_TaskCompDuration" class="control-label col-lg-2">Task Completion Duration</label>
+					<div class="col-lg-10">
 						<input maxlength="" type="text" class="form-control" name="fo_TaskCompDuration" id="fo_TaskCompDuration" value="<%%VALUE(fo_TaskCompDuration)%%>">
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="fo_PercentageAchieved" class="control-label col-lg-3">Percentage of KPI achieved per annum</label>
-					<div class="col-lg-9">
+					<label for="fo_PercentageAchieved" class="control-label col-lg-2">Percentage of KPI achieved per annum</label>
+					<div class="col-lg-10">
 						<div class="form-control-static" id="fo_PercentageAchieved"><%%VALUE(fo_PercentageAchieved)%%></div>
 					</div>
 				</div>
-
-				<div class="form-group">
+		</div>
+<!--
+				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="ot_ap_lastmodified" class="control-label col-lg-3">Last modified <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#ot_ap_lastmodified-description"></i></label>
-					<div class="col-lg-9">
+					<label for="ot_ap_lastmodified" class="control-label col-lg-2">Last modified <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#ot_ap_lastmodified-description"></i></label>
+					<div class="col-lg-10">
 						<span class="help-block collapse" id="ot_ap_lastmodified-description"><div class="alert alert-info">This field is automatically populated with the date and time when this record was last modified.</div></span>
 
 						<div class="form-control-static" id="ot_ap_lastmodified"><%%VALUE(ot_ap_lastmodified)%%></div>
@@ -78,30 +78,44 @@
 
 			</fieldset>
 		</div>
-
+-->
 		<!-- DV action buttons -->
 		<hr class="hidden-md hidden-lg">
-		<div class="col-md-4 col-lg-2" id="kpi_dv_action_buttons">
-			<div class="btn-toolbar">
-				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
-					<%%UPDATE_BUTTON%%>
-				</div><p></p>
-				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
-					<%%DESELECT_BUTTON%%>
-					<%%DVPRINT_BUTTON%%>
-					<%%DELETE_BUTTON%%>
-				</div><p></p>
-				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
-					<%%INSERT_BUTTON%%>
-				</div>
-			</div>
+	<div id="adminActions" class="adminActions"> <!-- <div class="col-md-4 col-lg-2" id="kpi_dv_action_buttons"> -->
+		<input type="checkbox" name="adminToggle" class="adminToggle" />
+		<a class="adminButton" href="#!"><i class="ti-more"></i></a>
+		<div class="adminButtons">
+			<%%CANCELEDIT_BUTTON%%>
+			<%%DESELECT_BUTTON%%>
+			<%%DVPRINT_BUTTON%%>
+			<%%DELETE_BUTTON%%>
+			<%%INSERT_BUTTON%%>
 		</div>
 	</div>
+	<div class="adminActions"style="right:90px; bottom:40px">
+		<%%EDIT_BUTTON%%>
+		<%%UPDATE_BUTTON%%>
+	</div>
+</div>
 
 
 </div><!-- /div class="panel-body" -->
+	<style>
+		input[readonly], input[readonly="readonly"] {
+			border:unset;
+		}
+
+		input[readonly]::-webkit-input-placeholder, input[readonly="readonly"]::-webkit-input-placeholder {
+			color:transparent;
+		}
+
+		input[readonly]:-ms-input-placeholder, input[readonly="readonly"]:-ms-input-placeholder {  
+			color:transparent;
+		}
+
+	</style>
 	<script>
-		$j(function() {
+		$j(function () {
 			var add_new_mode = (!$j('input[name=SelectedID]').val());
 			var embedded_mode = ($j('input[name=Embedded]').val() == 1);
 
@@ -120,11 +134,6 @@
 				$j('select, input[type=text], textarea').not(':disabled').eq(0).focus();
 			}
 
-			$j('form').eq(0).change(function(){
-				if($j(this).data('already_changed')) return;
-				if($j('#deselect').length) $j('#deselect').removeClass('btn-default').addClass('btn-warning').get(0).lastChild.data = " <%%TRANSLATION(Cancel)%%>";
-				$j(this).data('already_changed', true);
-			});
 
 			$j('a[href="<%%TRANSLATION(ImageFolder)%%>"]').click(function(){ /* */ return false; });
 
@@ -191,8 +200,8 @@
 
 
 			/* load admin tools for admin user */
-			if(!add_new_mode){
-				$j('body').append('<div id="admin-tools-appendix"></div>');
+			if (!add_new_mode) {
+				$j('#record-heading').append('<span id="admin-tools-appendix"></span>');
 				$j('#admin-tools-appendix').load(
 					'ajax_admin_tools.php?table=kpi&id=<%%URLVALUE(id)%%>',
 					function(resp){
@@ -203,9 +212,28 @@
 			}
 
 			/* warn user if 'add new' clicked while unsaved changes exist */
-			$j('#addNew').click(function(){
-				if($j('#deselect.btn-warning').length){
+			$j('#addNew').click(function () {
+				if ($j('#deselect.btn-warning').length) {
 					return confirm('<%%TRANSLATION(discard changes confirm)%%>');
+				}
+			});
+
+			/* initialize dropify */
+			$j(document).ready(function(){
+				var drEvent = [];
+				$j('.dropify').each(function(i, e){
+					drEvent[i] = $j(e).dropify();
+				})
+				for(x=0; x<drEvent.length; x++){
+					drEvent[x].on('dropify.afterClear', function(event, element){
+						calcAttached("attach-documents", "totalDocumentAttached");
+						calcAttached("attach-compressed-folders", "totalCompFolderAttached");
+						calcAttached("attach-images", "totalPhotoAttached");
+					});
+
+					drEvent[x].on('dropify.errors', function(event, element){
+						console.log('Dropify ' + element + ' has errors');
+					});
 				}
 			});
 

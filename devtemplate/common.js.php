@@ -231,7 +231,7 @@ jQuery(function(){
 	$j('a[href="mailto:"]').remove();
 
 	/* Disable action buttons when form is submitted to avoid user re-submission on slow connections */
-	$j('form').eq(0).submit(function(){
+	$j('form').eq(1).submit(function(){
 		setTimeout(function(){
 			$j('#insert, #update, #delete, #deselect').prop('disabled', true);
 		}, 200); // delay purpose is to allow submitting the button values first then disable them.

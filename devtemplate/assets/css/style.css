@@ -138,7 +138,7 @@ display: block; }
   color:white;
 }
 .tab-pane .form-control-static input[value="2"]:checked + label {
-  background-color:#ad3a62;
+  background-color:#01c0c8;
   color:white;
 }
 .tab-pane .form-control-static input[value="3"]:checked + label {
@@ -7492,7 +7492,12 @@ select.form-control:not([size]):not([multiple]){
 .report-label{
   font-size: 1.2rem;
 }
-
 .no-style-button{
   width:unset;height:unset;color:unset;border:none;background:none;
+}
+.not-active {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: black;
 }
