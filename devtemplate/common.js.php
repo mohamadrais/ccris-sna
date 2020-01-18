@@ -2028,7 +2028,7 @@ AppGini.TVScroll = function(){
 			var mod = $j(
 				'<div class="modal fade" tabindex="-1" role="dialog" id="' + op.id + '">' +
 					'<div class="modal-dialog" role="document">' +
-						'<div class="modal-content" style="margin-top: 180px">' +
+						'<div class="modal-content">' +
 							( op.title != undefined ?
 								'<div class="modal-header">' +
 									'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
