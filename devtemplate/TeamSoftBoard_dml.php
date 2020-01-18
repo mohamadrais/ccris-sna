@@ -543,7 +543,7 @@ function TeamSoftBoard_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 
 		$noUploads = true;
 	}elseif($AllowInsert){
 		$jsEditable .= "\tjQuery('form').eq(0).data('already_changed', true);"; // temporarily disable form change handler
-			$jsEditable .= "\tjQuery('form').eq(0).data('already_changed', false);"; // re-enable form change handler
+		$jsEditable .= "\tjQuery('form').eq(0).data('already_changed', false);"; // re-enable form change handler
 	}
 
 	// process combos
@@ -607,6 +607,7 @@ function TeamSoftBoard_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 
 		$templateCode = str_replace( "%%DEFAULTVALUE(Ref01)%%", ' data-default-file="./images/'.html_attr($row['Ref01']).'" ', $templateCode);
 	}else{
 		$templateCode = str_replace( "%%DEFAULTVALUE(Ref01)%%", ' data-default-file="" ', $templateCode);
+	}
 	if($AllowUpdate && $row['Ref01'] != ''){
 		$templateCode = str_replace('<%%REMOVEFILE(Ref01)%%>', '<br><input type="checkbox" name="Ref01_remove" id="Ref01_remove" value="1"> <label for="Ref01_remove" style="color: red; font-weight: bold;">'.$Translation['remove image'].'</label>', $templateCode);
 	}else{
