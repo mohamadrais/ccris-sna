@@ -7501,3 +7501,6 @@ select.form-control:not([size]):not([multiple]){
   text-decoration: none;
   color: black;
 }
+.default-hidden{
+  display: none;
+}

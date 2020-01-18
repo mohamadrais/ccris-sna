@@ -1020,15 +1020,15 @@ function AccountPayables_form($selected_id = '', $AllowUpdate = 1, $AllowInsert 
 			$templateCode = str_replace('<%%EDIT_BUTTON%%>', '', $templateCode);
 		}
 		if($ownerMemberID==getLoggedMemberID()){
-			$templateCode = str_replace('<%%ATTACH_BUTTON%%>', '<button style="width:unset;height:unset;color:unset;border:none;background:none"  id="attach"><a href="#wo_modal" data-toggle="modal" title=" ' . $Translation['Attach'] . '"><i class="ti-clip"></i></a></button>', $templateCode);
+			$templateCode = str_replace('<%%ATTACH_BUTTON%%>', '<button class="no-style-button"  id="attach"><a href="#wo_modal" data-toggle="modal" title=" ' . $Translation['Attach'] . '"><i class="ti-clip"></i></a></button>', $templateCode);
 		}
 		if(($arrPerm[4]==1 && $ownerMemberID==getLoggedMemberID()) || ($arrPerm[4]==2 && $ownerGroupID==getLoggedGroupID()) || $arrPerm[4]==3){ // allow delete?
 			$templateCode = str_replace('<%%DELETE_BUTTON%%>', '<button type="submit" class="no-style-button" id="delete" name="delete_x" value="1" onclick="return confirm(\'' . $Translation['are you sure?'] . '\');"><a href="#" title="' . html_attr($Translation['Delete']) . '"><i class="ti-trash"></i></a></button>', $templateCode);
 		}else{
 			$templateCode = str_replace('<%%DELETE_BUTTON%%>', '', $templateCode);
 		}
-		$templateCode = str_replace('<%%CANCELEDIT_BUTTON%%>', '<button style="width:unset;height:unset;color:unset;border:none;background:none;display:none;" title="' . html_attr($Translation['Cancel']) . '" type="submit" name="backToReadMode" id="backToReadMode" value="1" ><a href="#" title="' . html_attr($Translation['Cancel']) . '"><i class="ti-arrow-left"></i></a></button>', $templateCode);
-		$templateCode = str_replace('<%%DESELECT_BUTTON%%>', '<button style="width:unset;height:unset;color:unset;border:none;background:none"  onClick="' . $backAction . '" title="' . html_attr($Translation['Back']) . '" type="submit" name="deselect_x" id="deselect" value="1" ><a href="#" title="' . html_attr($Translation['Back']) . '"><i class="ti-arrow-left"></i></a></button>', $templateCode);
+		$templateCode = str_replace('<%%CANCELEDIT_BUTTON%%>', '<button class="no-style-button default-hidden" title="' . html_attr($Translation['Cancel']) . '" type="submit" name="backToReadMode" id="backToReadMode" value="1" ><a href="#" title="' . html_attr($Translation['Cancel']) . '"><i class="ti-arrow-left"></i></a></button>', $templateCode);
+		$templateCode = str_replace('<%%DESELECT_BUTTON%%>', '<button class="no-style-button"  onClick="' . $backAction . '" title="' . html_attr($Translation['Back']) . '" type="submit" name="deselect_x" id="deselect" value="1" ><a href="#" title="' . html_attr($Translation['Back']) . '"><i class="ti-arrow-left"></i></a></button>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%EDIT_BUTTON%%>', '', $templateCode);
 		$templateCode = str_replace('<%%ATTACH_BUTTON%%>', '', $templateCode);
