@@ -1,7 +1,8 @@
 <?php
+$admin_config = config('adminConfig');
 $memberInfo = getMemberInfo();
 // echo $memberInfo['group'];
-if ($memberInfo['group'] != 'Admins') {
+if (!($memberInfo['group'] == 'Admins' && $memberInfo['username'] == $admin_config['adminUsername'])) {
 ?>
     <script type='text/javascript'>
         document.observe("dom:loaded", function() {
