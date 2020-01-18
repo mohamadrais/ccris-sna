@@ -433,6 +433,120 @@ if (!($memberInfo['group'] == 'Admins' && $memberInfo['username'] == $admin_conf
 				$j("#updateRecord").show();
 			});
 
+			///////////////////////////////////////////////
+			
+			var _x = $j('#totalLinkAttached').html();
+			if (!_x) {
+				_x = 0;
+			}
+
+			if($j('input[id$="_SharedLink1"]').length){
+				if ($j('input[id$="_SharedLink1"]').val().length > 0) {
+					_x++;
+				}
+			}
+			if($j('input[id$="_SharedLink2"]').length){
+				if ($j('input[id$="_SharedLink2"]').val().length > 0) {
+					_x++;
+				} else {
+					$j('input[id$="_SharedLink2"]').hide();
+					$j('#sl2').hide();
+				}
+			}
+
+			$j('#totalLinkAttached').html(_x);
+
+			$j('input[id$="_SharedLink1"]').on("change paste keyup", function () {
+				var x = 0;
+				if ($j('input[id$="_SharedLink1"]').val().length > 0) {
+					x++;
+				}
+				if ($j('input[id$="_SharedLink2"]').val().length > 0) {
+					x++;
+				}
+				$j('#totalLinkAttached').html(x);
+			});
+			$j('input[id$="_SharedLink2"]').on("change paste keyup", function () {
+				var x = 0;
+				if ($j('input[id$="_SharedLink1"]').val().length > 0) {
+					x++;
+				}
+				if ($j('input[id$="_SharedLink2"]').val().length > 0) {
+					x++;
+				}
+				$j('#totalLinkAttached').html(x);
+			});
+			$j('button[id$="_SharedLink1_remove"]').click(function () {
+				var x = $j('#totalLinkAttached').html();
+				if (!x) {
+					x = 0;
+				}
+				if ($j('input[id$="_SharedLink1"]').val().length > 0 && $j('input[id$="_SharedLink2"]').val().length > 0) {
+					$j('input[id$="_SharedLink1"]').val('');
+					$j('input[id$="_SharedLink1"]').hide();
+					$j('#sl1').hide();
+					$j("#addLink").show();
+					$j('a[id$="_SharedLink1-link"]').prop('href', '');
+					$j('a[id$="_SharedLink1-link"]').hide();
+					x--;
+				} else if ($j('input[id$="_SharedLink1"]').val().length > 0 && $j('input[id$="_SharedLink2"]').val().length == 0) {
+					$j('input[id$="_SharedLink1"]').val('');
+					$j('a[id$="_SharedLink1-link"]').prop('href', '');
+					$j('a[id$="_SharedLink1-link"]').hide();
+					x--;
+				} else if ($j('input[id$="_SharedLink1"]').val().length == 0 && $j('input[id$="_SharedLink2"]').val().length == 0) {
+					$j('input[id$="_SharedLink1"]').hide();
+					$j('#sl1').hide();
+					$j("#addLink").show();
+					$j('a[id$="_SharedLink1-link"]').prop('href', '');
+					$j('a[id$="_SharedLink1-link"]').hide();
+				}
+				$j('#totalLinkAttached').html(x);
+			});
+			$j('button[id$="_SharedLink2_remove"]').click(function () {
+				var x = $j('#totalLinkAttached').html();
+				if (!x) {
+					x = 0;
+				}
+				if ($j('input[id$="_SharedLink1"]').val().length > 0 && $j('input[id$="_SharedLink2"]').val().length > 0) {
+					$j('input[id$="_SharedLink2"]').val('');
+					$j('input[id$="_SharedLink2"]').hide();
+					$j('#sl2').hide();
+					$j("#addLink").show();
+					$j('a[id$="_SharedLink2-link"]').prop('href', '');
+					$j('a[id$="_SharedLink2-link"]').hide();
+					x--;
+				} else if ($j('input[id$="_SharedLink1"]').val().length == 0 && $j('input[id$="_SharedLink2"]').val().length > 0) {
+					$j('input[id$="_SharedLink2"]').val('');
+					$j('a[id$="_SharedLink2-link"]').prop('href', '');
+					$j('a[id$="_SharedLink2-link"]').hide();
+					x--;
+				} else if ($j('input[id$="_SharedLink1"]').val().length == 0 && $j('input[id$="_SharedLink2"]').val().length == 0) {
+					$j('input[id$="_SharedLink2"]').hide();
+					$j('#sl2').hide();
+					$j("#addLink").show();
+					$j('a[id$="_SharedLink2-link"]').prop('href', '');
+					$j('a[id$="_SharedLink2-link"]').hide();
+				}
+				$j('#totalLinkAttached').html(x);
+			});
+			$j("#addLink").click(function () {
+
+				if (!$j('input[id$="_SharedLink1"]').is(":visible")) {
+					$j('input[id$="_SharedLink1"]').show();
+					$j('#sl1').show();
+				} else if (!$j('input[id$="_SharedLink2"]').is(":visible")) {
+					$j('input[id$="_SharedLink2"]').show();
+					$j('#sl2').show();
+				}
+
+				if ($j('input[id$="_SharedLink1"]').is(":visible") && $j('input[id$="_SharedLink2"]').is(":visible")) {
+					$j("#addLink").hide();
+				}
+			});
+			
+			///////////////////////////////////////////////
+
 		}
 
 		$j('[name="myform"]').change(function (e) {
@@ -455,127 +569,18 @@ if (!($memberInfo['group'] == 'Admins' && $memberInfo['username'] == $admin_conf
 		$j("#backToReadMode").click(function(e){
 			e.preventDefault();
 			if ($j('#deselect.btn-warning').length) {
-				confirm = confirm('Discard changes to this record?');
-				if(confirm){
+				var c = confirm('Discard changes to this record?');
+				if(c){
 					reloadDV();
+				}
+				else{
+					return false;
 				}
 			}
 			else{
 				reloadDV();
 			}
-		})
-            
-		///////////////////////////////////////////////
-	
-		var _x = $j('#totalLinkAttached').html();
-		if (!_x) {
-			_x = 0;
-		}
-
-		if ($j('input[id$="_SharedLink1"]').val().length > 0) {
-			_x++;
-		}
-
-		if ($j('input[id$="_SharedLink2"]').val().length > 0) {
-			_x++;
-		} else {
-			$j('input[id$="_SharedLink2"]').hide();
-			$j('#sl2').hide();
-		}
-
-		$j('#totalLinkAttached').html(_x);
-
-		$j('input[id$="_SharedLink1"]').on("change paste keyup", function () {
-			var x = 0;
-			if ($j('input[id$="_SharedLink1"]').val().length > 0) {
-				x++;
-			}
-			if ($j('input[id$="_SharedLink2"]').val().length > 0) {
-				x++;
-			}
-			$j('#totalLinkAttached').html(x);
-		});
-		$j('input[id$="_SharedLink2"]').on("change paste keyup", function () {
-			var x = 0;
-			if ($j('input[id$="_SharedLink1"]').val().length > 0) {
-				x++;
-			}
-			if ($j('input[id$="_SharedLink2"]').val().length > 0) {
-				x++;
-			}
-			$j('#totalLinkAttached').html(x);
-		});
-		$j('button[id$="_SharedLink1_remove"]').click(function () {
-			var x = $j('#totalLinkAttached').html();
-			if (!x) {
-				x = 0;
-			}
-			if ($j('input[id$="_SharedLink1"]').val().length > 0 && $j('input[id$="_SharedLink2"]').val().length > 0) {
-				$j('input[id$="_SharedLink1"]').val('');
-				$j('input[id$="_SharedLink1"]').hide();
-				$j('#sl1').hide();
-				$j("#addLink").show();
-				$j('a[id$="_SharedLink1-link"]').prop('href', '');
-				$j('a[id$="_SharedLink1-link"]').hide();
-				x--;
-			} else if ($j('input[id$="_SharedLink1"]').val().length > 0 && $j('input[id$="_SharedLink2"]').val().length == 0) {
-				$j('input[id$="_SharedLink1"]').val('');
-				$j('a[id$="_SharedLink1-link"]').prop('href', '');
-				$j('a[id$="_SharedLink1-link"]').hide();
-				x--;
-			} else if ($j('input[id$="_SharedLink1"]').val().length == 0 && $j('input[id$="_SharedLink2"]').val().length == 0) {
-				$j('input[id$="_SharedLink1"]').hide();
-				$j('#sl1').hide();
-				$j("#addLink").show();
-				$j('a[id$="_SharedLink1-link"]').prop('href', '');
-				$j('a[id$="_SharedLink1-link"]').hide();
-			}
-			$j('#totalLinkAttached').html(x);
-		});
-		$j('button[id$="_SharedLink2_remove"]').click(function () {
-			var x = $j('#totalLinkAttached').html();
-			if (!x) {
-				x = 0;
-			}
-			if ($j('input[id$="_SharedLink1"]').val().length > 0 && $j('input[id$="_SharedLink2"]').val().length > 0) {
-				$j('input[id$="_SharedLink2"]').val('');
-				$j('input[id$="_SharedLink2"]').hide();
-				$j('#sl2').hide();
-				$j("#addLink").show();
-				$j('a[id$="_SharedLink2-link"]').prop('href', '');
-				$j('a[id$="_SharedLink2-link"]').hide();
-				x--;
-			} else if ($j('input[id$="_SharedLink1"]').val().length == 0 && $j('input[id$="_SharedLink2"]').val().length > 0) {
-				$j('input[id$="_SharedLink2"]').val('');
-				$j('a[id$="_SharedLink2-link"]').prop('href', '');
-				$j('a[id$="_SharedLink2-link"]').hide();
-				x--;
-			} else if ($j('input[id$="_SharedLink1"]').val().length == 0 && $j('input[id$="_SharedLink2"]').val().length == 0) {
-				$j('input[id$="_SharedLink2"]').hide();
-				$j('#sl2').hide();
-				$j("#addLink").show();
-				$j('a[id$="_SharedLink2-link"]').prop('href', '');
-				$j('a[id$="_SharedLink2-link"]').hide();
-			}
-			$j('#totalLinkAttached').html(x);
-		});
-		$j("#addLink").click(function () {
-
-			if (!$j('input[id$="_SharedLink1"]').is(":visible")) {
-				$j('input[id$="_SharedLink1"]').show();
-				$j('#sl1').show();
-			} else if (!$j('input[id$="_SharedLink2"]').is(":visible")) {
-				$j('input[id$="_SharedLink2"]').show();
-				$j('#sl2').show();
-			}
-
-			if ($j('input[id$="_SharedLink1"]').is(":visible") && $j('input[id$="_SharedLink2"]').is(":visible")) {
-				$j("#addLink").hide();
-			}
-		});
-		
-		///////////////////////////////////////////////
-			
+		})			
 		
 	});
 	document.addEventListener("DOMContentLoaded", function (event) {
