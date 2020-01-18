@@ -1515,7 +1515,7 @@ function mass_delete(t, ids){
 								}
 							}
 						});
-						setTimeout(function(){ location.reload(); }, 2000);
+						// setTimeout(function(){ location.reload(); }, 2000);
 					}
 
 					delete_record(0);
@@ -1990,8 +1990,8 @@ AppGini.TVScroll = function(){
 				mhfoh = mod.find(ipm + 'header').outerHeight() + mod.find(ipm + 'footer').outerHeight();
 
 			mod.find(ipm + 'dialog').css({
-				margin: mtm,
-				width: 'calc(100% - 2 * ' + mtm + ')'
+				// margin: mtm,
+				// width: 'calc(100% - 2 * ' + mtm + ')'
 			});
 
 			mod.find(ipm + 'body').css({
