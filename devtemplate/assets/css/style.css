@@ -5854,6 +5854,7 @@ visibility: hidden; }
 .action-icons.notify{
   float: right;
   margin-top: 10px;
+  top: -10px;
 }
 .action-icons i{
   font-size: 1.5rem;
@@ -6948,9 +6949,9 @@ button.login {
     min-height: 750px;
   }
 }
-#page-wrapper{
-  padding-top: 120px !important;
-}
+/* #page-wrapper{
+  padding-top: 120px;
+} */
 .sidebar-nav ul li a.active,
 .sidebar-nav ul li a:hover {
   color: #AC3A61 !important;
