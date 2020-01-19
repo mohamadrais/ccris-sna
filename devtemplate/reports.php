@@ -435,7 +435,7 @@
                 <div class="col-lg-12 col-md-12 pr-2">
                     <div class="card my-3">
                         <div class="card-body px-0" style="max-height: 140px; overflow: hidden;">
-                            <h4 class="card-title m-b-0">Organization Newest Updates  <?php if ($memberInfo['admin']) { ?><a class="btn btn-default btn-sm" href="admin/pageViewRecords.php?sort=dateUpdated&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a><?php } ?></h4>
+                            <h4 class="card-title m-b-0">Organization Newest Updates  <?php if ($memberInfo['admin']) { ?><a class="btn btn-outline-plain btn-sm" href="admin/pageViewRecords.php?sort=dateUpdated&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a><?php } ?></h4>
                             <p class="text-muted">Recent 5</p>
                         </div>
                         <div>
@@ -476,7 +476,7 @@
                 <div class="col-lg-12 col-md-12 pr-2">
                     <div class="card my-3">
                         <div class="card-body px-0" style="max-height: 140px; overflow: hidden;">
-                            <h4 class="card-title m-b-0">Organization Newest Entries  <?php if ($memberInfo['admin']) { ?><a class="btn btn-default btn-sm" href="admin/pageViewRecords.php?sort=dateAdded&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a><?php } ?> </h4>
+                            <h4 class="card-title m-b-0">Organization Newest Entries  <?php if ($memberInfo['admin']) { ?><a class="btn btn-outline-plain btn-sm" href="admin/pageViewRecords.php?sort=dateAdded&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a><?php } ?> </h4>
                             <p class="text-muted">Recent 5</p>
                         </div>
                         <div>

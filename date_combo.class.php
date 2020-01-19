@@ -100,7 +100,7 @@ class DateCombo{
 					$editable_date .= '<td style="width: 25%;" class="date_combo">' . $y . '</td>';
 					break;
 			}
-			if($i == 2) $editable_date .= '<td style="width: 4em;"><button class="btn btn-default btn-block" id="fd-but-' . $this->NamePrefix . '"><i class="glyphicon glyphicon-th"></i></button></td>'; 
+			if($i == 2) $editable_date .= '<td style="width: 4em;"><button class="btn btn-outline-plain btn-block" id="fd-but-' . $this->NamePrefix . '"><i class="ti-calendar"></i></button></td>'; 
 		}
 		$editable_date .= '</tr></table>';
 

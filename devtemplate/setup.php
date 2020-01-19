@@ -120,7 +120,7 @@
 					<div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
 						<h2 class="text-danger"><?php echo $Translation['The following errors occured']; ?></h2>
 						<div class="alert alert-danger"><ul><li><?php echo implode('</li><li>', $errors); ?></li></ul></div>
-						<a class="btn btn-default btn-lg vspacer-lg" href="#" onclick="history.go(-1); return false;"><i class="glyphicon glyphicon-chevron-left"></i> <?php echo $Translation['< back']; ?></a>
+						<a class="btn btn-outline-plain btn-lg vspacer-lg" href="#" onclick="history.go(-1); return false;"><i class="glyphicon glyphicon-chevron-left"></i> <?php echo $Translation['< back']; ?></a>
 					</div>
 				</div>
 			<?php
@@ -210,7 +210,7 @@
 				var a = window.location.href + '?finish=1';
 
 				if(jQuery('div[class="text-danger"]').length){
-					jQuery('body').append('<p class="text-center"><a href="' + a + '" class="btn btn-default vspacer-lg"><?php echo addslashes($Translation['Continue']); ?> <i class="glyphicon glyphicon-chevron-right"></i></a></p>');
+					jQuery('body').append('<p class="text-center"><a href="' + a + '" class="btn btn-outline-plain vspacer-lg"><?php echo addslashes($Translation['Continue']); ?> <i class="glyphicon glyphicon-chevron-right"></i></a></p>');
 				}else{
 					jQuery('body').append('<div id="manual-redir" style="width: 400px; margin: 10px auto;">If not redirected automatically, <a href="<?php echo basename(__FILE__); ?>?finish=1">click here</a>!</div>');
 					window.location = a;
@@ -296,7 +296,7 @@
 			<p style="background-color: white; padding: 20px; margin-bottom: 40px; border-radius: 4px;"><img src="logo.png"></p>
 			<p><?php echo $Translation['setup intro 1']; ?></p>
 			<br><br>
-			<p class="text-center"><button class="btn btn-default" id="show-intro2" type="button"><?php echo $Translation['Continue']; ?> <i class="glyphicon glyphicon-chevron-right"></i></button></p>
+			<p class="text-center"><button class="btn btn-outline-plain" id="show-intro2" type="button"><?php echo $Translation['Continue']; ?> <i class="glyphicon glyphicon-chevron-right"></i></button></p>
 		</div>
 
 		<div id="intro2" class="instructions" style="display: none;">

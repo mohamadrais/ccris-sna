@@ -675,7 +675,7 @@
 				</div>
 				<?php if($saveFiltersFlag == "True"){ ?>
 					<div class="col-md-3 col-lg-2 vspacer-lg">
-						<button type="submit" onclick="beforeApplyFilters(event);return true;" class="btn btn-default btn-block btn-lg" id="SaveFilter" name="SaveFilter_x" value="1"><i class="glyphicon glyphicon-align-left"></i> Save &amp; apply filters</button>
+						<button type="submit" onclick="beforeApplyFilters(event);return true;" class="btn btn-outline-plain btn-block btn-lg" id="SaveFilter" name="SaveFilter_x" value="1"><i class="glyphicon glyphicon-align-left"></i> Save &amp; apply filters</button>
 					</div>
 				<?php } ?>
 				<div class="col-md-3 col-lg-2 vspacer-lg">
@@ -822,7 +822,7 @@
 		?>
 
 		<div class="col-xs-3 col-xs-offset-9 col-md-offset-0 col-md-1">
-			<button type="button" class="btn btn-default vspacer-md btn-block" title='Clear fields' onclick="clearFilters($j(this).parent());" ><span class="glyphicon glyphicon-trash text-danger"></button>
+			<button type="button" class="btn btn-outline-plain vspacer-md btn-block" title='Clear fields' onclick="clearFilters($j(this).parent());" ><span class="glyphicon glyphicon-trash text-danger"></button>
 		</div>
 
 		<?php

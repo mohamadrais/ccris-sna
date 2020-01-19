@@ -127,11 +127,11 @@ if($groupID != ''){
 		<?php echo($groupID ? str_replace('<GROUPNAME>', '<span class="text-info">' . html_attr($name) . '</span>', $Translation['edit group']) : $Translation['add new group']); ?>
 		<div class="pull-right">
 			<div class="btn-group">
-				<a href="pageViewGroups.php" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-arrow-left"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['back to groups']; ?></span></a>
+				<a href="pageViewGroups.php" class="btn btn-outline-plain btn-lg"><i class="glyphicon glyphicon-arrow-left"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['back to groups']; ?></span></a>
 				<?php if($groupID){ ?>
-					<a href="pageViewMembers.php?groupID=<?php echo $groupID; ?>" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-user"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['view group members']; ?></span></a>
-					<a href="pageEditMember.php?groupID=<?php echo $groupID; ?>" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-plus"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['add member to group']; ?></span></a>
-					<a href="pageViewRecords.php?groupID=<?php echo $groupID; ?>" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-th"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['view group records']; ?></span></a>
+					<a href="pageViewMembers.php?groupID=<?php echo $groupID; ?>" class="btn btn-outline-plain btn-lg"><i class="glyphicon glyphicon-user"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['view group members']; ?></span></a>
+					<a href="pageEditMember.php?groupID=<?php echo $groupID; ?>" class="btn btn-outline-plain btn-lg"><i class="glyphicon glyphicon-plus"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['add member to group']; ?></span></a>
+					<a href="pageViewRecords.php?groupID=<?php echo $groupID; ?>" class="btn btn-outline-plain btn-lg"><i class="ti-calendar"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['view group records']; ?></span></a>
 				<?php } ?>
 			</div>
 		</div>

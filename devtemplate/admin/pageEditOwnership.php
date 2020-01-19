@@ -82,7 +82,7 @@
 			?>
 		</div>
 		<div class="col-xs-2 col-sm-1">
-			<a class="btn btn-default" title="<?php echo html_attr($Translation['view all records by group']); ?>" href="pageViewRecords.php?groupID=<?php echo urlencode($groupID); ?>">
+			<a class="btn btn-outline-plain" title="<?php echo html_attr($Translation['view all records by group']); ?>" href="pageViewRecords.php?groupID=<?php echo urlencode($groupID); ?>">
 				<i class="glyphicon glyphicon-chevron-right"></i> 
 			</a>
 		</div>
@@ -99,7 +99,7 @@
 			<span class="help-block"><?php echo $Translation["switch record ownership"]; ?></span>
 		</div>
 		<div class="col-xs-2 col-sm-1">
-			<a class="btn btn-default" title="<?php echo html_attr($Translation['view all records by member']); ?>" href="pageViewRecords.php?memberID=<?php echo urlencode($memberID); ?>">
+			<a class="btn btn-outline-plain" title="<?php echo html_attr($Translation['view all records by member']); ?>" href="pageViewRecords.php?memberID=<?php echo urlencode($memberID); ?>">
 				<span class="glyphicon glyphicon-chevron-right"></span> 
 			</a>
 		</div>
@@ -131,7 +131,7 @@
 			<p class="form-control-static">
 				<a href="pageViewRecords.php?tableName=<?php echo urlencode($tableName); ?>" title="<?php echo html_attr($Translation['view all records of table']); ?>">
 					<?php echo $tableName; ?>
-					<i class="glyphicon glyphicon-th"></i> 
+					<i class="ti-calendar"></i> 
 				</a>
 			</p>
 		</div>
@@ -151,11 +151,11 @@
 					if($row = db_fetch_assoc($res)){
 						?>
 						<div style="margin-bottom: 1em;">
-							<a href="../<?php echo $tableName; ?>_view.php?SelectedID=<?php echo urlencode($pkValue); ?>&dvprint_x=1" target="_blank" class="btn btn-default">
+							<a href="../<?php echo $tableName; ?>_view.php?SelectedID=<?php echo urlencode($pkValue); ?>&dvprint_x=1" target="_blank" class="btn btn-outline-plain">
 								<i class='glyphicon glyphicon-print'></i>
 								<?php echo $Translation["print"]; ?>
 							</a>
-							<a href="../<?php echo $tableName; ?>_view.php?SelectedID=<?php echo urlencode($pkValue); ?>" target="_blank" class="btn btn-default">
+							<a href="../<?php echo $tableName; ?>_view.php?SelectedID=<?php echo urlencode($pkValue); ?>" target="_blank" class="btn btn-outline-plain">
 								<i class='glyphicon glyphicon-pencil'></i>
 								<?php echo $Translation["edit"]; ?>
 							</a>

@@ -83,7 +83,7 @@
 							<?php if (getLoggedAdmin()) { ?>
 							<a class="change-owner-link" href="#"><i class="glyphicon glyphicon-user"></i> <?php echo $this->lang['Change owner']; ?></a>
 							<br>
-							<a class="user-records-link" href="" target="_blank"><i class="glyphicon glyphicon-th"></i> <?php echo str_replace('<tablename>', $tablename, $this->lang['show all user records from table']); ?></a>
+							<a class="user-records-link" href="" target="_blank"><i class="ti-calendar"></i> <?php echo str_replace('<tablename>', $tablename, $this->lang['show all user records from table']); ?></a>
 							<br>
 							<a class="user-email-link" href="" target="_blank"><i class="glyphicon glyphicon-envelope"></i> <?php echo $this->lang['email this user']; ?></a>
 							<?php } ?>
@@ -93,7 +93,7 @@
 						<dd>
 							<div class="owner-group"></div>
 							<?php if (getLoggedAdmin()) { ?>
-							<a class="group-records-link" href="" target="_blank"><i class="glyphicon glyphicon-th"></i> <?php echo str_replace('<tablename>', $tablename, $this->lang['show all group records from table']); ?></a>
+							<a class="group-records-link" href="" target="_blank"><i class="ti-calendar"></i> <?php echo str_replace('<tablename>', $tablename, $this->lang['show all group records from table']); ?></a>
 							<br>
 							<a class="group-email-link" href="" target="_blank"><i class="glyphicon glyphicon-envelope"></i> <?php echo $this->lang['email this group']; ?></a>
 							<?php } ?>

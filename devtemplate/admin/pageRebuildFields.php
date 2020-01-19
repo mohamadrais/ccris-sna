@@ -2851,7 +2851,7 @@
 
 						<tbody>
 						<?php foreach($schema as $tn => $fields){ ?>
-							<tr class="text-info"><td colspan="5"><h4 data-placement="left" data-toggle="tooltip" title="<?php echo str_replace ( "<TABLENAME>" , $tn , $Translation['table name title']) ; ?>"><i class="glyphicon glyphicon-th-list"></i> <?php echo $table_captions[$tn]; ?></h4></td></tr>
+							<tr class="text-info"><td colspan="5"><h4 data-placement="left" data-toggle="tooltip" title="<?php echo str_replace ( "<TABLENAME>" , $tn , $Translation['table name title']) ; ?>"><i class="ti-calendar-list"></i> <?php echo $table_captions[$tn]; ?></h4></td></tr>
 							<?php foreach($fields as $fn => $fd){ ?>
 								<?php $diff = ((prepare_def($fd['appgini']) == prepare_def($fd['db'])) ? false : true); ?>
 								<?php $no_db = ($fd['db'] ? false : true); ?>

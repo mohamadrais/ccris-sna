@@ -1520,7 +1520,6 @@ Notify
   height: 68px;
 }
 .notify-container a{
-  padding: 2.5rem 1rem;
   color: #808080 !important;
 }
 .notify-container a i{
@@ -1528,7 +1527,7 @@ Notify
 }
 .notify {
 position: relative;
-top: -10px;
+top: -25px;
 right: -7px; }
 .notify .heartbit {
   position: absolute;
@@ -5672,9 +5671,15 @@ transform: rotate(-135deg) translate(0, -50%); }
 @media (max-width: 767px) {
 .left-sidebar {
   position: fixed;
-  display: block;
+  display: none;
   height: 100%;
   overflow: auto; }
+.left-sidebar.show{
+  display: block;
+}
+#page-wrapper {
+  padding-top: 80px !important;
+}
 .mini-sidebar.show-sidebar .left-sidebar,
 .mini-sidebar.show-sidebar .sidebar-footer {
   display: block; }
@@ -6729,6 +6734,13 @@ Phone and below ipad(767px)
   overflow: auto; }
 .navbar-brand span{
   display: none !important;
+}
+.topbar .top-navbar .mailbox{
+  width: 100% !important;
+  left: 0px;
+}
+.topbar ul.dropdown-user{
+  width: 100% !important;
 }
 /*Sidebar and wrapper*/
 .mini-sidebar .page-wrapper {

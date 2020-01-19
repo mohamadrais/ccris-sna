@@ -2238,8 +2238,8 @@
 
 <div class="page-header"><h1>
 	<?php echo $Translation['view or rebuild fields'] ; ?>
-	<button type="button" class="btn btn-default" id="show_deviations_only"><i class="glyphicon glyphicon-eye-close"></i> <?php echo $Translation['show deviations only'] ; ?></button>
-	<button type="button" class="btn btn-default hidden" id="show_all_fields"><i class="glyphicon glyphicon-eye-open"></i> <?php echo $Translation['show all fields'] ; ?></button>
+	<button type="button" class="btn btn-outline-plain" id="show_deviations_only"><i class="glyphicon glyphicon-eye-close"></i> <?php echo $Translation['show deviations only'] ; ?></button>
+	<button type="button" class="btn btn-outline-plain hidden" id="show_all_fields"><i class="glyphicon glyphicon-eye-open"></i> <?php echo $Translation['show all fields'] ; ?></button>
 </h1></div>
 
 <p class="lead"><?php echo $Translation['compare tables page'] ; ?></p>
@@ -2256,7 +2256,7 @@
 
 	<tbody>
 	<?php foreach($schema as $tn => $fields){ ?>
-		<tr class="text-info"><td colspan="5"><h4 data-placement="left" data-toggle="tooltip" title="<?php echo str_replace ( "<TABLENAME>" , $tn , $Translation['table name title']) ; ?>"><i class="glyphicon glyphicon-th-list"></i> <?php echo $table_captions[$tn]; ?></h4></td></tr>
+		<tr class="text-info"><td colspan="5"><h4 data-placement="left" data-toggle="tooltip" title="<?php echo str_replace ( "<TABLENAME>" , $tn , $Translation['table name title']) ; ?>"><i class="ti-calendar-list"></i> <?php echo $table_captions[$tn]; ?></h4></td></tr>
 		<?php foreach($fields as $fn => $fd){ ?>
 			<?php $diff = ((prepare_def($fd['appgini']) == prepare_def($fd['db'])) ? false : true); ?>
 			<?php $no_db = ($fd['db'] ? false : true); ?>

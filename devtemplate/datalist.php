@@ -500,7 +500,7 @@ class DataList{
 						$this->HTML .= $Translation["saved filters instructions"];
 						$this->HTML .= '<textarea rows="4" class="form-control vspacer-lg" style="width: 100%;" onfocus="$j(this).select();">' . "&lt;a href=\"{$filter_link}\"&gt;Saved filter link&lt;a&gt;" . '</textarea>';
 						$this->HTML .= "<div><a href=\"{$filter_link}\" title=\"" . html_attr($filter_link) . "\">{$Translation['permalink']}</a></div>";
-						$this->HTML .= '<button type="button" class="btn btn-default btn-block vspacer-lg" onclick="$j(\'#saved_filter_source_code\').remove();"><i class="glyphicon glyphicon-remove"></i> ' . $Translation['hide code'] . '</button>';
+						$this->HTML .= '<button type="button" class="btn btn-outline-plain btn-block vspacer-lg" onclick="$j(\'#saved_filter_source_code\').remove();"><i class="glyphicon glyphicon-remove"></i> ' . $Translation['hide code'] . '</button>';
 					$this->HTML .= '</div>';
 				$this->HTML .= '</div>';
 			$this->HTML .= '</div></div>';
@@ -1034,7 +1034,7 @@ class DataList{
 						// check to see if there is any filter applied on the current field
 						if(isset($this->ccffv[$i]) && in_array($this->ccffv[$i], $FilterField)){
 							// render filter icon
-							$filterHint = '&nbsp;<button type="submit" class="btn btn-default btn-xs' . ($current_view == 'TVP' ? ' disabled' : '') . '" name="Filter_x" value="1" title="'.html_attr($Translation['filtered field']).'"><i class="glyphicon glyphicon-filter"></i></button>';
+							$filterHint = '&nbsp;<button type="submit" class="btn btn-outline-plain btn-xs' . ($current_view == 'TVP' ? ' disabled' : '') . '" name="Filter_x" value="1" title="'.html_attr($Translation['filtered field']).'"><i class="glyphicon glyphicon-filter"></i></button>';
 						}
 					}
 

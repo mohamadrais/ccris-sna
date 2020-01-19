@@ -243,8 +243,8 @@
 											backup_files_list.append(
 												'<h4 class="hspacer-lg backup-file">' + 
 													'<div class="btn-group hspacer-lg">' +
-														'<button type="button" class="btn btn-default restore" data-md5_hash="' + list[i].md5_hash + '"><i class="glyphicon glyphicon-download-alt"></i> ' + restore_backup + '</button>' +
-														'<button type="button" class="btn btn-default delete" data-md5_hash="' + list[i].md5_hash + '"><i class="glyphicon glyphicon-trash"></i> ' + delete_backup + '</button>' +
+														'<button type="button" class="btn btn-outline-plain restore" data-md5_hash="' + list[i].md5_hash + '"><i class="glyphicon glyphicon-download-alt"></i> ' + restore_backup + '</button>' +
+														'<button type="button" class="btn btn-outline-plain delete" data-md5_hash="' + list[i].md5_hash + '"><i class="glyphicon glyphicon-trash"></i> ' + delete_backup + '</button>' +
 													'</div>' +
 													list[i].datetime +
 													' (' + list[i].size + ' KB) ' +

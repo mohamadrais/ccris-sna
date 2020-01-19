@@ -89,7 +89,7 @@
 <div class="col-md-6">
 <div class="panel panel-info">
 	<div class="panel-heading">
-		<h3 class="panel-title"><?php echo $Translation["newest updates"]; ?> <a class="btn btn-default btn-sm" href="pageViewRecords.php?sort=dateUpdated&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a></h3>
+		<h3 class="panel-title"><?php echo $Translation["newest updates"]; ?> <a class="btn btn-outline-plain btn-sm" href="pageViewRecords.php?sort=dateUpdated&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a></h3>
 	</div>
 	<div class="panel-body">
 	<table class="table table-striped table-hover">
@@ -115,7 +115,7 @@
 <div class="col-md-6">
 <div class="panel panel-info">
 	<div class="panel-heading">
-		<h3 class="panel-title"><?php echo $Translation["newest entries"]; ?> <a class="btn btn-default btn-sm" href="pageViewRecords.php?sort=dateAdded&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a></h3>
+		<h3 class="panel-title"><?php echo $Translation["newest entries"]; ?> <a class="btn btn-outline-plain btn-sm" href="pageViewRecords.php?sort=dateAdded&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a></h3>
 	</div>
 	<div class="panel-body">
 	<table class="table table-striped table-hover">

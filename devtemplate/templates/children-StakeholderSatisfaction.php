@@ -91,7 +91,7 @@
 				<a href="#" onclick="<?php echo $current_table; ?>GetChildrenRecordsList({ Verb: 'new' }); return false;" class="btn btn-success hspacer-sm vspacer-md"><i class="ti-plus"></i> <?php echo html_attr($Translation['Add New']); ?></a>
 			<?php } ?>
 		<?php } ?>
-		<?php if($config['display-refresh']){ ?><a href="#" onclick="<?php echo $current_table; ?>GetChildrenRecordsList({ Verb: 'reload' }); return false;" class="btn btn-default hspacer-sm vspacer-md"><i class="glyphicon glyphicon-refresh"></i></a><?php } ?>
+		<?php if($config['display-refresh']){ ?><a href="#" onclick="<?php echo $current_table; ?>GetChildrenRecordsList({ Verb: 'reload' }); return false;" class="btn btn-outline-plain hspacer-sm vspacer-md"><i class="glyphicon glyphicon-refresh"></i></a><?php } ?>
 
 
 		<div class="table-responsive">
@@ -168,8 +168,8 @@
 		<?php if($totalMatches){ ?>
 			<div class="row hidden-print">
 				<div class="col-xs-12">
-					<button type="button" class="btn btn-default" onclick="<?php echo $current_table; ?>GetChildrenRecordsList({ Verb: 'page', Page: 'previous' });"><i class="glyphicon glyphicon-chevron-left"></i></button>
-					<button type="button" class="btn btn-default" onclick="<?php echo $current_table; ?>GetChildrenRecordsList({ Verb: 'page', Page: 'next' });"><i class="glyphicon glyphicon-chevron-right"></i></button>
+					<button type="button" class="btn btn-outline-plain" onclick="<?php echo $current_table; ?>GetChildrenRecordsList({ Verb: 'page', Page: 'previous' });"><i class="glyphicon glyphicon-chevron-left"></i></button>
+					<button type="button" class="btn btn-outline-plain" onclick="<?php echo $current_table; ?>GetChildrenRecordsList({ Verb: 'page', Page: 'next' });"><i class="glyphicon glyphicon-chevron-right"></i></button>
 				</div>
 			</div>
 		<?php } ?>

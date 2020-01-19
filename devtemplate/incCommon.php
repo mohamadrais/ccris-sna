@@ -3349,76 +3349,76 @@
 		<div class="navbar-collapse">
 			<ul class="navbar-nav mr-auto mt-md-0 ">
 			<!-- This is  -->
-			<li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+			<li class="nav-item" id="mobile_menu"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu" style="color: #808080;"></i></a> </li>
 			<li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="icon-arrow-left-circle"></i></a> </li>
 			</ul>
-			<div class="nav-item dropdown notify-container">
-				<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" id="notif-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell-o"></i>
-					<?php $unread = sqlValue("SELECT COUNT(*) FROM `notif` WHERE `active_flag` = 'Y' and `read_flag` = 'N' and memberID = '" . getLoggedMemberID() . "'") ?>
-					<div class="notify"> <span id="notif-heartbit" <?php if($unread != 0) { ?> class="heartbit" <?php } ?>></span> <span id="notif-point" <?php if($unread != 0) { ?> class="point" <?php } ?>></span> </div>
-				</a>
-				<div class="dropdown-menu mailbox animated bounceInDown" aria-labelledby="notif-dropdown">
-					<ul>
-						<li class="d-flex">
-							<div class="drop-title col-md-6">Notification</div>
-							<h7 class="col-md-6 text-right"><a class="nav-link" href="#"  id ='mark-all-read'>Mark all as Read</a></h7>
-						</li>
-						<span id="notifDropdownLoading" style="position: relative; left: 50%"></span>
-						<li>
-							<div class="message-center" id="notif-dropdown-area">
-								<!-- Message -->
-								<!-- <a href="#" class="new">
-									<div class="mail-contnet">
-										<h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span> </div>
-								</a>
-								<a href="#">
-									<div class="mail-contnet">
-										<h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
-								</a>
-								<a href="#">
-									<div class="mail-contnet">
-										<h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span> </div>
-								</a>
-								<a href="#">
-									<div class="mail-contnet">
-										<h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
-								</a> -->
-							</div>
-						</li>
-							<h6><a class="nav-link text-center pb-2" href="notifications.php" id="see-all-notif"> See all <i class="fa fa-angle-right"></i> </a></h6>
-						</li>
-					</ul>
-				</div>
-			</div>
 			<ul class="navbar-nav my-lg-0">
-			<div class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:grey !important;"><i class="fa fa-user-circle" style="font-size: 4rem;vertical-align: middle;"></i></a>
-				<div class="dropdown-menu dropdown-menu-right animated flipInY">
-					<ul class="dropdown-user">
-						<li>
-							<div class="dw-user-box">
-								<div class="u-img"><i class="fa fa-user-circle" style="font-size: 5rem;"></i></div>
-								<div class="u-text">
-									<h4><?php echo getLoggedMemberID(); ?></h4>
-									<a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="btn btn-rounded btn-danger btn-sm no-margin">View Profile</a></div>
-							</div>
-						</li>
-						<?php if(getLoggedAdmin()){ ?>
-						<li role="separator" class="divider"></li>
-						<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>admin/pageHome.php"><i class="fa fa-cog"></i><?php echo $Translation['admin area']; ?></a></li>
-						<?php } ?>
-						<li role="separator" class="divider"></li>
-						<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>../index.php"><i class="fa fa-retweet"></i><?php echo 'Switch Account' ?></a></li>
-						<li role="separator" class="divider"></li>
-						<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>../index.php?signOut=1"><i class="fa fa-power-off"></i> <?php echo $Translation['sign out']; ?></a></li>
-					</ul>
+				<div class="nav-item dropdown notify-container">
+					<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" id="notif-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell-o"></i>
+						<?php $unread = sqlValue("SELECT COUNT(*) FROM `notif` WHERE `active_flag` = 'Y' and `read_flag` = 'N' and memberID = '" . getLoggedMemberID() . "'") ?>
+						<div class="notify"> <span id="notif-heartbit" <?php if($unread != 0) { ?> class="heartbit" <?php } ?>></span> <span id="notif-point" <?php if($unread != 0) { ?> class="point" <?php } ?>></span> </div>
+					</a>
+					<div class="dropdown-menu mailbox animated bounceInDown" aria-labelledby="notif-dropdown">
+						<ul>
+							<li class="d-flex">
+								<div class="drop-title col-md-6">Notification</div>
+								<h7 class="col-md-6 text-right"><a class="nav-link" href="#"  id ='mark-all-read'>Mark all as Read</a></h7>
+							</li>
+							<span id="notifDropdownLoading" style="position: relative; left: 50%"></span>
+							<li>
+								<div class="message-center" id="notif-dropdown-area">
+									<!-- Message -->
+									<!-- <a href="#" class="new">
+										<div class="mail-contnet">
+											<h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span> </div>
+									</a>
+									<a href="#">
+										<div class="mail-contnet">
+											<h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
+									</a>
+									<a href="#">
+										<div class="mail-contnet">
+											<h5>Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span> </div>
+									</a>
+									<a href="#">
+										<div class="mail-contnet">
+											<h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
+									</a> -->
+								</div>
+							</li>
+								<h6><a class="nav-link text-center pb-2" href="notifications.php" id="see-all-notif"> See all <i class="fa fa-angle-right"></i> </a></h6>
+							</li>
+						</ul>
+					</div>
 				</div>
-			</div>
+				<div class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:grey !important;"><i class="fa fa-user-circle" style="font-size: 4rem;vertical-align: middle;"></i></a>
+					<div class="dropdown-menu dropdown-menu-right animated flipInY">
+						<ul class="dropdown-user">
+							<li>
+								<div class="dw-user-box">
+									<div class="u-img"><i class="fa fa-user-circle" style="font-size: 5rem;"></i></div>
+									<div class="u-text">
+										<h4><?php echo getLoggedMemberID(); ?></h4>
+										<a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="btn btn-rounded btn-danger btn-sm no-margin">View Profile</a></div>
+								</div>
+							</li>
+							<?php if(getLoggedAdmin()){ ?>
+							<li role="separator" class="divider"></li>
+							<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>admin/pageHome.php"><i class="fa fa-cog"></i><?php echo $Translation['admin area']; ?></a></li>
+							<?php } ?>
+							<li role="separator" class="divider"></li>
+							<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>../index.php"><i class="fa fa-retweet"></i><?php echo 'Switch Account' ?></a></li>
+							<li role="separator" class="divider"></li>
+							<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>../index.php?signOut=1"><i class="fa fa-power-off"></i> <?php echo $Translation['sign out']; ?></a></li>
+						</ul>
+					</div>
+				</div>
 			</ul>
 		</div>
 	</nav>
 </header>
-<aside class="left-sidebar">
+<aside id="left_sidebar" class="left-sidebar">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
@@ -5069,4 +5069,4 @@ EOT;
 		return false;
 	}
 
-	
+	// ==================================================================

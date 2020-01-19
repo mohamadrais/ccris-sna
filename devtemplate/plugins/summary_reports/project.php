@@ -48,8 +48,8 @@
 		<button type="button" class="btn btn-success" id="add-report" data-toggle="modal" data-target="#report-modal"><i class="glyphicon glyphicon-plus"></i> Add Report</button>
 
 		<div class="btn-group pull-right">
-			<button type="button" class="btn btn-default" id="compact-reports-list"><i class="glyphicon glyphicon-list"></i></button>
-			<button type="button" class="btn btn-default" id="detailed-reports-list"><i class="glyphicon glyphicon-th-list"></i></button>
+			<button type="button" class="btn btn-outline-plain" id="compact-reports-list"><i class="glyphicon glyphicon-list"></i></button>
+			<button type="button" class="btn btn-outline-plain" id="detailed-reports-list"><i class="ti-calendar-list"></i></button>
 		</div>
 		<div class="clearfix"></div>
 		
@@ -219,14 +219,14 @@
 						<?php $num_slides = 4; ?>
 						<?php for($slide = 1; $slide <= $num_slides; $slide++) { ?>
 							<div class="item" style="min-height: 50rem;">
-								<button type="button" class="btn btn-default help-closer"><i class="glyphicon glyphicon-remove"></i> Back to report settings</button>
+								<button type="button" class="btn btn-outline-plain help-closer"><i class="glyphicon glyphicon-remove"></i> Back to report settings</button>
 		
 								<div class="btn-group pull-right">
 									<?php if($slide > 1) { ?>
-										<button type="button" class="btn btn-default help-prev" data-goto="<?php echo $slide - 1; ?>"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
+										<button type="button" class="btn btn-outline-plain help-prev" data-goto="<?php echo $slide - 1; ?>"><i class="glyphicon glyphicon-chevron-left"></i> Previous</button>
 									<?php } ?>
 									<?php if($slide < $num_slides) { ?>
-										<button type="button" class="btn btn-default help-next" data-goto="<?php echo $slide + 1; ?>"><i class="glyphicon glyphicon-chevron-right"></i> Next</button>
+										<button type="button" class="btn btn-outline-plain help-next" data-goto="<?php echo $slide + 1; ?>"><i class="glyphicon glyphicon-chevron-right"></i> Next</button>
 									<?php } ?>
 								</div>
 								<div class="clearfix" style="border-bottom: 2px solid black; margin: 1rem 0;"></div>
@@ -240,7 +240,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success" id="save-report" >Save</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-outline-plain" data-dismiss="modal">Close</button>
 			</div>
 		</div>
 	</div>

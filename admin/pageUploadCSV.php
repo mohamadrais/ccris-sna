@@ -96,7 +96,7 @@
 
 					<div class="panel panel-success">
 						<div class="panel-heading">
-							<h3 class="panel-title"><i class="glyphicon glyphicon-th hspacer-md"></i> <?php echo "<b>{$this->lang['step 1']}</b> {$this->lang['table']}"; ?></h3>
+							<h3 class="panel-title"><i class="ti-calendar hspacer-md"></i> <?php echo "<b>{$this->lang['step 1']}</b> {$this->lang['table']}"; ?></h3>
 						</div>
 						<div class="panel-body">
 							<div class="form-group">
@@ -517,8 +517,8 @@
 										<div class="input-group">
 										   <input type="text" class="form-control" id="ignore_lines" name="ignore_lines" value="0">
 										   <span class="input-group-btn">
-											   <button class="btn btn-default" type="button" id="increment-ignored-lines"><i class="glyphicon glyphicon-plus"></i></button>
-											   <button class="btn btn-default" type="button" id="decrement-ignored-lines"><i class="glyphicon glyphicon-minus"></i></button>
+											   <button class="btn btn-outline-plain" type="button" id="increment-ignored-lines"><i class="glyphicon glyphicon-plus"></i></button>
+											   <button class="btn btn-outline-plain" type="button" id="decrement-ignored-lines"><i class="glyphicon glyphicon-minus"></i></button>
 										   </span>
 										</div>
 										<span class="help-block"><?php echo $this->lang['skip lines number']; ?></span>

@@ -1460,7 +1460,7 @@ function mass_delete(t, ids){
 							'<div class="progress">' +
 								'<div class="progress-bar progress-bar-warning" role="progressbar" style="width: 0;"></div>' +
 							'</div>' + 
-							'<button type="button" class="btn btn-default details_toggle" onclick="' +
+							'<button type="button" class="btn btn-outline-plain details_toggle" onclick="' +
 								'jQuery(this).children(\'.glyphicon\').toggleClass(\'glyphicon-chevron-right glyphicon-chevron-down\'); ' +
 								'jQuery(\'.well.details_list\').toggleClass(\'hidden\');'
 								+ '">' +
@@ -1561,7 +1561,7 @@ function mass_change_owner(t, ids){
 							'<div class="progress">' +
 								'<div class="progress-bar progress-bar-success" role="progressbar" style="width: 0;"></div>' +
 							'</div>' + 
-							'<button type="button" class="btn btn-default details_toggle" onclick="' +
+							'<button type="button" class="btn btn-outline-plain details_toggle" onclick="' +
 								'jQuery(this).children(\'.glyphicon\').toggleClass(\'glyphicon-chevron-right glyphicon-chevron-down\'); ' +
 								'jQuery(\'.well.details_list\').toggleClass(\'hidden\');'
 								+ '">' +

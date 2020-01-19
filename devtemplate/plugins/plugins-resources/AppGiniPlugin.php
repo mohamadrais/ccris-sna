@@ -1053,8 +1053,8 @@
 					<div class="input-group">
 						<input type="text" class="form-control" id="output-folder" name="<?php echo $config['path_parameter']; ?>" value="<?php echo $this->app_path; ?>" autofocus>
 						<span class="input-group-btn">
-							<button class="btn btn-default" type="button" id="recheck-output-folder"><i class="glyphicon glyphicon-refresh"></i></button>
-							<button class="btn btn-default" type="button" id="output-folder-status" disabled>Please wait ...</button>
+							<button class="btn btn-outline-plain" type="button" id="recheck-output-folder"><i class="glyphicon glyphicon-refresh"></i></button>
+							<button class="btn btn-outline-plain" type="button" id="output-folder-status" disabled>Please wait ...</button>
 						</span>
 					</div>
 					<span class="help-block">Specify the full path of the AppGini application you want to install the output code to. Example <code>/var/www/html/photo-gallery</code></span>

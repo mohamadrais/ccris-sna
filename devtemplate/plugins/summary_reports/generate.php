@@ -197,7 +197,7 @@ $summary_reports = new summary_reports(array(
 							ob_start();
 							?><div class ="col-xs-12 col-md-4 col-lg-4">
 							<a href ="<?php echo $generated_report; ?>" class="btn btn-success <?php echo $groups_classes; ?> btn-block btn-lg vspacer-lg summary-reports" style="padding-top: 1em; padding-bottom: 1em;">
-								<i class ="glyphicon glyphicon-th"></i> <?php echo $report_title ?>
+								<i class ="ti-calendar"></i> <?php echo $report_title ?>
 							</a>
 						</div>
 							<?php

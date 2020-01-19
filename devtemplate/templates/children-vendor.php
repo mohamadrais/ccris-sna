@@ -91,7 +91,7 @@
 				<a href="#" onclick="<?php echo $current_table; ?>GetChildrenRecordsList({ Verb: 'new' }); return false;" class="btn btn-success hspacer-sm vspacer-md"><i class="ti-plus"></i> <?php echo html_attr($Translation['Add New']); ?></a>
 			<?php } ?>
 		<?php } ?>
-		<?php if($config['display-refresh']){ ?><a href="#" onclick="<?php echo $current_table; ?>GetChildrenRecordsList({ Verb: 'reload' }); return false;" class="btn btn-default hspacer-sm vspacer-md"><i class="glyphicon glyphicon-refresh"></i></a><?php } ?>
+		<?php if($config['display-refresh']){ ?><a href="#" onclick="<?php echo $current_table; ?>GetChildrenRecordsList({ Verb: 'reload' }); return false;" class="btn btn-outline-plain hspacer-sm vspacer-md"><i class="glyphicon glyphicon-refresh"></i></a><?php } ?>
 
 
 		<div class="table-responsive">
@@ -137,7 +137,7 @@
 						<td class="<?php echo "{$parameters['ChildTable']}-{$config['display-field-names'][2]}"; ?>" id="<?php echo "{$parameters['ChildTable']}-{$config['display-field-names'][2]}-" . html_attr($record[$config['child-primary-key-index']]); ?>"><?php echo safe_html($record[2]); ?></td>
 						<td class="<?php echo "{$parameters['ChildTable']}-{$config['display-field-names'][3]}"; ?> text-right" id="<?php echo "{$parameters['ChildTable']}-{$config['display-field-names'][3]}-" . html_attr($record[$config['child-primary-key-index']]); ?>"><?php echo safe_html($record[3]); ?></td>
 						<td class="<?php echo "{$parameters['ChildTable']}-{$config['display-field-names'][4]}"; ?>" id="<?php echo "{$parameters['ChildTable']}-{$config['display-field-names'][4]}-" . html_attr($record[$config['child-primary-key-index']]); ?>"><?php echo safe_html($record[4]); ?></td>
-						<td class="<?php echo "{$parameters['ChildTable']}-{$config['display-field-names'][12]}"; ?>" id="<?php echo "{$parameters['ChildTable']}-{$config['display-field-names'][12]}-" . html_attr($record[$config['child-primary-key-index']]); ?>"><?php if($record[12]){ ?><a href="link.php?t=<?php echo $parameters['ChildTable']; ?>&f=fo_HomePage&i=<?php echo urlencode($record[$config['child-primary-key-index']]); ?>" target="_blank" class="btn btn-default" title="<?php echo html_attr($record[12]); ?>"><i class="glyphicon glyphicon-globe text-info"></i></a><?php } ?></td>
+						<td class="<?php echo "{$parameters['ChildTable']}-{$config['display-field-names'][12]}"; ?>" id="<?php echo "{$parameters['ChildTable']}-{$config['display-field-names'][12]}-" . html_attr($record[$config['child-primary-key-index']]); ?>"><?php if($record[12]){ ?><a href="link.php?t=<?php echo $parameters['ChildTable']; ?>&f=fo_HomePage&i=<?php echo urlencode($record[$config['child-primary-key-index']]); ?>" target="_blank" class="btn btn-outline-plain" title="<?php echo html_attr($record[12]); ?>"><i class="glyphicon glyphicon-globe text-info"></i></a><?php } ?></td>
 						<td class="<?php echo "{$parameters['ChildTable']}-{$config['display-field-names'][27]}"; ?>" id="<?php echo "{$parameters['ChildTable']}-{$config['display-field-names'][27]}-" . html_attr($record[$config['child-primary-key-index']]); ?>"><?php echo safe_html($record[27]); ?></td>
 						<td class="<?php echo "{$parameters['ChildTable']}-{$config['display-field-names'][29]}"; ?>" id="<?php echo "{$parameters['ChildTable']}-{$config['display-field-names'][29]}-" . html_attr($record[$config['child-primary-key-index']]); ?>"><?php echo safe_html($record[29]); ?></td>
 						<td class="<?php echo "{$parameters['ChildTable']}-{$config['display-field-names'][31]}"; ?>" id="<?php echo "{$parameters['ChildTable']}-{$config['display-field-names'][31]}-" . html_attr($record[$config['child-primary-key-index']]); ?>"><?php echo safe_html($record[31]); ?></td>
@@ -167,8 +167,8 @@
 		<?php if($totalMatches){ ?>
 			<div class="row hidden-print">
 				<div class="col-xs-12">
-					<button type="button" class="btn btn-default" onclick="<?php echo $current_table; ?>GetChildrenRecordsList({ Verb: 'page', Page: 'previous' });"><i class="glyphicon glyphicon-chevron-left"></i></button>
-					<button type="button" class="btn btn-default" onclick="<?php echo $current_table; ?>GetChildrenRecordsList({ Verb: 'page', Page: 'next' });"><i class="glyphicon glyphicon-chevron-right"></i></button>
+					<button type="button" class="btn btn-outline-plain" onclick="<?php echo $current_table; ?>GetChildrenRecordsList({ Verb: 'page', Page: 'previous' });"><i class="glyphicon glyphicon-chevron-left"></i></button>
+					<button type="button" class="btn btn-outline-plain" onclick="<?php echo $current_table; ?>GetChildrenRecordsList({ Verb: 'page', Page: 'next' });"><i class="glyphicon glyphicon-chevron-right"></i></button>
 				</div>
 			</div>
 		<?php } ?>

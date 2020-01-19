@@ -200,10 +200,10 @@ if($memberID != '' && $groupID != sqlValue("select groupID from membership_group
 		<?php echo ($memberID ? str_replace('<MEMBERID>', '<span class="text-primary">' . $memberID . '</span>', $Translation["edit member"]) : $Translation["add new member"] . $addend); ?>
 		<div class="pull-right">
 			<div class="btn-group">
-				<a href="pageViewMembers.php" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-arrow-left"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['back to members']; ?></span></a>
+				<a href="pageViewMembers.php" class="btn btn-outline-plain btn-lg"><i class="glyphicon glyphicon-arrow-left"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['back to members']; ?></span></a>
 				<?php if($memberID){ ?>
-					<a href="pageViewRecords.php?memberID=<?php echo urlencode($memberID); ?>" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-th"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['View member records']; ?></span></a>
-					<a href="pageMail.php?memberID=<?php echo urlencode($memberID); ?>" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-envelope"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['send message to member']; ?></span></a>
+					<a href="pageViewRecords.php?memberID=<?php echo urlencode($memberID); ?>" class="btn btn-outline-plain btn-lg"><i class="ti-calendar"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['View member records']; ?></span></a>
+					<a href="pageMail.php?memberID=<?php echo urlencode($memberID); ?>" class="btn btn-outline-plain btn-lg"><i class="glyphicon glyphicon-envelope"></i> <span class="hidden-xs hidden-sm"><?php echo $Translation['send message to member']; ?></span></a>
 				<?php } ?>
 			</div>
 		</div>
@@ -314,7 +314,7 @@ if($memberID != '' && $groupID != sqlValue("select groupID from membership_group
 			<button type="button" id="saveChanges" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok"></i> <?php echo $Translation["save changes"]; ?></button>
 			<?php if($memberID != ''){ /* for existing members, cancel reloads the member */ ?>
 				<a href="pageEditMember.php?memberID=<?php echo urlencode($memberID); ?>" class="btn btn-warning btn-lg hspacer-md"><i class="glyphicon glyphicon-remove"></i> <?php echo $Translation['cancel']; ?></a>
-				<a href="pageViewMembers.php" class="btn btn-default btn-lg hspacer-md"><i class="glyphicon glyphicon-arrow-left"></i> <?php echo $Translation['back to members']; ?></a>
+				<a href="pageViewMembers.php" class="btn btn-outline-plain btn-lg hspacer-md"><i class="glyphicon glyphicon-arrow-left"></i> <?php echo $Translation['back to members']; ?></a>
 			<?php }else{ /* for new members, cancel goes to list of members */ ?>
 				<a href="pageViewMembers.php" class="btn btn-warning btn-lg hspacer-md"><i class="glyphicon glyphicon-remove"></i> <?php echo $Translation['cancel']; ?></a>
 			<?php } ?>

@@ -435,7 +435,7 @@ class SummaryReport {
 
 		<h1> <?php echo ($report_title = $this->title . ' ' . $from_to_title); ?> 
 			<div class="form-group pull-right hidden-print"> 
-				<a href="summary-reports-list.php" class="btn btn-default btn-lg" > <i class="glyphicon glyphicon-chevron-left"></i> <?php echo $this->report_translation['back'] ?> </a> 
+				<a href="summary-reports-list.php" class="btn btn-outline-plain btn-lg" > <i class="glyphicon glyphicon-chevron-left"></i> <?php echo $this->report_translation['back'] ?> </a> 
 				<button class="btn btn-primary btn-lg" type="button" id="sendToPrinter" onclick="window.print();"> <i class="glyphicon glyphicon-print"></i> <?php echo $this->report_translation['print report'] ?> </button>	
 			 
 				<button onclick="exportTableToCSV('<?php echo str_replace(array(' ', '/'), '-', $report_title); ?>.csv')" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-floppy-disk"></i> <?php echo $this->report_translation['export report to csv file'] ?></button>
@@ -875,35 +875,35 @@ class SummaryReport {
 									<tr class="active">
 										<th class="text-center">
 											<div class="btn-group vspacer-md">
-												<button type="button" class="btn btn-default" id="month-to-date" data-toggle="tooltip" title="<?php echo html_attr($this->report_translation['month to date description']); ?>">
+												<button type="button" class="btn btn-outline-plain" id="month-to-date" data-toggle="tooltip" title="<?php echo html_attr($this->report_translation['month to date description']); ?>">
 													<?php echo $this->report_translation['month to date'] ?>
 												</button>
-												<button type="button" class="btn btn-default" id="current-month" data-toggle="tooltip" title="<?php echo html_attr($this->report_translation['current month description']); ?>">
+												<button type="button" class="btn btn-outline-plain" id="current-month" data-toggle="tooltip" title="<?php echo html_attr($this->report_translation['current month description']); ?>">
 													<?php echo $this->report_translation['current month'] ?>
 												</button>
-												<button type="button" class="btn btn-default" id="last-month" data-toggle="tooltip" title="<?php echo html_attr($this->report_translation['last month description']); ?>">
+												<button type="button" class="btn btn-outline-plain" id="last-month" data-toggle="tooltip" title="<?php echo html_attr($this->report_translation['last month description']); ?>">
 													<?php echo $this->report_translation['last month'] ?>
 												</button>
 											</div>
 											<div class="btn-group vspacer-md">
-												<button type="button" class="btn btn-default" id="quarter-to-date" data-toggle="tooltip" title="<?php echo html_attr($this->report_translation['quarter to date description']); ?>">
+												<button type="button" class="btn btn-outline-plain" id="quarter-to-date" data-toggle="tooltip" title="<?php echo html_attr($this->report_translation['quarter to date description']); ?>">
 													<?php echo $this->report_translation['quarter to date']?>
 												</button>
-												<button type="button" class="btn btn-default" id="current-quarter" data-toggle="tooltip" title="<?php echo html_attr($this->report_translation['current quarter description']); ?>">
+												<button type="button" class="btn btn-outline-plain" id="current-quarter" data-toggle="tooltip" title="<?php echo html_attr($this->report_translation['current quarter description']); ?>">
 													<?php echo $this->report_translation['current quarter']?>
 												</button>
-												<button type="button" class="btn btn-default" id="last-quarter" data-toggle="tooltip" title="<?php echo html_attr($this->report_translation['last quarter description']); ?>">
+												<button type="button" class="btn btn-outline-plain" id="last-quarter" data-toggle="tooltip" title="<?php echo html_attr($this->report_translation['last quarter description']); ?>">
 													<?php echo $this->report_translation['last quarter']?>
 												</button>
 											</div>
 											<div class="btn-group vspacer-md">
-												<button type="button" class="btn btn-default" id="year-to-date" data-toggle="tooltip" title="<?php echo html_attr($this->report_translation['year to date description']); ?>">
+												<button type="button" class="btn btn-outline-plain" id="year-to-date" data-toggle="tooltip" title="<?php echo html_attr($this->report_translation['year to date description']); ?>">
 													<?php echo $this->report_translation['year to date']?>
 												</button>
-												<button type="button" class="btn btn-default" id="current-year" data-toggle="tooltip" title="<?php echo html_attr($this->report_translation['current year description']); ?>">
+												<button type="button" class="btn btn-outline-plain" id="current-year" data-toggle="tooltip" title="<?php echo html_attr($this->report_translation['current year description']); ?>">
 													<?php echo $this->report_translation['current year']?>
 												</button>
-												<button type="button" class="btn btn-default" id="last-year" data-toggle="tooltip" title="<?php echo html_attr($this->report_translation['last year description']); ?>">
+												<button type="button" class="btn btn-outline-plain" id="last-year" data-toggle="tooltip" title="<?php echo html_attr($this->report_translation['last year description']); ?>">
 													<?php echo $this->report_translation['last year']?>
 												</button>
 											</div>
@@ -1169,11 +1169,11 @@ class SummaryReport {
 											<td>
 												<div class="hspacer-lg input-group">
 													<span class="input-group-btn">
-														<button class="btn btn-default" type="button" id="bar-width-less"><i class="glyphicon glyphicon-minus"></i></button>
+														<button class="btn btn-outline-plain" type="button" id="bar-width-less"><i class="glyphicon glyphicon-minus"></i></button>
 													</span>
 													<input type="text" class="form-control text-center" id="bar-width" readonly>
 													<span class="input-group-btn">
-														<button class="btn btn-default" type="button" id="bar-width-more"><i class="glyphicon glyphicon-plus"></i></button>
+														<button class="btn btn-outline-plain" type="button" id="bar-width-more"><i class="glyphicon glyphicon-plus"></i></button>
 													</span>
 												</div>
 												<span class="help-block hspacer-lg"><?php echo $this->report_translation['barchart-bar-width-default-hint']; ?></span>
@@ -1184,11 +1184,11 @@ class SummaryReport {
 											<td>
 												<div class="hspacer-lg input-group">
 													<span class="input-group-btn">
-														<button class="btn btn-default" type="button" id="bar-spacing-less"><i class="glyphicon glyphicon-minus"></i></button>
+														<button class="btn btn-outline-plain" type="button" id="bar-spacing-less"><i class="glyphicon glyphicon-minus"></i></button>
 													</span>
 													<input type="text" class="form-control text-center" id="bar-spacing" readonly>
 													<span class="input-group-btn">
-														<button class="btn btn-default" type="button" id="bar-spacing-more"><i class="glyphicon glyphicon-plus"></i></button>
+														<button class="btn btn-outline-plain" type="button" id="bar-spacing-more"><i class="glyphicon glyphicon-plus"></i></button>
 													</span>
 												</div>
 											</td>

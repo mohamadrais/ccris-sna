@@ -8,4 +8,13 @@ $j("#fab1").click(function(){
 $j("#fab2").click(function(){
     $j("#fab2_content").toggleClass("show");
 });
+
+$j("#mobile_menu").click(function(){
+    $j("#left_sidebar").toggleClass("show");
+    $j("#mobile_menu i").toggleClass("ti-menu ti-close");
+});
+$j("#sidebarnav li").click(function(){
+    $j("a").attr("aria-expanded","true");
+    $j("ul").attr("aria-expanded","true").toggleClass("in");
+});
 });

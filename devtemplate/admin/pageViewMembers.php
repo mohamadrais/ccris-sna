@@ -207,7 +207,7 @@
 											?>
 										<?php } ?>
 
-										<a href="pageViewRecords.php?memberID=<?php echo $row[0]; ?>"><i class="glyphicon glyphicon-th" title="<?php echo $Translation["View member records"] ; ?>"></i></a>
+										<a href="pageViewRecords.php?memberID=<?php echo $row[0]; ?>"><i class="ti-calendar" title="<?php echo $Translation["View member records"] ; ?>"></i></a>
 
 										<?php if($adminConfig['anonymousMember'] == $row[0]){ ?>
 											<i class="glyphicon glyphicon-envelope text-muted"></i>
@@ -244,7 +244,7 @@
 								<div class="col-sm-6 col-md-4 col-lg-3"><i class="glyphicon glyphicon-trash text-danger"></i> <?php echo $Translation['delete member'] ; ?></div>
 								<div class="col-sm-6 col-md-4 col-lg-3"><i class="glyphicon glyphicon-ok text-success"></i> <?php echo $Translation['activate member'] ; ?></div>
 								<div class="col-sm-6 col-md-4 col-lg-3"><i class="glyphicon glyphicon-ban-circle text-danger"></i> <?php echo $Translation['ban member'] ; ?></div>
-								<div class="col-sm-6 col-md-4 col-lg-3"><i class="glyphicon glyphicon-th text-info"></i> <?php echo $Translation['view entered member records'] ; ?></div>
+								<div class="col-sm-6 col-md-4 col-lg-3"><i class="ti-calendar text-info"></i> <?php echo $Translation['view entered member records'] ; ?></div>
 								<div class="col-sm-6 col-md-4 col-lg-3"><i class="glyphicon glyphicon-envelope text-info"></i> <?php echo $Translation['send email to member'] ; ?></div>
 							</div>
 						</div>

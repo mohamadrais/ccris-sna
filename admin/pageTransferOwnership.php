@@ -144,7 +144,7 @@
 			?>
 		</div>
 
-		<a href="pageTransferOwnership.php" class="btn btn-default btn-lg vspacer-lg"><i class="glyphicon glyphicon-chevron-left"></i> <?php echo $Translation['batch transfer']; ?></a>
+		<a href="pageTransferOwnership.php" class="btn btn-outline-plain btn-lg vspacer-lg"><i class="glyphicon glyphicon-chevron-left"></i> <?php echo $Translation['batch transfer']; ?></a>
 
 		<?php
 

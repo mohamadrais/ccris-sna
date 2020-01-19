@@ -148,7 +148,7 @@
 								<p class="form-control-static">
 									<?php echo "{$adminConfig['senderName']} &lt;{$adminConfig['senderEmail']}&gt;"; ?>
 									<div>
-										<a href="pageSettings.php#mail-settings" class="btn btn-default">
+										<a href="pageSettings.php#mail-settings" class="btn btn-outline-plain">
 											<i class="glyphicon glyphicon-pencil"></i>
 											<?php echo $Translation['configure mail settings']; ?>
 										</a>
@@ -173,8 +173,8 @@
 										<?php echo $recipient; ?>
 									</a>
 									<div class="btn-group">
-										<a href="pageViewGroups.php" class="btn btn-default"><?php echo $Translation['send email to all members']; ?></a>
-										<a href="pageViewMembers.php" class="btn btn-default"><?php echo $Translation['send email to member']; ?></a>
+										<a href="pageViewGroups.php" class="btn btn-outline-plain"><?php echo $Translation['send email to all members']; ?></a>
+										<a href="pageViewMembers.php" class="btn btn-outline-plain"><?php echo $Translation['send email to member']; ?></a>
 									</div>
 								</p>
 							</div>

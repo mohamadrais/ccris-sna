@@ -1081,7 +1081,7 @@ function CommConsParticipate_form($selected_id = '', $AllowUpdate = 1, $AllowIns
 
 		// process foreign key links
 		if($pt_perm['view'] || $pt_perm['edit']){
-			$templateCode = str_replace("<%%PLINK({$luf})%%>", '<button type="button" class="btn btn-default view_parent hspacer-md" id="' . $ptfc[0] . '_view_parent" title="' . html_attr($Translation['View'] . ' ' . $ptfc[1]) . '"><i class="glyphicon glyphicon-eye-open"></i></button>', $templateCode);
+			$templateCode = str_replace("<%%PLINK({$luf})%%>", '<button type="button" class="btn btn-outline-plain view_parent hspacer-md" id="' . $ptfc[0] . '_view_parent" title="' . html_attr($Translation['View'] . ' ' . $ptfc[1]) . '"><i class="glyphicon glyphicon-eye-open"></i></button>', $templateCode);
 		}
 
 		// if user has insert permission to parent table of a lookup field, put an add new button
