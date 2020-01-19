@@ -1544,7 +1544,7 @@ function Leadership_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, 
 	$combo_Status->ListType = 2;
 	$combo_Status->MultipleSeparator = ', ';
 	$combo_Status->ListBoxHeight = 10;
-	$combo_Status->RadiosPerLine = 1;
+	$combo_Status->RadiosPerLine = 4;
 	if(is_file(dirname(__FILE__).'/hooks/Leadership.Status.csv')){
 		$Status_data = addslashes(implode('', @file(dirname(__FILE__).'/hooks/Leadership.Status.csv')));
 		$combo_Status->ListItem = explode('||', entitiesToUTF8(convertLegacyOptions($Status_data)));

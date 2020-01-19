@@ -118,13 +118,13 @@ display: inline-block; }
 .carousel-item-next, .carousel-item-prev, .carousel-item.active {
 display: block; }
 
-.tab-pane .form-control-static input[type="radio"] {
+.form-control-static input[type="radio"] {
     opacity: 0;
     position: fixed;
     width: 0;
 }
 
-.tab-pane .form-control-static label {
+.form-control-static label {
   display: inline-block;
   background-color: #ddd;
   padding: 0px 15px;
@@ -133,19 +133,19 @@ display: block; }
   border-radius: 50px;
 }
 
-.tab-pane .form-control-static input[value="1"]:checked + label {
+.form-control-static input[value="1"]:checked + label, input[id="Status1"]:checked + label {
   background-color:#f62d51;
   color:white;
 }
-.tab-pane .form-control-static input[value="2"]:checked + label {
+.form-control-static input[value="2"]:checked + label, input[id="Status2"]:checked + label {
   background-color:#01c0c8;
   color:white;
 }
-.tab-pane .form-control-static input[value="3"]:checked + label {
+.form-control-static input[value="3"]:checked + label, input[id="Status3"]:checked + label {
   background-color:#ffbc34;
   color:white;
 }
-.tab-pane .form-control-static input[value="4"]:checked + label {
+.form-control-static input[value="4"]:checked + label, input[id="Status4"]:checked + label {
   background-color:#55ce63;
   color:white;
 }
