@@ -3410,6 +3410,8 @@
 							<li role="separator" class="divider"></li>
 							<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>../index.php"><i class="fa fa-retweet"></i><?php echo 'Switch Account' ?></a></li>
 							<li role="separator" class="divider"></li>
+							<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>ProcessInteractionMap.php"><i class="fa fa-braille "></i> <?php echo "Process Interaction Map" ?></a></li>
+							<li role="separator" class="divider"></li>
 							<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>../index.php?signOut=1"><i class="fa fa-power-off"></i> <?php echo $Translation['sign out']; ?></a></li>
 						</ul>
 					</div>
