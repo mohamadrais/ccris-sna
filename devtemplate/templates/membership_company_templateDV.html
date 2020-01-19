@@ -159,27 +159,26 @@
 
 				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="fo_Email" class="control-label col-lg-2">Email</label>
+					<label class="control-label col-lg-2">Email</label>
 					<div class="col-lg-10">
-						
-						<div>
+						<span>
+							<input maxlength="200" type="text" class="form-control collapse" name="fo_Email" id="fo_Email" value="<%%VALUE(fo_Email)%%>">
 							<a id="fo_Email-link" href="mailto:<%%VALUE(fo_Email)%%>" target="_blank"><i class="glyphicon glyphicon-envelope text-info" title="<%%VALUE(fo_Email)%%>"></i></a>
-							<label for="fo_Email"><button type="button" id="fo_Email-edit-link" class="btn btn-default hspacer-lg vspacer-sm" data-toggle="collapse" data-target="#fo_Email" title="<%%TRANSLATION(Edit)%%>"><i class="glyphicon glyphicon-pencil"></i></button></label>
-						</div>
-						<script>jQuery(function(){ /* */ var e_fo_Email = '<%%VALUE(fo_Email)%%>'; if(e_fo_Email == '' || e_fo_Email == '&nbsp;' || e_fo_Email == 'blank.gif') jQuery('#fo_Email-link').hide(); });</script><input maxlength="255" type="text" class="form-control collapse" name="fo_Email" id="fo_Email" value="<%%VALUE(fo_Email)%%>">
+							<script>jQuery(function(){ /* */ var e_fo_Email = '<%%VALUE(fo_Email)%%>'; if(e_fo_Email == '' || e_fo_Email == '&nbsp;' || e_fo_Email == 'blank.gif') jQuery('#fo_Email-link').hide(); });</script>
+							
+						</span>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="fo_Admin_Email" class="control-label col-lg-2">Admin Email</label>
+					<label class="control-label col-lg-2">Admin Email</label>
 					<div class="col-lg-10">
-						
-						<div>
+						<span>
+							<input maxlength="200" type="text" class="form-control collapse" name="fo_Admin_Email" id="fo_Admin_Email" value="<%%VALUE(fo_Admin_Email)%%>">
 							<a id="fo_Admin_Email-link" href="mailto:<%%VALUE(fo_Admin_Email)%%>" target="_blank"><i class="glyphicon glyphicon-envelope text-info" title="<%%VALUE(fo_Admin_Email)%%>"></i></a>
-							<label for="fo_Admin_Email"><button type="button" id="fo_Admin_Email-edit-link" class="btn btn-default hspacer-lg vspacer-sm" data-toggle="collapse" data-target="#fo_Admin_Email" title="<%%TRANSLATION(Edit)%%>"><i class="glyphicon glyphicon-pencil"></i></button></label>
-						</div>
-						<script>jQuery(function(){ /* */ var e_fo_Admin_Email = '<%%VALUE(fo_Admin_Email)%%>'; if(e_fo_Admin_Email == '' || e_fo_Admin_Email == '&nbsp;' || e_fo_Admin_Email == 'blank.gif') jQuery('#fo_Admin_Email-link').hide(); });</script><input maxlength="255" type="text" class="form-control collapse" name="fo_Admin_Email" id="fo_Admin_Email" value="<%%VALUE(fo_Admin_Email)%%>">
+							<script>jQuery(function(){ /* */ var e_fo_Admin_Email = '<%%VALUE(fo_Admin_Email)%%>'; if(e_fo_Admin_Email == '' || e_fo_Admin_Email == '&nbsp;' || e_fo_Admin_Email == 'blank.gif') jQuery('#fo_Admin_Email-link').hide(); });</script>
+						</span>
 					</div>
 				</div>
 

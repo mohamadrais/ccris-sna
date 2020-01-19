@@ -136,18 +136,14 @@
 
 				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="fo_website" class="control-label col-lg-2">Website <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#fo_website-description"></i></label>
+					<label class="control-label col-lg-2">Website</label>
 					<div class="col-lg-10">
-						<span class="help-block collapse" id="fo_website-description"><div class="alert alert-info">Website of stakeholder operation</div></span>
-
-						
-						<div class="row">
-							<div class="col-md-1">
-								<a id="fo_website-link" href="link.php?t=StakeholderSatisfaction&f=fo_website&i=<%%VALUE(id)%%>" target="_blank"><i class="glyphicon glyphicon-globe" title="<%%VALUE(fo_website)%%>" style="font-size: x-large; top: .35em;"></i></a>
-								<label for="fo_website"><button type="button" id="fo_website-edit-link" class="btn btn-default hspacer-lg vspacer-sm" data-toggle="collapse" data-target="#fo_website" title="<%%TRANSLATION(Edit)%%>"><i class="glyphicon glyphicon-pencil"></i></button></label>
-							</div>
-							<script>jQuery(function(){ /* */ var e_fo_website = '<%%VALUE(fo_website)%%>'; if(e_fo_website == '' || e_fo_website == '&nbsp;' || e_fo_website == 'blank.gif') jQuery('#fo_website-link').hide(); });</script><input maxlength="200" type="text" class="form-control collapse" name="fo_website" id="fo_website" value="<%%VALUE(fo_website)%%>">					</div>
-
+						<span>
+							<input maxlength="200" type="text" class="form-control collapse" name="fo_website" id="fo_website" value="<%%VALUE(fo_website)%%>">
+							<a id="fo_website-link" href="link.php?t=StakeholderSatisfaction&f=fo_website&i=<%%VALUE(id)%%>" target="_blank"><i class="glyphicon glyphicon-globe" title="<%%VALUE(fo_website)%%>" style="font-size: x-large; top: .35em;"></i></a>
+							<script>jQuery(function(){ /* */ var e_fo_website = '<%%VALUE(fo_website)%%>'; if(e_fo_website == '' || e_fo_website == '&nbsp;' || e_fo_website == 'blank.gif') jQuery('#fo_website-link').hide(); });</script>
+							
+						</span>
 					</div>
 				</div>
 

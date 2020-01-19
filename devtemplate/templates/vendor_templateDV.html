@@ -140,16 +140,14 @@
 
 				<div class="form-group row">
 					<hr class="hidden-md hidden-lg">
-					<label for="fo_HomePage" class="control-label col-lg-2">Web Site</label>
+					<label class="control-label col-lg-2">Website</label>
 					<div class="col-lg-10">
-						
-						<div class="row">
-							<div class="col-md-1">
-								<a id="fo_HomePage-link" href="link.php?t=vendor&f=fo_HomePage&i=<%%VALUE(VendorID)%%>" target="_blank"><i class="glyphicon glyphicon-globe" title="<%%VALUE(fo_HomePage)%%>" style="font-size: x-large; top: .35em;"></i></a>
-								<label for="fo_HomePage"><button type="button" id="fo_HomePage-edit-link" class="btn btn-default hspacer-lg vspacer-sm" data-toggle="collapse" data-target="#fo_HomePage" title="<%%TRANSLATION(Edit)%%>"><i class="glyphicon glyphicon-pencil"></i></button></label>
-							</div>
-							<script>jQuery(function(){ /* */ var e_fo_HomePage = '<%%VALUE(fo_HomePage)%%>'; if(e_fo_HomePage == '' || e_fo_HomePage == '&nbsp;' || e_fo_HomePage == 'blank.gif') jQuery('#fo_HomePage-link').hide(); });</script><input maxlength="" type="text" class="form-control collapse" name="fo_HomePage" id="fo_HomePage" value="<%%VALUE(fo_HomePage)%%>">					</div>
-
+						<span>
+							<input maxlength="200" type="text" class="form-control collapse" name="fo_HomePage" id="fo_HomePage" value="<%%VALUE(fo_HomePage)%%>">
+							<a id="fo_HomePage-link" href="link.php?t=vendor&f=fo_HomePage&i=<%%VALUE(VendorID)%%>" target="_blank"><i class="glyphicon glyphicon-globe" title="<%%VALUE(fo_HomePage)%%>" style="font-size: x-large; top: .35em;"></i></a>
+							<script>jQuery(function(){ /* */ var e_fo_HomePage = '<%%VALUE(fo_HomePage)%%>'; if(e_fo_HomePage == '' || e_fo_HomePage == '&nbsp;' || e_fo_HomePage == 'blank.gif') jQuery('#fo_HomePage-link').hide(); });</script>
+							
+						</span>
 					</div>
 				</div>
 

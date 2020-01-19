@@ -61,8 +61,7 @@
 							<input maxlength="200" type="text" class="form-control collapse" name="website" id="website" value="<%%VALUE(website)%%>">
 							<a id="website-link" href="link.php?t=TeamSoftBoard&f=website&i=<%%VALUE(Postid)%%>" target="_blank"><i class="glyphicon glyphicon-globe" title="<%%VALUE(website)%%>" style="font-size: x-large; top: .35em;"></i></a>
 							<script>jQuery(function(){ /* */ var e_website = '<%%VALUE(website)%%>'; if(e_website == '' || e_website == '&nbsp;' || e_website == 'blank.gif') jQuery('#website-link').hide(); });</script>
-							<button type="button" class="btn btn-sm btn-outline-danger m-b-5"
-							id="website_remove">Remove</button>
+							
 						</span>
 					</div>
 				</div>
@@ -72,7 +71,7 @@
 				<div class="form-group row">
 					<label class="control-label col-lg-2">Documents<div class="text-muted">Attached <span id="totalDocumentAttached"></span>/3</div></label>
 					<div class="col-lg-10">
-						<span class="attach-group"></span>
+						<span class="attach-group">
 							<a id="Ref01-link" href="link.php?t=TeamSoftBoard&f=Ref01&i=<%%VALUE(Postid)%%>" target="_blank" aria-labelledby="attachment-readMode"><%%VALUE(Ref01)%%></a>
 							<script>jQuery(function(){ /* */ var e_Ref01 = '<%%VALUE(Ref01)%%>'; if(e_Ref01 == '' || e_Ref01 == '&nbsp;' || e_Ref01 == 'blank.gif') jQuery('#Ref01-link').hide(); });</script>
 							
@@ -96,19 +95,18 @@
 						<!------>
 
 							<a id="Ref03-link" href="link.php?t=TeamSoftBoard&f=Ref03&i=<%%VALUE(Postid)%%>" target="_blank" aria-labelledby="attachment-readMode"><%%VALUE(Ref03)%%></a>
-							</div>
 							<script>jQuery(function(){ /* */ var e_Ref03 = '<%%VALUE(Ref03)%%>'; if(e_Ref03 == '' || e_Ref03 == '&nbsp;' || e_Ref03 == 'blank.gif') jQuery('#Ref03-link').hide(); });</script>
 							
 							<div style="overflow-x: hidden;font-size: small;" >
-							<div class="hidden-md hidden-lg vspacer-lg"></div>
-							<%%UPLOADFILE(Ref03)%%>
-							<%%REMOVEFILE(Ref03)%%>
-						</div>
-						<button type="button" class="btn btn-circle btn-sm btn-light btn-block my-auto mx-5" id="addDocument" for="editAttachment"><i class="fa fa-plus" aria-hidden="true"></i></button>
-					</span>
-					<br />
-					<p class="control-label text-muted" for="editAttachment">Maximum file size allowed: 64000KB.<br>Allowed file types: txt, doc, docx, docm, odt, pdf, rtf</p>
-
+								<div class="hidden-md hidden-lg vspacer-lg"></div>
+								<%%UPLOADFILE(Ref03)%%>
+								<%%REMOVEFILE(Ref03)%%>
+							</div>
+							<button type="button" class="btn btn-circle btn-sm btn-light btn-block my-auto mx-5" id="addDocument" for="editAttachment"><i class="fa fa-plus" aria-hidden="true"></i></button>
+						</span>
+						<br />
+						<p class="control-label text-muted" for="editAttachment">Maximum file size allowed: 64000KB.<br>Allowed file types: txt, doc, docx, docm, odt, pdf, rtf</p>
+					</div>
 				</div>
 
 				<hr><br>
