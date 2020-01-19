@@ -964,11 +964,11 @@ class DataList{
 
 		}
 
-		// end of table view navigation code
-		if(function_exists('summary_counters')){
+		if(!$this->HideTableView && !($dvprint_x && $this->AllowSelection && $SelectedID) && function_exists('summary_counters')){
 			$summaryCode=summary_counters($this->ContentType, $mi, $this->TableName);
 			$this->HTML .= $summaryCode;
 		}
+	// end of table view summary counters
 	// begin table and display table title
 		if(!$this->HideTableView && !($dvprint_x && $this->AllowSelection && $SelectedID) && !$PrintDV && !$Embedded){
 			$this->HTML .= '<div class="table-responsive"><table class="table">';
@@ -1099,7 +1099,7 @@ class DataList{
 				$FirstRecord = 1;
 				$this->RecordsPerPage = 2000; // a limit on max records in print preview to avoid performance drops
 			}
-		// end of table view summary counters
+		// end of table view navigation code
 			$this->HTML .= "\n\t</tr>\n\n</thead>\n\n<tbody><!-- tv data below -->\n";
 
 			$i = 0;
