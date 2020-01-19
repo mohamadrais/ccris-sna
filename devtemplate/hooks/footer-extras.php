@@ -1,11 +1,11 @@
 <?php
-$admin_config = config('adminConfig');
+global $adminConfig;
 $memberInfo = getMemberInfo();
 // echo $memberInfo['group'];
-if (!($memberInfo['group'] == 'Admins' && $memberInfo['username'] == $admin_config['adminUsername'])) {
+if (!($memberInfo['group'] == 'Admins' && $memberInfo['username'] == $adminConfig['adminUsername'])) {
 ?>
     <script type='text/javascript'>
-        document.observe("dom:loaded", function() {
+        $j(document).ready(function() {	
             $j('label[for="memberID"]').parent().hide();
         });
     </script>
@@ -302,7 +302,8 @@ if (!($memberInfo['group'] == 'Admins' && $memberInfo['username'] == $admin_conf
 		function calcAttached(attachType, totalLabel, initial=false){
 			var x = 0;
 			$j('input[aria-label='+attachType+']').each(function(i, e){
-				if ($j(this).val().length > 0 || ($j(this).attr('data-default-file') && $j(this).attr('data-default-file').length > 0)) {
+				var ddf_attr = $j(this).attr('data-default-file');
+				if ($j(this).val().length > 0 || (typeof ddf_attr !== typeof undefined && ddf_attr !== false && ddf_attr.length > 0)) {
 					x++;
 					$j(this).parent().show();
 				}
@@ -317,22 +318,36 @@ if (!($memberInfo['group'] == 'Admins' && $memberInfo['username'] == $admin_conf
 			$j("#"+totalLabel).html(x);
 		}
 
-		function addButtonShowHide(attachType, attachLabel){
-			var x = 0;
+		function addButtonShowHide(attachType, attachLabel, checkAttachLabelOnly=false){
+			var x = $j('input[aria-label='+attachType+']').length;
 			$j('input[aria-label='+attachType+']').each(function(i, e){
-				if (!$j(this).parent().parent().is(":visible")) {
-					$j(this).parent().parent().show();
-					return false;
+				if(checkAttachLabelOnly == true){
+					if(i==(x-1) && $j(this).parent().parent().is(":visible")){
+						$j("#"+attachLabel).hide();
+						return false;
+					}
 				}
-				if(i==$j(this).length){
-					$j("#"+attachLabel).hide();
+				else{
+					if(i==(x-1)){
+						$j("#"+attachLabel).hide();
+					}
+					if (!$j(this).parent().parent().is(":visible")) {
+						$j(this).parent().parent().show();
+						return false;
+					}	
 				}
 			});
 		}
 		
 		function dropifyShowHide(attachType){
 			$j('input[aria-label='+attachType+']').each(function(i, e){
-				if (!$j(this).is(":visible") && ($j(this).val().length > 0 || ($j(this).attr('data-default-file') && $j(this).attr('data-default-file').length > 0))) {
+				if (!$j(this).is(":visible") && i>0) {
+					var ddf_attr = $j(this).attr('data-default-file');
+					if ($j(this).val().length > 0 || (typeof ddf_attr !== typeof undefined && ddf_attr !== false && ddf_attr.length > 0)) {
+						$j(this).parent().parent().show();
+					}
+				}
+				else{
 					$j(this).parent().parent().show();
 				}
 			});
@@ -410,19 +425,10 @@ if (!($memberInfo['group'] == 'Admins' && $memberInfo['username'] == $admin_conf
 					$j('input[id$="_SharedLink1"]').show();
 					$j('#sl1').show();
 				}
-
-				if (!$j('[id$="Ref01"]').is(":visible")) {
-					$j('[id$="Ref01"]').parent().parent().show();
-                }
-                if (!$j("#ot_Ref04").is(":visible")) {
-					$j("#ot_Ref04").parent().parent().show();
-                }
-                if (!$j("#ot_Photo01").is(":visible")) {
-					$j("#ot_Photo01").parent().parent().show();
-				}
 				
 				attachArray.forEach(function(i){
 					dropifyShowHide(i[0]);
+					addButtonShowHide(i[0], i[2], true);
 				});
 
 				$j(this).hide();
