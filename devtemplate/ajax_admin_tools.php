@@ -63,23 +63,21 @@
 
 			ob_start();
 			?>
-			<div class="notify pull-right" style="width: 500px" id="admin-tools-menu-button">
+			<div class="pull-right" style="width:500px;" id="admin-tools-menu-button">
 				<button
 					type="button" 
 					data-toggle="dropdown" 
 					class="btn btn-danger btn-xs pull-right" 
-					style="margin-top: 10px"
 					title="<?php if (getLoggedAdmin()) { echo html_attr($this->lang['Admin Information']); } else { echo html_attr($this->lang['Record Information']); }?>" 
 				>
 					<i class="glyphicon glyphicon-option-vertical"></i>
 				</button>
-				<div class="dropdown-menu mailbox animated bounceInDown" id="admin-tools-menu">
+				<div class="dropdown-menu animated bounceInDown" id="admin-tools-menu">
 					<h5><b><?php if (getLoggedAdmin()) { ?><?php echo $this->lang['Admin Information']; ?><?php } else { ?><?php echo $this->lang['Record Information']; ?><?php } ?></b></h5>
 					<div class="alert alert-danger no-owner hidden"><?php echo $this->lang['record has no owner']; ?></div>
-					<dl class="message-center">
-						<dt><?php echo $this->lang['owner']; ?></dt>
-						<dd>
-							<div class="owner-username"></div>
+					<form class="message-center">
+						<label class="control-label"><?php echo $this->lang['owner']; ?></label>
+							<p class="owner-username"></p>
 							<?php if (getLoggedAdmin()) { ?>
 							<a class="change-owner-link" href="#"><i class="glyphicon glyphicon-user"></i> <?php echo $this->lang['Change owner']; ?></a>
 							<br>
@@ -87,24 +85,21 @@
 							<br>
 							<a class="user-email-link" href="" target="_blank"><i class="glyphicon glyphicon-envelope"></i> <?php echo $this->lang['email this user']; ?></a>
 							<?php } ?>
-						</dd>
 
-						<dt><?php echo $this->lang['group']; ?></dt>
-						<dd>
-							<div class="owner-group"></div>
+						<label class="control-label"><?php echo $this->lang['group']; ?></label>
+							<p class="owner-group"></p>
 							<?php if (getLoggedAdmin()) { ?>
 							<a class="group-records-link" href="" target="_blank"><i class="ti-calendar"></i> <?php echo str_replace('<tablename>', $tablename, $this->lang['show all group records from table']); ?></a>
 							<br>
 							<a class="group-email-link" href="" target="_blank"><i class="glyphicon glyphicon-envelope"></i> <?php echo $this->lang['email this group']; ?></a>
 							<?php } ?>
-						</dd>
 
-						<dt><?php echo $this->lang['created']; ?></dt>
-						<dd class="record-created"></dd>
+						<label class="control-label"><?php echo $this->lang['created']; ?></label>
+						<p class="record-created"></p>
 
-						<dt><?php echo $this->lang['last modified']; ?></dt>
-						<dd class="record-last-modified"></dd>
-					</dl>
+						<label class="control-label"><?php echo $this->lang['last modified']; ?></label>
+						<p class="record-last-modified"></p>
+					</form>
 				</div>
 			</div>
 
