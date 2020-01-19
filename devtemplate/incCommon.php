@@ -3347,7 +3347,11 @@
 		<!-- ============================================================== -->
 		
 		<div class="navbar-collapse">
-			<ul class="navbar-nav mr-auto mt-md-0 "></ul>
+			<ul class="navbar-nav mr-auto mt-md-0 ">
+			<!-- This is  -->
+			<li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+			<li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="icon-arrow-left-circle"></i></a> </li>
+			</ul>
 			<div class="nav-item dropdown notify-container">
 				<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" id="notif-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell-o"></i>
 					<?php $unread = sqlValue("SELECT COUNT(*) FROM `notif` WHERE `active_flag` = 'Y' and `read_flag` = 'N' and memberID = '" . getLoggedMemberID() . "'") ?>
@@ -3419,7 +3423,7 @@
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
 		<nav class="sidebar-nav active" role="navigation">
-			<div class="navbar-header">
+			<!-- <div class="navbar-header">
 				<?php if(!$_GET['signIn']) { ?>
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-header">
 					<span class="sr-only">Toggle navigation</span>
@@ -3427,15 +3431,20 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<?php } ?>
+				<?php } ?> -->
 				<!-- application title is obtained from the name besides the yellow database icon in AppGini, use underscores for spaces -->
 				<!-- <a class="btn navbar-btn btn-default" style="position:absolute;right:0px" href="<?php echo PREPEND_PATH; ?>../index.php"><i class="glyphicon glyphicon-retweet"></i>&nbsp;&nbsp;&nbsp;<?php echo 'Switch Account' ?></a> -->
-			</div>
-			<ul class="in" id="sidebarnav" class="top-menu" style="display: inline-block;">
+			<!-- </div> -->
+			<ul id="sidebarnav" class="in desktop">
 					<?php /*if(!$home_page){ */?>
 						<?php echo NavMenus(); ?>
 					<?php /*} */?>
-				</ul>
+			</ul>
+			<ul id="sidebarnav" class="in mobile">
+					<?php /*if(!$home_page){ */?>
+						<?php echo NavMenus(); ?>
+					<?php /*} */?>
+			</ul>
 
 				<?php if(!$_GET['signIn'] && !$_GET['loginFailed']){ ?>
 					<?php if(getLoggedMemberID() == $adminConfig['anonymousMember']){ ?>
@@ -4123,8 +4132,8 @@
 			if($i <= 7){
 				$menu_wrapper .= <<<EOT
 					<li>
-						<a href="#" class="topbar dropdown-toggle" data-toggle="topbar dropdown">{$table_group_name[$i]} </a>
-						<ul class="dropdown-menu" role="menu">{$menu[$i]}</ul>
+						<a href="#" class="topbar dropdown-toggle has-arrow" data-toggle="topbar dropdown" aria-expanded="false">{$table_group_name[$i]} </a>
+						<ul aria-expanded="false" class="collapse">{$menu[$i]}</ul>
 					</li>
 EOT;
 			}

@@ -665,7 +665,7 @@ class DataList{
 					$this->HTML .= '<a style="text-decoration: none; color: inherit;" href="' . $this->TableName . '_view.php"><img src="' . $this->TableIcon . '"> ' . $this->TableTitle . '</a>';
 					/* show add new button if user can insert and there is a selected record */
 					if($SelectedID && $this->Permissions[1] && $this->SeparateDV && $this->AllowInsert){
-						$this->HTML .= ' <button type="submit" id="addNew" name="addNew_x" value="1" class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Add New'] . '</button>';
+						$this->HTML .= ' <button type="submit" id="addNew" name="addNew_x" value="1" class="btn btn-success"><i class="ti-plus"></i> ' . $Translation['Add New'] . '</button>';
 					}
 				$this->HTML .= '</h1>';
 			$this->HTML .= '</div>';
@@ -679,7 +679,7 @@ class DataList{
 
 				// display 'Add New' icon
 				if($this->Permissions[1] && $this->SeparateDV && $this->AllowInsert){
-					$buttons_all .= '<button type="submit" id="addNew" name="addNew_x" value="1" class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Add New'] . '</button>';
+					$buttons_all .= '<button type="submit" id="addNew" name="addNew_x" value="1" class="btn btn-success"><i class="ti-plus"></i> ' . $Translation['Add New'] . '</button>';
 					$buttonsCount++;
 				}
 
@@ -795,7 +795,7 @@ class DataList{
 								$this->HTML .= '<a style="text-decoration: none; color: inherit;" href="' . $this->TableName . '_view.php"><img src="' . $this->TableIcon . '"> ' . $this->TableTitle . '</a>';
 								/* show add new button if user can insert and there is a selected record */
 								if($SelectedID && $this->Permissions[1] && !$this->SeparateDV && $this->AllowInsert){
-									$this->HTML .= ' <button type="submit" id="addNew" name="addNew_x" value="1" class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Add New'] . '</button>';
+									$this->HTML .= ' <button type="submit" id="addNew" name="addNew_x" value="1" class="btn btn-success"><i class="ti-plus"></i> ' . $Translation['Add New'] . '</button>';
 								}
 							$this->HTML .= '</div>';
 							if($this->QuickSearch){

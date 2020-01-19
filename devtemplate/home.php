@@ -321,7 +321,7 @@
 		<!-- Row -->
 		<div class="row">
 			<!-- Column -->
-			<div class="col-lg-2 col-md-6 pr-2">
+			<div class="col-lg-2 col-md-6 col-sm-6 pr-2">
 				<div class="card my-3">
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
 						<h4 class="card-title m-b-0">Average Hours</h4>
@@ -349,7 +349,7 @@
 			</div>
 			<!-- Column -->
 			<!-- Column -->
-			<div class="col-lg-2 col-md-6 px-2">
+			<div class="col-lg-2 col-md-6 col-sm-6 px-2">
 				<div class="card my-3">
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
 						<h4 class="card-title m-b-0">Project Claimed</h4>
@@ -372,7 +372,7 @@
 			</div>
 			<!-- Column -->
 			<!-- Column -->
-			<div class="col-lg-2 col-md-6 px-2">
+			<div class="col-lg-2 col-md-6 col-sm-6 px-2">
 				<div class="card my-3">
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
 						<h4 class="card-title m-b-0">Inquiries</h4>
@@ -389,7 +389,7 @@
 			</div>
 			<!-- Column -->
 			<!-- Column -->
-			<div class="col-lg-2 col-md-6 px-2">
+			<div class="col-lg-2 col-md-6 col-sm-6 px-2">
 				<div class="card my-3">
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
 						<h4 class="card-title m-b-0">Invoices</h4>
@@ -413,7 +413,7 @@
 			</div>
 			<!-- Column -->
 			<!-- Column -->
-			<div class="col-lg-2 col-md-6 px-2">
+			<div class="col-lg-2 col-md-6 col-sm-6 px-2">
 				<div class="card my-3">
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
 						<h4 class="card-title m-b-0">Revenue</h4>
@@ -436,7 +436,7 @@
 			</div>
 			<!-- Column -->
 			<!-- Column -->
-			<div class="col-lg-2 col-md-6 pl-2">
+			<div class="col-lg-2 col-md-6 col-sm-6 pl-2">
 				<div class="card my-3">
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
 						<h4 class="card-title m-b-0">Payable</h4>

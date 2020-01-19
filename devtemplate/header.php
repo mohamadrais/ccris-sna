@@ -86,6 +86,7 @@ $self_baseurl = _baseurl();
 		<script src="<?php echo PREPEND_PATH; ?>resources/jquery/js/jquery-1.12.4.min.js"></script>
 		<script type="text/javascript" src="assets/plugins/calendar/jquery-ui.min.js"></script>
 		<script>var $j = jQuery.noConflict();</script>
+		<script src="<?php echo PREPEND_PATH; ?>resources/lightbox/js/prototype.js"></script>
 		<script src="<?php echo PREPEND_PATH; ?>resources/moment/moment-with-locales.min.js"></script>
 		<script src="<?php echo PREPEND_PATH; ?>resources/moment/moment-timezone-with-data.js"></script>
    		<!-- Bootstrap tether Core JavaScript -->
@@ -95,15 +96,14 @@ $self_baseurl = _baseurl();
 		<script src="<?php echo PREPEND_PATH; ?>assets/js/jquery.slimscroll.js"></script>
 		<!--Wave Effects -->
 		<script src="<?php echo PREPEND_PATH; ?>assets/js/waves.js"></script>
-		<!--Menu sidebar -->
-		<script src="<?php echo PREPEND_PATH; ?>assets/js/sidebarmenu.js"></script>
 		<!--stickey kit -->
 		<script src="<?php echo PREPEND_PATH; ?>assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
 		<!--Custom JavaScript -->
-		<script src="<?php echo PREPEND_PATH; ?>assets/js/custom.min.js"></script>
 		<script src="<?php echo PREPEND_PATH; ?>resources/jquery/js/jquery.mark.min.js"></script>
 		<!-- <script src="<?php echo PREPEND_PATH; ?>resources/initializr/js/vendor/bootstrap.min.js"></script> -->
-		<script src="<?php echo PREPEND_PATH; ?>resources/lightbox/js/prototype.js"></script>
+		<!--Menu sidebar -->
+		<script src="<?php echo PREPEND_PATH; ?>assets/js/sidebarmenu.js"></script>
+		<script src="<?php echo PREPEND_PATH; ?>assets/js/custom.min.js"></script>
 		<script src="<?php echo PREPEND_PATH; ?>resources/lightbox/js/scriptaculous.js?load=effects"></script>
 		<script src="<?php echo PREPEND_PATH; ?>resources/select2/select2.min.js"></script>
 		<script src="<?php echo PREPEND_PATH; ?>resources/timepicker/bootstrap-timepicker.min.js"></script>

@@ -1142,7 +1142,7 @@ function WorkOrder_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $
 
 		// if user has insert permission to parent table of a lookup field, put an add new button
 		if($pt_perm['insert'] && !$_REQUEST['Embedded']){
-			$templateCode = str_replace("<%%ADDNEW({$ptfc[0]})%%>", '<button type="button" class="btn btn-success add_new_parent hspacer-md" id="' . $ptfc[0] . '_add_new" title="' . html_attr($Translation['Add New'] . ' ' . $ptfc[1]) . '"><i class="glyphicon glyphicon-plus-sign"></i></button>', $templateCode);
+			$templateCode = str_replace("<%%ADDNEW({$ptfc[0]})%%>", '<button type="button" class="btn btn-success add_new_parent hspacer-md" id="' . $ptfc[0] . '_add_new" title="' . html_attr($Translation['Add New'] . ' ' . $ptfc[1]) . '"><i class="ti-plus"></i></button>', $templateCode);
 		}
 	}
 

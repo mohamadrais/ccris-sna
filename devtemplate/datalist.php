@@ -780,7 +780,7 @@ class DataList{
 				// 	$this->HTML .= '<a style="text-decoration: none; color: inherit;" href="' . $this->TableName . '_view.php"><img src="' . $this->TableIcon . '"> ' . $this->TableTitle . '</a>';
 					/* show add new button if user can insert and there is a selected record */
 				// 	if($SelectedID && $this->Permissions[1] && $this->SeparateDV && $this->AllowInsert){
-				// 		$this->HTML .= ' <button type="submit" id="addNew" name="addNew_x" value="1" class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Add New'] . '</button>';
+				// 		$this->HTML .= ' <button type="submit" id="addNew" name="addNew_x" value="1" class="btn btn-success"><i class="ti-plus"></i> ' . $Translation['Add New'] . '</button>';
 				// 	}
 				// $this->HTML .= '</h1>';
 			$this->HTML .= '</div>';
@@ -795,24 +795,24 @@ class DataList{
 
 				// display 'Add New' icon
 				if($this->Permissions[1] && $this->SeparateDV && $this->AllowInsert){
-					// $buttons_all .= '<button type="submit" id="addNew" name="addNew_x" value="1" class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Add New'] . '</button>';
+					// $buttons_all .= '<button type="submit" id="addNew" name="addNew_x" value="1" class="btn btn-success"><i class="ti-plus"></i> ' . $Translation['Add New'] . '</button>';
 					$buttonsCount++;
 				}
 
 				$quick_search_html .= quick_search_html($SearchString, $this->QuickSearchText, $this->SeparateDV);
 				$fab_buttons = '<div id="adminActions" class="adminActions">
 				<input type="checkbox" name="adminToggle" class="adminToggle" />
-				<a class="adminButton" href="#!"><i class="fa fa-ellipsis-v"></i></a>
+				<a class="adminButton" href="#!"><i class="ti-more"></i></a>
 				<div class="adminButtons">
-					<button style="width:unset;height:unset;color:unset;border:none;background:none" type="submit" id="addNew" name="addNew_x" value="1" ><a href="#" title="Add New"><i class="glyphicon glyphicon-plus-sign"></i></a></button>
+					<button style="width:unset;height:unset;color:unset;border:none;background:none" type="submit" id="addNew" name="addNew_x" value="1" ><a href="#" title="Add New"><i class="ti-plus"></i></a></button>
 
-					<button style="width:unset;height:unset;color:unset;border:none;background:none"  onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="NoFilter_x" id="NoFilter" value="1" ><a href="#" title="Show All"><i class="fa fa-th-list"></i></a></button>
+					<button style="width:unset;height:unset;color:unset;border:none;background:none"  onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="NoFilter_x" id="NoFilter" value="1" ><a href="#" title="Show All"><i class="ti-list"></i></a></button>
 
-					<button style="width:unset;height:unset;color:unset;border:none;background:none" onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="Filter_x" id="Filter" value="1" ><a href="#" title="Filter"><i class="fa fa-filter"></i></a></button>
+					<button style="width:unset;height:unset;color:unset;border:none;background:none" onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="Filter_x" id="Filter" value="1" ><a href="#" title="Filter"><i class="ti-filter"></i></a></button>
 
-					<button style="width:unset;height:unset;color:unset;border:none;background:none" onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="CSV_x" id="CSV" value="1" ><a href="#" title="Save CSV"><i class="fa fa-download"></i></a></button>
+					<button style="width:unset;height:unset;color:unset;border:none;background:none" onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="CSV_x" id="CSV" value="1" ><a href="#" title="Save CSV"><i class="ti-download"></i></a></button>
 
-					<button style="width:unset;height:unset;color:unset;border:none;background:none" onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="Print_x" id="Print" value="1"><a href="#" title="Print"><i class="fa fa-print"></i></a></button>
+					<button style="width:unset;height:unset;color:unset;border:none;background:none" onClick="document.myform.NoDV.value=1; ' . $resetSelection . ' return true;" type="submit" name="Print_x" id="Print" value="1"><a href="#" title="Print"><i class="ti-printer"></i></a></button>
 				</div>
 			</div>';
 			}else{
@@ -821,9 +821,9 @@ class DataList{
 
 				$fab_buttons = '<div class="adminActions">
 								<input type="checkbox" name="adminToggle" class="adminToggle" />
-								<a class="adminButton" href="#!"><i class="fa fa-ellipsis-v"></i></a>
+								<a class="adminButton" href="#!"><i class="ti-more"></i></a>
 								<div class="adminButtons">
-									<button style="width:unset;height:unset;color:unset;border:none;background:none"  type="button" id="sendToPrinter" onClick="window.print();"><a href="#" title="Print"><i class="fa fa-print"></i></a></button>
+									<button style="width:unset;height:unset;color:unset;border:none;background:none"  type="button" id="sendToPrinter" onClick="window.print();"><a href="#" title="Print"><i class="ti-printer"></i></a></button>
 									<button style="width:unset;height:unset;color:unset;border:none;background:none"  type="submit"><a href="#" title="Print"><i class="glyphicon glyphicon-remove-circle"></i></a></button>
 								</div>
 							</div>';
@@ -923,7 +923,7 @@ class DataList{
 								// $this->HTML .= '<a style="text-decoration: none; color: inherit;" href="' . $this->TableName . '_view.php"><img src="' . $this->TableIcon . '"> ' . $this->TableTitle . '</a>';
 								/* show add new button if user can insert and there is a selected record */
 								if($SelectedID && $this->Permissions[1] && !$this->SeparateDV && $this->AllowInsert){
-									$this->HTML .= ' <button type="submit" id="addNew" name="addNew_x" value="1" class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i> ' . $Translation['Add New'] . '</button>';
+									$this->HTML .= ' <button type="submit" id="addNew" name="addNew_x" value="1" class="btn btn-success"><i class="ti-plus"></i> ' . $Translation['Add New'] . '</button>';
 								}
 							if($this->QuickSearch){
 								$this->HTML .= '<div class="quick-search-container">';
@@ -964,6 +964,11 @@ class DataList{
 
 		}
 
+		// end of table view navigation code
+		if(function_exists('summary_counters')){
+			$summaryCode=summary_counters($this->ContentType, $mi, $this->TableName);
+			$this->HTML .= $summaryCode;
+		}
 	// begin table and display table title
 		if(!$this->HideTableView && !($dvprint_x && $this->AllowSelection && $SelectedID) && !$PrintDV && !$Embedded){
 			$this->HTML .= '<div class="table-responsive"><table class="table">';
@@ -1093,11 +1098,6 @@ class DataList{
 			}elseif($RecordCount){
 				$FirstRecord = 1;
 				$this->RecordsPerPage = 2000; // a limit on max records in print preview to avoid performance drops
-			}
-		// end of table view navigation code
-			if(function_exists('summary_counters')){
-				$summaryCode=summary_counters($this->ContentType, $mi, $this->TableName);
-				$this->HTML .= $summaryCode;
 			}
 		// end of table view summary counters
 			$this->HTML .= "\n\t</tr>\n\n</thead>\n\n<tbody><!-- tv data below -->\n";
@@ -1288,15 +1288,15 @@ class DataList{
 
 			if($Print_x == '' && $i){ // TV
 				$this->HTML .= '<div class="row pagination-section">';
-					$this->HTML .= '<div class="col-xs-4 col-md-3 col-lg-2 vspacer-lg">';
+					$this->HTML .= '<div class="col-xs-3 col-md-3 col-lg-3  vspacer-lg">';
 						$this->HTML .= '<button onClick="' . $resetSelection . ' document.myform.NoDV.value = 1; return true;" type="submit" name="Previous_x" id="Previous" value="1" class="btn btn-outline-primary btn-block"><i class="glyphicon glyphicon-chevron-left"></i> <span class="hidden-xs">' . $Translation['Previous'] . '</span></button>';
 					$this->HTML .= '</div>';
 
-					$this->HTML .= '<div class="col-xs-4 col-md-4 col-lg-2 col-md-offset-1 col-lg-offset-3 text-center vspacer-lg">';
+					$this->HTML .= '<div class="col-xs-6 col-md-6 col-lg-6 text-center vspacer-lg">';
 						$this->HTML .= $pagesMenu;
 					$this->HTML .= '</div>';
 
-					$this->HTML .= '<div class="col-xs-4 col-md-3 col-lg-2 col-md-offset-1 col-lg-offset-3 text-right vspacer-lg">';
+					$this->HTML .= '<div class="col-xs-3 col-md-3 col-lg-3 text-right vspacer-lg">';
 						$this->HTML .= '<button onClick="'.$resetSelection.' document.myform.NoDV.value=1; return true;" type="submit" name="Next_x" id="Next" value="1" class="btn btn-primary btn-block"><span class="hidden-xs">' . $Translation['Next'] . '</span> <i class="glyphicon glyphicon-chevron-right"></i></button>';
 					$this->HTML .= '</div>';
 				$this->HTML .= '</div>';
@@ -1489,10 +1489,10 @@ class DataList{
 			</div>
 		<?php // } ?>
 
-		<div class="pull-right flip btn-group vspacer-md hspacer-md tv-tools">
+		<!-- <div class="pull-right flip btn-group vspacer-md hspacer-md tv-tools">
 			<button title="<?php echo html_attr($Translation['previous column']); ?>" type="button" class="btn btn-outline-secondary tv-scroll" onclick="AppGini.TVScroll().less()"><i class="glyphicon glyphicon-step-backward"></i></button>
 			<button title="<?php echo html_attr($Translation['next column']); ?>" type="button" class="btn btn-outline-secondary tv-scroll" onclick="AppGini.TVScroll().more()"><i class="glyphicon glyphicon-step-forward"></i></button>
-		</div>
+		</div> -->
 		<?php // if($this->ShowTableHeader){ ?>
 		<!-- <div class="collapse" id="toggle-columns-container">
 				<div class="well pull-right flip" style="width: 100%; max-width: 600px;">

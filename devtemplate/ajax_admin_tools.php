@@ -74,7 +74,7 @@
 					<i class="glyphicon glyphicon-option-vertical"></i>
 				</button>
 				<div class="dropdown-menu mailbox animated bounceInDown" id="admin-tools-menu">
-		<h5><b><?php if (getLoggedAdmin()) { ?><?php echo $this->lang['Admin Information']; ?><?php } else { ?><?php echo $this->lang['Record Information']; ?><?php } ?></b></h5>
+					<h5><b><?php if (getLoggedAdmin()) { ?><?php echo $this->lang['Admin Information']; ?><?php } else { ?><?php echo $this->lang['Record Information']; ?><?php } ?></b></h5>
 					<div class="alert alert-danger no-owner hidden"><?php echo $this->lang['record has no owner']; ?></div>
 					<dl class="message-center">
 						<dt><?php echo $this->lang['owner']; ?></dt>

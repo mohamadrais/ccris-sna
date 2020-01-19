@@ -64,7 +64,7 @@ function summary_counters($contentType, $memberInfo, $tableName)
 			<!-- Row -->
 			<div class="row">
 				<!-- Column Total Count-->
-				<div class="col-lg-2 col-md-6">
+				<div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
 					<div class="card">
 						<div class="card-body text-center">
 							<h6 class="card-title text-muted m-b-0">Total $totalDisplayField</h6>
@@ -74,7 +74,7 @@ function summary_counters($contentType, $memberInfo, $tableName)
 					</div>
 				</div>
 				<!-- Column Review Count-->
-				<div class="col-lg-2 col-md-6">
+				<div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
 					<div class="card">
 						<div class="card-body text-center">
 							<h6 class="card-title text-muted m-b-0">$reviewDisplayField</h6>
@@ -84,7 +84,7 @@ function summary_counters($contentType, $memberInfo, $tableName)
 					</div>
 				</div>
 				<!-- Column Approval Count-->
-				<div class="col-lg-2 col-md-6">
+				<div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
 					<div class="card">
 						<div class="card-body text-center">
 							<h6 class="card-title text-muted m-b-0">$approvalDisplayField</h6>
@@ -94,7 +94,7 @@ function summary_counters($contentType, $memberInfo, $tableName)
 					</div>
 				</div>
 				<!-- IMS Control Count-->
-				<div class="col-lg-2 col-md-6">
+				<div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
 					<div class="card">
 						<div class="card-body text-center">
 							<h6 class="card-title text-muted m-b-0">$imsControlDisplayField</h6>
@@ -104,7 +104,7 @@ function summary_counters($contentType, $memberInfo, $tableName)
 					</div>
 				</div>
 				<!-- Custom Metric 1 -->
-				<div class="col-lg-2 col-md-6">
+				<div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
 					<div class="card">
 						<div class="card-body text-center">
 							<h6 class="card-title text-muted m-b-0">$customDisplayField1</h6>
@@ -114,7 +114,7 @@ function summary_counters($contentType, $memberInfo, $tableName)
 					</div>
 				</div>
 				<!-- Custom Metric 2 -->
-				<div class="col-lg-2 col-md-6">
+				<div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
 					<div class="card">
 						<div class="card-body text-center">
 							<h6 class="card-title text-muted m-b-0">$customDisplayField2</h6>

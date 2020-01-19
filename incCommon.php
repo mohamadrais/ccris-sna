@@ -2754,7 +2754,6 @@
 				</button>
 				<?php } ?>
 
-				<div class="collapse navbar-collapse mainBg">
 					<!-- <ul class="nav navbar-nav" id="upperNav"> -->
 						<!-- <?php /*if(!$home_page){ */?> -->
 							<!-- <?php 
@@ -2804,7 +2803,6 @@
 							</script>
 						<?php } ?>
 					<?php } ?>
-				</div>
 			</nav>
 		</header>
 

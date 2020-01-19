@@ -258,7 +258,7 @@
 </div> -->
 <div id="adminActions" class="adminActions">
 	<input type="checkbox" name="adminToggle" class="adminToggle" />
-	<a class="adminButton" href="#!"><i class="fa fa-ellipsis-v"></i></a>
+	<a class="adminButton" href="#!"><i class="ti-more"></i></a>
 	<div class="adminButtons">
 	<button style="width:unset;height:unset;color:unset;border:none;background:none" type="submit" id="applyFilters" name="apply_sorting" value="1"><a href="#"><i class="ti-check"></i></a></button>
 	

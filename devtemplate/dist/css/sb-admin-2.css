@@ -43,11 +43,11 @@ body {
   color: #999;
   font-size: 12px;
 }
-#page-wrapper {
+/* #page-wrapper {
   padding: 0 15px;
   min-height: 568px;
   background-color: white;
-}
+} */
 @media (min-width: 768px) {
   #upPageHeader{
     padding-top: 80px;
@@ -772,7 +772,7 @@ table.dataTable thead .sorting:after {
     text-align: center;
   }
 
-  .navbar .navbar-collapse{
+  /* .navbar .navbar-collapse{
     position: fixed;
     z-index: 999;
     top: 0;
@@ -786,7 +786,7 @@ table.dataTable thead .sorting:after {
     -moz-transition: all 0.2s linear 0s;
     -ms-transition: all 0.2s linear 0s;
     transition: all 0.2s linear 0s;
-  }
+  } */
 
   body.menu-open{
     overflow-y: hidden;

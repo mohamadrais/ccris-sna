@@ -6653,7 +6653,7 @@ Small Desktop & above all (1024px)
 
 @media (max-width: 1023px) {
 .container-fluid {
-  padding: 25px 20px; }
+  padding: 25px 0px; }
 .widget-app-columns {
   -webkit-column-count: 1;
   column-count: 1; }
@@ -6720,6 +6720,9 @@ Phone and below ipad(767px)
 .mega-dropdown .dropdown-menu {
   height: 480px;
   overflow: auto; }
+.topbar .top-navbar .navbar-header{
+  width: 100%;
+}
 /*Sidebar and wrapper*/
 .mini-sidebar .page-wrapper {
   margin-left: 0px;
@@ -6852,7 +6855,7 @@ ul.timeline > li > .timeline-panel:after {
 }
 
 .welcome-text {
-  color: #AAAAAA;
+  color: #323232;
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
@@ -7211,7 +7214,7 @@ display: none;
   position: relative;
 }
 .page-wrapper{
-  padding-top: 120px;
+  padding-top: 100px;
   padding-bottom: 0px;
   min-height: 94vh;
 }

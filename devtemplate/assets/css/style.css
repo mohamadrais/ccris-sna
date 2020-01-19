@@ -5582,7 +5582,14 @@ background: #fff; }
   font-weight: 400;
   background: #242933;
   color: #ad3a62; }
-
+#sidebarnav.mobile{
+  display: none;
+  top: 10px;
+  position: relative;
+}
+#sidebarnav.mobile li a{
+  position: relative;
+}
 @media (min-width: 768px) {
 .sidebar-nav > ul > li {
   display: inline-block; }
@@ -5663,9 +5670,9 @@ transform: rotate(-135deg) translate(0, -50%); }
   display: none; } }
 
 @media (max-width: 767px) {
-.mini-sidebar .left-sidebar {
+.left-sidebar {
   position: fixed;
-  display: none;
+  display: block;
   height: 100%;
   overflow: auto; }
 .mini-sidebar.show-sidebar .left-sidebar,
@@ -6653,7 +6660,7 @@ Small Desktop & above all (1024px)
 
 @media (max-width: 1023px) {
 .container-fluid {
-  padding: 25px 20px; }
+  padding: 25px 0px; }
 .widget-app-columns {
   -webkit-column-count: 1;
   column-count: 1; }
@@ -6720,6 +6727,9 @@ Phone and below ipad(767px)
 .mega-dropdown .dropdown-menu {
   height: 480px;
   overflow: auto; }
+.navbar-brand span{
+  display: none !important;
+}
 /*Sidebar and wrapper*/
 .mini-sidebar .page-wrapper {
   margin-left: 0px;
@@ -6729,6 +6739,12 @@ Phone and below ipad(767px)
   padding: 10px 0; }
 .vtabs .tabs-vertical {
   width: auto; }
+#sidebarnav.desktop{
+  display: none;
+}
+#sidebarnav.mobile{
+  display: block;
+}
 /*Footer*/
 .footer {
   left: 0px; }
@@ -6852,7 +6868,7 @@ ul.timeline > li > .timeline-panel:after {
 }
 
 .welcome-text {
-  color: #AAAAAA;
+  color: #1c1c1c;
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
@@ -7060,7 +7076,7 @@ button.login {
   position: fixed;
   bottom: 35px; 
   right: 35px;
-  z-index: 9;
+  z-index: 10;
   display: flex;
 }
 .adminActions input{
