@@ -28,7 +28,7 @@
 
 	$navLinks[] = array(
 		'url' => '', 
-		'title' => '<i id="fullsearchicon" class="glyphicon glyphicon-search"></i>',
+		'title' => 'Search',
 		'groups' => array('*'), // groups allowed to see this link, use '*' if you want to show the link to all groups
 		'icon' => '',
 		'table_group' => 9, // optional index of table group, default is 0

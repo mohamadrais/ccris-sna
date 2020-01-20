@@ -219,66 +219,73 @@ if (!($memberInfo['group'] == 'Admins' && $memberInfo['username'] == $adminConfi
 			return Math.round(new Date().getTime() + (Math.random() * 100));
 		}
 		if(!$j('#searchPageForm').is(':visible')){
-			$j('#fullsearchicon').parent().replaceWith(`
-				<form role="search" method="get" class="search-form" action="search.php" id="searchForm">
-					<label>
-						<input class="search-field" placeholder="Search" value="" name="searchText" type="search" id="searchText">
-					</label>
-					<i id="fullsearchicon" class="glyphicon glyphicon-search" style="font-size: 18px"></i>
-					<input type="hidden" name="page" value="1" class="form-control">
-					<input type="hidden" id="dateStart" name="dateStart" value="" class="form-control">
-					<input type="hidden" id="dateEnd" name="dateEnd" value="" class="form-control">
-					<input type="hidden" id="departmentID" name="departmentID" value="0" class="form-control">
-					<input type="hidden" id="tableName" name="tableName" value="All tables" class="form-control">
-				</form>`);
-			
 			var today = moment($j.ajax({async: false}).getResponseHeader( 'Date' )).tz("Asia/Kuala_Lumpur");
 			var dateStart = moment(today).subtract(365, 'days').format("YYYY-MM-DD");
 			var dateEnd = moment(today).format("YYYY-MM-DD");
-			$j('#dateStart').val(dateStart);
-			$j('#dateEnd').val(dateEnd);
+			$j('#hdateStart').val(dateStart);
+			$j('#hdateEnd').val(dateEnd);
 			
-			$j("#fullsearchicon").on("click touchstart",function(e){
+			$j('[id$=fullsearchicon]').on("click touchstart",function(e){
 				e.preventDefault();
-				if($j('#searchText').hasClass('open') && $j('#searchText').val().length >= 3){
-					$j('#searchForm').submit();
-					// 	window.location.replace("search.php");
+				if($j(this).parent().find('.search-field').hasClass('open') && $j(this).parent().find('.search-field').val().length > 0){
+					if($j(this).parent().find('.search-field').val().length >= 3){
+						$j(this).parent().submit();
+					}
+					else{
+						$j(this).parent().find('.search-field').effect( "shake", { direction: "up", times: 3, distance: 2}, 600 );
+					}
 				}
-				else{
-					$j(".search-field").toggleClass("open");
+				else {
+					$j(this).parent().find('.search-field').toggleClass("open");
 				}
+				// if($j('#searchText').hasClass('open') && $j('#searchText').val().length >= 3){
+				// 	$j('#searchForm').submit();
+				// 	// 	window.location.replace("search.php");
+				// }
+				// else{
+				// 	$j(".search-field").toggleClass("open");
+				// }
 			});
 		}
 		else{
-			$j('#fullsearchicon').prop("disabled", true);
-			$j('#fullsearchicon').parent().removeAttr('href');
+			 // $j('[id$=fullsearchicon]').prop("disabled", true);
+			$j('[id$=fullsearchicon]').parent().removeAttr('href');
+			$j('[id$=fullsearchicon]').on("click touchstart",function(e){
+				e.preventDefault();
+				if($j("#left_sidebar").hasClass("show")){
+					$j("#mobile_menu").click();
+				}
+				$j('[id$=searchText]').focus();
+				$j('[id$=searchText]').effect( "shake", { direction: "up", times: 3, distance: 2}, 600 );
+			});
 		}
 
-		$j('#searchText').keypress(function(e){
+		$j('[id$=searchText]').keypress(function(e){
 			if(e.which == 13){	// Enter key pressed
 				e.preventDefault();
 				if(e.target.value.length >= 3){
 					if(!$j('#searchPageForm').is(':visible')){
-						$j("#fullsearchicon").click();
+						if($j('#fullsearchicon').is(':visible')) $j('[id=fullsearchicon]').click();
+						else if($j('#mfullsearchicon').is(':visible')) $j('[id=mfullsearchicon]').click();
 					}
 					else if($j('#searchPageForm').is(':visible')){
 						$j('#submitSearch').click();
 					}
 				}
 				else{
-					$j("#searchText").effect( "shake", { direction: "up", times: 3, distance: 2}, 600 );
+					$j(this).effect( "shake", { direction: "up", times: 3, distance: 2}, 600 );
 				}
 			}
 		});
 
 		$j('#submitSearch').on("click touchstart",function(e){
-			if($j('#searchText').val().length < 3){
+			if($j(this).parent().parent().find('#searchText').val().length < 3){
 				e.preventDefault();
-				$j("#searchText").effect( "shake", { direction: "up", times: 3, distance: 2}, 600 );
+				$j(this).parent().parent().find('#searchText').effect( "shake", { direction: "up", times: 3, distance: 2}, 600 );
 			}
 		});
 		
-		$j("#searchText").on("change paste keyup", function() {
+		$j('[id$=searchText]').on("change paste keyup", function() {
 			if($j(this).val().length == 0){
 				$j(this).removeClass("successSearch");
 				$j(this).removeClass("errorSearch");

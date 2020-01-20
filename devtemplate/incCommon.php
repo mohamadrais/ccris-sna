@@ -3439,12 +3439,12 @@
 			<!-- </div> -->
 			<ul id="sidebarnav" class="in desktop">
 					<?php /*if(!$home_page){ */?>
-						<?php echo NavMenus(); ?>
+						<?php echo NavMenus(['desktop']); ?>
 					<?php /*} */?>
 			</ul>
 			<ul id="sidebarnav" class="in mobile">
 					<?php /*if(!$home_page){ */?>
-						<?php echo NavMenus(); ?>
+						<?php echo NavMenus(['mobile']); ?>
 					<?php /*} */?>
 			</ul>
 
@@ -4115,16 +4115,40 @@
 			foreach($navLinks as $link){
 				if(!isset($link['url']) || !isset($link['title'])) continue;
 				if($memberInfo['admin'] || @in_array($memberInfo['group'], $link['groups']) || @in_array('*', $link['groups'])){
+					
 					$menu_index = intval($link['table_group']);
 					// if(!$links_added[$menu_index]) $menu[$menu_index] .= '<li class="divider"></li>';
+					if($link['title'] == 'Search'){
+						$append_search = '';
+						$link['title'] = '<i id="fullsearchicon" class="glyphicon glyphicon-search"></i>';
+						if ($options[0]=='mobile') $append_search = 'm';
+						$navbar_search_form = "
+						<form role='search' method='get' class='search-form' action='search.php' id='{$append_search}searchForm'>
+							<label>
+								<input class='search-field' placeholder='Search' value='' name='searchText' type='search' id='{$append_search}searchText'>
+							</label>
+							<i id='{$append_search}fullsearchicon' class='glyphicon glyphicon-search' style='font-size: 18px'></i>
+							<input type='hidden' name='page' value='1' class='form-control'>
+							<input type='hidden' id='hdateStart' name='dateStart' value='' class='form-control'>
+							<input type='hidden' id='hdateEnd' name='dateEnd' value='' class='form-control'>
+							<input type='hidden' id='departmentID' name='departmentID' value='0' class='form-control'>
+							<input type='hidden' id='tableName' name='tableName' value='All tables' class='form-control'>
+						</form>";
+						
+						$menu[$menu_index] .= "<li>{$navbar_search_form}</li>";
+						$links_added[$menu_index]++;
+					}
+					else{
+						/* add prepend_path to custom links if they aren't absolute links */
+						if(!preg_match('/^(http|\/\/)/i', $link['url'])) $link['url'] = $prepend_path . $link['url'];
+						if(!preg_match('/^(http|\/\/)/i', $link['icon']) && $link['icon']) $link['icon'] = $prepend_path . $link['icon'];
 
-					/* add prepend_path to custom links if they aren't absolute links */
-					if(!preg_match('/^(http|\/\/)/i', $link['url'])) $link['url'] = $prepend_path . $link['url'];
-					if(!preg_match('/^(http|\/\/)/i', $link['icon']) && $link['icon']) $link['icon'] = $prepend_path . $link['icon'];
+						
+						$menu[$menu_index] .= "<li><a href=\"{$link['url']}\"> {$link['title']}</a></li>";
+						$links_added[$menu_index]++;
 
+					}
 					
-					$menu[$menu_index] .= "<li><a href=\"{$link['url']}\"> {$link['title']}</a></li>";
-					$links_added[$menu_index]++;
 				}
 			}
 		}
