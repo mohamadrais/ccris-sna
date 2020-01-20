@@ -15,7 +15,7 @@
 <div class="page-wrapper ps ps--theme_default">
 <div class="container-fluid" style="margin-top: 20px;overflow: scroll;">
 
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="899" viewBox="0 0 1280 899">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width:100%;height:auto;" viewBox="0 0 1280 899">
   <defs>
     <filter id="Polygon_9" x="992" y="106" width="49" height="67" filterUnits="userSpaceOnUse">
       <feOffset dy="3" input="SourceAlpha"/>
