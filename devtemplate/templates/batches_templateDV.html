@@ -36,8 +36,8 @@
 	</div>
 
 	<ul class="nav nav-tabs customtab2 d-block w-100" role="tablist">
-		<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#Description" role="tab" class="not-active"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Description</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Attachment" role="tab" class="not-active"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Attachment</span></a> </li>
+		<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#Description" role="tab" class="not-active"><span class="hidden-sm-up"></span> Description</a> </li>
+		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Attachment" role="tab" class="not-active"><span class="hidden-sm-up"></span> Attachment</a> </li>
 
 	</ul>
 
@@ -49,7 +49,7 @@
 					<div class="col-lg-10">
 						<span class="help-block collapse" id="fo_item-description"><div class="alert alert-info">reference of batch according to item</div></span>
 
-						<%%COMBO(fo_item)%%><%%PLINK(fo_item)%%><%%ADDNEW(Item)%%>
+						<span><%%COMBO(fo_item)%%><%%PLINK(fo_item)%%><%%ADDNEW(Item)%%></span>
 					</div>
 				</div>
 
@@ -57,7 +57,7 @@
 					<hr class="hidden-md hidden-lg">
 					<label for="fo_suppliers" class="control-label col-lg-2" data-parent_link="view_parent_modal">Vendor</label>
 					<div class="col-lg-10">
-						<%%COMBO(fo_suppliers)%%><%%PLINK(fo_suppliers)%%><%%ADDNEW(vendor)%%>
+						<span><%%COMBO(fo_suppliers)%%><%%PLINK(fo_suppliers)%%><%%ADDNEW(vendor)%%></span>
 					</div>
 				</div>
 
@@ -94,24 +94,24 @@
 						<input maxlength="100" type="text" class="form-control" name="ot_FileLoc" id="ot_FileLoc" value="<%%VALUE(ot_FileLoc)%%>">
 					</div>
 				</div>
-
-				<div class="form-group row">
-					<hr class="hidden-md hidden-lg">
-					<label for="fo_otherdetails" class="control-label col-lg-2">Other details</label>
-					<div class="col-lg-10">
-						<textarea class="form-control" name="fo_otherdetails" id="fo_otherdetails" rows="5"><%%VALUE(fo_otherdetails)%%></textarea>
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<hr class="hidden-md hidden-lg">
-					<label for="fo_comments" class="control-label col-lg-2">Comments</label>
-					<div class="col-lg-10">
-						<%%HTMLAREA(fo_comments)%%>
-					</div>
-				</div>
 		</div>
 		<div class="tab-pane panel-body p-t-30" id="Attachment" role="tabpanel">
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="fo_otherdetails" class="control-label col-lg-2">Other details</label>
+				<div class="col-lg-10">
+					<textarea class="form-control" name="fo_otherdetails" id="fo_otherdetails" rows="5"><%%VALUE(fo_otherdetails)%%></textarea>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="fo_comments" class="control-label col-lg-2">Comments</label>
+				<div class="col-lg-10">
+					<%%HTMLAREA(fo_comments)%%>
+				</div>
+			</div>
+
 			<div class="form-group row">
 				<label class="control-label col-lg-2">Shared Links<div class="text-muted">Attached <span id="totalLinkAttached"></span>/2</div></label>
 				<div class="col-lg-10">

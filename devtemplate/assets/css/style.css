@@ -1760,7 +1760,7 @@ padding-left: 20px; }
     width: 7px; }
 .radio input[type="radio"] {
   cursor: pointer;
-  opacity: 0;
+  /* opacity: 0; */
   z-index: 1;
   outline: none; }
   .radio input[type="radio"]:disabled + label {

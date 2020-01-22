@@ -40,9 +40,9 @@
 	</div>
 
 	<ul class="nav nav-tabs customtab2 d-block w-100" role="tablist">
-		<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#Description" role="tab" class="not-active"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Description</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Attachment" role="tab" class="not-active"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Attachment</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Review" role="tab" class="not-active"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Review</span></a> </li>
+		<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#Description" role="tab" class="not-active"><span class="hidden-sm-up"></span> Description</a> </li>
+		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Attachment" role="tab" class="not-active"><span class="hidden-sm-up"></span> Attachment</a> </li>
+		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Review" role="tab" class="not-active"><span class="hidden-sm-up"></span> Review</a> </li>
 
 	</ul>
 
@@ -86,13 +86,13 @@
 					<div class="col-lg-4">
 						<span class="help-block collapse" id="fo_ProjectID-description"><div class="alert alert-info">Request Order related to the specific project requirement</div></span>
 
-						<%%COMBO(fo_ProjectID)%%><%%PLINK(fo_ProjectID)%%><%%ADDNEW(projects)%%>
+						<span><%%COMBO(fo_ProjectID)%%><%%PLINK(fo_ProjectID)%%><%%ADDNEW(projects)%%></span>
 					</div>
 					<label for="fo_InventoryID" class="control-label col-lg-2" data-parent_link="view_parent_modal">Inventory ID<span class="text-danger"><%%TRANSLATION(*)%%></span> <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#fo_InventoryID-description"></i></label>
 					<div class="col-lg-4">
 						<span class="help-block collapse" id="fo_InventoryID-description"><div class="alert alert-info">Request order related to the asset on the asset register</div></span>
 
-						<%%COMBO(fo_InventoryID)%%><%%PLINK(fo_InventoryID)%%><%%ADDNEW(Inventory)%%>
+						<span><%%COMBO(fo_InventoryID)%%><%%PLINK(fo_InventoryID)%%><%%ADDNEW(Inventory)%%></span>
 					</div>
 				</div>
 
@@ -102,7 +102,7 @@
 					<div class="col-lg-4">
 						<span class="help-block collapse" id="fo_ItemID-description"><div class="alert alert-info">Request order related to the item and part of inventory unit</div></span>
 
-						<%%COMBO(fo_ItemID)%%><%%PLINK(fo_ItemID)%%><%%ADDNEW(Item)%%><span id="fo_ItemIDLoading"></span>
+						<span><%%COMBO(fo_ItemID)%%><%%PLINK(fo_ItemID)%%><%%ADDNEW(Item)%%></span><span id="fo_ItemIDLoading"></span>
 					</div>
 					<label for="fo_ProductID" class="control-label col-lg-2">Item Category <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#fo_ProductID-description"></i></label>
 					<div class="col-lg-4">
@@ -157,7 +157,7 @@
 					<div class="col-lg-4">
 						<span class="help-block collapse" id="fo_ShipVia-description"><div class="alert alert-info">Potential logistic company</div></span>
 
-						<%%COMBO(fo_ShipVia)%%><%%PLINK(fo_ShipVia)%%><%%ADDNEW(Logistics)%%>
+						<span><%%COMBO(fo_ShipVia)%%><%%PLINK(fo_ShipVia)%%><%%ADDNEW(Logistics)%%></span>
 					</div>
 				</div>
 
@@ -169,23 +169,24 @@
 					</div>
 				</div>
 
-				<div class="form-group row">
-					<hr class="hidden-md hidden-lg">
-					<label for="ot_otherdetails" class="control-label col-lg-2">Other details</label>
-					<div class="col-lg-10">
-						<textarea class="form-control" name="ot_otherdetails" id="ot_otherdetails" rows="5"><%%VALUE(ot_otherdetails)%%></textarea>
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<hr class="hidden-md hidden-lg">
-					<label for="ot_comments" class="control-label col-lg-2">Comments</label>
-					<div class="col-lg-10">
-						<%%HTMLAREA(ot_comments)%%>
-					</div>
-				</div>
 		</div>
 		<div class="tab-pane panel-body p-t-30" id="Attachment" role="tabpanel">
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="ot_otherdetails" class="control-label col-lg-2">Other details</label>
+				<div class="col-lg-10">
+					<textarea class="form-control" name="ot_otherdetails" id="ot_otherdetails" rows="5"><%%VALUE(ot_otherdetails)%%></textarea>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="ot_comments" class="control-label col-lg-2">Comments</label>
+				<div class="col-lg-10">
+					<%%HTMLAREA(ot_comments)%%>
+				</div>
+			</div>
+
 			<div class="form-group row">
 				<label class="control-label col-lg-2">Shared Links<div class="text-muted">Attached <span id="totalLinkAttached"></span>/2</div></label>
 				<div class="col-lg-10">

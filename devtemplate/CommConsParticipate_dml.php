@@ -991,6 +991,10 @@ function CommConsParticipate_form($selected_id = '', $AllowUpdate = 1, $AllowIns
 			$templateCode = str_replace('<%%EDIT_BUTTON%%>', '<a id="startEdit" class="btn btn-warning float-btn-2" href="#Edit"><i class="ti-pencil-alt mr-2" aria-hidden="true"></i></a>', $templateCode);
 		}else{
 			$templateCode = str_replace('<%%UPDATE_BUTTON%%>', '', $templateCode);
+			$templateCode = str_replace('<%%EDIT_BUTTON%%>', '', $templateCode);
+		}
+		if($ownerMemberID==getLoggedMemberID()){
+			$templateCode = str_replace('<%%ATTACH_BUTTON%%>', '<button class="no-style-button"  id="attach"><a href="#wo_modal" data-toggle="modal" title=" ' . $Translation['Attach'] . '"><i class="ti-clip"></i></a></button>', $templateCode);
 		}
 		if(($arrPerm[4]==1 && $ownerMemberID==getLoggedMemberID()) || ($arrPerm[4]==2 && $ownerGroupID==getLoggedGroupID()) || $arrPerm[4]==3){ // allow delete?
 			$templateCode = str_replace('<%%DELETE_BUTTON%%>', '<button type="submit" class="no-style-button" id="delete" name="delete_x" value="1" onclick="return confirm(\'' . $Translation['are you sure?'] . '\');"><a href="#" title="' . html_attr($Translation['Delete']) . '"><i class="ti-trash"></i></a></button>', $templateCode);

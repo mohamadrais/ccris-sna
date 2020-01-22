@@ -46,9 +46,9 @@
 	</div>
 
 	<ul class="nav nav-tabs customtab2 d-block w-100" role="tablist">
-		<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#Description" role="tab" class="not-active"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Description</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Attachment" role="tab" class="not-active"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Attachment</span></a> </li>
-		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Review" role="tab" class="not-active"><span class="hidden-sm-up"></span> <span class="hidden-xs-down">Review</span></a> </li>
+		<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#Description" role="tab" class="not-active"><span class="hidden-sm-up"></span> Description</a> </li>
+		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Attachment" role="tab" class="not-active"><span class="hidden-sm-up"></span> Attachment</a> </li>
+		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Review" role="tab" class="not-active"><span class="hidden-sm-up"></span> Review</a> </li>
 
 	</ul>
 
@@ -96,23 +96,24 @@
 					</div>
 				</div>
 
-				<div class="form-group row">
-					<hr class="hidden-md hidden-lg">
-					<label for="ot_otherdetails" class="control-label col-lg-2">Other details</label>
-					<div class="col-lg-10">
-						<textarea class="form-control" name="ot_otherdetails" id="ot_otherdetails" rows="5"><%%VALUE(ot_otherdetails)%%></textarea>
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<hr class="hidden-md hidden-lg">
-					<label for="ot_comments" class="control-label col-lg-2">Comments</label>
-					<div class="col-lg-10">
-						<%%HTMLAREA(ot_comments)%%>
-					</div>
-				</div>
 		</div>
 		<div class="tab-pane panel-body p-t-30" id="Attachment" role="tabpanel">
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="ot_otherdetails" class="control-label col-lg-2">Other details</label>
+				<div class="col-lg-10">
+					<textarea class="form-control" name="ot_otherdetails" id="ot_otherdetails" rows="5"><%%VALUE(ot_otherdetails)%%></textarea>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="ot_comments" class="control-label col-lg-2">Comments</label>
+				<div class="col-lg-10">
+					<%%HTMLAREA(ot_comments)%%>
+				</div>
+			</div>
+
 			<div class="form-group row">
 				<label class="control-label col-lg-2">Shared Links<div class="text-muted">Attached <span id="totalLinkAttached"></span>/2</div></label>
 				<div class="col-lg-10">

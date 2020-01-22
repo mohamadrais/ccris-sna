@@ -1034,6 +1034,9 @@ function WorkOrder_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $
 			$templateCode = str_replace('<%%UPDATE_BUTTON%%>', '', $templateCode);
 			$templateCode = str_replace('<%%EDIT_BUTTON%%>', '', $templateCode);
 		}
+		// if($ownerMemberID==getLoggedMemberID()){
+		// 	$templateCode = str_replace('<%%ATTACH_BUTTON%%>', '<button class="no-style-button"  id="attach"><a href="#wo_modal" data-toggle="modal" title=" ' . $Translation['Attach'] . '"><i class="ti-clip"></i></a></button>', $templateCode);
+		// }
 		if(($arrPerm[4]==1 && $ownerMemberID==getLoggedMemberID()) || ($arrPerm[4]==2 && $ownerGroupID==getLoggedGroupID()) || $arrPerm[4]==3){ // allow delete?
 			$templateCode = str_replace('<%%DELETE_BUTTON%%>', '<button class="no-style-button"  onClick="return confirm(\'' . $Translation['are you sure?'] . '\');" type="submit" name="delete_x" id="delete" value="1" ><a href="#" title="' . html_attr($Translation['Delete']) . '"><i class="ti-trash"></i></a></button>', $templateCode);
 		}else{
