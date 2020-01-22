@@ -4457,6 +4457,9 @@ EOT;
 	#########################################################
 
 	function get_summary_update_sql($tableName, $metricValue, $metricPosition){
+		if(in_array($metricPosition,[1, 2, 3])){
+			if(!isset($metricValue) || empty($metricValue)) $metricValue = 0;
+		}
 		$returnQuery = 'select null';
 		$arrSummaryUpdateSqlList = array(
 			/* [0: 'updateTotalCount', 1: 'updateReviewCount', 2: 'updateApprovalCount', 3: 'updateIMSControlCount', 4: 'updateCustomDisplayValue1',  5: 'updateCustomDisplayValue2'] */   
@@ -5095,4 +5098,30 @@ EOT;
 		return false;
 	}
 
-	// ==================================================================
+	#########################################################
+
+	// $domain = 'app.puffergroup.com';
+	// $compID = 'devtemplate';
+	// $memberID = 'admin';
+	// $password = 'admin';
+	// get_last_five($domain, $compID, $memberID, $password);
+
+	// function get_last_five($domain, $compID, $memberID, $password){
+
+	// 	$url = "https://{$domain}/{$compID}/ajax_api_puffersocial.php";
+	// 	$data = array('m' => $memberID, 't' => $password, 'action' => 'get_last_five');
+
+	// 	// use key 'http' even if you send the request to https://...
+	// 	$options = array(
+	// 		'http' => array(
+	// 			'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+	// 			'method'  => 'POST',
+	// 			'content' => http_build_query($data)
+	// 		)
+	// 	);
+	// 	$context  = stream_context_create($options);
+	// 	$result = file_get_contents($url, false, $context);
+	// 	if ($result === FALSE) { /* Handle error */
+	// 	}
+	// 	var_dump($result);
+	// }
