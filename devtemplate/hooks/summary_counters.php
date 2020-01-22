@@ -32,11 +32,64 @@ function summary_counters($contentType, $memberInfo, $tableName)
 	$customDisplayValue2 = (!isset($customDisplayValue2) || empty($customDisplayValue2)) ? '0' : $customDisplayValue2;
 
 	$totalCards = 1;
-	if (!empty($reviewDisplayField)) $totalCards++;
-	if (!empty($approvalDisplayField)) $totalCards++;
-	if (!empty($imsControlDisplayField)) $totalCards++;
-	if (!empty($customDisplayField1)) $totalCards++;
-	if (!empty($customDisplayField2)) $totalCards++;
+	$summaryContent_html=array('<div class="card">
+								<div class="card-body text-center">
+									<h6 class="card-title text-muted m-b-0">Total '.$totalDisplayField.'</h6>
+									<!-- <p class="text-muted">$totalDisplayField</p> -->
+									<h1 class="font-light d-inline">'.$totalCount.'</h1>
+								</div>
+							</div>');
+
+	if (!empty($reviewDisplayField)) {
+		array_push($summaryContent_html, '<div class="card">
+												<div class="card-body text-center">
+													<h6 class="card-title text-muted m-b-0">'.$reviewDisplayField.'</h6>
+													<!-- <p class="text-muted">Overall</p> -->
+													<h1 class="font-light d-inline">'.$reviewCount.'</h1>
+												</div>
+											</div>');
+		$totalCards++;
+	}
+	if (!empty($approvalDisplayField)) {
+		array_push($summaryContent_html, '<div class="card">
+												<div class="card-body text-center">
+													<h6 class="card-title text-muted m-b-0">'.$approvalDisplayField.'</h6>
+													<!-- <p class="text-muted">Overall</p> -->
+													<h1 class="font-light d-inline">'.$approvalCount.'</h1>
+												</div>
+											</div>');
+		$totalCards++;
+	}
+	if (!empty($imsControlDisplayField)) {
+		array_push($summaryContent_html, '<div class="card">
+													<div class="card-body text-center">
+														<h6 class="card-title text-muted m-b-0">'.$imsControlDisplayField.'</h6>
+														<!-- <p class="text-muted">Overall</p> -->
+														<h1 class="font-light d-inline">'.$imsControlCount.'</h1>
+													</div>
+												</div>');
+		$totalCards++;
+	}
+	if (!empty($customDisplayField1)) {
+		array_push($summaryContent_html, '<div class="card">
+												<div class="card-body text-center">
+													<h6 class="card-title text-muted m-b-0">'.$customDisplayField1.'</h6>
+													<!-- <p class="text-muted"></p> -->
+													<h1 class="font-light d-inline">'.$customDisplayValue1.'</h1>
+												</div>
+											</div>');
+		$totalCards++;
+	}
+	if (!empty($customDisplayField2)) {
+		array_push($summaryContent_html, '<div class="card">
+												<div class="card-body text-center">
+													<h6 class="card-title text-muted m-b-0">'.$customDisplayField2.'</h6>
+													<!-- <p class="text-muted"></p> -->
+													<h1 class="font-light d-inline">'.$customDisplayValue2.'</h1>
+												</div>
+											</div>');
+		$totalCards++;
+	}
 
 	$cardsColumnLength = 12;
 	switch($totalCards){
@@ -47,7 +100,12 @@ function summary_counters($contentType, $memberInfo, $tableName)
 		case 5:	$cardsColumnLength = 2;		break;
 		case 6:	$cardsColumnLength = 2;		break;
 	}
-	
+
+	$_summaryContent_html = '';
+	for($x=0;$x<$totalCards;$x++){
+		$_summaryContent_html = $_summaryContent_html.'<div class="col-lg-'.$cardsColumnLength.' col-md-4 col-sm-6 col-xs-6">'.$summaryContent_html[$x].'</div>';
+	}
+
 	$summaryTemplate = <<<HTML
 	<style>
 		.panel-body-description{
@@ -63,66 +121,7 @@ function summary_counters($contentType, $memberInfo, $tableName)
 		<div class="summary-counter-wrapper">
 			<!-- Row -->
 			<div class="row">
-				<!-- Column Total Count-->
-				<div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
-					<div class="card">
-						<div class="card-body text-center">
-							<h6 class="card-title text-muted m-b-0">Total $totalDisplayField</h6>
-							<!-- <p class="text-muted">$totalDisplayField</p> -->
-							<h1 class="font-light d-inline">$totalCount</h1>
-						</div>
-					</div>
-				</div>
-				<!-- Column Review Count-->
-				<div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
-					<div class="card">
-						<div class="card-body text-center">
-							<h6 class="card-title text-muted m-b-0">$reviewDisplayField</h6>
-							<!-- <p class="text-muted">Overall</p> -->
-							<h1 class="font-light d-inline">$reviewCount</h1>
-						</div>
-					</div>
-				</div>
-				<!-- Column Approval Count-->
-				<div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
-					<div class="card">
-						<div class="card-body text-center">
-							<h6 class="card-title text-muted m-b-0">$approvalDisplayField</h6>
-							<!-- <p class="text-muted">Overall</p> -->
-							<h1 class="font-light d-inline">$approvalCount</h1>
-						</div>
-					</div>
-				</div>
-				<!-- IMS Control Count-->
-				<div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
-					<div class="card">
-						<div class="card-body text-center">
-							<h6 class="card-title text-muted m-b-0">$imsControlDisplayField</h6>
-							<!-- <p class="text-muted">Overall</p> -->
-							<h1 class="font-light d-inline">$imsControlCount</h1>
-						</div>
-					</div>
-				</div>
-				<!-- Custom Metric 1 -->
-				<div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
-					<div class="card">
-						<div class="card-body text-center">
-							<h6 class="card-title text-muted m-b-0">$customDisplayField1</h6>
-							<!-- <p class="text-muted"></p> -->
-							<h1 class="font-light d-inline">$customDisplayValue1</h1>
-						</div>
-					</div>
-				</div>
-				<!-- Custom Metric 2 -->
-				<div class="col-lg-2 col-md-4 col-sm-6 col-xs-6">
-					<div class="card">
-						<div class="card-body text-center">
-							<h6 class="card-title text-muted m-b-0">$customDisplayField2</h6>
-							<!-- <p class="text-muted"></p> -->
-							<h1 class="font-light d-inline">$customDisplayValue2</h1>
-						</div>
-					</div>
-				</div>
+				$_summaryContent_html
 			</div>
 		</div>
 HTML;

@@ -3354,7 +3354,7 @@
 			</ul>
 			<ul class="navbar-nav my-lg-0">
 				<div class="nav-item dropdown notify-container">
-					<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" id="notif-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell-o"></i>
+					<a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" id="notif-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="ti-bell"></i>
 						<?php $unread = sqlValue("SELECT COUNT(*) FROM `notif` WHERE `active_flag` = 'Y' and `read_flag` = 'N' and memberID = '" . getLoggedMemberID() . "'") ?>
 						<div class="notify"> <span id="notif-heartbit" <?php if($unread != 0) { ?> class="heartbit" <?php } ?>></span> <span id="notif-point" <?php if($unread != 0) { ?> class="point" <?php } ?>></span> </div>
 					</a>
