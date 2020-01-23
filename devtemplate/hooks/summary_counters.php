@@ -120,7 +120,7 @@ function summary_counters($contentType, $memberInfo, $tableName)
 	</style>
 		<div class="summary-counter-wrapper">
 			<!-- Row -->
-			<div class="row">
+			<div class="row justify-content-md-center">
 				$_summaryContent_html
 			</div>
 		</div>
