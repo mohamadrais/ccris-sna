@@ -3988,7 +3988,9 @@ font-size: small; }
 .customtab2 li a.nav-link:hover {
   color: #ffffff;
   background: #1a5da2; }
-
+.customtab li a.nav-link span{
+  font-size: 1.2rem;
+}
 /*******************
 Progress bar
 ******************/
@@ -7514,8 +7516,8 @@ select.form-control:not([size]):not([multiple]){
   color: #AC3A61 !important;
 }
 .daterangepicker.ltr.show-ranges.opensright.show-calendar{
-  top: 310px !important;
-  left: 90px !important;
+  top: 275px !important;
+  left: 75px !important;
   right: auto !important;
 }
 .rangereport-btn{
@@ -7535,4 +7537,118 @@ select.form-control:not([size]):not([multiple]){
 }
 .default-hidden{
   display: none;
+}
+.fab-menu a {
+  text-decoration: none;
+}
+
+.fab-menu {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  width: 40px;
+  height: 40px;
+/*   border: 2px dashed orange; */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.menu-box {
+  height: 60px;
+  width: 60px;
+  background-color: rgba(67, 83, 143, .8);
+  border-radius: 50%;
+  display: block;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0px 2px 3px 2px #dedede;
+  bottom: 30px;
+  right: 35px;
+}
+.menu-circle{
+  position:absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin:auto;
+  width: 20px;
+  height: 20px;
+  /* background-color:orange; */
+  border-radius:50%;
+  transition:0.4s;
+  font-size: 2rem;
+  line-height: 1;
+}
+.menu-box:hover .menu-circle{
+  transform:scale(1.1);
+  transition:0.2s;
+}
+
+.menu-items {
+  position: relative;
+  width: 300px;
+  margin: 0;
+  padding: 10px;
+  background-color: white;
+  text-align: left;
+  transform: translateY(-40%) scale(0) translateX(-30%);
+  transition: 0.4s;
+  overflow: scroll;
+  box-shadow: 0px 0px 5px 0px #dedede;
+  right: 145px;
+  bottom: -20px;
+  height: auto;
+  max-height: 400px;
+}
+
+.menu-items li {
+  padding: 5px;
+  list-style: none;
+  color: #54667a;
+  font-size: 1.3rem;
+}
+
+.menu-items li a span{
+  width: 100px;
+  text-align: right;
+}
+
+.menu-items li:hover {
+  color: #AC3A61;
+}
+
+.menu-items li:hover a{
+  color: #AC3A61;
+}
+
+.menu-items a {
+  color: #54667a;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+input.fab {
+  position: absolute;
+    left: -1000rem;
+}
+
+/* input.fab:checked +.menu-box {
+  border: 2px dashed rgba(0,0,0,0.9);
+  transition:0.4s;
+} */
+
+/* input.fab:checked +.menu-box .menu-circle {
+  background-color: rgba(0,0,0,0.95);
+  transition:0.4s;
+} */
+
+input.fab:checked +.menu-box .menu-items{
+  transform: translateY(-110%) scale(1)  translateX(-30%);
+  transition: 0.4s;
 }

@@ -63,182 +63,20 @@
 </style>
 
 <div class="page-wrapper">
-<div class="container-fluid">
-<div class="card">
-    <div class="card-body">
-        <div class="row">
-            <div class="col-2 border-right px-2 py-0">
-            <div class="role="navigation">
-    <div class="sidebar-nav navbar-collapse1" id="dash-sidebar-nav" > 
-        <ul class="nav pt-0" id="side-menu">
-<?php
-	/* accessible tables */
-	$arrTables = get_tables_info();
-	if(is_array($arrTables) && count($arrTables)){
-		/* how many table groups do we have? */
-		$groups = get_table_groups();
-		$multiple_groups = (count($groups) > 1 ? true : false);
+<div class="container-fluid mt-5">
 
-		/* construct $tg: table list grouped by table group */
-		$tg = array();
-		if(count($groups)){
-			foreach($groups as $grp => $tables){
-				foreach($tables as $tn){
-					$tg[$tn] = $grp;
-				}
-			}
-		}
-
-        $i = 0; $current_group = '';
-        ?>
-        <div class="col-md-12 px-0">
-            <div class="card-body inbox-panel p-0">
-                <ul class="list-group list-group-full pb-3">
-                    <li class="list-group-item">
-                        <a href="./reports.php" class="p-0">SUMMARY DASHBOARD</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="./reports.php?kpi=true" class="p-0">KPI METRICS</a>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="px-4">
-            <?php if($kpi != "true") { ?>
-            <div class="text-muted report-label pb-2 pt-4">Select Report Range:</div>
-            <button class="btn btn-outline-primary waves-effect waves-light rangereport-btn" type="button"><span class="btn-label"><i class="fa fa-calendar"></i></span><span id="reportrange"></span></button>
-            <!-- <button>
-                <i class="fa fa-calendar"></i>
-                <span id="reportrange"></span>
-            </button> -->
-            <?php } ?>
-            <div class="text-muted report-label pb-2 pt-4">Select an individual <?php if($kpi != "true") { ?>Report<?php } else { ?>Section<?php } ?>:</div>
-            <!-- <select name="date" class="form-control" id="date">
-                <option value="">Select Date</option>
-            <?php
-            // foreach($result as $row){
-            //     echo '<option value="'.$row["date"].'">'.$row["date"].'</option>';
-            // }
-            ?>
-            </select> -->
-            </div>
-        </div>
-        <?php
-		foreach($tg as $tn => $tgroup){
-			$tc = $arrTables[$tn];
-			/* is the current table filter-first? */
-			$tChkFF = array_search($tn, array());
-			/* hide current table in homepage? */
-			$tChkHL = array_search($tn, array(''));
-			/* allow homepage 'add new' for current table? */
-			$tChkAHAN = array_search($tn, array('OrgContentContext','Marketing','Client','Inquiry','DesignProposal','ContractDeployment','employees','Recruitment','PersonnalFile','Competency','Training','JD_JS','InOutRegister','vendor','ManagingVendor','VenPerformance','Logistics','Inventory','CalibrationCtrl','WorkOrder','MWO','MWOPlanned','MWOpreventive','MWOproactive','MWConditionBased','MWOReactive','MWOCorrective','LogisticRequest','orders','Quotation','PurchaseOrder','DeliveryOrder','AccountPayables','Item','categories','batches','transactions','CommConsParticipate','ToolBoxMeeting','Bi_WeeklyMeeting','QuarterlyMeeting','Campaign','DrillNInspection','ManagementVisit','EventNotification','ActCard','KM','LegalRegister','RiskandOpportunity','DocControl','DCN','ObsoleteRec','QA','ERP','WorkEnvMonitoring','ScheduleWaste','IncidentReporting','MgtofChange','IMStrackingNmonitoring','IMSDataAnalysis','Audit','NonConformance','ContinualImprovement','StakeholderSatisfaction','MRM','WorkLocation','WorkPermit','ProjectTeam','resources','projects','PROInitiation','PROPlanning','PROExecution','DailyProgressReport','MonthlyTimesheet','Breakdown','PROControlMonitoring','PROVariation','PROCompletion','Receivables','ClaimRecord','TeamSoftBoard','SoftboardComment','IMSReport','ReportComment','Leadership','Approval','IMSControl','membership_company','kpi','summary_dashboard'));
-
-			/* homepageShowCount for current table? */
-			$count_badge = '';
-			if($tc['homepageShowCount']){
-				$sql_from = get_sql_from($tn);
-				$count_records = ($sql_from ? sqlValue("select count(1) from " . $sql_from) : 0);
-				$count_badge = number_format($count_records);
-			}
-
-			$t_perm = getTablePermissions($tn);
-			$can_insert = $t_perm['insert'];
-
-			$searchFirst = (($tChkFF !== false && $tChkFF !== null) ? '?Filter_x=1' : '');
-			?>
-				<?php if(!$i && !$multiple_groups){ /* no grouping, begin row */ ?>
-
-					<div class="row table_links">
-				<?php } ?>
-				<?php if($multiple_groups && $current_group != $tgroup){ /* grouping, begin group & row */ ?>
-					<?php if($current_group != ''){ /* not first group, so we should first end previous group */ ?>
-
-							</div><!-- /.table_links -->
-							<div class="row custom_links">
-								<?php
-									/* custom home links for current group, as defined in "hooks/links-home.php" */
-									echo get_home_links($homeLinks, $block_classes['other'], $current_group);
-								?>
-							</div>
-						</div><!-- /.collapse -->
-					<?php } ?>
-					<?php $current_group = $tgroup; ?>
-                    <li class="submenu">
-						<a data-toggle="collapse" href="#group-<?php echo md5($tgroup); ?>" style="height: 50px;font-size: 14px;line-height: 30px;" > <i id="<?php echo  $tn; ?>-mainIco" class="fa fa-briefcase" aria-hidden="true" style="margin-right: 10px;"></i> <?php echo $tgroup; ?> <span class="pull-right"><b class="caret"></b></span></a>
-					</li>
-                    <div class="collapse" id="group-<?php echo md5($tgroup); ?>">
-						<div class="row table_links">
-				<?php } ?>
-
-					<?php if($tChkHL === false || $tChkHL === null){ /* if table is not set as hidden in homepage */ ?>
-						<div id="<?php echo $tn; ?>-tile" class="report-sidemenu <?php echo (!$i ? $block_classes['first']['grid_column'] : $block_classes['other']['grid_column']); ?>">
-							<div class="panel1 <?php /*echo (!$i ? $block_classes['first']['panel'] : $block_classes['other']['panel']); */?>">
-								<li class="submenu">
-									<?php if($can_insert && $tChkAHAN !== false && $tChkAHAN !== null){ ?>
-
-										<div id="summaryfor-<?php echo $tn; ?>" class="btn-group" style="width: 100%; word-wrap: break-word;">
-                                           <a class="px-3" title="<?php echo preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", html_attr(strip_tags($tc['Description']))); ?>"><?php echo $tc['Caption']; ?></a>
-                                            <?php if($kpi != "true") { ?><span class="badge badge-success ml-auto" style="font-size: 12px; height: fit-content; margin: auto;"><?php echo $count_badge; ?></span><?php } ?>
-										</div>
-									<?php }else{ ?>
-
-										<a class="btn btn-block btn-lg  <?php echo (!$i ? $block_classes['first']['link'] : $block_classes['other']['link']); ?>" title="<?php echo preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", html_attr(strip_tags($tc['Description']))); ?>" href="<?php echo $tn; ?>_view.php<?php echo $searchFirst; ?>"><?php /*echo ($tc['tableIcon'] ? '<img src="' . $tc['tableIcon'] . '">' : '');*/?><strong class="table-caption"><?php echo $tc['Caption']; ?></strong><?php if($kpi != "true") { ?><?php echo $count_badge; ?><?php } ?></a>
-									<?php } ?>
-
-									<!-- <div class="panel-body-description"><?php /*echo $tc['Description']; */?></div> -->
-								</li>
-							</div>
-						</div>
-					<?php } ?>
-				<?php if($i == (count($arrTables) - 1) && !$multiple_groups){ /* no grouping, end row */ ?>
-
-					</div> <!-- /.table_links -->
-
-					<div class="row custom_links" id="custom_links">
-						<?php
-							/* custom home links, as defined in "hooks/links-home.php" */
-							echo get_home_links($homeLinks, $block_classes['other'], '*');
-						?>
-					</div>
-
-				<?php } ?>
-				<?php if($i == (count($arrTables) - 1) && $multiple_groups){ /* grouping, end last group & row */ ?>
-
-							</div> <!-- /.table_links -->
-							<div class="row custom_links" id="custom_links">
-								<?php
-									/* custom home links for last table group, as defined in "hooks/links-home.php" */
-									echo get_home_links($homeLinks, $block_classes['other'], $tgroup);
-
-									/* custom home links having no table groups, as defined in "hooks/links-home.php" */
-									echo get_home_links($homeLinks, $block_classes['other']);
-								?>
-							</div>
-						</div><!-- /.collapse -->
-				<?php } ?>
-			<?php
-			$i++;
-		}
-	}else{
-		?><script>window.location='../index.php?signIn=1';</script><?php
-	}
-?>
-        </ul>
-    </div>
-</div>
-    <!-- /.sidebar-collapse -->
-            </div>
-            <div class="col-10 px-5">
-        <span id="chartLoading" style="position: relative; left: 50%"></span>
-        <div class="page-titles">
-            <div class="col-md-12 align-self-center px-0">
-                <h3 id="titleReport" class="text-themecolor m-b-0 m-t-0"><?php if($kpi != "true") { ?>Summary Dashboard<?php } else { ?>KPI Metrics<?php } ?></h3>
-			</div>
-        </div>
-        <?php 
-        // start of reports dashboard
-        if($kpi != "true") { 
-        ?> 
+<!-- Nav tabs -->
+<ul class="nav nav-tabs customtab" role="tablist">
+    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#summary" role="tab"><span>Summary Dashboard</span></a> </li>
+    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#kpi" role="tab"><span>KPI Metrics</span></a> </li>
+    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#personel" role="tab"><span>Personel Achievement Matrix</span></a> </li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane active" id="summary" role="tabpanel">
+        <div class="text-muted report-label pb-2 pt-4">Select Report Range:</div>
+        <button class="btn btn-outline-primary waves-effect waves-light" type="button"><span class="btn-label"><i class="fa fa-calendar"></i></span><span id="reportrange"></span></button>
+    
         <!-- Default Reports Dashboard Start -->
         <div id="defaultReports">
             <!-- Start Row -->
@@ -394,10 +232,8 @@
             <!-- First Column -->
             <div class="col-lg-6 col-md-6 pr-2">
                 <div class="card my-3">
-                    <div class="card-body px-0">
-                        <h4 class="card-title m-b-0">Organization Top Members</h4>
-                    </div>
-                    <div>
+                    <div class="card-body">
+                        <h4 class="card-title">Organization Top Members</h4>
                         <table class="table table-bordered dataTable">
                             <thead>
                                 <tr>
@@ -434,11 +270,9 @@
                 <!-- Column -->
                 <div class="col-lg-12 col-md-12 pr-2">
                     <div class="card my-3">
-                        <div class="card-body px-0" style="max-height: 140px; overflow: hidden;">
-                            <h4 class="card-title m-b-0">Organization Newest Updates  <?php if ($memberInfo['admin']) { ?><a class="btn btn-outline-plain btn-sm" href="admin/pageViewRecords.php?sort=dateUpdated&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a><?php } ?></h4>
+                        <div class="card-body">
+                            <h4 class="card-title">Organization Newest Updates  <?php if ($memberInfo['admin']) { ?><a class="btn btn-outline-plain btn-sm" href="admin/pageViewRecords.php?sort=dateUpdated&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a><?php } ?></h4>
                             <p class="text-muted">Recent 5</p>
-                        </div>
-                        <div>
                             <table class="table table-bordered dataTable">
                                 <thead>
                                     <tr>
@@ -475,11 +309,9 @@
                 <!-- Column -->
                 <div class="col-lg-12 col-md-12 pr-2">
                     <div class="card my-3">
-                        <div class="card-body px-0" style="max-height: 140px; overflow: hidden;">
-                            <h4 class="card-title m-b-0">Organization Newest Entries  <?php if ($memberInfo['admin']) { ?><a class="btn btn-outline-plain btn-sm" href="admin/pageViewRecords.php?sort=dateAdded&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a><?php } ?> </h4>
+                        <div class="card-body">
+                            <h4 class="card-title">Organization Newest Entries  <?php if ($memberInfo['admin']) { ?><a class="btn btn-outline-plain btn-sm" href="admin/pageViewRecords.php?sort=dateAdded&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a><?php } ?> </h4>
                             <p class="text-muted">Recent 5</p>
-                        </div>
-                        <div>
                             <table class="table table-bordered dataTable">
                                 <thead>
                                     <tr>
@@ -556,19 +388,28 @@
         <div id="lineChart" style="margin-top: 30px; width: 100%; height: 300px; position: relative;" class = "hideDiv"></div> -->
         <div id="tableChart" style="margin-top: 100px; width: 100%; height: 200px; position: relative;" class = "hideDiv"></div>
         <!-- Dynamic Reports End -->
-        <?php 
-        } 
-        // end of reports dashboard
-        // show kpi dashboard
-        else { ?> 
-        <div id="kpiMetrics">
+    </div>
+    <div class="tab-pane" id="kpi" role="tabpanel">
+    <div id="kpiMetrics">
                 <!-- Start Row Min Record -->
+                <!-- <div class="col-lg-6 col-md-6 col-sm-6 pl-2">
+                    <div class="card my-3">
+                        <div class="card-body" style="max-height: 140px; overflow: hidden;">
+                            <h4 class="card-title m-b-0">Minimum Record Required</h4>
+                            <p class="text-muted">The number shown is the minimum records required for each section. Every section needs to achieve at least the minimum records to be generated for the year.</p>
+                            <div class="row">
+                                <div class="col-12"><h2 class="font-light d-inline" id='kpi_min_record_required'></h2></div>
+                                <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/payable.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+
                 <div class="card my-3">
-                    <div class="card-body px-0" style="max-height: 140px; overflow: hidden;">
+                    <div class="card-body">
                         <h4 class="card-title m-b-0">Minimum Record Required</h4>
                         <p class="text-muted"></p>
-                    </div>
-                    <div>
                         <table class="table table-bordered dataTable">
                             <thead>
                                 <tr>
@@ -596,20 +437,18 @@
                 <!-- End Row Min Record -->
                 <!-- Start Row KPI percentage per annum -->
                 <div class="card my-3">
-                    <div class="card-body px-0" style="max-height: 140px; overflow: hidden;">
+                    <div class="card-body">
                         <h4 class="card-title m-b-0">KPI Percentage Achieved per Annum</h4>
                         <p class="text-muted"></p>
-                    </div>
                     <div id='kpi_percentage_kpi_achieved'></div>
+                    </div>
                 </div>
                 <!-- End Row KPI percentage per annum -->
                 <!-- Start Task Completion Duration -->
                 <div class="card my-3">
-                    <div class="card-body px-0" style="max-height: 140px; overflow: hidden;">
+                    <div class="card-body">
                         <h4 class="card-title m-b-0">Task Completion Duration (Days)</h4>
                         <p class="text-muted"></p>
-                    </div>
-                    <div>
                         <table class="table table-bordered dataTable">
                             <thead>
                                 <tr>
@@ -634,15 +473,228 @@
                 </div>
                 <!-- End Task Completion Duration -->
         </div>
-        <?php 
-        // end of kpi dashboard
-        } 
-        ?>
+    </div>
+    <div class="tab-pane" id="personel" role="tabpanel">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Personel Achievement Matrix</h4>
+                        <!-- <h6 class="card-subtitle"></h6> -->
+                        <div class="table-responsive m-t-40">
+                            <table id="example23" class="display nowrap table table-hover" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th><a>User</a></th>
+                                        <th><a>Work Orders</a></th>
+                                        <th><a>Average Work Orders</a></th>
+                                        <th><a>Average Work Order</a></th>
+                                        <th><a>Performance</a></th>
+                                        <th><a>Average Task Rating</a></th>
+                                        <th><a>Average Task Rating</a></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <a>
+                                                <div class="message-widget">
+                                                    <a>
+                                                        <div class="mail-contnet"><h5>No active users yet</h5><span class="time">0h 0m</span></div>
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-info" role="progressbar" style="width: 0%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td><a>0/5</a></td>
+                                        <td><a>0</a></td>
+                                        <td><a>0h 0m</a></td>
+                                        <td><a>0/10</a></td>
+                                        <td><a>0/10</a></td>
+                                        <td><a>0/10</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a>
+                                                <div class="message-widget">
+                                                    <a>
+                                                        <div class="mail-contnet"><h5>No active users yet</h5><span class="time">0h 0m</span></div>
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-info" role="progressbar" style="width: 0%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td><a>0/5</a></td>
+                                        <td><a>0</a></td>
+                                        <td><a>0h 0m</a></td>
+                                        <td><a>0/10</a></td>
+                                        <td><a>0/10</a></td>
+                                        <td><a>0/10</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a>
+                                                <div class="message-widget">
+                                                    <a>
+                                                        <div class="mail-contnet"><h5>No active users yet</h5><span class="time">0h 0m</span></div>
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-info" role="progressbar" style="width: 0%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td><a>0/5</a></td>
+                                        <td><a>0</a></td>
+                                        <td><a>0h 0m</a></td>
+                                        <td><a>0/10</a></td>
+                                        <td><a>0/10</a></td>
+                                        <td><a>0/10</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-</div>
+
+<label class="fab-menu">
+  <input class="fab" type="checkbox">
+  <div class="menu-box">
+    <div class="menu-circle"><i class="ti-more"></i></div>
+    <ul class="menu-items">
+<?php
+	/* accessible tables */
+	$arrTables = get_tables_info();
+	if(is_array($arrTables) && count($arrTables)){
+		/* how many table groups do we have? */
+		$groups = get_table_groups();
+		$multiple_groups = (count($groups) > 1 ? true : false);
+
+		/* construct $tg: table list grouped by table group */
+		$tg = array();
+		if(count($groups)){
+			foreach($groups as $grp => $tables){
+				foreach($tables as $tn){
+					$tg[$tn] = $grp;
+				}
+			}
+		}
+
+        $i = 0; $current_group = '';
+        ?>
+        
+        <?php
+		foreach($tg as $tn => $tgroup){
+			$tc = $arrTables[$tn];
+			/* is the current table filter-first? */
+			$tChkFF = array_search($tn, array());
+			/* hide current table in homepage? */
+			$tChkHL = array_search($tn, array(''));
+			/* allow homepage 'add new' for current table? */
+			$tChkAHAN = array_search($tn, array('OrgContentContext','Marketing','Client','Inquiry','DesignProposal','ContractDeployment','employees','Recruitment','PersonnalFile','Competency','Training','JD_JS','InOutRegister','vendor','ManagingVendor','VenPerformance','Logistics','Inventory','CalibrationCtrl','WorkOrder','MWO','MWOPlanned','MWOpreventive','MWOproactive','MWConditionBased','MWOReactive','MWOCorrective','LogisticRequest','orders','Quotation','PurchaseOrder','DeliveryOrder','AccountPayables','Item','categories','batches','transactions','CommConsParticipate','ToolBoxMeeting','Bi_WeeklyMeeting','QuarterlyMeeting','Campaign','DrillNInspection','ManagementVisit','EventNotification','ActCard','KM','LegalRegister','RiskandOpportunity','DocControl','DCN','ObsoleteRec','QA','ERP','WorkEnvMonitoring','ScheduleWaste','IncidentReporting','MgtofChange','IMStrackingNmonitoring','IMSDataAnalysis','Audit','NonConformance','ContinualImprovement','StakeholderSatisfaction','MRM','WorkLocation','WorkPermit','ProjectTeam','resources','projects','PROInitiation','PROPlanning','PROExecution','DailyProgressReport','MonthlyTimesheet','Breakdown','PROControlMonitoring','PROVariation','PROCompletion','Receivables','ClaimRecord','TeamSoftBoard','SoftboardComment','IMSReport','ReportComment','Leadership','Approval','IMSControl','membership_company','kpi','summary_dashboard'));
+
+			/* homepageShowCount for current table? */
+			$count_badge = '';
+			if($tc['homepageShowCount']){
+				$sql_from = get_sql_from($tn);
+				$count_records = ($sql_from ? sqlValue("select count(1) from " . $sql_from) : 0);
+				$count_badge = number_format($count_records);
+			}
+
+			$t_perm = getTablePermissions($tn);
+			$can_insert = $t_perm['insert'];
+
+			$searchFirst = (($tChkFF !== false && $tChkFF !== null) ? '?Filter_x=1' : '');
+			?>
+				<?php if(!$i && !$multiple_groups){ /* no grouping, begin row */ ?>
+
+					<div class="row table_links">
+				<?php } ?>
+				<?php if($multiple_groups && $current_group != $tgroup){ /* grouping, begin group & row */ ?>
+					<?php if($current_group != ''){ /* not first group, so we should first end previous group */ ?>
+
+							</div><!-- /.table_links -->
+							<div class="row custom_links">
+								<?php
+									/* custom home links for current group, as defined in "hooks/links-home.php" */
+									echo get_home_links($homeLinks, $block_classes['other'], $current_group);
+								?>
+							</div>
+						</div><!-- /.collapse -->
+					<?php } ?>
+					<?php $current_group = $tgroup; ?>
+                    <li class="submenu">
+						<a data-toggle="collapse" href="#group-<?php echo md5($tgroup); ?>" style="height: 50px;font-size: 14px;line-height: 30px;" > <i id="<?php echo  $tn; ?>-mainIco" class="fa fa-briefcase" aria-hidden="true" style="margin-right: 10px;"></i> <?php echo $tgroup; ?> <span class="pull-right"><b class="caret"></b></span></a>
+					</li>
+                    <div class="collapse" id="group-<?php echo md5($tgroup); ?>">
+						<div class="row table_links">
+				<?php } ?>
+
+					<?php if($tChkHL === false || $tChkHL === null){ /* if table is not set as hidden in homepage */ ?>
+						<div id="<?php echo $tn; ?>-tile" class="report-sidemenu <?php echo (!$i ? $block_classes['first']['grid_column'] : $block_classes['other']['grid_column']); ?>">
+							<div class="panel1 <?php /*echo (!$i ? $block_classes['first']['panel'] : $block_classes['other']['panel']); */?>">
+								<li class="submenu">
+									<?php if($can_insert && $tChkAHAN !== false && $tChkAHAN !== null){ ?>
+
+										<div id="summaryfor-<?php echo $tn; ?>" class="btn-group" style="width: 100%; word-wrap: break-word;">
+                                           <a class="px-3" title="<?php echo preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", html_attr(strip_tags($tc['Description']))); ?>"><?php echo $tc['Caption']; ?></a>
+                                            <?php if($kpi != "true") { ?><span class="badge badge-success ml-auto" style="font-size: 12px; height: fit-content; margin: auto;"><?php echo $count_badge; ?></span><?php } ?>
+										</div>
+									<?php }else{ ?>
+
+										<a class="btn btn-block btn-lg  <?php echo (!$i ? $block_classes['first']['link'] : $block_classes['other']['link']); ?>" title="<?php echo preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", html_attr(strip_tags($tc['Description']))); ?>" href="<?php echo $tn; ?>_view.php<?php echo $searchFirst; ?>"><?php /*echo ($tc['tableIcon'] ? '<img src="' . $tc['tableIcon'] . '">' : '');*/?><strong class="table-caption"><?php echo $tc['Caption']; ?></strong><?php if($kpi != "true") { ?><?php echo $count_badge; ?><?php } ?></a>
+									<?php } ?>
+
+									<!-- <div class="panel-body-description"><?php /*echo $tc['Description']; */?></div> -->
+								</li>
+							</div>
+						</div>
+					<?php } ?>
+				<?php if($i == (count($arrTables) - 1) && !$multiple_groups){ /* no grouping, end row */ ?>
+
+					</div> <!-- /.table_links -->
+
+					<div class="row custom_links" id="custom_links">
+						<?php
+							/* custom home links, as defined in "hooks/links-home.php" */
+							echo get_home_links($homeLinks, $block_classes['other'], '*');
+						?>
+					</div>
+
+				<?php } ?>
+				<?php if($i == (count($arrTables) - 1) && $multiple_groups){ /* grouping, end last group & row */ ?>
+
+							</div> <!-- /.table_links -->
+							<div class="row custom_links" id="custom_links">
+								<?php
+									/* custom home links for last table group, as defined in "hooks/links-home.php" */
+									echo get_home_links($homeLinks, $block_classes['other'], $tgroup);
+
+									/* custom home links having no table groups, as defined in "hooks/links-home.php" */
+									echo get_home_links($homeLinks, $block_classes['other']);
+								?>
+							</div>
+						</div><!-- /.collapse -->
+				<?php } ?>
+			<?php
+			$i++;
+		}
+	}else{
+		?><script>window.location='../index.php?signIn=1';</script><?php
+	}
+?>
+        </ul>
+  </div>
+</label>
+
 </div>
 
 <?php
