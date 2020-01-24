@@ -318,18 +318,26 @@
 		<!-- ============================================================== -->
 		<!-- Start Page Content -->
 		<!-- ============================================================== -->
+		
+		<?php 
+			$cardsColumnLength = 2;
+			if(!in_array($memberInfo['groupID'], [2, 3, 7, 9, 13] )) {
+				$cardsColumnLength = 6;
+			}
+		?>
 		<!-- Row -->
 		<div class="row">
 			<!-- Column -->
-			<div class="col-lg-2 col-md-6 col-sm-6 pr-2">
+			<div class="col-lg-<?php echo $cardsColumnLength ?> col-md-6 col-sm-6 pr-2">
 				<div class="card my-3">
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
-						<h4 class="card-title m-b-0">Average Hours</h4>
+						<h4 class="card-title m-b-0">Weekly Hours</h4>
 						<!-- <h4 class="card-title m-b-0">My Work Days</h4> -->
-						<p class="text-muted">Weekly Task Completion</p>
+						<p class="text-muted">Engaged on Tasks</p>
 						<div class="row">
 							<?php
-								$myHoursWeek = sqlValue("SELECT COALESCE(SEC_TO_TIME(AVG(`dateUpdated` - `dateAdded`)), '00:00:00.0000') as my_hours_week from `membership_userrecords` WHERE `memberID` = '" . makeSafe($memberInfo['username']) . "' and (YEARWEEK(from_unixtime(`dateAdded`), 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(from_unixtime(`dateUpdated`), 1) = YEARWEEK(CURDATE(), 1))");
+								// $myHoursWeek = sqlValue("SELECT COALESCE(SEC_TO_TIME(AVG(`dateUpdated` - `dateAdded`)), '00:00:00.0000') as my_hours_week from `membership_userrecords` WHERE `memberID` = '" . makeSafe($memberInfo['username']) . "' and (YEARWEEK(from_unixtime(`dateAdded`), 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(from_unixtime(`dateUpdated`), 1) = YEARWEEK(CURDATE(), 1))");
+								$myHoursWeek = getWeeklyHoursEngaged($memberInfo['username']);
 								$myHoursWeekArr = explode(":", $myHoursWeek, 2);
 								// $myHoursWeek = sqlValue("SELECT COALESCE(SUM(`dateUpdated` - `dateAdded`) / 24 / 8, 0) as my_hours_week from `membership_userrecords` WHERE `memberID` = '" . makeSafe($memberInfo['username']) . "' and (YEARWEEK(from_unixtime(`dateAdded`), 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(from_unixtime(`dateUpdated`), 1) = YEARWEEK(CURDATE(), 1))");
 								// if(isset($myHoursWeek) && $myHoursWeek != 0){
@@ -347,9 +355,27 @@
 					</div>
 				</div>
 			</div>
+			<!-- End Column -->
 			<!-- Column -->
+			<div class="col-lg-<?php echo $cardsColumnLength ?> col-md-6 col-sm-6 px-2">
+				<div class="card my-3">
+					<div class="card-body" style="max-height: 140px; overflow: hidden;">
+						<h4 class="card-title m-b-0">Inquiries</h4>
+						<p class="text-muted">This Month</p>
+						<div class="row">
+							<?php
+								$inquiryThisMonth=sqlValue("SELECT count(1) FROM `Inquiry` WHERE (MONTH(`fo_InquiryDate`) = MONTH(CURRENT_DATE()) and YEAR(`fo_InquiryDate`) = YEAR(CURRENT_DATE()))");
+							?>
+							<div class="col-12"><span><h2 class="font-light d-inline"><?php echo number_format($inquiryThisMonth) ?></h2><span class="text-muted"> quotes</span></span></div>
+							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/inquiries.svg">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Column -->
 			<!-- Column -->
-			<div class="col-lg-2 col-md-6 col-sm-6 px-2">
+			<?php if(in_array($memberInfo['groupID'], [2, 3, 7, 9, 13] )) { ?>
+			<div class="col-lg-<?php echo $cardsColumnLength ?> col-md-6 col-sm-6 px-2">
 				<div class="card my-3">
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
 						<h4 class="card-title m-b-0">Project Claimed</h4>
@@ -370,26 +396,9 @@
 					</div>
 				</div>
 			</div>
+			<!-- End Column -->
 			<!-- Column -->
-			<!-- Column -->
-			<div class="col-lg-2 col-md-6 col-sm-6 px-2">
-				<div class="card my-3">
-					<div class="card-body" style="max-height: 140px; overflow: hidden;">
-						<h4 class="card-title m-b-0">Inquiries</h4>
-						<p class="text-muted">This Month</p>
-						<div class="row">
-							<?php
-								$inquiryThisMonth=sqlValue("SELECT count(1) FROM `Inquiry` WHERE (MONTH(`fo_InquiryDate`) = MONTH(CURRENT_DATE()) and YEAR(`fo_InquiryDate`) = YEAR(CURRENT_DATE()))");
-							?>
-							<div class="col-12"><span><h2 class="font-light d-inline"><?php echo number_format($inquiryThisMonth) ?></h2><span class="text-muted"> quotes</span></span></div>
-							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/inquiries.svg">
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- Column -->
-			<!-- Column -->
-			<div class="col-lg-2 col-md-6 col-sm-6 px-2">
+			<div class="col-lg-<?php echo $cardsColumnLength ?> col-md-6 col-sm-6 px-2">
 				<div class="card my-3">
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
 						<h4 class="card-title m-b-0">Invoices</h4>
@@ -411,9 +420,9 @@
 					</div>
 				</div>
 			</div>
+			<!-- End Column -->
 			<!-- Column -->
-			<!-- Column -->
-			<div class="col-lg-2 col-md-6 col-sm-6 px-2">
+			<div class="col-lg-<?php echo $cardsColumnLength ?> col-md-6 col-sm-6 px-2">
 				<div class="card my-3">
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
 						<h4 class="card-title m-b-0">Revenue</h4>
@@ -434,9 +443,9 @@
 					</div>
 				</div>
 			</div>
+			<!-- End Column -->
 			<!-- Column -->
-			<!-- Column -->
-			<div class="col-lg-2 col-md-6 col-sm-6 pl-2">
+			<div class="col-lg-<?php echo $cardsColumnLength ?> col-md-6 col-sm-6 pl-2">
 				<div class="card my-3">
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
 						<h4 class="card-title m-b-0">Payable</h4>
@@ -457,7 +466,8 @@
 					</div>
 				</div>
 			</div>
-			<!-- Column -->
+			<!-- End Column -->
+			<?php } ?>
 		</div>
 		<!-- Row -->
 		<!-- Row -->
@@ -474,19 +484,41 @@
 							<!-- /.modal -->
 							<ul class="list-task todo-list list-group m-b-0">
 								<?php
-									$activeEvents = sql("SELECT `id`, `title`, `start`, `end`, `tableName`, `pkValue`, `ot_ap_Approval`  from `events` where ((YEARWEEK(`start`, 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(coalesce(`end`, `start`), 1) = YEARWEEK(CURDATE(), 1))) and `ot_ap_Approval` <> 4 order by `end` desc", $eo);
+									$activeEvents = sql("SELECT `id`, `title`, `start`, `end`, `tableName`, `pkValue`, `ot_ap_Review`, `ot_ap_Approval`, `ot_ap_QC`  from `events` where ((YEARWEEK(`start`, 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(coalesce(`end`, `start`), 1) = YEARWEEK(CURDATE(), 1))) and (`ot_ap_Review` <> 4 or `ot_ap_Approval` <> 4 or `ot_ap_QC` <> 4) order by `end` desc", $eo);
 									if (isset($activeEvents) && $activeEvents->num_rows > 0) {
 										while($row=db_fetch_row($activeEvents)){ 
 											$currentStatus = ''; $currentStartDate = ''; $currentEndDate = '';
-											switch ($row[6]){
+											switch ($row[8]){
 												case '1':
-													$currentStatus = "<span class='label label-light-danger pull-right'>Open</span> ";
+													$currentStatus = "<span class='label label-light-danger pull-right'>IMS Control Open</span> ";
 													break;
 												case '2':
-													$currentStatus = "<span class='label label-light-megna pull-right'>Ongoing</span> ";
+													$currentStatus = "<span class='label label-light-megna pull-right'>IMS Control Ongoing</span> ";
 													break;
 												case '3':
-													$currentStatus = "<span class='label label-light-warning pull-right'>Pending</span> ";
+													$currentStatus = "<span class='label label-light-warning pull-right'>IMS Control Pending</span> ";
+													break;
+											}
+											switch ($row[7]){
+												case '1':
+													$currentStatus = "<span class='label label-light-danger pull-right'>Approval Open</span> ";
+													break;
+												case '2':
+													$currentStatus = "<span class='label label-light-megna pull-right'>Approval Ongoing</span> ";
+													break;
+												case '3':
+													$currentStatus = "<span class='label label-light-warning pull-right'>Approval Pending</span> ";
+													break;
+											}
+											switch ($row[6]){
+												case '1':
+													$currentStatus = "<span class='label label-light-danger pull-right'>Review Open</span> ";
+													break;
+												case '2':
+													$currentStatus = "<span class='label label-light-megna pull-right'>Review Ongoing</span> ";
+													break;
+												case '3':
+													$currentStatus = "<span class='label label-light-warning pull-right'>Review Pending</span> ";
 													break;
 											}
 											(parseMySQLDate(substr($row[2],0,10), false) == substr($row[2],0,10)) ? $currentStartDate = date("d M, Y", strtotime(substr($row[2],0,10))) : '' ;
@@ -518,7 +550,7 @@
 				<div class="card my-3">
 					<div class="card-body">
 						<h4 class="card-title">Active Tasks
-							<?php if(in_array($memberInfo['groupID'], [2] )) { ?>
+							<?php if(in_array($memberInfo['groupID'], [2, 3, 7, 9, 13] )) { ?>
 							<span class="hspacer-lg fa-pull-right" title="Create new job ticket">
 							<a href="WorkOrder_view.php?addNew_x=1">
 									<i class="fa fa-plus"></i>
@@ -534,22 +566,44 @@
 							<!-- /.modal -->
 							<ul class="list-task todo-list list-group m-b-0">
 								<?php
-									$activeTasks = sql("SELECT `id`, `WONumber`, `ot_ap_Approval`, `fo_DueDate` FROM `WorkOrder` WHERE `fo_EmployeeID` = (select `employees`.`EmployeeID` from `employees` where `employees`.`memberID` = '" . makeSafe($memberInfo['username']) . "') and `ot_ap_Approval` <> 4 order by `fo_DueDate`", $eo);
+									$activeTasks = sql("SELECT `id`, `WONumber`, `ot_ap_Review`, `ot_ap_Approval`, `ot_ap_QC`, `fo_DueDate` FROM `WorkOrder` WHERE `fo_EmployeeID` = (select `employees`.`EmployeeID` from `employees` where `employees`.`memberID` = '" . makeSafe($memberInfo['username']) . "') and (`ot_ap_Review` <> 4 or `ot_ap_Approval` <> 4 or `ot_ap_QC` <> 4) order by `fo_DueDate`", $eo);
 									if (isset($activeTasks) && $activeTasks->num_rows > 0) {
 										while($row=db_fetch_row($activeTasks)){ 
 											$currentStatus = ''; $currentDate = '';
-											switch ($row[2]){
+											switch ($row[4]){
 												case '1':
-													$currentStatus = "<span class='label label-light-danger pull-right'>Open</span> ";
+													$currentStatus = "<span class='label label-light-danger pull-right'>IMS Control Open</span> ";
 													break;
 												case '2':
-													$currentStatus = "<span class='label label-light-megna pull-right'>Ongoing</span> ";
+													$currentStatus = "<span class='label label-light-megna pull-right'>IMS Control Ongoing</span> ";
 													break;
 												case '3':
-													$currentStatus = "<span class='label label-light-warning pull-right'>Pending</span> ";
+													$currentStatus = "<span class='label label-light-warning pull-right'>IMS Control Pending</span> ";
 													break;
 											}
-											(parseMySQLDate($row[3], false) == $row[3]) ? $currentDate = date("d M, Y", strtotime($row[3])) : '' ;
+											switch ($row[3]){
+												case '1':
+													$currentStatus = "<span class='label label-light-danger pull-right'>Approval Open</span> ";
+													break;
+												case '2':
+													$currentStatus = "<span class='label label-light-megna pull-right'>Approval Ongoing</span> ";
+													break;
+												case '3':
+													$currentStatus = "<span class='label label-light-warning pull-right'>Approval Pending</span> ";
+													break;
+											}
+											switch ($row[2]){
+												case '1':
+													$currentStatus = "<span class='label label-light-danger pull-right'>Review Open</span> ";
+													break;
+												case '2':
+													$currentStatus = "<span class='label label-light-megna pull-right'>Review Ongoing</span> ";
+													break;
+												case '3':
+													$currentStatus = "<span class='label label-light-warning pull-right'>Review Pending</span> ";
+													break;
+											}
+											(parseMySQLDate($row[5], false) == $row[5]) ? $currentDate = date("d M, Y", strtotime($row[5])) : '' ;
 								?>
 								<li class="list-group-item">
 									<h5><a href='WorkOrder_view.php?SelectedID=<?php echo $row[0]?>'><?php echo $row[1] ?><?php echo $currentStatus ?></a></h5>
@@ -581,35 +635,54 @@
 							<div class="message-widget">
 							<?php
 								// get top 5 avg task completion time for any form entrys created or modified in current week
-								$leaderBoard = sql("SELECT COALESCE(SEC_TO_TIME(AVG(mu.`dateUpdated` - mu.`dateAdded`)), '00:00:00.0000') 'total_hours_this_week', mu.`memberID`, e.`Name` as 'name', SUM(mu.`dateUpdated` - mu.`dateAdded`) as 'total_seconds' from `membership_userrecords` as mu left join `employees` as e on e.`memberID` = mu.`memberID` WHERE (YEARWEEK(from_unixtime(`dateAdded`), 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(from_unixtime(`dateUpdated`), 1) = YEARWEEK(CURDATE(), 1)) group by 2, 3 order by 4 asc limit 5", $eo);
+								// $leaderBoard = sql("SELECT COALESCE(SEC_TO_TIME(AVG(mu.`dateUpdated` - mu.`dateAdded`)), '00:00:00.0000') 'total_hours_this_week', mu.`memberID`, e.`Name` as 'name', SUM(mu.`dateUpdated` - mu.`dateAdded`) as 'total_seconds' from `membership_userrecords` as mu inner join `employees` as e on e.`memberID` = mu.`memberID` WHERE (YEARWEEK(from_unixtime(`dateAdded`), 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(from_unixtime(`dateUpdated`), 1) = YEARWEEK(CURDATE(), 1)) group by 2, 3 order by 4 asc limit 5", $eo);
+								$leaderBoard = getWeeklyHoursEngaged($memberInfo['username'], "leaderboard");
 								if (isset($leaderBoard) && $leaderBoard->num_rows > 0) {
-									$progressPercentages = []; $leaderBoardStored = [];
+									// $progressPercentages = []; $leaderBoardStored = [];
 									while($row=db_fetch_row($leaderBoard)){ 
-										$currSecondsArr[] = $row[3];		// total_seconds for (modified - created)
-										$currSecondsArrTotal += $row[3];	// cumulative total_seconds for (modified - created)
-										$leaderBoardStored[] = $row;		// current record
-									}
+										// $currSecondsArr[] = $row[3];		// total_seconds for (modified - created)
+										// $currSecondsArrTotal += $row[3];	// cumulative total_seconds for (modified - created)
+										// $leaderBoardStored[] = $row;		// current record
+									// }
 									// calculate progress percentages
-									for ($i=0; $i< $leaderBoard->num_rows; $i++){
+									// for ($i=0; $i< $leaderBoard->num_rows; $i++){
 										// make sure division by 0 is avoided
-										if($currSecondsArrTotal != 0){
-											$progressPercentages[] = round(($currSecondsArr[$i] / $currSecondsArrTotal) * 100, 0);
-										}
-										else{
-											$progressPercentages[] = 0;
-										}
-									}
+										// if($currSecondsArrTotal != 0){
+											// $progressPercentages[] = round(($currSecondsArr[$i] / $currSecondsArrTotal) * 100, 0);
+											// $progressPercentages[] = round(($currSecondsArr[$i] / 604800) * 100, 0); // 60 * 60 * 24 * 7 = 604800
+											$progressPercentage = round(($row[3] / 604800) * 100, 0); // 60 * 60 * 24 * 7 = 604800
+										// }
+										// else{
+										// 	$progressPercentages[] = 0;
+										// }
+									// }
 									// display avg in hh:mm format
-									for ($j=0; $j< count($leaderBoardStored); $j++){
-										$currHoursWeekArr = explode(":", $leaderBoardStored[$j][0], 2);
+									// for ($j=0; $j< count($leaderBoardStored); $j++){
+										// $currHoursWeekArr = explode(":", $leaderBoardStored[$j][0], 2);
+										$currHoursWeekArr = explode(":", $row[0], 2);
 							?>
 								<!-- Message -->
-								<!-- @TODO: Select one's own records (cannot visit admin/ pages) -->
-								<!-- <a <?php if ($memberInfo['admin'] || $memberInfo['username'] == $leaderBoardStored[$j][1]) { ?>href="admin/pageViewRecords.php?memberID=<?php echo $leaderBoardStored[$j][1] ?>" <?php } ?>> -->
-								<a <?php if ($memberInfo['admin']) { ?>href="admin/pageViewRecords.php?memberID=<?php echo $leaderBoardStored[$j][1] ?>" <?php } ?>>
-									<div class="mail-contnet"><h5><?php echo $leaderBoardStored[$j][2] ?></h5> <span class="time"><?php echo number_format($currHoursWeekArr[0]) ?>h <?php echo number_format($currHoursWeekArr[1]) ?>m</span> </div>
+								<!-- <a <?php 
+								// if ($memberInfo['admin'] || $memberInfo['username'] == $leaderBoardStored[$j][1]) { ?>href="admin/pageViewRecords.php?memberID=<?php 
+								// echo $leaderBoardStored[$j][1] ?>" <?php 
+								// } ?>> -->
+								<!-- <a <?php 
+								// if ($memberInfo['admin']) { ?>href="admin/pageViewRecords.php?memberID=<?php 
+								// echo $leaderBoardStored[$j][1] ?>" <?php 
+								// } ?>>
+									<div class="mail-contnet"><h5><?php 
+									// echo $leaderBoardStored[$j][2] ?></h5> <span class="time"><?php 
+									// echo number_format($currHoursWeekArr[0]) ?>h <?php 
+									// echo number_format($currHoursWeekArr[1]) ?>m</span> </div>
 									<div class="progress">
-										<div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $progressPercentages[$j]?>%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+										<div class="progress-bar bg-info" role="progressbar" style="width: <?php 
+										// echo $progressPercentages[$j]?>%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
+								</a> -->
+								<a <?php if ($memberInfo['admin']) { ?>href="admin/pageViewRecords.php?memberID=<?php echo $row[1] ?>" <?php } ?>>
+									<div class="mail-contnet"><h5><?php echo $row[2] ?></h5> <span class="time"><?php echo number_format($currHoursWeekArr[0]) ?>h <?php echo number_format($currHoursWeekArr[1]) ?>m</span> </div>
+									<div class="progress">
+										<div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $progressPercentage?>%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
 								</a>
 							<?php	
@@ -714,7 +787,7 @@
 					<div class="comment-widgets">
 						<!-- Comment Row -->
 						<?php
-							$reportComments = sql("SELECT `Postid`, `Title`, `TextPost`, COALESCE(`last_modified`,`filed`), COALESCE(`ClosedIssue`,0)  FROM `IMSReport`  order by 4 desc limit 5", $eo);
+							$reportComments = sql("SELECT `Postid`, `Title`, `TextPost`, COALESCE(`last_modified`,`filed`), COALESCE(`ClosedIssue`,0)  FROM `IMSReport`  order by 5, 4 desc limit 5", $eo);
 							if (isset($reportComments) && $reportComments->num_rows > 0) {
 								while($row=db_fetch_row($reportComments)){ 
 									$currentStatus = '';

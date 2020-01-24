@@ -2103,7 +2103,12 @@
 	function is_allowed_username($username, $exception = false){
 		$username = trim(strtolower($username));
 		if(!preg_match('/^[a-z0-9][a-z0-9 _.@]{3,19}$/', $username) || preg_match('/(@@|  |\.\.|___)/', $username)) return false;
-
+		$reservedWords = array('admin', 'administrator', 'anonymous', 'staff', 'dcc', 'auditor', 'manager', 'executive');
+		if(in_array($username, $reservedWords)) return false;	// check if username is exactly one of the reserved words
+		// foreach($reservedWords as $rw){
+		// 	// check if username is begins with the reserved word and has any other additional text. this ensures someone can still use the reserved word just be appending something infront first.
+		// 	if (strpos($username, $rw) === 0 && strpos($username, $rw) !== false) return false;
+		// }
 		if($username == $exception) return $username;
 
 		if(sqlValue("select count(1) from membership_users where lcase(memberID)='{$username}'")) return false;
