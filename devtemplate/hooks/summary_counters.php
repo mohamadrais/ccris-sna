@@ -18,6 +18,12 @@ function summary_counters($contentType, $memberInfo, $tableName)
 	$imsControlCount = sqlValue(get_summary_select_sql($tableName, 4));
 	$imsControlCount = (!isset($imsControlCount) || empty($imsControlCount)) ? '0' : $imsControlCount;
 	$imsControlDisplayField = (!isset($imsControlCount)) ? '' : 'IMS Controls Closed';
+
+	if(in_array($tableName, ['ActCard', 'batches', 'categories', 'EventNotification', 'IMSReport', 'Item', 'PersonnalFile', 'Recruitment', 'ReportComment', 'resources', 'SoftboardComment', 'TeamSoftBoard', 'transactions'])){
+		$reviewDisplayField = "";
+		$approvalDisplayField = "";
+		$imsControlDisplayField = "";
+	}
 	
 	$customDisplayField1 = sqlValue(get_summary_select_sql($tableName, 5));
 	$customDisplayValue1 = sqlValue(get_summary_select_sql($tableName, 6));
@@ -126,7 +132,7 @@ function summary_counters($contentType, $memberInfo, $tableName)
 		</div>
 HTML;
 	// only show summary counters except for these tables
-	if (in_array($tableName, ['actcard', 'approval', 'batches', 'categories', 'eventnotification', 'imscontrol', 'imsreport', 'item', 'kpi', 'leadership', 'membership_company', 'membership_grouppermissions', 'membership_groups', 'membership_userpermissions', 'membership_userrecords', 'membership_users', 'personnalfile', 'recruitment', 'reportcomment', 'resources', 'softboardcomment', 'summary_dashboard', 'teamsoftboard', 'transactions'])){
+	if (in_array($tableName, ['approval', 'imscontrol', 'kpi', 'leadership', 'membership_company', 'membership_grouppermissions', 'membership_groups', 'membership_userpermissions', 'membership_userrecords', 'membership_users', 'summary_dashboard'])){
 		return '';
 	}
 	else

@@ -1,5 +1,8 @@
 <?php
 	// For help on using hooks, please refer to https://bigprof.com/appgini/help/working-with-generated-web-database-application/hooks
+	$hooks_dir = dirname(__FILE__);
+	$tableName = basename(__FILE__, '.php');
+	include("$hooks_dir/summary_counters.php");
 		
 	function ActCard_init(&$options, $memberInfo, &$args){
 
@@ -76,6 +79,10 @@
 	}
 
 	function ActCard_after_insert($data, $memberInfo, &$args){
+		global $tableName;
+		if(function_exists('summary_update_after_insert_delete')){
+			summary_update_after_insert_delete($tableName, 'insert');
+		}
 
 		return TRUE;
 	}
@@ -86,6 +93,10 @@
 	}
 
 	function ActCard_after_update($data, $memberInfo, &$args){
+		global $tableName;
+		if(function_exists('summary_update_after_update')){
+			summary_update_after_update($tableName);
+		}
 
 		return TRUE;
 	}
@@ -96,7 +107,10 @@
 	}
 
 	function ActCard_after_delete($selectedID, $memberInfo, &$args){
-
+		global $tableName;
+		if(function_exists('summary_update_after_insert_delete')){
+			summary_update_after_insert_delete($tableName, 'delete');
+		}
 	}
 
 	function ActCard_dv($selectedID, $memberInfo, &$html, &$args){
