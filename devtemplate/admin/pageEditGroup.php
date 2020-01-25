@@ -256,7 +256,6 @@ if($groupID != ''){
 </div>
 
 <div id="fab1" class="adminActions">
-	<a class="btn btn-warning float-btn-2" href="pageViewGroups.php" title="Back To Groups"><i class="ti-arrow-left"></i></a>
 	<?php if($groupID){ ?>
 	<input type="checkbox" name="adminToggle" class="adminToggle" />
 	<a class="adminButton" href="#!"><i class="ti-more"></i></a>
@@ -266,6 +265,29 @@ if($groupID != ''){
 		<button style="width:unset;height:unset;color:unset;border:none;background:none"><a href="pageViewRecords.php?groupID=<?php echo $groupID; ?>" title="View Group Records"><i class="ti-layout-list-thumb"></i></a></button>
 	<?php } ?>
 	</div>
+	<div class="adminActions"style="right:90px; bottom:40px">
+		<a class="btn btn-warning float-btn-2" href="pageViewGroups.php" title="Back To Groups"><i class="ti-arrow-left"></i></a>
+	</div>
+
+<!-- 
+	<div id="adminActions" class="adminActions">
+		<input  type="checkbox" name="adminToggle" class="adminToggle" />
+		<a class="adminButton" href="#!"><i class="ti-more"></i></a>
+		<div class="adminButtons">
+			<%%CANCELEDIT_BUTTON%%>
+			<%%DESELECT_BUTTON%%>
+			<%%DVPRINT_BUTTON%%>
+			<%%DELETE_BUTTON%%>
+			<%%INSERT_BUTTON%%>
+			<%%ATTACH_BUTTON%%>
+		</div>
+	</div>
+	<div class="adminActions"style="right:90px; bottom:40px">
+		<%%EDIT_BUTTON%%>
+		<%%UPDATE_BUTTON%%>
+	</div> -->
+
+
 </div>
 <script>
 	$j(function(){
