@@ -8,7 +8,7 @@
 					title="<%= event.title %>"></a> -->
 				
 				<a href="<%= event.url ? event.url : 'javascript:void(0)' %>" data-event-id="<%= event.id %>" data-event-class="<%= event['class'] %>" data-toggle="tooltip" class="card-body text-center text-info">
-					<%= event.titleAbbreviated %>&nbsp;&nbsp;<span class="pull-left event <%= event['class'] %>"></span>
+					<%= event.titleAbbreviated %>&nbsp;&nbsp;<i class="pull-left glyphicon <%= event['class'] %>"></i>
 				</a><br>
 			<% }); %>
 		</div>

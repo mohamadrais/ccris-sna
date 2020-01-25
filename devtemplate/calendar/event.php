@@ -39,6 +39,7 @@ while( $rows = db_fetch_row($events) ) {
             $statusClass = '';
 
     }
+
     // convert  date to milliseconds
     // if start timestamp is midnight
     if ( substr($rows[2],11,8) == '00:00:00' ) {
@@ -70,6 +71,13 @@ while( $rows = db_fetch_row($events) ) {
     $url = "";
     if(isset($rows[4]) && !empty($rows[4]) && isset($rows[5]) && !empty($rows[5])){
         $url = "".$rows[4]."_view.php?SelectedID=".$rows[5]."";
+        switch ($rows[4]){
+            case "Marketing":$class.=" glyphicon-record";break;
+            case "InOutRegister":$class.=" glyphicon-stop";break;
+            case "Audit":$class.=" glyphicon-triangle-top";break;
+            case "projects":$class.=" glyphicon-star";break;
+            case "Inquiry":$class.=" glyphicon-briefcase";break;
+        }
     }
 	$calendar[] = array(
         'id' => $rows[0],

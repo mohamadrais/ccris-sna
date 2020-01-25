@@ -195,8 +195,10 @@
   left: 92.85714285714285%;
 }
 .events-list {
+  max-height: 56px;
+  padding-left: 5px;
   position: absolute;
-  bottom: 0;
+  top: 40px;
   left: 0;
   overflow: hidden;
 }
@@ -332,19 +334,19 @@
   margin-top: 3px;
 }
 .event-important {
-  background-color: #ad2121;
+  color: #ad2121;
 }
 .event-info {
-  background-color: #1e90ff;
+  color: #1e90ff;
 }
 .event-warning {
-  background-color: #e3bc08;
+  color: #e3bc08;
 }
 .event-inverse {
-  background-color: #1b1b1b;
+  color: #1b1b1b;
 }
 .event-success {
-  background-color: #006400;
+  color: #006400;
 }
 .event-special {
   background-color: #800080;
@@ -498,10 +500,6 @@ span[data-cal-date]:hover {
   color: #007bff;
   font-weight: normal;
   line-height: 22px;
-}
-.events-list {
-  max-height: 47px;
-  padding-left: 5px;
 }
 .cal-column {
   border-left: 1px solid #e1e1e1;
