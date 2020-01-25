@@ -228,6 +228,7 @@ class DataList{
 		}
 
 		$this->HTML .= '<div class="page-wrapper ps ps--theme_default"><div class="container-fluid"><div class="row"><div class="col-xs-12">';
+		$this->HTML .= (function_exists('showNotifications'))? showNotifications():'';
 		$this->HTML .= '<div class="card"><div class="card-body">';
 		// $this->HTML .= '<div aria-label="breadcrumb">
 		// 					<ol class="breadcrumb">

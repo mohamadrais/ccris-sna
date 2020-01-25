@@ -185,7 +185,6 @@ _service_worker();
 
 			<!-- process notifications -->
 			<?php $notification_margin = ($_REQUEST['Embedded'] ? '15px 0px' : '-15px 0 -45px'); ?>
-			<?php if(function_exists('showNotifications')) echo showNotifications(); ?>
 
 			<?php if(!defined('APPGINI_SETUP') && is_file(dirname(__FILE__) . '/hooks/header-extras.php')){ include(dirname(__FILE__).'/hooks/header-extras.php'); } ?>
 			<!-- Add header template below here .. -->
