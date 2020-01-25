@@ -18,7 +18,7 @@
 
     $wtm = array(); // weekly_team_metrics
     $wtm_last_updated = "";
-    if(in_array($memberInfo['groupID'], [2, 7] )) {
+    if(in_array($memberInfo['groupID'], [2, 3, 4, 7, 13] )) {
         $wtm = sql("SELECT * FROM `weekly_team_metrics` order by `weekly_hours` desc", $eo);
         $wtm_last_updated = sqlValue("SELECT min(`last_updated`) from `weekly_team_metrics`");
         $wtm_last_updated_date = '';
@@ -76,7 +76,7 @@
 <ul class="nav nav-tabs customtab" role="tablist" id="reportsTabs">
     <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#summary" role="tab"><span>Summary Dashboard</span></a> </li>
     <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#kpi" role="tab"><span>KPI Metrics</span></a> </li>
-    <?php if(in_array($memberInfo['groupID'], [2, 7] )) { ?> <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#personnel" role="tab"><span>Weekly Team Metrics</span></a> </li> <?php } ?>
+    <?php if(in_array($memberInfo['groupID'], [2, 3, 4, 7, 13] )) { ?> <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#personnel" role="tab"><span>Weekly Team Metrics</span></a> </li> <?php } ?>
 </ul>
 <!-- Tab panes -->
 <div class="tab-content">
@@ -482,7 +482,7 @@
                 <!-- End Task Completion Duration -->
         </div>
     </div>
-    <?php if(in_array($memberInfo['groupID'], [2, 7] )) { ?>
+    <?php if(in_array($memberInfo['groupID'], [2, 3, 4, 7, 13] )) { ?>
     <div class="tab-pane" id="personnel" role="tabpanel">
         <div class="row">
             <div class="col-12">
