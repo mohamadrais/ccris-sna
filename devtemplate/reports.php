@@ -16,8 +16,15 @@
     $memberInfo = getMemberInfo();
     global $Translation;
 
-    $kpi = $_REQUEST["kpi"];
-    // echo $kpi;
+    $wtm = array(); // weekly_team_metrics
+    $wtm_last_updated = "";
+    if(in_array($memberInfo['groupID'], [2, 7] )) {
+        $wtm = sql("SELECT * FROM `weekly_team_metrics` order by `weekly_hours` desc", $eo);
+        $wtm_last_updated = sqlValue("SELECT min(`last_updated`) from `weekly_team_metrics`");
+        $wtm_last_updated_date = '';
+        (parseMySQLDate(substr($wtm_last_updated, 0, 10), false) == substr($wtm_last_updated, 0, 10)) ? $wtm_last_updated_date = date("h:i a", strtotime($wtm_last_updated)) : '' ;
+    }
+
 ?>
 <?php
 	/*
@@ -66,13 +73,14 @@
 <div class="container-fluid mt-5">
 
 <!-- Nav tabs -->
-<ul class="nav nav-tabs customtab" role="tablist">
+<ul class="nav nav-tabs customtab" role="tablist" id="reportsTabs">
     <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#summary" role="tab"><span>Summary Dashboard</span></a> </li>
     <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#kpi" role="tab"><span>KPI Metrics</span></a> </li>
-    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#personel" role="tab"><span>Personel Achievement Matrix</span></a> </li>
+    <?php if(in_array($memberInfo['groupID'], [2, 7] )) { ?> <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#personnel" role="tab"><span>Weekly Team Metrics</span></a> </li> <?php } ?>
 </ul>
 <!-- Tab panes -->
 <div class="tab-content">
+    <span id="chartLoading" style="position: relative; left: 50%;"></span>
     <div class="tab-pane active" id="summary" role="tabpanel">
         <div class="text-muted report-label pb-2 pt-4">Select Report Range:</div>
         <button class="btn btn-outline-primary waves-effect waves-light" type="button"><span class="btn-label"><i class="fa fa-calendar"></i></span><span id="reportrange"></span></button>
@@ -474,27 +482,59 @@
                 <!-- End Task Completion Duration -->
         </div>
     </div>
-    <div class="tab-pane" id="personel" role="tabpanel">
+    <?php if(in_array($memberInfo['groupID'], [2, 7] )) { ?>
+    <div class="tab-pane" id="personnel" role="tabpanel">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Personel Achievement Matrix</h4>
-                        <!-- <h6 class="card-subtitle"></h6> -->
+                        <h4 class="card-title">Personnel Achievement Matrix</h4>
+                        <h6 class="card-subtitle pull-right">Last updated <?php echo $wtm_last_updated_date ?></h6>
                         <div class="table-responsive m-t-40">
                             <table id="example23" class="display nowrap table table-hover" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
                                         <th><a>User</a></th>
-                                        <th><a>Work Orders</a></th>
-                                        <th><a>Average Work Orders</a></th>
-                                        <th><a>Average Work Order</a></th>
-                                        <th><a>Performance</a></th>
-                                        <th><a>Average Task Rating</a></th>
-                                        <th><a>Average Task Rating</a></th>
+                                        <th><a>Work Orders (Completed / Total)</a></th>
+                                        <th><a>Average Work Orders This Month</a></th>
+                                        <th><a>Average Work Order Completion Time</a></th>
+                                        <th><a>Performance Rating</a></th>
+                                        <th><a>Average Task Rating This Week</a></th>
+                                        <th><a>Average Task Rating This Month</a></th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php if (isset($wtm) && $wtm->num_rows > 0) {
+                                        while($row=db_fetch_row($wtm)){ 
+                                            $currHoursWeekArr = explode(":", $row[3], 2);
+                                            $progressPercentage = round(((intval($currHoursWeekArr[0])*3600) / 604800) * 100, 0);
+                                            $myWOAvgCompTimeArr = explode(":", $row[7], 2);
+                                ?>
+                                    <tr>
+                                        <td>
+                                            <a>
+                                                <div class="message-widget">
+                                                    <a>
+                                                        <div class="mail-contnet"><h5><?php echo $row[2] ?></h5><span class="time"><?php echo number_format($currHoursWeekArr[0]) ?>h <?php echo number_format($currHoursWeekArr[1]) ?>m</span></div>
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $progressPercentage?>%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td><a><?php echo $row[4] ?>/<?php echo $row[5] ?></a></td>
+                                        <td><a><?php echo number_format($row[6]) ?></a></td>
+                                        <td><a><?php echo number_format($myWOAvgCompTimeArr[0]) ?>h <?php echo number_format($myWOAvgCompTimeArr[1]) ?>m</a></td>
+                                        <td><a><?php echo round($row[8], 1) ?>/10</a></td>
+                                        <td><a><?php echo round($row[9], 1) ?>/10</a></td>
+                                        <td><a><?php echo round($row[10], 1) ?>/10</a></td>
+                                    </tr>
+                                <?php	
+								    	}
+								    }
+								    else {
+							    ?>
                                     <tr>
                                         <td>
                                             <a>
@@ -515,46 +555,9 @@
                                         <td><a>0/10</a></td>
                                         <td><a>0/10</a></td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <a>
-                                                <div class="message-widget">
-                                                    <a>
-                                                        <div class="mail-contnet"><h5>No active users yet</h5><span class="time">0h 0m</span></div>
-                                                        <div class="progress">
-                                                            <div class="progress-bar bg-info" role="progressbar" style="width: 0%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </a>
-                                        </td>
-                                        <td><a>0/5</a></td>
-                                        <td><a>0</a></td>
-                                        <td><a>0h 0m</a></td>
-                                        <td><a>0/10</a></td>
-                                        <td><a>0/10</a></td>
-                                        <td><a>0/10</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a>
-                                                <div class="message-widget">
-                                                    <a>
-                                                        <div class="mail-contnet"><h5>No active users yet</h5><span class="time">0h 0m</span></div>
-                                                        <div class="progress">
-                                                            <div class="progress-bar bg-info" role="progressbar" style="width: 0%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </a>
-                                        </td>
-                                        <td><a>0/5</a></td>
-                                        <td><a>0</a></td>
-                                        <td><a>0h 0m</a></td>
-                                        <td><a>0/10</a></td>
-                                        <td><a>0/10</a></td>
-                                        <td><a>0/10</a></td>
-                                    </tr>
+                                <?php
+                                    }
+                                ?>
                                 </tbody>
                             </table>
                         </div>
@@ -563,9 +566,10 @@
             </div>
         </div>
     </div>
+    <?php } ?>
 </div>
 
-<label class="fab-menu">
+<label class="fab-menu" id="reportActions">
   <input class="fab" type="checkbox">
   <div class="menu-box">
     <div class="menu-circle"><i class="ti-more"></i></div>
@@ -610,7 +614,7 @@
 			}
 
 			$t_perm = getTablePermissions($tn);
-			$can_insert = $t_perm['insert'];
+			$can_view = $t_perm['view'];
 
 			$searchFirst = (($tChkFF !== false && $tChkFF !== null) ? '?Filter_x=1' : '');
 			?>
@@ -642,18 +646,13 @@
 						<div id="<?php echo $tn; ?>-tile" class="report-sidemenu <?php echo (!$i ? $block_classes['first']['grid_column'] : $block_classes['other']['grid_column']); ?>">
 							<div class="panel1 <?php /*echo (!$i ? $block_classes['first']['panel'] : $block_classes['other']['panel']); */?>">
 								<li class="submenu">
-									<?php if($can_insert && $tChkAHAN !== false && $tChkAHAN !== null){ ?>
+									<?php if($can_view && $tChkAHAN !== false && $tChkAHAN !== null){ ?>
 
 										<div id="summaryfor-<?php echo $tn; ?>" class="btn-group" style="width: 100%; word-wrap: break-word;">
                                            <a class="px-3" title="<?php echo preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", html_attr(strip_tags($tc['Description']))); ?>"><?php echo $tc['Caption']; ?></a>
-                                            <?php if($kpi != "true") { ?><span class="badge badge-success ml-auto" style="font-size: 12px; height: fit-content; margin: auto;"><?php echo $count_badge; ?></span><?php } ?>
+                                            <span class="badge badge-success ml-auto" style="font-size: 12px; height: fit-content; margin: auto;"><?php echo $count_badge; ?></span>
 										</div>
-									<?php }else{ ?>
-
-										<a class="btn btn-block btn-lg  <?php echo (!$i ? $block_classes['first']['link'] : $block_classes['other']['link']); ?>" title="<?php echo preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", html_attr(strip_tags($tc['Description']))); ?>" href="<?php echo $tn; ?>_view.php<?php echo $searchFirst; ?>"><?php /*echo ($tc['tableIcon'] ? '<img src="' . $tc['tableIcon'] . '">' : '');*/?><strong class="table-caption"><?php echo $tc['Caption']; ?></strong><?php if($kpi != "true") { ?><?php echo $count_badge; ?><?php } ?></a>
 									<?php } ?>
-
-									<!-- <div class="panel-body-description"><?php /*echo $tc['Description']; */?></div> -->
 								</li>
 							</div>
 						</div>
@@ -698,5 +697,5 @@
 </div>
 
 <?php
-    include_once("$currDir/footer.php");
+    // include_once("$currDir/footer.php");
 ?>

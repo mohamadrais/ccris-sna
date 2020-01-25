@@ -5109,7 +5109,7 @@ EOT;
 			$whereMemberID = "mu.`memberID` = '$memberID' and ";
 			$groupByB = "";
 			$groupByA = "";
-			$groupByM = "";
+			$groupByM = "group by 3";
 			$orderByB = "";
 			$limitB = "";
 		}
@@ -5142,6 +5142,74 @@ EOT;
 		if($type == "default")	return sqlValue($sql);
 		if($type == "leaderboard")	return sql($sql, $eo);
 		return false;
+	}
+
+	#########################################################
+
+	function getWeeklyTeamMetrics($memberID, $metric){
+		switch($metric){
+			case 'myWOCompleted':
+				return sqlValue("SELECT count(*) FROM `WorkOrder` WHERE `fo_EmployeeID` = (select `employees`.`EmployeeID` from `employees` where `employees`.`memberID` = '" . $memberID . "') and `ot_ap_Review` = 4 and `ot_ap_Approval` = 4 and `ot_ap_QC` = 4");
+				break;
+			case 'myWOTotal':
+				return sqlValue("SELECT count(*) FROM `WorkOrder` WHERE `fo_EmployeeID` = (select `employees`.`EmployeeID` from `employees` where `employees`.`memberID` = '" . $memberID . "')");
+				break;
+			case 'myWOAvgPerMonth':
+				return sqlValue("SELECT COALESCE(AVG(a.woCount), 0) FROM (select count(`WorkOrder`.`id`) as woCount FROM `WorkOrder` WHERE `WorkOrder`.`fo_EmployeeID` = (SELECT `employees`.`EmployeeID` FROM `employees` WHERE `employees`.`memberID` = '" . $memberID . "') GROUP BY DATE_FORMAT(`WorkOrder`.`ot_ap_filed`, '%m-%Y')) a");
+				break;
+			case 'myWOAvgCompTime':
+				return sqlValue("SELECT COALESCE(SEC_TO_TIME((select AVG((UNIX_TIMESTAMP(COALESCE(`ot_ap_lastmodified`, `WorkOrder`.`ot_ap_filed`)) - UNIX_TIMESTAMP(`WorkOrder`.`ot_ap_filed`))) from `WorkOrder` WHERE `WorkOrder`.`fo_EmployeeID` = (SELECT `employees`.`EmployeeID` FROM `employees` WHERE `employees`.`memberID` = '" . $memberID . "') and `ot_ap_Review` = 4 and `ot_ap_Approval` = 4 and `ot_ap_QC` = 4 and COALESCE(`ot_ap_lastmodified`, `ot_ap_filed`) is not null)), '00:00:00.0000') as avg_time");
+				break;
+			case 'myWORating':
+				return sqlValue("SELECT COALESCE(AVG(`ot_ap_QCComment`), 0) FROM `WorkOrder` WHERE `fo_EmployeeID` = (select `employees`.`EmployeeID` from `employees` where `employees`.`memberID` = '" . $memberID . "') and `ot_ap_QCComment` REGEXP '^[0-9]+$' and `ot_ap_QCComment` between 0 and 10");
+				break;
+			case 'myTaskRatingWeeklyAvg':
+				$myRecordsTables=sql("SELECT tablename, pkvalue FROM `membership_userrecords` WHERE memberID = '" . $memberID . "' and (YEARWEEK(from_unixtime(`dateAdded`), 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(from_unixtime(`dateUpdated`), 1) = YEARWEEK(CURDATE(), 1))", $eo);
+				while($row=db_fetch_row($myRecordsTables)){
+					$pkf = getPKFieldName($row[0]);
+					$sqlFields = get_sql_fields($row[0]);
+					if(strpos($sqlFields, 'ot_ap_QCComment') !== false){
+						$myTaskRatingItem=sqlValue("SELECT COALESCE(AVG(`ot_ap_QCComment`), 0) FROM $row[0] WHERE $pkf = $row[1] and `ot_ap_QCComment` REGEXP '^[0-9]+$' and `ot_ap_QCComment` between 0 and 10");
+						$myTaskRatingWeekly[]= $myTaskRatingItem;
+					}
+				}
+				if(isset($myTaskRatingWeekly)) {
+					$myTaskRatingWeekly = array_filter($myTaskRatingWeekly, function($x) { return $x !== ''; });
+					if(count($myTaskRatingWeekly) > 0) {
+						$myTaskRatingWeeklyAvg = array_sum($myTaskRatingWeekly)/count($myTaskRatingWeekly);
+					}
+				}
+				else{
+					$myTaskRatingWeeklyAvg = 0;
+				}
+				return $myTaskRatingWeeklyAvg;
+				break;
+			case 'myTaskRatingMonthly':
+				$myRecordsTables=sql("SELECT tablename, pkvalue FROM `membership_userrecords` WHERE memberID = '" . $memberID . "' and ((MONTH(from_unixtime(`dateAdded`)) = MONTH(CURRENT_DATE()) and YEAR(from_unixtime(`dateAdded`)) = YEAR(CURRENT_DATE())) or (MONTH(from_unixtime(`dateUpdated`)) = MONTH(CURRENT_DATE()) and YEAR(from_unixtime(`dateUpdated`)) = YEAR(CURRENT_DATE())))", $eo);
+				while($row=db_fetch_row($myRecordsTables)){
+					$pkf = getPKFieldName($row[0]);
+					$sqlFields = get_sql_fields($row[0]);
+					if(strpos($sqlFields, 'ot_ap_QCComment') !== false){
+						$myTaskRatingItem=sqlValue("SELECT COALESCE(AVG(`ot_ap_QCComment`), 0) FROM $row[0] WHERE $pkf = $row[1] and `ot_ap_QCComment` REGEXP '^[0-9]+$' and `ot_ap_QCComment` between 0 and 10");
+						$myTaskRatingMonthly[]= $myTaskRatingItem;
+					}
+				}
+				if(isset($myTaskRatingMonthly)) {
+					$myTaskRatingMonthly = array_filter($myTaskRatingMonthly, function($x) { return $x !== ''; });
+					if(count($myTaskRatingMonthly) > 0) {
+						$sum = array_sum($myTaskRatingMonthly);
+						$count = count($myTaskRatingMonthly);
+						$myTaskRatingMonthlyAvg = array_sum($myTaskRatingMonthly)/count($myTaskRatingMonthly);
+					}
+				}
+				else{
+					$myTaskRatingMonthlyAvg = 0;
+				}
+				return $myTaskRatingMonthlyAvg;
+				break;
+		}
+		return false;
+		
 	}
 
 	#########################################################

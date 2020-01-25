@@ -31,7 +31,12 @@
             }
 
             var combined_data = chart_data;
-            if (combined_data == null || (combined_data.length && combined_data.length < 1)){
+            if(typeof combined_data !== 'undefined'){
+                if (combined_data.length < 1){
+                    return;
+                }
+            }
+            else{
                 return;
             }
 
@@ -138,12 +143,18 @@
             $j("#titleReport").html(chart_main_title);
 
             var jsonData = chart_data;
-            if (jsonData == null || (jsonData.length && jsonData.length < 1)){
+            if(typeof jsonData !== 'undefined'){
+                if (jsonData.length < 1){
+                    hide_divs();
+                    return;
+                }
+                else {
+                    show_divs();
+                }
+            }
+            else{
                 hide_divs();
                 return;
-            }
-            else {
-                show_divs();
             }
 
             var keys = Object.keys(jsonData[0]);
@@ -278,6 +289,7 @@
         $j("div[id^='summaryfor']").each(function(i, el) {
             $j(el).addClass("dis");
         });
+        $j("#reportActions").addClass("dis");
         if($j('#chartLoading').length) {
             $j('#chartLoading').html('<div style="direction: ltr;"><img src="loading.gif"> <?php echo addslashes($Translation['Loading ...']); ?></div>');
         }
@@ -292,6 +304,7 @@
         $j("div[id^='summaryfor']").each(function(i, el) {
             $j(el).removeClass("dis");
         });
+        $j("#reportActions").removeClass("dis");
     }
 
     function hide_divs() {
@@ -370,7 +383,8 @@
         $j("div[id^='summaryfor']").each(function(i, el) {
             $j(el).click(function() {
                 console.log(`id clicked: ${el.id}`);
-                if ($j('#reportrange').html() != '' && getUrlVars()["kpi"] != "true") {
+                // if ($j('#reportrange').html() != '' && getUrlVars()["kpi"] != "true") {
+                if ($j('#reportrange').html() != '' && getSelectedTabIndex() == 'Summary Dashboard') {
                     var startDate = moment($j('#reportrange').html().substr(0, $j('#reportrange').html().indexOf("-") - 1));
                     var endDate = moment($j('#reportrange').html().substr($j('#reportrange').html().indexOf("-") + 1, $j('#reportrange').html().length));
 
@@ -379,14 +393,38 @@
                         load_data($j(el).find('a:first').text(), el.id, startDate, endDate);
                     }
                 }
-                else if (getUrlVars()["kpi"] == "true") {
+                else if (getSelectedTabIndex() == 'KPI Metrics') {
                     load_kpi($j(el).find('a:first').text(), el.id);
+                }
+                else if (getSelectedTabIndex() == 'Weekly Team Metrics') {
+                    load_weekly($j(el).find('a:first').text(), el.id);
                 }
             });
         });
 
+        $j("#reportsTabs").on('click', 'li a', function(e){
+            if(e.target.innerText == 'KPI Metrics'){
+                $j('span.badge.badge-success.ml-auto').hide();
+                $j('#reportActions').show();
+            }
+            else if(e.target.innerText == 'Weekly Team Metrics'){
+                $j('#reportActions').hide();
+            }
+            else{
+                $j('span.badge.badge-success.ml-auto').show();
+                $j('#reportActions').show();
+            }
+
+        })
+
+        function getSelectedTabIndex() { 
+            return $j("#reportsTabs").find("li a.active").text();
+        }
     });
 
+
+
+   
     function getUrlVars() {
         var vars = {};
         var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
