@@ -1,16 +1,24 @@
+
 <div class="cal-month-day <%= cls %>">
 	<span class="pull-right" data-cal-date="<%= data_day %>" data-cal-view="day" data-toggle="tooltip" title="<%= tooltip %>"><%= day %></span>
-	<% if (events.length > 0) { %>
-		<div class="events-list" data-cal-start="<%= start %>" data-cal-end="<%= end %>">
-			<% _.each(events, function(event) { %>
-				<!-- <a href="<%= event.url ? event.url : 'javascript:void(0)' %>" data-event-id="<%= event.id %>" data-event-class="<%= event['class'] %>"
-					class="pull-left event <%= event['class'] %>" data-toggle="tooltip"
-					title="<%= event.title %>"></a> -->
-				
-				<a href="<%= event.url ? event.url : 'javascript:void(0)' %>" data-event-id="<%= event.id %>" data-event-class="<%= event['class'] %>" data-toggle="tooltip" class="card-body text-center text-info">
-					<%= event.titleAbbreviated %>&nbsp;&nbsp;<i class="pull-left glyphicon <%= event['class'] %>"></i>
-				</a><br>
-			<% }); %>
-		</div>
-	<% } %>
+		<% if (events.length > 0) { %>
+			<div class="events-list" data-cal-start="<%= start %>" data-cal-end="<%= end %>">
+				<% _.each(events, function(event) { %>
+					<% if(events.length > 4){%>
+							<a href="<%= event.url ? event.url : 'javascript:void(0)' %>" data-event-id="<%= event.id %>" data-event-class="<%= event['class'] %>" data-toggle="popover" data-trigger="hover" class="card-body-icon text-center text-info col-sm-1" title="<%= event.title%>">
+								<i class="pull-left glyphicon <%= event['class'] %>"></i>
+							</a>
+						<% }else{ %>							
+							<a href="<%= event.url ? event.url : 'javascript:void(0)' %>" data-event-id="<%= event.id %>" data-event-class="<%= event['class'] %>" data-toggle="popover" data-trigger="hover" title="<%= event.title%>" class="card-body text-center text-info">
+								<%= event.titleAbbreviated %>&nbsp;&nbsp;<i class="pull-left glyphicon <%= event['class'] %>"></i>
+							</a><br>
+					<% } %>
+				<% }); %>
+			</div>
+			<% if(events.length > 4){%>
+			<div class="see-all">
+					See All ( <%= events.length %> )
+			</div>
+			<% } %>
+		<% } %>
 </div>

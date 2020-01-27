@@ -198,7 +198,7 @@
   max-height: 56px;
   padding-left: 5px;
   position: absolute;
-  top: 40px;
+  top: 33px;
   left: 0;
   overflow: hidden;
 }
@@ -510,4 +510,17 @@ a.cal-event-week {
 }
 .badge-important {
   background-color: #b94a48;
+}
+
+.see-all{
+  bottom: 0px;
+  margin: auto;
+  position: absolute;
+  text-align: center;
+  width: inherit;
+  z-index:11;
+}
+
+.card-body-icon{
+  padding:2px 12px !important;
 }
