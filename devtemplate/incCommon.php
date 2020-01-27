@@ -5128,8 +5128,9 @@ EOT;
 		$sql = "select COALESCE(SEC_TO_TIME(sum(b.hours_per_day)), '00:00:00.0000') weekly_hours_total $selectB from ( ";
 		$sql .= "select (CASE WHEN (max(a.maxDate) - min(a.minDate)) < 3600 THEN 3600 ELSE max(a.maxDate) - min(a.minDate) END) as hours_per_day, a.date $selectA from ( ";
 		$sql .= "select min(`dateAdded`) as 'minDate', max(`dateAdded`) as 'maxDate', date(from_unixtime(`dateAdded`)) as 'date' $selectM from `membership_userrecords` mu inner join `employees` as e on e.`memberID` = mu.`memberID` WHERE $whereMemberID date(from_unixtime(`dateAdded`)) = (select date(curdate() - interval weekday(curdate()) day)) $groupByM union all ";
-		$sql .= "select min(`dateUpdated`), max(`dateUpdated`), date(from_unixtime(`dateUpdated`)) $selectM from `membership_userrecords` mu inner join `employees` as e on e.`memberID` = mu.`memberID` WHERE $whereMemberID date(from_unixtime(`dateUpdated`)) = (select date(curdate() - interval weekday(curdate()) day)) $groupByM union all ";
+		$sql .= "select min(`dateUpdated`), max(`dateUpdated`), date(from_unixtime(`dateUpdated`)) $selectM from `membership_userrecords` mu inner join `employees` as e on e.`memberID` = mu.`memberID` WHERE $whereMemberID date(from_unixtime(`dateUpdated`)) = (select date(curdate() - interval weekday(curdate()) day)) $groupByM ";
 		if ($currDay > 0){
+			$sql .= " union all ";
 			for($x=1; $x <= $currDay; $x++) {
 				$sql .= "select min(`dateAdded`) as 'minDate', max(`dateAdded`) as 'maxDate', date(from_unixtime(`dateAdded`)) as 'date' $selectM from `membership_userrecords` mu inner join `employees` as e on e.`memberID` = mu.`memberID` WHERE $whereMemberID date(from_unixtime(`dateAdded`)) = (select date(curdate() - interval weekday(curdate()) day + interval $x day)) $groupByM union all ";
 				$sql .= "select min(`dateUpdated`), max(`dateUpdated`), date(from_unixtime(`dateUpdated`)) $selectM from `membership_userrecords` mu inner join `employees` as e on e.`memberID` = mu.`memberID` WHERE $whereMemberID date(from_unixtime(`dateUpdated`)) = (select date(curdate() - interval weekday(curdate()) day + interval $x day)) $groupByM ";
