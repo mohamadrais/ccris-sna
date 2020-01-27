@@ -413,36 +413,31 @@
                     </div>
                 </div> -->
 
-
-                <div class="card my-3">
-                    <div class="card-body">
-                        <h4 class="card-title m-b-0">Minimum Record Required</h4>
-                        <p class="text-muted"></p>
-                        <table class="table table-bordered dataTable">
-                            <thead>
-                                <tr>
-                                    <th style="width: 70%">Record</th>
-                                    <th><a>Remarks</a></th>
-                                    <!-- <th>Percentage of KPI Achieved this Year</th> -->
-                                </tr>
-                            </thead>
-                            <tr>
-                                <td>
-                                    <span id='kpi_min_record_required'></span> 
-                                </td>
-                                <td>
-                                    <a>
-                                        The number shown is the minimum records required for each section. Every section needs to achieve at least the minimum records to be generated for the year.
-                                    </a> 
-                                </td>
-                                <!-- <td>
-                                    <span id='kpi_percentage_kpi_achieved'></span> 
-                                </td> -->
-                            </tr>
-                        </table>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card my-3">
+                            <div class="card-body">
+                                <h4 class="card-title d-inline-block m-b-0">Minimum Record Required</h4>
+                                <a class="mytooltip small d-inline-block ml-3" style="font-size: 1.5rem;" href="javascript:void(0)"><i class="ti-info-alt"><span data-placement="top" class="tooltip-content5 small"><span class="tooltip-text3 small"><span class="tooltip-inner2 small" style="font-family: sans-serif; padding: 20px;">The number shown is the minimum records required for each section. Every section needs to achieve at least the minimum records to be generated for the year.</span></span></span></i></a>
+                                <span id='kpi_min_record_required'></span>
+                            </div>
+                        </div>
+                    </div>
+                <!-- End Row Min Record -->
+                <!-- Start Task Completion Duration -->
+                    <div class="col-md-9">
+                        <div class="card my-3">
+                            <div class="card-body">
+                                <h4 class="card-title d-inline-block m-b-0">Task Completion Duration (Days)</h4>
+                                <a class="mytooltip small d-inline-block ml-3" style="font-size: 1.5rem;" href="javascript:void(0)"><i class="ti-info-alt"><span data-placement="top" class="tooltip-content5 small"><span class="tooltip-text3 small"><span class="tooltip-inner2 small" style="font-family: sans-serif; padding: 20px;">The number shown is the task completion duration for each section. Every section must be completed within the specified period.</span></span></span></i></a>
+                                <div class="progress" id='kpi_task_completion_duration' >
+                                    <div class="progress-bar progress-bar-info" role="progressbar" style="width: 0;"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- End Row Min Record -->
+                <!-- End Task Completion Duration -->
                 <!-- Start Row KPI percentage per annum -->
                 <div class="card my-3">
                     <div class="card-body">
@@ -452,34 +447,6 @@
                     </div>
                 </div>
                 <!-- End Row KPI percentage per annum -->
-                <!-- Start Task Completion Duration -->
-                <div class="card my-3">
-                    <div class="card-body">
-                        <h4 class="card-title m-b-0">Task Completion Duration (Days)</h4>
-                        <p class="text-muted"></p>
-                        <table class="table table-bordered dataTable">
-                            <thead>
-                                <tr>
-                                    <th style="width: 70%"><a>Duration</a></th>
-                                    <th><a>Remarks</a></th>
-                                </tr>
-                            </thead>
-                            <tr>
-                                <td>
-                                    <div class="progress" id='kpi_task_completion_duration' >
-                                        <div class="progress-bar progress-bar-info" role="progressbar" style="width: 0;"></div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <span>
-                                        The number shown is the task completion duration for each section. Every section must be completed within the specified period.
-                                    </span> 
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <!-- End Task Completion Duration -->
         </div>
     </div>
     <?php if(in_array($memberInfo['groupID'], [2, 3, 4, 7, 13] )) { ?>
