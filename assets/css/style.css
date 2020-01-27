@@ -7550,3 +7550,15 @@ select.form-control:not([size]):not([multiple]){
 table  { border-collapse: collapse; width: 100%; }
 th, td { padding: 8px 16px; }
 th     { background:#fff; }
+
+.input-group select{
+  height: 40px;
+  background: #fff;
+  border: 1px solid #ced4da;
+}
+.radio label::before{
+  display: none;
+}
+.form-control{
+  border-radius: .25rem !important;
+}

@@ -72,26 +72,23 @@
 				>
 					<i class="glyphicon glyphicon-option-vertical"></i>
 				</button>
-				<div class="dropdown-menu animated bounceInDown" id="admin-tools-menu">
+				<div class="dropdown-menu animated bounceInDown" id="admin-tools-menu" style="z-index:1;">
 					<h5><b><?php if (getLoggedAdmin()) { ?><?php echo $this->lang['Admin Information']; ?><?php } else { ?><?php echo $this->lang['Record Information']; ?><?php } ?></b></h5>
 					<div class="alert alert-danger no-owner hidden"><?php echo $this->lang['record has no owner']; ?></div>
 					<form class="message-center">
 						<label class="control-label"><?php echo $this->lang['owner']; ?></label>
-							<p class="owner-username"></p>
+							<p><i class="ti-user mr-3"></i><span class="owner-username"></span></p>
 							<?php if (getLoggedAdmin()) { ?>
-							<a class="change-owner-link" href="#"><i class="glyphicon glyphicon-user"></i> <?php echo $this->lang['Change owner']; ?></a>
-							<br>
-							<a class="user-records-link" href="" target="_blank"><i class="ti-calendar"></i> <?php echo str_replace('<tablename>', $tablename, $this->lang['show all user records from table']); ?></a>
-							<br>
-							<a class="user-email-link" href="" target="_blank"><i class="glyphicon glyphicon-envelope"></i> <?php echo $this->lang['email this user']; ?></a>
+							<p><a class="change-owner-link" href="#"><i class="ti-exchange-vertical"></i> <?php echo $this->lang['Change owner']; ?></a></p>
+							<p><a class="user-records-link" href="" target="_blank"><i class="ti-calendar"></i> <?php echo str_replace('<tablename>', $tablename, $this->lang['show all user records from table']); ?></a></p>
+							<p><a class="user-email-link" href="" target="_blank"><i class="ti-email"></i> <?php echo $this->lang['email this user']; ?></a></p>
 							<?php } ?>
 
 						<label class="control-label"><?php echo $this->lang['group']; ?></label>
-							<p class="owner-group"></p>
+							<p><i class="icon-people mr-3"></i><span class="owner-group"></span></p>
 							<?php if (getLoggedAdmin()) { ?>
-							<a class="group-records-link" href="" target="_blank"><i class="ti-calendar"></i> <?php echo str_replace('<tablename>', $tablename, $this->lang['show all group records from table']); ?></a>
-							<br>
-							<a class="group-email-link" href="" target="_blank"><i class="glyphicon glyphicon-envelope"></i> <?php echo $this->lang['email this group']; ?></a>
+							<p><a class="group-records-link" href="" target="_blank"><i class="ti-calendar"></i> <?php echo str_replace('<tablename>', $tablename, $this->lang['show all group records from table']); ?></a></p>
+							<p><a class="group-email-link" href="" target="_blank"><i class="ti-email"></i> <?php echo $this->lang['email this group']; ?></a></p>
 							<?php } ?>
 
 						<label class="control-label"><?php echo $this->lang['created']; ?></label>

@@ -94,14 +94,14 @@
 	<h4 class="card-title"><?php echo $Translation["newest updates"]; ?> <a class="btn btn-outline-plain btn-sm" href="pageViewRecords.php?sort=dateUpdated&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a></h4>
 	<div class="row">
 		<div class="col-md-12" style="overflow:scroll;">
-	<table class="table table-striped table-hover">
+	<table class="table">
 	<?php
 		$res=sql("select tableName, pkValue, dateUpdated, recID from membership_userrecords order by dateUpdated desc limit 5", $eo);
 		while($row=db_fetch_row($res)){
 			?>
 			<tr>
-				<th style="min-width: 13em;"><?php echo @date($adminConfig['PHPDateTimeFormat'], $row[2]); ?></th>
-				<td class="remaining-width"><div class="clipped"><a href="pageEditOwnership.php?recID=<?php echo $row[3]; ?>"><img src="images/data_icon.gif" border="0" alt="<?php echo $Translation["view record details"]; ?>" title="<?php echo $Translation["view record details"]; ?>"></a> <?php echo getCSVData($row[0], $row[1]); ?></div></td>
+				<th style="min-width: 13em;"><a><?php echo @date($adminConfig['PHPDateTimeFormat'], $row[2]); ?></a></th>
+				<td class="remaining-width"><div class="clipped"><a href="pageEditOwnership.php?recID=<?php echo $row[3]; ?>"><img src="images/data_icon.gif" border="0" alt="<?php echo $Translation["view record details"]; ?>" title="<?php echo $Translation["view record details"]; ?>"> <?php echo getCSVData($row[0], $row[1]); ?></a> </div></td>
 			</tr>
 			<?php
 		}
@@ -122,14 +122,14 @@
 	<h4 class="card-title"><?php echo $Translation["newest entries"]; ?> <a class="btn btn-outline-plain btn-sm" href="pageViewRecords.php?sort=dateAdded&sortDir=desc"><i class="glyphicon glyphicon-chevron-right"></i></a></h4>
 	<div class="row">
 		<div class="col-md-12" style="overflow:scroll;">
-	<table class="table table-striped table-hover">
+	<table class="table">
 	<?php
 		$res=sql("select tableName, pkValue, dateAdded, recID from membership_userrecords order by dateAdded desc limit 5", $eo);
 		while($row=db_fetch_row($res)){
 			?>
 			<tr>
-				<th style="min-width: 13em;"><?php echo @date($adminConfig['PHPDateTimeFormat'], $row[2]); ?></th>
-				<td class="remaining-width"><div class="clipped"><a href="pageEditOwnership.php?recID=<?php echo $row[3]; ?>"><img src="images/data_icon.gif" border="0" alt="<?php echo $Translation["view record details"]; ?>" title="<?php echo $Translation["view record details"]; ?>"></a> <?php echo getCSVData($row[0], $row[1]); ?></div></td>
+				<th style="min-width: 13em;"><a><?php echo @date($adminConfig['PHPDateTimeFormat'], $row[2]); ?></a></th>
+				<td class="remaining-width"><div class="clipped"><a href="pageEditOwnership.php?recID=<?php echo $row[3]; ?>"><img src="images/data_icon.gif" border="0" alt="<?php echo $Translation["view record details"]; ?>" title="<?php echo $Translation["view record details"]; ?>"> <?php echo getCSVData($row[0], $row[1]); ?></a></div></td>
 			</tr>
 			<?php
 		}
@@ -150,14 +150,14 @@
 <div class="card">
 	<div class="card-body">
 	<h4 class="card-title"><?php echo $Translation["top members"]; ?></h4>
-	<table class="table table-striped table-hover">
+	<table class="table">
 	<?php
 		$res=sql("select lcase(memberID), count(1) from membership_userrecords group by memberID order by 2 desc limit 5", $eo);
 		while($row=db_fetch_row($res)){
 			?>
 			<tr>
 				<th class="" style="max-width: 10em;"><a href="pageEditMember.php?memberID=<?php echo urlencode($row[0]); ?>" title="<?php echo $Translation["edit member details"]; ?>"><i class="glyphicon glyphicon-pencil"></i> <?php echo $row[0]; ?></a></th>
-				<td class="remaining-width"><a href="pageViewRecords.php?memberID=<?php echo urlencode($row[0]); ?>"><img src="images/data_icon.gif" border="0" alt="<?php echo $Translation["view member records"]; ?>" title="<?php echo $Translation["view member records"]; ?>"></a> <?php echo $row[1]; ?> <?php echo $Translation["records"]; ?></td>
+				<td class="remaining-width"><a href="pageViewRecords.php?memberID=<?php echo urlencode($row[0]); ?>"><img src="images/data_icon.gif" border="0" alt="<?php echo $Translation["view member records"]; ?>" title="<?php echo $Translation["view member records"]; ?>"> <?php echo $row[1]; ?> <?php echo $Translation["records"]; ?></a></td>
 			</tr>
 			<?php
 		}
@@ -174,28 +174,28 @@
 <div class="card">
 	<div class="card-body">
 	<h4 class="card-title"><?php echo $Translation["members stats"]; ?></h4>
-	<table class="table table-striped table-hover">
+	<table class="table">
 		<tr>
-			<th class=""><?php echo $Translation["total groups"]; ?></th>
+			<th class=""><a><?php echo $Translation["total groups"]; ?></a></th>
 			<td class="remaining-width"><a href="pageViewGroups.php"title="<?php echo $Translation['view groups']; ?>"><i class="glyphicon glyphicon-search"></i> <?php echo sqlValue("select count(1) from membership_groups"); ?></a></td>
 			</tr>
 		<tr>
-			<th class=""><?php echo $Translation["active members"]; ?></th>
+			<th class=""><a><?php echo $Translation["active members"]; ?></a></th>
 			<td class="remaining-width"><a href="pageViewMembers.php?status=2" title="<?php echo $Translation["view active members"]; ?>"><i class="glyphicon glyphicon-search"></i> <?php echo sqlValue("select count(1) from membership_users where isApproved=1 and isBanned=0"); ?></a></td>
 			</tr>
 		<tr>
 			<?php
 				$awaiting = intval(sqlValue("select count(1) from membership_users where isApproved=0"));
 			?>
-			<th class="" <?php echo ($awaiting ? "style=\"color: red;\"" : ""); ?>><?php echo $Translation["members awaiting approval"]; ?></th>
+			<th class="" <?php echo ($awaiting ? "style=\"color: red;\"" : ""); ?>><a><?php echo $Translation["members awaiting approval"]; ?></a></th>
 			<td class="remaining-width"><a href="pageViewMembers.php?status=1" title="<?php echo $Translation["view members awaiting approval"]; ?>"><i class="glyphicon glyphicon-search"></i> <?php echo $awaiting; ?></a></td>
 			</tr>
 		<tr>
-			<th class=""><?php echo $Translation["banned members"]; ?></th>
+			<th class=""><a><?php echo $Translation["banned members"]; ?></a></th>
 			<td class="remaining-width"><a href="pageViewMembers.php?status=3" title="<?php echo $Translation["view banned members"]; ?>"><i class="glyphicon glyphicon-search"></i> <?php echo sqlValue("select count(1) from membership_users where isApproved=1 and isBanned=1"); ?></a></td>
 			</tr>
 		<tr>
-			<th class=""><?php echo $Translation["total members"]; ?></th>
+			<th class=""><a><?php echo $Translation["total members"]; ?></a></th>
 			<td class="remaining-width"><a href="pageViewMembers.php" title="<?php echo $Translation["view all members"]; ?>"><i class="glyphicon glyphicon-search"></i> <?php echo sqlValue("select count(1) from membership_users"); ?></a></td>
 			</tr>
 		</table>

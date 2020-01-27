@@ -7652,3 +7652,15 @@ input.fab:checked +.menu-box .menu-items{
   transform: translateY(-110%) scale(1)  translateX(-30%);
   transition: 0.4s;
 }
+
+.input-group select{
+  height: 40px;
+  background: #fff;
+  border: 1px solid #ced4da;
+}
+.radio label::before{
+  display: none;
+}
+.form-control{
+  border-radius: .25rem !important;
+}

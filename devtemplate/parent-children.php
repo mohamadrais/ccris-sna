@@ -7449,7 +7449,7 @@
 
 			if(!$tabLabels){ die('<!-- no children of current parent table are accessible to current user -->'); }
 			?>
-			<div id="children-tabs" class="hidden-print">
+			<div id="children-tabs" class="hidden-print" style="overflow:scroll;">
 				<div class="btn-group btn-group-lg">
 					<?php echo $tabLabels; ?>
 				</div>
