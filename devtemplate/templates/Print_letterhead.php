@@ -19,9 +19,9 @@ while ($row = db_fetch_array($compDetails)) {
 
 
 $letterhead = <<<HTML
-<table id="printOnly" style="border-bottom:2px solid;width:100%;margin-bottom:-130px">
+<table id="printOnly" style="border-bottom:2px solid rgba(0,0,0,.1);width:100%;margin-bottom:-130px">
 	<tr>
-		<td style="padding:40px !important;width:60%">
+		<td style="padding:40px !important;width:auto;">
 			<img height="100" src="images/$comp_logo">
 		</td>
 		<td>

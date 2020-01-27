@@ -7664,3 +7664,8 @@ input.fab:checked +.menu-box .menu-items{
 .form-control{
   border-radius: .25rem !important;
 }
+.thumbnail, .img-thumbnail{
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+}
