@@ -476,7 +476,13 @@
 			<div class="col-lg-4 pr-2">
 				<div class="card my-3">
 					<div class="card-body">
-					<a href="calendar.php"><h4 class="card-title">Calender - Weekly</h4></a>
+						<h4 class="card-title">Calender - Weekly
+							<span class="hspacer-lg fa-pull-right" title="Open Calendar">
+							<a href="calendar.php">
+									<i class="fa fa-arrow-right"></i>
+							</a>
+							</span>
+						</h4>
 						<!-- ============================================================== -->
 						<!-- To do list widgets -->
 						<!-- ============================================================== -->

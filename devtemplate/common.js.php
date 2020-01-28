@@ -1745,13 +1745,13 @@ function persist_expanded_child(id){
 		if(expand_these.indexOf(id) < 0){
 			// expanded button and not persisting in cookie? save it!
 			expand_these.push(id);
-			Cookies.set('IMS.dvp_expand', expand_these, { expires: 30 });
+			Cookies.set('IMS.dvp_expand', expand_these, { expires: -1 });
 		}
 	}else{
 		if(expand_these.indexOf(id) >= 0){
 			// collapsed button and persisting in cookie? remove it!
 			expand_these.splice(expand_these.indexOf(id), 1);
-			Cookies.set('IMS.dvp_expand', expand_these, { expires: 30 });
+			Cookies.set('IMS.dvp_expand', expand_these, { expires: -1 });
 		}
 	}
 }

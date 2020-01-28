@@ -1539,7 +1539,7 @@ class DataList{
 
 					/* if no cookie, create it and set it to val (or true if no val) */
 					if(c[col_class] === undefined){
-						if(val === undefined) val = true;
+						// if(val === undefined) val = true;
 
 						c[col_class] = val;
 						Cookies.set(cn, c, op);

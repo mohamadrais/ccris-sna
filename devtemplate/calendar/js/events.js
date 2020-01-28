@@ -2,7 +2,7 @@
 	"use strict";
 	var options = {
 		events_source: 'calendar/event.php',
-		view: 'week',
+		view: 'month',
 		tmpl_path: 'calendar/tmpls/',
 		tmpl_cache: false,
 		// day: new Date().toJSON().slice(0,10),

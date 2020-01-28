@@ -57,7 +57,7 @@ if(!String.prototype.formatNum) {
 		// Width of the calendar
 		width: '100%',
 		// Initial view (can be 'month', 'week', 'day')
-		view: 'week',
+		view: 'month',
 		// Initial date. No matter month, week or day this will be a starting point. Can be 'now' or a date in format 'yyyy-mm-dd'
 		day: 'now',
 		// Day Start time and end time with time intervals. Time split 10, 15 or 30.

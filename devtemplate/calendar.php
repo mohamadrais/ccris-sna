@@ -33,8 +33,8 @@ include("header.php");
 			<div class="fc-center"><h3></h3></div>
 			<div class="fc-right btn-group">
 				<button type="button" class="btn fc-button fc-state-default fc-corner-left" data-calendar-view="year">Year</button>
-				<button type="button" class="btn fc-button fc-state-default" data-calendar-view="month">Month</button>
-				<button type="button" class="btn fc-button fc-state-default active" data-calendar-view="week">Week</button>
+				<button type="button" class="btn fc-button fc-state-default active" data-calendar-view="month">Month</button>
+				<button type="button" class="btn fc-button fc-state-default" data-calendar-view="week">Week</button>
 				<button type="button" class="btn fc-button fc-state-default fc-corner-right" data-calendar-view="day">Day</button>
 			</div>
 		</div>
