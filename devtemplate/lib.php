@@ -74,7 +74,7 @@ include("$currDir/admin/incFunctions.php");
 	@ini_set('session.use_strict_mode', '1');
 	@session_cache_expire(2);
 	@session_cache_limiter($_SERVER['REQUEST_METHOD'] == 'POST' ? 'private' : 'nocache');
-	@session_name('IMS');
+	@session_name('PG_APP');
 	session_start();
 
 	// check if membership system exists

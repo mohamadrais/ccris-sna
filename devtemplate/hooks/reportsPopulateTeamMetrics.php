@@ -1,5 +1,5 @@
 <?php
-    // $_script_started = microtime(1);
+    $_script_started = microtime(1);
 
     define('PREPEND_PATH', '../');
     $hooks_dir = dirname(__FILE__);
@@ -62,8 +62,8 @@
 
     }
 
-    // $_page_time_seconds = microtime(1) - $_script_started;
-    // echo 'time taken: '. $_page_time_seconds;
+    $_page_time_seconds = microtime(1) - $_script_started;
+    echo 'Weekly team metrics successfully refreshed (time taken: '. $_page_time_seconds . ' seconds).';
 ?>	
 
 

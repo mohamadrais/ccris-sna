@@ -66,9 +66,9 @@
 		private function check_valid_member(){
 			if($this->request['m'] != '' && $this->request['t'] != ''){
 				$username = makeSafe(strtolower($this->request['m']));
-				$password = md5($this->request['t']);
+				$email = makeSafe(strtolower($this->request['t']));
 
-				if(sqlValue("select count(1) from membership_users where lcase(memberID)='$username' and passMD5='$password' and isApproved=1 and isBanned=0")==1){
+				if(sqlValue("select count(1) from membership_users where lcase(memberID)='$username' and email='$email' and isApproved=1 and isBanned=0")==1){
 					return true;
 				}
 			}

@@ -3271,9 +3271,9 @@
 					$_SESSION['memberID']=$username;
 					$_SESSION['memberGroupID']=sqlValue("select groupID from membership_users where lcase(memberID)='$username'");
 					if($_POST['rememberMe']==1){
-						@setcookie('IMS_rememberMe', $username.$password, time()+86400*30);
+						@setcookie('PG_APP_rememberMe', $username.$password, time()+86400*30);
 					}else{
-						@setcookie('IMS_rememberMe', '', time()-86400*30);
+						@setcookie('PG_APP_rememberMe', '', time()-86400*30);
 					}
 
 					// hook: login_ok
@@ -3302,8 +3302,8 @@
 			if(!headers_sent()) header('HTTP/1.0 403 Forbidden');
 			redirect("index.php?loginFailed=1");
 			exit;
-		}elseif((!$_SESSION['memberID'] || $_SESSION['memberID']==$adminConfig['anonymousMember']) && $_COOKIE['IMS_rememberMe']!=''){
-			$chk=makeSafe($_COOKIE['IMS_rememberMe']);
+		}elseif((!$_SESSION['memberID'] || $_SESSION['memberID']==$adminConfig['anonymousMember']) && $_COOKIE['PG_APP_rememberMe']!=''){
+			$chk=makeSafe($_COOKIE['PG_APP_rememberMe']);
 			if($username=sqlValue("select memberID from membership_users where convert(md5(concat(memberID, passMD5)), char)='$chk' and isBanned=0")){
 				$_SESSION['memberID']=$username;
 				$_SESSION['memberGroupID']=sqlValue("select groupID from membership_users where lcase(memberID)='$username'");

@@ -57,7 +57,7 @@
 
 	/* include page header, unless we're testing db connection (ajax) */
 	if(session_id()){ @session_write_close(); }
-	@session_name('IMS');
+	@session_name('PG_APP');
 	@session_start();
 	$_REQUEST['Embedded'] = 1; /* to prevent displaying the navigation bar */
 	$x = new StdClass;
