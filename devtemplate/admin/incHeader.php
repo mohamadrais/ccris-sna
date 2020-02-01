@@ -288,7 +288,7 @@ $self_baseurl = _baseurl();
 						<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>index.php"><i class="fa fa-cog"></i><?php echo $Translation["user's area"] ; ?></a></li>
 						<?php } ?>
 						<li role="separator" class="divider"></li>
-						<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>../index.php?signOut=1"><i class="fa fa-power-off"></i> <?php echo $Translation['sign out']; ?></a></li>
+						<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="fa fa-power-off"></i> <?php echo $Translation['sign out']; ?></a></li>
 					</ul>
 				</div>
 			</div>

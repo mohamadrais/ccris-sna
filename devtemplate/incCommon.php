@@ -3262,16 +3262,16 @@
 		global $adminConfig;
 		$redir = 'index.php';
 		if($_POST['signIn'] != ''){
-			if($_POST['username'] != '' && $_POST['token'] != ''){
+			if($_POST['username'] != '' && $_POST['password'] != ''){
 				$username = makeSafe(strtolower($_POST['username']));
-				// $password = md5($_POST['password']);
-				$token = $_POST['token'];
+				$password = md5($_POST['password']);
+				// $token = $_POST['token'];
 
-				if(sqlValue("select count(1) from membership_users where lcase(memberID)='$username' and passMD5='$token' and isApproved=1 and isBanned=0")==1){
+				if(sqlValue("select count(1) from membership_users where lcase(memberID)='$username' and passMD5='$password' and isApproved=1 and isBanned=0")==1){
 					$_SESSION['memberID']=$username;
 					$_SESSION['memberGroupID']=sqlValue("select groupID from membership_users where lcase(memberID)='$username'");
 					if($_POST['rememberMe']==1){
-						@setcookie('IMS_rememberMe', $username.$token, time()+86400*30);
+						@setcookie('IMS_rememberMe', $username.$password, time()+86400*30);
 					}else{
 						@setcookie('IMS_rememberMe', '', time()-86400*30);
 					}
@@ -3294,13 +3294,13 @@
 				$args=array();
 				login_failed(array(
 					'username' => $_POST['username'],
-					'password' => $_POST['token'],
+					'password' => $_POST['password'],
 					'IP' => $_SERVER['REMOTE_ADDR']
 					), $args);
 			}
 
 			if(!headers_sent()) header('HTTP/1.0 403 Forbidden');
-			redirect("../index.php?loginFailed=1");
+			redirect("index.php?loginFailed=1");
 			exit;
 		}elseif((!$_SESSION['memberID'] || $_SESSION['memberID']==$adminConfig['anonymousMember']) && $_COOKIE['IMS_rememberMe']!=''){
 			$chk=makeSafe($_COOKIE['IMS_rememberMe']);
@@ -3345,7 +3345,7 @@
 		<!-- ============================================================== -->
 		<!-- End Logo -->
 		<!-- ============================================================== -->
-		
+		<?php if(getLoggedMemberID() != $adminConfig['anonymousMember']){ ?>
 		<div class="navbar-collapse">
 			<ul class="navbar-nav mr-auto mt-md-0 ">
 			<!-- This is  -->
@@ -3408,16 +3408,17 @@
 							<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>admin/pageHome.php"><i class="fa fa-cog"></i><?php echo $Translation['admin area']; ?></a></li>
 							<?php } ?>
 							<li role="separator" class="divider"></li>
-							<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>../index.php"><i class="fa fa-retweet"></i><?php echo 'Switch Account' ?></a></li>
+							<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>index.php"><i class="fa fa-retweet"></i><?php echo 'Switch Account' ?></a></li>
 							<li role="separator" class="divider"></li>
 							<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>ProcessInteractionMap.php"><i class="fa fa-braille "></i> <?php echo "Process Interaction Map" ?></a></li>
 							<li role="separator" class="divider"></li>
-							<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>../index.php?signOut=1"><i class="fa fa-power-off"></i> <?php echo $Translation['sign out']; ?></a></li>
+							<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="fa fa-power-off"></i> <?php echo $Translation['sign out']; ?></a></li>
 						</ul>
 					</div>
 				</div>
 			</ul>
 		</div>
+		<?php } ?>
 	</nav>
 </header>
 <aside id="left_sidebar" class="left-sidebar">
@@ -3435,8 +3436,9 @@
 				</button>
 				<?php } ?> -->
 				<!-- application title is obtained from the name besides the yellow database icon in AppGini, use underscores for spaces -->
-				<!-- <a class="btn navbar-btn btn-default" style="position:absolute;right:0px" href="<?php echo PREPEND_PATH; ?>../index.php"><i class="glyphicon glyphicon-retweet"></i>&nbsp;&nbsp;&nbsp;<?php echo 'Switch Account' ?></a> -->
+				<!-- <a class="btn navbar-btn btn-default" style="position:absolute;right:0px" href="<?php echo PREPEND_PATH; ?>index.php"><i class="glyphicon glyphicon-retweet"></i>&nbsp;&nbsp;&nbsp;<?php echo 'Switch Account' ?></a> -->
 			<!-- </div> -->
+			<?php if(getLoggedMemberID() != $adminConfig['anonymousMember']){ ?>
 			<ul id="sidebarnav" class="in desktop">
 					<?php /*if(!$home_page){ */?>
 						<?php echo NavMenus(['desktop']); ?>
@@ -3447,23 +3449,24 @@
 						<?php echo NavMenus(['mobile']); ?>
 					<?php /*} */?>
 			</ul>
+			<?php } ?>
 
 				<?php if(!$_GET['signIn'] && !$_GET['loginFailed']){ ?>
 					<?php if(getLoggedMemberID() == $adminConfig['anonymousMember']){ ?>
-						<p class="navbar-text navbar-right">&nbsp;</p>
-						<a href="<?php echo PREPEND_PATH; ?>../index.php?signIn=1" class="btn btn-success navbar-btn navbar-right"><?php echo $Translation['sign in']; ?></a>
+						<!-- <p class="navbar-text navbar-right">&nbsp;</p>
+						<a href="<?php echo PREPEND_PATH; ?>index.php?signIn=1" class="btn btn-success navbar-btn navbar-right"><?php echo $Translation['sign in']; ?></a>
 						<p class="navbar-text navbar-right">
 							<?php echo $Translation['not signed in']; ?>
-						</p>
+						</p> -->
 					<?php }else{ ?>
 						<!-- <ul class="nav navbar-nav navbar-right hidden-xs" style="min-width: 330px;">
-							<a class="btn navbar-btn btn-default" href="<?php echo PREPEND_PATH; ?>../index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
+							<a class="btn navbar-btn btn-default" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
 							<p class="navbar-text">
 								<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link"><?php echo getLoggedMemberID(); ?></a></strong>
 							</p>
 						</ul>
 						<ul class="nav navbar-nav visible-xs">
-							<a class="btn navbar-btn btn-default btn-lg visible-xs" href="<?php echo PREPEND_PATH; ?>../index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
+							<a class="btn navbar-btn btn-default btn-lg visible-xs" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
 							<p class="navbar-text text-center">
 								<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link"><?php echo getLoggedMemberID(); ?></a></strong>
 							</p>
@@ -3475,7 +3478,7 @@
 								$j.ajax({
 									url: '<?php echo PREPEND_PATH; ?>ajax_check_login.php',
 									success: function(username){
-										if(!username.length) window.location = '<?php echo PREPEND_PATH; ?>../index.php?signIn=1';
+										if(!username.length) window.location = '<?php echo PREPEND_PATH; ?>index.php?signIn=1';
 									}
 								});
 							}, 60000);
@@ -3484,7 +3487,7 @@
 				<?php } ?>
 			<!-- <div class="collapse navbar-collapse mainBg sidebar-nav">
 				<ul class="nav navbar-nav navbar-right hidden-xs sign-out">
-					<a class="btn btn-sm btn-danger" href="<?php echo PREPEND_PATH; ?>../index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
+					<a class="btn btn-sm btn-danger" href="<?php echo PREPEND_PATH; ?>index.php?signOut=1"><i class="glyphicon glyphicon-log-out"></i> <?php echo $Translation['sign out']; ?></a>
 					<p class="navbar-text">
 						<?php if(getLoggedMemberID() != $adminConfig['anonymousMember']){ ?>
 							<?php echo $Translation['signed as']; ?> <strong><a href="<?php echo PREPEND_PATH; ?>membership_profile.php" class="navbar-link"><?php echo getLoggedMemberID(); ?></a></strong>
@@ -4184,7 +4187,7 @@ EOT;
 		$css_links = <<<EOT
 
 			<link rel="stylesheet" href="{$prepend_path}resources/initializr/css/bootstrap.css">
-			<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>../assets/plugins/bootstrap/css/bootstrap.min.css">
+			<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/plugins/bootstrap/css/bootstrap.min.css">
 			<link rel="stylesheet" href="<?php echo PREPEND_PATH; ?>assets/css/style.css">
 			<!--[if gt IE 8]><!-->
 				<link rel="stylesheet" href="{$prepend_path}resources/initializr/css/bootstrap-theme.css">

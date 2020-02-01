@@ -18,6 +18,11 @@ include("header.php");
 <link rel="stylesheet" href="assets/plugins/calendar/dist/fullcalendar.css">
 <link rel="stylesheet" href="assets/css/style.css">
 
+<?php
+	/* accessible tables */
+	$arrTables = get_tables_info();
+	if(is_array($arrTables) && count($arrTables)){
+?>
 <div class="page-wrapper ps ps--theme_default">
 <div class="container-fluid">	
 	<div class="card">
@@ -44,6 +49,12 @@ include("header.php");
 	</div>
 </div>
 </div>
+<?php
+	}
+	else{
+		redirect("index.php?signIn=1");
+	}
+?>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <script type="text/javascript" src="<?php echo CALENDAR_PATH; ?>js/calendar.js"></script>
 <script type="text/javascript" src="<?php echo CALENDAR_PATH; ?>js/events.js"></script>

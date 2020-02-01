@@ -654,7 +654,7 @@
 			$i++;
 		}
 	}else{
-		?><script>window.location='../index.php?signIn=1';</script><?php
+		?><script>window.location='index.php?signIn=1';</script><?php
 	}
 ?>
         </ul>
