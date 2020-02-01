@@ -1,0 +1,303 @@
+<!-- Edit this file to change the layout of the detail view form -->
+
+<a name="detail-view"></a>
+<div class="panel-heading"></div>
+
+<div id="summary_dashboard_dv_container">
+	<!-- child links -->
+	<!-- <div class="row vspacer-md"> -->
+		<div class="col-xs-12">
+			<div class="clearfix"></div>
+		</div>
+	<!-- </div> -->
+	<!-- <hr class="hidden-xs hidden-sm"> -->
+
+
+<div id="summary_dashboard_dv_form">
+	<div class="row">
+
+				<div class="form-group col-lg-1">
+					<!-- <hr class="hidden-md hidden-lg"> -->
+					<label for="id" class="control-label">ID</label>
+					<!-- <div class="col-lg-9"> -->
+						<div class="form-control-static" id="id" aria-labelledby="selectedID"><%%VALUE(id)%%></div>
+					<!-- </div> ^^id^^ -->
+				</div>
+				<!-- ^^div-manualid^^ -->
+				<div class="form-group col-lg-3">
+					<!-- <hr class="hidden-md hidden-lg"> ^^inside-div-manualid^^-->
+					<label for="ot_ap_Date" class="control-label">Date</label>
+					<!-- <div class="col-lg-9"> -->
+						<div class="form-control-static" id="ot_ap_Date"><%%COMBOTEXT(ot_ap_Date)%%></div>
+					<!-- </div> -->
+				</div>
+				<!-- ^^div-manualtitle^^ -->
+				<div class="form-group col-lg-8">
+					<!-- <hr class="hidden-md hidden-lg"> ^^inside-div-manualtitle^^-->
+					<label for="fo_Section_Caption" class="control-label">Section</label>
+					<!-- <div class="col-lg-9"> -->
+						<div class="form-control-static" id="fo_Section_Caption"><%%VALUE(fo_Section_Caption)%%></div>
+					<!-- </div> -->
+				</div>
+	</div>
+
+	<ul class="nav nav-tabs customtab2 d-block w-100" role="tablist">
+		<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#Description" role="tab" class="not-active"><span class="hidden-sm-up"></span> Description</a> </li>
+
+	</ul>
+
+	<div class="tab-content w-100">
+		<div class="tab-pane p-t-30 active show" id="Description" role="tabpanel">
+				<div class="form-group row">
+					<hr class="hidden-md hidden-lg">
+					<label for="fo_TotalDisplayField" class="control-label col-lg-2">Field <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#fo_TotalDisplayField-description"></i></label>
+					<div class="col-lg-10">
+						<span class="help-block collapse" id="fo_TotalDisplayField-description"><div class="alert alert-info">Display Field for Total Count</div></span>
+
+						<div class="form-control-static" id="fo_TotalDisplayField"><%%VALUE(fo_TotalDisplayField)%%></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<hr class="hidden-md hidden-lg">
+					<label for="fo_TotalCount" class="control-label col-lg-2">Total Count</label>
+					<div class="col-lg-10">
+						<div class="form-control-static" id="fo_TotalCount"><%%VALUE(fo_TotalCount)%%></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<hr class="hidden-md hidden-lg">
+					<label for="fo_ReviewCount" class="control-label col-lg-2">Review Count</label>
+					<div class="col-lg-10">
+						<div class="form-control-static" id="fo_ReviewCount"><%%VALUE(fo_ReviewCount)%%></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<hr class="hidden-md hidden-lg">
+					<label for="fo_ApprovalCount" class="control-label col-lg-2">Approval Count</label>
+					<div class="col-lg-10">
+						<div class="form-control-static" id="fo_ApprovalCount"><%%VALUE(fo_ApprovalCount)%%></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<hr class="hidden-md hidden-lg">
+					<label for="fo_IMSControlCount" class="control-label col-lg-2">IMS Control Count</label>
+					<div class="col-lg-10">
+						<div class="form-control-static" id="fo_IMSControlCount"><%%VALUE(fo_IMSControlCount)%%></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<hr class="hidden-md hidden-lg">
+					<label for="fo_CustomDisplayField1" class="control-label col-lg-2">Custom Display Field 1 <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#fo_CustomDisplayField1-description"></i></label>
+					<div class="col-lg-10">
+						<span class="help-block collapse" id="fo_CustomDisplayField1-description"><div class="alert alert-info">For example, Project Man-hours for Projects Register table</div></span>
+
+						<input maxlength="100" type="text" class="form-control" name="fo_CustomDisplayField1" id="fo_CustomDisplayField1" value="<%%VALUE(fo_CustomDisplayField1)%%>">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<hr class="hidden-md hidden-lg">
+					<label for="fo_CustomDisplayValue1" class="control-label col-lg-2">Custom 1</label>
+					<div class="col-lg-10">
+						<div class="form-control-static" id="fo_CustomDisplayValue1"><%%VALUE(fo_CustomDisplayValue1)%%></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<hr class="hidden-md hidden-lg">
+					<label for="fo_CustomDisplayField2" class="control-label col-lg-2">Custom Display Field 2 <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#fo_CustomDisplayField2-description"></i></label>
+					<div class="col-lg-10">
+						<span class="help-block collapse" id="fo_CustomDisplayField2-description"><div class="alert alert-info">For example, Average task completion period for Projects Register table</div></span>
+
+						<input maxlength="100" type="text" class="form-control" name="fo_CustomDisplayField2" id="fo_CustomDisplayField2" value="<%%VALUE(fo_CustomDisplayField2)%%>">
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<hr class="hidden-md hidden-lg">
+					<label for="fo_CustomDisplayValue2" class="control-label col-lg-2">Custom 2</label>
+					<div class="col-lg-10">
+						<div class="form-control-static" id="fo_CustomDisplayValue2"><%%VALUE(fo_CustomDisplayValue2)%%></div>
+					</div>
+				</div>
+		</div>
+	</div>
+<!--
+				<div class="form-group row">
+					<hr class="hidden-md hidden-lg">
+					<label for="ot_ap_lastmodified" class="control-label col-lg-2">Last modified <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#ot_ap_lastmodified-description"></i></label>
+					<div class="col-lg-10">
+						<span class="help-block collapse" id="ot_ap_lastmodified-description"><div class="alert alert-info">This field is automatically populated with the date and time when this record was last modified.</div></span>
+
+						<div class="form-control-static" id="ot_ap_lastmodified"><% %VALUE(ot_ap_lastmodified)% %></div>
+					</div>
+				</div>
+
+			</fieldset>
+		</div>
+-->
+		<!-- DV action buttons -->
+		<hr class="hidden-md hidden-lg">
+	<div id="adminActions" class="adminActions"> <!-- <div class="col-md-4 col-lg-2" id="summary_dashboard_dv_action_buttons"> -->
+		<input  type="checkbox" name="adminToggle" class="adminToggle" />
+		<a class="adminButton" href="#!"><i class="ti-more"></i></a>
+		<div class="adminButtons">
+			<%%CANCELEDIT_BUTTON%%>
+			<%%DESELECT_BUTTON%%>
+			<%%DVPRINT_BUTTON%%>
+			<%%DELETE_BUTTON%%>
+			<%%INSERT_BUTTON%%>
+		</div>
+	</div>
+	<div class="adminActions"style="right:90px; bottom:40px">
+		<%%EDIT_BUTTON%%>
+		<%%UPDATE_BUTTON%%>
+	</div>
+</div>
+
+
+</div><!-- /div class="panel-body" -->
+	<style>
+		input[readonly], input[readonly="readonly"] {
+			border:unset;
+		}
+
+		input[readonly]::-webkit-input-placeholder, input[readonly="readonly"]::-webkit-input-placeholder {
+			color:transparent;
+		}
+
+		input[readonly]:-ms-input-placeholder, input[readonly="readonly"]:-ms-input-placeholder {  
+			color:transparent;
+		}
+
+	</style>
+	<script>
+		$j(function () {
+			var add_new_mode = (!$j('input[name=SelectedID]').val());
+			var embedded_mode = ($j('input[name=Embedded]').val() == 1);
+
+			/* auto-close embedded page? */
+			var autoclose_mode = ($j('input[name=AutoClose]').val() == 1);
+			var record_added_ok = (location.search.split('record-added-ok=').length == 2);
+			var record_updated_ok = (location.search.split('record-updated-ok=').length == 2);
+			if((record_added_ok || record_updated_ok) && embedded_mode && autoclose_mode){
+				setTimeout(AppGini.closeParentModal, 2000);
+			}
+
+			/* enable DV action buttons to float on scrolling down the form */
+			enable_dvab_floating();
+
+			if(!(embedded_mode && AppGini.mobileDevice())){
+				$j('select, input[type=text], textarea').not(':disabled').eq(0).focus();
+			}
+
+
+			$j('a[href="<%%TRANSLATION(ImageFolder)%%>"]').click(function(){ /* */ return false; });
+
+
+			if(!embedded_mode){
+				/* add a horizontal spacer to [add new parent] buttons that don't have a spacered element before them */
+				$j('.add_new_parent').prev(':not(.hspacer-md)').next().addClass('hspacer-md');
+
+				$j('.add_new_parent').click(function(){
+					var pt = $j(this).attr('id').replace(/_add_new$/, '');
+					modal_window({
+						url: pt + '_view.php?addNew_x=1&Embedded=1',
+						close: function(){
+							var field_id = $j('#' + pt + '_add_new').prevAll('input:hidden').eq(0).attr('id');
+							$j('#' + field_id + '-container').select2('focus').select2('focus');
+						},
+						size: 'full',
+						title: $j(this).attr('title')
+					});
+				});
+			}
+
+			AppGini.hideViewParentLinks();
+
+			$j('form').on('click', '.view_parent', function(){
+				var pt = $j(this).attr('id').replace(/_view_parent$/, '');
+				if($j(this).prevAll('input:hidden').length){
+					var parent_id = $j(this).prevAll('input:hidden').eq(0).val();
+				}else{
+					var parent_id = $j(this).prevAll().children('input:hidden').eq(0).val();
+				}
+
+				/* handle radio lookups */
+				if($j(this).prevAll('[type=radio]').length){
+					parent_id = $j(this).prevAll('[type=radio]').eq(0).val();
+				}
+
+				if(parent_id != '{empty_value}' && parent_id != undefined && parent_id != ''){
+					var parent_link = $j(this).parents('.form-group').children('label').data('parent_link');
+					switch(parent_link){
+						case 'view_parent_hidden':
+							break;
+						case 'view_parent_modal':
+							modal_window({
+								url: pt + '_view.php?Embedded=1&SelectedID=' + encodeURIComponent(parent_id),
+								close: function(){
+									var field_id = $j('#' + pt + '_view_parent').prevAll('input:hidden').eq(0).attr('id');
+									$j('#' + field_id + '-container').select2('focus').select2('focus');
+								},
+								size: 'full',
+								title: $j(this).attr('title')
+							});
+							break;
+						case 'view_parent_same_window':
+							window.location = pt + '_view.php?Embedded=' + (embedded_mode ? '1' : '') + '&SelectedID=' + encodeURIComponent(parent_id);
+							break;
+						case 'view_parent_new_window':
+							window.open(pt + '_view.php?SelectedID=' + encodeURIComponent(parent_id));
+							break;
+					}
+
+				}
+			});
+
+
+			/* load admin tools for admin user */
+			if (!add_new_mode) {
+				$j('#record-heading').append('<span id="admin-tools-appendix"></span>');
+				$j('#admin-tools-appendix').load(
+					'ajax_admin_tools.php?table=summary_dashboard&id=<%%URLVALUE(id)%%>',
+					function(resp){
+						if(!resp.length) return;
+						$j.ajax('ajax_admin_tools.php?action=get_admin_tools_js&table=summary_dashboard&id=<%%URLVALUE(id)%%>');
+					}
+				);
+			}
+
+			/* warn user if 'add new' clicked while unsaved changes exist */
+			$j('#addNew').click(function () {
+				if ($j('#deselect.btn-warning').length) {
+					return confirm('<%%TRANSLATION(discard changes confirm)%%>');
+				}
+			});
+
+			/* initialize dropify */
+			$j(document).ready(function(){
+				var drEvent = [];
+				$j('.dropify').each(function(i, e){
+					drEvent[i] = $j(e).dropify();
+				})
+				for(x=0; x<drEvent.length; x++){
+					drEvent[x].on('dropify.afterClear', function(event, element){
+						calcAttached("attach-documents", "totalDocumentAttached");
+						calcAttached("attach-compressed-folders", "totalCompFolderAttached");
+						calcAttached("attach-images", "totalPhotoAttached");
+					});
+
+					drEvent[x].on('dropify.errors', function(event, element){
+						console.log('Dropify ' + element + ' has errors');
+					});
+				}
+			});
+
+		});
+	</script>

@@ -1,0 +1,17 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the WorkOrder_init() hook (in hooks/WorkOrder.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="WorkOrder-WONumber-<%%VALUE(id)%%>" class="WorkOrder-WONumber"><%%SELECT%%><%%VALUE(WONumber)%%><%%ENDSELECT%%></td>
+		<td id="WorkOrder-Task-<%%VALUE(id)%%>" class="WorkOrder-Task"><%%SELECT%%><%%VALUE(Task)%%><%%ENDSELECT%%></td>
+		<td id="WorkOrder-fo_Critical-<%%VALUE(id)%%>" class="WorkOrder-fo_Critical"><%%SELECT%%><%%VALUE(fo_Critical)%%><%%ENDSELECT%%></td>
+		<td id="WorkOrder-fo_EmployeeID-<%%VALUE(id)%%>" class="WorkOrder-fo_EmployeeID"><%%SELECT%%><%%VALUE(fo_EmployeeID)%%><%%ENDSELECT%%></td>
+		<td id="WorkOrder-fo_BaseLocation-<%%VALUE(id)%%>" class="WorkOrder-fo_BaseLocation"><%%SELECT%%><%%VALUE(fo_BaseLocation)%%><%%ENDSELECT%%></td>
+		<td id="WorkOrder-ot_ap_Review-<%%VALUE(id)%%>" class="WorkOrder-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="WorkOrder-ot_ap_Approval-<%%VALUE(id)%%>" class="WorkOrder-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="WorkOrder-ot_ap_QC-<%%VALUE(id)%%>" class="WorkOrder-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="WorkOrder-ot_ap_filed-<%%VALUE(id)%%>" class="WorkOrder-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="WorkOrder-ot_ap_lastmodified-<%%VALUE(id)%%>" class="WorkOrder-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

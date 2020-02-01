@@ -1,0 +1,20 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the vendor_init() hook (in hooks/vendor.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="vendor-CompanyID-<%%VALUE(VendorID)%%>" class="vendor-CompanyID"><%%VALUE(CompanyID)%%></td>
+		<td id="vendor-CopanyName-<%%VALUE(VendorID)%%>" class="vendor-CopanyName"><%%VALUE(CopanyName)%%></td>
+		<td id="vendor-fo_AVList-<%%VALUE(VendorID)%%>" class="vendor-fo_AVList text-right"><%%VALUE(fo_AVList)%%></td>
+		<td id="vendor-fo_ContactTitle-<%%VALUE(VendorID)%%>" class="vendor-fo_ContactTitle"><%%VALUE(fo_ContactTitle)%%></td>
+		<td id="vendor-fo_HomePage-<%%VALUE(VendorID)%%>" class="vendor-fo_HomePage"><a href="link.php?t=vendor&f=fo_HomePage&i=<%%VALUE(VendorID)%%>" target="_blank" title="<%%VALUE(fo_HomePage)%%>" class="btn btn-outline-plain"><i class="glyphicon glyphicon-globe text-info"></i></a></td>
+		<td id="vendor-ot_ap_Review-<%%VALUE(VendorID)%%>" class="vendor-ot_ap_Review"><%%VALUE(ot_ap_Review)%%></td>
+		<td id="vendor-ot_ap_Approval-<%%VALUE(VendorID)%%>" class="vendor-ot_ap_Approval"><%%VALUE(ot_ap_Approval)%%></td>
+		<td id="vendor-ot_ap_QC-<%%VALUE(VendorID)%%>" class="vendor-ot_ap_QC"><%%VALUE(ot_ap_QC)%%></td>
+		<td id="vendor-ot_ap_filed-<%%VALUE(VendorID)%%>" class="vendor-ot_ap_filed"><%%VALUE(ot_ap_filed)%%></td>
+		<td id="vendor-ot_ap_lastmodified-<%%VALUE(VendorID)%%>" class="vendor-ot_ap_lastmodified"><%%VALUE(ot_ap_lastmodified)%%></td>
+		<script>$j(function(){
+			var e_fo_HomePage = '<%%VALUE(fo_HomePage)%%>'; if(e_fo_HomePage == '' || e_fo_HomePage == '&nbsp;') $j(/*<*/ '#vendor-fo_HomePage-<%%VALUE(VendorID)%%>' /*>*/).html('');
+		});</script>

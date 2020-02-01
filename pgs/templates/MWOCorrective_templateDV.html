@@ -1,0 +1,539 @@
+<!-- Edit this file to change the layout of the detail view form -->
+
+<a name="detail-view"></a>
+<div class="panel-heading"></div>
+
+<div id="MWOCorrective_dv_container">
+	<!-- child links -->
+	<!-- <div class="row vspacer-md"> -->
+		<div class="col-xs-12">
+			<div class="clearfix"></div>
+		</div>
+	<!-- </div> -->
+	<!-- <hr class="hidden-xs hidden-sm"> -->
+
+
+<div id="MWOCorrective_dv_form">
+	<div class="row">
+
+				<div class="form-group col-lg-1">
+					<!-- <hr class="hidden-md hidden-lg"> -->
+					<label for="id" class="control-label">ID</label>
+					<!-- <div class="col-lg-9" > -->
+						<div class="form-control-static" id="id" aria-labelledby="selectedID"><%%VALUE(id)%%></div>
+					<!-- </div> ^^id^^ -->
+				</div>
+				<!-- ^^div-manualtitle^^ -->
+				<div class="form-group col-lg-8">
+					<!-- <hr class="hidden-md hidden-lg"> ^^inside-div-manualtitle^^-->
+					<label for="MwoID" class="control-label" data-parent_link="view_parent_modal">MWO ID <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#MwoID-description"></i></label>
+					<!-- <div class="col-lg-9" > -->
+						<span class="help-block collapse" id="MwoID-description"><div class="alert alert-info">MWO reference ID. This is monthly generated ID for ease of maintenance tracking.</div></span>
+						<br>
+						<span><%%COMBO(MwoID)%%><%%PLINK(MwoID)%%><%%ADDNEW(MWO)%%></span>
+					<!-- </div> -->
+				</div>
+				<!-- ^^div-manualid^^ -->
+				<div class="form-group col-lg-3">
+					<!-- <hr class="hidden-md hidden-lg"> ^^inside-div-manualid^^-->
+					<label for="CorrectiveID" class="control-label">Corrective MWO Record Number<span class="text-danger"><%%TRANSLATION(*)%%></span> <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#CorrectiveID-description"></i></label>
+					<!-- <div class="col-lg-9" > -->
+						<span class="help-block collapse" id="CorrectiveID-description"><div class="alert alert-info">Corrective maintenance assignment identification number</div></span>
+
+						<input maxlength="200" type="text" class="form-control" name="CorrectiveID" id="CorrectiveID" value="<%%VALUE(CorrectiveID)%%>" required><div class="text-danger vspacer-md" id="CorrectiveID-uniqueness-note" style="display: none;"><%%TRANSLATION(unique field error)%%></div>
+					<!-- </div> -->
+				</div>
+	</div>
+
+	<ul class="nav nav-tabs customtab2 d-block w-100" role="tablist">
+		<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#Description" role="tab" class="not-active"><span class="hidden-sm-up"></span> Description</a> </li>
+		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Attachment" role="tab" class="not-active"><span class="hidden-sm-up"></span> Details</a> </li>
+		<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#Review" role="tab" class="not-active"><span class="hidden-sm-up"></span> Review</a> </li>
+
+	</ul>
+
+	<div class="tab-content w-100">
+		<div class="tab-pane p-t-30 active show" id="Description" role="tabpanel">
+				<div class="form-group row">
+					<hr class="hidden-md hidden-lg">
+					<label for="fo_EmployeeID" class="control-label col-lg-2" data-parent_link="view_parent_modal">Employee Name <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#fo_EmployeeID-description"></i></label>
+					<div class="col-lg-10">
+						<span class="help-block collapse" id="fo_EmployeeID-description"><div class="alert alert-info">Employee assigned to complete the corrective maintenance action item</div></span>
+
+						<span><%%COMBO(fo_EmployeeID)%%><%%PLINK(fo_EmployeeID)%%><%%ADDNEW(employees)%%></span><span id="fo_EmployeeIDLoading"></span>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<hr class="hidden-md hidden-lg">
+					<label for="fo_Position" class="control-label col-lg-2">Position <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#fo_Position-description"></i></label>
+					<div class="col-lg-10">
+						<span class="help-block collapse" id="fo_Position-description"><div class="alert alert-info">Position of PIC</div></span>
+
+						<div class="form-control-static" id="fo_Position"></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<hr class="hidden-md hidden-lg">
+					<label for="ot_FileLoc" class="control-label col-lg-2">File Location & Number</label>
+					<div class="col-lg-10">
+						<input maxlength="100" type="text" class="form-control" name="ot_FileLoc" id="ot_FileLoc" value="<%%VALUE(ot_FileLoc)%%>">
+					</div>
+				</div>
+
+		</div>
+		<div class="tab-pane panel-body p-t-30" id="Attachment" role="tabpanel">
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="ot_otherdetails" class="control-label col-lg-2">Other details</label>
+				<div class="col-lg-10">
+					<textarea class="form-control" name="ot_otherdetails" id="ot_otherdetails" rows="5"><%%VALUE(ot_otherdetails)%%></textarea>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="ot_comments" class="control-label col-lg-2">Comments</label>
+				<div class="col-lg-10">
+					<%%HTMLAREA(ot_comments)%%>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="control-label col-lg-2">Shared Links<div class="text-muted">Attached <span id="totalLinkAttached"></span>/2</div></label>
+				<div class="col-lg-10">
+					<span id="sl1">
+						<input maxlength="200" placeholder="Place Link here" type="text"
+							class="form-control collapse m-b-5" name="ot_SharedLink1" id="ot_SharedLink1"
+							value="<%%VALUE(ot_SharedLink1)%%>">
+								<a id="ot_SharedLink1-link" href="link.php?t=MWOCorrective&f=ot_SharedLink1&i=<%%VALUE(id)%%>" target="_blank"><i class="glyphicon glyphicon-globe" title="<%%VALUE(ot_SharedLink1)%%>" style="font-size: x-large; top: .35em;"></i></a>
+
+							<script>jQuery(function(){ /* */ var e_ot_SharedLink1 = '<%%VALUE(ot_SharedLink1)%%>'; if(e_ot_SharedLink1 == '' || e_ot_SharedLink1 == '&nbsp;' || e_ot_SharedLink1 == 'blank.gif') jQuery('#ot_SharedLink1-link').hide(); });</script>
+						<button type="button" class="btn btn-sm btn-outline-danger m-b-5"
+							id="ot_SharedLink1_remove">Remove</button>
+					</span>
+					<span id="sl2">
+						<input maxlength="200" placeholder="Place Link here" type="text"
+							class="form-control collapse m-b-5" name="ot_SharedLink2" id="ot_SharedLink2"
+							value="<%%VALUE(ot_SharedLink2)%%>">
+								<a id="ot_SharedLink2-link" href="link.php?t=MWOCorrective&f=ot_SharedLink2&i=<%%VALUE(id)%%>" target="_blank"><i class="glyphicon glyphicon-globe" title="<%%VALUE(ot_SharedLink2)%%>" style="font-size: x-large; top: .35em;"></i></a>
+
+							<script>jQuery(function(){ /* */ var e_ot_SharedLink2 = '<%%VALUE(ot_SharedLink2)%%>'; if(e_ot_SharedLink2 == '' || e_ot_SharedLink2 == '&nbsp;' || e_ot_SharedLink2 == 'blank.gif') jQuery('#ot_SharedLink2-link').hide(); });</script>
+						<button type="button" class="btn  btn-sm btn-outline-danger m-b-5"
+						id="ot_SharedLink2_remove">Remove</button>
+					</span>
+
+					<button type="button" class="btn btn-circle btn-sm btn-light btn-block mx-auto" id="addLink" for="editAttachment"><i class="fa fa-plus" aria-hidden="true"></i></button>
+
+				</div>
+			</div>
+
+			<hr><br>
+
+			<div class="form-group row">
+				<!-- <hr class="hidden-md hidden-lg"> -->
+				<label for="ot_Location" class="control-label col-lg-2">Location <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#ot_Location-description"></i></label>
+				<div class="col-lg-10">
+					<span class="help-block collapse" id="ot_Location-description"><div class="alert alert-info">Google maps URL</div></span>
+					<input maxlength="255" type="text" class="form-control collapse" name="ot_Location" id="ot_Location" value="<%%VALUE(ot_Location)%%>">
+					
+					<div class="form-control-static">
+						<div><%%GOOGLEMAP(ot_Location)%%></div>
+						<!-- <label for="ot_Location"><button type="button" id="ot_Location-edit-link" class="btn btn-outline-plain hspacer-lg vspacer-sm" data-toggle="collapse" data-target="#ot_Location" title="<%%TRANSLATION(Edit)%%>"><i class="glyphicon glyphicon-pencil"></i></button></label> -->
+					</div>
+				</div>
+			</div>
+
+			<hr><br>
+
+			<div class="form-group row">
+				<label class="control-label col-lg-2">Documents<div class="text-muted">Attached <span id="totalDocumentAttached"></span>/3</div></label>
+				<div class="col-lg-10">
+					<span class="attach-group">
+								<a id="ot_Ref01-link" href="link.php?t=MWOCorrective&f=ot_Ref01&i=<%%VALUE(id)%%>" target="_blank" aria-labelledby="attachment-readMode">
+							<%%VALUE(ot_Ref01)%%>
+						</a>
+						<script>jQuery(function () { /* */ var e_ot_Ref01 = '<%%VALUE(ot_Ref01)%%>'; if (e_ot_Ref01 == '' || e_ot_Ref01 == '&nbsp;' || e_ot_Ref01 == 'blank.gif') jQuery('#ot_Ref01-link').hide(); });</script>
+	
+						<div style="overflow-x: hidden;font-size: small;" >
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(ot_Ref01)%%>
+							<%%REMOVEFILE(ot_Ref01)%%>
+						</div>
+
+						<!------>
+
+								<a id="ot_Ref02-link" href="link.php?t=MWOCorrective&f=ot_Ref02&i=<%%VALUE(id)%%>" target="_blank" aria-labelledby="attachment-readMode"><%%VALUE(ot_Ref02)%%></a>
+						<script>jQuery(function(){ /* */ var e_ot_Ref02 = '<%%VALUE(ot_Ref02)%%>'; if(e_ot_Ref02 == '' || e_ot_Ref02 == '&nbsp;' || e_ot_Ref02 == 'blank.gif') jQuery('#ot_Ref02-link').hide(); });</script>
+						
+						<div style="overflow-x: hidden;font-size: small;" >
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(ot_Ref02)%%>
+							<%%REMOVEFILE(ot_Ref02)%%>
+						</div>
+
+						<!------>
+
+								<a id="ot_Ref03-link" href="link.php?t=MWOCorrective&f=ot_Ref03&i=<%%VALUE(id)%%>" target="_blank" aria-labelledby="attachment-readMode"><%%VALUE(ot_Ref03)%%></a>
+						<script>jQuery(function(){ /* */ var e_ot_Ref03 = '<%%VALUE(ot_Ref03)%%>'; if(e_ot_Ref03 == '' || e_ot_Ref03 == '&nbsp;' || e_ot_Ref03 == 'blank.gif') jQuery('#ot_Ref03-link').hide(); });</script>
+
+						<div style="overflow-x: hidden;font-size: small;" >
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(ot_Ref03)%%>
+							<%%REMOVEFILE(ot_Ref03)%%>
+						</div>
+						<button type="button" class="btn btn-circle btn-sm btn-light btn-block my-auto mx-5" id="addDocument" for="editAttachment"><i class="fa fa-plus" aria-hidden="true"></i></button>
+					</span>
+					<br />
+					<p class="control-label text-muted" for="editAttachment">Maximum file size allowed: 64000KB.<br>Allowed file types: txt, doc, docx, docm, odt, pdf, rtf</p>
+
+				</div>
+			</div>
+
+			<hr><br>
+
+			<div class="form-group row">
+				<label class="control-label col-lg-2">Compressed Folders<div class="text-muted">Attached <span id="totalCompFolderAttached"></span>/3</div></label>
+				<div class="col-lg-10">
+					<span class="attach-group">
+								<a id="ot_Ref04-link" href="link.php?t=MWOCorrective&f=ot_Ref04&i=<%%VALUE(id)%%>" target="_blank" aria-labelledby="attachment-readMode"><%%VALUE(ot_Ref04)%%></a>
+						<script>jQuery(function(){ /* */ var e_ot_Ref04 = '<%%VALUE(ot_Ref04)%%>'; if(e_ot_Ref04 == '' || e_ot_Ref04 == '&nbsp;' || e_ot_Ref04 == 'blank.gif') jQuery('#ot_Ref04-link').hide(); });</script>
+						
+						<div style="overflow-x: hidden;font-size: small;" >
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(ot_Ref04)%%>
+							<%%REMOVEFILE(ot_Ref04)%%>
+						</div>
+
+						<!------>
+
+								<a id="ot_Ref05-link" href="link.php?t=MWOCorrective&f=ot_Ref05&i=<%%VALUE(id)%%>" target="_blank" aria-labelledby="attachment-readMode">
+							<%%VALUE(ot_Ref05)%%>
+						</a>
+						<script>jQuery(function () { /* */ var e_ot_Ref05 = '<%%VALUE(ot_Ref05)%%>'; if (e_ot_Ref05 == '' || e_ot_Ref05 == '&nbsp;' || e_ot_Ref05 == 'blank.gif') jQuery('#ot_Ref05-link').hide(); });</script>
+
+						<div style="overflow-x: hidden;font-size: small;" >
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(ot_Ref05)%%>
+							<%%REMOVEFILE(ot_Ref05)%%>
+						</div>
+
+						<!------>
+
+								<a id="ot_Ref06-link" href="link.php?t=MWOCorrective&f=ot_Ref06&i=<%%VALUE(id)%%>" target="_blank" aria-labelledby="attachment-readMode">
+							<%%VALUE(ot_Ref06)%%>
+						</a>
+						<script>jQuery(function () { /* */ var e_ot_Ref06 = '<%%VALUE(ot_Ref06)%%>'; if (e_ot_Ref06 == '' || e_ot_Ref06 == '&nbsp;' || e_ot_Ref06 == 'blank.gif') jQuery('#ot_Ref06-link').hide(); });</script>
+
+						<div style="overflow-x: hidden;font-size: small;" >
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(ot_Ref06)%%>
+							<%%REMOVEFILE(ot_Ref06)%%>
+						</div>
+						<button type="button" class="btn btn-circle btn-sm btn-light btn-block my-auto mx-5" id="addCompFolder" for="editAttachment"><i class="fa fa-plus" aria-hidden="true"></i></button>
+					</span>
+					<br />
+					<p class="control-label text-muted" for="editAttachment">Maximum file size allowed: 64000KB.<br>Allowed file types: zip, rar, gz, tar, iso</p>
+				</div>
+			</div>
+
+			<hr><br>
+
+			<div class="form-group row">
+				<label class="control-label col-lg-2">Photos<div class="text-muted">Attached <span id="totalPhotoAttached"></span>/3</div></label>
+				<div class="col-lg-10">
+					<span class="attach-group">
+						<a id="ot_Photo01-link"
+							href="link.php?t=MWOCorrective&f=ot_Photo01&i=<%%VALUE(id)%%>" target="_blank" aria-labelledby="attachment-readMode">
+							<img src="<%%TRANSLATION(ImageFolder)%%><%%VALUE(ot_Photo01)%%>" height="200"  aria-labelledby="attachment-readMode" />
+							<br/>
+							<%%VALUE(ot_Photo01)%%>
+						</a>
+						<script>jQuery(function () { /* */ var e_ot_Photo01 = '<%%VALUE(ot_Photo01)%%>'; if (e_ot_Photo01 == '' || e_ot_Photo01 == '&nbsp;' || e_ot_Photo01 == 'blank.gif') jQuery('#ot_Photo01-link').hide(); });</script>
+
+						<div style="overflow-x: hidden;font-size: small;" >
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(ot_Photo01)%%>
+							<%%REMOVEFILE(ot_Photo01)%%>
+						</div>
+
+						<!------>
+
+						<a id="ot_Photo02-link"
+							href="link.php?t=MWOCorrective&f=ot_Photo02&i=<%%VALUE(id)%%>" target="_blank" aria-labelledby="attachment-readMode">
+							<img src="<%%TRANSLATION(ImageFolder)%%><%%VALUE(ot_Photo02)%%>" height="200" aria-labelledby="attachment-readMode" />
+							<br/>
+							<%%VALUE(ot_Photo02)%%>
+						</a>
+						<script>jQuery(function () { /* */ var e_ot_Photo02 = '<%%VALUE(ot_Photo02)%%>'; if (e_ot_Photo02 == '' || e_ot_Photo02 == '&nbsp;' || e_ot_Photo02 == 'blank.gif') jQuery('#ot_Photo02-link').hide(); });</script>
+
+						<div style="overflow-x: hidden;font-size: small;" >
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(ot_Photo02)%%>
+							<%%REMOVEFILE(ot_Photo02)%%>
+						</div>
+
+						<!------>
+
+						<a id="ot_Photo03-link"
+							href="link.php?t=MWOCorrective&f=ot_Photo03&i=<%%VALUE(id)%%>" target="_blank" aria-labelledby="attachment-readMode">
+							<img src="<%%TRANSLATION(ImageFolder)%%><%%VALUE(ot_Photo03)%%>" height="200"  aria-labelledby="attachment-readMode" />
+							<br/>
+							<%%VALUE(ot_Photo03)%%>
+						</a>
+						<script>jQuery(function () { /* */ var e_ot_Photo03 = '<%%VALUE(ot_Photo03)%%>'; if (e_ot_Photo03 == '' || e_ot_Photo03 == '&nbsp;' || e_ot_Photo03 == 'blank.gif') jQuery('#ot_Photo03-link').hide(); });</script>
+
+						<div style="overflow-x: hidden;font-size: small;" >
+							<div class="hidden-md hidden-lg vspacer-lg"></div>
+							<%%UPLOADFILE(ot_Photo03)%%>
+							<%%REMOVEFILE(ot_Photo03)%%>
+						</div>
+						<button type="button" class="btn btn-circle btn-sm btn-light btn-block my-auto mx-5" id="addPhoto" for="editAttachment"><i class="fa fa-plus" aria-hidden="true"></i></button>
+					</span>
+					<br />
+					<p class="control-label text-muted" for="editAttachment">Maximum file size allowed: 10000KB.<br>Allowed file types: jpg, jpeg, gif, png</p>
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane p-t-30" id="Review" role="tabpanel">
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="ot_ap_Review" class="control-label col-lg-2"
+					data-parent_link="view_parent_modal">Review</label>
+				<div class="col-lg-10">
+					<div class="form-control-static" style="white-space: nowrap; overflow-x: hidden;">
+						<%%COMBO(ot_ap_Review)%%>
+					</div>
+					<textarea class="form-control" name="ot_ap_RevComment" id="ot_ap_RevComment"
+						rows="5" placeholder="Review Comment"><%%VALUE(ot_ap_RevComment)%%></textarea>
+				</div>
+			</div>
+			
+			<hr><br>
+
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="ot_ap_Approval" class="control-label col-lg-2"
+					data-parent_link="view_parent_modal">Approval</label>
+				<div class="col-lg-10">
+					<div class="form-control-static" style="white-space: nowrap; overflow-x: hidden;">
+						<%%COMBO(ot_ap_Approval)%%>
+					</div>
+					<textarea class="form-control" name="ot_ap_ApprComment" id="ot_ap_ApprComment"
+					rows="5" placeholder="Approval Comment"><%%VALUE(ot_ap_ApprComment)%%></textarea>
+				</div>
+			</div>
+
+			<hr><br>
+
+			<div class="form-group row">
+				<hr class="hidden-md hidden-lg">
+				<label for="ot_ap_QC" class="control-label col-lg-2"
+					data-parent_link="view_parent_modal">IMS Control</label>
+				<div class="col-lg-10">
+					<div class="form-control-static" style="white-space: nowrap; overflow-x: hidden;">
+						<%%COMBO(ot_ap_QC)%%>
+					</div>
+					<textarea class="form-control" name="ot_ap_QCComment" id="ot_ap_QCComment"
+						rows="5" placeholder="IMS Control Comment"><%%VALUE(ot_ap_QCComment)%%></textarea>
+				</div>
+			</div>
+
+		</div>
+	</div>
+<!--
+
+				<div class="form-group row">
+					<hr class="hidden-md hidden-lg">
+					<label for="ot_ap_filed" class="control-label col-lg-2">Register <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#ot_ap_filed-description"></i></label>
+					<div class="col-lg-10">
+						<span class="help-block collapse" id="ot_ap_filed-description"><div class="alert alert-info">This field is automatically populated with the date and time when this record was created.</div></span>
+
+						<div class="form-control-static" id="ot_ap_filed"><% %VALUE(ot_ap_filed)% %></div>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<hr class="hidden-md hidden-lg">
+					<label for="ot_ap_lastmodified" class="control-label col-lg-2">Last modified <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#ot_ap_lastmodified-description"></i></label>
+					<div class="col-lg-10">
+						<span class="help-block collapse" id="ot_ap_lastmodified-description"><div class="alert alert-info">This field is automatically populated with the date and time when this record was last modified.</div></span>
+
+						<div class="form-control-static" id="ot_ap_lastmodified"><% %VALUE(ot_ap_lastmodified)% %></div>
+					</div>
+				</div>
+
+			</fieldset>
+		</div>
+-->
+		<!-- DV action buttons -->
+		<hr class="hidden-md hidden-lg">
+	<div id="adminActions" class="adminActions"> <!-- <div class="col-md-4 col-lg-2" id="MWOCorrective_dv_action_buttons"> -->
+		<input  type="checkbox" name="adminToggle" class="adminToggle" />
+		<a class="adminButton" href="#!"><i class="ti-more"></i></a>
+		<div class="adminButtons">
+			<%%CANCELEDIT_BUTTON%%>
+			<%%DESELECT_BUTTON%%>
+			<%%DVPRINT_BUTTON%%>
+			<%%DELETE_BUTTON%%>
+			<%%INSERT_BUTTON%%>
+			<%%ATTACH_BUTTON%%>
+		</div>
+	</div>
+	<div class="adminActions"style="right:90px; bottom:40px">
+		<%%EDIT_BUTTON%%>
+		<%%UPDATE_BUTTON%%>
+	</div>
+</div>
+
+
+</div><!-- /div class="panel-body" -->
+	<script src="nicEdit.js"></script>
+	<style>
+		input[readonly], input[readonly="readonly"] {
+			border:unset;
+		}
+
+		input[readonly]::-webkit-input-placeholder, input[readonly="readonly"]::-webkit-input-placeholder {
+			color:transparent;
+		}
+
+		input[readonly]:-ms-input-placeholder, input[readonly="readonly"]:-ms-input-placeholder {  
+			color:transparent;
+		}
+
+	</style>
+	<script>
+		$j(function () {
+			var add_new_mode = (!$j('input[name=SelectedID]').val());
+			var embedded_mode = ($j('input[name=Embedded]').val() == 1);
+
+			/* auto-close embedded page? */
+			var autoclose_mode = ($j('input[name=AutoClose]').val() == 1);
+			var record_added_ok = (location.search.split('record-added-ok=').length == 2);
+			var record_updated_ok = (location.search.split('record-updated-ok=').length == 2);
+			if((record_added_ok || record_updated_ok) && embedded_mode && autoclose_mode){
+				setTimeout(AppGini.closeParentModal, 2000);
+			}
+
+			bkLib.onDomLoaded(function(){
+				if($j('textarea#ot_comments').length) new nicEditor({ fullPanel : true }).panelInstance('ot_comments');
+
+				$j('.nicEdit-panelContain').parent().width('100%');
+				$j('.nicEdit-panelContain').parent().next().width('98%');
+				$j('.nicEdit-main').width('99%');
+			});
+			/* enable DV action buttons to float on scrolling down the form */
+			enable_dvab_floating();
+
+			if(!(embedded_mode && AppGini.mobileDevice())){
+				$j('select, input[type=text], textarea').not(':disabled').eq(0).focus();
+			}
+
+
+			$j('a[href="<%%TRANSLATION(ImageFolder)%%>"]').click(function(){ /* */ return false; });
+
+
+			if(!embedded_mode){
+				/* add a horizontal spacer to [add new parent] buttons that don't have a spacered element before them */
+				$j('.add_new_parent').prev(':not(.hspacer-md)').next().addClass('hspacer-md');
+
+				$j('.add_new_parent').click(function(){
+					var pt = $j(this).attr('id').replace(/_add_new$/, '');
+					modal_window({
+						url: pt + '_view.php?addNew_x=1&Embedded=1',
+						close: function(){
+							var field_id = $j('#' + pt + '_add_new').prevAll('input:hidden').eq(0).attr('id');
+							$j('#' + field_id + '-container').select2('focus').select2('focus');
+						},
+						size: 'full',
+						title: $j(this).attr('title')
+					});
+				});
+			}
+
+			AppGini.hideViewParentLinks();
+
+			$j('form').on('click', '.view_parent', function(){
+				var pt = $j(this).attr('id').replace(/_view_parent$/, '');
+				if($j(this).prevAll('input:hidden').length){
+					var parent_id = $j(this).prevAll('input:hidden').eq(0).val();
+				}else{
+					var parent_id = $j(this).prevAll().children('input:hidden').eq(0).val();
+				}
+
+				/* handle radio lookups */
+				if($j(this).prevAll('[type=radio]').length){
+					parent_id = $j(this).prevAll('[type=radio]').eq(0).val();
+				}
+
+				if(parent_id != '{empty_value}' && parent_id != undefined && parent_id != ''){
+					var parent_link = $j(this).parents('.form-group').children('label').data('parent_link');
+					switch(parent_link){
+						case 'view_parent_hidden':
+							break;
+						case 'view_parent_modal':
+							modal_window({
+								url: pt + '_view.php?Embedded=1&SelectedID=' + encodeURIComponent(parent_id),
+								close: function(){
+									var field_id = $j('#' + pt + '_view_parent').prevAll('input:hidden').eq(0).attr('id');
+									$j('#' + field_id + '-container').select2('focus').select2('focus');
+								},
+								size: 'full',
+								title: $j(this).attr('title')
+							});
+							break;
+						case 'view_parent_same_window':
+							window.location = pt + '_view.php?Embedded=' + (embedded_mode ? '1' : '') + '&SelectedID=' + encodeURIComponent(parent_id);
+							break;
+						case 'view_parent_new_window':
+							window.open(pt + '_view.php?SelectedID=' + encodeURIComponent(parent_id));
+							break;
+					}
+
+				}
+			});
+
+			enforce_uniqueness('MWOCorrective', 'CorrectiveID');
+
+			/* load admin tools for admin user */
+			if (!add_new_mode) {
+				$j('#record-heading').append('<span id="admin-tools-appendix"></span>');
+				$j('#admin-tools-appendix').load(
+					'ajax_admin_tools.php?table=MWOCorrective&id=<%%URLVALUE(id)%%>',
+					function(resp){
+						if(!resp.length) return;
+						$j.ajax('ajax_admin_tools.php?action=get_admin_tools_js&table=MWOCorrective&id=<%%URLVALUE(id)%%>');
+					}
+				);
+			}
+
+			/* warn user if 'add new' clicked while unsaved changes exist */
+			$j('#addNew').click(function () {
+				if ($j('#deselect.btn-warning').length) {
+					return confirm('<%%TRANSLATION(discard changes confirm)%%>');
+				}
+			});
+
+			/* initialize dropify */
+			$j(document).ready(function(){
+				var drEvent = [];
+				$j('.dropify').each(function(i, e){
+					drEvent[i] = $j(e).dropify();
+				})
+				for(x=0; x<drEvent.length; x++){
+					drEvent[x].on('dropify.afterClear', function(event, element){
+						calcAttached("attach-documents", "totalDocumentAttached");
+						calcAttached("attach-compressed-folders", "totalCompFolderAttached");
+						calcAttached("attach-images", "totalPhotoAttached");
+					});
+
+					drEvent[x].on('dropify.errors', function(event, element){
+						console.log('Dropify ' + element + ' has errors');
+					});
+				}
+			});
+
+		});
+	</script>
