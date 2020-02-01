@@ -664,5 +664,5 @@
 </div>
 
 <?php
-    // include_once("$currDir/footer.php");
+    include_once("$currDir/footer.php");
 ?>
