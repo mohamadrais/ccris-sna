@@ -3408,7 +3408,7 @@
 							<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>admin/pageHome.php"><i class="fa fa-cog"></i><?php echo $Translation['admin area']; ?></a></li>
 							<?php } ?>
 							<li role="separator" class="divider"></li>
-							<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>index.php"><i class="fa fa-retweet"></i><?php echo 'Switch Account' ?></a></li>
+							<li><a class="user-menu" href="https://puffergroup.com/pages/vdesk"><i class="fa fa-retweet"></i><?php echo 'Switch Account' ?></a></li>
 							<li role="separator" class="divider"></li>
 							<li><a class="user-menu" href="<?php echo PREPEND_PATH; ?>ProcessInteractionMap.php"><i class="fa fa-braille "></i> <?php echo "Process Interaction Map" ?></a></li>
 							<li role="separator" class="divider"></li>
@@ -4640,11 +4640,11 @@ EOT;
 			$currentCustomValue1 = sqlValue(get_summary_counters_sql($tableName, 4));
 			$currentCustomValue2 = sqlValue(get_summary_counters_sql($tableName, 5));
 
-			if(!isset($currentReviewClosed) || empty($currentReviewClosed)) 		$currentReviewClosed = "";
-			if(!isset($currentApprovalClosed) || empty($currentApprovalClosed)) 	$currentApprovalClosed = "";
-			if(!isset($currentIMSControlClosed) || empty($currentIMSControlClosed)) $currentIMSControlClosed = "";
-			if(!isset($currentCustomValue1) || empty($currentCustomValue1)) 		$currentCustomValue1 = "";
-			if(!isset($currentCustomValue2) || empty($currentCustomValue2)) 		$currentCustomValue2 = "";
+			if(!isset($currentReviewClosed) || empty($currentReviewClosed)) 		$currentReviewClosed = "0";
+			if(!isset($currentApprovalClosed) || empty($currentApprovalClosed)) 	$currentApprovalClosed = "0";
+			if(!isset($currentIMSControlClosed) || empty($currentIMSControlClosed)) $currentIMSControlClosed = "0";
+			if(!isset($currentCustomValue1) || empty($currentCustomValue1)) 		$currentCustomValue1 = "0";
+			if(!isset($currentCustomValue2) || empty($currentCustomValue2)) 		$currentCustomValue2 = "0";
 		}
 
 		if(function_exists('get_summary_update_sql')){
