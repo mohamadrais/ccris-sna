@@ -4,3 +4,4 @@ deployment:
     - export DEPLOYPATH=/home/puffergroup/public_html
     - /bin/cp -r devtemplate/* "$DEPLOYPATH/app"
     - /bin/cp -r pgs/* "$DEPLOYPATH/pgs"
+    - /bin/cp -r sna/* "$DEPLOYPATH/sna"

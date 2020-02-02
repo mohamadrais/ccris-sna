@@ -1,0 +1,20 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the vendor_init() hook (in hooks/vendor.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="vendor-CompanyID-<%%VALUE(VendorID)%%>" class="vendor-CompanyID"><%%SELECT%%><%%VALUE(CompanyID)%%><%%ENDSELECT%%></td>
+		<td id="vendor-CopanyName-<%%VALUE(VendorID)%%>" class="vendor-CopanyName"><%%SELECT%%><%%VALUE(CopanyName)%%><%%ENDSELECT%%></td>
+		<td id="vendor-fo_AVList-<%%VALUE(VendorID)%%>" class="vendor-fo_AVList text-right"><%%SELECT%%><%%VALUE(fo_AVList)%%><%%ENDSELECT%%></td>
+		<td id="vendor-fo_ContactTitle-<%%VALUE(VendorID)%%>" class="vendor-fo_ContactTitle"><%%SELECT%%><%%VALUE(fo_ContactTitle)%%><%%ENDSELECT%%></td>
+		<td id="vendor-fo_HomePage-<%%VALUE(VendorID)%%>" class="vendor-fo_HomePage"><a href="link.php?t=vendor&f=fo_HomePage&i=<%%VALUE(VendorID)%%>" target="_blank" title="<%%VALUE(fo_HomePage)%%>" class="btn btn-outline-plain"><i class="glyphicon glyphicon-globe text-info"></i></a></td>
+		<td id="vendor-ot_ap_Review-<%%VALUE(VendorID)%%>" class="vendor-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="vendor-ot_ap_Approval-<%%VALUE(VendorID)%%>" class="vendor-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="vendor-ot_ap_QC-<%%VALUE(VendorID)%%>" class="vendor-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="vendor-ot_ap_filed-<%%VALUE(VendorID)%%>" class="vendor-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="vendor-ot_ap_lastmodified-<%%VALUE(VendorID)%%>" class="vendor-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>
+		<script>$j(function(){
+			var e_fo_HomePage = '<%%VALUE(fo_HomePage)%%>'; if(e_fo_HomePage == '' || e_fo_HomePage == '&nbsp;') $j(/*<*/ '#vendor-fo_HomePage-<%%VALUE(VendorID)%%>' /*>*/).html('');
+		});</script>

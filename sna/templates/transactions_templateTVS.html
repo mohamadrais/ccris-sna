@@ -1,0 +1,14 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the transactions_init() hook (in hooks/transactions.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="transactions-TransCode-<%%VALUE(id)%%>" class="transactions-TransCode"><%%VALUE(TransCode)%%></td>
+		<td id="transactions-fo_transaction_date-<%%VALUE(id)%%>" class="transactions-fo_transaction_date"><%%VALUE(fo_transaction_date)%%></td>
+		<td id="transactions-fo_item-<%%VALUE(id)%%>" class="transactions-fo_item"><%%VALUE(fo_item)%%></td>
+		<td id="transactions-fo_ResourcesID-<%%VALUE(id)%%>" class="transactions-fo_ResourcesID"><%%VALUE(fo_ResourcesID)%%></td>
+		<td id="transactions-fo_transactiontype-<%%VALUE(id)%%>" class="transactions-fo_transactiontype"><%%VALUE(fo_transactiontype)%%></td>
+		<td id="transactions-ot_ap_filed-<%%VALUE(id)%%>" class="transactions-ot_ap_filed"><%%VALUE(ot_ap_filed)%%></td>
+		<td id="transactions-ot_ap_lastmodified-<%%VALUE(id)%%>" class="transactions-ot_ap_lastmodified"><%%VALUE(ot_ap_lastmodified)%%></td>

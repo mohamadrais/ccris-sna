@@ -1,0 +1,22 @@
+<span id="cal-slide-tick" style="display: none"></span>
+<div id="cal-slide-content" class="cal-event-list">
+	<ul class="unstyled list-unstyled">
+		<% _.each(events, function(event) { %>
+			<!-- <div class="col-lg-2 col-md-6">
+				<div class="card">
+					<div class="card-body text-center">
+						<a href="<%= event.url ? event.url : 'javascript:void(0)' %>" data-event-id="<%= event.id %>" data-event-class="<%= event['class'] %>" class="event-item">
+							<h6 class="card-title text-muted m-b-0"><%= event.title %></h6>
+							<h1 class="font-light d-inline"><span class="pull-left event <%= event['class'] %>"></span></h1>
+						</a>
+					</div>
+				</div>
+			</div> -->
+			<li>
+				<a href="<%= event.url ? event.url : 'javascript:void(0)' %>" data-event-id="<%= event.id %>">
+					<p class="text-inverse"><%= event.title %> &nbsp;&nbsp;<span class="<%= event['statusClass'] %>"><%= event.status %></span>&nbsp;&nbsp;</p>
+				</a>
+			</li><br>
+		<% }) %>
+	</ul>
+</div>

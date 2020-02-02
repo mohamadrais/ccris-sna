@@ -1,0 +1,18 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the Inventory_init() hook (in hooks/Inventory.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="Inventory-InventoryID-<%%VALUE(id)%%>" class="Inventory-InventoryID"><%%SELECT%%><%%VALUE(InventoryID)%%><%%ENDSELECT%%></td>
+		<td id="Inventory-asset_title-<%%VALUE(id)%%>" class="Inventory-asset_title"><%%SELECT%%><%%VALUE(asset_title)%%><%%ENDSELECT%%></td>
+		<td id="Inventory-fo_Type-<%%VALUE(id)%%>" class="Inventory-fo_Type"><%%SELECT%%><%%VALUE(fo_Type)%%><%%ENDSELECT%%></td>
+		<td id="Inventory-fo_Manufacturer-<%%VALUE(id)%%>" class="Inventory-fo_Manufacturer"><%%SELECT%%><%%VALUE(fo_Manufacturer)%%><%%ENDSELECT%%></td>
+		<td id="Inventory-fo_Condition-<%%VALUE(id)%%>" class="Inventory-fo_Condition"><%%SELECT%%><%%VALUE(fo_Condition)%%><%%ENDSELECT%%></td>
+		<td id="Inventory-fo_UnitPrice-<%%VALUE(id)%%>" class="Inventory-fo_UnitPrice text-right"><%%SELECT%%><%%VALUE(fo_UnitPrice)%%><%%ENDSELECT%%></td>
+		<td id="Inventory-ot_ap_Review-<%%VALUE(id)%%>" class="Inventory-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="Inventory-ot_ap_Approval-<%%VALUE(id)%%>" class="Inventory-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="Inventory-ot_ap_QC-<%%VALUE(id)%%>" class="Inventory-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="Inventory-ot_ap_filed-<%%VALUE(id)%%>" class="Inventory-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="Inventory-ot_ap_last_modified-<%%VALUE(id)%%>" class="Inventory-ot_ap_last_modified"><%%SELECT%%><%%VALUE(ot_ap_last_modified)%%><%%ENDSELECT%%></td>

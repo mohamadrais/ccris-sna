@@ -1,0 +1,60 @@
+<!-- Edit this file to change the layout of the detail view print preview page -->
+
+
+<div class="panel-heading"><h3 class="panel-title">
+	<strong><%%DETAIL_VIEW_TITLE%%></strong>
+	<div class="hidden-print pull-right">
+		<div class="btn-group">
+			<button type="button" id="print" onclick="window.print();" title="<%%TRANSLATION(Print)%%>" class="btn btn-primary"><i class="glyphicon glyphicon-print"></i> <%%TRANSLATION(Print)%%></button>
+			<button type="submit" id="back" title="<%%TRANSLATION(Cancel Printing)%%>" class="btn btn-outline-plain"><i class="glyphicon glyphicon-remove-circle"></i> <%%TRANSLATION(Cancel Printing)%%></button>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</h3></div>
+
+<div class="panel-body">
+	<fieldset class="form-horizontal">
+		<div class="form-group" >
+			<label class="col-xs-3 control-label">ID</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(id)%%></div>
+			</div>
+		</div>
+		<div class="form-group" >
+			<label class="col-xs-3 control-label">Date</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%COMBOTEXT(ot_ap_Date)%%></div>
+			</div>
+		</div>
+		<div class="form-group" >
+			<label class="col-xs-3 control-label">Section</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(fo_Section_Caption)%%></div>
+			</div>
+		</div>
+		<div class="form-group" >
+			<label class="col-xs-3 control-label">Minimum Records Required</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(fo_MinRecordRequired)%%></div>
+			</div>
+		</div>
+		<div class="form-group" >
+			<label class="col-xs-3 control-label">Task Completion Duration</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(fo_TaskCompDuration)%%></div>
+			</div>
+		</div>
+		<div class="form-group" >
+			<label class="col-xs-3 control-label">Percentage of KPI achieved per annum</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(fo_PercentageAchieved)%%></div>
+			</div>
+		</div>
+		<div class="form-group" >
+			<label class="col-xs-3 control-label">Last modified</label>
+			<div class="col-xs-9">
+				<div class="form-control-static"><%%VALUE(ot_ap_lastmodified)%%></div>
+			</div>
+		</div>
+	</fieldset>
+</div>

@@ -1,0 +1,20 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the ContractDeployment_init() hook (in hooks/ContractDeployment.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="ContractDeployment-DocconNumber-<%%VALUE(id)%%>" class="ContractDeployment-DocconNumber"><%%SELECT%%><%%VALUE(DocconNumber)%%><%%ENDSELECT%%></td>
+		<td id="ContractDeployment-InquiryID-<%%VALUE(id)%%>" class="ContractDeployment-InquiryID"><%%SELECT%%><%%VALUE(InquiryID)%%><%%ENDSELECT%%></td>
+		<td id="ContractDeployment-fo_Type-<%%VALUE(id)%%>" class="ContractDeployment-fo_Type"><%%SELECT%%><%%VALUE(fo_Type)%%><%%ENDSELECT%%></td>
+		<td id="ContractDeployment-fo_Intro-<%%VALUE(id)%%>" class="ContractDeployment-fo_Intro"><%%SELECT%%><%%VALUE(fo_Intro)%%><%%ENDSELECT%%></td>
+		<td id="ContractDeployment-fo_ExeDate-<%%VALUE(id)%%>" class="ContractDeployment-fo_ExeDate"><%%SELECT%%><%%VALUE(fo_ExeDate)%%><%%ENDSELECT%%></td>
+		<td id="ContractDeployment-ot_Photo01-<%%VALUE(id)%%>" class="ContractDeployment-ot_Photo01"><a href="<%%TRANSLATION(ImageFolder)%%><%%VALUE(ot_Photo01)%%>" data-lightbox="ContractDeployment-ot_Photo01"><img src="thumbnail.php?i=<%%VALUE(ot_Photo01)%%>&t=ContractDeployment&f=ot_Photo01&v=tv" class="img-thumbnail"></a></td>
+		<td id="ContractDeployment-ot_Photo02-<%%VALUE(id)%%>" class="ContractDeployment-ot_Photo02"><a href="<%%TRANSLATION(ImageFolder)%%><%%VALUE(ot_Photo02)%%>" data-lightbox="ContractDeployment-ot_Photo02"><img src="thumbnail.php?i=<%%VALUE(ot_Photo02)%%>&t=ContractDeployment&f=ot_Photo02&v=tv" class="img-thumbnail"></a></td>
+		<td id="ContractDeployment-ot_Photo03-<%%VALUE(id)%%>" class="ContractDeployment-ot_Photo03"><a href="<%%TRANSLATION(ImageFolder)%%><%%VALUE(ot_Photo03)%%>" data-lightbox="ContractDeployment-ot_Photo03"><img src="thumbnail.php?i=<%%VALUE(ot_Photo03)%%>&t=ContractDeployment&f=ot_Photo03&v=tv" class="img-thumbnail"></a></td>
+		<td id="ContractDeployment-ot_ap_Review-<%%VALUE(id)%%>" class="ContractDeployment-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
+		<td id="ContractDeployment-ot_ap_Approval-<%%VALUE(id)%%>" class="ContractDeployment-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
+		<td id="ContractDeployment-ot_ap_QC-<%%VALUE(id)%%>" class="ContractDeployment-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
+		<td id="ContractDeployment-ot_ap_filed-<%%VALUE(id)%%>" class="ContractDeployment-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
+		<td id="ContractDeployment-ot_ap_lastmodified-<%%VALUE(id)%%>" class="ContractDeployment-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>

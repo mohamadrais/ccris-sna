@@ -1,0 +1,13 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the  and  formatters around it-->
+
+<!-- If you wish to hide the table view header that contains the column titles, -->
+<!-- add the following to the kpi_init() hook (in hooks/kpi.php file) -->
+<!--     $options->ShowTableHeader = 0;     -->
+
+		<td id="kpi-ot_ap_Date-<%%VALUE(id)%%>" class="kpi-ot_ap_Date"><%%VALUE(ot_ap_Date)%%></td>
+		<td id="kpi-fo_Section_Caption-<%%VALUE(id)%%>" class="kpi-fo_Section_Caption"><%%VALUE(fo_Section_Caption)%%></td>
+		<td id="kpi-fo_MinRecordRequired-<%%VALUE(id)%%>" class="kpi-fo_MinRecordRequired text-right"><%%VALUE(fo_MinRecordRequired)%%></td>
+		<td id="kpi-fo_TaskCompDuration-<%%VALUE(id)%%>" class="kpi-fo_TaskCompDuration text-right"><%%VALUE(fo_TaskCompDuration)%%></td>
+		<td id="kpi-fo_PercentageAchieved-<%%VALUE(id)%%>" class="kpi-fo_PercentageAchieved text-right"><%%VALUE(fo_PercentageAchieved)%%></td>
+		<td id="kpi-ot_ap_lastmodified-<%%VALUE(id)%%>" class="kpi-ot_ap_lastmodified"><%%VALUE(ot_ap_lastmodified)%%></td>
