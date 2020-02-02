@@ -7197,9 +7197,11 @@ display: none;
 }
 .navbar-brand b img.icon{
   width: 60px;
+  height: intrinsic; /*safari */
 }
 .navbar-brand span img.text{
   width: 100px;
+  height: intrinsic; /*safari */
 }
 .topbar .top-navbar .navbar-header .navbar-brand b{
   line-height: 70px;
