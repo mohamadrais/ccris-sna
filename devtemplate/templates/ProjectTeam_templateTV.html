@@ -5,16 +5,16 @@
 <!-- add the following to the ProjectTeam_init() hook (in hooks/ProjectTeam.php file) -->
 <!--     $options->ShowTableHeader = 0;     -->
 
-		<td id="ProjectTeam-EmpNo-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-EmpNo"><%%SELECT%%><%%VALUE(EmpNo)%%><%%ENDSELECT%%></td>
-		<td id="ProjectTeam-Name-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-Name"><%%VALUE(Name)%%></td>
-		<td id="ProjectTeam-BaseLocation-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-BaseLocation"><%%SELECT%%><%%VALUE(BaseLocation)%%><%%ENDSELECT%%></td>
-		<td id="ProjectTeam-fo_TermEmployment-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-fo_TermEmployment"><%%SELECT%%><%%VALUE(fo_TermEmployment)%%><%%ENDSELECT%%></td>
+		<td id="ProjectTeam-EmpNo-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-EmpNo"><a><%%SELECT%%><%%VALUE(EmpNo)%%><%%ENDSELECT%%></a></td>
+		<td id="ProjectTeam-Name-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-Name"><a><%%VALUE(Name)%%></a></td>
+		<td id="ProjectTeam-BaseLocation-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-BaseLocation"><a><%%SELECT%%><%%VALUE(BaseLocation)%%><%%ENDSELECT%%></a></td>
+		<td id="ProjectTeam-fo_TermEmployment-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-fo_TermEmployment"><a><%%SELECT%%><%%VALUE(fo_TermEmployment)%%><%%ENDSELECT%%></a></td>
 		<td id="ProjectTeam-fo_Photo01-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-fo_Photo01"><a href="<%%TRANSLATION(ImageFolder)%%><%%VALUE(fo_Photo01)%%>" data-lightbox="ProjectTeam-fo_Photo01"><img src="thumbnail.php?i=<%%VALUE(fo_Photo01)%%>&t=ProjectTeam&f=fo_Photo01&v=tv" class="img-thumbnail"></a></td>
 		<td id="ProjectTeam-fo_Photo02-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-fo_Photo02"><a href="<%%TRANSLATION(ImageFolder)%%><%%VALUE(fo_Photo02)%%>" data-lightbox="ProjectTeam-fo_Photo02"><img src="thumbnail.php?i=<%%VALUE(fo_Photo02)%%>&t=ProjectTeam&f=fo_Photo02&v=tv" class="img-thumbnail"></a></td>
 		<td id="ProjectTeam-fo_Photo03-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-fo_Photo03"><a href="<%%TRANSLATION(ImageFolder)%%><%%VALUE(fo_Photo03)%%>" data-lightbox="ProjectTeam-fo_Photo03"><img src="thumbnail.php?i=<%%VALUE(fo_Photo03)%%>&t=ProjectTeam&f=fo_Photo03&v=tv" class="img-thumbnail"></a></td>
-		<td id="ProjectTeam-fo_Position-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-fo_Position"><%%VALUE(fo_Position)%%></td>
-		<td id="ProjectTeam-ot_ap_Review-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-ot_ap_Review"><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></td>
-		<td id="ProjectTeam-ot_ap_Approval-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-ot_ap_Approval"><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></td>
-		<td id="ProjectTeam-ot_ap_QC-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-ot_ap_QC"><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></td>
-		<td id="ProjectTeam-ot_ap_filed-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-ot_ap_filed"><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></td>
-		<td id="ProjectTeam-ot_ap_lastmodified-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-ot_ap_lastmodified"><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></td>
+		<td id="ProjectTeam-fo_Position-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-fo_Position"><a><%%VALUE(fo_Position)%%></a></td>
+		<td id="ProjectTeam-ot_ap_Review-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-ot_ap_Review"><a><%%SELECT%%><%%VALUE(ot_ap_Review)%%><%%ENDSELECT%%></a></td>
+		<td id="ProjectTeam-ot_ap_Approval-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-ot_ap_Approval"><a><%%SELECT%%><%%VALUE(ot_ap_Approval)%%><%%ENDSELECT%%></a></td>
+		<td id="ProjectTeam-ot_ap_QC-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-ot_ap_QC"><a><%%SELECT%%><%%VALUE(ot_ap_QC)%%><%%ENDSELECT%%></a></td>
+		<td id="ProjectTeam-ot_ap_filed-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-ot_ap_filed"><a><%%SELECT%%><%%VALUE(ot_ap_filed)%%><%%ENDSELECT%%></a></td>
+		<td id="ProjectTeam-ot_ap_lastmodified-<%%VALUE(ProjectTeamID)%%>" class="ProjectTeam-ot_ap_lastmodified"><a><%%SELECT%%><%%VALUE(ot_ap_lastmodified)%%><%%ENDSELECT%%></a></td>

@@ -2077,6 +2077,11 @@ background: #f2f7f8;
 padding-bottom: 60px;
 padding-top: 60px; }
 
+iframe html body .page-wrapper{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
 .container-fluid {
 padding: 0px 0px;
 max-width: 1280px; }

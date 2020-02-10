@@ -486,7 +486,7 @@
 						<!-- ============================================================== -->
 						<!-- To do list widgets -->
 						<!-- ============================================================== -->
-						<div class="to-do-widget m-t-20" style="height: 358px;overflow: scroll;">
+						<div class="to-do-widget" style="height: 358px;overflow: scroll;">
 							<!-- /.modal -->
 							<ul class="list-task todo-list list-group m-b-0">
 								<?php
@@ -790,7 +790,7 @@
 					<!-- ============================================================== -->
 					<!-- Comment widgets -->
 					<!-- ============================================================== -->
-					<div class="comment-widgets">
+					<div class="comment-widgets" style="height: 525px;overflow: scroll;">
 						<!-- Comment Row -->
 						<?php
 							$reportComments = sql("SELECT `Postid`, `Title`, `TextPost`, COALESCE(`last_modified`,`filed`), COALESCE(`ClosedIssue`,0)  FROM `IMSReport`  order by 5, 4 desc limit 5", $eo);
@@ -846,6 +846,7 @@
 	<!-- End Container fluid  -->
 	<!-- ============================================================== -->
 
+	<?php include_once("$currDir/footer.php"); ?>
 </div>
 <!-- /#page-wrapper -->
 <script>
@@ -1055,4 +1056,3 @@
 	});
 </script>
 
-<?php include_once("$currDir/footer.php"); ?>
