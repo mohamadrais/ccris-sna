@@ -326,7 +326,7 @@
 			$sumRow .= '<td class="Inventory-fo_Type"></td>';
 			$sumRow .= '<td class="Inventory-fo_Manufacturer"></td>';
 			$sumRow .= '<td class="Inventory-fo_Condition"></td>';
-			$sumRow .= "<td class=\"Inventory-fo_UnitPrice text-right\">{$row[0]}</td>";
+			$sumRow .= "<td class=\"Inventory-fo_UnitPrice text-left\">{$row[0]}</td>";
 			$sumRow .= '<td class="Inventory-ot_ap_Review"></td>';
 			$sumRow .= '<td class="Inventory-ot_ap_Approval"></td>';
 			$sumRow .= '<td class="Inventory-ot_ap_QC"></td>';

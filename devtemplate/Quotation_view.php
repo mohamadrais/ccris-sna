@@ -282,7 +282,7 @@
 			$sumRow .= '<td class="Quotation-OrderID"></td>';
 			$sumRow .= '<td class="Quotation-fo_Vendor"></td>';
 			$sumRow .= '<td class="Quotation-fo_ShipVia"></td>';
-			$sumRow .= "<td class=\"Quotation-fo_Price text-right\">{$row[0]}</td>";
+			$sumRow .= "<td class=\"Quotation-fo_Price text-left\">{$row[0]}</td>";
 			$sumRow .= '<td class="Quotation-ot_ap_Review"></td>';
 			$sumRow .= '<td class="Quotation-ot_ap_Approval"></td>';
 			$sumRow .= '<td class="Quotation-ot_ap_QC"></td>';

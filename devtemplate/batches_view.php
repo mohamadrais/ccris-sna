@@ -248,7 +248,7 @@
 			$sumRow .= '<td class="batches-fo_suppliers"></td>';
 			$sumRow .= '<td class="batches-fo_manudate"></td>';
 			$sumRow .= '<td class="batches-fo_expdate"></td>';
-			$sumRow .= "<td class=\"batches-fo_Quantity text-right\">{$row[0]}</td>";
+			$sumRow .= "<td class=\"batches-fo_Quantity text-left\">{$row[0]}</td>";
 			$sumRow .= '<td class="batches-fo_ap_filed"></td>';
 			$sumRow .= '<td class="batches-fo_lastmodified"></td>';
 			$sumRow .= '</tr>';

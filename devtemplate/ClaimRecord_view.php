@@ -271,7 +271,7 @@
 			$sumRow .= '<td class="ClaimRecord-CRID"></td>';
 			$sumRow .= '<td class="ClaimRecord-ReceivablesID"></td>';
 			$sumRow .= '<td class="ClaimRecord-fo_DocItem"></td>';
-			$sumRow .= "<td class=\"ClaimRecord-fo_UnitPrice text-right\">{$row[0]}</td>";
+			$sumRow .= "<td class=\"ClaimRecord-fo_UnitPrice text-left\">{$row[0]}</td>";
 			$sumRow .= '<td class="ClaimRecord-ot_ap_Review"></td>';
 			$sumRow .= '<td class="ClaimRecord-ot_ap_Approval"></td>';
 			$sumRow .= '<td class="ClaimRecord-ot_ap_QC"></td>';

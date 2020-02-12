@@ -282,8 +282,8 @@
 			$sumRow .= '<td class="PurchaseOrder-OrderID"></td>';
 			$sumRow .= '<td class="PurchaseOrder-fo_Vendor"></td>';
 			$sumRow .= '<td class="PurchaseOrder-fo_ShipVia"></td>';
-			$sumRow .= "<td class=\"PurchaseOrder-fo_Price text-right\">{$row[0]}</td>";
-			$sumRow .= "<td class=\"PurchaseOrder-fo_Discount text-right\">{$row[1]}</td>";
+			$sumRow .= "<td class=\"PurchaseOrder-fo_Price text-left\">{$row[0]}</td>";
+			$sumRow .= "<td class=\"PurchaseOrder-fo_Discount text-left\">{$row[1]}</td>";
 			$sumRow .= '<td class="PurchaseOrder-ot_ap_Review"></td>';
 			$sumRow .= '<td class="PurchaseOrder-ot_ap_Approval"></td>';
 			$sumRow .= '<td class="PurchaseOrder-ot_ap_QC"></td>';

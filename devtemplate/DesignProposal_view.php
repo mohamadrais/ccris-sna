@@ -293,7 +293,7 @@
 			$sumRow .= '<td class="DesignProposal-fo_Type"></td>';
 			$sumRow .= '<td class="DesignProposal-fo_Intro"></td>';
 			$sumRow .= '<td class="DesignProposal-fo_RecSub"></td>';
-			$sumRow .= "<td class=\"DesignProposal-fo_Price text-right\">{$row[0]}</td>";
+			$sumRow .= "<td class=\"DesignProposal-fo_Price text-left\">{$row[0]}</td>";
 			$sumRow .= '<td class="DesignProposal-ot_ap_Review"></td>';
 			$sumRow .= '<td class="DesignProposal-ot_ap_Approval"></td>';
 			$sumRow .= '<td class="DesignProposal-ot_ap_QC"></td>';

@@ -282,7 +282,7 @@
 			$sumRow .= '<td class="AccountPayables-OrderID"></td>';
 			$sumRow .= '<td class="AccountPayables-fo_Vendor"></td>';
 			$sumRow .= '<td class="AccountPayables-fo_ShipVia"></td>';
-			$sumRow .= "<td class=\"AccountPayables-fo_UnitPrice text-right\">{$row[0]}</td>";
+			$sumRow .= "<td class=\"AccountPayables-fo_UnitPrice text-left\">{$row[0]}</td>";
 			$sumRow .= '<td class="AccountPayables-ot_ap_Review"></td>';
 			$sumRow .= '<td class="AccountPayables-ot_ap_Approval"></td>';
 			$sumRow .= '<td class="AccountPayables-ot_ap_QC"></td>';

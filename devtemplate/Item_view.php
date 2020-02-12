@@ -272,7 +272,7 @@
 			$sumRow .= '<td class="Item-ProductName"></td>';
 			$sumRow .= '<td class="Item-fo_SupplierID"></td>';
 			$sumRow .= '<td class="Item-fo_CategoryID"></td>';
-			$sumRow .= "<td class=\"Item-fo_UnitPrice text-right\">{$row[0]}</td>";
+			$sumRow .= "<td class=\"Item-fo_UnitPrice text-left\">{$row[0]}</td>";
 			$sumRow .= '<td class="Item-fo_Discontinued"></td>';
 			$sumRow .= '<td class="Item-ot_ap_filed"></td>';
 			$sumRow .= '<td class="Item-ot_ap_lastmodified"></td>';

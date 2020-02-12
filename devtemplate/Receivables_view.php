@@ -287,7 +287,7 @@
 			$sumRow .= '<td class="Receivables-ProjectsID"></td>';
 			$sumRow .= '<td class="Receivables-ResourcesID"></td>';
 			$sumRow .= '<td class="Receivables-fo_Classification"></td>';
-			$sumRow .= "<td class=\"Receivables-fo_UnitPrice text-right\">{$row[0]}</td>";
+			$sumRow .= "<td class=\"Receivables-fo_UnitPrice text-left\">{$row[0]}</td>";
 			$sumRow .= '<td class="Receivables-ot_ap_Review"></td>';
 			$sumRow .= '<td class="Receivables-ot_ap_Approval"></td>';
 			$sumRow .= '<td class="Receivables-ot_ap_QC"></td>';
