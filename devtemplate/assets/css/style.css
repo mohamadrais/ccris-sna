@@ -7234,9 +7234,11 @@ display: none;
 }
 .navbar-brand b img.icon{
   width: 60px;
+  height: 60px;
 }
 .navbar-brand span img.text{
   width: 100px;
+  height: 60px;
 }
 .topbar .top-navbar .navbar-header .navbar-brand b{
   line-height: 70px;
