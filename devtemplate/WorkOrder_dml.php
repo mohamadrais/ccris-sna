@@ -1012,7 +1012,7 @@ function WorkOrder_form($selected_id = '', $AllowUpdate = 1, $AllowInsert = 1, $
 	$templateCode = str_replace('<%%EMBEDDED%%>', ($_REQUEST['Embedded'] ? 'Embedded=1' : ''), $templateCode);
 	// process buttons
 	if($AllowInsert){
-		if(!$selected_id) $templateCode = str_replace('<%%INSERT_BUTTON%%>', '<button class="no-style-button"  onclick="return WorkOrder_validateData();" type="submit" name="insert_x" id="insert" value="1" ><a href="#" title=" ' . $Translation['Save New'] . '"><i class="ti-plus"></i></a></button>', $templateCode);
+		if(!$selected_id) $templateCode = str_replace('<%%INSERT_BUTTON%%>', '<button class="no-style-button"  onclick="return WorkOrder_validateData();" type="submit" name="insert_x" id="insert" value="1" ><a href="#" title=" ' . $Translation['Save New'] . '"><i class="ti-save"></i></a></button>', $templateCode);
 		$templateCode = str_replace('<%%INSERT_BUTTON%%>', '<button class="no-style-button" onclick="return WorkOrder_validateData();" type="submit" name="insert_y" id="insert" value="1" ><a href="#" title=" ' . $Translation['Save As Copy'] . '"><i class="ti-files"></i></a></button>', $templateCode);
 	}else{
 		$templateCode = str_replace('<%%INSERT_BUTTON%%>', '', $templateCode);
