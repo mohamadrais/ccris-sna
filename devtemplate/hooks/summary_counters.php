@@ -109,7 +109,7 @@ function summary_counters($contentType, $memberInfo, $tableName)
 
 	$_summaryContent_html = '';
 	for($x=0;$x<$totalCards;$x++){
-		$_summaryContent_html = $_summaryContent_html.'<div class="col-lg-'.$cardsColumnLength.' col-md-4 col-sm-6 col-xs-6">'.$summaryContent_html[$x].'</div>';
+		$_summaryContent_html = $_summaryContent_html.'<div class="col-lg-'.$cardsColumnLength.' col-sm-6 col-xs-6">'.$summaryContent_html[$x].'</div>';
 	}
 
 	$summaryTemplate = <<<HTML
@@ -126,7 +126,7 @@ function summary_counters($contentType, $memberInfo, $tableName)
 	</style>
 		<div class="summary-counter-wrapper">
 			<!-- Row -->
-			<div class="row justify-content-md-center">
+			<div class="justify-content-md-center">
 				$_summaryContent_html
 			</div>
 		</div>

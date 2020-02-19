@@ -1288,7 +1288,7 @@ class DataList{
 			if($SearchString!='') $this->HTML .= '<script>$j(function(){ $j(".table-responsive td").mark("' . html_attr($SearchString) . '", { className: "text-warning bg-warning", diacritics: false }); })</script>';
 
 			if($Print_x == '' && $i){ // TV
-				$this->HTML .= '<div class="row pagination-section">';
+				$this->HTML .= '<div class="pagination-section">';
 					$this->HTML .= '<div class="col-xs-3 col-md-3 col-lg-3  vspacer-lg">';
 						$this->HTML .= '<button onClick="' . $resetSelection . ' document.myform.NoDV.value = 1; return true;" type="submit" name="Previous_x" id="Previous" value="1" class="btn btn-outline-primary btn-block"><i class="glyphicon glyphicon-chevron-left"></i> <span class="hidden-xs">' . $Translation['Previous'] . '</span></button>';
 					$this->HTML .= '</div>';

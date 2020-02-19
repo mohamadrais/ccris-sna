@@ -7238,7 +7238,7 @@ display: none;
 }
 .navbar-brand span img.text{
   width: 100px;
-  height: auto;
+  height: intrinsic;
 }
 .topbar .top-navbar .navbar-header .navbar-brand b{
   line-height: 70px;
@@ -7680,4 +7680,7 @@ input.fab:checked +.menu-box .menu-items{
   -webkit-box-shadow: none;
   box-shadow: none;
   border: none;
+}
+.col-xs-6{
+  width: 50% !important;
 }

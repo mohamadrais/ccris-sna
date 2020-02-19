@@ -325,16 +325,13 @@
 				$cardsColumnLength = 6;
 			}
 		?>
-		<!-- Row -->
-		<div class="row">
 			<!-- Column -->
-			<div class="col-lg-<?php echo $cardsColumnLength ?> col-md-6 col-sm-6 pr-2">
+			<div class="col-lg-<?php echo $cardsColumnLength ?> col-md-4 col-sm-4 col-xs-6 pr-2">
 				<div class="card my-3">
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
 						<h4 class="card-title m-b-0">Weekly Hours</h4>
 						<!-- <h4 class="card-title m-b-0">My Work Days</h4> -->
 						<p class="text-muted">Engaged on Tasks</p>
-						<div class="row">
 							<?php
 								// $myHoursWeek = sqlValue("SELECT COALESCE(SEC_TO_TIME(AVG(`dateUpdated` - `dateAdded`)), '00:00:00.0000') as my_hours_week from `membership_userrecords` WHERE `memberID` = '" . makeSafe($memberInfo['username']) . "' and (YEARWEEK(from_unixtime(`dateAdded`), 1) = YEARWEEK(CURDATE(), 1) or YEARWEEK(from_unixtime(`dateUpdated`), 1) = YEARWEEK(CURDATE(), 1))");
 								$myHoursWeek = getWeeklyHoursEngaged($memberInfo['username']);
@@ -350,37 +347,33 @@
 							?>
 							<div class="col-12"><span><h2 class="font-light d-inline"><?php echo number_format($myHoursWeekArr[0]) ?></h2><span class="text-muted"> h</span> <h2 class="font-light d-inline"><?php echo number_format($myHoursWeekArr[1]) ?></h2><span class="text-muted"> m</span></span></div>
 							<!-- <div class="col-12"><span><h2 class="font-light d-inline"><?php echo number_format($myHoursWeekArr[0]) ?></h2><span class="text-muted"> days</span> <h2 class="font-light d-inline"><?php echo number_format($myHoursWeekArr[2]) ?></h2><span class="text-muted"> h</span></span></div> -->
-							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
-						</div>
+							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px; height:intrinsic;" src="images/dashboard-icon/hours.svg">
 					</div>
 				</div>
 			</div>
 			<!-- End Column -->
 			<!-- Column -->
-			<div class="col-lg-<?php echo $cardsColumnLength ?> col-md-6 col-sm-6 px-2">
+			<div class="col-lg-<?php echo $cardsColumnLength ?> col-md-4 col-sm-4 col-xs-6 px-2">
 				<div class="card my-3">
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
 						<h4 class="card-title m-b-0">Inquiries</h4>
 						<p class="text-muted">This Month</p>
-						<div class="row">
 							<?php
 								$inquiryThisMonth=sqlValue("SELECT count(1) FROM `Inquiry` WHERE (MONTH(`fo_InquiryDate`) = MONTH(CURRENT_DATE()) and YEAR(`fo_InquiryDate`) = YEAR(CURRENT_DATE()))");
 							?>
 							<div class="col-12"><span><h2 class="font-light d-inline"><?php echo number_format($inquiryThisMonth) ?></h2><span class="text-muted"> quotes</span></span></div>
-							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/inquiries.svg">
-						</div>
+							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px; height:intrinsic;" src="images/dashboard-icon/inquiries.svg">
 					</div>
 				</div>
 			</div>
 			<!-- End Column -->
 			<!-- Column -->
 			<?php if(in_array($memberInfo['groupID'], [2, 3, 7, 9, 13] )) { ?>
-			<div class="col-lg-<?php echo $cardsColumnLength ?> col-md-6 col-sm-6 px-2">
+			<div class="col-lg-<?php echo $cardsColumnLength ?> col-md-4 col-sm-4 col-xs-6 px-2">
 				<div class="card my-3">
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
 						<h4 class="card-title m-b-0">Project Claimed</h4>
 						<p class="text-muted">Lump Sum Amount</p>
-						<div class="row">
 							<?php
 								$claimTotal=sqlValue("SELECT COALESCE(sum(fo_UnitPrice), 0.00) FROM `ClaimRecord`");
 								$claimTotalFormatted = '';
@@ -391,19 +384,17 @@
 								}
 							?>
 							<div class="col-12"><span><span class="text-muted">RM </span> <h2 class="font-light d-inline"><?php if ($claimTotalFormatted != '') echo substr($claimTotalFormatted, 0, -1); else echo round($claimTotal, 2); ?></h2><span class="text-muted"> <?php echo $claimTotalSymbol ?></span></span></div>
-							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/claim.svg">
-						</div>
+							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px; height:intrinsic;" src="images/dashboard-icon/claim.svg">
 					</div>
 				</div>
 			</div>
 			<!-- End Column -->
 			<!-- Column -->
-			<div class="col-lg-<?php echo $cardsColumnLength ?> col-md-6 col-sm-6 px-2">
+			<div class="col-lg-<?php echo $cardsColumnLength ?> col-md-4 col-sm-4 col-xs-6 px-2">
 				<div class="card my-3">
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
 						<h4 class="card-title m-b-0">Invoices</h4>
 						<p class="text-muted">Outstanding</p>
-						<div class="row">
 							<?php
 								$receivableTotalInitial=sqlValue("SELECT COALESCE(sum(`fo_UnitPrice`), 0.00) FROM `Receivables`");
 								$receivableTotal = ($claimTotal - $receivableTotalInitial);
@@ -415,19 +406,17 @@
 								}
 							?>
 							<div class="col-12"><span><span class="text-muted">RM </span> <h2 class="font-light d-inline"><?php if ($receivableTotalFormatted != '') echo substr($receivableTotalFormatted, 0, -1); else echo round($receivableTotal, 2); ?></h2><span class="text-muted"> <?php echo $receivableTotalSymbol ?></span></span></div>
-							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/invoice.svg">
-						</div>
+							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px; height:intrinsic;" src="images/dashboard-icon/invoice.svg">
 					</div>
 				</div>
 			</div>
 			<!-- End Column -->
 			<!-- Column -->
-			<div class="col-lg-<?php echo $cardsColumnLength ?> col-md-6 col-sm-6 px-2">
+			<div class="col-lg-<?php echo $cardsColumnLength ?> col-md-4 col-sm-4 col-xs-6 px-2">
 				<div class="card my-3">
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
 						<h4 class="card-title m-b-0">Revenue</h4>
 						<p class="text-muted">This Month</p>
-						<div class="row">
 							<?php
 								$receivableThisMonth=sqlValue("SELECT COALESCE(sum(`fo_UnitPrice`), 0.00) FROM `Receivables` WHERE (MONTH(`fo_Registerdate`) = MONTH(CURRENT_DATE()) and YEAR(`fo_Registerdate`) = YEAR(CURRENT_DATE()))");
 								$receivableThisMonthFormatted = '';
@@ -438,19 +427,17 @@
 								}
 							?>
 							<div class="col-12"><span><span class="text-muted">RM </span> <h2 class="font-light d-inline"><?php if ($receivableThisMonthFormatted != '') echo substr($receivableThisMonthFormatted, 0, -1); else echo round($receivableThisMonth, 2); ?></h2><span class="text-muted"> <?php echo $receivableThisMonthSymbol ?></span></span></div>
-							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/revenue.svg">
-						</div>
+							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px; height:intrinsic;" src="images/dashboard-icon/revenue.svg">
 					</div>
 				</div>
 			</div>
 			<!-- End Column -->
 			<!-- Column -->
-			<div class="col-lg-<?php echo $cardsColumnLength ?> col-md-6 col-sm-6 pl-2">
+			<div class="col-lg-<?php echo $cardsColumnLength ?> col-md-4 col-sm-4 col-xs-6 pl-2">
 				<div class="card my-3">
 					<div class="card-body" style="max-height: 140px; overflow: hidden;">
 						<h4 class="card-title m-b-0">Payable</h4>
 						<p class="text-muted">This Month</p>
-						<div class="row">
 							<?php
 								$payableThisMonth=sqlValue("SELECT coalesce(sum(`fo_UnitPrice`), 0.00) from `AccountPayables` where MONTH(`ot_ap_filed`) = MONTH(CURRENT_DATE()) and YEAR(`ot_ap_filed`) = YEAR(CURRENT_DATE())");
 								$payableThisMonthFormatted = '';
@@ -461,17 +448,12 @@
 								}
 							?>
 							<div class="col-12"><span><span class="text-muted">RM</span> <h2 class="font-light d-inline"><?php if ($payableThisMonthFormatted != '') echo substr($payableThisMonthFormatted, 0, -1); else echo round($payableThisMonth, 2); ?></h2><span class="text-muted"> <?php echo $payableThisMonthSymbol ?></span></span></div>
-							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/payable.svg">
-						</div>
+							<img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px; height:intrinsic;" src="images/dashboard-icon/payable.svg">
 					</div>
 				</div>
 			</div>
 			<!-- End Column -->
 			<?php } ?>
-		</div>
-		<!-- Row -->
-		<!-- Row -->
-		<div class="row">
 			<!-- Column -->
 			<div class="col-lg-4 pr-2">
 				<div class="card my-3">
@@ -710,10 +692,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- Row -->
-		<!-- Row -->
-		<div class="row">
 			<div class="col-lg-8 col-md-12 pr-2">
 				<div class="card my-3">
 					<div class="card-body">
@@ -837,7 +815,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 		<!-- ============================================================== -->
 		<!-- End PAge Content -->
 		<!-- ============================================================== -->

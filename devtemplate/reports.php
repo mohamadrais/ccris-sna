@@ -103,10 +103,8 @@
                                         $myWOTotal=sqlValue("SELECT count(*) FROM `WorkOrder` WHERE `fo_EmployeeID` = (select `employees`.`EmployeeID` from `employees` where `employees`.`memberID` = '" . makeSafe($memberInfo['username']) . "')");
                                     ?>
                                     
-                                    <div class="row">
                                         <div class="col-12"><span><h2 class="font-light d-inline"><?php echo $myWOCompleted ?> / </h2><span class="text-muted"></span> <h2 class="font-light d-inline"><?php echo $myWOTotal ?></h2><span class="text-muted"></span></span></div>
-                                        <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/inquiries.svg">
-                                    </div>
+                                        <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px; height:intrinsic;" src="images/dashboard-icon/inquiries.svg">
                                 </div>
                             </div>
                         </div>
@@ -119,10 +117,8 @@
                                     <?php
                                         $myWOAvgPerMonth=sqlValue("SELECT COALESCE(AVG(a.woCount), 0) FROM (select count(`WorkOrder`.`id`) as woCount FROM `WorkOrder` WHERE `WorkOrder`.`fo_EmployeeID` = (SELECT `employees`.`EmployeeID` FROM `employees` WHERE `employees`.`memberID` = '" . makeSafe($memberInfo['username']) . "') GROUP BY DATE_FORMAT(`WorkOrder`.`ot_ap_filed`, '%m-%Y')) a");
                                     ?>
-                                    <div class="row">
                                         <div class="col-12"><span><h2 class="font-light d-inline"><?php echo number_format($myWOAvgPerMonth) ?></h2><span></span> <h2 class="font-light d-inline"></h2><span></span></span></div>
-                                        <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/invoice.svg">
-                                    </div>
+                                        <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px; height:intrinsic;" src="images/dashboard-icon/invoice.svg">
                                 </div>
                             </div>
                         </div>
@@ -137,10 +133,8 @@
                                         $myWOAvgCompTimeArr = explode(":", $myWOAvgCompTime, 2);
                                     ?>
 
-                                    <div class="row">
                                         <div class="col-12"><span><h2 class="font-light d-inline"><?php echo number_format($myWOAvgCompTimeArr[0]) ?></h2><span class="text-muted">h</span> <h2 class="font-light d-inline"><?php echo number_format($myWOAvgCompTimeArr[1]) ?></h2><span class="text-muted"></span>m</span></div>
-                                        <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
-                                    </div>
+                                        <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px; height:intrinsic;" src="images/dashboard-icon/hours.svg">
                                 </div>
                             </div>
                         </div>
@@ -154,10 +148,8 @@
                                     <?php
                                         $myWORating=sqlValue("SELECT COALESCE(AVG(`ot_ap_QCComment`), 0) FROM `WorkOrder` WHERE `fo_EmployeeID` = (select `employees`.`EmployeeID` from `employees` where `employees`.`memberID` = '" . makeSafe($memberInfo['username']) . "') and `ot_ap_QCComment` REGEXP '^[0-9]+$' and `ot_ap_QCComment` between 0 and 10");
                                     ?>
-                                    <div class="row">
                                         <div class="col-12"><span><h2 class="font-light d-inline"><?php echo round($myWORating, 1) ?> / </h2><span class="text-muted"></span> <h2 class="font-light d-inline">10</h2><span class="text-muted"></span></span></div>
-                                        <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/inquiries.svg">
-                                    </div>
+                                        <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px; height:intrinsic;" src="images/dashboard-icon/inquiries.svg">
                                 </div>
                             </div>
                         </div>
@@ -188,10 +180,8 @@
                                         }
                                         
                                     ?>
-                                    <div class="row">
                                         <div class="col-12"><span><h2 class="font-light d-inline"><?php echo round($myTaskRatingWeeklyAvg, 1) ?> / </h2><span class="text-muted"></span> <h2 class="font-light d-inline">10</h2><span class="text-muted"></span></span></div>
-                                        <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/invoice.svg">
-                                    </div>
+                                        <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px; height:intrinsic;" src="images/dashboard-icon/invoice.svg">
                                 </div>
                             </div>
                         </div>
@@ -223,10 +213,8 @@
                                             $myTaskRatingMonthlyAvg = 0;
                                         }
                                     ?>
-                                    <div class="row">
                                     <div class="col-12"><span><h2 class="font-light d-inline"><?php echo round($myTaskRatingMonthlyAvg, 1) ?> / </h2><span class="text-muted"></span> <h2 class="font-light d-inline">10</h2><span class="text-muted"></span></span></div>
-                                        <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/hours.svg">
-                                    </div>
+                                        <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px; height:intrinsic;" src="images/dashboard-icon/hours.svg">
                                 </div>
                             </div>
                         </div>
@@ -407,7 +395,7 @@
                             <p class="text-muted">The number shown is the minimum records required for each section. Every section needs to achieve at least the minimum records to be generated for the year.</p>
                             <div class="row">
                                 <div class="col-12"><h2 class="font-light d-inline" id='kpi_min_record_required'></h2></div>
-                                <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px;" src="images/dashboard-icon/payable.svg">
+                                <img style="width: 100px; position: relative; opacity: 0.1; left: 90px; top: -65px; height:intrinsic;" src="images/dashboard-icon/payable.svg">
                             </div>
                         </div>
                     </div>

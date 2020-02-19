@@ -7206,7 +7206,7 @@ display: none;
 }
 .navbar-brand span img.text{
   width: 100px;
-  height: auto;
+  height: intrinsic;
 }
 .topbar .top-navbar .navbar-header .navbar-brand b{
   line-height: 70px;
