@@ -7684,3 +7684,8 @@ input.fab:checked +.menu-box .menu-items{
 .col-xs-6{
   width: 50% !important;
 }
+@-moz-document url-prefix() {
+  .login-bg {
+    height: 700px;
+  }
+}
